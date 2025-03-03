@@ -1,209 +1,336 @@
 ---
-import astroLogo from '../assets/astro.svg';
-import background from '../assets/background.svg';
+import '../styles/global.css'
+
+// Common Class Lists
+const headerClasses = 'space-y-2 pb-2 border-b-2 border-surface-800-200';
+const previewCardClasses = 'card bg-noise bg-surface-50-950 border-[1px] border-surface-200-800 flex justify-center items-center p-8';
 ---
 
-<div id="container">
-	<img id="background" src={background.src} alt="" fetchpriority="high" />
-	<main>
-		<section id="hero">
-			<a href="https://astro.build"
-				><img src={astroLogo.src} width="115" height="48" alt="Astro Homepage" /></a
-			>
-			<h1>
-				To get started, open the <code><pre>src/pages</pre></code> directory in your project.
-			</h1>
-			<section id="links">
-				<a class="button" href="https://docs.astro.build">Read our docs</a>
-				<a href="https://astro.build/chat"
-					>Join our Discord <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 127.14 96.36"
-						><path
-							fill="currentColor"
-							d="M107.7 8.07A105.15 105.15 0 0 0 81.47 0a72.06 72.06 0 0 0-3.36 6.83 97.68 97.68 0 0 0-29.11 0A72.37 72.37 0 0 0 45.64 0a105.89 105.89 0 0 0-26.25 8.09C2.79 32.65-1.71 56.6.54 80.21a105.73 105.73 0 0 0 32.17 16.15 77.7 77.7 0 0 0 6.89-11.11 68.42 68.42 0 0 1-10.85-5.18c.91-.66 1.8-1.34 2.66-2a75.57 75.57 0 0 0 64.32 0c.87.71 1.76 1.39 2.66 2a68.68 68.68 0 0 1-10.87 5.19 77 77 0 0 0 6.89 11.1 105.25 105.25 0 0 0 32.19-16.14c2.64-27.38-4.51-51.11-18.9-72.15ZM42.45 65.69C36.18 65.69 31 60 31 53s5-12.74 11.43-12.74S54 46 53.89 53s-5.05 12.69-11.44 12.69Zm42.24 0C78.41 65.69 73.25 60 73.25 53s5-12.74 11.44-12.74S96.23 46 96.12 53s-5.04 12.69-11.43 12.69Z"
-						></path></svg
-					>
-				</a>
-			</section>
+<main>
+	<!-- Sticky Header -->
+	<header class="sticky top-0 z-50 bg-surface-50-950 shadow-xl">
+		<div class="container mx-auto grid grid-cols-[auto_1fr_auto] items-center gap-10 p-4">
+			<h1 class="h3">Skeleton</h1>
+			<p class="text-xs opacity-60">Test various feature provided by Skeleton.</p>
+			<a href="https://skeleton.dev" target="_blank" class="btn preset-filled">Documentation</a>
+		</div>
+	</header>
+
+	<!-- Page Contents -->
+	<div class="container mx-auto space-y-20 px-4 py-20">
+		<!-- -------------------------------------------------------- -->
+		<header class={headerClasses}>
+			<h2 class="h2">Tailwind Components</h2>
+		</header>
+		<!-- -------------------------------------------------------- -->
+
+		<!-- Badges -->
+		<!-- https://skeleton.dev/docs/tailwind/badges -->
+		<section class="space-y-4">
+			<h3 class="h3">Badges</h3>
+			<div class={previewCardClasses}>
+				<div class="grid grid-cols-3 gap-4">
+					<span class="badge preset-filled-primary-500">Badge</span>
+					<span class="badge preset-tonal-primary">Badge</span>
+					<span class="badge preset-outlined-primary-500">Badge</span>
+					<!-- --- -->
+					<span class="badge preset-filled-secondary-500">Badge</span>
+					<span class="badge preset-tonal-secondary">Badge</span>
+					<span class="badge preset-outlined-secondary-500">Badge</span>
+					<!-- --- -->
+					<span class="badge preset-filled-tertiary-500">Badge</span>
+					<span class="badge preset-tonal-tertiary">Badge</span>
+					<span class="badge preset-outlined-tertiary-500">Badge</span>
+					<!-- --- -->
+					<span class="badge preset-filled-success-500">Badge</span>
+					<span class="badge preset-tonal-success">Badge</span>
+					<span class="badge preset-outlined-success-500">Badge</span>
+					<!-- --- -->
+					<span class="badge preset-filled-warning-500">Badge</span>
+					<span class="badge preset-tonal-warning">Badge</span>
+					<span class="badge preset-outlined-warning-500">Badge</span>
+					<!-- --- -->
+					<span class="badge preset-filled-error-500">Badge</span>
+					<span class="badge preset-tonal-error">Badge</span>
+					<span class="badge preset-outlined-error-500">Badge</span>
+					<!-- --- -->
+					<span class="badge preset-filled-surface-500">Badge</span>
+					<span class="badge preset-tonal-surface">Badge</span>
+					<span class="badge preset-outlined-surface-500">Badge</span>
+				</div>
+			</div>
 		</section>
-	</main>
 
-	<a href="https://astro.build/blog/astro-5/" id="news" class="box">
-		<svg width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg"
-			><path
-				d="M24.667 12c1.333 1.414 2 3.192 2 5.334 0 4.62-4.934 5.7-7.334 12C18.444 28.567 18 27.456 18 26c0-4.642 6.667-7.053 6.667-14Zm-5.334-5.333c1.6 1.65 2.4 3.43 2.4 5.333 0 6.602-8.06 7.59-6.4 17.334C13.111 27.787 12 25.564 12 22.666c0-4.434 7.333-8 7.333-16Zm-6-5.333C15.111 3.555 16 5.556 16 7.333c0 8.333-11.333 10.962-5.333 22-3.488-.774-6-4-6-8 0-8.667 8.666-10 8.666-20Z"
-				fill="#111827"></path></svg
-		>
-		<h2>What's New in Astro 5.0?</h2>
-		<p>
-			From content layers to server islands, click to learn more about the new features and
-			improvements in Astro 5.0
-		</p>
-	</a>
-</div>
+		<!-- Buttons -->
+		<section class="space-y-4">
+			<h3 class="h3">Buttons</h3>
+			<div class={previewCardClasses}>
+				<div class="grid grid-cols-3 gap-4">
+					<button type="button" class="btn preset-filled-primary-500">Button</button>
+					<button type="button" class="btn preset-tonal-primary">Button</button>
+					<button type="button" class="btn preset-outlined-primary-500">Button</button>
+					<!-- --- -->
+					<button type="button" class="btn preset-filled-secondary-500">Button</button>
+					<button type="button" class="btn preset-tonal-secondary">Button</button>
+					<button type="button" class="btn preset-outlined-secondary-500">Button</button>
+					<!-- --- -->
+					<button type="button" class="btn preset-filled-tertiary-500">Button</button>
+					<button type="button" class="btn preset-tonal-tertiary">Button</button>
+					<button type="button" class="btn preset-outlined-tertiary-500">Button</button>
+					<!-- --- -->
+					<button type="button" class="btn preset-filled-success-500">Button</button>
+					<button type="button" class="btn preset-tonal-success">Button</button>
+					<button type="button" class="btn preset-outlined-success-500">Button</button>
+					<!-- --- -->
+					<button type="button" class="btn preset-filled-warning-500">Button</button>
+					<button type="button" class="btn preset-tonal-warning">Button</button>
+					<button type="button" class="btn preset-outlined-warning-500">Button</button>
+					<!-- --- -->
+					<button type="button" class="btn preset-filled-error-500">Button</button>
+					<button type="button" class="btn preset-tonal-error">Button</button>
+					<button type="button" class="btn preset-outlined-error-500">Button</button>
+					<!-- --- -->
+					<button type="button" class="btn preset-filled-surface-500">Button</button>
+					<button type="button" class="btn preset-tonal-surface">Button</button>
+					<button type="button" class="btn preset-outlined-surface-500">Button</button>
+				</div>
+			</div>
+		</section>
 
-<style>
-	#background {
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		z-index: -1;
-		filter: blur(100px);
-	}
+		<!-- Card -->
+		<section class="space-y-4">
+			<h3 class="h3">Card</h3>
+			<div class={previewCardClasses}>
+				<a
+					href="#card"
+					class="card preset-filled-surface-100-900 border-[1px] border-surface-200-800 card-hover divide-surface-200-800 block max-w-md divide-y overflow-hidden"
+				>
+					<header>
+						<img
+							src="https://images.unsplash.com/photo-1463171515643-952cee54d42a?q=80&w=450&h=190&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+							class="aspect-[21/9] w-full grayscale hue-rotate-90"
+							alt="banner"
+						/>
+					</header>
+					<article class="space-y-4 p-4">
+						<div>
+							<h2 class="h6">Announcements</h2>
+							<h3 class="h3">Skeleton is Awesome</h3>
+						</div>
+						<p class="opacity-60">
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam aspernatur provident eveniet eligendi cumque consequatur
+							tempore sint nisi sapiente. Iste beatae laboriosam iure molestias cum expedita architecto itaque quae rem.
+						</p>
+					</article>
+					<footer class="flex items-center justify-between gap-4 p-4">
+						<small class="opacity-60">By Alex</small>
+						<small class="opacity-60">On {new Date().toLocaleDateString()}</small>
+					</footer>
+				</a>
+			</div>
+		</section>
 
-	#container {
-		font-family: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
-		height: 100%;
-	}
+		<!-- Forms -->
+		<section class="space-y-4">
+			<h3 class="h3">Forms</h3>
+			<div class={previewCardClasses}>
+				<form class="w-full max-w-xl mx-auto space-y-4">
+					<fieldset class="space-y-4">
+						<!-- Input -->
+						<label class="label">
+							<span class="label-text">Input</span>
+							<input class="input" type="text" placeholder="Input" />
+						</label>
+						<!-- Select -->
+						<label class="label">
+							<span class="label-text">Select</span>
+							<select class="select">
+								<option value="1">Option 1</option>
+								<option value="2">Option 2</option>
+								<option value="3">Option 3</option>
+								<option value="4">Option 4</option>
+								<option value="5">Option 5</option>
+							</select>
+						</label>
+						<!-- Textarea -->
+						<label class="label">
+							<span class="label-text">Textarea</span>
+							<textarea class="textarea rounded-container" rows="4" placeholder="Lorem ipsum dolor sit amet consectetur adipisicing elit."
+							></textarea>
+						</label>
+						<!-- Search -->
+						<label class="label">
+							<span class="label-text">Search</span>
+							<input class="input" type="search" placeholder="Search..." />
+						</label>
+						<!-- Date Picker -->
+						<label class="label">
+							<span class="label-text">Date</span>
+							<input class="input" type="date" />
+						</label>
+						<!-- File Input -->
+						<label class="label">
+							<span class="label-text">File Input</span>
+							<input class="input" type="file" />
+						</label>
+						<!-- Range -->
+						<label class="label">
+							<span class="label-text">Range</span>
+							<input class="input" type="range" value="75" max="100" />
+						</label>
+						<!-- Progress -->
+						<label class="label">
+							<span class="label-text">Progress</span>
+							<progress class="progress" value="50" max="100"></progress>
+						</label>
+						<!-- Color -->
+						<!-- TODO: convert to mini-component for reactive value -->
+						<div class="grid grid-cols-[auto_1fr] gap-2">
+							<input class="input" type="color" value="#bada55" />
+							<input class="input" type="text" value="#bada55" readonly tabindex="-1" />
+						</div>
+					</fieldset>
+				</form>
+			</div>
+		</section>
 
-	main {
-		height: 100%;
-		display: flex;
-		justify-content: center;
-	}
+		<!-- -------------------------------------------------------- -->
+		<header class={headerClasses}>
+			<h2 class="h2">Typography</h2>
+		</header>
+		<!-- -------------------------------------------------------- -->
 
-	#hero {
-		display: flex;
-		align-items: start;
-		flex-direction: column;
-		justify-content: center;
-		padding: 16px;
-	}
+		<!-- Headings -->
+		<section class="space-y-4">
+			<h3 class="h3">Headings</h3>
+			<div class={previewCardClasses}>
+				<div class="space-y-4">
+					<h1 class="h1">Heading 1</h1>
+					<h2 class="h2">Heading 2</h2>
+					<h3 class="h3">Heading 3</h3>
+					<h4 class="h4">Heading 4</h4>
+					<h5 class="h5">Heading 5</h5>
+					<h6 class="h6">Heading 6</h6>
+				</div>
+			</div>
+		</section>
 
-	h1 {
-		font-size: 22px;
-		margin-top: 0.25em;
-	}
+		<!-- Blockquote -->
+		<section class="space-y-4">
+			<h3 class="h3">Blockquote</h3>
+			<div class={previewCardClasses}>
+				<div class="max-w-xl mx-auto">
+					<blockquote class="blockquote">
+						"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, aliquid. Molestias, odio illum voluptatibus natus
+						dignissimos, quidem est unde aspernatur veniam pariatur fuga distinctio esse in quas, repellendus neque reiciendis!"
+					</blockquote>
+				</div>
+			</div>
+		</section>
 
-	#links {
-		display: flex;
-		gap: 16px;
-	}
+		<!-- Code -->
+		<section class="space-y-4">
+			<h3 class="h3">Code</h3>
+			<div class={previewCardClasses}>
+				<code class="code">console.log()</code>
+			</div>
+		</section>
 
-	#links a {
-		display: flex;
-		align-items: center;
-		padding: 10px 12px;
-		color: #111827;
-		text-decoration: none;
-		transition: color 0.2s;
-	}
+		<!-- Keyboard -->
+		<section class="space-y-4">
+			<h3 class="h3">Keyboard</h3>
+			<div class={previewCardClasses}>
+				<div>Press <kbd class="kbd">⌘</kbd> + <kbd class="kbd">C</kbd> to copy.</div>
+			</div>
+		</section>
 
-	#links a:hover {
-		color: rgb(78, 80, 86);
-	}
+		<!-- Pre-Formatted -->
+		<section class="space-y-4">
+			<h3 class="h3">Pre-Formatted</h3>
+			<div class={previewCardClasses}>
+				<pre class="pre">The quick brown fox jumps over the lazy dog.</pre>
+			</div>
+		</section>
 
-	#links a svg {
-		height: 1em;
-		margin-left: 8px;
-	}
+		<!-- -------------------------------------------------------- -->
+		<header class={headerClasses}>
+			<h2 class="h2">Extras</h2>
+		</header>
+		<!-- -------------------------------------------------------- -->
 
-	#links a.button {
-		color: white;
-		background: linear-gradient(83.21deg, #3245ff 0%, #bc52ee 100%);
-		box-shadow:
-			inset 0 0 0 1px rgba(255, 255, 255, 0.12),
-			inset 0 -2px 0 rgba(0, 0, 0, 0.24);
-		border-radius: 10px;
-	}
+		<!-- Alerts -->
+		<section class="space-y-4">
+			<h3 class="h3">Alerts</h3>
+			<div class={previewCardClasses}>
+				<div class="w-full max-w-xl grid grid-cols-1 gap-4">
+					<div class="card preset-outlined-success-500 grid grid-cols-1 items-center gap-4 p-4 lg:grid-cols-[1fr_auto]">
+						<div>
+							<p class="font-bold">Success</p>
+							<p class="type-scale-1 opacity-60">The task has been completed successfully.</p>
+						</div>
+					</div>
+					<div class="card preset-outlined-warning-500 grid grid-cols-1 items-center gap-4 p-4 lg:grid-cols-[auto_1fr_auto]">
+						<div>
+							<p class="font-bold">Warning</p>
+							<p class="type-scale-1 opacity-60">Beware of this important notice.</p>
+						</div>
+					</div>
+					<div class="card preset-outlined-error-500 grid grid-cols-1 items-center gap-4 p-4 lg:grid-cols-[auto_1fr_auto]">
+						<div>
+							<p class="font-bold">Error</p>
+							<p class="type-scale-1 opacity-60">Something has gone wrong.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 
-	#links a.button:hover {
-		color: rgb(230, 230, 230);
-		box-shadow: none;
-	}
+		<!-- Breadcrumbs -->
+		<section class="space-y-4">
+			<h3 class="h3">Breadcrumbs</h3>
+			<div class={previewCardClasses}>
+				<ol class="flex items-center gap-4">
+					<li><a class="opacity-60 hover:underline" href="#breadcrumbs">Blog</a></li>
+					<li class="opacity-50" aria-hidden="true">&rsaquo;</li>
+					<li><a class="opacity-60 hover:underline" href="#breadcrumbs">Category</a></li>
+					<li class="opacity-50" aria-hidden="true">&rsaquo;</li>
+					<li>Article</li>
+				</ol>
+			</div>
+		</section>
 
-	pre {
-		font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas,
-			'DejaVu Sans Mono', monospace;
-		font-weight: normal;
-		background: linear-gradient(14deg, #d83333 0%, #f041ff 100%);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
-		margin: 0;
-	}
+		<!-- Image Layouts -->
+		<section class="space-y-4">
+			<h3 class="h3">Image Layouts</h3>
+			<div class={previewCardClasses}>
+				<section class="grid grid-cols-2 gap-4 md:grid-cols-4">
+					<!-- Column -->
+					<div class="grid gap-4">
+						<img class="bg-surface-500 rounded-container" src="https://picsum.photos/220/320?random=1" alt="Random" />
+						<img class="bg-surface-500 rounded-container" src="https://picsum.photos/220/120?random=2" alt="Random" />
+						<img class="bg-surface-500 rounded-container" src="https://picsum.photos/220/280?random=3" alt="Random" />
+					</div>
+					<!-- Column -->
+					<div class="grid gap-4">
+						<img class="bg-surface-500 rounded-container" src="https://picsum.photos/220/300?random=4" alt="Random" />
+						<img class="bg-surface-500 rounded-container" src="https://picsum.photos/220/280?random=5" alt="Random" />
+						<img class="bg-surface-500 rounded-container" src="https://picsum.photos/220/140?random=6" alt="Random" />
+					</div>
+					<!-- Column -->
+					<div class="grid gap-4">
+						<img class="bg-surface-500 rounded-container" src="https://picsum.photos/220/280?random=7" alt="Random" />
+						<img class="bg-surface-500 rounded-container" src="https://picsum.photos/220/320?random=8" alt="Random" />
+						<img class="bg-surface-500 rounded-container" src="https://picsum.photos/220/140?random=9" alt="Random" />
+					</div>
+					<!-- Column -->
+					<div class="grid gap-4">
+						<img class="bg-surface-500 rounded-container" src="https://picsum.photos/220/320?random=10" alt="Random" />
+						<img class="bg-surface-500 rounded-container" src="https://picsum.photos/220/140?random=11" alt="Random" />
+						<img class="bg-surface-500 rounded-container" src="https://picsum.photos/220/280?random=12" alt="Random" />
+					</div>
+				</section>
+			</div>
+		</section>
+	</div>
 
-	h2 {
-		margin: 0 0 1em;
-		font-weight: normal;
-		color: #111827;
-		font-size: 20px;
-	}
-
-	p {
-		color: #4b5563;
-		font-size: 16px;
-		line-height: 24px;
-		letter-spacing: -0.006em;
-		margin: 0;
-	}
-
-	code {
-		display: inline-block;
-		background:
-			linear-gradient(66.77deg, #f3cddd 0%, #f5cee7 100%) padding-box,
-			linear-gradient(155deg, #d83333 0%, #f041ff 18%, #f5cee7 45%) border-box;
-		border-radius: 8px;
-		border: 1px solid transparent;
-		padding: 6px 8px;
-	}
-
-	.box {
-		padding: 16px;
-		background: rgba(255, 255, 255, 1);
-		border-radius: 16px;
-		border: 1px solid white;
-	}
-
-	#news {
-		position: absolute;
-		bottom: 16px;
-		right: 16px;
-		max-width: 300px;
-		text-decoration: none;
-		transition: background 0.2s;
-		backdrop-filter: blur(50px);
-	}
-
-	#news:hover {
-		background: rgba(255, 255, 255, 0.55);
-	}
-
-	@media screen and (max-height: 368px) {
-		#news {
-			display: none;
-		}
-	}
-
-	@media screen and (max-width: 768px) {
-		#container {
-			display: flex;
-			flex-direction: column;
-		}
-
-		#hero {
-			display: block;
-			padding-top: 10%;
-		}
-
-		#links {
-			flex-wrap: wrap;
-		}
-
-		#links a.button {
-			padding: 14px 18px;
-		}
-
-		#news {
-			right: 16px;
-			left: 16px;
-			bottom: 2.5rem;
-			max-width: 100%;
-		}
-
-		h1 {
-			line-height: 1.5;
-		}
-	}
-</style>
+</main>
