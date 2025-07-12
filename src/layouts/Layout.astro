@@ -1,9 +1,6 @@
 ---
 import '../styles/global.css';
-import Header from '../components/Header.astro';
-import SearchDialog from '../components/SearchDialog.astro';
-import Sidebar from '../components/Sidebar.astro';
-import Footer from '../components/Footer.astro';
+import LayoutShell from '../components/LayoutShell.tsx';
 import { getCollection } from 'astro:content';
 
 const patterns = await getCollection('patterns');
@@ -21,21 +18,9 @@ const guides = await getCollection('guides');
 		<meta name="generator" content={Astro.generator} />
 		<title>Front-End Architecture Playbook</title>
 	</head>
-	<body class="min-h-screen flex flex-col bg-base-100 text-base-content">
-		<div class="drawer lg:drawer-open">
-			<input id="nav-drawer" type="checkbox" class="drawer-toggle" />
-			<div class="drawer-content flex flex-col min-h-screen">
-				<Header />
-				<SearchDialog patterns={patterns} guides={guides} />
-				<main class="flex-1 px-6 md:px-8 lg:px-10 py-10 prose prose-skeleton max-w-4xl mx-auto w-full">
-					<slot />
-				</main>
-				<Footer />
-			</div>
-			<div class="drawer-side z-40">
-				<label for="nav-drawer" aria-label="close sidebar" class="drawer-overlay"></label>
-				<Sidebar patterns={patterns} guides={guides} />
-			</div>
-		</div>
+	<body class="min-h-screen bg-base-100 text-base-content">
+		<LayoutShell patterns={patterns} guides={guides}>
+			<slot />
+		</LayoutShell>
 	</body>
 </html>
