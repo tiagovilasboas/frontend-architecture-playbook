@@ -1,0 +1,30 @@
+---
+---
+/**
+ * Breadcrumb auto-genera baseado no pathname atual.
+ * Home › Section › Slug
+ */
+<script>
+  const path = new URL(Astro.url).pathname.replace(/\/$/, ''); // remove trailing slash
+  const segments = path.split('/').filter(Boolean); // ['patterns','atomic-design']
+
+  const titleCase = (s) => s.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+  const buildHref = (index) => '/' + segments.slice(0, index + 1).join('/') + '/';
+</script>
+
+<nav aria-label="Breadcrumb" class="text-sm mb-4" if={segments.length}>
+  <ol class="inline-flex items-center gap-1">
+    <li><a href="/" class="link-hover opacity-70">Home</a></li>
+    {segments.map((seg, i) => (
+      <>
+        <li class="mx-1 opacity-50">›</li>
+        {i < segments.length - 1 ? (
+          <li><a href={buildHref(i)} class="link-hover opacity-70">{titleCase(seg)}</a></li>
+        ) : (
+          <li class="font-semibold text-base-content">{titleCase(seg)}</li>
+        )}
+      </>
+    ))}
+  </ol>
+</nav>
+--- 
