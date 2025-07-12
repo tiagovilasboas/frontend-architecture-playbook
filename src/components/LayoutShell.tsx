@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { AppShell, Burger, ScrollArea, NavLink, Group, Title, MantineProvider, ColorScheme, ActionIcon } from '@mantine/core';
+import { AppShell, Burger, ScrollArea, NavLink, Group, Title, MantineProvider, ActionIcon } from '@mantine/core';
+import type { ColorScheme } from '@mantine/core';
 import { IconSun, IconMoon } from '@tabler/icons-react';
 import type { CollectionEntry } from 'astro:content';
 
