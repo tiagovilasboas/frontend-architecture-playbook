@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AppShell, Navbar, Header, Burger, ScrollArea, NavLink, Group, Title, ColorSchemeProvider, ColorScheme, ActionIcon } from '@mantine/core';
+import { AppShell, Navbar, Header, Burger, ScrollArea, NavLink, Group, Title, MantineProvider, ColorScheme, ActionIcon } from '@mantine/core';
 import { IconSun, IconMoon } from '@tabler/icons-react';
 import type { CollectionEntry } from 'astro:content';
 
@@ -16,7 +16,7 @@ export default function LayoutShell({ patterns = [], guides = [], children }: Pr
   const toggleColorScheme = () => setColorScheme((prev) => (prev === 'light' ? 'dark' : 'light'));
 
   return (
-    <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
+    <MantineProvider theme={{ colorScheme }} withGlobalStyles withNormalizeCSS>
       <AppShell
         navbar={{ width: 260, breakpoint: 'sm', collapsed: { mobile: !opened } }}
         header={{ height: 56 }}
@@ -49,6 +49,6 @@ export default function LayoutShell({ patterns = [], guides = [], children }: Pr
 
         <AppShell.Main>{children}</AppShell.Main>
       </AppShell>
-    </ColorSchemeProvider>
+    </MantineProvider>
   );
 } 
