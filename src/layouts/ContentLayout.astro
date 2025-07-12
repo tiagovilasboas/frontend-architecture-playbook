@@ -11,7 +11,7 @@ import TOC from '../components/TOC.astro';
 		<!-- Barra de progresso de leitura -->
 		<div id="reading-progress" class="fixed top-0 left-0 h-1 bg-primary z-50 w-0 transition-[width] duration-150"></div>
 
-		<article class="prose prose-skeleton max-w-none">
+		<article class="prose max-w-none">
 			<Breadcrumb />
 			<h1 class="mb-2">{frontmatter.title}</h1>
 			<p class="text-gray-500 mb-6">{frontmatter.description}</p>
@@ -54,10 +54,5 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 
 <style>
-.prose-skeleton :where(h1, h2, h3, h4) {
-	color: currentColor;
-}
-.copy-btn {
-  font-size: 0.75rem;
-}
+.copy-btn { font-size: 0.75rem; }
 </style> 
