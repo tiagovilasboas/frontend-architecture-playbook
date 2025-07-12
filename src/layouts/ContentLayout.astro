@@ -22,12 +22,6 @@ import TOC from '../components/TOC.astro';
 	</main>
 </Layout>
 
-<style>
-.prose-skeleton :where(h1, h2, h3, h4) {
-	color: currentColor;
-}
-</style>
-
 <script is:inline>
 // Atualiza largura da barra conforme scroll
 document.addEventListener('scroll', () => {
@@ -36,4 +30,34 @@ document.addEventListener('scroll', () => {
   const progress = total > 0 ? (doc.scrollTop / total) * 100 : 0;
   document.getElementById('reading-progress').style.width = progress + '%';
 });
-</script> 
+</script>
+
+<!-- Copy to Clipboard for code blocks -->
+<script is:inline>
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('pre > code').forEach(code => {
+    const pre = code.parentElement;
+    pre.classList.add('relative');
+    const btn = document.createElement('button');
+    btn.textContent = 'Copy';
+    btn.className = 'copy-btn btn btn-xs btn-ghost absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition';
+    btn.addEventListener('click', () => {
+      navigator.clipboard.writeText(code.innerText).then(() => {
+        btn.textContent = 'Copied!';
+        setTimeout(() => (btn.textContent = 'Copy'), 1500);
+      });
+    });
+    pre.classList.add('group');
+    pre.appendChild(btn);
+  });
+});
+</script>
+
+<style>
+.prose-skeleton :where(h1, h2, h3, h4) {
+	color: currentColor;
+}
+.copy-btn {
+  font-size: 0.75rem;
+}
+</style> 
