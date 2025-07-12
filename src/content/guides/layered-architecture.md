@@ -111,6 +111,22 @@ src/
 └── setupTests.ts        # Setup Vitest
 ```
 
+## Alias de Importação
+
+Graças à configuração de **`tsconfig.json`** e **Webpack aliases**, você importa módulos usando caminhos encurtados:
+
+```ts
+import { Button } from '@/components/Button';
+```
+
+Isso evita caminhos relativos longos (`../../../../`) e facilita a refatoração.
+
+## Observações
+
+* O boilerplate é **enxuto de propósito**. Ferramentas como Docker, CI/CD, análise de bundle e estratégia de deploy podem ser adicionadas conforme a necessidade.  
+* Sinta-se à vontade para **adaptar a estrutura** de pastas à medida que a aplicação cresce.  
+* O foco é demonstrar **princípios de arquitetura**, não impor dependências — substitua Webpack por Vite, Styled-components por Tailwind, etc., conservando a separação de responsabilidades.
+
 ## Testes
 
 Os testes utilizam **Vitest + Testing Library**.  
