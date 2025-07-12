@@ -1,0 +1,29 @@
+---
+---
+<nav id="toc" class="hidden xl:block sticky top-24 pl-8 w-64 max-h-[calc(100vh-6rem)] overflow-y-auto text-sm">
+  <h3 class="font-semibold mb-3">Conteúdo</h3>
+  <ul id="toc-list" class="space-y-1"></ul>
+</nav>
+
+<script is:inline>
+// Gera TOC client-side usando cabeçalhos h2/h3 dentro do artigo
+window.addEventListener('DOMContentLoaded', () => {
+  const headings = document.querySelectorAll('.prose h2, .prose h3');
+  const list = document.getElementById('toc-list');
+  if(!list) return;
+  headings.forEach((h) => {
+    if (!h.id) {
+      h.id = h.textContent.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+    }
+    const li = document.createElement('li');
+    if (h.tagName === 'H3') li.className = 'ml-4';
+    const a = document.createElement('a');
+    a.href = '#' + h.id;
+    a.textContent = h.textContent;
+    a.className = 'link-hover opacity-80 hover:opacity-100';
+    li.appendChild(a);
+    list.appendChild(li);
+  });
+});
+</script>
+--- 
