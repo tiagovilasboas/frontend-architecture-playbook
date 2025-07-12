@@ -1,7 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
-import Card from '../components/Card.astro';
+import MCard from '../components/MCard.tsx';
+import { SimpleGrid, TextInput } from '@mantine/core';
 const patterns = await getCollection('patterns');
 const guides = await getCollection('guides');
 ---
@@ -14,23 +15,23 @@ const guides = await getCollection('guides');
 
 	<section class="mt-10" id="guides">
 		<h2 class="text-xl font-semibold mb-4">Guides</h2>
-		<ul class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+		<SimpleGrid cols={{ base: 1, md: 2, lg: 3 }} spacing="lg">
             {guides.map(guide => (
-                <li><Card title={guide.data.title} description={guide.data.description} href={`/guides/${guide.slug}`} /></li>
+                <MCard title={guide.data.title} description={guide.data.description} href={`/guides/${guide.slug}`} />
             ))}
-		</ul>
+		</SimpleGrid>
 	</section>
 
 	<section class="mt-12" id="patterns">
 		<div class="flex items-center justify-between mb-4 gap-4">
 			<h2 class="text-xl font-semibold">Patterns</h2>
-			<input type="text" id="pattern-search" placeholder="Search patterns..." class="input input-sm input-bordered w-60" />
+			<TextInput id="pattern-search" placeholder="Search patterns..." size="sm" w={240} />
 		</div>
-		<ul id="pattern-list" class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+		<SimpleGrid id="pattern-list" cols={{ base: 1, md: 2, lg: 3 }} spacing="lg">
             {patterns.map(pat => (
-                <li><Card title={pat.data.title} description={pat.data.description} icon={pat.data.icon} href={`/patterns/${pat.slug}`} /></li>
+                <MCard title={pat.data.title} description={pat.data.description} href={`/patterns/${pat.slug}`} />
             ))}
-		</ul>
+		</SimpleGrid>
 	</section>
 </Layout>
 
