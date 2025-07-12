@@ -1,11 +1,37 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import { getCollection } from 'astro:content';
+const patterns = await getCollection('patterns');
+const guides = await getCollection('guides');
 ---
 
 <Layout>
-	<Welcome />
+	<section class="prose max-w-none">
+		<h1>Front-End Architecture Playbook</h1>
+		<p>Uma coleção curada de padrões, metodologias e guias para ajudar você a escolher e aplicar a arquitetura certa em projetos front-end modernos.</p>
+	</section>
+
+	<section class="mt-10">
+		<h2 class="text-xl font-semibold mb-4">Guides</h2>
+		<ul class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+			{guides.map(guide => (
+				<li class="card bg-base-200 p-4 border border-base-300 hover:border-primary transition">
+					<a href={`/guides/${guide.slug}`} class="link-hover text-lg font-medium">{guide.data.title}</a>
+					<p class="text-sm opacity-70 mt-1">{guide.data.description}</p>
+				</li>
+			))}
+		</ul>
+	</section>
+
+	<section class="mt-12">
+		<h2 class="text-xl font-semibold mb-4">Patterns</h2>
+		<ul class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+			{patterns.map(pat => (
+				<li class="card bg-base-200 p-4 border border-base-300 hover:border-primary transition">
+					<a href={`/patterns/${pat.slug}`} class="link-hover text-lg font-medium">{pat.data.title}</a>
+					<p class="text-sm opacity-70 mt-1">{pat.data.description}</p>
+				</li>
+			))}
+		</ul>
+	</section>
 </Layout>

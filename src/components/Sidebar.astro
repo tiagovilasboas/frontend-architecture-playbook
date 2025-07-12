@@ -1,0 +1,29 @@
+---
+import type { CollectionEntry } from 'astro:content';
+export interface Props {
+	patterns: CollectionEntry<'patterns'>[];
+	guides: CollectionEntry<'guides'>[];
+}
+const { patterns = [], guides = [] } = Astro.props as Props;
+---
+<aside class="w-1/4 min-w-[220px] max-w-sm px-6 py-8 border-r border-base-300 bg-base-100 overflow-y-auto">
+	<nav class="space-y-6">
+		<div>
+			<h2 class="text-sm font-semibold uppercase mb-2 opacity-70">Guides</h2>
+			<ul class="space-y-1">
+				{guides.map(guide => (
+					<li><a href={`/guides/${guide.slug}`} class="link-hover">{guide.data.title}</a></li>
+				))}
+			</ul>
+		</div>
+
+		<div>
+			<h2 class="text-sm font-semibold uppercase mb-2 opacity-70">Patterns</h2>
+			<ul class="space-y-1">
+				{patterns.map(pat => (
+					<li><a href={`/patterns/${pat.slug}`} class="link-hover">{pat.data.title}</a></li>
+				))}
+			</ul>
+		</div>
+	</nav>
+</aside> 
