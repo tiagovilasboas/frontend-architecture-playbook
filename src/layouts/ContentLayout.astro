@@ -2,10 +2,12 @@
 // Recebe frontmatter automaticamente
 const { frontmatter } = Astro.props;
 import Layout from './Layout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
 ---
 
 <Layout>
 	<main class="container mx-auto px-4 py-8 prose prose-skeleton">
+		<Breadcrumb />
 		<h1 class="mb-2">{frontmatter.title}</h1>
 		<p class="text-gray-500 mb-6">{frontmatter.description}</p>
 		<slot />
