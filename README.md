@@ -1,40 +1,82 @@
-# Skeleton + Astro Playground
+# Front-End Architecture Playbook 🌐
 
-A simple playground of [Skeleton](https://www.skeleton.dev/) + [Astro](https://astro.build/).
+> Baseado no repositório [Modern Front-End Architecture Patterns](https://github.com/tiagovilasboas/front-end-architecture) e implementado sobre o template **Skeleton + Astro**.
 
-## 🚀 Project Structure
+Este projeto reúne padrões, práticas e exemplos para construção de aplicações front-end modernas, sustentáveis e escaláveis. Ele serve como _playground_ demonstrativo e guia de referência.
 
-Inside of your Astro project, you'll see the following folders and files:
+---
+
+## ✨ Filosofia
+
+Os princípios que guiam este playbook derivam de **Clean Architecture** e **Domain-Driven Design (DDD)**, adaptados para o front-end:
+
+1. **Separação de Responsabilidades (SoC)** – cada módulo possui uma única responsabilidade clara.
+2. **Baixo Acoplamento & Alta Coesão** – módulos independentes, focados e fáceis de evoluir ou substituir.
+3. **Independência de Frameworks** – a lógica de domínio é mantida agnóstica a detalhes de UI.
+
+---
+
+## 🏛️ Estrutura Recomendada
 
 ```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   ├── pages/
-│   │   └── index.astro
-│   └── styles/
-│       └── global.css
-└── package.json
+src/
+├── components/       # Componentes Astro (UI)
+│   ├── layouts/      # Layouts de página globais
+│   ├── sections/     # Seções de página reutilizáveis
+│   └── ui/           # Átomos e moléculas visuais (Card, Button…)
+│
+├── content/          # Conteúdo gerenciado pelo Astro (Content Collections)
+│   ├── config.ts     # Schemas de coleções
+│   └── patterns/     # Markdown/MDX dos padrões de arquitetura
+│
+├── lib/              # Lógica de domínio e suporte
+│   ├── services/     # Integrações externas (ex.: GitHub API)
+│   └── utils/        # Funções utilitárias puras
+│
+├── pages/            # Rotas baseadas em arquivo do Astro
+│   ├── index.astro
+│   └── patterns/[slug].astro
+│
+├── styles/           # Estilos globais & tokens de design
+│
+└── config.ts         # Configurações globais do site (nome, author, etc.)
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+---
 
-## 🧞 Commands
+## 🚀 Tecnologias
 
-All commands are run from the root of the project, from a terminal:
+| Camada | Ferramenta | Porque? |
+| ------ | ---------- | ------- |
+| **Aplicação** | [Astro](https://astro.build/) | Renderização estática por padrão & _islands_ para interatividade. |
+| **Design System / UI** | [Skeleton](https://www.skeleton.dev/) + Tailwind | Componentes acessíveis, theming e utilidades CSS. |
+| **Tipagem** | TypeScript | Segurança de tipos & melhor DX. |
+| **Build Tool** | Vite (via Astro) | HMR veloz & bundles otimizados. |
+| **Conteúdo** | Astro Content Collections | CMS estático tipo-safe. |
+| **Ícones** | Lucide Icons | Conjunto leve e consistente de ícones. |
 
-| Command                | Action                                           |
-| :--------------------- | :----------------------------------------------- |
-| `pnpm install`         | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+---
 
-## 👀 Want to learn more?
+## 🧞 Comandos
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Todos os comandos são executados a partir da raiz do projeto:
+
+| Comando | Ação |
+| :--- | :--- |
+| `pnpm install` | Instala dependências |
+| `pnpm dev` | Inicia servidor local em `localhost:4321` |
+| `pnpm build` | Gera site de produção em `./dist/` |
+| `pnpm preview` | Pré-visualiza o build localmente |
+| `pnpm astro …` | Executa utilitários da CLI Astro (add, check, etc) |
+
+---
+
+## 🤝 Contribuindo
+
+Sinta-se livre para abrir _issues_ ou _pull requests_ com novos padrões ou melhorias na documentação.
+
+---
+
+## Licença
+
+MIT
