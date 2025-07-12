@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AppShell, Navbar, Header, Burger, ScrollArea, NavLink, Group, Title, MantineProvider, ColorScheme, ActionIcon } from '@mantine/core';
+import { AppShell, Burger, ScrollArea, NavLink, Group, Title, MantineProvider, ColorScheme, ActionIcon } from '@mantine/core';
 import { IconSun, IconMoon } from '@tabler/icons-react';
 import type { CollectionEntry } from 'astro:content';
 
@@ -22,7 +22,7 @@ export default function LayoutShell({ patterns = [], guides = [], children }: Pr
         header={{ height: 56 }}
         padding="md"
       >
-        <Navbar p="xs">
+        <AppShell.Navbar p="xs">
           <ScrollArea h="100%">
             <Title order={6} mb="xs">Guides</Title>
             {guides.map((g) => (
@@ -33,9 +33,9 @@ export default function LayoutShell({ patterns = [], guides = [], children }: Pr
               <NavLink key={p.slug} label={p.data.title} component="a" href={`/patterns/${p.slug}`} />
             ))}
           </ScrollArea>
-        </Navbar>
+        </AppShell.Navbar>
 
-        <Header height={56} px="md">
+        <AppShell.Header px="md" h={56}>
           <Group h="100%" justify="space-between">
             <Group>
               <Burger opened={opened} onClick={() => setOpened((o) => !o)} hiddenFrom="sm" size="sm" />
@@ -45,7 +45,7 @@ export default function LayoutShell({ patterns = [], guides = [], children }: Pr
               {colorScheme === 'light' ? <IconSun size={18} /> : <IconMoon size={18} />}
             </ActionIcon>
           </Group>
-        </Header>
+        </AppShell.Header>
 
         <AppShell.Main>{children}</AppShell.Main>
       </AppShell>
