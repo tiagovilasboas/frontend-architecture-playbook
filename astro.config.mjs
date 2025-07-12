@@ -6,4 +6,8 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
+  legacy: {
+    // Mantém compatibilidade com frontmatter `layout:` nos Markdown
+    collections: true,
+  },
 });
