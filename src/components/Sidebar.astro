@@ -6,7 +6,7 @@ export interface Props {
 }
 const { patterns = [], guides = [] } = Astro.props as Props;
 ---
-<aside class="w-1/4 min-w-[220px] max-w-sm px-6 py-8 bg-base-100 overflow-y-auto">
+<aside class="w-64 lg:w-1/4 min-w-[220px] max-w-sm px-6 py-8 bg-base-100 overflow-y-auto hidden lg:block sticky top-20 h-[calc(100vh-5rem)]">
 	<nav class="space-y-6">
 		<div>
 			<h2 class="text-sm font-semibold uppercase mb-2 opacity-70">Guides</h2>
