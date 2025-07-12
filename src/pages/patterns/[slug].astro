@@ -1,6 +1,5 @@
 ---
 import { getEntryBySlug, getCollection } from 'astro:content';
-import ContentLayout from '../../layouts/ContentLayout.astro';
 const { slug } = Astro.params;
 const entry = await getEntryBySlug('patterns', slug);
 if (!entry) throw Astro.redirect('/');
@@ -13,6 +12,4 @@ export async function getStaticPaths() {
   }));
 }
 ---
-<ContentLayout frontmatter={entry.data}>
-	<Content />
-</ContentLayout> 
+<Content /> 
