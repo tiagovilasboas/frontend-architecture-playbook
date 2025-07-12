@@ -1,48 +1,18 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
-import MCard from '../components/MCard.tsx';
-import { SimpleGrid, TextInput } from '@mantine/core';
-const patterns = await getCollection('patterns');
-const guides = await getCollection('guides');
+import MIndex from '../components/MIndex.tsx';
 ---
 
 <Layout>
-	<section class="prose max-w-none">
-		<h1>Front-End Architecture Playbook</h1>
-		<p>Uma coleção curada de padrões, metodologias e guias para ajudar você a escolher e aplicar a arquitetura certa em projetos front-end modernos.</p>
-	</section>
+  <section class="prose max-w-none mb-10">
+    <h1>Front-End Architecture Playbook</h1>
+    <p>Uma coleção curada de padrões, metodologias e guias para ajudar você a escolher e aplicar a arquitetura certa em projetos front-end modernos.</p>
+  </section>
 
-	<section class="mt-10" id="guides">
-		<h2 class="text-xl font-semibold mb-4">Guides</h2>
-		<SimpleGrid cols={{ base: 1, md: 2, lg: 3 }} spacing="lg">
-            {guides.map(guide => (
-                <MCard title={guide.data.title} description={guide.data.description} href={`/guides/${guide.slug}`} />
-            ))}
-		</SimpleGrid>
-	</section>
-
-	<section class="mt-12" id="patterns">
-		<div class="flex items-center justify-between mb-4 gap-4">
-			<h2 class="text-xl font-semibold">Patterns</h2>
-			<TextInput id="pattern-search" placeholder="Search patterns..." size="sm" w={240} />
-		</div>
-		<SimpleGrid id="pattern-list" cols={{ base: 1, md: 2, lg: 3 }} spacing="lg">
-            {patterns.map(pat => (
-                <MCard title={pat.data.title} description={pat.data.description} href={`/patterns/${pat.slug}`} />
-            ))}
-		</SimpleGrid>
-	</section>
+  <MIndex {patterns} {guides} />
 </Layout>
 
-<script is:inline>
-const search = document.getElementById('pattern-search');
-const list = document.getElementById('pattern-list');
-search?.addEventListener('input', () => {
-  const q = search.value.toLowerCase();
-  list.querySelectorAll('a[data-title]').forEach(el => {
-    const match = el.dataset.title.includes(q);
-    el.closest('li').classList.toggle('hidden', !match);
-  });
-});
-</script>
+---
+/* search handled in React */
+---
