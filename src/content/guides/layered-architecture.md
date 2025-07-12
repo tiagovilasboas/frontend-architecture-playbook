@@ -1,7 +1,7 @@
 ---
 slug: layered-architecture
- title: "Arquitetura em Camadas (Layered Architecture)"
- description: "Resumo detalhado do boilerplate React Layered Architecture com princípios SRP, Clean Architecture e organização em módulos, pages e shared."
+title: "Arquitetura em Camadas (Layered Architecture)"
+description: "Resumo detalhado do boilerplate React Layered Architecture com princípios SRP, Clean Architecture e organização em módulos, pages e shared."
 ---
 
 # React Layered Boilerplate
