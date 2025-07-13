@@ -47,7 +47,7 @@ export default function DocsShell({ guides, patterns, children }: Props) {
       </Drawer>
 
       <AppShell header={{ height: 56 }} padding={0}>
-        <AppShell.Header>
+        <AppShell.Header zIndex={1000}>
           <HeaderBar
             opened={opened}
             onBurger={() => setOpened((o) => !o)}
