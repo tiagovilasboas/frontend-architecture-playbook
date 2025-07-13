@@ -1,7 +1,12 @@
-import { Code, Alert, Stack, Title, Text, Paper, Badge, SimpleGrid } from '@mantine/core';
-import { IconCheck, IconX, IconBulb } from '@tabler/icons-react';
-import { FeatureCard, StatsCard, HeroTitle } from '../components/ui';
-import { IconRocket, IconCode, IconShield } from '@tabler/icons-react';
+import { Title, Text, Stack, Paper, Code, Alert, Badge, Group } from '@mantine/core';
+import { 
+  IconBulb, 
+  IconCheck, 
+  IconCode, 
+  IconShield
+} from '@tabler/icons-react';
+import { FeatureCard } from '../components/ui';
+import { IconRocket } from '@tabler/icons-react';
 
 export function DesignSystemExamples() {
   return (
@@ -16,7 +21,7 @@ export function DesignSystemExamples() {
         <Stack gap="lg">
           <Title order={3} mb="md">Antes vs Depois - Reduzindo Repetição</Title>
           
-          <SimpleGrid cols={{ base: 1, md: 2 }} spacing="lg">
+          <Group>
             <div>
               <Badge color="red" mb="xs">❌ Código Repetitivo</Badge>
               <Code block>
@@ -79,7 +84,7 @@ export function DesignSystemExamples() {
 />`}
               </Code>
             </div>
-          </SimpleGrid>
+          </Group>
 
           <Alert color="brand" icon={<IconBulb size={20} />} radius="md">
             <Text size="md" fw={500}>
@@ -162,7 +167,7 @@ export const theme = createTheme({
         <Stack gap="lg">
           <Title order={3} mb="md">Componentes Reutilizáveis</Title>
           
-          <SimpleGrid cols={{ base: 1, md: 3 }} spacing="lg">
+          <Group>
             <FeatureCard 
               icon={IconRocket}
               title="HeroTitle"
@@ -181,7 +186,7 @@ export const theme = createTheme({
               description="Cards de estatísticas"
               color="orange"
             />
-          </SimpleGrid>
+          </Group>
 
           <div>
             <Badge color="green" mb="xs">✅ Implementação dos Componentes</Badge>
@@ -230,7 +235,7 @@ export function StatsCard({ icon: Icon, value, label, color = 'brand', ...props 
         <Stack gap="lg">
           <Title order={3} mb="md">Benefícios do Dark Mode</Title>
           
-          <SimpleGrid cols={{ base: 1, md: 2 }} spacing="lg">
+          <Group>
             <div>
               <Badge color="red" mb="xs">❌ Cores Fixas</Badge>
               <Code block>
@@ -281,7 +286,7 @@ Title: {
 }`}
               </Code>
             </div>
-          </SimpleGrid>
+          </Group>
 
           <Alert color="green" icon={<IconCheck size={20} />} radius="md">
             <Text size="md" fw={500}>

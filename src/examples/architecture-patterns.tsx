@@ -1,5 +1,8 @@
-import { Code, Alert, Stack, Title, Text, Paper, Badge, SimpleGrid } from '@mantine/core';
-import { IconCheck, IconX, IconBulb } from '@tabler/icons-react';
+import { Title, Text, Stack, Paper, Code, Alert, Badge } from '@mantine/core';
+import { 
+  IconBulb, 
+  IconCheck
+} from '@tabler/icons-react';
 
 export function ArchitecturePatternsExamples() {
   return (
