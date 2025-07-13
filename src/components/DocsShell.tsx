@@ -48,7 +48,13 @@ export default function DocsShell({ guides, patterns, children }: Props) {
 
       <AppShell header={{ height: 56 }} padding={0}>
         <AppShell.Header>
-          <HeaderBar opened={opened} onBurger={() => setOpened((o) => !o)} onSearch={() => Spotlight.open()} />
+          <HeaderBar
+            opened={opened}
+            onBurger={() => setOpened((o) => !o)}
+            onSearch={() => Spotlight.open()}
+            guides={guides}
+            patterns={patterns}
+          />
         </AppShell.Header>
 
         <AppShell.Main>{children}</AppShell.Main>
