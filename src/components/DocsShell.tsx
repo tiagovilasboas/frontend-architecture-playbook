@@ -46,7 +46,7 @@ export default function DocsShell({ guides, patterns, children }: Props) {
         <NavMenu guides={guides} patterns={patterns} onNavigate={() => setOpened(false)} />
       </Drawer>
 
-      <AppShell navbar={{ width: 260, breakpoint: 'sm', collapsed: { mobile: true } }} header={{ height: 56 }} padding="md">
+      <AppShell navbar={{ width: 260, breakpoint: 'sm', collapsed: { mobile: true } }} header={{ height: 56 }} padding={0}>
         <AppShell.Navbar visibleFrom="sm" p="xs">
           <NavMenu guides={guides} patterns={patterns} />
         </AppShell.Navbar>
