@@ -212,6 +212,39 @@ style={{ background: 'var(--mantine-color-brand-0)' }}
 - **SEMPRE verifique contraste** e legibilidade
 - **SEMPRE use o toggle de tema** para validar
 
+### **💡 Dicas Práticas:**
+- **Sempre teste no dark mode** antes de commitar
+- Use `withBorder` em vez de backgrounds customizados
+- Prefira `variant="light"` em vez de cores fixas
+- Se precisar de gradiente, use variáveis CSS do tema
+- `Paper` e `Card` já vêm com adaptação automática
+
+### **🎨 Exemplos Práticos:**
+
+#### ❌ **Código Ruim:**
+```tsx
+<Paper style={{ background: 'linear-gradient(135deg, #f0f0f0, #ffffff)' }}>
+  Conteúdo
+</Paper>
+```
+
+#### ✅ **Código Bom:**
+```tsx
+<Paper withBorder>
+  Conteúdo
+</Paper>
+```
+
+### **🔍 Checklist Completo Antes do Commit:**
+- [ ] Testei no tema dark?
+- [ ] Testei no tema light?
+- [ ] Não usei cores fixas (white, black, #fff, etc)?
+- [ ] Usei `withBorder` em vez de backgrounds customizados?
+- [ ] Usei `variant="light"` para ícones/badges?
+- [ ] Usei `c="dimmed"` para texto secundário?
+
+**Lembre-se:** O Mantine já cuida da adaptação de temas automaticamente. Deixe ele fazer o trabalho pesado! 🚀
+
 ## 📝 **Checklist de Qualidade**
 
 Antes de finalizar cada arquivo:

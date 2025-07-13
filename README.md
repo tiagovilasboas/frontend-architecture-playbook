@@ -123,7 +123,7 @@ O projeto usa code splitting inteligente:
 - **Adaptação automática** - Deixe o Mantine cuidar do tema
 - **Teste sempre** - Verifique ambos os temas antes de commitar
 
-> 📋 Veja [THEME_GUIDELINES.md](./THEME_GUIDELINES.md) para diretrizes detalhadas
+> 📋 Veja as regras em `.cursorrules` para diretrizes detalhadas
 
 ## 🎯 **Para Quem é?**
 
