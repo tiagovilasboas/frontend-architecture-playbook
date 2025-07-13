@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import HowToChoose from '../content/guides/how-to-choose.tsx';
 import DependencyRule from '../content/guides/dependency-rule.tsx';
 import AtomicDesign from '../content/patterns/atomic-design.tsx';
@@ -18,11 +17,15 @@ export interface DocMeta {
   title: string;
   description?: string;
   collection: 'guides' | 'patterns';
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  component: any;
+  component: React.ComponentType;
 }
 
-function toMeta(module: any, slug: string, collection: 'guides' | 'patterns'): DocMeta {
+interface ModuleWithMetadata {
+  metadata?: { title?: string; description?: string };
+  default?: { metadata?: { title?: string; description?: string } };
+}
+
+function toMeta(module: ModuleWithMetadata, slug: string, collection: 'guides' | 'patterns'): DocMeta {
   const meta = module.metadata ?? module.default?.metadata ?? {};
   return {
     slug,
