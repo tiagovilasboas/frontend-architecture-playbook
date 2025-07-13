@@ -21,15 +21,6 @@ export default function NavItem({ href, label, icon, active, onNavigate }: NavIt
       leftSection={icon}
       rightSection={active ? <IconChevronRight size={12} /> : null}
       variant={active ? "filled" : "subtle"}
-      style={{
-        borderRadius: '12px',
-        transition: 'all 0.15s ease',
-        paddingLeft: 8,
-        paddingRight: 8,
-        marginLeft: 4,
-        marginRight: 4,
-        position: 'relative',
-      }}
       className="navmenu-link"
     />
   );
