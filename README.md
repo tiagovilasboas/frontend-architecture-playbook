@@ -1,68 +1,185 @@
-# Modern Front-End Architecture Playbook
+# Front-End Architecture Playbook
 
-Este repositório é uma coleção curada de padrões e práticas de arquitetura testados em batalha para a construção de aplicações front-end modernas, sustentáveis e escaláveis. O objetivo é servir como um recurso educacional e um ponto de partida para discussões sobre como estruturar projetos complexos.
+> **Guia prático, direto e realista sobre arquiteturas front-end. Dev para dev, sem enrolação.**
 
-## ✨ Filosofia
+Um playbook que traz as arquiteturas mais conhecidas e que, na experiência de 18 anos de front-end, realmente entregam resultado. Existem dezenas de outras, mas aqui estão as que eu confio pra projetos reais.
 
-A abordagem deste projeto é guiada por princípios de **Clean Architecture** e **Domain-Driven Design (DDD)**, adaptados para o front-end:
+## 🎯 **O que é?**
 
-- **Separação de Responsabilidades (SoC):** Cada parte da aplicação tem uma única e bem definida responsabilidade.
-- **Baixo Acoplamento, Alta Coesão:** Os módulos são independentes e focados, facilitando a manutenção e a substituição de tecnologias.
-- **Independência de Frameworks:** A lógica de domínio e de apresentação é mantida o mais agnóstica possível de frameworks de UI específicos.
+Este playbook é um guia prático que resolve problemas reais de arquitetura front-end. Não é teoria acadêmica - é experiência de batalha convertida em decisões arquiteturais claras.
 
-## 🏛️ Arquitetura do Projeto
+**O grande segredo de qualquer arquitetura:** respeite a **Dependency Rule**. Se a regra de dependência for ignorada, nenhuma arquitetura salva seu projeto do caos. Camadas de fora só podem depender das de dentro. Negócio nunca depende de framework. Simples assim.
 
-Estrutura de pastas atual (React + Vite + Mantine):
+## 🚀 **Features**
 
-```text
-src/
-├── components/          # Componentes de layout e navegação (HeaderBar, DocsShell)
-├── content/             # Artigos MDX convertidos para TSX (guides, patterns)
-├── lib/                 # Funções auxiliares (ex.: getDoc, arrays de metadata)
-├── pages/               # Rotas React Router (Home, DocPage)
-├── theme.ts             # Definição do tema Mantine
-└── index.css            # CSS mínimo (tokens globais se necessário)
+### **📚 Arquiteturas Cobertas**
+- **Clean Architecture** - Separação clara de responsabilidades
+- **Component-Driven Development** - Reutilização e composição
+- **Micro-frontends** - Escalabilidade de times
+- **Monorepo** - Compartilhamento de código
+- **SPA** - Aplicações de página única
+- **SSR/SSG** - Performance e SEO
+- **PWA** - Experiência mobile
+- **Islands Architecture** - Performance híbrida
+- **State Machines** - Lógica complexa
+- **Event-Driven** - Desacoplamento
+- **Feature Flags** - Deploy seguro
+- **Atomic Design** - Design systems
+
+### **🎯 Decision Wizard**
+- **Interativo** - Responde perguntas e encontra a arquitetura ideal
+- **Contextual** - Considera time, projeto e objetivos
+- **Prático** - Baseado em experiência real
+
+### **💻 Exemplos Reais**
+- **Código testável** - Exemplos que funcionam
+- **Casos de uso** - E-commerce, dashboard, analytics
+- **Armadilhas** - Problemas comuns e como evitar
+- **Referências** - Livros, artigos e casos reais
+
+## 🛠️ **Tecnologias**
+
+- **React 19** + **TypeScript** - Base moderna
+- **Vite** - Build otimizado com code splitting
+- **Mantine** - Design system completo
+- **React Router** - Navegação SPA
+- **Tabler Icons** - Ícones consistentes
+
+## 📊 **Performance**
+
+- **Code splitting** - Chunks otimizados por funcionalidade
+- **Lazy loading** - Páginas carregam sob demanda
+- **Bundle otimizado** - 11 chunks separados
+- **Dark mode** - Suporte completo
+- **Responsivo** - Funciona em qualquer tela
+
+## 🏃‍♂️ **Quick Start**
+
+```bash
+# Clone
+git clone https://github.com/tiagovilasboas/frontend-architecture-playbook.git
+cd frontend-architecture-playbook
+
+# Instale
+npm install
+
+# Dev
+npm run dev
+
+# Build
+npm run build
 ```
 
-## 🚀 Tecnologias Utilizadas
+## 🏗️ **Estrutura do Projeto**
 
-- **[React 19](https://react.dev/)** + **[Vite](https://vitejs.dev/)**: bundler e servidor de desenvolvimento rápido.
-- **[Mantine](https://mantine.dev/)**: biblioteca de UI e design system adotada para *todos* os componentes.
-- **TypeScript**: segurança de tipos.
-- **@mdx-js + gray-matter**: conversão de artigos MDX para componentes React.
-- **Tabler Icons**: ícones leves usados via `@tabler/icons-react`.
+```
+src/
+├── components/          # Componentes reutilizáveis
+│   ├── DocsShell.tsx   # Layout principal
+│   ├── NavMenu.tsx     # Menu lateral
+│   ├── HeaderBar.tsx   # Header
+│   └── Footer.tsx      # Footer
+├── content/            # Conteúdo das arquiteturas
+│   ├── guides/         # Guias práticos
+│   └── patterns/       # Padrões arquiteturais
+├── hooks/              # Custom hooks
+├── types/              # Tipos TypeScript
+├── pages/              # Páginas da aplicação
+└── examples/           # Exemplos de código real
+```
 
-## 🏁 Como Rodar Localmente
+## 🎨 **Design System**
 
-1. **Clone o repositório:**
+- **Mantine** - Componentes consistentes
+- **Dark/Light mode** - Suporte completo
+- **Responsivo** - Mobile-first
+- **Acessibilidade** - WCAG compliant
+- **Performance** - Otimizado para velocidade
 
-   ```bash
-   git clone https://github.com/tiagovilasboas/frontend-architecture-playbook.git
-   cd frontend-architecture-playbook
-   ```
+## 📈 **Code Splitting**
 
-2. **Instale as dependências:**
+O projeto usa code splitting inteligente:
 
-   ```bash
-   npm install
-   ```
+- **vendor-react** - React, React Router
+- **vendor-mantine** - UI components
+- **vendor-icons** - Tabler Icons
+- **content-patterns** - Arquiteturas
+- **content-guides** - Guias
+- **components** - Componentes reutilizáveis
+- **pages** - Páginas da aplicação
 
-3. **Inicie o servidor de desenvolvimento:**
+## 🧪 **Qualidade do Código**
 
-   ```bash
-   npm run dev
-   ```
+- **SRP** - Single Responsibility Principle
+- **SOC** - Separation of Concerns
+- **Clean Code** - Legível e manutenível
+- **TypeScript** - Tipagem forte
+- **ESLint** - Padrões consistentes
 
-   A aplicação estará em [http://localhost:5173](http://localhost:5173) por padrão.
+## 🎯 **Para Quem é?**
 
-4. **Build de produção:**
+### **Júnior/Pleno**
+- Aprenda a escolher arquitetura certa
+- Evite over-engineering
+- Entenda trade-offs reais
 
-   ```bash
-   npm run build && npm run preview
-   ```
+### **Sênior/Tech Lead**
+- Base para decisões arquiteturais
+- Justificativas técnicas sólidas
+- Padrões testados em produção
 
-   O bundle otimizado é gerado em `dist/` e pode ser servido por qualquer servidor estático.
+### **CTO/Arquitetos**
+- ROI das decisões técnicas
+- Escalabilidade de longo prazo
+- Redução de dívida técnica
 
-## 🤝 Contribuindo
+## 📚 **Conteúdo**
 
-Contribuições são bem-vindas! Se você tem um padrão que gostaria de adicionar ou uma melhoria a sugerir, por favor, abra uma issue ou um pull request.
+### **Guias**
+- **Como Escolher** - Decision wizard interativo
+
+### **Padrões**
+- **Clean Architecture** - Separação de camadas
+- **Component-Driven** - Reutilização
+- **Micro-frontends** - Escalabilidade
+- **Monorepo** - Compartilhamento
+- **SPA** - Aplicações modernas
+- **SSR/SSG** - Performance
+- **PWA** - Mobile
+- **Islands** - Híbrido
+- **State Machines** - Lógica complexa
+- **Event-Driven** - Desacoplamento
+- **Feature Flags** - Deploy seguro
+- **Atomic Design** - Design systems
+
+## 🤝 **Contribuindo**
+
+Contribuições são bem-vindas! Se você tem:
+- Experiência real com alguma arquitetura
+- Casos de uso interessantes
+- Melhorias no código
+- Correções ou sugestões
+
+Abra uma issue ou pull request!
+
+## 📄 **Licença**
+
+MIT - Use livremente para seus projetos.
+
+## 👨‍💻 **Autor**
+
+**Tiago Boas** - Front-end engineer há 18 anos
+- Liderou squads em bancos digitais, fintechs e SaaS
+- Criou módulos para Smart TVs (LG, Samsung)
+- Otimizou checkouts de e-commerce (-40% abandono)
+- Acelerou dashboards de analytics (+60% performance)
+- Entregou microserviços Go que salvaram MVP (2 semanas vs 3 meses)
+
+**Links:**
+- [GitHub](https://github.com/tiagovilasboas)
+- [LinkedIn](https://www.linkedin.com/in/tiagovilasboas)
+- [Twitter](https://twitter.com/tiagovilasboas)
+
+---
+
+**Lembre-se:** Arquitetura é trade-off atrás de trade-off. Não existe bala de prata. O que resolve pra um, pode ser dor de cabeça pra outro. O segredo? Saber o que você precisa agora — e não fechar portas pro futuro.
