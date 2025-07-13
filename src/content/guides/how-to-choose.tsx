@@ -4,143 +4,100 @@ function HowToChoose() {
   return (
     <article>
       <h1>Como Escolher sua Arquitetura Front-End</h1>
+      
+      <p>
+        <strong>Não existe “a melhor arquitetura”.</strong> Existe a arquitetura que resolve o seu problema, no seu contexto, com o seu time.
+        Senta aí, responde o wizard ou lê os pontos abaixo. O objetivo é te ajudar a tomar uma decisão consciente — sem modinha, sem hype, só o que funciona na vida real.
+      </p>
+
       <DecisionWizard />
 
       <p>
-        Arquitetura de front-end é, em essência, um exercício de <strong>trade-offs</strong>.
-        Não existe a “melhor” solução em termos absolutos, mas sim a que atende melhor
-        às necessidades <em>do seu produto, do seu time e do seu negócio</em> neste
-        momento. Este guia reúne perguntas práticas que ajudam a chegar a uma decisão
-        consciente.
+        <strong>Arquitetura front-end é trade-off atrás de trade-off.</strong> Não existe bala de prata. O que resolve pra um, pode ser dor de cabeça pra outro. O segredo? Saber o que você precisa agora — e não fechar portas pro futuro.
       </p>
 
-      <h2>1.&nbsp;Contexto de Time</h2>
+      <h2>1. Contexto de Time</h2>
       <ul>
         <li>
-          <strong>Time pequeno (até 5 pessoas)</strong>: maximize velocidade; prefira
-          arquiteturas simples (SPA/MPA) que exigem menos infraestrutura e ceremony.
+          <strong>Time pequeno (até 5 pessoas):</strong> Vai de simples. SPA, MPA, o que for mais rápido pro seu time entregar. Não inventa moda.
         </li>
         <li>
-          <strong>Times múltiplos (squads)</strong>: priorize autonomia; limites claros
-          (ex.: <em>monorepo</em> ou micro-frontends) evitam bloqueios entre equipes.
+          <strong>Squads/múltiplos times:</strong> Cada um no seu quadrado. Monorepo ou micro-frontends pra não dar briga.
         </li>
       </ul>
 
-      <h2>2.&nbsp;Tipo de Produto</h2>
+      <h2>2. Tipo de Produto</h2>
       <ul>
         <li>
-          <strong>Conteúdo estático</strong> (landing pages, blog): a batalha é SEO;
-          gerações estáticas (SSG) ou frameworks híbridos (Astro, Next.js) brilham.
+          <strong>Conteúdo estático (landing, blog):</strong> SEO é rei. SSG (Astro, Next.js) resolve bonito.
         </li>
         <li>
-          <strong>Ferramentas interativas</strong> (dashboards, SaaS): experiência &gt;
-          tempo de primeira pintura; SPA bem otimizada ou SSR híbrido costuma ser o
-          caminho.
+          <strong>Dashboard, SaaS, CRUD:</strong> O usuário quer agilidade, não precisa de SSR. SPA bem feita resolve.
         </li>
         <li>
-          <strong>Apps ultra complexos</strong> (Figma, ERPs): gestão de
-          complexidade domina; padrões como Clean Architecture e máquinas de estado
-          agregam valor enorme.
+          <strong>App complexo (Figma, ERP):</strong> Aqui o bicho pega. Clean Architecture, máquinas de estado, separa bem as camadas.
         </li>
       </ul>
 
-      <h2>3.&nbsp;SEO &amp; Performance</h2>
+      <h2>3. SEO & Performance</h2>
       <p>
-        Onde o usuário chega primeiro? Se grande parte do tráfego vem de busca, SSR/SSG
-        não é negociável. Após autenticação, a história pode mudar — SPAs são ótimas
-        para fluxos longos e stateful.
+        <strong>De onde vem seu usuário?</strong> Se é Google, SSR/SSG é obrigatório. Se é login direto, SPA voando é o que importa.
       </p>
 
-      <h2>4.&nbsp;Time-to-Market</h2>
+      <h2>4. Time-to-Market</h2>
       <p>
-        • <strong>MVP/startup</strong>: prefira o que o time domina &amp; entrega rápido.<br />
-        • <strong>Produto estabelecido</strong>: investir em base mais robusta costuma se
-        pagar.
+        <strong>MVP/startup:</strong> Vai no que o time já domina. O objetivo é entregar rápido, aprender e iterar.<br />
+        <strong>Produto maduro:</strong> Aí vale investir em base robusta. Refatorar depois dói mais.
       </p>
 
-      <h2>5.&nbsp;Visão de Futuro</h2>
+      <h2>5. Visão de Futuro</h2>
       <p>
-        Projecto vai escalar em features ou em times? Planeje modularidade desde já —
-        seja via <em>feature folders</em> num SPA ou contratos bem definidos em um
-        monorepo/micro-frontend.
+        <strong>Vai crescer?</strong> Já pensa em modularidade. Feature folders, contratos claros, separa o que é compartilhado.
       </p>
 
       <blockquote>
         <p>
-          <strong>Regra de ouro</strong>: escolha a solução <em>mais simples</em> que resolva
-          o problema de hoje — mas deixe portas abertas para evoluir amanhã.
+          <strong>Regra de ouro:</strong> Resolve o problema de hoje, mas não se fecha pro amanhã. Código simples, portas abertas pra evoluir.
         </p>
       </blockquote>
 
       <h2 id="o-desafio-da-escolha">O Desafio da Escolha</h2>
       <p>
-        A arquitetura de front-end define como sua aplicação cresce, escala e se mantém resiliente.
-        Uma escolha errada pode levar a um código frágil, times frustrados e lentidão na entrega de valor.
-        A escolha certa, por outro lado, cria um ambiente produtivo e um produto robusto.
+        <strong>Arquitetura é o que faz seu projeto durar (ou morrer na praia).</strong> Escolheu errado? Vai sofrer pra manter, escalar, contratar. Escolheu certo? O time voa, o produto cresce.
       </p>
       <p>
-        A chave é entender que toda arquitetura é um conjunto de <strong>trade-offs</strong>. O que funciona
-        para um time grande construindo um editor de vídeo pode ser exagero para uma startup criando um blog.
+        <strong>Não existe fórmula mágica.</strong> O que funciona pra um squad gigante pode ser overkill pra uma startup. O segredo é saber onde você está e pra onde quer ir.
       </p>
       <p>
-        A seguir apresentamos os principais <strong>fatores de decisão</strong> que devem guiar sua escolha.
+        <strong>Segue o jogo:</strong> abaixo estão os fatores que realmente importam. O resto é barulho.
       </p>
       <hr />
 
-      <h3>1.&nbsp;Tamanho e Maturidade do Time</h3>
-      <p>A estrutura do seu time é um dos maiores influenciadores da arquitetura.</p>
+      <h3>1. Tamanho e Maturidade do Time</h3>
+      <p><strong>Time pequeno:</strong> faz simples, entrega rápido. SPA, Astro, o que for menos burocrático.<br />
+      <strong>Time grande:</strong> separa bem as coisas. Monorepo, micro-frontends, cada um no seu quadrado.</p>
+
+      <h3>2. Complexidade e Escopo do Produto</h3>
+      <p><strong>Produto simples:</strong> SEO e performance. SSG, Astro, Next.js.<br />
+      <strong>Produto médio:</strong> SPA bem feita, separa UI, lógica, dados.<br />
+      <strong>Produto complexo:</strong> Clean Architecture, máquinas de estado, muita separação de responsabilidade.</p>
+
+      <h3>3. Performance e SEO</h3>
       <ul>
-        <li>
-          <strong>Solo Dev / Time Pequeno (&lt; 5 pessoas):</strong> prioridade máxima é velocidade e simplicidade.
-          Arquiteturas monolíticas simples (SPA clássico ou Astro) são ideais.
-        </li>
-        <li>
-          <strong>Múltiplos Times / Squads (&gt; 10 pessoas):</strong> autonomia e baixo acoplamento tornam-se críticos.
-          Micro-Frontends ou Monorepo bem definido permitem que times trabalhem em paralelo.
-        </li>
+        <li><strong>SEO é tudo:</strong> SSR/SSG, arquitetura de ilhas, Next.js.</li>
+        <li><strong>Usuário logado:</strong> SPA rápida, experiência fluida.</li>
       </ul>
 
-      <h3>2.&nbsp;Complexidade e Escopo do Produto</h3>
-      <p>Qual é o tamanho do problema que você está resolvendo?</p>
+      <h3>4. Velocidade de Entrega</h3>
       <ul>
-        <li>
-          <strong>Baixa Complexidade (Conteúdo estático):</strong> foco em SEO e performance de carregamento.
-          SSG (Astro) é imbatível.
-        </li>
-        <li>
-          <strong>Média Complexidade (Dashboards, CRUD):</strong> interatividade moderada.
-          Um SPA bem arquitetado costuma ser a melhor pedida.
-        </li>
-        <li>
-          <strong>Alta Complexidade (Design Systems, Editores, Super Apps):</strong> gerenciar a própria complexidade
-          é o desafio. Clean Architecture e Máquinas de Estado tornam-se essenciais.
-        </li>
+        <li><strong>MVP:</strong> Menos cerimônia, mais entrega.</li>
+        <li><strong>Enterprise:</strong> Investe em base sólida, pensa no amanhã.</li>
       </ul>
 
-      <h3>3.&nbsp;Requisitos de Performance e SEO</h3>
+      <h3>5. Escalabilidade e Manutenibilidade</h3>
       <ul>
-        <li>
-          <strong>SEO crítico:</strong> SSR/SSG obrigatórios. Arquitetura de Ilhas ou Next.js.
-        </li>
-        <li>
-          <strong>Interação crítica pós-login:</strong> SPA com carregamento de dados inteligente.
-        </li>
-      </ul>
-
-      <h3>4.&nbsp;Velocidade de Entrega (Time-to-Market)</h3>
-      <ul>
-        <li><strong>MVP/Startup:</strong> use o que o time domina e entregue rápido.</li>
-        <li><strong>Produto Enterprise:</strong> invista em base robusta (Clean Architecture etc.).</li>
-      </ul>
-
-      <h3>5.&nbsp;Escalabilidade e Manutenibilidade</h3>
-      <ul>
-        <li>
-          <strong>Crescimento esperado:</strong> planifique modularidade (feature folders, shared libs).
-        </li>
-        <li>
-          <strong>Manutenibilidade:</strong> adote CDD e testes automatizados desde o começo.
-        </li>
+        <li><strong>Vai crescer?</strong> Modulariza, separa domínio, pensa em shared libs.</li>
+        <li><strong>Quer manter fácil?</strong> Teste, CDD, documentação, onboarding simples.</li>
       </ul>
     </article>
   );
