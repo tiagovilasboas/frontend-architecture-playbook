@@ -80,21 +80,30 @@ a:focus {
   }
 }
 
+/* ScrollArea do NavMenu - garantir overflow visible */
+.mantine-ScrollArea-root {
+  overflow: visible !important;
+}
+
+.mantine-ScrollArea-viewport {
+  overflow: visible !important;
+}
+
 /* NavMenu link hover effect - SOLUÇÃO DEFINITIVA */
 .navmenu-link {
   transition: all 0.15s ease !important;
-  padding-left: 8px !important;
-  padding-right: 8px !important;
-  margin-left: 4px !important;
-  margin-right: 4px !important;
+  padding-left: 6px !important;
+  padding-right: 6px !important;
+  margin-left: 2px !important;
+  margin-right: 2px !important;
   position: relative !important;
-  border-radius: 8px !important;
+  border-radius: 6px !important;
 }
 
 .navmenu-link:hover, 
 .navmenu-link[data-active="true"] {
   background: var(--mantine-color-blue-0) !important;
-  transform: translateX(2px) !important;
+  transform: translateX(1px) !important;
 }
 
 .navmenu-link:hover::before, 
@@ -102,11 +111,11 @@ a:focus {
   content: '' !important;
   position: absolute !important;
   top: 0 !important;
-  left: -4px !important;
-  right: -4px !important;
+  left: -2px !important;
+  right: -2px !important;
   bottom: 0 !important;
   background: var(--mantine-color-blue-6) !important;
-  border-radius: 8px !important;
+  border-radius: 6px !important;
   z-index: -1 !important;
   opacity: 0.1 !important;
 }
