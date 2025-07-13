@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import {
-  AppShell,
   Drawer,
+  Box,
 } from '@mantine/core';
 import { Spotlight } from '@mantine/spotlight';
 import HeaderBar from './HeaderBar.tsx';
 import NavMenu from './NavMenu.tsx';
+import Footer from './Footer.tsx';
 
 export interface DocMeta {
   slug: string;
@@ -46,26 +47,37 @@ export default function DocsShell({ guides, patterns, children }: Props) {
         <NavMenu guides={guides} patterns={patterns} onNavigate={() => setOpened(false)} />
       </Drawer>
 
-      <AppShell
-        navbar={{ width: 260, breakpoint: 'md', collapsed: { mobile: true } }}
-        header={{ height: 56 }}
-        padding={0}
-      >
-        <AppShell.Navbar visibleFrom="md" p="xs">
-          <NavMenu guides={guides} patterns={patterns} />
-        </AppShell.Navbar>
-        <AppShell.Header zIndex={1000}>
-          <HeaderBar
-            opened={opened}
-            onBurger={() => setOpened((o) => !o)}
-            onSearch={() => Spotlight.open()}
-            guides={guides}
-            patterns={patterns}
-          />
-        </AppShell.Header>
+      <Box style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+        {/* Header */}
+        <HeaderBar
+          opened={opened}
+          onBurger={() => setOpened((o) => !o)}
+          onSearch={() => Spotlight.open()}
+          guides={guides}
+          patterns={patterns}
+        />
 
-        <AppShell.Main>{children}</AppShell.Main>
-      </AppShell>
+        {/* Main Content */}
+        <Box style={{ flex: 1, display: 'flex' }}>
+          {/* Sidebar */}
+          <Box 
+            className="sidebar-nav"
+            style={{ 
+              width: 260
+            }} 
+          >
+            <NavMenu guides={guides} patterns={patterns} />
+          </Box>
+
+          {/* Content */}
+          <Box style={{ flex: 1, padding: '1rem' }}>
+            {children}
+          </Box>
+        </Box>
+
+        {/* Footer */}
+        <Footer />
+      </Box>
     </>
   );
 } 
