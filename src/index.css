@@ -14,13 +14,10 @@ article, section {
   margin-bottom: var(--mantine-spacing-xl);
 }
 
-.mantine-SimpleGrid-root, .mantine-Grid-root {
-  margin-top: var(--mantine-spacing-xl);
-  margin-bottom: var(--mantine-spacing-xl);
-}
-
+.mantine-SimpleGrid-root,
+.mantine-Grid-root,
 .mantine-Stack-root > .mantine-SimpleGrid-root,
 .mantine-Stack-root > .mantine-Grid-root {
-  margin-top: var(--mantine-spacing-xl);
-  margin-bottom: var(--mantine-spacing-xl);
+  margin-top: var(--mantine-spacing-xl) !important;
+  margin-bottom: var(--mantine-spacing-xl) !important;
 }
