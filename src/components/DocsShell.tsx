@@ -24,7 +24,7 @@ export default function DocsShell({ guides, patterns, children }: Props) {
     <>
       <Spotlight shortcut="mod + k" actions={actions} />
 
-      <Drawer opened={opened} onClose={() => setOpened(false)} padding="xs" hiddenFrom="sm" title="Menu">
+      <Drawer opened={opened} onClose={() => setOpened(false)} padding="xs" hiddenFrom="sm" title="Menu" zIndex={3000}>
         <NavMenu guides={guides} patterns={patterns} onNavigate={() => setOpened(false)} />
       </Drawer>
 

@@ -22,43 +22,45 @@ import {
   IconBrandLinkedin,
   IconBrandTwitter
 } from '@tabler/icons-react';
+import { useMediaQuery } from '@mantine/hooks';
 
 export default function Home() {
+  const isMobile = useMediaQuery('(max-width: 600px)');
   return (
-    <Container size="lg">
-      <Stack gap="lg">
+    <Container size="lg" px={isMobile ? 'xs' : 'md'}>
+      <Stack gap={isMobile ? 'sm' : 'lg'}>
         {/* Hero Section */}
         <section>
-          <Stack align="center" ta="center" mb="lg">
-            <Badge size="lg" variant="light" color="brand" mb="md">
-              <IconStar size={16} style={{ marginRight: 8 }} />
+          <Stack align="center" ta="center" mb={isMobile ? 'md' : 'lg'}>
+            <Badge size={isMobile ? 'sm' : 'lg'} variant="light" color="brand" mb={isMobile ? 'xs' : 'md'}>
+              <IconStar size={isMobile ? 12 : 16} style={{ marginRight: 8 }} />
               Guia Prático para Devs
             </Badge>
-            <HeroTitle>
+            <HeroTitle size={isMobile ? '2.2rem' : '3.5rem'} mb={isMobile ? 'sm' : 'md'}>
               Front-End Architecture Playbook
             </HeroTitle>
-            <Text size="xl" c="dimmed" mb="md" maw={800}>
+            <Text size={isMobile ? 'md' : 'xl'} c="dimmed" mb={isMobile ? 'sm' : 'md'} maw={800}>
               Padrões e práticas que funcionam na vida real. Sem hype, sem modinha. 
               <strong> Só o que realmente resolve problemas de arquitetura front-end.</strong>
             </Text>
-            <Group gap="md" mt="md">
+            <Group gap={isMobile ? 'xs' : 'md'} mt={isMobile ? 'xs' : 'md'}>
               <Button 
                 component={Link} 
                 to="/guides/how-to-choose" 
-                size="lg" 
+                size={isMobile ? 'md' : 'lg'} 
                 variant="filled"
-                leftSection={<IconRocket size={20} />}
-                rightSection={<IconArrowRight size={16} />}
+                leftSection={<IconRocket size={isMobile ? 16 : 20} />}
+                rightSection={<IconArrowRight size={isMobile ? 12 : 16} />}
               >
                 Encontre sua Arquitetura
               </Button>
               <Button 
                 component={Link} 
                 to="/guides/dependency-rule" 
-                size="lg" 
+                size={isMobile ? 'md' : 'lg'} 
                 variant="light"
-                leftSection={<IconShield size={20} />}
-                rightSection={<IconArrowRight size={16} />}
+                leftSection={<IconShield size={isMobile ? 16 : 20} />}
+                rightSection={<IconArrowRight size={isMobile ? 12 : 16} />}
               >
                 Dependency Rule
               </Button>
@@ -66,29 +68,29 @@ export default function Home() {
                 component="a" 
                 href="https://github.com/tiagovilasboas" 
                 target="_blank"
-                size="lg" 
+                size={isMobile ? 'md' : 'lg'} 
                 variant="light"
-                leftSection={<IconBrandGithub size={20} />}
+                leftSection={<IconBrandGithub size={isMobile ? 16 : 20} />}
               >
                 Ver Projetos
               </Button>
             </Group>
           </Stack>
           
-          <Paper withBorder p="lg" radius="lg" mb="lg" bg="none">
-            <Stack gap="md" align="center">
-              <Group gap="xs">
-                <IconAward size={24} color="var(--mantine-color-yellow-6)" />
-                <Text size="lg" fw={600}>
+          <Paper withBorder p={isMobile ? 'md' : 'lg'} radius="lg" mb={isMobile ? 'md' : 'lg'} bg="none">
+            <Stack gap={isMobile ? 'sm' : 'md'} align="center">
+              <Group gap={isMobile ? 'xs' : 'sm'}>
+                <IconAward size={isMobile ? 16 : 24} color="var(--mantine-color-yellow-6)" />
+                <Text size={isMobile ? 'md' : 'lg'} fw={600}>
                   Arquiteturas que Funcionam na Vida Real
                 </Text>
               </Group>
-              <Text size="lg" c="dimmed" ta="center" maw={700}>
+              <Text size={isMobile ? 'md' : 'lg'} c="dimmed" ta="center" maw={700}>
                 Este playbook traz as arquiteturas que eu confio pra projetos reais. 
                 Existem dezenas de outras por aí, mas aqui estão as que realmente entregam resultado.
               </Text>
-              <Alert color="brand" icon={<IconBulb size={24} />} radius="md" maw={800}>
-                <Text size="md" fw={500}>
+              <Alert color="brand" icon={<IconBulb size={isMobile ? 16 : 24} />} radius="md" maw={800}>
+                <Text size={isMobile ? 'sm' : 'md'} fw={500}>
                   <strong>O grande segredo de qualquer arquitetura:</strong> 
                   <span style={{ color: 'var(--mantine-color-accent-6)', fontWeight: 600 }}> respeite a <b>Dependency Rule</b></span>. 
                   Se a regra de dependência for ignorada, nenhuma arquitetura salva seu projeto do caos. 
