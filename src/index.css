@@ -18,3 +18,9 @@ article, section {
   margin-top: var(--mantine-spacing-xl);
   margin-bottom: var(--mantine-spacing-xl);
 }
+
+.mantine-Stack-root > .mantine-SimpleGrid-root,
+.mantine-Stack-root > .mantine-Grid-root {
+  margin-top: var(--mantine-spacing-xl);
+  margin-bottom: var(--mantine-spacing-xl);
+}
