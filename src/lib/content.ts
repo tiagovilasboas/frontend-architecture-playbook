@@ -9,6 +9,8 @@ import MicroFrontends from '../content/patterns/micro-frontends.tsx';
 import Monorepo from '../content/patterns/monorepo.tsx';
 import Spa from '../content/patterns/spa.tsx';
 import StateMachines from '../content/patterns/state-machines.tsx';
+import EventDriven from '../content/patterns/event-driven.tsx';
+import FeatureFlags from '../content/patterns/feature-flags.tsx';
 
 export interface DocMeta {
   slug: string;
@@ -42,6 +44,8 @@ export const patterns: DocMeta[] = [
   toMeta(Monorepo, 'monorepo', 'patterns'),
   toMeta(Spa, 'spa', 'patterns'),
   toMeta(StateMachines, 'state-machines', 'patterns'),
+  toMeta(EventDriven, 'event-driven', 'patterns'),
+  toMeta(FeatureFlags, 'feature-flags', 'patterns'),
 ];
 
 export function getDoc(collection: 'guides' | 'patterns', slug: string): DocMeta | undefined {
