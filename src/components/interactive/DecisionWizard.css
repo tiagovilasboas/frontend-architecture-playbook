@@ -1,0 +1,7 @@
+.wizard-recommendation-card {
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+.wizard-recommendation-card:hover {
+  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.10), 0 1.5px 6px 0 rgba(51,133,255,0.10);
+  border-color: var(--mantine-color-brand-6, #3385ff);
+} 

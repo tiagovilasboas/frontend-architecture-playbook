@@ -1,7 +1,22 @@
 import { useState } from 'react';
-import { Stack, Card, Title, Text, Button, Group, Transition, SimpleGrid } from '@mantine/core';
+import { Stack, Card, Title, Text, Button, Group, Transition, SimpleGrid, ThemeIcon } from '@mantine/core';
 import { Link } from 'react-router-dom';
 import { patterns } from '../../lib/content.ts';
+import { IconPuzzle, IconHierarchy, IconStack2, IconShare, IconGitBranch, IconDeviceDesktop, IconSettings, IconTopologyStar3, IconArrowRight } from '@tabler/icons-react';
+import './DecisionWizard.css';
+
+// Mapeamento de ícones por padrão
+const patternIcons: Record<string, React.ReactNode> = {
+  'atomic-design': <IconPuzzle size={28} />, // Atomic Design
+  'clean-architecture': <IconHierarchy size={28} />, // Clean Architecture
+  'component-driven': <IconStack2 size={28} />, // Component Driven
+  'islands-architecture': <IconArrowRight size={28} />, // Islands
+  'jamstack': <IconShare size={28} />, // Jamstack
+  'micro-frontends': <IconGitBranch size={28} />, // Micro-frontends
+  'monorepo': <IconTopologyStar3 size={28} />, // Monorepo
+  'spa': <IconDeviceDesktop size={28} />, // SPA
+  'state-machines': <IconSettings size={28} />, // State Machines
+};
 
 type TeamSize = 'small' | 'medium' | 'large';
 type Complexity = 'low' | 'medium' | 'high';
@@ -81,9 +96,27 @@ export default function DecisionWizard() {
             <Title order={4} mb="sm">Recomendações</Title>
             <Stack gap="sm">
               {patternResults.map((pat) => (
-                <Card key={pat.slug} component={Link} to={`/patterns/${pat.slug}`} withBorder shadow="xs" padding="md">
-                  <Text fw={500}>{pat.title}</Text>
-                  {pat.description && <Text c="dimmed" size="sm">{pat.description}</Text>}
+                <Card
+                  key={pat.slug}
+                  component={Link}
+                  to={`/patterns/${pat.slug}`}
+                  withBorder
+                  shadow="md"
+                  padding="xl"
+                  radius="md"
+                  style={{ transition: 'box-shadow 0.2s', cursor: 'pointer' }}
+                  className="wizard-recommendation-card"
+                >
+                  <Group align="flex-start" gap="md" wrap="nowrap">
+                    <ThemeIcon size={44} radius="md" variant="light" color="brand">
+                      {patternIcons[pat.slug] || <IconPuzzle size={28} />}
+                    </ThemeIcon>
+                    <div style={{ flex: 1 }}>
+                      <Text fw={700} size="lg" mb={4}>{pat.title}</Text>
+                      {pat.description && <Text c="dimmed" size="sm" mb="xs">{pat.description}</Text>}
+                      <Button variant="light" size="xs" mt={4} rightSection={<IconArrowRight size={16} />} component={Link} to={`/patterns/${pat.slug}`}>Saiba mais</Button>
+                    </div>
+                  </Group>
                 </Card>
               ))}
             </Stack>
