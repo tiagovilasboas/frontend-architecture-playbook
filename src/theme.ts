@@ -27,4 +27,22 @@ export const theme = createTheme({
       h1: { fontSize: '2.25rem', fontWeight: '700' },
     },
   },
+  // Melhorar estilo dos links
+  components: {
+    Anchor: {
+      defaultProps: {
+        c: 'brand.6',
+        underline: 'hover',
+      },
+      styles: {
+        root: {
+          fontWeight: 500,
+          transition: 'color 0.2s ease',
+          '&:hover': {
+            color: 'var(--mantine-color-brand-5)',
+          },
+        },
+      },
+    },
+  },
 }); 
