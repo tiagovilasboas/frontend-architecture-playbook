@@ -1,6 +1,6 @@
 function ComponentDriven() {
   return (
-    <article style={{ padding: '1rem' }}>
+    <article className="content">
       <h1>Component Driven</h1>
       <p>
         <strong>Component-Driven Development (CDD)</strong> trata cada componente de UI

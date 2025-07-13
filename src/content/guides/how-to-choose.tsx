@@ -1,6 +1,6 @@
 function HowToChoose() {
   return (
-    <article style={{ padding: '1rem', maxWidth: 800, margin: '0 auto' }}>
+    <article className="content">
       <h1>Como Escolher sua Arquitetura Front-End</h1>
 
       <p>

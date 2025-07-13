@@ -1,6 +1,6 @@
 function CleanArchitecture() {
   return (
-    <article style={{ padding: '1rem' }}>
+    <article className="content">
       <h1>Clean Architecture</h1>
       <p>
         A <strong>Clean Architecture</strong> traz para o front-end o princípio de

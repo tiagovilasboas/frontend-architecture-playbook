@@ -1,6 +1,6 @@
 function StateMachines() {
   return (
-    <article style={{ padding: '1rem' }}>
+    <article className="content">
       <h1>State Machines</h1>
       <p>
         <strong>Máquinas de Estado</strong> (ex.: XState) modelam a UI como um grafo

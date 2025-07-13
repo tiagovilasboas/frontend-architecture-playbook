@@ -1,6 +1,6 @@
 function SPA() {
   return (
-    <article style={{ padding: '1rem' }}>
+    <article className="content">
       <h1>Single Page Application (SPA)</h1>
       <p>
         Uma <strong>Single Page Application (SPA)</strong> carrega uma vez e depois
