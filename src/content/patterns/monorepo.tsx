@@ -1,6 +1,6 @@
 function Monorepo() {
   return (
-    <article className="content">
+    <article>
       <h1>Monorepo</h1>
       <p>
         Um <strong>Monorepo</strong> centraliza múltiplos pacotes/apps em um único

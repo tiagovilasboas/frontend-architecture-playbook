@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { getDoc } from '../lib/content.ts';
-import { TypographyStylesProvider } from '@mantine/core';
+import { TypographyStylesProvider, Container } from '@mantine/core';
 import { CodeHighlight } from '@mantine/code-highlight';
 
 export default function DocPage() {
@@ -13,8 +13,10 @@ export default function DocPage() {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const components = { pre: (props: any) => <CodeHighlight {...props} /> };
   return (
-    <TypographyStylesProvider>
-      <Component components={components} />
-    </TypographyStylesProvider>
+    <Container size="lg">
+      <TypographyStylesProvider>
+        <Component components={components} />
+      </TypographyStylesProvider>
+    </Container>
   );
 } 

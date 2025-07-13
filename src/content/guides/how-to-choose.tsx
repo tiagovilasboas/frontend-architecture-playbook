@@ -1,6 +1,6 @@
 function HowToChoose() {
   return (
-    <article className="content">
+    <article>
       <h1>Como Escolher sua Arquitetura Front-End</h1>
 
       <p>

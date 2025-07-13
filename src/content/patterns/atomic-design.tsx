@@ -1,6 +1,6 @@
 function AtomicDesign() {
   return (
-    <article className="content">
+    <article>
       <h1>Atomic Design&nbsp;— Organizando UI como Lego</h1>
 
       <p>
