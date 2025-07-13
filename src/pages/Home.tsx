@@ -26,10 +26,10 @@ import {
 export default function Home() {
   return (
     <Container size="lg">
-      <Stack gap="xl">
+      <Stack gap="lg">
         {/* Hero Section */}
         <section>
-          <Stack align="center" ta="center" mb="xl">
+          <Stack align="center" ta="center" mb="lg">
             <Badge size="lg" variant="light" color="brand" mb="md">
               <IconStar size={16} style={{ marginRight: 8 }} />
               Guia Prático para Devs
@@ -37,7 +37,7 @@ export default function Home() {
             <HeroTitle>
               Front-End Architecture Playbook
             </HeroTitle>
-            <Text size="xl" c="dimmed" mb="lg" maw={800}>
+            <Text size="xl" c="dimmed" mb="md" maw={800}>
               Padrões e práticas que funcionam na vida real. Sem hype, sem modinha. 
               <strong> Só o que realmente resolve problemas de arquitetura front-end.</strong>
             </Text>
@@ -75,17 +75,17 @@ export default function Home() {
             </Group>
           </Stack>
           
-          <Paper withBorder p="xl" radius="lg" mb="xl" bg="none">
-            <Stack gap="lg" align="center">
+          <Paper withBorder p="lg" radius="lg" mb="lg" bg="none">
+            <Stack gap="md" align="center">
               <Group gap="xs">
                 <IconAward size={24} color="var(--mantine-color-yellow-6)" />
                 <Text size="lg" fw={600}>
-                  Arquiteturas Testadas em Projetos Reais
+                  Arquiteturas que Funcionam na Vida Real
                 </Text>
               </Group>
               <Text size="lg" c="dimmed" ta="center" maw={700}>
-                Este playbook traz as arquiteturas mais conhecidas e que, na minha experiência, realmente entregam resultado. 
-                Existem dezenas de outras, mas aqui estão as que eu confio pra projetos reais.
+                Este playbook traz as arquiteturas que eu confio pra projetos reais. 
+                Existem dezenas de outras por aí, mas aqui estão as que realmente entregam resultado.
               </Text>
               <Alert color="brand" icon={<IconBulb size={24} />} radius="md" maw={800}>
                 <Text size="md" fw={500}>
@@ -101,13 +101,13 @@ export default function Home() {
 
         {/* Value Proposition */}
         <section>
-          <Paper withBorder p="xl" radius="lg">
-            <Stack gap="lg" align="center" ta="center">
+          <Paper withBorder p="lg" radius="lg">
+            <Stack gap="md" align="center" ta="center">
               <Title order={2} mb="sm">
                 <IconAward size={32} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
                 Por que este Playbook Vale a Pena?
               </Title>
-              <SimpleGrid cols={{ base: 1, md: 3 }} spacing="lg" w="100%">
+              <SimpleGrid cols={{ base: 1, md: 3 }} spacing="md" w="100%">
                 <FeatureCard 
                   icon={IconCheck}
                   title="Evita Refatoração"
@@ -140,14 +140,14 @@ export default function Home() {
 
         {/* Stats Section */}
         <section>
-          <Title order={2} mb="lg" ta="center">
+          <Title order={2} mb="md" ta="center">
             <IconAward size={32} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
-            Experiência Real
+            Números que Contam
           </Title>
-          <Text size="lg" c="dimmed" ta="center" mb="xl">
-            Números que comprovam a experiência prática em arquiteturas front-end
+          <Text size="lg" c="dimmed" ta="center" mb="lg">
+            Experiência real em arquiteturas front-end - sem bullshit
           </Text>
-          <SimpleGrid cols={{ base: 1, sm: 2, md: 4 }} spacing="lg" mb="xl">
+          <SimpleGrid cols={{ base: 1, sm: 2, md: 4 }} spacing="md" mb="lg">
             <StatsCard 
               icon={IconCode}
               value="12+"
@@ -177,12 +177,12 @@ export default function Home() {
 
         {/* Features Section */}
         <section>
-          <Title order={2} mb="lg" ta="center">
+          <Title order={2} mb="md" ta="center">
             <IconTarget size={32} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
-            Por que este Guia?
+            Por que esse Guia?
           </Title>
-          <SimpleGrid cols={{ base: 1, md: 3 }} spacing="lg">
-            <Card withBorder p="xl" radius="md" style={{ position: 'relative', overflow: 'hidden' }}>
+          <SimpleGrid cols={{ base: 1, md: 3 }} spacing="md">
+            <Card withBorder p="lg" radius="md" style={{ position: 'relative', overflow: 'hidden' }}>
               <div style={{
                 position: 'absolute',
                 top: 0,
@@ -202,7 +202,7 @@ export default function Home() {
               </Stack>
             </Card>
 
-            <Card withBorder p="xl" radius="md" style={{ position: 'relative', overflow: 'hidden' }}>
+            <Card withBorder p="lg" radius="md" style={{ position: 'relative', overflow: 'hidden' }}>
               <div style={{
                 position: 'absolute',
                 top: 0,
@@ -222,7 +222,7 @@ export default function Home() {
               </Stack>
             </Card>
 
-            <Card withBorder p="xl" radius="md" style={{ position: 'relative', overflow: 'hidden' }}>
+            <Card withBorder p="lg" radius="md" style={{ position: 'relative', overflow: 'hidden' }}>
               <div style={{
                 position: 'absolute',
                 top: 0,
@@ -248,15 +248,15 @@ export default function Home() {
 
         {/* Examples Section */}
         <section>
-          <Title order={2} mb="lg" ta="center">
+          <Title order={2} mb="md" ta="center">
             <IconBuilding size={32} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
             Exemplos Práticos
           </Title>
-          <Text size="lg" c="dimmed" ta="center" mb="xl">
+          <Text size="lg" c="dimmed" ta="center" mb="lg">
             Veja como essas arquiteturas funcionam na vida real. Cada projeto demonstra um padrão diferente.
           </Text>
-          <SimpleGrid cols={{ base: 1, md: 2 }} spacing="lg">
-            <Card withBorder p="xl" radius="md" component="a" href="https://github.com/tiagovilasboas/ponto-pj" target="_blank" style={{ textDecoration: 'none', transition: 'transform 0.2s ease' }} className="project-card">
+          <SimpleGrid cols={{ base: 1, md: 2 }} spacing="md">
+            <Card withBorder p="lg" radius="md" component="a" href="https://github.com/tiagovilasboas/ponto-pj" target="_blank" style={{ textDecoration: 'none', transition: 'transform 0.2s ease' }} className="project-card">
               <Stack gap="md">
                 <Group justify="space-between">
                   <Group>
@@ -281,7 +281,7 @@ export default function Home() {
               </Stack>
             </Card>
 
-            <Card withBorder p="xl" radius="md" component="a" href="https://github.com/tiagovilasboas/react-vite-boilerplate" target="_blank" style={{ textDecoration: 'none', transition: 'transform 0.2s ease' }} className="project-card">
+            <Card withBorder p="lg" radius="md" component="a" href="https://github.com/tiagovilasboas/react-vite-boilerplate" target="_blank" style={{ textDecoration: 'none', transition: 'transform 0.2s ease' }} className="project-card">
               <Stack gap="md">
                 <Group justify="space-between">
                   <Group>
@@ -306,7 +306,7 @@ export default function Home() {
               </Stack>
             </Card>
 
-            <Card withBorder p="xl" radius="md" component="a" href="https://github.com/tiagovilasboas/betalent-desafio-frontend" target="_blank" style={{ textDecoration: 'none', transition: 'transform 0.2s ease' }} className="project-card">
+            <Card withBorder p="lg" radius="md" component="a" href="https://github.com/tiagovilasboas/betalent-desafio-frontend" target="_blank" style={{ textDecoration: 'none', transition: 'transform 0.2s ease' }} className="project-card">
               <Stack gap="md">
                 <Group justify="space-between">
                   <Group>
@@ -331,7 +331,7 @@ export default function Home() {
               </Stack>
             </Card>
 
-            <Card withBorder p="xl" radius="md" component="a" href="https://github.com/tiagovilasboas/react-layered-boilerplate" target="_blank" style={{ textDecoration: 'none', transition: 'transform 0.2s ease' }} className="project-card">
+            <Card withBorder p="lg" radius="md" component="a" href="https://github.com/tiagovilasboas/react-layered-boilerplate" target="_blank" style={{ textDecoration: 'none', transition: 'transform 0.2s ease' }} className="project-card">
               <Stack gap="md">
                 <Group justify="space-between">
                   <Group>
@@ -360,7 +360,7 @@ export default function Home() {
 
         {/* CTA Section */}
         <section>
-          <Paper withBorder p="xl" radius="lg" ta="center">
+          <Paper withBorder p="lg" radius="lg" ta="center">
             <Stack gap="md" align="center">
               <ThemeIcon size={80} radius="xl" variant="light" color="brand" mb="md">
                 <IconTrendingUp size={40} />
@@ -385,11 +385,11 @@ export default function Home() {
 
         {/* Author Section */}
         <section>
-          <Title order={2} mb="lg" ta="center">
+          <Title order={2} mb="md" ta="center">
             <IconUsers size={32} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
             Sobre o Autor
           </Title>
-          <Paper withBorder p="xl" radius="lg" mx="auto">
+          <Paper withBorder p="lg" radius="lg" mx="auto">
             <Group align="flex-start" gap="xl">
               <Avatar src="https://avatars.githubusercontent.com/u/2006720?v=4" size={120} radius="xl" />
               <div style={{ flex: 1 }}>
@@ -398,16 +398,8 @@ export default function Home() {
                   <Badge color="brand" variant="light">Front-End Engineer</Badge>
                 </Group>
                 <Text size="md" mb="md" lh={1.6}>
-                  Sou front-end engineer há <strong>18 anos</strong>, focado em React, TypeScript e arquitetura escalável.
+                  Sou o dev que transforma código em resultado: turbinei checkouts, simplifiquei cadastros bancários, acelerei fluxos de KYC e salvei dashboards engasgados. Fora dos horários de entrega, lapido os open-sources Ponto PJ e DataForge Tools e escrevo "Código Bonito Não Paga Boleto", tudo focado na mesma pegada: impacto real primeiro.
                 </Text>
-                <Text size="md" mb="md" lh={1.6}>
-                  Já liderei squads em bancos digitais, fintechs e SaaS, sempre guiado por métricas de negócio.
-                </Text>
-                <Alert color="green" icon={<IconCheck size={22} />} radius="md" mb="md" maw={600}>
-                  <Text size="md" fw={600}>
-                    Criei <b>módulos reutilizáveis para Smart TVs (LG, Samsung)</b>, acelerei <b>checkouts de e-commerce</b> <span style={{ color: 'var(--mantine-color-green-7)' }}>(redução de 40% no abandono)</span>, otimizei <b>dashboards de analytics</b> <span style={{ color: 'var(--mantine-color-green-7)' }}>(+60% performance)</span> e entreguei <b>microserviços Go</b> que salvaram um MVP em tempo recorde <span style={{ color: 'var(--mantine-color-green-7)' }}>(2 semanas vs 3 meses estimado)</span>.
-                  </Text>
-                </Alert>
                 <Group gap="sm">
                   <Button 
                     component="a" 
