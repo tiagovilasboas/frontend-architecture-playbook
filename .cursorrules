@@ -1,0 +1,201 @@
+# Front-End Architecture Playbook - Cursor Rules
+
+## 🎯 **Objetivo do Projeto**
+Guia prático de arquiteturas front-end com tom de dev para dev, estilo Deschamps - direto, conversacional, sem enrolação.
+
+## 📝 **Tom de Escrita**
+
+### **Estilo Deschamps - Dev para Dev:**
+- Linguagem direta e conversacional
+- Evitar academicismo desnecessário
+- Usar gírias de dev quando apropriado
+- Focar em problemas reais, não teóricos
+- Explicar "por que" e "quando", não só "como"
+
+### **Exemplos de Tom:**
+✅ **BOM:**
+- "Se amanhã o React virar pó, sua lógica de negócio tem que sobreviver"
+- "Bagunça total", "O inferno", "impossível de testar"
+- "Ninguém enlouqueceu", "Menos bugs, mais paz"
+- "Comece pequeno, evolua conforme necessário"
+
+❌ **RUIM:**
+- "A implementação de Clean Architecture proporciona..."
+- "É fundamental considerar os aspectos teóricos..."
+- "A metodologia sugere uma abordagem sistemática..."
+
+## 🏗️ **Estrutura de Conteúdo**
+
+### **Para cada arquitetura/padrão:**
+1. **Hero Section** - Título + descrição direta
+2. **O que é?** - Explicação simples e prática
+3. **Camadas/Conceitos** - Explicação visual com código
+4. **Por que vale a pena?** - Benefícios práticos
+5. **Quando usar?** - Casos reais de aplicação
+6. **Exemplos Práticos** - Código real com cenários
+7. **Armadilhas** - Problemas comuns e como evitar
+8. **Referências** - Livros, artigos, casos reais
+9. **Resumo** - Pontos-chave
+
+### **Exemplos Visuais:**
+- Usar componentes Mantine (Paper, Card, Stack, etc.)
+- Ícones temáticos do Tabler Icons
+- Código com syntax highlighting
+- Alertas coloridos para dicas/avisos
+- Badges para numeração/classificação
+
+## 💻 **Componentes Mantine**
+
+### **Imports padrão:**
+```typescript
+import { Title, Text, Stack, Paper, Code, Alert, List, ThemeIcon, Group, Card, Badge } from '@mantine/core';
+import { IconBulb, IconAlertTriangle, IconCheck, IconCode, IconStack } from '@tabler/icons-react';
+```
+
+### **Estrutura visual:**
+- `Paper withBorder` para seções principais
+- `Card withBorder` para itens menores
+- `Stack gap="xl"` para espaçamento
+- `ThemeIcon` para ícones temáticos
+- `Alert` para dicas importantes
+
+## 🎨 **Design System**
+
+### **Cores temáticas:**
+- **Azul:** Conceitos principais, explicações
+- **Verde:** Benefícios, vantagens
+- **Laranja:** Casos de uso, exemplos
+- **Vermelho:** Problemas, armadilhas
+- **Roxo:** Ferramentas, bibliotecas
+
+### **Ícones por seção:**
+- **Hero:** IconCode, IconStack
+- **Benefícios:** IconCheck, IconBulb
+- **Problemas:** IconAlertTriangle
+- **Exemplos:** IconCode
+- **Armadilhas:** IconAlertTriangle
+- **Referências:** IconBulb
+
+## 📚 **Conteúdo Técnico**
+
+### **Exemplos de código:**
+- Código real, não pseudo-código
+- Cenários práticos (e-commerce, dashboard, etc.)
+- Mostrar o "ruim" vs "bom"
+- Incluir comentários explicativos
+- Focar em problemas reais de dev
+
+### **Casos de uso reais:**
+- E-commerce (carrinho, checkout)
+- Dashboard (métricas, analytics)
+- Formulários (validação complexa)
+- Apps móveis (estado, sincronização)
+- Sistemas de design (componentes)
+
+## 🚫 **Armadilhas Comuns**
+
+### **Sempre incluir:**
+1. **Over-engineering** - Abstrações desnecessárias
+2. **Dependências circulares** - Quebrar regras de dependência
+3. **Domínio anêmico** - Entidades sem comportamento
+4. **Testando tudo** - Overhead desnecessário
+5. **Abstração prematura** - YAGNI
+
+### **Como apresentar:**
+- **Problema:** Descrição direta do que dá errado
+- **Como evitar:** Dicas práticas e específicas
+- **Exemplo:** Código mostrando ruim vs bom
+
+## 📖 **Referências**
+
+### **Incluir sempre:**
+- **Livros:** Uncle Bob, Martin Fowler, Eric Evans
+- **Artigos:** Links para blogs técnicos
+- **Casos reais:** Netflix, Spotify, Uber, Airbnb
+- **Ferramentas:** TypeScript, Jest, bibliotecas relevantes
+
+### **Tom das referências:**
+- Focar em casos de sucesso reais
+- Explicar o problema que resolveram
+- Mostrar resultado prático
+- Evitar referências acadêmicas excessivas
+
+## 🎯 **Foco por Arquitetura**
+
+### **Clean Architecture:**
+- Independência de frameworks
+- Testabilidade
+- Migrações seguras
+- Separação de responsabilidades
+
+### **Component-Driven:**
+- Reutilização
+- Composição
+- Design systems
+- Manutenibilidade
+
+### **Micro-frontends:**
+- Escalabilidade de times
+- Independência de deploy
+- Tecnologias heterogêneas
+- Integração
+
+### **Monorepo:**
+- Compartilhamento de código
+- Tooling centralizado
+- Refatoração segura
+- Versionamento
+
+## 🔧 **Implementação Técnica**
+
+### **Estrutura de arquivos:**
+```
+src/content/patterns/
+├── clean-architecture.tsx
+├── component-driven.tsx
+├── micro-frontends.tsx
+├── monorepo.tsx
+└── ...
+```
+
+### **Metadata padrão:**
+```typescript
+PatternName.metadata = {
+  title: 'Nome da Arquitetura',
+  description: 'Descrição direta e prática.'
+};
+```
+
+## 🎨 **Tema Dark**
+
+### **Considerações:**
+- Evitar cores de fundo fixas (como `bg="var(--mantine-color-blue-0)"`)
+- Usar `Paper withBorder` em vez de backgrounds coloridos
+- Manter contraste adequado
+- Testar legibilidade no dark mode
+
+## 📝 **Checklist de Qualidade**
+
+Antes de finalizar cada arquivo:
+- [ ] Tom de dev para dev consistente
+- [ ] Exemplos práticos e reais
+- [ ] Código funcional e testável
+- [ ] Armadilhas e como evitar
+- [ ] Referências e casos reais
+- [ ] Design responsivo e acessível
+- [ ] Funciona bem no tema dark
+- [ ] Estrutura visual consistente
+
+## 🚀 **Próximos Passos**
+
+Para cada nova arquitetura:
+1. Seguir a estrutura definida
+2. Manter o tom Deschamps
+3. Incluir exemplos visuais
+4. Adicionar armadilhas específicas
+5. Referenciar casos reais
+6. Testar no tema dark
+
+---
+
+**Lembre-se:** O objetivo é criar um guia que devs realmente usem, não um livro acadêmico. Foque em resolver problemas reais com linguagem direta e exemplos práticos. 
