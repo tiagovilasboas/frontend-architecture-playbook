@@ -57,6 +57,16 @@ export default function Home() {
                 Encontre sua Arquitetura
               </Button>
               <Button 
+                component={Link} 
+                to="/guides/dependency-rule" 
+                size="lg" 
+                variant="light"
+                leftSection={<IconShield size={20} />}
+                rightSection={<IconArrowRight size={16} />}
+              >
+                Dependency Rule
+              </Button>
+              <Button 
                 component="a" 
                 href="https://github.com/tiagovilasboas" 
                 target="_blank"

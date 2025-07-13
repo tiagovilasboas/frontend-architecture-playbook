@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import HowToChoose from '../content/guides/how-to-choose.tsx';
+import DependencyRule from '../content/guides/dependency-rule.tsx';
 import AtomicDesign from '../content/patterns/atomic-design.tsx';
 import CleanArchitecture from '../content/patterns/clean-architecture.tsx';
 import ComponentDriven from '../content/patterns/component-driven.tsx';
@@ -32,7 +33,10 @@ function toMeta(module: any, slug: string, collection: 'guides' | 'patterns'): D
   };
 }
 
-export const guides: DocMeta[] = [toMeta(HowToChoose, 'how-to-choose', 'guides')];
+export const guides: DocMeta[] = [
+  toMeta(HowToChoose, 'how-to-choose', 'guides'),
+  toMeta(DependencyRule, 'dependency-rule', 'guides')
+];
 
 export const patterns: DocMeta[] = [
   toMeta(AtomicDesign, 'atomic-design', 'patterns'),
