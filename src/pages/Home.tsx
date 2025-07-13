@@ -31,7 +31,7 @@ export default function Home() {
         <Title order={2} mb="md">Sobre o Autor</Title>
         <Paper withBorder p="md" radius="md" maw={680}>
           <Group align="flex-start">
-            <Avatar src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-8.png" size={80} radius="xl" />
+            <Avatar src="https://avatars.githubusercontent.com/u/2006720?v=4" size={80} radius="xl" />
             <div>
               <Title order={3} mb={4}>Tiago Boas</Title>
               <Text size="sm" mb="sm">Sou front-end engineer há 18 anos, focado em React, TypeScript e arquitetura escalável. Já liderei squads em bancos digitais, fintechs e SaaS, sempre guiado por métricas de negócio.</Text>
