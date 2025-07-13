@@ -20,7 +20,7 @@ export default function HeaderBar({ opened, onBurger, onSearch, guides, patterns
       </Group>
       <Group gap="md" visibleFrom="sm">
         <Anchor component={Link} to="/" fw={500} size="sm">Home</Anchor>
-        <Menu width={200} shadow="md" position="bottom-start" withinPortal zIndex={500}>
+        <Menu width={200} shadow="md" position="bottom-start" withinPortal zIndex={2000}>
           <Menu.Target>
             <Anchor component="button" fw={500} size="sm" c="black" style={{ background: 'transparent', border: 'none' }}>Guides <IconChevronDown size={12} style={{ verticalAlign: 'middle' }} /></Anchor>
           </Menu.Target>
@@ -30,7 +30,7 @@ export default function HeaderBar({ opened, onBurger, onSearch, guides, patterns
             ))}
           </Menu.Dropdown>
         </Menu>
-        <Menu width={220} shadow="md" position="bottom-start" withinPortal zIndex={500}>
+        <Menu width={220} shadow="md" position="bottom-start" withinPortal zIndex={2000}>
           <Menu.Target>
             <Anchor component="button" fw={500} size="sm" c="black" style={{ background: 'transparent', border: 'none' }}>Patterns <IconChevronDown size={12} style={{ verticalAlign: 'middle' }} /></Anchor>
           </Menu.Target>
