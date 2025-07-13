@@ -15,7 +15,7 @@ export default function HeaderBar({ opened, onBurger, onSearch, guides, patterns
   return (
     <Group h={56} px="md" justify="space-between">
       <Group>
-        <Burger opened={opened} onClick={onBurger} hiddenFrom="sm" size="sm" />
+        <Burger opened={opened} onClick={onBurger} hiddenFrom="md" size="sm" />
         <Title order={4}>Front-End Architecture Playbook</Title>
       </Group>
       <Group gap="md" visibleFrom="sm">
