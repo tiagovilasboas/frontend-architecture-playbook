@@ -46,16 +46,7 @@ export default function DocsShell({ guides, patterns, children }: Props) {
         <NavMenu guides={guides} patterns={patterns} onNavigate={() => setOpened(false)} />
       </Drawer>
 
-      <AppShell
-        navbar={{ width: 260, breakpoint: 'sm', collapsed: { mobile: true } }}
-        header={{ height: 56 }}
-        padding={0}
-        styles={{ main: { paddingLeft: 0 } }}
-      >
-        <AppShell.Navbar visibleFrom="sm" p="xs">
-          <NavMenu guides={guides} patterns={patterns} />
-        </AppShell.Navbar>
-
+      <AppShell header={{ height: 56 }} padding={0}>
         <AppShell.Header>
           <HeaderBar opened={opened} onBurger={() => setOpened((o) => !o)} onSearch={() => Spotlight.open()} />
         </AppShell.Header>

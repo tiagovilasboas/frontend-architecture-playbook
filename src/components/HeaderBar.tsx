@@ -1,4 +1,5 @@
-import { Group, Burger, Title, ActionIcon } from '@mantine/core';
+import { Group, Burger, Title, ActionIcon, Anchor } from '@mantine/core';
+import { Link } from 'react-router-dom';
 import { IconSearch } from '@tabler/icons-react';
 
 interface Props {
@@ -13,6 +14,11 @@ export default function HeaderBar({ opened, onBurger, onSearch }: Props) {
       <Group>
         <Burger opened={opened} onClick={onBurger} hiddenFrom="sm" size="sm" />
         <Title order={4}>Front-End Architecture</Title>
+      </Group>
+      <Group gap="md" visibleFrom="sm">
+        <Anchor component={Link} to="/" fw={500} size="sm">Home</Anchor>
+        <Anchor component={Link} to="/guides/how-to-choose" fw={500} size="sm">Guides</Anchor>
+        <Anchor component={Link} to="/patterns/atomic-design" fw={500} size="sm">Patterns</Anchor>
       </Group>
       <ActionIcon variant="subtle" onClick={onSearch} size="lg">
         <IconSearch size={18} />
