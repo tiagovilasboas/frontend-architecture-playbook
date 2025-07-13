@@ -116,6 +116,15 @@ O projeto usa code splitting inteligente:
 - **TypeScript** - Tipagem forte
 - **ESLint** - Padrões consistentes
 
+## 🎨 **Diretrizes de Tema**
+
+- **Dark/Light mode** - Suporte completo
+- **Sem cores fixas** - Use `withBorder` e `variant="light"`
+- **Adaptação automática** - Deixe o Mantine cuidar do tema
+- **Teste sempre** - Verifique ambos os temas antes de commitar
+
+> 📋 Veja [THEME_GUIDELINES.md](./THEME_GUIDELINES.md) para diretrizes detalhadas
+
 ## 🎯 **Para Quem é?**
 
 ### **Júnior/Pleno**
