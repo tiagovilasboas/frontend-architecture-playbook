@@ -1,20 +1,14 @@
-import { Title, Text, Stack, Paper, Code, Alert, List, ThemeIcon, Group, Card, Badge, Divider, SimpleGrid } from '@mantine/core';
+import { Title, Text, Stack, Paper, Code, Alert, List, ThemeIcon, Card, Badge, Divider, SimpleGrid } from '@mantine/core';
 import { 
   IconBulb, 
   IconAlertTriangle, 
   IconCheck, 
   IconCode, 
   IconStack,
-  IconArrowRight,
   IconArrowDown,
   IconArrowUp,
   IconX,
-  IconShield,
-  IconLayers,
-  IconDatabase,
-  IconApi,
-  IconBrandReact,
-  IconBrandTypescript
+  IconShield
 } from '@tabler/icons-react';
 
 export default function DependencyRuleGuide() {
@@ -127,7 +121,7 @@ export default function DependencyRuleGuide() {
 
               <Card withBorder p="md" radius="md" ta="center">
                 <ThemeIcon size={50} radius="md" variant="light" color="orange" mb="sm">
-                  <IconLayers size={25} />
+                  <IconStack size={25} />
                 </ThemeIcon>
                 <Title order={4} size="h5">Flexibilidade</Title>
                 <Text size="sm" c="dimmed">
@@ -433,7 +427,7 @@ class UserService {
 
               <Card withBorder p="md" radius="md" ta="center">
                 <ThemeIcon size={50} radius="md" variant="light" color="blue" mb="sm">
-                  <IconLayers size={25} />
+                  <IconStack size={25} />
                 </ThemeIcon>
                 <Title order={4} size="h5">Refatoração Segura</Title>
                 <Text size="sm" c="dimmed">
