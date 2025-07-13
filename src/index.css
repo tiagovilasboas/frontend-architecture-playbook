@@ -3,3 +3,8 @@
 }
 
 /* Conteúdo principal removido: uso de Container Mantine */
+
+/* Vertical rhythm: aplica espaçamento padrão entre blocos dentro de article/section */
+article > * + *, section > * + * {
+  margin-top: var(--mantine-spacing-md);
+}
