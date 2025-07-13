@@ -8,3 +8,8 @@
 article > * + *, section > * + * {
   margin-top: var(--mantine-spacing-md);
 }
+
+article, section {
+  margin-top: var(--mantine-spacing-xl);
+  margin-bottom: var(--mantine-spacing-xl);
+}
