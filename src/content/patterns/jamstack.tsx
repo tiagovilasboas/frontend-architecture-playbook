@@ -1,6 +1,6 @@
 function Jamstack() {
   return (
-    <article style={{ padding: '1rem' }}>
+    <article className="content">
       <h1>Jamstack</h1>
       <p>
         <strong>Jamstack</strong> (JavaScript, APIs, Markup) pré-gera todo o HTML em

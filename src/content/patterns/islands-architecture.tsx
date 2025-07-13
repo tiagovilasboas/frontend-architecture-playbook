@@ -1,6 +1,6 @@
 function IslandsArchitecture() {
   return (
-    <article style={{ padding: '1rem' }}>
+    <article className="content">
       <h1>Islands Architecture</h1>
       <p>
         A <strong>Arquitetura de Ilhas</strong> mescla performance de sites estáticos com

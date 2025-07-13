@@ -1,6 +1,6 @@
 function MicroFrontends() {
   return (
-    <article style={{ padding: '1rem' }}>
+    <article className="content">
       <h1>Micro Frontends</h1>
       <p>
         <strong>Micro-frontends</strong> aplicam a filosofia dos microserviços ao front-end:

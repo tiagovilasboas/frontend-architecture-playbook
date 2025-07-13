@@ -1,6 +1,6 @@
 function Monorepo() {
   return (
-    <article style={{ padding: '1rem' }}>
+    <article className="content">
       <h1>Monorepo</h1>
       <p>
         Um <strong>Monorepo</strong> centraliza múltiplos pacotes/apps em um único
