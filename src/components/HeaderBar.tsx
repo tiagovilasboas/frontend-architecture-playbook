@@ -18,7 +18,7 @@ export default function HeaderBar({ opened, onBurger, onSearch, guides, patterns
         <Burger opened={opened} onClick={onBurger} hiddenFrom="md" size="sm" />
         <Title order={4}>Front-End Architecture Playbook</Title>
       </Group>
-      <Group gap="md" visibleFrom="sm">
+      <Group gap="md" hiddenFrom="md">
         <UnstyledButton component={Link} to="/" style={{ fontWeight: 500 }}>Home</UnstyledButton>
         <Menu width={200} shadow="md" position="bottom-start" withinPortal zIndex={2000}>
           <Menu.Target>
