@@ -24,8 +24,7 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
+  /* Removido o flexbox que centralizava todo o app para permitir que AppShell tome 100% da largura */
   min-width: 320px;
   min-height: 100vh;
 }
