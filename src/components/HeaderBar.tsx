@@ -1,6 +1,6 @@
 import { Group, Burger, Title, ActionIcon, Menu, UnstyledButton } from '@mantine/core';
 import { Link } from 'react-router-dom';
-import { IconSearch, IconChevronDown } from '@tabler/icons-react';
+import { IconSearch, IconChevronDown, IconCode, IconHome, IconBook, IconPuzzle } from '@tabler/icons-react';
 import type { DocMeta } from './DocsShell.tsx';
 
 interface Props {
@@ -16,13 +16,22 @@ export default function HeaderBar({ opened, onBurger, onSearch, guides, patterns
     <Group h={56} px="md" justify="space-between">
       <Group>
         <Burger opened={opened} onClick={onBurger} hiddenFrom="md" size="sm" />
-        <Title order={4}>Front-End Architecture Playbook</Title>
+        <Group gap="xs">
+          <IconCode size={24} color="var(--mantine-color-brand-6)" />
+          <Title order={4}>Front-End Architecture Playbook</Title>
+        </Group>
       </Group>
       <Group gap="md" hiddenFrom="md">
-        <UnstyledButton component={Link} to="/" style={{ fontWeight: 500 }}>Home</UnstyledButton>
+        <UnstyledButton component={Link} to="/" style={{ fontWeight: 500 }}>
+          <IconHome size={16} style={{ verticalAlign: 'middle', marginRight: '4px' }} />
+          Home
+        </UnstyledButton>
         <Menu width={200} shadow="md" position="bottom-start" withinPortal zIndex={2000}>
           <Menu.Target>
-            <UnstyledButton style={{ fontWeight: 500 }}>Guides <IconChevronDown size={12} style={{ verticalAlign: 'middle' }} /></UnstyledButton>
+            <UnstyledButton style={{ fontWeight: 500 }}>
+              <IconBook size={16} style={{ verticalAlign: 'middle', marginRight: '4px' }} />
+              Guides <IconChevronDown size={12} style={{ verticalAlign: 'middle' }} />
+            </UnstyledButton>
           </Menu.Target>
           <Menu.Dropdown>
             {guides.map((g) => (
@@ -32,7 +41,10 @@ export default function HeaderBar({ opened, onBurger, onSearch, guides, patterns
         </Menu>
         <Menu width={220} shadow="md" position="bottom-start" withinPortal zIndex={2000}>
           <Menu.Target>
-            <UnstyledButton style={{ fontWeight: 500 }}>Patterns <IconChevronDown size={12} style={{ verticalAlign: 'middle' }} /></UnstyledButton>
+            <UnstyledButton style={{ fontWeight: 500 }}>
+              <IconPuzzle size={16} style={{ verticalAlign: 'middle', marginRight: '4px' }} />
+              Patterns <IconChevronDown size={12} style={{ verticalAlign: 'middle' }} />
+            </UnstyledButton>
           </Menu.Target>
           <Menu.Dropdown>
             {patterns.map((p) => (
