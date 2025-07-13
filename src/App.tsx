@@ -1,16 +1,22 @@
 import { Routes, Route } from 'react-router-dom';
+import { LoadingOverlay } from '@mantine/core';
+import { lazy, Suspense } from 'react';
 import DocsShell from './components/DocsShell.tsx';
-import Home from './pages/Home.tsx';
-import DocPage from './pages/DocPage.tsx';
 import { guides, patterns } from './lib/content.ts';
+
+// Lazy load pages
+const Home = lazy(() => import('./pages/Home.tsx'));
+const DocPage = lazy(() => import('./pages/DocPage.tsx'));
 
 function App() {
   return (
     <DocsShell guides={guides} patterns={patterns}>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/:collection/:slug" element={<DocPage />} />
-      </Routes>
+      <Suspense fallback={<LoadingOverlay visible />}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/:collection/:slug" element={<DocPage />} />
+        </Routes>
+      </Suspense>
     </DocsShell>
   );
 }

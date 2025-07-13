@@ -64,6 +64,7 @@ a:focus {
 /* Sidebar específico */
 .sidebar-nav {
   display: none;
+  overflow: visible !important;
 }
 
 @media (min-width: 768px) {
@@ -77,4 +78,56 @@ a:focus {
   .sidebar-nav {
     display: none !important;
   }
+}
+
+/* NavMenu link hover effect - SOLUÇÃO DEFINITIVA */
+.navmenu-link {
+  transition: all 0.15s ease !important;
+  padding-left: 8px !important;
+  padding-right: 8px !important;
+  margin-left: 4px !important;
+  margin-right: 4px !important;
+  position: relative !important;
+  border-radius: 8px !important;
+}
+
+.navmenu-link:hover, 
+.navmenu-link[data-active="true"] {
+  background: var(--mantine-color-blue-0) !important;
+  transform: translateX(2px) !important;
+}
+
+.navmenu-link:hover::before, 
+.navmenu-link[data-active="true"]::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: -4px !important;
+  right: -4px !important;
+  bottom: 0 !important;
+  background: var(--mantine-color-blue-6) !important;
+  border-radius: 8px !important;
+  z-index: -1 !important;
+  opacity: 0.1 !important;
+}
+
+[data-mantine-color-scheme="dark"] .navmenu-link:hover, 
+[data-mantine-color-scheme="dark"] .navmenu-link[data-active="true"] {
+  background: var(--mantine-color-dark-6) !important;
+}
+
+[data-mantine-color-scheme="dark"] .navmenu-link:hover::before, 
+[data-mantine-color-scheme="dark"] .navmenu-link[data-active="true"]::before {
+  background: var(--mantine-color-blue-6) !important;
+  opacity: 0.2 !important;
+}
+
+/* Project card hover effect */
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+[data-mantine-color-scheme="dark"] .project-card:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
