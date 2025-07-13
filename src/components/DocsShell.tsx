@@ -42,11 +42,11 @@ export default function DocsShell({ guides, patterns, children }: Props) {
     <>
       <Spotlight shortcut="mod + k" actions={actions} />
 
-      <Drawer opened={opened} onClose={() => setOpened(false)} padding="xs" size={260} hiddenFrom="sm" title="Menu">
+      <Drawer opened={opened} onClose={() => setOpened(false)} padding="xs" hiddenFrom="sm" title="Menu">
         <NavMenu guides={guides} patterns={patterns} onNavigate={() => setOpened(false)} />
       </Drawer>
 
-      <AppShell navbar={{ width: 260, breakpoint: 'sm', collapsed: { mobile: true } }} header={{ height: 56 }} padding={0}>
+      <AppShell layout="alt" navbar={{ width: 20, breakpoint: 'sm', collapsed: { mobile: true } }} header={{ height: 56 }} padding={0}>
         <AppShell.Navbar visibleFrom="sm" p="xs">
           <NavMenu guides={guides} patterns={patterns} />
         </AppShell.Navbar>
