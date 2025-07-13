@@ -1,7 +1,10 @@
+import DecisionWizard from '../../components/interactive/DecisionWizard.tsx';
+
 function HowToChoose() {
   return (
     <article>
       <h1>Como Escolher sua Arquitetura Front-End</h1>
+      <DecisionWizard />
 
       <p>
         Arquitetura de front-end é, em essência, um exercício de <strong>trade-offs</strong>.
