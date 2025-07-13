@@ -42,7 +42,7 @@ export const theme = createTheme({
       h1: { fontSize: '2.25rem', fontWeight: '700' },
     },
   },
-  // Improve link styles
+  // Custom components with consistent styling
   components: {
     Anchor: {
       defaultProps: {
@@ -55,6 +55,49 @@ export const theme = createTheme({
           transition: 'color 0.2s ease',
           '&:hover': {
             color: 'var(--mantine-color-brand-5)',
+          },
+        },
+      },
+    },
+    Paper: {
+      defaultProps: {
+        withBorder: true,
+        p: 'xl',
+        radius: 'lg',
+      },
+    },
+    Card: {
+      defaultProps: {
+        withBorder: true,
+        p: 'md',
+        radius: 'md',
+      },
+    },
+    ThemeIcon: {
+      defaultProps: {
+        variant: 'light',
+        size: 'md',
+        radius: 'md',
+      },
+    },
+    Badge: {
+      defaultProps: {
+        variant: 'light',
+      },
+    },
+    Alert: {
+      defaultProps: {
+        radius: 'md',
+      },
+    },
+    Title: {
+      styles: {
+        root: {
+          '&[data-order="1"]': {
+            background: 'linear-gradient(135deg, var(--mantine-color-brand-6) 0%, var(--mantine-color-accent-6) 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
           },
         },
       },

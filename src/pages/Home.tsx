@@ -1,5 +1,6 @@
-import { Title, Stack, Text, Button, Group, Avatar, Paper, Container, SimpleGrid, Card, ThemeIcon, Alert, Badge, Divider } from '@mantine/core';
+import { Title, Stack, Text, Button, Group, Avatar, Paper, Container, SimpleGrid, Alert, Badge, Divider, Card, ThemeIcon } from '@mantine/core';
 import { Link } from 'react-router-dom';
+import { HeroTitle, FeatureCard, StatsCard } from '../components/ui';
 import { 
   IconBook, 
   IconBulb, 
@@ -33,14 +34,9 @@ export default function Home() {
               <IconStar size={16} style={{ marginRight: 8 }} />
               Guia Prático para Devs
             </Badge>
-            <Title order={1} fw={800} size="3.5rem" mb="md" style={{ 
-              background: 'linear-gradient(135deg, var(--mantine-color-brand-6) 0%, var(--mantine-color-accent-6) 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text'
-            }}>
+            <HeroTitle>
               Front-End Architecture Playbook
-            </Title>
+            </HeroTitle>
             <Text size="xl" c="dimmed" mb="lg" maw={800}>
               Padrões e práticas que funcionam na vida real. Sem hype, sem modinha. 
               <strong> Só o que realmente resolve problemas de arquitetura front-end.</strong>
@@ -112,35 +108,24 @@ export default function Home() {
                 Por que este Playbook Vale a Pena?
               </Title>
               <SimpleGrid cols={{ base: 1, md: 3 }} spacing="lg" w="100%">
-                <Card withBorder p="md" radius="md" ta="center">
-                  <ThemeIcon size={50} radius="md" variant="light" color="green" mb="sm">
-                    <IconCheck size={25} />
-                  </ThemeIcon>
-                  <Title order={4} size="h5">Evita Refatoração</Title>
-                  <Text size="sm" c="dimmed">
-                    Escolha a arquitetura certa desde o início. Economize meses de refatoração e dívida técnica.
-                  </Text>
-                </Card>
-
-                <Card withBorder p="md" radius="md" ta="center">
-                  <ThemeIcon size={50} radius="md" variant="light" color="brand" mb="sm">
-                    <IconRocket size={25} />
-                  </ThemeIcon>
-                  <Title order={4} size="h5">Decisões Sólidas</Title>
-                  <Text size="sm" c="dimmed">
-                    Base para justificar escolhas arquiteturais. Não mais "achismo" técnico.
-                  </Text>
-                </Card>
-
-                <Card withBorder p="md" radius="md" ta="center">
-                  <ThemeIcon size={50} radius="md" variant="light" color="orange" mb="sm">
-                    <IconBolt size={25} />
-                  </ThemeIcon>
-                  <Title order={4} size="h5">Experiência Real</Title>
-                  <Text size="sm" c="dimmed">
-                    18 anos de front-end convertidos em decisões práticas. Não é teoria acadêmica.
-                  </Text>
-                </Card>
+                <FeatureCard 
+                  icon={IconCheck}
+                  title="Evita Refatoração"
+                  description="Escolha a arquitetura certa desde o início. Economize meses de refatoração e dívida técnica."
+                  color="green"
+                />
+                <FeatureCard 
+                  icon={IconRocket}
+                  title="Decisões Sólidas"
+                  description="Base para justificar escolhas arquiteturais. Não mais 'achismo' técnico."
+                  color="brand"
+                />
+                <FeatureCard 
+                  icon={IconBolt}
+                  title="Experiência Real"
+                  description="18 anos de front-end convertidos em decisões práticas. Não é teoria acadêmica."
+                  color="orange"
+                />
               </SimpleGrid>
               
               <Alert color="brand" icon={<IconBulb size={20} />} radius="md" maw={800}>
@@ -163,34 +148,30 @@ export default function Home() {
             Números que comprovam a experiência prática em arquiteturas front-end
           </Text>
           <SimpleGrid cols={{ base: 1, sm: 2, md: 4 }} spacing="lg" mb="xl">
-            <Card withBorder p="md" radius="md" ta="center">
-              <ThemeIcon size={50} radius="md" variant="light" color="brand" mb="sm">
-                <IconCode size={25} />
-              </ThemeIcon>
-              <Title order={3} size="h4">12+</Title>
-              <Text size="sm" c="dimmed">Arquiteturas Dominadas</Text>
-            </Card>
-            <Card withBorder p="md" radius="md" ta="center">
-              <ThemeIcon size={50} radius="md" variant="light" color="green" mb="sm">
-                <IconCheck size={25} />
-              </ThemeIcon>
-              <Title order={3} size="h4">18</Title>
-              <Text size="sm" c="dimmed">Anos de Experiência</Text>
-            </Card>
-            <Card withBorder p="md" radius="md" ta="center">
-              <ThemeIcon size={50} radius="md" variant="light" color="brand" mb="sm">
-                <IconRocket size={25} />
-              </ThemeIcon>
-              <Title order={3} size="h4">50+</Title>
-              <Text size="sm" c="dimmed">Projetos Entregues</Text>
-            </Card>
-            <Card withBorder p="md" radius="md" ta="center">
-              <ThemeIcon size={50} radius="md" variant="light" color="orange" mb="sm">
-                <IconBolt size={25} />
-              </ThemeIcon>
-              <Title order={3} size="h4">100%</Title>
-              <Text size="sm" c="dimmed">Código Testado</Text>
-            </Card>
+            <StatsCard 
+              icon={IconCode}
+              value="12+"
+              label="Arquiteturas Dominadas"
+              color="brand"
+            />
+            <StatsCard 
+              icon={IconCheck}
+              value="18"
+              label="Anos de Experiência"
+              color="green"
+            />
+            <StatsCard 
+              icon={IconRocket}
+              value="50+"
+              label="Projetos Entregues"
+              color="brand"
+            />
+            <StatsCard 
+              icon={IconBolt}
+              value="100%"
+              label="Código Testado"
+              color="orange"
+            />
           </SimpleGrid>
         </section>
 
