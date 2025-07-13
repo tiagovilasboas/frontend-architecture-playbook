@@ -5,9 +5,15 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix"
+    ]
   },
   "dependencies": {
     "@mantine/code-highlight": "^8.1.3",
@@ -32,6 +38,8 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
     "globals": "^16.3.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.2",
     "ts-node": "^10.9.2",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.35.1",
