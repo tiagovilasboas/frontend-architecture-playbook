@@ -1,6 +1,6 @@
 function SPA() {
   return (
-    <article className="content">
+    <article>
       <h1>Single Page Application (SPA)</h1>
       <p>
         Uma <strong>Single Page Application (SPA)</strong> carrega uma vez e depois

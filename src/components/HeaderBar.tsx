@@ -1,4 +1,4 @@
-import { Group, Burger, Title, ActionIcon, Anchor, Menu } from '@mantine/core';
+import { Group, Burger, Title, ActionIcon, Menu, UnstyledButton } from '@mantine/core';
 import { Link } from 'react-router-dom';
 import { IconSearch, IconChevronDown } from '@tabler/icons-react';
 import type { DocMeta } from './DocsShell.tsx';
@@ -16,13 +16,13 @@ export default function HeaderBar({ opened, onBurger, onSearch, guides, patterns
     <Group h={56} px="md" justify="space-between">
       <Group>
         <Burger opened={opened} onClick={onBurger} hiddenFrom="sm" size="sm" />
-        <Title order={4}>Front-End Architecture</Title>
+        <Title order={4}>Front-End Architecture Playbook</Title>
       </Group>
       <Group gap="md" visibleFrom="sm">
-        <Anchor component={Link} to="/" fw={500} size="sm">Home</Anchor>
+        <UnstyledButton component={Link} to="/" style={{ fontWeight: 500 }}>Home</UnstyledButton>
         <Menu width={200} shadow="md" position="bottom-start" withinPortal zIndex={2000}>
           <Menu.Target>
-            <Anchor component="button" fw={500} size="sm" c="black" style={{ background: 'transparent', border: 'none' }}>Guides <IconChevronDown size={12} style={{ verticalAlign: 'middle' }} /></Anchor>
+            <UnstyledButton style={{ fontWeight: 500 }}>Guides <IconChevronDown size={12} style={{ verticalAlign: 'middle' }} /></UnstyledButton>
           </Menu.Target>
           <Menu.Dropdown>
             {guides.map((g) => (
@@ -32,7 +32,7 @@ export default function HeaderBar({ opened, onBurger, onSearch, guides, patterns
         </Menu>
         <Menu width={220} shadow="md" position="bottom-start" withinPortal zIndex={2000}>
           <Menu.Target>
-            <Anchor component="button" fw={500} size="sm" c="black" style={{ background: 'transparent', border: 'none' }}>Patterns <IconChevronDown size={12} style={{ verticalAlign: 'middle' }} /></Anchor>
+            <UnstyledButton style={{ fontWeight: 500 }}>Patterns <IconChevronDown size={12} style={{ verticalAlign: 'middle' }} /></UnstyledButton>
           </Menu.Target>
           <Menu.Dropdown>
             {patterns.map((p) => (

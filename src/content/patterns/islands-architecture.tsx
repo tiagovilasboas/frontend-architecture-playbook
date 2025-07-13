@@ -1,6 +1,6 @@
 function IslandsArchitecture() {
   return (
-    <article className="content">
+    <article>
       <h1>Islands Architecture</h1>
       <p>
         A <strong>Arquitetura de Ilhas</strong> mescla performance de sites estáticos com
