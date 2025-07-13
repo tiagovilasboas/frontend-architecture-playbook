@@ -166,31 +166,31 @@ PatternName.metadata = {
 };
 ```
 
-## 🎨 **Tema Dark - OBRIGATÓRIO**
+## 🎨 **Dark Theme - MANDATORY**
 
-### **Regras Obrigatórias:**
-- **TODOS os componentes DEVEM respeitar dark/light mode**
-- **NUNCA use cores fixas:** `background: 'white'`, `color: 'black'`, `#ffffff`, `#000000`
-- **NUNCA use gradientes com cores fixas:** `linear-gradient(..., #f0f0f0, #ffffff)`
-- **NUNCA use cores específicas do tema light:** `var(--mantine-color-brand-0)`
+### **Mandatory Rules:**
+- **ALL components MUST respect dark/light mode**
+- **NEVER use fixed colors:** `background: 'white'`, `color: 'black'`, `#ffffff`, `#000000`
+- **NEVER use gradients with fixed colors:** `linear-gradient(..., #f0f0f0, #ffffff)`
+- **NEVER use light theme specific colors:** `var(--mantine-color-brand-0)`
 
-### **Padrões Obrigatórios:**
-- **SEMPRE use `withBorder`** em `Paper` e `Card` (adaptação automática)
-- **SEMPRE use `variant="light"`** para ícones e badges
-- **SEMPRE use `c="dimmed"`** para texto secundário
-- **SEMPRE deixe o Mantine cuidar do tema** automaticamente
+### **Mandatory Patterns:**
+- **ALWAYS use `withBorder`** in `Paper` and `Card` (automatic adaptation)
+- **ALWAYS use `variant="light"`** for icons and badges
+- **ALWAYS use `c="dimmed"`** for secondary text
+- **ALWAYS let Mantine handle the theme** automatically
 
-### **Checklist Obrigatório Antes do Commit:**
-- [ ] Testei no tema dark?
-- [ ] Testei no tema light?
-- [ ] Não usei cores fixas (white, black, #fff, etc)?
-- [ ] Usei `withBorder` em vez de backgrounds customizados?
-- [ ] Usei `variant="light"` para ícones/badges?
-- [ ] Usei `c="dimmed"` para texto secundário?
+### **Mandatory Checklist Before Commit:**
+- [ ] Tested in dark theme?
+- [ ] Tested in light theme?
+- [ ] No fixed colors used (white, black, #fff, etc)?
+- [ ] Used `withBorder` instead of custom backgrounds?
+- [ ] Used `variant="light"` for icons/badges?
+- [ ] Used `c="dimmed"` for secondary text?
 
-### **Exemplos de Código Seguro:**
+### **Safe Code Examples:**
 ```tsx
-// ✅ SEMPRE USE
+// ✅ ALWAYS USE
 <Paper withBorder>
 <Card withBorder>
 <ThemeIcon variant="light">
@@ -198,69 +198,69 @@ PatternName.metadata = {
 <Badge variant="light">
 ```
 
-### **Exemplos de Código Perigoso:**
+### **Dangerous Code Examples:**
 ```tsx
-// ❌ NUNCA USE
+// ❌ NEVER USE
 style={{ background: 'white' }}
 style={{ color: 'black' }}
 background: 'linear-gradient(..., #f0f0f0, #ffffff)'
 style={{ background: 'var(--mantine-color-brand-0)' }}
 ```
 
-### **Teste Obrigatório:**
-- **SEMPRE teste ambos os temas** antes de commitar
-- **SEMPRE verifique contraste** e legibilidade
-- **SEMPRE use o toggle de tema** para validar
+### **Mandatory Testing:**
+- **ALWAYS test both themes** before committing
+- **ALWAYS check contrast** and readability
+- **ALWAYS use theme toggle** to validate
 
-### **💡 Dicas Práticas:**
-- **Sempre teste no dark mode** antes de commitar
-- Use `withBorder` em vez de backgrounds customizados
-- Prefira `variant="light"` em vez de cores fixas
-- Se precisar de gradiente, use variáveis CSS do tema
-- `Paper` e `Card` já vêm com adaptação automática
+### **💡 Practical Tips:**
+- **Always test in dark mode** before committing
+- Use `withBorder` instead of custom backgrounds
+- Prefer `variant="light"` instead of fixed colors
+- If you need gradient, use CSS theme variables
+- `Paper` and `Card` already come with automatic adaptation
 
-### **🎨 Exemplos Práticos:**
+### **🎨 Practical Examples:**
 
-#### ❌ **Código Ruim:**
+#### ❌ **Bad Code:**
 ```tsx
 <Paper style={{ background: 'linear-gradient(135deg, #f0f0f0, #ffffff)' }}>
-  Conteúdo
+  Content
 </Paper>
 ```
 
-#### ✅ **Código Bom:**
+#### ✅ **Good Code:**
 ```tsx
 <Paper withBorder>
-  Conteúdo
+  Content
 </Paper>
 ```
 
-### **🔍 Checklist Completo Antes do Commit:**
-- [ ] Testei no tema dark?
-- [ ] Testei no tema light?
-- [ ] Não usei cores fixas (white, black, #fff, etc)?
-- [ ] Usei `withBorder` em vez de backgrounds customizados?
-- [ ] Usei `variant="light"` para ícones/badges?
-- [ ] Usei `c="dimmed"` para texto secundário?
+### **🔍 Complete Checklist Before Commit:**
+- [ ] Tested in dark theme?
+- [ ] Tested in light theme?
+- [ ] No fixed colors used (white, black, #fff, etc)?
+- [ ] Used `withBorder` instead of custom backgrounds?
+- [ ] Used `variant="light"` for icons/badges?
+- [ ] Used `c="dimmed"` for secondary text?
 
-**Lembre-se:** O Mantine já cuida da adaptação de temas automaticamente. Deixe ele fazer o trabalho pesado! 🚀
+**Remember:** Mantine already handles theme adaptation automatically. Let it do the heavy lifting! 🚀
 
-## 📝 **Checklist de Qualidade**
+## 📝 **Quality Checklist**
 
-Antes de finalizar cada arquivo:
-- [ ] Tom de dev para dev consistente
-- [ ] Exemplos práticos e reais
-- [ ] Código funcional e testável
-- [ ] Armadilhas e como evitar
-- [ ] Referências e casos reais
-- [ ] Design responsivo e acessível
-- [ ] **TODOS os componentes respeitam dark/light mode**
-- [ ] **NENHUMA cor fixa usada** (white, black, #fff, etc)
-- [ ] **SEMPRE usei `withBorder`** em Paper/Card
-- [ ] **SEMPRE usei `variant="light"`** para ícones/badges
-- [ ] **SEMPRE usei `c="dimmed"`** para texto secundário
-- [ ] **Testei em AMBOS os temas** (dark/light)
-- [ ] Estrutura visual consistente
+Before finalizing each file:
+- [ ] Dev-to-dev tone consistent
+- [ ] Practical and real examples
+- [ ] Functional and testable code
+- [ ] Pitfalls and how to avoid them
+- [ ] References and real cases
+- [ ] Responsive and accessible design
+- [ ] **ALL components respect dark/light mode**
+- [ ] **NO fixed colors used** (white, black, #fff, etc)
+- [ ] **ALWAYS used `withBorder`** in Paper/Card
+- [ ] **ALWAYS used `variant="light"`** for icons/badges
+- [ ] **ALWAYS used `c="dimmed"`** for secondary text
+- [ ] **Tested in BOTH themes** (dark/light)
+- [ ] Consistent visual structure
 
 ## 🚀 **Próximos Passos**
 
