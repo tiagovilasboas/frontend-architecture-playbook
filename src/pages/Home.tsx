@@ -34,7 +34,7 @@ export default function Home() {
               Guia Prático para Devs
             </Badge>
             <Title order={1} fw={800} size="3.5rem" mb="md" style={{ 
-              background: 'linear-gradient(135deg, var(--mantine-color-brand-6) 0%, var(--mantine-color-blue-6) 100%)',
+              background: 'linear-gradient(135deg, var(--mantine-color-brand-6) 0%, var(--mantine-color-accent-6) 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text'
@@ -81,10 +81,10 @@ export default function Home() {
                 Este playbook traz as arquiteturas mais conhecidas e que, na minha experiência, realmente entregam resultado. 
                 Existem dezenas de outras, mas aqui estão as que eu confio pra projetos reais.
               </Text>
-              <Alert color="blue" icon={<IconBulb size={24} />} radius="md" maw={800}>
+              <Alert color="brand" icon={<IconBulb size={24} />} radius="md" maw={800}>
                 <Text size="md" fw={500}>
                   <strong>O grande segredo de qualquer arquitetura:</strong> 
-                  <span style={{ color: 'var(--mantine-color-blue-7)', fontWeight: 600 }}> respeite a <b>Dependency Rule</b></span>. 
+                  <span style={{ color: 'var(--mantine-color-accent-6)', fontWeight: 600 }}> respeite a <b>Dependency Rule</b></span>. 
                   Se a regra de dependência for ignorada, nenhuma arquitetura salva seu projeto do caos. 
                   <strong>Camadas de fora só podem depender das de dentro. Negócio nunca depende de framework.</strong> Simples assim.
                 </Text>
@@ -113,7 +113,7 @@ export default function Home() {
                 </Card>
 
                 <Card withBorder p="md" radius="md" ta="center">
-                  <ThemeIcon size={50} radius="md" variant="light" color="blue" mb="sm">
+                  <ThemeIcon size={50} radius="md" variant="light" color="brand" mb="sm">
                     <IconRocket size={25} />
                   </ThemeIcon>
                   <Title order={4} size="h5">Decisões Sólidas</Title>
@@ -168,7 +168,7 @@ export default function Home() {
               <Text size="sm" c="dimmed">Anos de Experiência</Text>
             </Card>
             <Card withBorder p="md" radius="md" ta="center">
-              <ThemeIcon size={50} radius="md" variant="light" color="blue" mb="sm">
+              <ThemeIcon size={50} radius="md" variant="light" color="brand" mb="sm">
                 <IconRocket size={25} />
               </ThemeIcon>
               <Title order={3} size="h4">50+</Title>
@@ -198,10 +198,10 @@ export default function Home() {
                 left: 0,
                 right: 0,
                 height: '4px',
-                background: 'linear-gradient(90deg, var(--mantine-color-blue-6), var(--mantine-color-brand-6))'
+                background: 'linear-gradient(90deg, var(--mantine-color-brand-6), var(--mantine-color-accent-6))'
               }} />
               <Stack align="center" ta="center">
-                <ThemeIcon size={60} radius="md" variant="light" color="blue">
+                <ThemeIcon size={60} radius="md" variant="light" color="brand">
                   <IconBook size={30} />
                 </ThemeIcon>
                 <Title order={3} size="h4">Corta o Ruído</Title>
@@ -294,7 +294,7 @@ export default function Home() {
               <Stack gap="md">
                 <Group justify="space-between">
                   <Group>
-                    <ThemeIcon size={50} radius="md" variant="light" color="blue">
+                    <ThemeIcon size={50} radius="md" variant="light" color="brand">
                       <IconBolt size={25} />
                     </ThemeIcon>
                     <div>
@@ -302,7 +302,7 @@ export default function Home() {
                       <Text size="sm" c="dimmed">Estrutura Simples</Text>
                     </div>
                   </Group>
-                  <Badge color="blue" variant="light">Template</Badge>
+                  <Badge color="brand" variant="light">Template</Badge>
                 </Group>
                 <Text size="sm">
                   Template para projetos pequenos/médios. Estrutura básica mas bem organizada, ideal para times pequenos e MVP.
