@@ -37,6 +37,12 @@ Este playbook é um guia prático que resolve problemas reais de arquitetura fro
 - **Armadilhas** - Problemas comuns e como evitar
 - **Referências** - Livros, artigos e casos reais
 
+### **🛡️ Dependency Rule Guide**
+- **Guia dedicado** - Regra fundamental de qualquer arquitetura
+- **Exemplos práticos** - Código real com cenários
+- **Armadilhas comuns** - Como evitar quebrar a regra
+- **Acesso rápido** - Link destacado no header
+
 ## 🛠️ **Tecnologias**
 
 - **React 19** + **TypeScript** - Base moderna
@@ -44,6 +50,8 @@ Este playbook é um guia prático que resolve problemas reais de arquitetura fro
 - **Mantine** - Design system completo
 - **React Router** - Navegação SPA
 - **Tabler Icons** - Ícones consistentes
+- **Husky** - Git hooks para qualidade
+- **Lint-staged** - Validação automática
 
 ## 📊 **Performance**
 
@@ -68,6 +76,9 @@ npm run dev
 
 # Build
 npm run build
+
+# Lint
+npm run lint
 ```
 
 ## 🏗️ **Estrutura do Projeto**
@@ -77,15 +88,22 @@ src/
 ├── components/          # Componentes reutilizáveis
 │   ├── DocsShell.tsx   # Layout principal
 │   ├── NavMenu.tsx     # Menu lateral
-│   ├── HeaderBar.tsx   # Header
+│   ├── NavItem.tsx     # Item de menu
+│   ├── HeaderBar.tsx   # Header com Dependency Rule
 │   └── Footer.tsx      # Footer
 ├── content/            # Conteúdo das arquiteturas
 │   ├── guides/         # Guias práticos
+│   │   ├── how-to-choose.tsx
+│   │   └── dependency-rule.tsx
 │   └── patterns/       # Padrões arquiteturais
 ├── hooks/              # Custom hooks
+│   └── useNavigationActions.ts
 ├── types/              # Tipos TypeScript
+│   └── index.ts
 ├── pages/              # Páginas da aplicação
-└── examples/           # Exemplos de código real
+├── examples/           # Exemplos de código real
+└── lib/                # Utilitários
+    └── content.ts
 ```
 
 ## 🎨 **Design System**
@@ -95,6 +113,8 @@ src/
 - **Responsivo** - Mobile-first
 - **Acessibilidade** - WCAG compliant
 - **Performance** - Otimizado para velocidade
+- **Hover states** - Feedback visual suave
+- **Sticky header** - Navegação sempre acessível
 
 ## 📈 **Code Splitting**
 
@@ -115,6 +135,8 @@ O projeto usa code splitting inteligente:
 - **Clean Code** - Legível e manutenível
 - **TypeScript** - Tipagem forte
 - **ESLint** - Padrões consistentes
+- **Husky** - Pre-commit hooks
+- **Lint-staged** - Validação automática
 
 ## 🎨 **Diretrizes de Tema**
 
@@ -122,6 +144,7 @@ O projeto usa code splitting inteligente:
 - **Sem cores fixas** - Use `withBorder` e `variant="light"`
 - **Adaptação automática** - Deixe o Mantine cuidar do tema
 - **Teste sempre** - Verifique ambos os temas antes de commitar
+- **Header/Footer** - Fundos mais escuros para destaque
 
 > 📋 Veja as regras em `.cursorrules` para diretrizes detalhadas
 
@@ -146,6 +169,7 @@ O projeto usa code splitting inteligente:
 
 ### **Guias**
 - **Como Escolher** - Decision wizard interativo
+- **Dependency Rule** - Regra fundamental de arquitetura
 
 ### **Padrões**
 - **Clean Architecture** - Separação de camadas
@@ -178,16 +202,12 @@ MIT - Use livremente para seus projetos.
 ## 👨‍💻 **Autor**
 
 **Tiago Boas** - Front-end engineer há 18 anos
-- Liderou squads em bancos digitais, fintechs e SaaS
-- Criou módulos para Smart TVs (LG, Samsung)
-- Otimizou checkouts de e-commerce (-40% abandono)
-- Acelerou dashboards de analytics (+60% performance)
-- Entregou microserviços Go que salvaram MVP (2 semanas vs 3 meses)
+
+Sou o dev que transforma código em resultado: turbinei checkouts, simplifiquei cadastros bancários, acelerei fluxos de KYC e salvei dashboards engasgados. Fora dos horários de entrega, lapido os open-sources Ponto PJ e DataForge Tools e escrevo "Código Bonito Não Paga Boleto", tudo focado na mesma pegada: impacto real primeiro.
 
 **Links:**
 - [GitHub](https://github.com/tiagovilasboas)
 - [LinkedIn](https://www.linkedin.com/in/tiagovilasboas)
-- [Twitter](https://twitter.com/tiagovilasboas)
 
 ---
 
