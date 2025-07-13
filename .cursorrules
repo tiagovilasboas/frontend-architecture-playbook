@@ -166,13 +166,51 @@ PatternName.metadata = {
 };
 ```
 
-## 🎨 **Tema Dark**
+## 🎨 **Tema Dark - OBRIGATÓRIO**
 
-### **Considerações:**
-- Evitar cores de fundo fixas (como `bg="var(--mantine-color-blue-0)"`)
-- Usar `Paper withBorder` em vez de backgrounds coloridos
-- Manter contraste adequado
-- Testar legibilidade no dark mode
+### **Regras Obrigatórias:**
+- **TODOS os componentes DEVEM respeitar dark/light mode**
+- **NUNCA use cores fixas:** `background: 'white'`, `color: 'black'`, `#ffffff`, `#000000`
+- **NUNCA use gradientes com cores fixas:** `linear-gradient(..., #f0f0f0, #ffffff)`
+- **NUNCA use cores específicas do tema light:** `var(--mantine-color-brand-0)`
+
+### **Padrões Obrigatórios:**
+- **SEMPRE use `withBorder`** em `Paper` e `Card` (adaptação automática)
+- **SEMPRE use `variant="light"`** para ícones e badges
+- **SEMPRE use `c="dimmed"`** para texto secundário
+- **SEMPRE deixe o Mantine cuidar do tema** automaticamente
+
+### **Checklist Obrigatório Antes do Commit:**
+- [ ] Testei no tema dark?
+- [ ] Testei no tema light?
+- [ ] Não usei cores fixas (white, black, #fff, etc)?
+- [ ] Usei `withBorder` em vez de backgrounds customizados?
+- [ ] Usei `variant="light"` para ícones/badges?
+- [ ] Usei `c="dimmed"` para texto secundário?
+
+### **Exemplos de Código Seguro:**
+```tsx
+// ✅ SEMPRE USE
+<Paper withBorder>
+<Card withBorder>
+<ThemeIcon variant="light">
+<Text c="dimmed">
+<Badge variant="light">
+```
+
+### **Exemplos de Código Perigoso:**
+```tsx
+// ❌ NUNCA USE
+style={{ background: 'white' }}
+style={{ color: 'black' }}
+background: 'linear-gradient(..., #f0f0f0, #ffffff)'
+style={{ background: 'var(--mantine-color-brand-0)' }}
+```
+
+### **Teste Obrigatório:**
+- **SEMPRE teste ambos os temas** antes de commitar
+- **SEMPRE verifique contraste** e legibilidade
+- **SEMPRE use o toggle de tema** para validar
 
 ## 📝 **Checklist de Qualidade**
 
@@ -183,7 +221,12 @@ Antes de finalizar cada arquivo:
 - [ ] Armadilhas e como evitar
 - [ ] Referências e casos reais
 - [ ] Design responsivo e acessível
-- [ ] Funciona bem no tema dark
+- [ ] **TODOS os componentes respeitam dark/light mode**
+- [ ] **NENHUMA cor fixa usada** (white, black, #fff, etc)
+- [ ] **SEMPRE usei `withBorder`** em Paper/Card
+- [ ] **SEMPRE usei `variant="light"`** para ícones/badges
+- [ ] **SEMPRE usei `c="dimmed"`** para texto secundário
+- [ ] **Testei em AMBOS os temas** (dark/light)
 - [ ] Estrutura visual consistente
 
 ## 🚀 **Próximos Passos**
