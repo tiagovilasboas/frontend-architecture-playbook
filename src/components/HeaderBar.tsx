@@ -20,9 +20,9 @@ export default function HeaderBar({ opened, onBurger, onSearch, guides, patterns
       </Group>
       <Group gap="md" visibleFrom="sm">
         <Anchor component={Link} to="/" fw={500} size="sm">Home</Anchor>
-        <Menu trigger="hover" openDelay={50} closeDelay={100} withinPortal>
+        <Menu width={200} shadow="md" position="bottom-start" withinPortal>
           <Menu.Target>
-            <Anchor fw={500} size="sm">Guides <IconChevronDown size={12} style={{ verticalAlign: 'middle' }} /></Anchor>
+            <Anchor component="button" fw={500} size="sm" c="black" style={{ background: 'transparent', border: 'none' }}>Guides <IconChevronDown size={12} style={{ verticalAlign: 'middle' }} /></Anchor>
           </Menu.Target>
           <Menu.Dropdown>
             {guides.map((g) => (
@@ -30,9 +30,9 @@ export default function HeaderBar({ opened, onBurger, onSearch, guides, patterns
             ))}
           </Menu.Dropdown>
         </Menu>
-        <Menu trigger="hover" openDelay={50} closeDelay={100} withinPortal>
+        <Menu width={220} shadow="md" position="bottom-start" withinPortal>
           <Menu.Target>
-            <Anchor fw={500} size="sm">Patterns <IconChevronDown size={12} style={{ verticalAlign: 'middle' }} /></Anchor>
+            <Anchor component="button" fw={500} size="sm" c="black" style={{ background: 'transparent', border: 'none' }}>Patterns <IconChevronDown size={12} style={{ verticalAlign: 'middle' }} /></Anchor>
           </Menu.Target>
           <Menu.Dropdown>
             {patterns.map((p) => (
