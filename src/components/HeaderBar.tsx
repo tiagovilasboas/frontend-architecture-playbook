@@ -1,7 +1,7 @@
 import { Group, Burger, Title, ActionIcon, Menu, UnstyledButton } from '@mantine/core';
 import { Link } from 'react-router-dom';
 import { IconSearch, IconChevronDown, IconCode, IconHome, IconBook, IconPuzzle } from '@tabler/icons-react';
-import type { DocMeta } from './DocsShell.tsx';
+import type { DocMeta } from '../types/index.ts';
 
 interface Props {
   opened: boolean;
@@ -16,10 +16,12 @@ export default function HeaderBar({ opened, onBurger, onSearch, guides, patterns
     <Group h={56} px="md" justify="space-between">
       <Group>
         <Burger opened={opened} onClick={onBurger} hiddenFrom="md" size="sm" />
-        <Group gap="xs">
-          <IconCode size={24} color="var(--mantine-color-brand-6)" />
-          <Title order={4}>Front-End Architecture Playbook</Title>
-        </Group>
+        <UnstyledButton component={Link} to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+          <Group gap="xs">
+            <IconCode size={24} color="var(--mantine-color-brand-6)" />
+            <Title order={4}>Front-End Architecture Playbook</Title>
+          </Group>
+        </UnstyledButton>
       </Group>
       <Group gap="md" hiddenFrom="md">
         <UnstyledButton component={Link} to="/" style={{ fontWeight: 500 }}>

@@ -7,13 +7,8 @@ import { Spotlight } from '@mantine/spotlight';
 import HeaderBar from './HeaderBar.tsx';
 import NavMenu from './NavMenu.tsx';
 import Footer from './Footer.tsx';
-
-export interface DocMeta {
-  slug: string;
-  title: string;
-  description?: string;
-  collection: 'guides' | 'patterns';
-}
+import { useNavigationActions } from '../hooks/useNavigationActions.ts';
+import type { DocMeta } from '../types/index.ts';
 
 interface Props {
   guides: DocMeta[];
@@ -23,21 +18,7 @@ interface Props {
 
 export default function DocsShell({ guides, patterns, children }: Props) {
   const [opened, setOpened] = useState(false);
-
-  const actions = [
-    ...guides.map((g) => ({
-      id: g.slug,
-      label: g.title,
-      description: 'Guide',
-      onTrigger: () => (window.location.pathname = `/guides/${g.slug}`),
-    })),
-    ...patterns.map((p) => ({
-      id: p.slug,
-      label: p.title,
-      description: 'Pattern',
-      onTrigger: () => (window.location.pathname = `/patterns/${p.slug}`),
-    })),
-  ];
+  const actions = useNavigationActions(guides, patterns);
 
   return (
     <>
@@ -63,7 +44,10 @@ export default function DocsShell({ guides, patterns, children }: Props) {
           <Box 
             className="sidebar-nav"
             style={{ 
-              width: 260
+              width: 260,
+              padding: 12,
+              paddingRight: 20,
+              overflow: 'visible'
             }} 
           >
             <NavMenu guides={guides} patterns={patterns} />
