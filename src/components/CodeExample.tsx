@@ -58,6 +58,7 @@ export default function CodeExample({
       withBorder 
       p="md" 
       radius="md"
+      w="100%"
       style={{ cursor: 'pointer' }}
       onClick={handleToggle}
     >
@@ -68,27 +69,26 @@ export default function CodeExample({
             <Text fw={600} size="sm">{title}</Text>
           </Group>
           <Group gap={4} align="center">
-            <Tooltip label={copied ? 'Copiado!' : 'Copiar código'} withArrow>
-              <Button
-                variant="subtle"
-                size="xs"
-                onClick={handleCopy}
-                leftSection={copied ? <IconCheck size={16} /> : <IconCopy size={16} />}
-                color={copied ? 'green' : 'blue'}
-                tabIndex={0}
-              >
-                {copied ? 'Copiado!' : 'Copiar'}
-              </Button>
-            </Tooltip>
-            <Button
-              variant="subtle"
-              size="xs"
+            {expanded && (
+              <Tooltip label={copied ? 'Copiado!' : 'Copiar código'} withArrow>
+                <Button
+                  variant="subtle"
+                  size="xs"
+                  onClick={handleCopy}
+                  leftSection={copied ? <IconCheck size={16} /> : <IconCopy size={16} />}
+                  color={copied ? 'green' : 'blue'}
+                  tabIndex={0}
+                >
+                  {copied ? 'Copiado!' : 'Copiar'}
+                </Button>
+              </Tooltip>
+            )}
+            <div
+              style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', marginLeft: 8 }}
               onClick={(e) => { e.stopPropagation(); handleToggle(); }}
-              rightSection={expanded ? <IconChevronDown size={14} /> : <IconChevronRight size={14} />}
-              tabIndex={0}
             >
-              {expanded ? 'Ocultar' : 'Ver código'}
-            </Button>
+              {expanded ? <IconChevronDown size={24} /> : <IconChevronRight size={24} />}
+            </div>
           </Group>
         </Group>
         <Group justify="space-between" align="center" mb={4}>
@@ -102,30 +102,46 @@ export default function CodeExample({
           </Text>
         )}
         {expanded && (
-          <SyntaxHighlighter
-            language={detectedLanguage}
-            style={tomorrow}
-            customStyle={{
-              borderRadius: 6,
-              fontSize: 14,
-              margin: 0,
-              padding: 12,
-              overflowX: 'auto' as const,
-              background: colorScheme === 'dark' ? theme.colors.dark[7] : theme.white,
-              color: colorScheme === 'dark' ? theme.colors.gray[0] : theme.colors.gray[9],
-              border: `1px solid ${colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.gray[3]}`,
-            }}
-            showLineNumbers
-            lineNumberStyle={{
-              minWidth: '1.8em',
-              paddingRight: '0.5em',
-              textAlign: 'left',
-              color: colorScheme === 'dark' ? theme.colors.gray[5] : theme.colors.gray[6],
-              fontVariantNumeric: 'tabular-nums',
-            }}
-          >
-            {codeContent}
-          </SyntaxHighlighter>
+          <div style={{ position: 'relative' }}>
+            <div style={{ position: 'absolute', top: 8, right: 8, zIndex: 2 }}>
+              <Tooltip label={copied ? 'Copiado!' : 'Copiar código'} withArrow>
+                <Button
+                  variant="subtle"
+                  size="xs"
+                  onClick={handleCopy}
+                  leftSection={copied ? <IconCheck size={16} /> : <IconCopy size={16} />}
+                  color={copied ? 'green' : 'blue'}
+                  tabIndex={0}
+                >
+                  {copied ? 'Copiado!' : 'Copiar'}
+                </Button>
+              </Tooltip>
+            </div>
+            <SyntaxHighlighter
+              language={detectedLanguage}
+              style={tomorrow}
+              customStyle={{
+                borderRadius: 6,
+                fontSize: 14,
+                margin: 0,
+                padding: 12,
+                overflowX: 'auto' as const,
+                background: colorScheme === 'dark' ? theme.colors.dark[7] : theme.white,
+                color: colorScheme === 'dark' ? theme.colors.gray[0] : theme.colors.gray[9],
+                border: `1px solid ${colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.gray[3]}`,
+              }}
+              showLineNumbers
+              lineNumberStyle={{
+                minWidth: '1.8em',
+                paddingRight: '0.5em',
+                textAlign: 'left',
+                color: colorScheme === 'dark' ? theme.colors.gray[5] : theme.colors.gray[6],
+                fontVariantNumeric: 'tabular-nums',
+              }}
+            >
+              {codeContent}
+            </SyntaxHighlighter>
+          </div>
         )}
       </Stack>
     </Paper>

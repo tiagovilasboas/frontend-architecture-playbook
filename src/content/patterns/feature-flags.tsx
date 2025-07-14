@@ -215,45 +215,14 @@ function FeatureFlags() {
         </Title>
         
         <Stack gap="xl">
-          {/* Example 1: E-commerce */}
-          <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">🛒 E-commerce - Novo Checkout</Title>
-            
-            <Stack gap="md">
-              <Text>
-                <strong>Cenário:</strong> Novo checkout com melhor UX. 
-                Quer testar com 10% dos usuários primeiro, depois expandir.
-                <br />
-                <strong>Problema:</strong> Se der problema, precisa fazer rollback rápido.
-              </Text>
-              
-              <CodeExample
-                title={featureFlagsExamples.find(e => e.id === 'feature-flags-ecommerce-checkout')?.title || ''}
-                description={featureFlagsExamples.find(e => e.id === 'feature-flags-ecommerce-checkout')?.description || ''}
-                code={featureFlagsExamples.find(e => e.id === 'feature-flags-ecommerce-checkout')?.content || ''}
-              />
-            </Stack>
-          </Paper>
-
-          {/* Example 2: Dashboard */}
-          <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">📊 Dashboard - Nova UI</Title>
-            
-            <Stack gap="md">
-              <Text>
-                <strong>Cenário:</strong> Nova interface do dashboard. 
-                Quer testar com beta testers primeiro, depois expandir.
-                <br />
-                <strong>Problema:</strong> Precisa controlar por usuário específico.
-              </Text>
-              
-              <CodeExample
-                title={featureFlagsExamples.find(e => e.id === 'feature-flags-dashboard-ui')?.title || ''}
-                description={featureFlagsExamples.find(e => e.id === 'feature-flags-dashboard-ui')?.description || ''}
-                code={featureFlagsExamples.find(e => e.id === 'feature-flags-dashboard-ui')?.content || ''}
-              />
-            </Stack>
-          </Paper>
+          {featureFlagsExamples.map(example => (
+            <CodeExample
+              key={example.id}
+              title={example.title}
+              description={example.description}
+              code={example.content}
+            />
+          ))}
         </Stack>
       </div>
 
