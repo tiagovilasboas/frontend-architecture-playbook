@@ -1,5 +1,6 @@
-import { Title, Text, Stack, Paper, Code, Alert, List, ThemeIcon, Group, Card, Badge } from '@mantine/core';
+import { Title, Text, Stack, Paper, Alert, List, ThemeIcon, Group, Card, Badge } from '@mantine/core';
 import { IconBulb, IconAlertTriangle, IconCheck, IconCode, IconFolder, IconBrandGithub } from '@tabler/icons-react';
+import CodeExample from '../../components/CodeExample';
 
 function Monorepo() {
   return (
@@ -60,20 +61,10 @@ function Monorepo() {
                 <Text size="sm" c="dimmed">
                   Libs compartilhadas entre projetos. Muda uma vez, todo mundo ganha.
                 </Text>
-                <Code mt="xs" block>
-{`// packages/shared/components/
-export { Button } from './Button';
-export { Input } from './Input';
-export { Card } from './Card';
-
-// apps/web/src/
-import { Button, Input, Card } from '@shared/components';
-
-// apps/mobile/src/
-import { Button, Input, Card } from '@shared/components';
-
-// Muda o Button, muda em todo lugar`}
-                </Code>
+                <CodeExample
+                  title="Compartilhamento de código"
+                  code="Compartilhamento de código"
+                />
               </div>
             </Group>
           </Card>
@@ -87,24 +78,10 @@ import { Button, Input, Card } from '@shared/components';
                   ESLint, Prettier, TypeScript, testes. Configura uma vez, 
                   funciona em todo lugar.
                 </Text>
-                <Code mt="xs" block>
-{`// root/.eslintrc.js
-module.exports = {
-  extends: ['@repo/eslint-config'],
-  // Configuração centralizada
-};
-
-// root/package.json
-{
-  "scripts": {
-    "lint": "eslint .",
-    "test": "jest",
-    "build": "turbo run build"
-  }
-}
-
-// Funciona em todos os projetos`}
-                </Code>
+                <CodeExample
+                  title="Configuração centralizada"
+                  code="Configuração centralizada"
+                />
               </div>
             </Group>
           </Card>
@@ -118,20 +95,10 @@ module.exports = {
                   Muda uma lib, vê o impacto em todos os projetos. 
                   Sem quebrar nada.
                 </Text>
-                <Code mt="xs" block>
-{`// packages/ui/src/Button.tsx
-export function Button({ children, variant }) {
-  // Muda aqui
-  return <button className={\`btn btn-\${variant}\`}>{children}</button>;
-}
-
-// Turbo detecta mudanças
-// Roda testes em todos os projetos
-// Build só nos que mudaram
-// Deploy só nos afetados
-
-// Refatoração segura, sem quebrar nada`}
-                </Code>
+                <CodeExample
+                  title="Dependências internas"
+                  code="Dependências internas"
+                />
               </div>
             </Group>
           </Card>
@@ -145,19 +112,10 @@ export function Button({ children, variant }) {
                   Um commit pode afetar múltiplos projetos. 
                   Histórico completo, rastreabilidade total.
                 </Text>
-                <Code mt="xs" block>
-{`// Um commit, múltiplos projetos
-git commit -m "feat: add new Button component
-
-- Add Button to shared/ui
-- Update web app to use new Button
-- Update mobile app to use new Button
-- Update docs with Button examples"
-
-// Histórico completo
-// Rastreabilidade total
-// Mudanças atômicas`}
-                </Code>
+                <CodeExample
+                  title="Deploy coordenado"
+                  code="Deploy coordenado"
+                />
               </div>
             </Group>
           </Card>
@@ -268,8 +226,9 @@ git commit -m "feat: add new Button component
                 difícil de manter.
               </Text>
               
-              <Code block>
-{`// ❌ RUIM - Múltiplos repositórios
+              <CodeExample
+                title="Design System - Componentes Compartilhados"
+                code={{ content: `// ❌ RUIM - Múltiplos repositórios
 // repo-web-app/
 // ├── src/components/Button.tsx
 // ├── src/components/Input.tsx
@@ -307,8 +266,8 @@ git commit -m "feat: add new Button component
 
 // Muda um componente, muda em todo lugar
 // Consistência visual garantida
-// Fácil de manter`}
-              </Code>
+// Fácil de manter` }}
+              />
             </Stack>
           </Paper>
 
@@ -325,8 +284,9 @@ git commit -m "feat: add new Button component
                 difícil de sincronizar.
               </Text>
               
-              <Code block>
-{`// ❌ RUIM - Repositórios separados
+              <CodeExample
+                title="Full-Stack - Front-end + Back-end"
+                code={{ content: `// ❌ RUIM - Repositórios separados
 // repo-frontend/
 // ├── src/types/User.ts
 // ├── src/validations/userSchema.ts
@@ -364,8 +324,8 @@ git commit -m "feat: add new Button component
 
 // Tipos compartilhados
 // Validações consistentes
-// Fácil de sincronizar`}
-              </Code>
+// Fácil de sincronizar` }}
+              />
             </Stack>
           </Paper>
 
@@ -382,8 +342,9 @@ git commit -m "feat: add new Button component
                 tooling diferente, difícil de manter.
               </Text>
               
-              <Code block>
-{`// ❌ RUIM - Repositórios separados
+              <CodeExample
+                title="Micro-frontends - Múltiplas Apps"
+                code={{ content: `// ❌ RUIM - Repositórios separados
 // repo-shell/
 // ├── .eslintrc.js
 // ├── .prettierrc
@@ -432,8 +393,8 @@ git commit -m "feat: add new Button component
 
 // Tooling centralizado
 // Configurações consistentes
-// Fácil de manter`}
-              </Code>
+// Fácil de manter` }}
+              />
             </Stack>
           </Paper>
         </Stack>
@@ -461,8 +422,9 @@ git commit -m "feat: add new Button component
                 Use ferramentas como Nx, Lerna, Turborepo.
               </Text>
               
-              <Code block>
-{`// ❌ RUIM - Monorepo bagunçado
+              <CodeExample
+                title="Monorepo Gigante"
+                code={{ content: `// ❌ RUIM - Monorepo bagunçado
 // repo/
 // ├── app1/
 // ├── app2/
@@ -491,8 +453,8 @@ git commit -m "feat: add new Button component
 // └── docs/
 
 // Estrutura clara
-// Fácil de navegar`}
-              </Code>
+// Fácil de navegar` }}
+              />
             </Stack>
           </Paper>
 
@@ -510,8 +472,9 @@ git commit -m "feat: add new Button component
                 Use ferramentas que detectam dependências circulares.
               </Text>
               
-              <Code block>
-{`// ❌ RUIM - Dependências circulares
+              <CodeExample
+                title="Dependências Circulares"
+                code={{ content: `// ❌ RUIM - Dependências circulares
 // packages/ui/package.json
 {
   "dependencies": {
@@ -552,8 +515,8 @@ git commit -m "feat: add new Button component
 }
 
 // Hierarquia clara
-// Sem dependências circulares`}
-              </Code>
+// Sem dependências circulares` }}
+              />
             </Stack>
           </Paper>
 
@@ -571,8 +534,9 @@ git commit -m "feat: add new Button component
                 Configure cache e build incremental.
               </Text>
               
-              <Code block>
-{`// ❌ RUIM - Build lento
+              <CodeExample
+                title="Performance de Build"
+                code={{ content: `// ❌ RUIM - Build lento
 // package.json
 {
   "scripts": {
@@ -606,8 +570,8 @@ git commit -m "feat: add new Button component
 
 // Cache inteligente
 // Build incremental
-// Só builda o que mudou`}
-              </Code>
+// Só builda o que mudou` }}
+              />
             </Stack>
           </Paper>
 
@@ -625,8 +589,9 @@ git commit -m "feat: add new Button component
                 Lerna, Changesets, ou versionamento manual coordenado.
               </Text>
               
-              <Code block>
-{`// ❌ RUIM - Versões descoordenadas
+              <CodeExample
+                title="Gestão de Versões"
+                code={{ content: `// ❌ RUIM - Versões descoordenadas
 // packages/ui/package.json
 {
   "name": "@repo/ui",
@@ -665,8 +630,8 @@ git commit -m "feat: add new Button component
 }
 
 // Versões coordenadas
-// Deploy consistente`}
-              </Code>
+// Deploy consistente` }}
+              />
             </Stack>
           </Paper>
 
@@ -684,8 +649,9 @@ git commit -m "feat: add new Button component
                 code review obrigatório.
               </Text>
               
-              <Code block>
-{`// ❌ RUIM - Sem coordenação
+              <CodeExample
+                title="Coordenação de Times"
+                code={{ content: `// ❌ RUIM - Sem coordenação
 // Time A muda lib compartilhada
 // Não testa em outros projetos
 // Quebra build de outros times
@@ -708,8 +674,8 @@ jobs:
 // Testa todos os projetos
 // Build todos os projetos
 // Lint todos os projetos
-// Quebra build se algo falhar`}
-              </Code>
+// Quebra build se algo falhar` }}
+              />
             </Stack>
           </Paper>
         </Stack>
