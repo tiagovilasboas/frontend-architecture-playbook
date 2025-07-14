@@ -4,6 +4,7 @@ import {
   Box,
 } from '@mantine/core';
 import { Spotlight } from '@mantine/spotlight';
+import { useMediaQuery } from '@mantine/hooks';
 import HeaderBar from './HeaderBar.tsx';
 import NavMenu from './NavMenu.tsx';
 import Footer from './Footer.tsx';
@@ -21,6 +22,7 @@ interface Props {
 
 export default function DocsShell({ guides, architectures, patterns, techniques, bestPractices, children }: Props) {
   const [opened, setOpened] = useState(false);
+  const isMobile = useMediaQuery('(max-width: 768px)');
   const actions = useNavigationActions(guides, architectures, patterns, techniques, bestPractices);
 
   return (
@@ -43,18 +45,20 @@ export default function DocsShell({ guides, architectures, patterns, techniques,
 
         {/* Main Content */}
         <Box style={{ flex: 1, display: 'flex' }}>
-          {/* Sidebar */}
-          <Box 
-            className="sidebar-nav"
-            style={{ 
-              width: 260,
-              padding: 12,
-              paddingRight: 20,
-              overflow: 'visible'
-            }} 
-          >
-            <NavMenu guides={guides} architectures={architectures} patterns={patterns} techniques={techniques} bestPractices={bestPractices} />
-          </Box>
+          {/* Sidebar - apenas no desktop */}
+          {!isMobile && (
+            <Box 
+              className="sidebar-nav"
+              style={{ 
+                width: 260,
+                padding: 12,
+                paddingRight: 20,
+                overflow: 'visible'
+              }} 
+            >
+              <NavMenu guides={guides} architectures={architectures} patterns={patterns} techniques={techniques} bestPractices={bestPractices} />
+            </Box>
+          )}
 
           {/* Content */}
           <Box style={{ flex: 1, padding: '1rem' }}>
