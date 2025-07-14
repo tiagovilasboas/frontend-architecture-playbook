@@ -125,8 +125,7 @@ export default function Home() {
               
               <motion.div variants={itemVariants}>
                 <Text size={isMobile ? 'md' : 'xl'} c="dimmed" mb={isMobile ? 'sm' : 'md'} maw={800}>
-                  Padrões e práticas que funcionam na vida real. Sem hype, sem modinha. 
-                  <strong> Só o que realmente resolve problemas de arquitetura front-end.</strong>
+                  Sabe aquele código que vira um inferno de manter? Então, quase sempre é culpa de arquitetura ruim. Não é papo de arquiteto, é dor real de dev. <strong>Arquitetura não é luxo, é sobrevivência.</strong>
                 </Text>
               </motion.div>
               
@@ -182,17 +181,16 @@ export default function Home() {
                       <IconAward size={isMobile ? 16 : 24} color="var(--mantine-color-yellow-6)" />
                     </motion.div>
                     <Text size={isMobile ? 'md' : 'lg'} fw={600}>
-                      Arquiteturas que Funcionam na Vida Real
+                      Por que Arquitetura Importa (de verdade)
+                    </Text>
+                    <Text size={isMobile ? 'md' : 'lg'} c="dimmed" ta="center" maw={700}>
+                      18 anos de front-end me ensinaram uma coisa: <strong>escolha errada de arquitetura custa caro.</strong> 
+                      E não é só dinheiro: é tempo, paciência, saúde mental e até sua reputação no time.
                     </Text>
                   </Group>
-                  <Text size={isMobile ? 'md' : 'lg'} c="dimmed" ta="center" maw={700}>
-                    Este playbook traz as arquiteturas que eu confio pra projetos reais. 
-                    Existem dezenas de outras por aí, mas aqui estão as que realmente entregam resultado.
-                  </Text>
                   <Alert color="brand" icon={<IconBulb size={isMobile ? 16 : 24} />} radius="md" maw={800}>
                     <Text size={isMobile ? 'sm' : 'md'} fw={500}>
-                      <strong>O grande segredo de qualquer arquitetura:</strong> 
-                      <span style={{ color: 'var(--mantine-color-accent-6)', fontWeight: 600 }}> respeite a </span>
+                      <strong>O segredo de qualquer arquitetura:</strong> esquece hype, esquece modinha. <span style={{ color: 'var(--mantine-color-accent-6)', fontWeight: 600 }}>Respeita a</span>
                       <Text 
                         component={Link} 
                         to="/guides/dependency-rule" 
@@ -207,8 +205,7 @@ export default function Home() {
                         <b>Dependency Rule</b>
                       </Text>
                       <span style={{ color: 'var(--mantine-color-accent-6)', fontWeight: 600 }}>.</span> 
-                      Se a regra de dependência for ignorada, nenhuma arquitetura salva seu projeto do caos. 
-                      <strong>Camadas de fora só podem depender das de dentro. Negócio nunca depende de framework.</strong> Simples assim.
+                      Se você ignora isso, pode usar o framework da moda, pode ter CI/CD, pode ter micro-frontend... vai dar ruim igual. <strong>Negócio nunca depende de framework.</strong> Simples assim.
                     </Text>
                   </Alert>
                 </Stack>
@@ -229,12 +226,11 @@ export default function Home() {
                 <HighwayAnimation />
                 
                 <Text size="lg" c="dimmed" maw={900} lh={1.8}>
-                  Arquitetura de software front‑end é tão crucial quanto o projeto de uma rodovia.
-                  Se a via nasce estreita demais, com curvas mal calculadas ou sem sinalização, o tráfego emperra e não adianta culpar o motorista depois.
+                  Arquitetura de software front‑end é tipo rodovia: se nasce torta, estreita ou sem sinalização, o trânsito vira caos. Não adianta culpar o motorista depois.
                 </Text>
 
                 <Text size="lg" c="dimmed" maw={900} lh={1.8} fw={600}>
-                  No código é igual.
+                  No código é igual. Se a base é ruim, não tem dev sênior que salve.
                 </Text>
 
                 <SimpleGrid cols={{ base: 1, md: 2 }} spacing="lg" w="100%" mt="md">
@@ -311,8 +307,7 @@ export default function Home() {
 
                 <Alert color="brand" icon={<IconBulb size={20} />} radius="md" maw={900}>
                   <Text size="md" lh={1.6}>
-                    Quando esses elementos faltam, surgem gargalos, retrabalho e custos altíssimos — o equivalente a fechar a estrada para reparos no horário de pico. 
-                    Já quando a arquitetura é bem‑pensada, o usuário nem percebe: o trajeto flui, as entregas chegam no prazo e a experiência é suave como asfalto novo em dia de pista livre.
+                    Quando esses elementos faltam, o resultado é sempre o mesmo: gargalo, retrabalho, bug bizarro, deploy travado, time estressado. Já quando a arquitetura é bem pensada, ninguém nem percebe: tudo flui, entrega chega no prazo, e o usuário nem imagina o perrengue que você evitou.
                   </Text>
                 </Alert>
               </Stack>
