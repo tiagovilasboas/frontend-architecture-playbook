@@ -22,7 +22,8 @@ import {
   IconBrandLinkedin,
   IconHeart,
   IconBrain,
-  IconTools
+  IconTools,
+  IconStack
 } from '@tabler/icons-react';
 import { useMediaQuery } from '@mantine/hooks';
 
@@ -121,90 +122,93 @@ export default function Home() {
         <section>
           <Title order={2} mb="md" ta="center">
             <IconBrain size={32} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
-            Conteúdo Organizado por Contexto
+            O que você vai encontrar aqui
           </Title>
           <Text size="lg" c="dimmed" ta="center" mb="lg">
-            Encontre exatamente o que você precisa, quando precisa
+            Conteúdo organizado por contexto de uso
           </Text>
-          <SimpleGrid cols={{ base: 1, md: 2, lg: 3 }} spacing="md">
-            <Card withBorder p="lg" radius="md" component={Link} to="/guides/how-to-choose" style={{ textDecoration: 'none', transition: 'transform 0.2s ease' }} className="content-card">
-              <Stack gap="md" align="center" ta="center">
-                <ThemeIcon size={60} radius="md" variant="light" color="blue">
-                  <IconBook size={30} />
-                </ThemeIcon>
-                <Title order={3} size="h4">📖 Guias</Title>
-                <Text size="sm" c="dimmed">
-                  Guias práticos: Como escolher, Dependency Rule, decisões arquiteturais
-                </Text>
-                <Badge color="blue" variant="light">2 guias</Badge>
-              </Stack>
-            </Card>
+          
+          <Paper withBorder p="lg" radius="lg">
+            <Stack gap="md">
+              <SimpleGrid cols={{ base: 1, md: 2 }} spacing="md">
+                <div>
+                  <Title order={3} size="h4" mb="sm">
+                    <IconBook size={24} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
+                    Guias Práticos
+                  </Title>
+                  <Text size="sm" c="dimmed" mb="md">
+                    Aprenda a escolher a arquitetura certa e entenda a Dependency Rule - a regra fundamental de qualquer arquitetura.
+                  </Text>
+                  <Button 
+                    component={Link} 
+                    to="/guides/how-to-choose" 
+                    size="sm" 
+                    variant="light"
+                    leftSection={<IconRocket size={16} />}
+                  >
+                    Decision Wizard
+                  </Button>
+                </div>
 
-            <Card withBorder p="lg" radius="md" component={Link} to="/best-practices/dry" style={{ textDecoration: 'none', transition: 'transform 0.2s ease' }} className="content-card">
-              <Stack gap="md" align="center" ta="center">
-                <ThemeIcon size={60} radius="md" variant="light" color="red">
-                  <IconHeart size={30} />
-                </ThemeIcon>
-                <Title order={3} size="h4">✅ Boas Práticas</Title>
-                <Text size="sm" c="dimmed">
-                  Princípios fundamentais: DRY, KISS, YAGNI, Clean Code, SRP, SOC
-                </Text>
-                <Badge color="red" variant="light">6 princípios</Badge>
-              </Stack>
-            </Card>
+                <div>
+                  <Title order={3} size="h4" mb="sm">
+                    <IconHeart size={24} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
+                    Boas Práticas
+                  </Title>
+                  <Text size="sm" c="dimmed" mb="md">
+                    Princípios fundamentais: DRY, KISS, YAGNI, Clean Code, SRP, SOC. Base para qualquer projeto.
+                  </Text>
+                  <Button 
+                    component={Link} 
+                    to="/best-practices/dry" 
+                    size="sm" 
+                    variant="light"
+                    leftSection={<IconCheck size={16} />}
+                  >
+                    Ver Princípios
+                  </Button>
+                </div>
 
-            <Card withBorder p="lg" radius="md" component={Link} to="/architectures/clean-architecture" style={{ textDecoration: 'none', transition: 'transform 0.2s ease' }} className="content-card">
-              <Stack gap="md" align="center" ta="center">
-                <ThemeIcon size={60} radius="md" variant="light" color="brand">
-                  <IconBuilding size={30} />
-                </ThemeIcon>
-                <Title order={3} size="h4">🏗️ Arquiteturas</Title>
-                <Text size="sm" c="dimmed">
-                  Padrões arquiteturais principais: Clean Architecture, Micro-frontends, Monorepo e mais
-                </Text>
-                <Badge color="brand" variant="light">13 padrões</Badge>
-              </Stack>
-            </Card>
+                <div>
+                  <Title order={3} size="h4" mb="sm">
+                    <IconBuilding size={24} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
+                    Arquiteturas
+                  </Title>
+                  <Text size="sm" c="dimmed" mb="md">
+                    13 padrões arquiteturais testados: Clean Architecture, Micro-frontends, Monorepo, SPA, SSR/SSG e mais.
+                  </Text>
+                  <Button 
+                    component={Link} 
+                    to="/architectures/clean-architecture" 
+                    size="sm" 
+                    variant="light"
+                    leftSection={<IconStack size={16} />}
+                  >
+                    Ver Arquiteturas
+                  </Button>
+                </div>
 
-            <Card withBorder p="lg" radius="md" component={Link} to="/patterns/component-driven" style={{ textDecoration: 'none', transition: 'transform 0.2s ease' }} className="content-card">
-              <Stack gap="md" align="center" ta="center">
-                <ThemeIcon size={60} radius="md" variant="light" color="green">
-                  <IconPuzzle size={30} />
-                </ThemeIcon>
-                <Title order={3} size="h4">🎯 Padrões</Title>
-                <Text size="sm" c="dimmed">
-                  Padrões de design e implementação: Repository, DRY, KISS, YAGNI
-                </Text>
-                <Badge color="green" variant="light">4 padrões</Badge>
-              </Stack>
-            </Card>
-
-            <Card withBorder p="lg" radius="md" component={Link} to="/techniques/feature-flags" style={{ textDecoration: 'none', transition: 'transform 0.2s ease' }} className="content-card">
-              <Stack gap="md" align="center" ta="center">
-                <ThemeIcon size={60} radius="md" variant="light" color="orange">
-                  <IconTools size={30} />
-                </ThemeIcon>
-                <Title order={3} size="h4">⚡ Técnicas</Title>
-                <Text size="sm" c="dimmed">
-                  Técnicas específicas: Code Splitting, Lazy Loading, Error Boundaries
-                </Text>
-                <Badge color="orange" variant="light">4 técnicas</Badge>
-              </Stack>
-            </Card>
-
-            <Card withBorder p="lg" radius="md" component={Link} to="/guides/how-to-choose" style={{ textDecoration: 'none', transition: 'transform 0.2s ease' }} className="content-card">
-              <Stack gap="md" align="center" ta="center">
-                <ThemeIcon size={60} radius="md" variant="light" color="purple">
-                  <IconTarget size={30} />
-                </ThemeIcon>
-                <Title order={3} size="h4">🎯 Decision Wizard</Title>
-                <Text size="sm" c="dimmed">
-                  Encontre a arquitetura ideal para seu projeto com perguntas diretas
-                </Text>
-                <Badge color="purple" variant="light">Interativo</Badge>
-              </Stack>
-            </Card>
-          </SimpleGrid>
+                <div>
+                  <Title order={3} size="h4" mb="sm">
+                    <IconPuzzle size={24} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
+                    Padrões & Técnicas
+                  </Title>
+                  <Text size="sm" c="dimmed" mb="md">
+                    Padrões de design, técnicas de implementação e otimizações específicas para front-end.
+                  </Text>
+                  <Button 
+                    component={Link} 
+                    to="/patterns/component-driven" 
+                    size="sm" 
+                    variant="light"
+                    leftSection={<IconTools size={16} />}
+                  >
+                    Ver Padrões
+                  </Button>
+                </div>
+              </SimpleGrid>
+            </Stack>
+          </Paper>
         </section>
 
         {/* Value Proposition */}
