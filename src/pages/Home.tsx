@@ -92,7 +92,21 @@ export default function Home() {
               <Alert color="brand" icon={<IconBulb size={isMobile ? 16 : 24} />} radius="md" maw={800}>
                 <Text size={isMobile ? 'sm' : 'md'} fw={500}>
                   <strong>O grande segredo de qualquer arquitetura:</strong> 
-                  <span style={{ color: 'var(--mantine-color-accent-6)', fontWeight: 600 }}> respeite a <b>Dependency Rule</b></span>. 
+                  <span style={{ color: 'var(--mantine-color-accent-6)', fontWeight: 600 }}> respeite a </span>
+                  <Text 
+                    component={Link} 
+                    to="/guides/dependency-rule" 
+                    style={{ 
+                      color: 'var(--mantine-color-accent-6)', 
+                      fontWeight: 600, 
+                      textDecoration: 'underline',
+                      cursor: 'pointer'
+                    }}
+                    span
+                  >
+                    <b>Dependency Rule</b>
+                  </Text>
+                  <span style={{ color: 'var(--mantine-color-accent-6)', fontWeight: 600 }}>.</span> 
                   Se a regra de dependência for ignorada, nenhuma arquitetura salva seu projeto do caos. 
                   <strong>Camadas de fora só podem depender das de dentro. Negócio nunca depende de framework.</strong> Simples assim.
                 </Text>
