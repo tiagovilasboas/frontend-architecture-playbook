@@ -24,7 +24,7 @@ export default function HeaderBar({ opened, onBurger }: Props) {
           <UnstyledButton component={Link} to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
             <Group gap="xs">
               <IconCode size={24} color="var(--mantine-color-brand-6)" />
-              <Title order={4}>Front-End Architecture Playbook</Title>
+              <Title size="h4">Front-End Architecture Playbook</Title>
             </Group>
           </UnstyledButton>
         </Group>
