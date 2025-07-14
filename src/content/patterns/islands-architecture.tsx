@@ -1,5 +1,6 @@
-import { Title, Text, Stack, Paper, Code, Alert, List, ThemeIcon, Group, Card, Badge } from '@mantine/core';
+import { Title, Text, Stack, Paper, Alert, List, ThemeIcon, Group, Card, Badge } from '@mantine/core';
 import { IconBulb, IconAlertTriangle, IconCheck, IconCode, IconDeviceMobile, IconBolt } from '@tabler/icons-react';
+import CodeExample from '../../components/CodeExample';
 
 function IslandsArchitecture() {
   return (
@@ -62,46 +63,7 @@ function IslandsArchitecture() {
                   Base da página é HTML puro. Rápido, SEO-friendly, 
                   sem JavaScript desnecessário.
                 </Text>
-                <Code mt="xs" block>
-{`<!-- HTML estático por padrão -->
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Minha Loja</title>
-  <meta name="description" content="Produtos incríveis">
-</head>
-<body>
-  <header>
-    <nav>
-      <a href="/">Home</a>
-      <a href="/produtos">Produtos</a>
-      <a href="/contato">Contato</a>
-    </nav>
-  </header>
-  
-  <main>
-    <h1>Bem-vindo à nossa loja</h1>
-    <p>Encontre os melhores produtos aqui.</p>
-    
-    <!-- Ilha de interatividade -->
-    <div id="carrinho"></div>
-    
-    <!-- Mais HTML estático -->
-    <section>
-      <h2>Produtos em Destaque</h2>
-      <div class="produtos">
-        <article>
-          <h3>Produto 1</h3>
-          <p>Descrição do produto...</p>
-        </article>
-      </div>
-    </section>
-  </main>
-</body>
-</html>
-
-<!-- HTML puro, rápido, SEO perfeito`}
-                </Code>
+                <CodeExample title="HTML estático" code="HTML estático" />
               </div>
             </Group>
           </Card>
@@ -115,63 +77,7 @@ function IslandsArchitecture() {
                   JavaScript só nos componentes que precisam de interatividade. 
                   Carrinho, busca, formulários.
                 </Text>
-                <Code mt="xs" block>
-{`// Ilha de carrinho
-// components/Carrinho.jsx
-function Carrinho() {
-  const [items, setItems] = useState([]);
-  
-  const adicionarItem = (produto) => {
-    setItems(prev => [...prev, produto]);
-  };
-  
-  return (
-    <div id="carrinho">
-      <h3>Carrinho ({items.length})</h3>
-      {items.map(item => (
-        <div key={item.id}>
-          {item.nome} - R$ {item.preco}
-        </div>
-      ))}
-      <button onClick={() => finalizarCompra(items)}>
-        Finalizar Compra
-      </button>
-    </div>
-  );
-}
-
-// Ilha de busca
-// components/Busca.jsx
-function Busca() {
-  const [termo, setTermo] = useState('');
-  const [resultados, setResultados] = useState([]);
-  
-  const buscar = async (termo) => {
-    const data = await fetch(\`/api/busca?q=\${termo}\`);
-    setResultados(await data.json());
-  };
-  
-  return (
-    <div id="busca">
-      <input 
-        value={termo}
-        onChange={(e) => setTermo(e.target.value)}
-        placeholder="Buscar produtos..."
-      />
-      <button onClick={() => buscar(termo)}>Buscar</button>
-      
-      <div>
-        {resultados.map(item => (
-          <div key={item.id}>{item.nome}</div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-// JavaScript só onde precisa
-// Interatividade isolada`}
-                </Code>
+                <CodeExample title="Ilha de carrinho" code="Ilha de carrinho" />
               </div>
             </Group>
           </Card>
@@ -185,8 +91,7 @@ function Busca() {
                   JavaScript hidrata apenas as ilhas. 
                   Resto da página permanece estático.
                 </Text>
-                <Code mt="xs" block>
-{`// Hidratação seletiva
+                <CodeExample code={{ content: `// Hidratação seletiva
 // app.js
 import { hydrateRoot } from 'react-dom/client';
 import Carrinho from './components/Carrinho';
@@ -211,8 +116,7 @@ if (buscaContainer) {
 // Resultado:
 // - HTML estático: 95% da página
 // - JavaScript: apenas 5% (ilhas)
-// - Performance: 10x melhor que SPA`}
-                </Code>
+// - Performance: 10x melhor que SPA` }} />
               </div>
             </Group>
           </Card>
@@ -324,8 +228,7 @@ if (buscaContainer) {
                 SSR desnecessário para comentários.
               </Text>
               
-              <Code block>
-{`// ❌ RUIM - SPA
+              <CodeExample code={{ content: `// ❌ RUIM - SPA
 // Tudo JavaScript
 // Carregamento lento
 // SEO ruim
@@ -454,8 +357,7 @@ if (comentariosContainer) {
 // - HTML estático: 95% da página
 // - JavaScript: apenas comentários
 // - Performance: 10x melhor
-// - SEO: perfeito`}
-              </Code>
+// - SEO: perfeito` }} />
             </Stack>
           </Paper>
 
@@ -472,8 +374,7 @@ if (comentariosContainer) {
                 SSR desnecessário para carrinho.
               </Text>
               
-              <Code block>
-{`// ✅ BOM - Islands Architecture
+              <CodeExample code={{ content: `// ✅ BOM - Islands Architecture
 // pages/produtos/[id].html
 <!DOCTYPE html>
 <html>
@@ -661,8 +562,7 @@ if (relacionadosContainer) {
 // - HTML estático: 90% da página
 // - JavaScript: apenas carrinho e relacionados
 // - Performance: excelente
-// - SEO: perfeito`}
-              </Code>
+// - SEO: perfeito` }} />
             </Stack>
           </Paper>
 
@@ -679,8 +579,7 @@ if (relacionadosContainer) {
                 SSR desnecessário para busca.
               </Text>
               
-              <Code block>
-{`// ✅ BOM - Islands Architecture
+              <CodeExample code={{ content: `// ✅ BOM - Islands Architecture
 // pages/docs/getting-started.html
 <!DOCTYPE html>
 <html>
@@ -816,8 +715,7 @@ if (buscaContainer) {
 // - HTML estático: 98% da página
 // - JavaScript: apenas busca
 // - Performance: máxima
-// - SEO: perfeito`}
-              </Code>
+// - SEO: perfeito` }} />
             </Stack>
           </Paper>
         </Stack>
@@ -845,8 +743,7 @@ if (buscaContainer) {
                 HTML estático para o resto.
               </Text>
               
-              <Code block>
-{`// ❌ RUIM - Tudo ilha
+              <CodeExample code={{ content: `// ❌ RUIM - Tudo ilha
 // components/Header.jsx
 function Header() {
   return (
@@ -884,8 +781,7 @@ function Carrinho() {
   );
 }
 
-// JavaScript só onde precisa`}
-              </Code>
+// JavaScript só onde precisa` }} />
             </Stack>
           </Paper>
 
@@ -903,8 +799,7 @@ function Carrinho() {
                 localStorage, ou considere uma ilha maior.
               </Text>
               
-              <Code block>
-{`// ❌ RUIM - Estado compartilhado complexo
+              <CodeExample code={{ content: `// ❌ RUIM - Estado compartilhado complexo
 // Ilha 1: Carrinho
 function Carrinho() {
   const [items, setItems] = useState([]);
@@ -961,8 +856,7 @@ function Contador() {
 }
 
 // Comunicação via eventos
-// Estado isolado por ilha`}
-              </Code>
+// Estado isolado por ilha` }} />
             </Stack>
           </Paper>
 
@@ -980,8 +874,7 @@ function Contador() {
                 ou configure build simples.
               </Text>
               
-              <Code block>
-{`// ❌ RUIM - Build manual complexo
+              <CodeExample code={{ content: `// ❌ RUIM - Build manual complexo
 // webpack.config.js
 module.exports = {
   entry: {
@@ -1027,8 +920,7 @@ const produto = await getProduto();
 
 // Build automático
 // Configuração simples
-// Performance otimizada`}
-              </Code>
+// Performance otimizada` }} />
             </Stack>
           </Paper>
 
@@ -1046,8 +938,7 @@ const produto = await getProduto();
                 Use ilhas só para interatividade.
               </Text>
               
-              <Code block>
-{`// ❌ RUIM - Conteúdo dinâmico nas ilhas
+              <CodeExample code={{ content: `// ❌ RUIM - Conteúdo dinâmico nas ilhas
 // components/ProdutoDetalhes.jsx
 function ProdutoDetalhes() {
   const [produto, setProduto] = useState(null);
@@ -1081,8 +972,7 @@ function ProdutoDetalhes() {
 
 // Crawlers veem tudo
 // SEO perfeito
-// JavaScript só para interatividade`}
-              </Code>
+// JavaScript só para interatividade` }} />
             </Stack>
           </Paper>
 
@@ -1100,8 +990,7 @@ function ProdutoDetalhes() {
                 use lazy loading, otimize bundles.
               </Text>
               
-              <Code block>
-{`// ❌ RUIM - Muitas ilhas pequenas
+              <CodeExample code={{ content: `// ❌ RUIM - Muitas ilhas pequenas
 // Ilha 1: Contador
 <div id="contador"><Contador /></div>
 
@@ -1136,8 +1025,7 @@ function ProdutosInterativos() {
 
 // Um bundle
 // Hidratação mais rápida
-// Performance melhor`}
-              </Code>
+// Performance melhor` }} />
             </Stack>
           </Paper>
         </Stack>
