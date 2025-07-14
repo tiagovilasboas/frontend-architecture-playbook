@@ -221,6 +221,106 @@ export default function Home() {
             <HighwayAnimation />
           </motion.section>
 
+          {/* Arquitetura como Rodovia */}
+          <motion.section variants={itemVariants}>
+            <Paper withBorder p="xl" radius="lg">
+              <Stack gap="lg" align="center" ta="center">
+                <Title order={2} mb="md" size="h3">
+                  <IconBuilding size={32} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
+                  Arquitetura de Software é como Projetar uma Rodovia
+                </Title>
+                
+                <Text size="lg" c="dimmed" maw={900} lh={1.8}>
+                  Arquitetura de software front‑end é tão crucial quanto o projeto de uma rodovia.
+                  Se a via nasce estreita demais, com curvas mal calculadas ou sem sinalização, o tráfego emperra e não adianta culpar o motorista depois.
+                </Text>
+
+                <Text size="lg" c="dimmed" maw={900} lh={1.8} fw={600}>
+                  No código é igual.
+                </Text>
+
+                <SimpleGrid cols={{ base: 1, md: 2 }} spacing="lg" w="100%" mt="md">
+                  <Card withBorder p="md" radius="md">
+                    <Stack gap="sm">
+                      <Group gap="sm">
+                        <ThemeIcon size="lg" variant="light" color="green">
+                          <IconRocket size={20} />
+                        </ThemeIcon>
+                        <Text fw={600} size="md">Pistas largas e bem asfaltadas</Text>
+                      </Group>
+                      <Text size="sm" c="dimmed">
+                        ⇒ componentes desacoplados, performance na veia.
+                      </Text>
+                    </Stack>
+                  </Card>
+
+                  <Card withBorder p="md" radius="md">
+                    <Stack gap="sm">
+                      <Group gap="sm">
+                        <ThemeIcon size="lg" variant="light" color="blue">
+                          <IconBook size={20} />
+                        </ThemeIcon>
+                        <Text fw={600} size="md">Placas claras</Text>
+                      </Group>
+                      <Text size="sm" c="dimmed">
+                        ⇒ documentação enxuta que orienta cada rota sem confundir ninguém.
+                      </Text>
+                    </Stack>
+                  </Card>
+
+                  <Card withBorder p="md" radius="md">
+                    <Stack gap="sm">
+                      <Group gap="sm">
+                        <ThemeIcon size="lg" variant="light" color="orange">
+                          <IconShield size={20} />
+                        </ThemeIcon>
+                        <Text fw={600} size="md">Radares e lombadas</Text>
+                      </Group>
+                      <Text size="sm" c="dimmed">
+                        ⇒ testes automatizados que evitam acidentes em produção.
+                      </Text>
+                    </Stack>
+                  </Card>
+
+                  <Card withBorder p="md" radius="md">
+                    <Stack gap="sm">
+                      <Group gap="sm">
+                        <ThemeIcon size="lg" variant="light" color="purple">
+                          <IconPuzzle size={20} />
+                        </ThemeIcon>
+                        <Text fw={600} size="md">Saídas estratégicas</Text>
+                      </Group>
+                      <Text size="sm" c="dimmed">
+                        ⇒ pontos de extensão e refatoração previstos desde o início.
+                      </Text>
+                    </Stack>
+                  </Card>
+
+                  <Card withBorder p="md" radius="md" style={{ gridColumn: 'span 2' }}>
+                    <Stack gap="sm">
+                      <Group gap="sm">
+                        <ThemeIcon size="lg" variant="light" color="red">
+                          <IconTools size={20} />
+                        </ThemeIcon>
+                        <Text fw={600} size="md">Manutenção constante</Text>
+                      </Group>
+                      <Text size="sm" c="dimmed">
+                        ⇒ monitoramento e alertas que tapam os buracos antes de virarem crateras.
+                      </Text>
+                    </Stack>
+                  </Card>
+                </SimpleGrid>
+
+                <Alert color="brand" icon={<IconBulb size={20} />} radius="md" maw={900}>
+                  <Text size="md" lh={1.6}>
+                    Quando esses elementos faltam, surgem gargalos, retrabalho e custos altíssimos — o equivalente a fechar a estrada para reparos no horário de pico. 
+                    Já quando a arquitetura é bem‑pensada, o usuário nem percebe: o trajeto flui, as entregas chegam no prazo e a experiência é suave como asfalto novo em dia de pista livre.
+                  </Text>
+                </Alert>
+              </Stack>
+            </Paper>
+          </motion.section>
+
           {/* Content Sections */}
           <motion.section variants={itemVariants}>
             <Title order={2} mb="md" ta="center">
