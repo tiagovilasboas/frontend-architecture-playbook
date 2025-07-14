@@ -127,6 +127,15 @@ function AtomicDesign() {
           />
         ))}
       </Stack>
+      
+      <Paper withBorder p="md" radius="md">
+        <Text size="sm" c="dimmed">
+          <strong>Como funciona:</strong> Os 5 níveis se constroem de baixo para cima. 
+          Átomos (Button, Input) se combinam em Moléculas (SearchBar, FormField). 
+          Moléculas formam Organismos (Header, ProductList). Organismos vão para Templates (layouts). 
+          Templates com conteúdo real viram Páginas. Cada nível reutiliza os anteriores.
+        </Text>
+      </Paper>
 
       {/* Benefits */}
       <div>

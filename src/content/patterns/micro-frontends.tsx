@@ -68,6 +68,14 @@ function MicroFrontends() {
             </Card>
           ))}
         </Stack>
+        
+        <Paper withBorder p="md" radius="md" mt="lg">
+          <Text size="sm" c="dimmed">
+            <strong>Como funciona:</strong> Cada micro-frontend é uma aplicação independente com seu time, tecnologia e deploy. 
+            O Shell (container) orquestra tudo, carregando os micro-frontends conforme necessário. 
+            Times trabalham sem depender uns dos outros, mas a integração precisa ser bem planejada.
+          </Text>
+        </Paper>
       </div>
 
       {/* Benefits */}

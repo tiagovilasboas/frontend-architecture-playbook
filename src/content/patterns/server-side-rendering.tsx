@@ -191,6 +191,15 @@ function ProductPage({ product, reviews }) {
             </Group>
           </Card>
         </Stack>
+        
+        <Paper withBorder p="md" radius="md" mt="lg">
+          <Text size="sm" c="dimmed">
+            <strong>Como funciona:</strong> O servidor renderiza o React/Vue e gera HTML completo com dados (Passo 1). 
+            O cliente recebe HTML pronto e renderiza instantaneamente (Passo 2). 
+            O JavaScript hidrata a página, adicionando interatividade sem perder o estado (Passo 3). 
+            Resultado: SEO perfeito + performance inicial rápida + interatividade mantida.
+          </Text>
+        </Paper>
       </div>
 
       {/* Benefits */}

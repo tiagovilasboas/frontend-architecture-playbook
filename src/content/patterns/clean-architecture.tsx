@@ -67,6 +67,14 @@ function CleanArchitecture() {
             </Card>
           ))}
         </Stack>
+        
+        <Paper withBorder p="md" radius="md" mt="lg">
+          <Text size="sm" c="dimmed">
+            <strong>Como funciona:</strong> As camadas se comunicam de fora para dentro. 
+            O React component (Framework) chama o caso de uso (Use Case), que usa a entidade (Entity). 
+            O adaptador (Repository) conecta com o mundo externo. A regra é clara: <em>dependências apontam para dentro</em>.
+          </Text>
+        </Paper>
       </div>
 
       {/* Benefits */}

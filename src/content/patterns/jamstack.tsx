@@ -105,6 +105,14 @@ function JAMstack() {
             </Group>
           </Card>
         </Stack>
+        
+        <Paper withBorder p="md" radius="md" mt="lg">
+          <Text size="sm" c="dimmed">
+            <strong>Como funciona:</strong> O HTML é pré-renderizado no build e servido por CDN (Markup). 
+            JavaScript adiciona interatividade no cliente (JavaScript). APIs fornecem dados e funcionalidades (APIs). 
+            Resultado: performance máxima, segurança de sobra, escalabilidade automática.
+          </Text>
+        </Paper>
       </div>
 
       {/* Benefits */}

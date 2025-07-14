@@ -106,6 +106,14 @@ function SPA() {
             </Group>
           </Card>
         </Stack>
+        
+        <Paper withBorder p="md" radius="md" mt="lg">
+          <Text size="sm" c="dimmed">
+            <strong>Como funciona:</strong> Uma única página HTML carrega o JavaScript inicial. 
+            O roteamento client-side gerencia as rotas sem reload, renderizando componentes dinamicamente. 
+            O estado global mantém dados entre navegações. Resultado: experiência de app nativo.
+          </Text>
+        </Paper>
       </div>
 
       {/* Benefits */}
