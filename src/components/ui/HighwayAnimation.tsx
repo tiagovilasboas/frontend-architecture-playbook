@@ -96,16 +96,16 @@ export default function HighwayAnimation() {
         }}
       />
 
-      {/* Opala - 3D indo para direita */}
+      {/* Moto Custom - 3D indo para direita */}
       <motion.div
         style={{
           position: 'absolute',
           top: '35%',
           left: '-80px',
-          width: '65px',
-          height: '32px',
+          width: '45px',
+          height: '20px',
           background: 'linear-gradient(135deg, #8B4513, #A0522D, #8B4513)',
-          borderRadius: '8px 15px 8px 8px',
+          borderRadius: '10px 8px 8px 10px',
           boxShadow: '0 8px 16px rgba(0,0,0,0.4), 0 0 20px rgba(139,69,19,0.3)',
           transform: 'rotateX(60deg) translateZ(25px)',
           zIndex: 4
@@ -119,78 +119,53 @@ export default function HighwayAnimation() {
           ease: "linear"
         }}
       >
-        {/* Capô longo do Opala */}
+        {/* Guidão da moto */}
         <Box
           style={{
             position: 'absolute',
-            top: '0px',
+            top: '-2px',
             left: '0px',
-            width: '30px',
-            height: '14px',
-            background: 'linear-gradient(135deg, #654321, #8B4513)',
-            borderRadius: '6px 10px 0px 0px',
-            borderBottom: '1px solid #654321'
-          }}
-        />
-        {/* Para-choque frontal do Opala */}
-        <Box
-          style={{
-            position: 'absolute',
-            top: '0px',
-            left: '0px',
-            width: '35px',
-            height: '6px',
+            width: '8px',
+            height: '4px',
             background: 'linear-gradient(135deg, #333, #555)',
-            borderRadius: '3px 8px 0px 0px',
-            borderBottom: '1px solid #222'
+            borderRadius: '2px',
+            border: '1px solid #222'
           }}
         />
-        {/* Janelas do Opala - mais largas */}
+        {/* Tanque da moto */}
         <Box
           style={{
             position: 'absolute',
-            top: '5px',
-            left: '15px',
-            width: '22px',
-            height: '14px',
-            background: 'linear-gradient(135deg, #87ceeb, #b0e0e6)',
-            borderRadius: '4px',
-            boxShadow: 'inset 0 1px 2px rgba(255,255,255,0.3)'
-          }}
-        />
-        <Box
-          style={{
-            position: 'absolute',
-            top: '5px',
-            right: '15px',
-            width: '22px',
-            height: '14px',
-            background: 'linear-gradient(135deg, #87ceeb, #b0e0e6)',
-            borderRadius: '4px',
-            boxShadow: 'inset 0 1px 2px rgba(255,255,255,0.3)'
-          }}
-        />
-        {/* Grade frontal do Opala - mais larga */}
-        <Box
-          style={{
-            position: 'absolute',
-            top: '3px',
-            left: '3px',
-            width: '12px',
+            top: '2px',
+            left: '8px',
+            width: '15px',
             height: '8px',
+            background: 'linear-gradient(135deg, #654321, #8B4513)',
+            borderRadius: '4px',
+            border: '1px solid #654321'
+          }}
+        />
+        {/* Assento da moto */}
+        <Box
+          style={{
+            position: 'absolute',
+            top: '1px',
+            left: '23px',
+            width: '12px',
+            height: '6px',
             background: 'linear-gradient(135deg, #333, #555)',
             borderRadius: '3px',
             border: '1px solid #222'
           }}
         />
-        {/* Rodas do Opala - maiores */}
+        {/* Rodas da moto - maiores */}
         <Box
           style={{
             position: 'absolute',
-            bottom: '-6px',
-            left: '10px',
-            width: '14px',
-            height: '14px',
+            bottom: '-8px',
+            left: '8px',
+            width: '16px',
+            height: '16px',
             background: 'radial-gradient(circle, #333, #000)',
             borderRadius: '50%',
             border: '2px solid #666',
@@ -200,79 +175,67 @@ export default function HighwayAnimation() {
         <Box
           style={{
             position: 'absolute',
-            bottom: '-6px',
-            right: '10px',
-            width: '14px',
-            height: '14px',
+            bottom: '-8px',
+            right: '8px',
+            width: '16px',
+            height: '16px',
             background: 'radial-gradient(circle, #333, #000)',
             borderRadius: '50%',
             border: '2px solid #666',
             boxShadow: '0 2px 4px rgba(0,0,0,0.5)'
           }}
         />
-        {/* Faróis do Opala - duplos */}
-        <Box
-          style={{
-            position: 'absolute',
-            top: '4px',
-            left: '4px',
-            width: '4px',
-            height: '4px',
-            background: 'radial-gradient(circle, #fff, #ffd700)',
-            borderRadius: '50%',
-            boxShadow: '0 0 8px rgba(255,215,0,0.8)'
-          }}
-        />
-        <Box
-          style={{
-            position: 'absolute',
-            top: '4px',
-            left: '9px',
-            width: '4px',
-            height: '4px',
-            background: 'radial-gradient(circle, #fff, #ffd700)',
-            borderRadius: '50%',
-            boxShadow: '0 0 8px rgba(255,215,0,0.8)'
-          }}
-        />
-        {/* Lanterna traseira do Opala */}
+        {/* Farol da moto */}
         <Box
           style={{
             position: 'absolute',
             top: '3px',
-            right: '3px',
-            width: '5px',
+            left: '2px',
+            width: '4px',
             height: '4px',
+            background: 'radial-gradient(circle, #fff, #ffd700)',
+            borderRadius: '50%',
+            boxShadow: '0 0 8px rgba(255,215,0,0.8)'
+          }}
+        />
+        {/* Lanterna traseira da moto */}
+        <Box
+          style={{
+            position: 'absolute',
+            top: '2px',
+            right: '2px',
+            width: '3px',
+            height: '3px',
             background: 'radial-gradient(circle, #ff0000, #cc0000)',
             borderRadius: '50%',
             boxShadow: '0 0 6px rgba(255,0,0,0.6)'
           }}
         />
-        {/* Para-choque traseiro do Opala */}
+        {/* Escape da moto */}
         <Box
           style={{
             position: 'absolute',
-            top: '0px',
-            right: '0px',
-            width: '8px',
-            height: '6px',
-            background: 'linear-gradient(135deg, #333, #555)',
-            borderRadius: '0px 8px 3px 0px',
-            borderBottom: '1px solid #222'
+            top: '1px',
+            right: '5px',
+            width: '4px',
+            height: '2px',
+            background: 'radial-gradient(circle, #666, #333)',
+            borderRadius: '50%',
+            boxShadow: '0 0 4px rgba(102,102,102,0.6)'
           }}
         />
       </motion.div>
 
-      {/* Skyline R33 - 3D indo para esquerda */}
+      {/* Moto Esportiva - 3D indo para esquerda */}
       <motion.div
         style={{
           position: 'absolute',
           top: '65%',
           right: '-80px',
-          width: '70px',
-          height: '24px',
+          width: '50px',
+          height: '18px',
           background: 'linear-gradient(135deg, #1a1a1a, #333333, #1a1a1a)',
-          borderRadius: '6px 3px 3px 6px',
+          borderRadius: '8px 4px 4px 8px',
           boxShadow: '0 8px 16px rgba(0,0,0,0.4), 0 0 20px rgba(26,26,26,0.3)',
           transform: 'rotateX(60deg) translateZ(25px)',
           zIndex: 4
@@ -286,159 +249,122 @@ export default function HighwayAnimation() {
           ease: "linear"
         }}
       >
-        {/* Capô longo e baixo do Skyline */}
+        {/* Guidão esportivo da moto */}
         <Box
           style={{
             position: 'absolute',
-            top: '0px',
+            top: '-3px',
             left: '0px',
-            width: '35px',
-            height: '8px',
-            background: 'linear-gradient(135deg, #000000, #1a1a1a)',
-            borderRadius: '4px 3px 0px 0px',
-            borderBottom: '1px solid #000'
-          }}
-        />
-        {/* Para-choque frontal esportivo */}
-        <Box
-          style={{
-            position: 'absolute',
-            top: '0px',
-            left: '0px',
-            width: '40px',
-            height: '4px',
-            background: 'linear-gradient(135deg, #000, #333)',
-            borderRadius: '2px 6px 0px 0px',
-            borderBottom: '1px solid #000'
-          }}
-        />
-        {/* Janelas do Skyline - mais baixas e esportivas */}
-        <Box
-          style={{
-            position: 'absolute',
-            top: '2px',
-            left: '18px',
-            width: '24px',
-            height: '8px',
-            background: 'linear-gradient(135deg, #87ceeb, #b0e0e6)',
-            borderRadius: '2px',
-            boxShadow: 'inset 0 1px 2px rgba(255,255,255,0.3)'
-          }}
-        />
-        <Box
-          style={{
-            position: 'absolute',
-            top: '2px',
-            right: '18px',
-            width: '24px',
-            height: '8px',
-            background: 'linear-gradient(135deg, #87ceeb, #b0e0e6)',
-            borderRadius: '2px',
-            boxShadow: 'inset 0 1px 2px rgba(255,255,255,0.3)'
-          }}
-        />
-        {/* Grade frontal esportiva do Skyline */}
-        <Box
-          style={{
-            position: 'absolute',
-            top: '1px',
-            left: '4px',
-            width: '14px',
-            height: '3px',
-            background: 'linear-gradient(135deg, #000, #333)',
-            borderRadius: '1px',
-            border: '1px solid #000'
-          }}
-        />
-        {/* Rodas do Skyline - esportivas */}
-        <Box
-          style={{
-            position: 'absolute',
-            bottom: '-5px',
-            left: '12px',
-            width: '14px',
-            height: '14px',
-            background: 'radial-gradient(circle, #333, #000)',
-            borderRadius: '50%',
-            border: '2px solid #666',
-            boxShadow: '0 2px 4px rgba(0,0,0,0.5)'
-          }}
-        />
-        <Box
-          style={{
-            position: 'absolute',
-            bottom: '-5px',
-            right: '12px',
-            width: '14px',
-            height: '14px',
-            background: 'radial-gradient(circle, #333, #000)',
-            borderRadius: '50%',
-            border: '2px solid #666',
-            boxShadow: '0 2px 4px rgba(0,0,0,0.5)'
-          }}
-        />
-        {/* Faróis do Skyline - duplos e esportivos */}
-        <Box
-          style={{
-            position: 'absolute',
-            top: '1px',
-            left: '5px',
-            width: '3px',
-            height: '3px',
-            background: 'radial-gradient(circle, #fff, #ffd700)',
-            borderRadius: '50%',
-            boxShadow: '0 0 6px rgba(255,215,0,0.8)'
-          }}
-        />
-        <Box
-          style={{
-            position: 'absolute',
-            top: '1px',
-            left: '9px',
-            width: '3px',
-            height: '3px',
-            background: 'radial-gradient(circle, #fff, #ffd700)',
-            borderRadius: '50%',
-            boxShadow: '0 0 6px rgba(255,215,0,0.8)'
-          }}
-        />
-        {/* Lanterna traseira do Skyline */}
-        <Box
-          style={{
-            position: 'absolute',
-            top: '1px',
-            right: '4px',
             width: '6px',
             height: '3px',
-            background: 'radial-gradient(circle, #ff0000, #cc0000)',
-            borderRadius: '50%',
-            boxShadow: '0 0 6px rgba(255,0,0,0.6)'
-          }}
-        />
-        {/* Spoiler do Skyline - mais proeminente */}
-        <Box
-          style={{
-            position: 'absolute',
-            top: '-4px',
-            right: '10px',
-            width: '12px',
-            height: '4px',
             background: 'linear-gradient(135deg, #000, #333)',
             borderRadius: '1px',
             border: '1px solid #000'
           }}
         />
-        {/* Saída de escape esportiva */}
+        {/* Tanque esportivo da moto */}
         <Box
           style={{
             position: 'absolute',
             top: '1px',
-            right: '2px',
+            left: '6px',
+            width: '12px',
+            height: '6px',
+            background: 'linear-gradient(135deg, #000000, #1a1a1a)',
+            borderRadius: '3px',
+            border: '1px solid #000'
+          }}
+        />
+        {/* Assento esportivo da moto */}
+        <Box
+          style={{
+            position: 'absolute',
+            top: '0px',
+            left: '18px',
+            width: '10px',
+            height: '4px',
+            background: 'linear-gradient(135deg, #000, #333)',
+            borderRadius: '2px',
+            border: '1px solid #000'
+          }}
+        />
+        {/* Rodas esportivas da moto */}
+        <Box
+          style={{
+            position: 'absolute',
+            bottom: '-7px',
+            left: '6px',
+            width: '15px',
+            height: '15px',
+            background: 'radial-gradient(circle, #333, #000)',
+            borderRadius: '50%',
+            border: '2px solid #666',
+            boxShadow: '0 2px 4px rgba(0,0,0,0.5)'
+          }}
+        />
+        <Box
+          style={{
+            position: 'absolute',
+            bottom: '-7px',
+            right: '6px',
+            width: '15px',
+            height: '15px',
+            background: 'radial-gradient(circle, #333, #000)',
+            borderRadius: '50%',
+            border: '2px solid #666',
+            boxShadow: '0 2px 4px rgba(0,0,0,0.5)'
+          }}
+        />
+        {/* Farol esportivo da moto */}
+        <Box
+          style={{
+            position: 'absolute',
+            top: '2px',
+            left: '1px',
             width: '3px',
+            height: '3px',
+            background: 'radial-gradient(circle, #fff, #ffd700)',
+            borderRadius: '50%',
+            boxShadow: '0 0 6px rgba(255,215,0,0.8)'
+          }}
+        />
+        {/* Lanterna traseira esportiva da moto */}
+        <Box
+          style={{
+            position: 'absolute',
+            top: '1px',
+            right: '1px',
+            width: '2px',
             height: '2px',
+            background: 'radial-gradient(circle, #ff0000, #cc0000)',
+            borderRadius: '50%',
+            boxShadow: '0 0 4px rgba(255,0,0,0.6)'
+          }}
+        />
+        {/* Escape esportivo da moto */}
+        <Box
+          style={{
+            position: 'absolute',
+            top: '0px',
+            right: '3px',
+            width: '3px',
+            height: '1px',
             background: 'radial-gradient(circle, #666, #333)',
             borderRadius: '50%',
-            boxShadow: '0 0 4px rgba(102,102,102,0.6)'
+            boxShadow: '0 0 3px rgba(102,102,102,0.6)'
+          }}
+        />
+        {/* Carenagem esportiva */}
+        <Box
+          style={{
+            position: 'absolute',
+            top: '-1px',
+            right: '8px',
+            width: '8px',
+            height: '3px',
+            background: 'linear-gradient(135deg, #000, #333)',
+            borderRadius: '1px',
+            border: '1px solid #000'
           }}
         />
       </motion.div>
