@@ -14,6 +14,7 @@ import FeatureFlags from '../content/patterns/feature-flags.tsx';
 import Dry from '../content/patterns/dry.tsx';
 import Kiss from '../content/patterns/kiss.tsx';
 import Yagni from '../content/patterns/yagni.tsx';
+import RepositoryPattern from '../content/patterns/repository-pattern.tsx';
 
 export interface DocMeta {
   slug: string;
@@ -55,6 +56,7 @@ export const patterns: DocMeta[] = [
   toMeta(ComponentDriven, 'component-driven', 'patterns'),
   toMeta(AtomicDesign, 'atomic-design', 'patterns'),
   toMeta(EventDriven, 'event-driven', 'patterns'),
+  toMeta(RepositoryPattern, 'repository-pattern', 'patterns'),
 ];
 
 // Técnicas de desenvolvimento - ferramentas e estratégias
