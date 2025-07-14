@@ -1,6 +1,7 @@
 import { Title, Text, Stack, Paper, Alert, List, ThemeIcon, Group, Card, Badge } from '@mantine/core';
 import { IconBulb, IconAlertTriangle, IconCheck, IconCode, IconSettings, IconBolt } from '@tabler/icons-react';
 import CodeExample from '../../components/CodeExample';
+import stateMachinesExamples from '../../utils/code-examples/state-machines.json';
 
 function StateMachines() {
   return (
@@ -64,24 +65,8 @@ function StateMachines() {
                   Cada estado tem comportamentos específicos.
                 </Text>
                 <CodeExample
-                  title="Estados de um formulário"
-                  code={{ content: `// Estados de um formulário
-const states = {
-  IDLE: 'idle',           // Formulário vazio
-  FILLING: 'filling',     // Usuário preenchendo
-  VALIDATING: 'validating', // Validando dados
-  SUBMITTING: 'submitting', // Enviando dados
-  SUCCESS: 'success',      // Enviado com sucesso
-  ERROR: 'error'           // Erro no envio
-};
-
-// Cada estado tem comportamentos específicos
-// IDLE: campos vazios, botão desabilitado
-// FILLING: campos editáveis, validação em tempo real
-// VALIDATING: campos desabilitados, loading
-// SUBMITTING: formulário travado, loading
-// SUCCESS: mensagem de sucesso, reset disponível
-// ERROR: mensagem de erro, retry disponível` }}
+                  title={stateMachinesExamples.find(e => e.id === 'state-machines-states')?.title || ''}
+                  code={stateMachinesExamples.find(e => e.id === 'state-machines-states')?.content || ''}
                 />
               </div>
             </Group>
@@ -97,26 +82,8 @@ const states = {
                   Cada evento pode mudar o estado.
                 </Text>
                 <CodeExample
-                  title="Eventos que causam transições"
-                  code={{ content: `// Eventos que causam transições
-const events = {
-  START_FILLING: 'START_FILLING',
-  VALIDATE: 'VALIDATE',
-  SUBMIT: 'SUBMIT',
-  SUCCESS: 'SUCCESS',
-  ERROR: 'ERROR',
-  RESET: 'RESET'
-};
-
-// Transições baseadas em eventos
-// IDLE + START_FILLING = FILLING
-// FILLING + VALIDATE = VALIDATING
-// VALIDATING + SUCCESS = SUCCESS
-// VALIDATING + ERROR = ERROR
-// QUALQUER_ESTADO + RESET = IDLE
-
-// Eventos são disparados por ações do usuário
-// ou por respostas de APIs` }}
+                  title={stateMachinesExamples.find(e => e.id === 'state-machines-events')?.title || ''}
+                  code={stateMachinesExamples.find(e => e.id === 'state-machines-events')?.content || ''}
                 />
               </div>
             </Group>
@@ -132,36 +99,8 @@ const events = {
                   Cada transição tem condições e ações.
                 </Text>
                 <CodeExample
-                  title="Transições bem definidas"
-                  code={{ content: `// Transições bem definidas
-const transitions = {
-  [states.IDLE]: {
-    [events.START_FILLING]: {
-      target: states.FILLING,
-      actions: ['enableFields', 'clearValidation']
-    }
-  },
-  [states.FILLING]: {
-    [events.VALIDATE]: {
-      target: states.VALIDATING,
-      actions: ['disableFields', 'showLoading']
-    }
-  },
-  [states.VALIDATING]: {
-    [events.SUCCESS]: {
-      target: states.SUCCESS,
-      actions: ['showSuccess', 'disableForm']
-    },
-    [events.ERROR]: {
-      target: states.ERROR,
-      actions: ['showError', 'enableFields']
-    }
-  }
-};
-
-// Transições são previsíveis
-// Comportamento controlado
-// Bugs impossíveis` }}
+                  title={stateMachinesExamples.find(e => e.id === 'state-machines-transitions')?.title || ''}
+                  code={stateMachinesExamples.find(e => e.id === 'state-machines-transitions')?.content || ''}
                 />
               </div>
             </Group>
@@ -275,148 +214,8 @@ const transitions = {
               </Text>
               
               <CodeExample
-                title="Formulário - Estados Complexos"
-                code={{ content: `// ❌ RUIM - Estados confusos
-function Form() {
-  const [isLoading, setIsLoading] = useState(false);
-  const [isValid, setIsValid] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [error, setError] = useState(null);
-  
-  const handleSubmit = async () => {
-    setIsLoading(true);
-    setError(null);
-    
-    try {
-      await submitForm();
-      setIsSubmitted(true);
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-  
-  // Estados confusos
-  // Bugs impossíveis
-  // UX inconsistente
-
-// ✅ BOM - State Machine
-import { createMachine, interpret } from 'xstate';
-
-const formMachine = createMachine({
-  id: 'form',
-  initial: 'idle',
-  states: {
-    idle: {
-      on: {
-        START_FILLING: 'filling'
-      }
-    },
-    filling: {
-      on: {
-        VALIDATE: 'validating',
-        RESET: 'idle'
-      }
-    },
-    validating: {
-      on: {
-        VALIDATION_SUCCESS: 'valid',
-        VALIDATION_ERROR: 'error'
-      }
-    },
-    valid: {
-      on: {
-        SUBMIT: 'submitting',
-        RESET: 'idle'
-      }
-    },
-    error: {
-      on: {
-        RETRY: 'validating',
-        RESET: 'idle'
-      }
-    },
-    submitting: {
-      on: {
-        SUCCESS: 'success',
-        ERROR: 'error'
-      }
-    },
-    success: {
-      on: {
-        RESET: 'idle'
-      }
-    }
-  }
-});
-
-function Form() {
-  const [state, send] = useMachine(formMachine);
-  
-  const handleSubmit = async () => {
-    send('SUBMIT');
-    
-    try {
-      await submitForm();
-      send('SUCCESS');
-    } catch (error) {
-      send('ERROR');
-    }
-  };
-  
-  return (
-    <form>
-      {state.matches('idle') && (
-        <button onClick={() => send('START_FILLING')}>
-          Começar
-        </button>
-      )}
-      
-      {state.matches('filling') && (
-        <div>
-          <input onChange={() => send('VALIDATE')} />
-          <button onClick={() => send('RESET')}>Reset</button>
-        </div>
-      )}
-      
-      {state.matches('validating') && (
-        <div>Validando...</div>
-      )}
-      
-      {state.matches('valid') && (
-        <div>
-          <input />
-          <button onClick={handleSubmit}>Enviar</button>
-          <button onClick={() => send('RESET')}>Reset</button>
-        </div>
-      )}
-      
-      {state.matches('submitting') && (
-        <div>Enviando...</div>
-      )}
-      
-      {state.matches('success') && (
-        <div>
-          <div>Sucesso!</div>
-          <button onClick={() => send('RESET')}>Novo Formulário</button>
-        </div>
-      )}
-      
-      {state.matches('error') && (
-        <div>
-          <div>Erro: {state.context.error}</div>
-          <button onClick={() => send('RETRY')}>Tentar Novamente</button>
-          <button onClick={() => send('RESET')}>Reset</button>
-        </div>
-      )}
-    </form>
-  );
-}
-
-// Estados previsíveis
-// Transições claras
-// UX consistente` }}
+                title={stateMachinesExamples.find(e => e.id === 'state-machines-form-bad')?.title || ''}
+                code={stateMachinesExamples.find(e => e.id === 'state-machines-form-bad')?.content || ''}
               />
             </Stack>
           </Paper>
@@ -435,141 +234,8 @@ function Form() {
               </Text>
               
               <CodeExample
-                title="Autenticação - Estados de Login"
-                code={{ content: `// ❌ RUIM - Estados confusos
-function AuthProvider() {
-  const [user, setUser] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [error, setError] = useState(null);
-  
-  const login = async (credentials) => {
-    setIsLoading(true);
-    setError(null);
-    
-    try {
-      const user = await loginAPI(credentials);
-      setUser(user);
-      setIsAuthenticated(true);
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-  
-  // Estados confusos
-  // Race conditions
-  // Bugs de segurança
-
-// ✅ BOM - State Machine
-const authMachine = createMachine({
-  id: 'auth',
-  initial: 'checking',
-  context: {
-    user: null,
-    error: null
-  },
-  states: {
-    checking: {
-      on: {
-        AUTHENTICATED: 'authenticated',
-        UNAUTHENTICATED: 'unauthenticated'
-      }
-    },
-    unauthenticated: {
-      on: {
-        LOGIN: 'loggingIn'
-      }
-    },
-    loggingIn: {
-      on: {
-        SUCCESS: 'authenticated',
-        ERROR: 'error'
-      }
-    },
-    authenticated: {
-      on: {
-        LOGOUT: 'loggingOut',
-        REFRESH: 'refreshing'
-      }
-    },
-    refreshing: {
-      on: {
-        SUCCESS: 'authenticated',
-        ERROR: 'unauthenticated'
-      }
-    },
-    loggingOut: {
-      on: {
-        SUCCESS: 'unauthenticated'
-      }
-    },
-    error: {
-      on: {
-        RETRY: 'loggingIn',
-        RESET: 'unauthenticated'
-      }
-    }
-  }
-});
-
-function AuthProvider({ children }) {
-  const [state, send] = useMachine(authMachine);
-  
-  useEffect(() => {
-    // Verifica token no carregamento
-    checkAuth().then(user => {
-      if (user) {
-        send('AUTHENTICATED', { user });
-      } else {
-        send('UNAUTHENTICATED');
-      }
-    });
-  }, []);
-  
-  const login = async (credentials) => {
-    send('LOGIN');
-    
-    try {
-      const user = await loginAPI(credentials);
-      send('SUCCESS', { user });
-    } catch (error) {
-      send('ERROR', { error: error.message });
-    }
-  };
-  
-  const logout = async () => {
-    send('LOGOUT');
-    
-    try {
-      await logoutAPI();
-      send('SUCCESS');
-    } catch (error) {
-      // Força logout mesmo com erro
-      send('SUCCESS');
-    }
-  };
-  
-  const value = {
-    user: state.context.user,
-    error: state.context.error,
-    isAuthenticated: state.matches('authenticated'),
-    isLoading: state.matches('checking') || state.matches('loggingIn'),
-    login,
-    logout
-  };
-  
-  return (
-    <AuthContext.Provider value={value}>
-      {children}
-    </AuthContext.Provider>
-  );
-}
-
-// Estados previsíveis
-// Transições seguras
-// Sem race conditions` }}
+                title={stateMachinesExamples.find(e => e.id === 'state-machines-auth-bad')?.title || ''}
+                code={stateMachinesExamples.find(e => e.id === 'state-machines-auth-bad')?.content || ''}
               />
             </Stack>
           </Paper>
@@ -588,163 +254,8 @@ function AuthProvider({ children }) {
               </Text>
               
               <CodeExample
-                title="Upload de Arquivos - Estados de Progresso"
-                code={{ content: `// ❌ RUIM - Estados confusos
-function FileUpload() {
-  const [isUploading, setIsUploading] = useState(false);
-  const [progress, setProgress] = useState(0);
-  const [isComplete, setIsComplete] = useState(false);
-  const [error, setError] = useState(null);
-  
-  const uploadFile = async (file) => {
-    setIsUploading(true);
-    setProgress(0);
-    setError(null);
-    
-    try {
-      await uploadAPI(file, (progress) => {
-        setProgress(progress);
-      });
-      setIsComplete(true);
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setIsUploading(false);
-    }
-  };
-  
-  // Estados confusos
-  // Progresso inconsistente
-  // UX ruim
-
-// ✅ BOM - State Machine
-const uploadMachine = createMachine({
-  id: 'upload',
-  initial: 'idle',
-  context: {
-    file: null,
-    progress: 0,
-    error: null
-  },
-  states: {
-    idle: {
-      on: {
-        SELECT_FILE: 'validating'
-      }
-    },
-    validating: {
-      on: {
-        VALIDATION_SUCCESS: 'ready',
-        VALIDATION_ERROR: 'error'
-      }
-    },
-    ready: {
-      on: {
-        UPLOAD: 'uploading',
-        CANCEL: 'idle'
-      }
-    },
-    uploading: {
-      on: {
-        PROGRESS: {
-          actions: 'updateProgress'
-        },
-        SUCCESS: 'success',
-        ERROR: 'error'
-      }
-    },
-    success: {
-      on: {
-        RESET: 'idle'
-      }
-    },
-    error: {
-      on: {
-        RETRY: 'uploading',
-        RESET: 'idle'
-      }
-    }
-  }
-});
-
-function FileUpload() {
-  const [state, send] = useMachine(uploadMachine);
-  
-  const handleFileSelect = (file) => {
-    send('SELECT_FILE', { file });
-    
-    // Valida arquivo
-    validateFile(file).then(isValid => {
-      if (isValid) {
-        send('VALIDATION_SUCCESS');
-      } else {
-        send('VALIDATION_ERROR', { error: 'Arquivo inválido' });
-      }
-    });
-  };
-  
-  const handleUpload = async () => {
-    send('UPLOAD');
-    
-    try {
-      await uploadAPI(state.context.file, (progress) => {
-        send('PROGRESS', { progress });
-      });
-      send('SUCCESS');
-    } catch (error) {
-      send('ERROR', { error: error.message });
-    }
-  };
-  
-  return (
-    <div>
-      {state.matches('idle') && (
-        <input 
-          type="file" 
-          onChange={(e) => handleFileSelect(e.target.files[0])}
-        />
-      )}
-      
-      {state.matches('validating') && (
-        <div>Validando arquivo...</div>
-      )}
-      
-      {state.matches('ready') && (
-        <div>
-          <div>Arquivo: {state.context.file.name}</div>
-          <button onClick={handleUpload}>Upload</button>
-          <button onClick={() => send('CANCEL')}>Cancelar</button>
-        </div>
-      )}
-      
-      {state.matches('uploading') && (
-        <div>
-          <div>Upload: {state.context.progress}%</div>
-          <progress value={state.context.progress} max="100" />
-        </div>
-      )}
-      
-      {state.matches('success') && (
-        <div>
-          <div>Upload concluído!</div>
-          <button onClick={() => send('RESET')}>Novo Upload</button>
-        </div>
-      )}
-      
-      {state.matches('error') && (
-        <div>
-          <div>Erro: {state.context.error}</div>
-          <button onClick={() => send('RETRY')}>Tentar Novamente</button>
-          <button onClick={() => send('RESET')}>Cancelar</button>
-        </div>
-      )}
-    </div>
-  );
-}
-
-// Estados previsíveis
-// Progresso consistente
-// UX excelente` }}
+                title={stateMachinesExamples.find(e => e.id === 'state-machines-upload-bad')?.title || ''}
+                code={stateMachinesExamples.find(e => e.id === 'state-machines-upload-bad')?.content || ''}
               />
             </Stack>
           </Paper>
@@ -774,37 +285,9 @@ function FileUpload() {
               </Text>
               
               <CodeExample
-                title="Over-engineering"
-                code={{ content: `// ❌ RUIM - State machine desnecessário
-const simpleMachine = createMachine({
-  id: 'simple',
-  initial: 'off',
-  states: {
-    off: {
-      on: { TOGGLE: 'on' }
-    },
-    on: {
-      on: { TOGGLE: 'off' }
-    }
-  }
-});
-
-// Desnecessário - é só um boolean
-
-// ✅ BOM - Lógica simples
-function Toggle() {
-  const [isOn, setIsOn] = useState(false);
-  
-  return (
-    <button onClick={() => setIsOn(!isOn)}>
-      {isOn ? 'Ligado' : 'Desligado'}
-    </button>
-  );
-}
-
-// State machine só quando necessário
-// Lógica complexa, múltiplos estados` }}
-                />
+                title={stateMachinesExamples.find(e => e.id === 'state-machines-pitfall-spaghetti')?.title || ''}
+                code={stateMachinesExamples.find(e => e.id === 'state-machines-pitfall-spaghetti')?.content || ''}
+              />
             </Stack>
           </Paper>
 
@@ -823,55 +306,9 @@ function Toggle() {
               </Text>
               
               <CodeExample
-                title="Transições Complexas"
-                code={{ content: `// ❌ RUIM - Transições complexas
-const complexMachine = createMachine({
-  states: {
-    idle: {
-      on: {
-        SUBMIT: {
-          target: 'loading',
-          cond: (context, event) => {
-            return context.isValid && 
-                   context.hasPermission && 
-                   !context.isBlocked &&
-                   context.network.isOnline;
-          }
-        }
-      }
-    }
-  }
-});
-
-// Difícil de entender
-// Difícil de testar
-
-// ✅ BOM - Transições simples
-const simpleMachine = createMachine({
-  states: {
-    idle: {
-      on: {
-        VALIDATE: 'validating'
-      }
-    },
-    validating: {
-      on: {
-        SUCCESS: 'ready',
-        ERROR: 'error'
-      }
-    },
-    ready: {
-      on: {
-        SUBMIT: 'loading'
-      }
-    }
-  }
-});
-
-// Transições claras
-// Fácil de entender
-// Fácil de testar` }}
-                />
+                title={stateMachinesExamples.find(e => e.id === 'state-machines-pitfall-complex-transitions')?.title || ''}
+                code={stateMachinesExamples.find(e => e.id === 'state-machines-pitfall-complex-transitions')?.content || ''}
+              />
             </Stack>
           </Paper>
 
@@ -890,55 +327,9 @@ const simpleMachine = createMachine({
               </Text>
               
               <CodeExample
-                title="Explosão de Estados"
-                code={{ content: `// ❌ RUIM - Muitos estados
-const complexMachine = createMachine({
-  states: {
-    idle: {},
-    loading: {},
-    success: {},
-    error: {},
-    retrying: {},
-    cancelled: {},
-    timeout: {},
-    networkError: {},
-    serverError: {},
-    validationError: {},
-    permissionError: {}
-  }
-});
-
-// Difícil de manter
-// Difícil de entender
-
-// ✅ BOM - Estados agrupados
-const simpleMachine = createMachine({
-  states: {
-    idle: {
-      on: { START: 'loading' }
-    },
-    loading: {
-      on: {
-        SUCCESS: 'success',
-        ERROR: 'error'
-      }
-    },
-    success: {
-      on: { RESET: 'idle' }
-    },
-    error: {
-      on: {
-        RETRY: 'loading',
-        RESET: 'idle'
-      }
-    }
-  }
-});
-
-// Estados simples
-// Fácil de manter
-// Fácil de entender` }}
-                />
+                title={stateMachinesExamples.find(e => e.id === 'state-machines-pitfall-impossible-states')?.title || ''}
+                code={stateMachinesExamples.find(e => e.id === 'state-machines-pitfall-impossible-states')?.content || ''}
+              />
             </Stack>
           </Paper>
 
@@ -957,61 +348,9 @@ const simpleMachine = createMachine({
               </Text>
               
               <CodeExample
-                title="Side Effects"
-                code={{ content: `// ❌ RUIM - Side effects misturados
-const badMachine = createMachine({
-  states: {
-    idle: {
-      on: {
-        SUBMIT: {
-          target: 'loading',
-          actions: [
-            'callAPI',
-            'updateUI',
-            'logEvent',
-            'showLoading'
-          ]
-        }
-      }
-    }
-  }
-});
-
-// Difícil de testar
-// Lógica espalhada
-
-// ✅ BOM - Side effects organizados
-const goodMachine = createMachine({
-  states: {
-    idle: {
-      on: {
-        SUBMIT: {
-          target: 'loading',
-          actions: ['prepareRequest']
-        }
-      }
-    },
-    loading: {
-      entry: ['showLoading', 'startRequest'],
-      exit: ['hideLoading'],
-      on: {
-        SUCCESS: {
-          target: 'success',
-          actions: ['handleSuccess']
-        },
-        ERROR: {
-          target: 'error',
-          actions: ['handleError']
-        }
-      }
-    }
-  }
-});
-
-// Side effects organizados
-// Fácil de testar
-// Lógica clara` }}
-                />
+                title={stateMachinesExamples.find(e => e.id === 'state-machines-actions')?.title || ''}
+                code={stateMachinesExamples.find(e => e.id === 'state-machines-actions')?.content || ''}
+              />
             </Stack>
           </Paper>
 
@@ -1030,51 +369,9 @@ const goodMachine = createMachine({
               </Text>
               
               <CodeExample
-                title="Testes"
-                code={{ content: `// ❌ RUIM - Testes difíceis
-// Como testar estados complexos?
-// Como testar transições?
-
-// ✅ BOM - Testes organizados
-import { createModel } from '@xstate/test';
-
-const testModel = createModel(formMachine).withEvents({
-  START_FILLING: {
-    exec: () => {
-      // Simula ação do usuário
-    }
-  },
-  VALIDATE: {
-    exec: () => {
-      // Simula validação
-    }
-  },
-  SUBMIT: {
-    exec: () => {
-      // Simula envio
-    }
-  }
-});
-
-const testPlans = testModel.getSimplePathPlans();
-
-testPlans.forEach((plan) => {
-  describe(plan.description, () => {
-    plan.paths.forEach((path) => {
-      it(path.description, async () => {
-        const service = interpret(formMachine);
-        service.start();
-        
-        await path.test(service);
-      });
-    });
-  });
-});
-
-// Testa todas as transições
-// Cobertura completa
-// Bugs detectados` }}
-                />
+                title={stateMachinesExamples.find(e => e.id === 'state-machines-pitfall-testing')?.title || ''}
+                code={stateMachinesExamples.find(e => e.id === 'state-machines-pitfall-testing')?.content || ''}
+              />
             </Stack>
           </Paper>
         </Stack>
@@ -1106,7 +403,6 @@ testPlans.forEach((plan) => {
                   <strong>"XState in Practice"</strong> - David Khourshid
                 </List.Item>
               </List>
-              
               <Text>
                 <strong>Artigos & Blogs:</strong>
               </Text>
@@ -1125,107 +421,6 @@ testPlans.forEach((plan) => {
                   <a href="https://statecharts.dev/" target="_blank">
                     Statecharts - Visual state machines
                   </a>
-                </List.Item>
-              </List>
-            </Stack>
-          </Paper>
-
-          {/* Real Cases */}
-          <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">🏢 Casos Reais de Sucesso</Title>
-            <Stack gap="md">
-              
-              <Card withBorder p="md">
-                <Title order={4} mb="sm">Netflix</Title>
-                <Text size="sm" mb="sm">
-                  <strong>Problema:</strong> Estados de player confusos, 
-                  bugs de reprodução, UX inconsistente.
-                </Text>
-                <Text size="sm" mb="sm">
-                  <strong>Solução:</strong> State machines para player. 
-                  Estados bem definidos, transições claras.
-                </Text>
-                <Text size="sm" c="dimmed">
-                  <strong>Resultado:</strong> Player mais estável, 
-                  menos bugs, UX consistente.
-                </Text>
-              </Card>
-
-              <Card withBorder p="md">
-                <Title order={4} mb="sm">Spotify</Title>
-                <Text size="sm" mb="sm">
-                  <strong>Problema:</strong> Estados de reprodução confusos, 
-                  bugs de controle, sincronização ruim.
-                </Text>
-                <Text size="sm" mb="sm">
-                  <strong>Solução:</strong> State machines para player. 
-                  Estados de reprodução bem definidos.
-                </Text>
-                <Text size="sm" c="dimmed">
-                  <strong>Resultado:</strong> Controles mais confiáveis, 
-                  sincronização melhor, menos bugs.
-                </Text>
-              </Card>
-
-              <Card withBorder p="md">
-                <Title order={4} mb="sm">Uber</Title>
-                <Text size="sm" mb="sm">
-                  <strong>Problema:</strong> Estados de viagem confusos, 
-                  bugs de tracking, UX inconsistente.
-                </Text>
-                <Text size="sm" mb="sm">
-                  <strong>Solução:</strong> State machines para viagens. 
-                  Estados de viagem bem definidos.
-                </Text>
-                <Text size="sm" c="dimmed">
-                  <strong>Resultado:</strong> Tracking mais preciso, 
-                  UX consistente, menos bugs.
-                </Text>
-              </Card>
-
-              <Card withBorder p="md">
-                <Title order={4} mb="sm">Airbnb</Title>
-                <Text size="sm" mb="sm">
-                  <strong>Problema:</strong> Estados de reserva confusos, 
-                  bugs de pagamento, UX inconsistente.
-                </Text>
-                <Text size="sm" mb="sm">
-                  <strong>Solução:</strong> State machines para reservas. 
-                  Estados de reserva bem definidos.
-                </Text>
-                <Text size="sm" c="dimmed">
-                  <strong>Resultado:</strong> Reservas mais confiáveis, 
-                  pagamentos seguros, UX consistente.
-                </Text>
-              </Card>
-            </Stack>
-          </Paper>
-
-          {/* Tools & Libraries */}
-          <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">🛠️ Ferramentas & Bibliotecas</Title>
-            <Stack gap="md">
-              <Text>
-                <strong>Ferramentas que facilitam State Machines:</strong>
-              </Text>
-              <List>
-                <List.Item>
-                  <strong>XState</strong> - State machine library para JavaScript
-                </List.Item>
-                <List.Item>
-                  <strong>Robot</strong> - Finite state machine library
-                </List.Item>
-                <List.Item>
-                  <strong>JavaScript State Machine</strong> - Lightweight library
-                </List.Item>
-                <List.Item>
-                  <strong>Stately</strong> - Visual state machine editor
-                </List.Item>
-                <List.Item>
-                  <strong>Statecharts</strong> - Visual state machine notation
-                </List.Item>
-                <List.Item>
-                  <strong>Redux Toolkit</strong> - State management com state machines
                 </List.Item>
               </List>
             </Stack>
