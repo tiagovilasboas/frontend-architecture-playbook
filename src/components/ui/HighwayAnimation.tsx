@@ -10,7 +10,7 @@ export default function HighwayAnimation() {
         width: '100%',
         overflow: 'hidden',
         perspective: '1000px',
-        background: 'linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 30%, #2d2d2d 70%, #0a0a0a 100%)',
+        background: 'linear-gradient(180deg, rgba(10,10,10,0.3) 0%, rgba(26,26,26,0.4) 30%, rgba(45,45,45,0.5) 70%, rgba(10,10,10,0.3) 100%)',
         borderRadius: '12px',
         margin: '20px 0',
         transform: 'rotateX(15deg)',
@@ -25,13 +25,13 @@ export default function HighwayAnimation() {
           left: 0,
           right: 0,
           height: '60px',
-          background: 'radial-gradient(ellipse at center, rgba(255,255,255,0.1) 0%, transparent 70%)',
+          background: 'radial-gradient(ellipse at center, rgba(255,255,255,0.05) 0%, transparent 70%)',
           backgroundImage: `
-            radial-gradient(2px 2px at 20px 30px, #fff, transparent),
-            radial-gradient(2px 2px at 40px 70px, #fff, transparent),
-            radial-gradient(1px 1px at 90px 40px, #fff, transparent),
-            radial-gradient(1px 1px at 130px 80px, #fff, transparent),
-            radial-gradient(2px 2px at 160px 30px, #fff, transparent)
+            radial-gradient(2px 2px at 20px 30px, rgba(255,255,255,0.3), transparent),
+            radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.3), transparent),
+            radial-gradient(1px 1px at 90px 40px, rgba(255,255,255,0.3), transparent),
+            radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.3), transparent),
+            radial-gradient(2px 2px at 160px 30px, rgba(255,255,255,0.3), transparent)
           `,
           zIndex: 1
         }}
@@ -45,9 +45,9 @@ export default function HighwayAnimation() {
           left: '50%',
           width: '8px',
           height: '100%',
-          background: 'linear-gradient(180deg, #ffd700 0%, #ffed4e 50%, #ffd700 100%)',
+          background: 'linear-gradient(180deg, rgba(255, 215, 0, 0.7) 0%, rgba(255, 237, 78, 0.8) 50%, rgba(255, 215, 0, 0.7) 100%)',
           transform: 'translateX(-50%) translateY(-50%) rotateX(60deg) translateZ(20px)',
-          boxShadow: '0 0 20px rgba(255, 215, 0, 0.5)',
+          boxShadow: '0 0 20px rgba(255, 215, 0, 0.3)',
           zIndex: 2
         }}
       />
@@ -60,7 +60,7 @@ export default function HighwayAnimation() {
           left: '50%',
           width: '2px',
           height: '100%',
-          background: 'repeating-linear-gradient(180deg, #ffd700 0px, #ffd700 30px, transparent 30px, transparent 60px)',
+          background: 'repeating-linear-gradient(180deg, rgba(255, 215, 0, 0.7) 0px, rgba(255, 215, 0, 0.7) 30px, transparent 30px, transparent 60px)',
           transform: 'translateX(-50%) translateY(-50%) rotateX(60deg) translateZ(15px)',
           zIndex: 2
         }}
@@ -74,9 +74,9 @@ export default function HighwayAnimation() {
           left: '20%',
           width: '8px',
           height: '60px',
-          background: 'linear-gradient(90deg, #666, #888, #666)',
+          background: 'linear-gradient(90deg, rgba(102,102,102,0.6), rgba(136,136,136,0.7), rgba(102,102,102,0.6))',
           transform: 'rotateX(60deg) translateZ(10px)',
-          boxShadow: '0 0 10px rgba(0,0,0,0.5)',
+          boxShadow: '0 0 10px rgba(0,0,0,0.3)',
           zIndex: 3
         }}
       />
@@ -89,9 +89,9 @@ export default function HighwayAnimation() {
           right: '20%',
           width: '8px',
           height: '60px',
-          background: 'linear-gradient(90deg, #666, #888, #666)',
+          background: 'linear-gradient(90deg, rgba(102,102,102,0.6), rgba(136,136,136,0.7), rgba(102,102,102,0.6))',
           transform: 'rotateX(60deg) translateZ(10px)',
-          boxShadow: '0 0 10px rgba(0,0,0,0.5)',
+          boxShadow: '0 0 10px rgba(0,0,0,0.3)',
           zIndex: 3
         }}
       />
@@ -399,7 +399,7 @@ export default function HighwayAnimation() {
           left: 0,
           right: 0,
           height: '100%',
-          background: 'radial-gradient(ellipse at center, rgba(255,215,0,0.05) 0%, transparent 70%)',
+          background: 'radial-gradient(ellipse at center, rgba(255,215,0,0.03) 0%, transparent 70%)',
           pointerEvents: 'none',
           zIndex: 5
         }}
@@ -413,9 +413,9 @@ export default function HighwayAnimation() {
           left: 0,
           right: 0,
           height: '20px',
-          background: 'linear-gradient(180deg, rgba(255,215,0,0.1) 0%, transparent 100%)',
+          background: 'linear-gradient(180deg, rgba(255,215,0,0.05) 0%, transparent 100%)',
           transform: 'scaleY(-1)',
-          opacity: 0.3,
+          opacity: 0.2,
           zIndex: 1
         }}
       />
