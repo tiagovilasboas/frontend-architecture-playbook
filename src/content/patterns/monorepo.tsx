@@ -1,6 +1,7 @@
 import { Title, Text, Stack, Paper, Alert, List, ThemeIcon, Group, Card, Badge } from '@mantine/core';
 import { IconBulb, IconAlertTriangle, IconCheck, IconCode, IconFolder, IconBrandGithub } from '@tabler/icons-react';
 import CodeExample from '../../components/CodeExample';
+import monorepoExamples from '../../utils/code-examples/monorepo.json';
 
 function Monorepo() {
   return (
@@ -62,8 +63,8 @@ function Monorepo() {
                   Libs compartilhadas entre projetos. Muda uma vez, todo mundo ganha.
                 </Text>
                 <CodeExample
-                  title="Compartilhamento de código"
-                  code="Compartilhamento de código"
+                  title={monorepoExamples.find(e => e.id === 'monorepo-code-sharing')?.title || ''}
+                  code={monorepoExamples.find(e => e.id === 'monorepo-code-sharing')?.content || ''}
                 />
               </div>
             </Group>
@@ -79,8 +80,8 @@ function Monorepo() {
                   funciona em todo lugar.
                 </Text>
                 <CodeExample
-                  title="Configuração centralizada"
-                  code="Configuração centralizada"
+                  title={monorepoExamples.find(e => e.id === 'monorepo-tooling-centralized')?.title || ''}
+                  code={monorepoExamples.find(e => e.id === 'monorepo-tooling-centralized')?.content || ''}
                 />
               </div>
             </Group>
@@ -96,8 +97,8 @@ function Monorepo() {
                   Sem quebrar nada.
                 </Text>
                 <CodeExample
-                  title="Dependências internas"
-                  code="Dependências internas"
+                  title={monorepoExamples.find(e => e.id === 'monorepo-safe-refactoring')?.title || ''}
+                  code={monorepoExamples.find(e => e.id === 'monorepo-safe-refactoring')?.content || ''}
                 />
               </div>
             </Group>
@@ -113,8 +114,8 @@ function Monorepo() {
                   Histórico completo, rastreabilidade total.
                 </Text>
                 <CodeExample
-                  title="Deploy coordenado"
-                  code="Deploy coordenado"
+                  title={monorepoExamples.find(e => e.id === 'monorepo-unified-versioning')?.title || ''}
+                  code={monorepoExamples.find(e => e.id === 'monorepo-unified-versioning')?.content || ''}
                 />
               </div>
             </Group>
@@ -227,46 +228,8 @@ function Monorepo() {
               </Text>
               
               <CodeExample
-                title="Design System - Componentes Compartilhados"
-                code={{ content: `// ❌ RUIM - Múltiplos repositórios
-// repo-web-app/
-// ├── src/components/Button.tsx
-// ├── src/components/Input.tsx
-// └── src/components/Card.tsx
-
-// repo-mobile-app/
-// ├── src/components/Button.tsx
-// ├── src/components/Input.tsx
-// └── src/components/Card.tsx
-
-// repo-admin-panel/
-// ├── src/components/Button.tsx
-// ├── src/components/Input.tsx
-// └── src/components/Card.tsx
-
-// Código duplicado, inconsistência visual
-
-// ✅ BOM - Monorepo
-// packages/ui/
-// ├── src/components/Button.tsx
-// ├── src/components/Input.tsx
-// └── src/components/Card.tsx
-
-// apps/web-app/
-// ├── src/pages/
-// └── package.json (depende de @repo/ui)
-
-// apps/mobile-app/
-// ├── src/screens/
-// └── package.json (depende de @repo/ui)
-
-// apps/admin-panel/
-// ├── src/pages/
-// └── package.json (depende de @repo/ui)
-
-// Muda um componente, muda em todo lugar
-// Consistência visual garantida
-// Fácil de manter` }}
+                title={monorepoExamples.find(e => e.id === 'monorepo-design-system')?.title || ''}
+                code={monorepoExamples.find(e => e.id === 'monorepo-design-system')?.content || ''}
               />
             </Stack>
           </Paper>
@@ -285,46 +248,8 @@ function Monorepo() {
               </Text>
               
               <CodeExample
-                title="Full-Stack - Front-end + Back-end"
-                code={{ content: `// ❌ RUIM - Repositórios separados
-// repo-frontend/
-// ├── src/types/User.ts
-// ├── src/validations/userSchema.ts
-// └── src/api/users.ts
-
-// repo-backend/
-// ├── src/types/User.ts
-// ├── src/validations/userSchema.ts
-// └── src/routes/users.ts
-
-// repo-mobile/
-// ├── src/types/User.ts
-// ├── src/validations/userSchema.ts
-// └── src/api/users.ts
-
-// Tipos duplicados, validações diferentes
-
-// ✅ BOM - Monorepo
-// packages/shared/
-// ├── src/types/User.ts
-// ├── src/validations/userSchema.ts
-// └── src/constants/api.ts
-
-// apps/frontend/
-// ├── src/pages/
-// └── package.json (depende de @repo/shared)
-
-// apps/backend/
-// ├── src/routes/
-// └── package.json (depende de @repo/shared)
-
-// apps/mobile/
-// ├── src/screens/
-// └── package.json (depende de @repo/shared)
-
-// Tipos compartilhados
-// Validações consistentes
-// Fácil de sincronizar` }}
+                title={monorepoExamples.find(e => e.id === 'monorepo-fullstack')?.title || ''}
+                code={monorepoExamples.find(e => e.id === 'monorepo-fullstack')?.content || ''}
               />
             </Stack>
           </Paper>
@@ -343,57 +268,8 @@ function Monorepo() {
               </Text>
               
               <CodeExample
-                title="Micro-frontends - Múltiplas Apps"
-                code={{ content: `// ❌ RUIM - Repositórios separados
-// repo-shell/
-// ├── .eslintrc.js
-// ├── .prettierrc
-// ├── tsconfig.json
-// └── package.json
-
-// repo-catalog/
-// ├── .eslintrc.js
-// ├── .prettierrc
-// ├── tsconfig.json
-// └── package.json
-
-// repo-cart/
-// ├── .eslintrc.js
-// ├── .prettierrc
-// ├── tsconfig.json
-// └── package.json
-
-// Configurações duplicadas, tooling diferente
-
-// ✅ BOM - Monorepo
-// packages/config/
-// ├── eslint-config/
-// ├── prettier-config/
-// └── typescript-config/
-
-// apps/shell/
-// ├── src/
-// └── package.json (usa @repo/config)
-
-// apps/catalog/
-// ├── src/
-// └── package.json (usa @repo/config)
-
-// apps/cart/
-// ├── src/
-// └── package.json (usa @repo/config)
-
-// apps/checkout/
-// ├── src/
-// └── package.json (usa @repo/config)
-
-// apps/profile/
-// ├── src/
-// └── package.json (usa @repo/config)
-
-// Tooling centralizado
-// Configurações consistentes
-// Fácil de manter` }}
+                title={monorepoExamples.find(e => e.id === 'monorepo-microfrontends')?.title || ''}
+                code={monorepoExamples.find(e => e.id === 'monorepo-microfrontends')?.content || ''}
               />
             </Stack>
           </Paper>
@@ -423,37 +299,8 @@ function Monorepo() {
               </Text>
               
               <CodeExample
-                title="Monorepo Gigante"
-                code={{ content: `// ❌ RUIM - Monorepo bagunçado
-// repo/
-// ├── app1/
-// ├── app2/
-// ├── app3/
-// ├── lib1/
-// ├── lib2/
-// ├── docs/
-// ├── scripts/
-// └── ...
-
-// Impossível de navegar
-
-// ✅ BOM - Organizado
-// repo/
-// ├── apps/
-// │   ├── web-app/
-// │   ├── mobile-app/
-// │   └── admin-panel/
-// ├── packages/
-// │   ├── ui/
-// │   ├── utils/
-// │   └── config/
-// ├── tools/
-// │   ├── eslint-config/
-// │   └── typescript-config/
-// └── docs/
-
-// Estrutura clara
-// Fácil de navegar` }}
+                title={monorepoExamples.find(e => e.id === 'monorepo-pitfall-giant')?.title || ''}
+                code={monorepoExamples.find(e => e.id === 'monorepo-pitfall-giant')?.content || ''}
               />
             </Stack>
           </Paper>
@@ -473,49 +320,8 @@ function Monorepo() {
               </Text>
               
               <CodeExample
-                title="Dependências Circulares"
-                code={{ content: `// ❌ RUIM - Dependências circulares
-// packages/ui/package.json
-{
-  "dependencies": {
-    "@repo/utils": "workspace:*"
-  }
-}
-
-// packages/utils/package.json
-{
-  "dependencies": {
-    "@repo/ui": "workspace:*"
-  }
-}
-
-// Dependência circular!
-
-// ✅ BOM - Estrutura hierárquica
-// packages/utils/package.json
-{
-  "name": "@repo/utils",
-  "dependencies": {}
-}
-
-// packages/ui/package.json
-{
-  "name": "@repo/ui",
-  "dependencies": {
-    "@repo/utils": "workspace:*"
-  }
-}
-
-// packages/app/package.json
-{
-  "dependencies": {
-    "@repo/ui": "workspace:*",
-    "@repo/utils": "workspace:*"
-  }
-}
-
-// Hierarquia clara
-// Sem dependências circulares` }}
+                title={monorepoExamples.find(e => e.id === 'monorepo-pitfall-dependencies')?.title || ''}
+                code={monorepoExamples.find(e => e.id === 'monorepo-pitfall-dependencies')?.content || ''}
               />
             </Stack>
           </Paper>
@@ -535,42 +341,8 @@ function Monorepo() {
               </Text>
               
               <CodeExample
-                title="Performance de Build"
-                code={{ content: `// ❌ RUIM - Build lento
-// package.json
-{
-  "scripts": {
-    "build": "cd apps/web && npm run build && cd ../mobile && npm run build"
-  }
-}
-
-// Sem cache, rebuild tudo sempre
-
-// ✅ BOM - Build otimizado
-// turbo.json
-{
-  "pipeline": {
-    "build": {
-      "dependsOn": ["^build"],
-      "outputs": ["dist/**"]
-    },
-    "dev": {
-      "cache": false
-    }
-  }
-}
-
-// package.json
-{
-  "scripts": {
-    "build": "turbo run build",
-    "dev": "turbo run dev"
-  }
-}
-
-// Cache inteligente
-// Build incremental
-// Só builda o que mudou` }}
+                title={monorepoExamples.find(e => e.id === 'monorepo-pitfall-build-slow')?.title || ''}
+                code={monorepoExamples.find(e => e.id === 'monorepo-pitfall-build-slow')?.content || ''}
               />
             </Stack>
           </Paper>
@@ -590,47 +362,8 @@ function Monorepo() {
               </Text>
               
               <CodeExample
-                title="Gestão de Versões"
-                code={{ content: `// ❌ RUIM - Versões descoordenadas
-// packages/ui/package.json
-{
-  "name": "@repo/ui",
-  "version": "1.2.3"
-}
-
-// packages/utils/package.json
-{
-  "name": "@repo/utils", 
-  "version": "2.1.0"
-}
-
-// apps/web/package.json
-{
-  "dependencies": {
-    "@repo/ui": "^1.2.3",
-    "@repo/utils": "^2.1.0"
-  }
-}
-
-// Versões descoordenadas
-
-// ✅ BOM - Versionamento coordenado
-// lerna.json
-{
-  "version": "1.2.3",
-  "packages": ["packages/*", "apps/*"]
-}
-
-// package.json
-{
-  "scripts": {
-    "version": "lerna version",
-    "publish": "lerna publish"
-  }
-}
-
-// Versões coordenadas
-// Deploy consistente` }}
+                title={monorepoExamples.find(e => e.id === 'monorepo-pitfall-versioning')?.title || ''}
+                code={monorepoExamples.find(e => e.id === 'monorepo-pitfall-versioning')?.content || ''}
               />
             </Stack>
           </Paper>
@@ -650,31 +383,8 @@ function Monorepo() {
               </Text>
               
               <CodeExample
-                title="Coordenação de Times"
-                code={{ content: `// ❌ RUIM - Sem coordenação
-// Time A muda lib compartilhada
-// Não testa em outros projetos
-// Quebra build de outros times
-
-// ✅ BOM - Coordenação
-// .github/workflows/ci.yml
-name: CI
-on: [push, pull_request]
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-      - run: npm install
-      - run: npm run test:all
-      - run: npm run build:all
-      - run: npm run lint:all
-
-// Testa todos os projetos
-// Build todos os projetos
-// Lint todos os projetos
-// Quebra build se algo falhar` }}
+                title={monorepoExamples.find(e => e.id === 'monorepo-pitfall-permissions')?.title || ''}
+                code={monorepoExamples.find(e => e.id === 'monorepo-pitfall-permissions')?.content || ''}
               />
             </Stack>
           </Paper>
@@ -707,7 +417,6 @@ jobs:
                   <strong>"Monorepo Patterns"</strong> - Various Authors
                 </List.Item>
               </List>
-              
               <Text>
                 <strong>Artigos & Blogs:</strong>
               </Text>
@@ -728,77 +437,6 @@ jobs:
                   </a>
                 </List.Item>
               </List>
-            </Stack>
-          </Paper>
-
-          {/* Real Cases */}
-          <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">🏢 Casos Reais de Sucesso</Title>
-            <Stack gap="md">
-              
-              <Card withBorder p="md">
-                <Title order={4} mb="sm">Google</Title>
-                <Text size="sm" mb="sm">
-                  <strong>Problema:</strong> Milhares de projetos, 
-                  código duplicado, tooling inconsistente.
-                </Text>
-                <Text size="sm" mb="sm">
-                  <strong>Solução:</strong> Monorepo gigante com Bazel. 
-                  Compartilhamento de código, build otimizado.
-                </Text>
-                <Text size="sm" c="dimmed">
-                  <strong>Resultado:</strong> Desenvolvimento mais eficiente, 
-                  menos duplicação, tooling centralizado.
-                </Text>
-              </Card>
-
-              <Card withBorder p="md">
-                <Title order={4} mb="sm">Facebook</Title>
-                <Text size="sm" mb="sm">
-                  <strong>Problema:</strong> Múltiplos produtos, 
-                  código compartilhado, refatoração difícil.
-                </Text>
-                <Text size="sm" mb="sm">
-                  <strong>Solução:</strong> Monorepo com Mercurial. 
-                  Compartilhamento de componentes, refatoração segura.
-                </Text>
-                <Text size="sm" c="dimmed">
-                  <strong>Resultado:</strong> Refatoração mais segura, 
-                  desenvolvimento mais rápido.
-                </Text>
-              </Card>
-
-              <Card withBorder p="md">
-                <Title order={4} mb="sm">Microsoft</Title>
-                <Text size="sm" mb="sm">
-                  <strong>Problema:</strong> Múltiplos produtos, 
-                  tooling diferente, inconsistência.
-                </Text>
-                <Text size="sm" mb="sm">
-                  <strong>Solução:</strong> Monorepo com Rush. 
-                  Tooling centralizado, dependências gerenciadas.
-                </Text>
-                <Text size="sm" c="dimmed">
-                  <strong>Resultado:</strong> Consistência entre produtos, 
-                  desenvolvimento mais eficiente.
-                </Text>
-              </Card>
-
-              <Card withBorder p="md">
-                <Title order={4} mb="sm">Uber</Title>
-                <Text size="sm" mb="sm">
-                  <strong>Problema:</strong> Múltiplas aplicações, 
-                  código duplicado, deploy complexo.
-                </Text>
-                <Text size="sm" mb="sm">
-                  <strong>Solução:</strong> Monorepo com Bazel. 
-                  Compartilhamento de código, deploy otimizado.
-                </Text>
-                <Text size="sm" c="dimmed">
-                  <strong>Resultado:</strong> Deploy mais rápido, 
-                  menos duplicação de código.
-                </Text>
-              </Card>
             </Stack>
           </Paper>
 
