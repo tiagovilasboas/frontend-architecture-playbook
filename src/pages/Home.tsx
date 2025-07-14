@@ -216,6 +216,11 @@ export default function Home() {
             </motion.div>
           </motion.section>
 
+          {/* Highway Animation - Topo */}
+          <motion.section variants={itemVariants}>
+            <HighwayAnimation />
+          </motion.section>
+
           {/* Content Sections */}
           <motion.section variants={itemVariants}>
             <Title order={2} mb="md" ta="center">
@@ -333,9 +338,6 @@ export default function Home() {
                   <IconAward size={32} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
                   Por que este Playbook Vale a Pena?
                 </Title>
-                
-                {/* Highway Animation */}
-                <HighwayAnimation />
                 
                 <SimpleGrid cols={{ base: 1, md: 3 }} spacing="md" w="100%">
                   <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}>
