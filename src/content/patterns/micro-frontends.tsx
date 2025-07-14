@@ -257,6 +257,7 @@ function MicroFrontends() {
           Referências & Casos Reais
         </Title>
         <Stack gap="xl">
+          {/* References */}
           <Paper withBorder p="xl" radius="md">
             <Title order={3} mb="md">📚 Referências</Title>
             <Stack gap="md">
@@ -291,36 +292,6 @@ function MicroFrontends() {
                   </a>
                 </List.Item>
               </List>
-            </Stack>
-          </Paper>
-
-          <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">🏢 Casos Reais de Sucesso</Title>
-            <Stack gap="md">
-              <Card withBorder p="md">
-                <Title order={4} mb="sm">Spotify</Title>
-                <Text size="sm" mb="sm">
-                  <strong>Problema:</strong> Produto gigante, múltiplos times, deploy lento.
-                </Text>
-                <Text size="sm" mb="sm">
-                  <strong>Solução:</strong> Micro-frontends para cada área do app.
-                </Text>
-                <Text size="sm" c="dimmed">
-                  <strong>Resultado:</strong> Deploys independentes, evolução rápida, UX consistente.
-                </Text>
-              </Card>
-              <Card withBorder p="md">
-                <Title order={4} mb="sm">Itaú</Title>
-                <Text size="sm" mb="sm">
-                  <strong>Problema:</strong> Vários produtos, times grandes, tecnologias diferentes.
-                </Text>
-                <Text size="sm" mb="sm">
-                  <strong>Solução:</strong> Micro-frontends com shell orquestrador.
-                </Text>
-                <Text size="sm" c="dimmed">
-                  <strong>Resultado:</strong> Escalabilidade, deploys rápidos, times autônomos.
-                </Text>
-              </Card>
             </Stack>
           </Paper>
         </Stack>
