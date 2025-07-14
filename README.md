@@ -12,7 +12,14 @@ Este playbook é um guia prático que resolve problemas reais de arquitetura fro
 
 ## 🚀 **Features**
 
-### **📚 Arquiteturas Cobertas**
+### **📚 Conteúdo Organizado por Contexto**
+- **🏗️ Arquiteturas** - Padrões arquiteturais principais
+- **🎯 Padrões** - Padrões de design e implementação
+- **⚡ Técnicas** - Técnicas específicas de desenvolvimento
+- **📖 Guias** - Guias práticos e decisões
+- **✅ Boas Práticas** - Princípios fundamentais
+
+### **🏗️ Arquiteturas Cobertas**
 - **Clean Architecture** - Separação clara de responsabilidades
 - **Component-Driven Development** - Reutilização e composição
 - **Micro-frontends** - Escalabilidade de times
@@ -26,6 +33,27 @@ Este playbook é um guia prático que resolve problemas reais de arquitetura fro
 - **Feature Flags** - Deploy seguro
 - **Atomic Design** - Design systems
 - **JAMstack** - Performance e simplicidade
+
+### **🎯 Padrões de Design**
+- **Repository Pattern** - Abstração de acesso a dados
+- **DRY** - Don't Repeat Yourself (lógica de negócio)
+- **KISS** - Keep It Simple, Stupid
+- **YAGNI** - You Aren't Gonna Need It
+
+### **⚡ Técnicas Avançadas**
+- **Dependency Injection** - Inversão de controle
+- **Code Splitting** - Otimização de performance
+- **Lazy Loading** - Carregamento sob demanda
+- **Error Boundaries** - Tratamento de erros
+- **Performance Monitoring** - Métricas reais
+
+### **✅ Boas Práticas Fundamentais**
+- **DRY** - Não repita lógica de negócio
+- **KISS** - Mantenha simples
+- **YAGNI** - Não implemente o que não precisa
+- **Clean Code** - Código legível e manutenível
+- **SRP** - Single Responsibility Principle
+- **SOC** - Separation of Concerns
 
 ### **🎯 Decision Wizard**
 - **Interativo** - Responde perguntas e encontra a arquitetura ideal
@@ -98,13 +126,26 @@ src/
 │   │   └── DecisionWizard.tsx
 │   ├── ui/            # Componentes de UI
 │   └── diagrams/      # Diagramas arquiteturais
-├── content/            # Conteúdo das arquiteturas
+├── content/            # Conteúdo organizado por contexto
 │   ├── guides/         # Guias práticos
 │   │   ├── how-to-choose.tsx
 │   │   └── dependency-rule.tsx
-│   └── patterns/       # Padrões arquiteturais (13 arquiteturas)
+│   ├── patterns/       # Padrões de design
+│   │   ├── dry.tsx
+│   │   ├── kiss.tsx
+│   │   ├── yagni.tsx
+│   │   └── repository-pattern.tsx
+│   ├── architectures/  # Arquiteturas principais
+│   │   ├── clean-architecture.tsx
+│   │   ├── component-driven.tsx
+│   │   ├── micro-frontends.tsx
+│   │   └── ...
+│   └── techniques/     # Técnicas específicas
+│       ├── dependency-injection.tsx
+│       ├── code-splitting.tsx
+│       └── ...
 ├── utils/              # Utilitários e dados
-│   └── code-examples.json # Exemplos centralizados
+│   └── code-examples/  # Exemplos por arquitetura
 ├── hooks/              # Custom hooks
 │   └── useNavigationActions.ts
 ├── types/              # Tipos TypeScript
@@ -162,16 +203,19 @@ O projeto usa code splitting inteligente:
 - Aprenda a escolher arquitetura certa
 - Evite over-engineering
 - Entenda trade-offs reais
+- Aplique boas práticas desde o início
 
 ### **Sênior/Tech Lead**
 - Base para decisões arquiteturais
 - Justificativas técnicas sólidas
 - Padrões testados em produção
+- Guia para refatoração
 
 ### **CTO/Arquitetos**
 - ROI das decisões técnicas
 - Escalabilidade de longo prazo
 - Redução de dívida técnica
+- Padrões para times
 
 ## 📚 **Conteúdo**
 
@@ -179,7 +223,21 @@ O projeto usa code splitting inteligente:
 - **Como Escolher** - Decision wizard interativo
 - **Dependency Rule** - Regra fundamental de arquitetura
 
-### **Padrões (13 arquiteturas)**
+### **Boas Práticas**
+- **DRY** - Não repita lógica de negócio
+- **KISS** - Mantenha simples
+- **YAGNI** - Não implemente o que não precisa
+- **Clean Code** - Código legível e manutenível
+- **SRP** - Single Responsibility Principle
+- **SOC** - Separation of Concerns
+
+### **Padrões**
+- **Repository Pattern** - Abstração de acesso a dados
+- **Dependency Injection** - Inversão de controle
+- **Observer Pattern** - Desacoplamento
+- **Factory Pattern** - Criação de objetos
+
+### **Arquiteturas (13 padrões)**
 - **Clean Architecture** - Separação de camadas
 - **Component-Driven** - Reutilização
 - **Micro-frontends** - Escalabilidade
@@ -193,6 +251,12 @@ O projeto usa code splitting inteligente:
 - **Feature Flags** - Deploy seguro
 - **Atomic Design** - Design systems
 - **JAMstack** - Performance e simplicidade
+
+### **Técnicas**
+- **Code Splitting** - Otimização de performance
+- **Lazy Loading** - Carregamento sob demanda
+- **Error Boundaries** - Tratamento de erros
+- **Performance Monitoring** - Métricas reais
 
 ## 🤝 **Contribuindo**
 

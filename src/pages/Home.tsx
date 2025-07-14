@@ -19,7 +19,10 @@ import {
   IconStar,
   IconAward,
   IconArrowRight,
-  IconBrandLinkedin
+  IconBrandLinkedin,
+  IconHeart,
+  IconBrain,
+  IconTools
 } from '@tabler/icons-react';
 import { useMediaQuery } from '@mantine/hooks';
 
@@ -114,6 +117,96 @@ export default function Home() {
           </Paper>
         </section>
 
+        {/* Content Sections */}
+        <section>
+          <Title order={2} mb="md" ta="center">
+            <IconBrain size={32} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
+            Conteúdo Organizado por Contexto
+          </Title>
+          <Text size="lg" c="dimmed" ta="center" mb="lg">
+            Encontre exatamente o que você precisa, quando precisa
+          </Text>
+          <SimpleGrid cols={{ base: 1, md: 2, lg: 3 }} spacing="md">
+            <Card withBorder p="lg" radius="md" component={Link} to="/architectures" style={{ textDecoration: 'none', transition: 'transform 0.2s ease' }} className="content-card">
+              <Stack gap="md" align="center" ta="center">
+                <ThemeIcon size={60} radius="md" variant="light" color="brand">
+                  <IconBuilding size={30} />
+                </ThemeIcon>
+                <Title order={3} size="h4">🏗️ Arquiteturas</Title>
+                <Text size="sm" c="dimmed">
+                  Padrões arquiteturais principais: Clean Architecture, Micro-frontends, Monorepo e mais
+                </Text>
+                <Badge color="brand" variant="light">13 padrões</Badge>
+              </Stack>
+            </Card>
+
+            <Card withBorder p="lg" radius="md" component={Link} to="/patterns" style={{ textDecoration: 'none', transition: 'transform 0.2s ease' }} className="content-card">
+              <Stack gap="md" align="center" ta="center">
+                <ThemeIcon size={60} radius="md" variant="light" color="green">
+                  <IconPuzzle size={30} />
+                </ThemeIcon>
+                <Title order={3} size="h4">🎯 Padrões</Title>
+                <Text size="sm" c="dimmed">
+                  Padrões de design e implementação: Repository, DRY, KISS, YAGNI
+                </Text>
+                <Badge color="green" variant="light">4 padrões</Badge>
+              </Stack>
+            </Card>
+
+            <Card withBorder p="lg" radius="md" component={Link} to="/techniques" style={{ textDecoration: 'none', transition: 'transform 0.2s ease' }} className="content-card">
+              <Stack gap="md" align="center" ta="center">
+                <ThemeIcon size={60} radius="md" variant="light" color="orange">
+                  <IconTools size={30} />
+                </ThemeIcon>
+                <Title order={3} size="h4">⚡ Técnicas</Title>
+                <Text size="sm" c="dimmed">
+                  Técnicas específicas: Code Splitting, Lazy Loading, Error Boundaries
+                </Text>
+                <Badge color="orange" variant="light">4 técnicas</Badge>
+              </Stack>
+            </Card>
+
+            <Card withBorder p="lg" radius="md" component={Link} to="/guides" style={{ textDecoration: 'none', transition: 'transform 0.2s ease' }} className="content-card">
+              <Stack gap="md" align="center" ta="center">
+                <ThemeIcon size={60} radius="md" variant="light" color="blue">
+                  <IconBook size={30} />
+                </ThemeIcon>
+                <Title order={3} size="h4">📖 Guias</Title>
+                <Text size="sm" c="dimmed">
+                  Guias práticos: Como escolher, Dependency Rule, decisões arquiteturais
+                </Text>
+                <Badge color="blue" variant="light">2 guias</Badge>
+              </Stack>
+            </Card>
+
+            <Card withBorder p="lg" radius="md" component={Link} to="/best-practices" style={{ textDecoration: 'none', transition: 'transform 0.2s ease' }} className="content-card">
+              <Stack gap="md" align="center" ta="center">
+                <ThemeIcon size={60} radius="md" variant="light" color="red">
+                  <IconHeart size={30} />
+                </ThemeIcon>
+                <Title order={3} size="h4">✅ Boas Práticas</Title>
+                <Text size="sm" c="dimmed">
+                  Princípios fundamentais: DRY, KISS, YAGNI, Clean Code, SRP, SOC
+                </Text>
+                <Badge color="red" variant="light">6 princípios</Badge>
+              </Stack>
+            </Card>
+
+            <Card withBorder p="lg" radius="md" component={Link} to="/guides/how-to-choose" style={{ textDecoration: 'none', transition: 'transform 0.2s ease' }} className="content-card">
+              <Stack gap="md" align="center" ta="center">
+                <ThemeIcon size={60} radius="md" variant="light" color="purple">
+                  <IconTarget size={30} />
+                </ThemeIcon>
+                <Title order={3} size="h4">🎯 Decision Wizard</Title>
+                <Text size="sm" c="dimmed">
+                  Encontre a arquitetura ideal para seu projeto com perguntas diretas
+                </Text>
+                <Badge color="purple" variant="light">Interativo</Badge>
+              </Stack>
+            </Card>
+          </SimpleGrid>
+        </section>
+
         {/* Value Proposition */}
         <section>
           <Paper withBorder p="lg" radius="lg">
@@ -165,7 +258,7 @@ export default function Home() {
           <SimpleGrid cols={{ base: 1, sm: 2, md: 4 }} spacing="md" mb="lg">
             <StatsCard 
               icon={IconCode}
-              value="12+"
+              value="13+"
               label="Arquiteturas Dominadas"
               color="brand"
             />
