@@ -127,7 +127,7 @@ export default function Home() {
             Encontre exatamente o que você precisa, quando precisa
           </Text>
           <SimpleGrid cols={{ base: 1, md: 2, lg: 3 }} spacing="md">
-            <Card withBorder p="lg" radius="md" component={Link} to="/guides" style={{ textDecoration: 'none', transition: 'transform 0.2s ease' }} className="content-card">
+            <Card withBorder p="lg" radius="md" component={Link} to="/guides/how-to-choose" style={{ textDecoration: 'none', transition: 'transform 0.2s ease' }} className="content-card">
               <Stack gap="md" align="center" ta="center">
                 <ThemeIcon size={60} radius="md" variant="light" color="blue">
                   <IconBook size={30} />
@@ -140,7 +140,7 @@ export default function Home() {
               </Stack>
             </Card>
 
-            <Card withBorder p="lg" radius="md" component={Link} to="/best-practices" style={{ textDecoration: 'none', transition: 'transform 0.2s ease' }} className="content-card">
+            <Card withBorder p="lg" radius="md" component={Link} to="/best-practices/dry" style={{ textDecoration: 'none', transition: 'transform 0.2s ease' }} className="content-card">
               <Stack gap="md" align="center" ta="center">
                 <ThemeIcon size={60} radius="md" variant="light" color="red">
                   <IconHeart size={30} />
@@ -153,7 +153,7 @@ export default function Home() {
               </Stack>
             </Card>
 
-            <Card withBorder p="lg" radius="md" component={Link} to="/architectures" style={{ textDecoration: 'none', transition: 'transform 0.2s ease' }} className="content-card">
+            <Card withBorder p="lg" radius="md" component={Link} to="/architectures/clean-architecture" style={{ textDecoration: 'none', transition: 'transform 0.2s ease' }} className="content-card">
               <Stack gap="md" align="center" ta="center">
                 <ThemeIcon size={60} radius="md" variant="light" color="brand">
                   <IconBuilding size={30} />
@@ -166,7 +166,7 @@ export default function Home() {
               </Stack>
             </Card>
 
-            <Card withBorder p="lg" radius="md" component={Link} to="/patterns" style={{ textDecoration: 'none', transition: 'transform 0.2s ease' }} className="content-card">
+            <Card withBorder p="lg" radius="md" component={Link} to="/patterns/component-driven" style={{ textDecoration: 'none', transition: 'transform 0.2s ease' }} className="content-card">
               <Stack gap="md" align="center" ta="center">
                 <ThemeIcon size={60} radius="md" variant="light" color="green">
                   <IconPuzzle size={30} />
@@ -179,7 +179,7 @@ export default function Home() {
               </Stack>
             </Card>
 
-            <Card withBorder p="lg" radius="md" component={Link} to="/techniques" style={{ textDecoration: 'none', transition: 'transform 0.2s ease' }} className="content-card">
+            <Card withBorder p="lg" radius="md" component={Link} to="/techniques/feature-flags" style={{ textDecoration: 'none', transition: 'transform 0.2s ease' }} className="content-card">
               <Stack gap="md" align="center" ta="center">
                 <ThemeIcon size={60} radius="md" variant="light" color="orange">
                   <IconTools size={30} />
