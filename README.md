@@ -25,6 +25,7 @@ Este playbook é um guia prático que resolve problemas reais de arquitetura fro
 - **Event-Driven** - Desacoplamento
 - **Feature Flags** - Deploy seguro
 - **Atomic Design** - Design systems
+- **JAMstack** - Performance e simplicidade
 
 ### **🎯 Decision Wizard**
 - **Interativo** - Responde perguntas e encontra a arquitetura ideal
@@ -32,7 +33,8 @@ Este playbook é um guia prático que resolve problemas reais de arquitetura fro
 - **Prático** - Baseado em experiência real
 
 ### **💻 Exemplos Reais**
-- **Código testável** - Exemplos que funcionam
+- **Código centralizado** - Todos os exemplos em `src/utils/code-examples.json`
+- **Componente CodeExample** - Renderização dinâmica e consistente
 - **Casos de uso** - E-commerce, dashboard, analytics
 - **Armadilhas** - Problemas comuns e como evitar
 - **Referências** - Livros, artigos e casos reais
@@ -86,24 +88,29 @@ npm run lint
 ```
 src/
 ├── components/          # Componentes reutilizáveis
+│   ├── CodeExample.tsx # Renderização centralizada de código
 │   ├── DocsShell.tsx   # Layout principal
 │   ├── NavMenu.tsx     # Menu lateral
 │   ├── NavItem.tsx     # Item de menu
 │   ├── HeaderBar.tsx   # Header com Dependency Rule
-│   └── Footer.tsx      # Footer
+│   ├── Footer.tsx      # Footer
+│   ├── interactive/    # Componentes interativos
+│   │   └── DecisionWizard.tsx
+│   ├── ui/            # Componentes de UI
+│   └── diagrams/      # Diagramas arquiteturais
 ├── content/            # Conteúdo das arquiteturas
 │   ├── guides/         # Guias práticos
 │   │   ├── how-to-choose.tsx
 │   │   └── dependency-rule.tsx
-│   └── patterns/       # Padrões arquiteturais
+│   └── patterns/       # Padrões arquiteturais (13 arquiteturas)
+├── utils/              # Utilitários e dados
+│   └── code-examples.json # Exemplos centralizados
 ├── hooks/              # Custom hooks
 │   └── useNavigationActions.ts
 ├── types/              # Tipos TypeScript
 │   └── index.ts
 ├── pages/              # Páginas da aplicação
-├── examples/           # Exemplos de código real
-└── lib/                # Utilitários
-    └── content.ts
+└── examples/           # Exemplos de código real
 ```
 
 ## 🎨 **Design System**
@@ -137,6 +144,7 @@ O projeto usa code splitting inteligente:
 - **ESLint** - Padrões consistentes
 - **Husky** - Pre-commit hooks
 - **Lint-staged** - Validação automática
+- **Exemplos centralizados** - JSON único para todos os exemplos
 
 ## 🎨 **Diretrizes de Tema**
 
@@ -146,7 +154,7 @@ O projeto usa code splitting inteligente:
 - **Teste sempre** - Verifique ambos os temas antes de commitar
 - **Header/Footer** - Fundos mais escuros para destaque
 
-> 📋 Veja as regras em `.cursorrules` para diretrizes detalhadas
+> 📋 Veja as regras em `.cursor/rules.md` para diretrizes detalhadas
 
 ## 🎯 **Para Quem é?**
 
@@ -171,7 +179,7 @@ O projeto usa code splitting inteligente:
 - **Como Escolher** - Decision wizard interativo
 - **Dependency Rule** - Regra fundamental de arquitetura
 
-### **Padrões**
+### **Padrões (13 arquiteturas)**
 - **Clean Architecture** - Separação de camadas
 - **Component-Driven** - Reutilização
 - **Micro-frontends** - Escalabilidade
@@ -184,6 +192,7 @@ O projeto usa code splitting inteligente:
 - **Event-Driven** - Desacoplamento
 - **Feature Flags** - Deploy seguro
 - **Atomic Design** - Design systems
+- **JAMstack** - Performance e simplicidade
 
 ## 🤝 **Contribuindo**
 
