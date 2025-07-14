@@ -751,7 +751,6 @@ export const Secondary = () => <Button variant="secondary">Button</Button>;` }}
                   <strong>"Component Design"</strong> - Nathan Curtis
                 </List.Item>
               </List>
-              
               <Text>
                 <strong>Artigos & Blogs:</strong>
               </Text>
@@ -770,107 +769,6 @@ export const Secondary = () => <Button variant="secondary">Button</Button>;` }}
                   <a href="https://www.uxpin.com/studio/blog/design-systems-vs-component-libraries/" target="_blank">
                     Design Systems vs Component Libraries
                   </a>
-                </List.Item>
-              </List>
-            </Stack>
-          </Paper>
-
-          {/* Real Cases */}
-          <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">🏢 Casos Reais de Sucesso</Title>
-            <Stack gap="md">
-              
-              <Card withBorder p="md">
-                <Title order={4} mb="sm">Airbnb</Title>
-                <Text size="sm" mb="sm">
-                  <strong>Problema:</strong> Interface inconsistente, 
-                  cada tela feita do zero. Impossível de manter.
-                </Text>
-                <Text size="sm" mb="sm">
-                  <strong>Solução:</strong> Design system com componentes reutilizáveis. 
-                  DLS (Design Language System).
-                </Text>
-                <Text size="sm" c="dimmed">
-                  <strong>Resultado:</strong> Desenvolvimento 60% mais rápido, 
-                  consistência visual em toda plataforma.
-                </Text>
-              </Card>
-
-              <Card withBorder p="md">
-                <Title order={4} mb="sm">Spotify</Title>
-                <Text size="sm" mb="sm">
-                  <strong>Problema:</strong> Múltiplas plataformas (web, mobile, desktop) 
-                  com interfaces diferentes.
-                </Text>
-                <Text size="sm" mb="sm">
-                  <strong>Solução:</strong> Componentes reutilizáveis entre plataformas. 
-                  Design system centralizado.
-                </Text>
-                <Text size="sm" c="dimmed">
-                  <strong>Resultado:</strong> Experiência consistente, 
-                  desenvolvimento mais rápido.
-                </Text>
-              </Card>
-
-              <Card withBorder p="md">
-                <Title order={4} mb="sm">Shopify</Title>
-                <Text size="sm" mb="sm">
-                  <strong>Problema:</strong> Polaris design system. 
-                  Muitos desenvolvedores, interfaces inconsistentes.
-                </Text>
-                <Text size="sm" mb="sm">
-                  <strong>Solução:</strong> Componentes reutilizáveis com documentação. 
-                  Storybook para testes visuais.
-                </Text>
-                <Text size="sm" c="dimmed">
-                  <strong>Resultado:</strong> Desenvolvimento padronizado, 
-                  menos bugs de interface.
-                </Text>
-              </Card>
-
-              <Card withBorder p="md">
-                <Title order={4} mb="sm">Microsoft</Title>
-                <Text size="sm" mb="sm">
-                  <strong>Problema:</strong> Fluent UI. Múltiplos produtos, 
-                  interfaces diferentes.
-                </Text>
-                <Text size="sm" mb="sm">
-                  <strong>Solução:</strong> Sistema de componentes reutilizáveis. 
-                  Design tokens para consistência.
-                </Text>
-                <Text size="sm" c="dimmed">
-                  <strong>Resultado:</strong> Experiência unificada, 
-                  desenvolvimento mais eficiente.
-                </Text>
-              </Card>
-            </Stack>
-          </Paper>
-
-          {/* Tools & Libraries */}
-          <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">🛠️ Ferramentas & Bibliotecas</Title>
-            <Stack gap="md">
-              <Text>
-                <strong>Ferramentas que facilitam Component-Driven:</strong>
-              </Text>
-              <List>
-                <List.Item>
-                  <strong>Storybook</strong> - Documentação e testes visuais
-                </List.Item>
-                <List.Item>
-                  <strong>React DevTools</strong> - Debug de componentes
-                </List.Item>
-                <List.Item>
-                  <strong>Styled Components</strong> - CSS-in-JS para componentes
-                </List.Item>
-                <List.Item>
-                  <strong>Emotion</strong> - CSS-in-JS performático
-                </List.Item>
-                <List.Item>
-                  <strong>Framer Motion</strong> - Animações de componentes
-                </List.Item>
-                <List.Item>
-                  <strong>React Testing Library</strong> - Testes de componentes
                 </List.Item>
               </List>
             </Stack>
