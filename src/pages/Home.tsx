@@ -110,28 +110,28 @@ export default function Home() {
         <Stack gap={isMobile ? 'sm' : 'lg'}>
           {/* Hero Section */}
           <motion.section variants={heroVariants}>
-            <Stack align="center" ta="center" mb={isMobile ? 'md' : 'lg'}>
+            <Stack align="center" ta="center" mb={isMobile ? 'md' : 56} mt={isMobile ? 0 : 32}>
               <motion.div variants={floatingVariants} animate="animate">
-                <Badge size={isMobile ? 'sm' : 'lg'} variant="light" color="brand" mb={isMobile ? 'xs' : 'md'}>
+                <Badge size={isMobile ? 'sm' : 'lg'} variant="light" color="brand" mb={isMobile ? 'xs' : 24}>
                   <IconStar size={isMobile ? 12 : 16} style={{ marginRight: 8 }} />
                   Guia Prático para Devs
                 </Badge>
               </motion.div>
               
               <motion.div variants={itemVariants}>
-                <HeroTitle size={isSmallMobile ? '1.5rem' : isMobile ? '2rem' : '3.5rem'} mb={isMobile ? 'sm' : 'md'} style={{ lineHeight: isMobile ? 1.1 : 1.2 }}>
+                <HeroTitle size={isSmallMobile ? '1.5rem' : isMobile ? '2rem' : '3.5rem'} mb={isMobile ? 'sm' : 24} style={{ lineHeight: isMobile ? 1.1 : 1.15 }}>
                   Front-End Architecture Playbook
                 </HeroTitle>
               </motion.div>
               
               <motion.div variants={itemVariants}>
-                <Text size={isMobile ? 'md' : 'xl'} c="dimmed" mb={isMobile ? 'sm' : 'md'}>
+                <Text size={isMobile ? 'md' : 'xl'} c="dimmed" mb={isMobile ? 'sm' : 32} style={{ maxWidth: isMobile ? 340 : 700, margin: '0 auto', lineHeight: isMobile ? 1.4 : 1.6 }}>
                   Sabe aquele código que vira um inferno de manter? Então, quase sempre é culpa de arquitetura ruim. Não é papo de arquiteto, é dor real de dev. <strong>Arquitetura não é luxo, é sobrevivência.</strong>
                 </Text>
               </motion.div>
               
               <motion.div variants={itemVariants}>
-                <Group gap={isMobile ? 'sm' : 'md'} mt={isMobile ? 'sm' : 'md'}>
+                <Group gap={isMobile ? 'sm' : 24} mt={isMobile ? 'sm' : 0} mb={isMobile ? 0 : 8}>
                   <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                     <Button 
                       component={Link} 
@@ -175,7 +175,7 @@ export default function Home() {
             </Stack>
             
             <motion.div variants={itemVariants}>
-              <Paper withBorder p={isMobile ? 'md' : 'lg'} radius="lg" mb={isMobile ? 'md' : 'lg'} bg="none">
+              <Paper withBorder p={isMobile ? 'md' : 'lg'} radius="lg" mb={isMobile ? 'md' : 40} mt={isMobile ? 0 : 32} bg="none">
                 <Stack gap={isMobile ? 'sm' : 'md'} align="center">
                   <Group gap={isMobile ? 'xs' : 'sm'}>
                     <motion.div variants={pulseVariants} animate="animate">
@@ -234,87 +234,76 @@ export default function Home() {
                   No código é igual. Se a base é ruim, não tem dev sênior que salve.
                 </Text>
 
-                <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="lg" w="100%" mt="md">
-                  <Card withBorder p="md" radius="md">
+                <SimpleGrid cols={{ base: 1, sm: 2 }} spacing={isMobile ? 'lg' : 32} w="100%" mt="md">
+                  <Card withBorder p={isMobile ? 'md' : 28} radius="md">
                     <Stack gap="sm">
                       <Group gap="sm">
-                        <ThemeIcon size="lg" variant="light" color="green">
-                          <IconRocket size={20} />
+                        <ThemeIcon size={isMobile ? 'lg' : 44} radius="md" variant="light" color="green">
+                          <IconRocket size={isMobile ? 20 : 28} />
                         </ThemeIcon>
-                        <Text fw={600} size="md">Pistas largas e bem asfaltadas</Text>
+                        <Text fw={700} size={isMobile ? 'md' : 'lg'} style={{ letterSpacing: -0.5 }}>Pistas largas e bem asfaltadas</Text>
                       </Group>
-                      <Text size="sm" c="dimmed">
+                      <Text size={isMobile ? 'sm' : 'md'} c="dimmed" ta="left">
                         ⇒ componentes desacoplados, performance na veia.
                       </Text>
                     </Stack>
                   </Card>
-
-                  <Card withBorder p="md" radius="md">
+                  <Card withBorder p={isMobile ? 'md' : 28} radius="md">
                     <Stack gap="sm">
                       <Group gap="sm">
-                        <ThemeIcon size="lg" variant="light" color="blue">
-                          <IconBook size={20} />
+                        <ThemeIcon size={isMobile ? 'lg' : 44} radius="md" variant="light" color="blue">
+                          <IconBook size={isMobile ? 20 : 28} />
                         </ThemeIcon>
-                        <Text fw={600} size="md">Placas claras</Text>
+                        <Text fw={700} size={isMobile ? 'md' : 'lg'} style={{ letterSpacing: -0.5 }}>Placas claras</Text>
                       </Group>
-                      <Text size="sm" c="dimmed">
+                      <Text size={isMobile ? 'sm' : 'md'} c="dimmed" ta="left">
                         ⇒ documentação enxuta que orienta cada rota sem confundir ninguém.
                       </Text>
                     </Stack>
                   </Card>
-
-                  <Card withBorder p="md" radius="md">
+                  <Card withBorder p={isMobile ? 'md' : 28} radius="md">
                     <Stack gap="sm">
                       <Group gap="sm">
-                        <ThemeIcon size="lg" variant="light" color="orange">
-                          <IconShield size={20} />
+                        <ThemeIcon size={isMobile ? 'lg' : 44} radius="md" variant="light" color="orange">
+                          <IconShield size={isMobile ? 20 : 28} />
                         </ThemeIcon>
-                        <Text fw={600} size="md">Radares e lombadas</Text>
+                        <Text fw={700} size={isMobile ? 'md' : 'lg'} style={{ letterSpacing: -0.5 }}>Radares e lombadas</Text>
                       </Group>
-                      <Text size="sm" c="dimmed">
+                      <Text size={isMobile ? 'sm' : 'md'} c="dimmed" ta="left">
                         ⇒ testes automatizados que evitam acidentes em produção.
                       </Text>
                     </Stack>
                   </Card>
-
-                  <Card withBorder p="md" radius="md">
+                  <Card withBorder p={isMobile ? 'md' : 28} radius="md">
                     <Stack gap="sm">
                       <Group gap="sm">
-                        <ThemeIcon size="lg" variant="light" color="purple">
-                          <IconPuzzle size={20} />
+                        <ThemeIcon size={isMobile ? 'lg' : 44} radius="md" variant="light" color="purple">
+                          <IconPuzzle size={isMobile ? 20 : 28} />
                         </ThemeIcon>
-                        <Text fw={600} size="md">Saídas estratégicas</Text>
+                        <Text fw={700} size={isMobile ? 'md' : 'lg'} style={{ letterSpacing: -0.5 }}>Saídas estratégicas</Text>
                       </Group>
-                      <Text size="sm" c="dimmed">
+                      <Text size={isMobile ? 'sm' : 'md'} c="dimmed" ta="left">
                         ⇒ pontos de extensão e refatoração previstos desde o início.
                       </Text>
                     </Stack>
                   </Card>
-
-                  <Card
-                    withBorder
-                    p="md"
-                    radius="md"
-                    style={{
-                      ...(typeof window !== 'undefined' && window.innerWidth >= 640 ? { gridColumn: 'span 2' } : {})
-                    }}
-                  >
+                  <Card withBorder p={isMobile ? 'md' : 28} radius="md" style={{ ...(typeof window !== 'undefined' && window.innerWidth >= 640 ? { gridColumn: 'span 2' } : {}) }}>
                     <Stack gap="sm">
                       <Group gap="sm">
-                        <ThemeIcon size="lg" variant="light" color="red">
-                          <IconTools size={20} />
+                        <ThemeIcon size={isMobile ? 'lg' : 44} radius="md" variant="light" color="red">
+                          <IconTools size={isMobile ? 20 : 28} />
                         </ThemeIcon>
-                        <Text fw={600} size="md">Manutenção constante</Text>
+                        <Text fw={700} size={isMobile ? 'md' : 'lg'} style={{ letterSpacing: -0.5 }}>Manutenção constante</Text>
                       </Group>
-                      <Text size="sm" c="dimmed">
+                      <Text size={isMobile ? 'sm' : 'md'} c="dimmed" ta="left">
                         ⇒ monitoramento e alertas que tapam os buracos antes de virarem crateras.
                       </Text>
                     </Stack>
                   </Card>
                 </SimpleGrid>
 
-                <Alert color="brand" icon={<IconBulb size={20} />} radius="md">
-                  <Text size="md" lh={1.6}>
+                <Alert color="brand" icon={<IconBulb size={isMobile ? 20 : 28} />} radius="md" style={{ padding: isMobile ? 16 : 32, maxWidth: 900, margin: '32px auto 0 auto' }}>
+                  <Text size={isMobile ? 'md' : 'lg'} lh={1.6} ta="center">
                     Quando esses elementos faltam, o resultado é sempre o mesmo: gargalo, retrabalho, bug bizarro, deploy travado, time estressado. Já quando a arquitetura é bem pensada, ninguém nem percebe: tudo flui, entrega chega no prazo, e o usuário nem imagina o perrengue que você evitou.
                   </Text>
                 </Alert>
