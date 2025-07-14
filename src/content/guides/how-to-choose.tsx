@@ -47,6 +47,73 @@ export default function HowToChoose() {
           </Paper>
         </section>
 
+        {/* Context Matters Section */}
+        <section>
+          <Paper withBorder p={isMobile ? 'md' : 'xl'} radius="lg">
+            <Stack gap={isMobile ? 'sm' : 'lg'}>
+              <Stack align="center" ta="center" mb={isMobile ? 'sm' : 'md'}>
+                <Title order={2} mb={isMobile ? 'xs' : 'sm'} size={isMobile ? '1.2rem' : undefined}>
+                  <IconBulb size={isMobile ? 20 : 32} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
+                  Mas, ó: Contexto é Tudo
+                </Title>
+              </Stack>
+              
+              <Alert color="orange" icon={<IconCheck size={isMobile ? 16 : 20} />} radius="md">
+                <Text size={isMobile ? 'sm' : 'md'} fw={600} mb={isMobile ? 2 : 'sm'}>
+                  Isso aqui não tá escrito em pedra
+                </Text>
+                <Text size={isMobile ? 'xs' : 'sm'} c="dimmed">
+                  Arquitetura não é receita de bolo. O que faz sentido pra um MVP pode virar um inferno num SaaS gigante, 
+                  e o que parece overkill pra um projeto pequeno pode salvar sua pele quando o negócio explode.
+                </Text>
+              </Alert>
+
+              <Text size={isMobile ? 'sm' : 'md'} c="dimmed" ta="center" maw={700}>
+                Antes de sair copiando padrão, tenta entender o máximo possível do negócio:
+              </Text>
+
+              <SimpleGrid cols={{ base: 1, md: 2 }} spacing={isMobile ? 'sm' : 'md'}>
+                <Stack gap="xs">
+                  <Text size={isMobile ? 'sm' : 'md'} fw={600}>📈 Pra onde esse projeto quer ir?</Text>
+                  <Text size={isMobile ? 'xs' : 'sm'} c="dimmed">
+                    Vai crescer rápido? Precisa escalar pra milhares de usuários ou é mais nicho?
+                  </Text>
+                </Stack>
+
+                <Stack gap="xs">
+                  <Text size={isMobile ? 'sm' : 'md'} fw={600}>👥 O time é grande ou só você?</Text>
+                  <Text size={isMobile ? 'xs' : 'sm'} c="dimmed">
+                    Micro-frontends fazem sentido com 10+ devs, mas são overkill pra 2 pessoas.
+                  </Text>
+                </Stack>
+
+                <Stack gap="xs">
+                  <Text size={isMobile ? 'sm' : 'md'} fw={600}>🔗 Precisa integrar com muita coisa?</Text>
+                  <Text size={isMobile ? 'xs' : 'sm'} c="dimmed">
+                    APIs externas, sistemas legados, múltiplos backends? Isso muda tudo.
+                  </Text>
+                </Stack>
+
+                <Stack gap="xs">
+                  <Text size={isMobile ? 'sm' : 'md'} fw={600}>⏰ Tem prazo apertado?</Text>
+                  <Text size={isMobile ? 'xs' : 'sm'} c="dimmed">
+                    Clean Architecture é ótima, mas se você tem 2 semanas, vai com SPA mesmo.
+                  </Text>
+                </Stack>
+              </SimpleGrid>
+
+              <Alert color="blue" icon={<IconBulb size={isMobile ? 16 : 20} />} radius="md">
+                <Text size={isMobile ? 'sm' : 'md'} fw={600} mb={isMobile ? 2 : 'sm'}>
+                  Essas perguntas são só um ponto de partida
+                </Text>
+                <Text size={isMobile ? 'xs' : 'sm'} c="dimmed">
+                  O segredo é ajustar a arquitetura conforme o projeto evolui. Não existe bala de prata, existe contexto.
+                </Text>
+              </Alert>
+            </Stack>
+          </Paper>
+        </section>
+
         {/* Tips Section */}
         <section>
           <Title order={2} mb={isMobile ? 'md' : 'lg'} ta="center" size={isMobile ? '1.2rem' : undefined}>
