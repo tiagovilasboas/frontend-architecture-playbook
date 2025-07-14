@@ -1,6 +1,7 @@
 import { Title, Text, Stack, Paper, Alert, List, ThemeIcon, Group, Card, Badge } from '@mantine/core';
 import { IconBulb, IconAlertTriangle, IconCheck, IconCode, IconSettings2, IconSettings } from '@tabler/icons-react';
 import CodeExample from '../../components/CodeExample';
+import featureFlagsExamples from '../../utils/code-examples/feature-flags.json';
 
 function FeatureFlags() {
   return (
@@ -66,8 +67,8 @@ function FeatureFlags() {
                   Veja o exemplo real em <b>/examples/feature-flags/use-feature-flag.ts</b>
                 </Text>
                 <CodeExample
-                  title="useFeatureFlag"
-                  code="useFeatureFlag"
+                  title={featureFlagsExamples.find(e => e.id === 'feature-flags-use-flag')?.title || ''}
+                  code={featureFlagsExamples.find(e => e.id === 'feature-flags-use-flag')?.content || ''}
                 />
               </div>
             </Group>
@@ -82,8 +83,8 @@ function FeatureFlags() {
                   Sistemas que gerenciam e distribuem flags. Local, API, CDN.
                 </Text>
                 <CodeExample
-                  title="Provider simples"
-                  code="Provider simples"
+                  title={featureFlagsExamples.find(e => e.id === 'feature-flags-provider')?.title || ''}
+                  code={featureFlagsExamples.find(e => e.id === 'feature-flags-provider')?.content || ''}
                 />
               </div>
             </Group>
@@ -98,8 +99,8 @@ function FeatureFlags() {
                   Regras que determinam quem vê qual funcionalidade. Usuário, localização, porcentagem.
                 </Text>
                 <CodeExample
-                  title="Targeting por usuário"
-                  code="Targeting por usuário"
+                  title={featureFlagsExamples.find(e => e.id === 'feature-flags-targeting')?.title || ''}
+                  code={featureFlagsExamples.find(e => e.id === 'feature-flags-targeting')?.content || ''}
                 />
               </div>
             </Group>
@@ -114,8 +115,8 @@ function FeatureFlags() {
                   Sistemas para desativar flags rapidamente e monitorar impacto.
                 </Text>
                 <CodeExample
-                  title="Rollback automático"
-                  code="Rollback automático"
+                  title={featureFlagsExamples.find(e => e.id === 'feature-flags-rollback')?.title || ''}
+                  code={featureFlagsExamples.find(e => e.id === 'feature-flags-rollback')?.content || ''}
                 />
               </div>
             </Group>
@@ -227,58 +228,9 @@ function FeatureFlags() {
               </Text>
               
               <CodeExample
-                title="E-commerce - Novo Checkout"
-                description="Exemplo de uso de feature flags para controlar o novo checkout"
-                code={{ content: `// ❌ RUIM - Deploy tradicional
-// Deploy com novo checkout
-// Se der problema, precisa fazer novo deploy
-// Rollback demora 30 minutos
-
-// ✅ BOM - Feature Flags
-// Deploy sempre com ambos os checkouts
-// Flag controla qual usar
-
-// Hook para feature flags
-function useFeatureFlag(flagKey, defaultValue = false) {
-  const [isEnabled, setIsEnabled] = useState(defaultValue);
-  
-  useEffect(() => {
-    fetchFeatureFlag(flagKey).then(setIsEnabled);
-  }, [flagKey]);
-  
-  return isEnabled;
-}
-
-// Componente com flag
-function CheckoutPage() {
-  const newCheckoutEnabled = useFeatureFlag('new-checkout', false);
-  
-  return (
-    <div>
-      {newCheckoutEnabled ? (
-        <NewCheckoutFlow />
-      ) : (
-        <LegacyCheckoutFlow />
-      )}
-    </div>
-  );
-}
-
-// Novo checkout sempre no ar
-function NewCheckoutFlow() {
-  // Código do novo checkout
-  return (
-    <div>
-      <NewPaymentForm />
-      <NewShippingForm />
-      <NewReviewForm />
-    </div>
-  );
-}
-
-// Se der problema, desativa flag
-// Rollback em segundos, não em minutos
-// Testa com 10%, depois 50%, depois 100%` }}
+                title={featureFlagsExamples.find(e => e.id === 'feature-flags-ecommerce-checkout')?.title || ''}
+                description={featureFlagsExamples.find(e => e.id === 'feature-flags-ecommerce-checkout')?.description || ''}
+                code={featureFlagsExamples.find(e => e.id === 'feature-flags-ecommerce-checkout')?.content || ''}
               />
             </Stack>
           </Paper>
@@ -296,80 +248,9 @@ function NewCheckoutFlow() {
               </Text>
               
               <CodeExample
-                title="Dashboard - Nova UI"
-                description="Exemplo de uso de feature flags para controlar a nova UI do dashboard"
-                code={{ content: `// ❌ RUIM - Deploy por ambiente
-// Deploy em staging
-// Testa com time
-// Deploy em produção
-// Se der problema, rollback demorado
-
-// ✅ BOM - Feature Flags
-// Deploy sempre em produção
-// Flag controla quem vê
-
-// Sistema de targeting
-class FlagTargeting {
-  isUserEligible(user, flagConfig) {
-    // Por usuário específico
-    if (flagConfig.targetUsers?.includes(user.id)) {
-      return true;
-    }
-    
-    // Por role
-    if (flagConfig.targetRoles?.includes(user.role)) {
-      return true;
-    }
-    
-    // Por porcentagem
-    if (flagConfig.rolloutPercentage) {
-      return this.isUserInRollout(user.id, flagConfig.rolloutPercentage);
-    }
-    
-    return false;
-  }
-}
-
-// Hook com targeting
-function useTargetedFeatureFlag(flagKey, user) {
-  const [isEnabled, setIsEnabled] = useState(false);
-  
-  useEffect(() => {
-    fetchFlagWithTargeting(flagKey, user).then(setIsEnabled);
-  }, [flagKey, user]);
-  
-  return isEnabled;
-}
-
-// Dashboard com flag
-function Dashboard({ user }) {
-  const newUIEnabled = useTargetedFeatureFlag('dashboard-new-ui', user);
-  
-  return (
-    <div>
-      {newUIEnabled ? (
-        <NewDashboardUI user={user} />
-      ) : (
-        <LegacyDashboardUI user={user} />
-      )}
-    </div>
-  );
-}
-
-// Controle granular
-const FLAG_CONFIG = {
-  'dashboard-new-ui': {
-    enabled: true,
-    targetUsers: ['user-123', 'user-456'],
-    targetRoles: ['admin', 'beta-tester'],
-    rolloutPercentage: 25 // 25% dos usuários
-  }
-};
-
-// Ativa para usuários específicos
-// Testa com beta testers
-// Expande gradualmente
-// Rollback instantâneo se necessário` }}
+                title={featureFlagsExamples.find(e => e.id === 'feature-flags-dashboard-ui')?.title || ''}
+                description={featureFlagsExamples.find(e => e.id === 'feature-flags-dashboard-ui')?.description || ''}
+                code={featureFlagsExamples.find(e => e.id === 'feature-flags-dashboard-ui')?.content || ''}
               />
             </Stack>
           </Paper>
@@ -399,41 +280,9 @@ const FLAG_CONFIG = {
                   consistentes, documente flags.
                 </Text>
                 <CodeExample
-                  title="Flag Hell"
-                  description="Como evitar a complexidade de múltiplas flags"
-                  code={{ content: `// ❌ RUIM - Flags espalhadas
-function Component() {
-  const flag1 = useFeatureFlag('flag1');
-  const flag2 = useFeatureFlag('flag2');
-  const flag3 = useFeatureFlag('flag3');
-  
-  if (flag1 && flag2 && !flag3) {
-    return <ComponentA />;
-  } else if (flag2 && flag3) {
-    return <ComponentB />;
-  }
-  // Lógica confusa...
-}
-
-// ✅ BOM - Lógica centralizada
-class FeatureFlagManager {
-  getComponentVariant(flags) {
-    if (flags.newUI && flags.beta) {
-      return 'new-beta';
-    }
-    if (flags.newUI) {
-      return 'new';
-    }
-    return 'legacy';
-  }
-}
-
-function Component() {
-  const flags = useFeatureFlags();
-  const variant = flagManager.getComponentVariant(flags);
-  
-  return <Component variant={variant} />;
-}` }}
+                  title={featureFlagsExamples.find(e => e.id === 'feature-flags-pitfall-flag-hell')?.title || ''}
+                  description={featureFlagsExamples.find(e => e.id === 'feature-flags-pitfall-flag-hell')?.description || ''}
+                  code={featureFlagsExamples.find(e => e.id === 'feature-flags-pitfall-flag-hell')?.content || ''}
                 />
               </Card>
 
@@ -448,36 +297,9 @@ function Component() {
                   documente quando remover.
                 </Text>
                 <CodeExample
-                  title="Dead Code"
-                  description="Como evitar o código morto"
-                  code={{ content: `// ❌ RUIM - Código morto
-function Component() {
-  const oldFeature = useFeatureFlag('old-feature'); // Nunca usado
-  const newFeature = useFeatureFlag('new-feature');
-  
-  return <div>{newFeature && <NewComponent />}</div>;
-}
-
-// ✅ BOM - Limpeza automática
-class FlagCleanup {
-  scheduleCleanup(flagKey, days = 30) {
-    setTimeout(() => {
-      if (isFlagUnused(flagKey)) {
-        removeFlag(flagKey);
-        cleanupCode(flagKey);
-      }
-    }, days * 24 * 60 * 60 * 1000);
-  }
-}
-
-// Documentação clara
-const FLAG_LIFECYCLE = {
-  'new-checkout': {
-    created: '2024-01-01',
-    cleanupAfter: '2024-02-01', // Remove em 30 dias
-    description: 'Novo checkout - remover código antigo após estabilização'
-  }
-};` }}
+                  title={featureFlagsExamples.find(e => e.id === 'feature-flags-pitfall-dead-code')?.title || ''}
+                  description={featureFlagsExamples.find(e => e.id === 'feature-flags-pitfall-dead-code')?.description || ''}
+                  code={featureFlagsExamples.find(e => e.id === 'feature-flags-pitfall-dead-code')?.content || ''}
                 />
               </Card>
 
@@ -492,46 +314,9 @@ const FLAG_LIFECYCLE = {
                   carregue flags no início.
                 </Text>
                 <CodeExample
-                  title="Performance Issues"
-                  description="Como evitar problemas de performance com feature flags"
-                  code={{ content: `// ❌ RUIM - Muitas chamadas
-function Component() {
-  const flag1 = useFeatureFlag('flag1'); // API call
-  const flag2 = useFeatureFlag('flag2'); // API call
-  const flag3 = useFeatureFlag('flag3'); // API call
-  // 3 chamadas desnecessárias
-}
-
-// ✅ BOM - Cache e batch
-class FlagProvider {
-  private cache = new Map();
-  private pendingRequests = new Map();
-  
-  async getFlag(key) {
-    if (this.cache.has(key)) {
-      return this.cache.get(key);
-    }
-    
-    if (this.pendingRequests.has(key)) {
-      return this.pendingRequests.get(key);
-    }
-    
-    const promise = this.fetchFlag(key);
-    this.pendingRequests.set(key, promise);
-    
-    const result = await promise;
-    this.cache.set(key, result);
-    this.pendingRequests.delete(key);
-    
-    return result;
-  }
-  
-  // Carrega todas as flags de uma vez
-  async loadAllFlags() {
-    const flags = await fetch('/api/flags');
-    flags.forEach(flag => this.cache.set(flag.key, flag.value));
-  }
-}` }}
+                  title={featureFlagsExamples.find(e => e.id === 'feature-flags-pitfall-many-calls')?.title || ''}
+                  description={featureFlagsExamples.find(e => e.id === 'feature-flags-pitfall-many-calls')?.description || ''}
+                  code={featureFlagsExamples.find(e => e.id === 'feature-flags-pitfall-many-calls')?.content || ''}
                 />
               </Card>
 
@@ -546,53 +331,9 @@ class FlagProvider {
                   teste cada variante isoladamente.
                 </Text>
                 <CodeExample
-                  title="Testing Complexity"
-                  description="Como evitar testes complexos com múltiplas combinações de flags"
-                  code={{ content: `// ❌ RUIM - Testes complexos
-test('Component with flags', () => {
-  // Testa todas as combinações
-  const flagCombinations = [
-    { flag1: true, flag2: false },
-    { flag1: false, flag2: true },
-    { flag1: true, flag2: true },
-    // 8 combinações...
-  ];
-  
-  flagCombinations.forEach(flags => {
-    render(<Component flags={flags} />);
-    // Testes...
-  });
-});
-
-// ✅ BOM - Testes isolados
-// Mock do provider
-const mockFlagProvider = {
-  getFlag: jest.fn()
-};
-
-test('Component with new feature', () => {
-  mockFlagProvider.getFlag.mockReturnValue(true);
-  
-  render(
-    <FlagProvider value={mockFlagProvider}>
-      <Component />
-    </FlagProvider>
-  );
-  
-  expect(screen.getByText('New Feature')).toBeInTheDocument();
-});
-
-test('Component without new feature', () => {
-  mockFlagProvider.getFlag.mockReturnValue(false);
-  
-  render(
-    <FlagProvider value={mockFlagProvider}>
-      <Component />
-    </FlagProvider>
-  );
-  
-  expect(screen.getByText('Old Feature')).toBeInTheDocument();
-});` }}
+                  title={featureFlagsExamples.find(e => e.id === 'feature-flags-pitfall-complex-tests')?.title || ''}
+                  description={featureFlagsExamples.find(e => e.id === 'feature-flags-pitfall-complex-tests')?.description || ''}
+                  code={featureFlagsExamples.find(e => e.id === 'feature-flags-pitfall-complex-tests')?.content || ''}
                 />
               </Card>
             </Stack>
@@ -626,7 +367,6 @@ test('Component without new feature', () => {
                   <strong>"The Pragmatic Programmer"</strong> - Andrew Hunt & David Thomas
                 </List.Item>
               </List>
-              
               <Text>
                 <strong>Artigos & Blogs:</strong>
               </Text>
@@ -647,61 +387,6 @@ test('Component without new feature', () => {
                   </a>
                 </List.Item>
               </List>
-            </Stack>
-          </Paper>
-
-          {/* Real Cases */}
-          <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">🏢 Casos Reais de Sucesso</Title>
-            <Stack gap="md">
-              
-              <Card withBorder p="md">
-                <Title order={4} mb="sm">Netflix</Title>
-                <Text size="sm" mb="sm">
-                  <strong>Problema:</strong> Deploy de novas funcionalidades com risco 
-                  de quebrar experiência de milhões de usuários.
-                </Text>
-                <Text size="sm" mb="sm">
-                  <strong>Solução:</strong> Sistema robusto de feature flags para 
-                  gradual rollout e rollback instantâneo.
-                </Text>
-                <Text size="sm" c="dimmed">
-                  <strong>Resultado:</strong> Deploy seguro, testes em produção, 
-                  rollback em segundos.
-                </Text>
-              </Card>
-
-              <Card withBorder p="md">
-                <Title order={4} mb="sm">Facebook</Title>
-                <Text size="sm" mb="sm">
-                  <strong>Problema:</strong> Aplicação gigante com milhares de 
-                  desenvolvedores, risco alto de quebrar funcionalidades.
-                </Text>
-                <Text size="sm" mb="sm">
-                  <strong>Solução:</strong> Feature flags para controle granular 
-                  de funcionalidades por usuário, região, dispositivo.
-                </Text>
-                <Text size="sm" c="dimmed">
-                  <strong>Resultado:</strong> Deploy contínuo seguro, 
-                  testes A/B em larga escala.
-                </Text>
-              </Card>
-
-              <Card withBorder p="md">
-                <Title order={4} mb="sm">Spotify</Title>
-                <Text size="sm" mb="sm">
-                  <strong>Problema:</strong> Múltiplos times desenvolvendo 
-                  funcionalidades simultaneamente, risco de conflitos.
-                </Text>
-                <Text size="sm" mb="sm">
-                  <strong>Solução:</strong> Feature flags para isolar 
-                  funcionalidades por time e funcionalidade.
-                </Text>
-                <Text size="sm" c="dimmed">
-                  <strong>Resultado:</strong> Times independentes, 
-                  deploy sem conflitos, rollback granular.
-                </Text>
-              </Card>
             </Stack>
           </Paper>
         </Stack>
