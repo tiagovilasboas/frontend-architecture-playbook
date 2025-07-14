@@ -71,6 +71,7 @@ function StateMachines() {
                       title={example.title}
                       description={example.description}
                       code={example.content}
+                     
                     />
                   ))}
                 </Stack>
@@ -94,6 +95,7 @@ function StateMachines() {
                       title={example.title}
                       description={example.description}
                       code={example.content}
+                     
                     />
                   ))}
                 </Stack>
@@ -117,6 +119,7 @@ function StateMachines() {
                       title={example.title}
                       description={example.description}
                       code={example.content}
+                     
                     />
                   ))}
                 </Stack>
@@ -238,6 +241,7 @@ function StateMachines() {
                     title={example.title}
                     description={example.description}
                     code={example.content}
+                   
                   />
                 ))}
               </Stack>
@@ -264,6 +268,7 @@ function StateMachines() {
                     title={example.title}
                     description={example.description}
                     code={example.content}
+                   
                   />
                 ))}
               </Stack>
@@ -290,6 +295,7 @@ function StateMachines() {
                     title={example.title}
                     description={example.description}
                     code={example.content}
+                   
                   />
                 ))}
               </Stack>
@@ -327,6 +333,7 @@ function StateMachines() {
                     title={example.title}
                     description={example.description}
                     code={example.content}
+                   
                   />
                 ))}
               </Stack>
@@ -354,6 +361,7 @@ function StateMachines() {
                     title={example.title}
                     description={example.description}
                     code={example.content}
+                   
                   />
                 ))}
               </Stack>
@@ -381,6 +389,7 @@ function StateMachines() {
                     title={example.title}
                     description={example.description}
                     code={example.content}
+                   
                   />
                 ))}
               </Stack>
@@ -408,6 +417,7 @@ function StateMachines() {
                     title={example.title}
                     description={example.description}
                     code={example.content}
+                   
                   />
                 ))}
               </Stack>
@@ -435,6 +445,7 @@ function StateMachines() {
                     title={example.title}
                     description={example.description}
                     code={example.content}
+                   
                   />
                 ))}
               </Stack>

@@ -71,6 +71,7 @@ function SPA() {
                       title={example.title}
                       description={example.description}
                       code={example.content}
+                     
                     />
                   ))}
                 </Stack>
@@ -94,6 +95,7 @@ function SPA() {
                       title={example.title}
                       description={example.description}
                       code={example.content}
+                     
                     />
                   ))}
                 </Stack>
@@ -117,6 +119,7 @@ function SPA() {
                       title={example.title}
                       description={example.description}
                       code={example.content}
+                     
                     />
                   ))}
                 </Stack>
@@ -246,6 +249,7 @@ function SPA() {
                     title={example.title}
                     description={example.description}
                     code={example.content}
+                   
                   />
                 ))}
               </Stack>
@@ -272,6 +276,7 @@ function SPA() {
                     title={example.title}
                     description={example.description}
                     code={example.content}
+                   
                   />
                 ))}
               </Stack>
@@ -298,6 +303,7 @@ function SPA() {
                     title={example.title}
                     description={example.description}
                     code={example.content}
+                   
                   />
                 ))}
               </Stack>

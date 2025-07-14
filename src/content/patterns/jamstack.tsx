@@ -64,9 +64,9 @@ function JAMstack() {
                   Tudo que roda no browser.
                 </Text>
                 <CodeExample 
-                  title={jamstackExamples.find(e => e.id === 'jamstack-javascript-client')?.title || ''}
-                  code={jamstackExamples.find(e => e.id === 'jamstack-javascript-client')?.content || ''}
-                />
+  title={jamstackExamples.find(e => e.id === 'jamstack-javascript-client')?.title || ''}
+  code={jamstackExamples.find(e => e.id === 'jamstack-javascript-client')?.content || ''}
+/>
               </div>
             </Group>
           </Card>
@@ -81,9 +81,9 @@ function JAMstack() {
                   serverless functions.
                 </Text>
                 <CodeExample 
-                  title={jamstackExamples.find(e => e.id === 'jamstack-apis')?.title || ''}
-                  code={jamstackExamples.find(e => e.id === 'jamstack-apis')?.content || ''}
-                />
+  title={jamstackExamples.find(e => e.id === 'jamstack-apis')?.title || ''}
+  code={jamstackExamples.find(e => e.id === 'jamstack-apis')?.content || ''}
+/>
               </div>
             </Group>
           </Card>
