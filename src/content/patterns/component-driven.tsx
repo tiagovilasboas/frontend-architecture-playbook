@@ -1,5 +1,6 @@
-import { Title, Text, Stack, Paper, Code, Alert, List, ThemeIcon, Group, Card, Badge } from '@mantine/core';
+import { Title, Text, Stack, Paper, Alert, List, ThemeIcon, Group, Card, Badge } from '@mantine/core';
 import { IconBulb, IconAlertTriangle, IconCheck, IconCode, IconPuzzle, IconLego } from '@tabler/icons-react';
+import CodeExample from '../../components/CodeExample';
 
 function ComponentDriven() {
   return (
@@ -63,31 +64,10 @@ function ComponentDriven() {
                 <Text size="xs" c="blue" mb="xs">
                   Veja o exemplo real em <b>/examples/component-driven/button.tsx</b>
                 </Text>
-                <Code mt="xs" block>
-{`import React from 'react';
-
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary';
-}
-
-export function Button({ variant = 'primary', ...props }: ButtonProps) {
-  return (
-    <button
-      style={{
-        background: variant === 'primary' ? '#228be6' : '#e9ecef',
-        color: variant === 'primary' ? '#fff' : '#222',
-        border: 'none',
-        borderRadius: 4,
-        padding: '8px 16px',
-        fontWeight: 600,
-        cursor: 'pointer',
-      }}
-      {...props}
-    />
-  );
-}
-`}
-                </Code>
+                <CodeExample
+                  title="Button Atômico"
+                  code="Button Atômico"
+                />
               </div>
             </Group>
           </Card>
@@ -100,16 +80,10 @@ export function Button({ variant = 'primary', ...props }: ButtonProps) {
                 <Text size="sm" c="dimmed">
                   Mesmo componente em vários lugares. Muda uma vez, muda em todo lugar.
                 </Text>
-                <Code mt="xs" block>
-{`// Um componente, vários usos
-<Button>Salvar</Button>
-<Button variant="secondary">Cancelar</Button>
-<Button variant="danger">Excluir</Button>
-<Button size="small">Ver mais</Button>
-
-// Muda o CSS do Button, muda em todo lugar
-// Não precisa caçar cada botão da aplicação`}
-                </Code>
+                <CodeExample
+                  title="Reutilização"
+                  code="Reutilização"
+                />
               </div>
             </Group>
           </Card>
@@ -122,22 +96,10 @@ export function Button({ variant = 'primary', ...props }: ButtonProps) {
                 <Text size="sm" c="dimmed">
                   Cada componente funciona sozinho. Testa isoladamente, não quebra os outros.
                 </Text>
-                <Code mt="xs" block>
-{`// Componente isolado
-function UserCard({ user }) {
-  return (
-    <Card>
-      <Avatar src={user.avatar} />
-      <Text>{user.name}</Text>
-      <Text>{user.email}</Text>
-    </Card>
-  );
-}
-
-// Funciona sozinho, não depende de nada externo
-// Pode testar isoladamente
-// Pode usar em qualquer lugar`}
-                </Code>
+                <CodeExample
+                  title="Isolamento"
+                  code="Isolamento"
+                />
               </div>
             </Group>
           </Card>
@@ -246,8 +208,9 @@ function UserCard({ user }) {
                 impossível de manter.
               </Text>
               
-              <Code block>
-{`// ❌ RUIM - Sem componentes
+              <CodeExample
+                title="Exemplo 1: E-commerce - Sistema de Produtos"
+                code={{ content: `// ❌ RUIM - Sem componentes
 function ProductPage() {
   return (
     <div>
@@ -319,8 +282,8 @@ function CartPage() {
   );
 }
 
-// Mesmo componente, reutilizado, consistente, fácil de manter`}
-              </Code>
+// Mesmo componente, reutilizado, consistente, fácil de manter` }}
+              />
             </Stack>
           </Paper>
 
@@ -337,8 +300,9 @@ function CartPage() {
                 inconsistência visual, difícil de manter.
               </Text>
               
-              <Code block>
-{`// ❌ RUIM - Sem componentes
+              <CodeExample
+                title="Exemplo 2: Dashboard - Métricas Reutilizáveis"
+                code={{ content: `// ❌ RUIM - Sem componentes
 function SalesDashboard() {
   return (
     <div>
@@ -416,8 +380,8 @@ function AnalyticsDashboard() {
   );
 }
 
-// Componente reutilizado, consistente, fácil de manter`}
-              </Code>
+// Componente reutilizado, consistente, fácil de manter` }}
+              />
             </Stack>
           </Paper>
 
@@ -434,8 +398,9 @@ function AnalyticsDashboard() {
                 validação inconsistente, difícil de manter.
               </Text>
               
-              <Code block>
-{`// ❌ RUIM - Sem componentes
+              <CodeExample
+                title="Exemplo 3: Formulários - Sistema de Inputs"
+                code={{ content: `// ❌ RUIM - Sem componentes
 function UserForm() {
   return (
     <form>
@@ -527,8 +492,8 @@ function UserForm() {
   );
 }
 
-// Componente reutilizado, validação consistente, fácil de manter`}
-              </Code>
+// Componente reutilizado, validação consistente, fácil de manter` }}
+              />
             </Stack>
           </Paper>
         </Stack>
@@ -556,8 +521,9 @@ function UserForm() {
                 Se só aparece uma vez, deixa inline mesmo.
               </Text>
               
-              <Code block>
-{`// ❌ RUIM - Abstração excessiva
+              <CodeExample
+                title="Armadilha: Abstração Excessiva"
+                code={{ content: `// ❌ RUIM - Abstração excessiva
 function UserNameDisplay({ name }) {
   return <span>{name}</span>;
 }
@@ -574,8 +540,8 @@ function UserCard({ user }) {
       <span>{user.email}</span>
     </Card>
   );
-}`}
-              </Code>
+}` }}
+              />
             </Stack>
           </Paper>
 
@@ -593,8 +559,9 @@ function UserCard({ user }) {
                 Não passe props desnecessárias.
               </Text>
               
-              <Code block>
-{`// ❌ RUIM - Props drilling
+              <CodeExample
+                title="Armadilha: Props Drilling"
+                code={{ content: `// ❌ RUIM - Props drilling
 function App({ user }) {
   return <Header user={user} />;
 }
@@ -623,8 +590,8 @@ function App({ user }) {
 function UserAvatar() {
   const user = useContext(UserContext);
   return <Avatar src={user.avatar} />;
-}`}
-              </Code>
+}` }}
+              />
             </Stack>
           </Paper>
 
@@ -642,8 +609,9 @@ function UserAvatar() {
                 Cada um com uma responsabilidade só.
               </Text>
               
-              <Code block>
-{`// ❌ RUIM - Componente gigante
+              <CodeExample
+                title="Armadilha: Componentes Gigantes"
+                code={{ content: `// ❌ RUIM - Componente gigante
 function ProductPage() {
   // 500 linhas de código
   // Renderiza tudo
@@ -675,8 +643,8 @@ function ProductGallery() {
   return <div>...</div>;
 }
 
-// Cada um com uma responsabilidade só`}
-              </Code>
+// Cada um com uma responsabilidade só` }}
+              />
             </Stack>
           </Paper>
 
@@ -694,8 +662,9 @@ function ProductGallery() {
                 Documente o que cada prop faz.
               </Text>
               
-              <Code block>
-{`// ❌ RUIM - Props inconsistentes
+              <CodeExample
+                title="Armadilha: Props Inconsistentes"
+                code={{ content: `// ❌ RUIM - Props inconsistentes
 <Button onClick={handleClick}>Salvar</Button>
 <Button onPress={handlePress}>Cancelar</Button>
 <Button handleClick={handleClick}>Excluir</Button>
@@ -710,8 +679,8 @@ interface ButtonProps {
 
 <Button onClick={handleClick}>Salvar</Button>
 <Button onClick={handleCancel} variant="secondary">Cancelar</Button>
-<Button onClick={handleDelete} variant="danger">Excluir</Button>`}
-              </Code>
+<Button onClick={handleDelete} variant="danger">Excluir</Button>` }}
+              />
             </Stack>
           </Paper>
 
@@ -729,8 +698,9 @@ interface ButtonProps {
                 Use Storybook pra documentar e testar visualmente.
               </Text>
               
-              <Code block>
-{`// ✅ BOM - Testando componentes
+              <CodeExample
+                title="Armadilha: Sem Testes"
+                code={{ content: `// ✅ BOM - Testando componentes
 describe('Button', () => {
   it('should render correctly', () => {
     render(<Button>Click me</Button>);
@@ -748,8 +718,8 @@ describe('Button', () => {
 
 // Storybook para testes visuais
 export const Primary = () => <Button variant="primary">Button</Button>;
-export const Secondary = () => <Button variant="secondary">Button</Button>;`}
-              </Code>
+export const Secondary = () => <Button variant="secondary">Button</Button>;` }}
+              />
             </Stack>
           </Paper>
         </Stack>
