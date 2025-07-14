@@ -2,5 +2,5 @@ export interface DocMeta {
   slug: string;
   title: string;
   description?: string;
-  collection: 'guides' | 'patterns';
+  collection: 'guides' | 'architectures' | 'patterns' | 'techniques';
 } 
