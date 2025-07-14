@@ -290,7 +290,14 @@ export default function Home() {
                     </Stack>
                   </Card>
 
-                  <Card withBorder p="md" radius="md" style={{ gridColumn: 'span 2' }}>
+                  <Card
+                    withBorder
+                    p="md"
+                    radius="md"
+                    style={{
+                      ...(typeof window !== 'undefined' && window.innerWidth >= 640 ? { gridColumn: 'span 2' } : {})
+                    }}
+                  >
                     <Stack gap="sm">
                       <Group gap="sm">
                         <ThemeIcon size="lg" variant="light" color="red">
@@ -763,9 +770,9 @@ export default function Home() {
               Sobre o Autor
             </Title>
             <Paper withBorder p="lg" radius="lg" mx="auto">
-              <Group align="flex-start" gap="xl">
+              <Group align="flex-start" gap="xl" style={{ flexDirection: isMobile ? 'column' : 'row' }}>
                 <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}>
-                  <Avatar src="https://avatars.githubusercontent.com/u/2006720?v=4" size={120} radius="xl" />
+                  <Avatar src="https://avatars.githubusercontent.com/u/2006720?v=4" size={isMobile ? 80 : 120} radius="xl" />
                 </motion.div>
                 <div style={{ flex: 1 }}>
                   <Group align="center" mb="sm">
