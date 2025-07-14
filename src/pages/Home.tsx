@@ -233,7 +233,7 @@ export default function Home() {
                   No código é igual. Se a base é ruim, não tem dev sênior que salve.
                 </Text>
 
-                <SimpleGrid cols={{ base: 1, md: 2 }} spacing="lg" w="100%" mt="md">
+                <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="lg" w="100%" mt="md">
                   <Card withBorder p="md" radius="md">
                     <Stack gap="sm">
                       <Group gap="sm">
@@ -326,99 +326,115 @@ export default function Home() {
             
             <Paper withBorder p="lg" radius="lg">
               <Stack gap="md">
-                <SimpleGrid cols={{ base: 1, md: 2 }} spacing="md">
-                  <motion.div variants={itemVariants} whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
-                    <div>
-                      <Title order={3} size="h4" mb="sm">
-                        <IconBook size={24} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
-                        Guias Práticos
-                      </Title>
-                      <Text size="sm" c="dimmed" mb="md">
-                        Aprenda a escolher a arquitetura certa e entenda a Dependency Rule - a regra fundamental de qualquer arquitetura.
-                      </Text>
-                      <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                        <Button 
-                          component={Link} 
-                          to="/guides/how-to-choose" 
-                          size="sm" 
-                          variant="light"
-                          leftSection={<IconRocket size={16} />}
-                        >
-                          Decision Wizard
-                        </Button>
-                      </motion.div>
-                    </div>
-                  </motion.div>
+                            <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="md">
+              <motion.div variants={itemVariants} whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
+                <Card withBorder p="md" radius="md">
+                  <Stack gap="sm">
+                    <Group gap="sm">
+                      <ThemeIcon size="lg" variant="light" color="brand">
+                        <IconBook size={20} />
+                      </ThemeIcon>
+                      <Title order={3} size="h4">Guias Práticos</Title>
+                    </Group>
+                    <Text size="sm" c="dimmed">
+                      Aprenda a escolher a arquitetura certa e entenda a Dependency Rule - a regra fundamental de qualquer arquitetura.
+                    </Text>
+                    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                      <Button 
+                        component={Link} 
+                        to="/guides/how-to-choose" 
+                        size="sm" 
+                        variant="light"
+                        leftSection={<IconRocket size={16} />}
+                      >
+                        Decision Wizard
+                      </Button>
+                    </motion.div>
+                  </Stack>
+                </Card>
+              </motion.div>
 
-                  <motion.div variants={itemVariants} whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
-                    <div>
-                      <Title order={3} size="h4" mb="sm">
-                        <IconHeart size={24} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
-                        Boas Práticas
-                      </Title>
-                      <Text size="sm" c="dimmed" mb="md">
-                        Princípios fundamentais: DRY, KISS, YAGNI, Clean Code, SRP, SOC. Base para qualquer projeto.
-                      </Text>
-                      <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                        <Button 
-                          component={Link} 
-                          to="/best-practices/dry" 
-                          size="sm" 
-                          variant="light"
-                          leftSection={<IconCheck size={16} />}
-                        >
-                          Ver Princípios
-                        </Button>
-                      </motion.div>
-                    </div>
-                  </motion.div>
+              <motion.div variants={itemVariants} whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
+                <Card withBorder p="md" radius="md">
+                  <Stack gap="sm">
+                    <Group gap="sm">
+                      <ThemeIcon size="lg" variant="light" color="green">
+                        <IconHeart size={20} />
+                      </ThemeIcon>
+                      <Title order={3} size="h4">Boas Práticas</Title>
+                    </Group>
+                    <Text size="sm" c="dimmed">
+                      Princípios fundamentais: DRY, KISS, YAGNI, Clean Code, SRP, SOC. Base para qualquer projeto.
+                    </Text>
+                    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                      <Button 
+                        component={Link} 
+                        to="/best-practices/dry" 
+                        size="sm" 
+                        variant="light"
+                        leftSection={<IconCheck size={16} />}
+                      >
+                        Ver Princípios
+                      </Button>
+                    </motion.div>
+                  </Stack>
+                </Card>
+              </motion.div>
 
-                  <motion.div variants={itemVariants} whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
-                    <div>
-                      <Title order={3} size="h4" mb="sm">
-                        <IconBuilding size={24} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
-                        Arquiteturas
-                      </Title>
-                      <Text size="sm" c="dimmed" mb="md">
-                        13 padrões arquiteturais testados: Clean Architecture, Micro-frontends, Monorepo, SPA, SSR/SSG e mais.
-                      </Text>
-                      <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                        <Button 
-                          component={Link} 
-                          to="/architectures/clean-architecture" 
-                          size="sm" 
-                          variant="light"
-                          leftSection={<IconStack size={16} />}
-                        >
-                          Ver Arquiteturas
-                        </Button>
-                      </motion.div>
-                    </div>
-                  </motion.div>
+              <motion.div variants={itemVariants} whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
+                <Card withBorder p="md" radius="md">
+                  <Stack gap="sm">
+                    <Group gap="sm">
+                      <ThemeIcon size="lg" variant="light" color="blue">
+                        <IconBuilding size={20} />
+                      </ThemeIcon>
+                      <Title order={3} size="h4">Arquiteturas</Title>
+                    </Group>
+                    <Text size="sm" c="dimmed">
+                      13 padrões arquiteturais testados: Clean Architecture, Micro-frontends, Monorepo, SPA, SSR/SSG e mais.
+                    </Text>
+                    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                      <Button 
+                        component={Link} 
+                        to="/architectures/clean-architecture" 
+                        size="sm" 
+                        variant="light"
+                        leftSection={<IconStack size={16} />}
+                      >
+                        Ver Arquiteturas
+                      </Button>
+                    </motion.div>
+                  </Stack>
+                </Card>
+              </motion.div>
 
-                  <motion.div variants={itemVariants} whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
-                    <div>
-                      <Title order={3} size="h4" mb="sm">
-                        <IconPuzzle size={24} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
-                        Padrões & Técnicas
-                      </Title>
-                      <Text size="sm" c="dimmed" mb="md">
-                        Padrões de design, técnicas de implementação e otimizações específicas para front-end.
-                      </Text>
-                      <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                        <Button 
-                          component={Link} 
-                          to="/patterns/component-driven" 
-                          size="sm" 
-                          variant="light"
-                          leftSection={<IconTools size={16} />}
-                        >
-                          Ver Padrões
-                        </Button>
-                      </motion.div>
-                    </div>
-                  </motion.div>
-                </SimpleGrid>
+              <motion.div variants={itemVariants} whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
+                <Card withBorder p="md" radius="md">
+                  <Stack gap="sm">
+                    <Group gap="sm">
+                      <ThemeIcon size="lg" variant="light" color="purple">
+                        <IconPuzzle size={20} />
+                      </ThemeIcon>
+                      <Title order={3} size="h4">Padrões & Técnicas</Title>
+                    </Group>
+                    <Text size="sm" c="dimmed">
+                      Padrões de design, técnicas de implementação e otimizações específicas para front-end.
+                    </Text>
+                    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                      <Button 
+                        component={Link} 
+                        to="/patterns/component-driven" 
+                        size="sm" 
+                        variant="light"
+                        leftSection={<IconTools size={16} />}
+                      >
+                        Ver Padrões
+                      </Button>
+                    </motion.div>
+                  </Stack>
+                </Card>
+              </motion.div>
+            </SimpleGrid>
               </Stack>
             </Paper>
           </motion.section>
@@ -432,7 +448,7 @@ export default function Home() {
                   Por que este Playbook Vale a Pena?
                 </Title>
                 
-                <SimpleGrid cols={{ base: 1, md: 3 }} spacing="md" w="100%">
+                <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing="md" w="100%">
                   <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}>
                     <FeatureCard 
                       icon={IconCheck}
@@ -520,7 +536,7 @@ export default function Home() {
               <IconTarget size={32} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
               Por que esse Guia?
             </Title>
-            <SimpleGrid cols={{ base: 1, md: 3 }} spacing="md">
+            <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing="md">
               <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}>
                 <Card withBorder p="lg" radius="md" style={{ position: 'relative', overflow: 'hidden' }}>
                   <div style={{
@@ -600,7 +616,7 @@ export default function Home() {
             <Text size="lg" c="dimmed" ta="center" mb="lg">
               Veja como essas arquiteturas funcionam na vida real. Cada projeto demonstra um padrão diferente.
             </Text>
-            <SimpleGrid cols={{ base: 1, md: 2 }} spacing="md">
+            <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="md">
               <motion.div whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
                 <Card withBorder p="lg" radius="md" component="a" href="https://github.com/tiagovilasboas/ponto-pj" target="_blank" style={{ textDecoration: 'none', transition: 'transform 0.2s ease' }} className="project-card">
                   <Stack gap="md">
