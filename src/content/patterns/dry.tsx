@@ -31,17 +31,17 @@ function Dry() {
           </Group>
           
           <Text>
-            DRY significa <strong>"Don't Repeat Yourself"</strong>. É simples: se você está copiando e colando código, 
-            você está fazendo algo errado.
+            DRY significa <strong>"Don't Repeat Yourself"</strong>. É sobre não repetir <em>lógica de negócio</em>, 
+            não apenas código.
           </Text>
           
           <Text>
-            Pensa assim: se você precisa mudar uma lógica e ela está duplicada em 5 lugares, 
-            você vai esquecer de mudar em algum lugar. E aí vem o bug.
+            Pensa assim: se você precisa mudar uma regra de negócio (desconto, validação, cálculo) e ela está 
+            duplicada em 5 lugares, você vai esquecer de mudar em algum lugar. E aí vem o bug.
           </Text>
           
           <Text>
-            A regra é clara: <em>cada conhecimento deve ter uma representação única, não ambígua e autoritativa</em>.
+            A regra é clara: <em>cada regra de negócio deve ter uma representação única, não ambígua e autoritativa</em>.
           </Text>
         </Stack>
       </Paper>
@@ -132,9 +132,9 @@ function Dry() {
           <Alert color="green" icon={<IconCheck size={16} />} radius="md">
             <Text size="sm" fw={600} mb={4}>✅ Sempre aplique:</Text>
             <List size="sm" c="dimmed">
-              <List.Item>Lógica de validação repetida</List.Item>
+              <List.Item>Regras de negócio repetidas (cálculos, validações)</List.Item>
+              <List.Item>Lógica de validação de formulários</List.Item>
               <List.Item>Transformação de dados similar</List.Item>
-              <List.Item>Estilos CSS duplicados</List.Item>
               <List.Item>Configurações de API</List.Item>
               <List.Item>Utilitários e helpers</List.Item>
             </List>
@@ -174,11 +174,11 @@ function Dry() {
         <Stack gap="md">
           <Title order={3}>Resumo</Title>
           <Text>
-            DRY é sobre eliminar duplicação, não sobre criar abstrações complexas. 
-            Se você está copiando código, pare e pense em uma forma melhor.
+            DRY é sobre eliminar duplicação de <em>lógica de negócio</em>, não sobre criar abstrações complexas. 
+            Se você está copiando regras de negócio, pare e pense em uma forma melhor.
           </Text>
           <Text>
-            <strong>Regra de ouro:</strong> Se você precisa mudar a mesma lógica em mais de um lugar, 
+            <strong>Regra de ouro:</strong> Se você precisa mudar a mesma regra de negócio em mais de um lugar, 
             você está violando DRY.
           </Text>
         </Stack>
