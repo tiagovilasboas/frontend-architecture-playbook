@@ -1,4 +1,5 @@
 export { HeroTitle } from './HeroTitle';
-export { SectionCard } from './SectionCard';
 export { FeatureCard } from './FeatureCard';
-export { StatsCard } from './StatsCard'; 
+export { StatsCard } from './StatsCard';
+export { SectionCard } from './SectionCard';
+export { default as HighwayAnimation } from './HighwayAnimation'; 

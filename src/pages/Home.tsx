@@ -1,6 +1,6 @@
 import { Title, Stack, Text, Button, Group, Avatar, Paper, Container, SimpleGrid, Alert, Badge, Divider, Card, ThemeIcon } from '@mantine/core';
 import { Link } from 'react-router-dom';
-import { HeroTitle, FeatureCard, StatsCard } from '../components/ui';
+import { HeroTitle, FeatureCard, StatsCard, HighwayAnimation } from '../components/ui';
 import { motion } from 'framer-motion';
 import { 
   IconBook, 
@@ -333,6 +333,10 @@ export default function Home() {
                   <IconAward size={32} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
                   Por que este Playbook Vale a Pena?
                 </Title>
+                
+                {/* Highway Animation */}
+                <HighwayAnimation />
+                
                 <SimpleGrid cols={{ base: 1, md: 3 }} spacing="md" w="100%">
                   <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}>
                     <FeatureCard 
