@@ -102,10 +102,10 @@ export default function HighwayAnimation() {
           position: 'absolute',
           top: '35%',
           left: '-80px',
-          width: '45px',
-          height: '20px',
+          width: '40px',
+          height: '16px',
           background: 'linear-gradient(135deg, #8B4513, #A0522D, #8B4513)',
-          borderRadius: '10px 8px 8px 10px',
+          borderRadius: '8px 6px 6px 8px',
           boxShadow: '0 8px 16px rgba(0,0,0,0.4), 0 0 20px rgba(139,69,19,0.3)',
           transform: 'rotateX(60deg) translateZ(25px)',
           zIndex: 4
@@ -123,12 +123,12 @@ export default function HighwayAnimation() {
         <Box
           style={{
             position: 'absolute',
-            top: '-2px',
+            top: '-1px',
             left: '0px',
-            width: '8px',
-            height: '4px',
+            width: '6px',
+            height: '3px',
             background: 'linear-gradient(135deg, #333, #555)',
-            borderRadius: '2px',
+            borderRadius: '1px',
             border: '1px solid #222'
           }}
         />
@@ -136,12 +136,12 @@ export default function HighwayAnimation() {
         <Box
           style={{
             position: 'absolute',
-            top: '2px',
-            left: '8px',
-            width: '15px',
-            height: '8px',
+            top: '1px',
+            left: '6px',
+            width: '12px',
+            height: '6px',
             background: 'linear-gradient(135deg, #654321, #8B4513)',
-            borderRadius: '4px',
+            borderRadius: '3px',
             border: '1px solid #654321'
           }}
         />
@@ -149,23 +149,23 @@ export default function HighwayAnimation() {
         <Box
           style={{
             position: 'absolute',
-            top: '1px',
-            left: '23px',
-            width: '12px',
-            height: '6px',
+            top: '0px',
+            left: '18px',
+            width: '10px',
+            height: '4px',
             background: 'linear-gradient(135deg, #333, #555)',
-            borderRadius: '3px',
+            borderRadius: '2px',
             border: '1px solid #222'
           }}
         />
-        {/* Rodas da moto - maiores */}
+        {/* Rodas da moto */}
         <Box
           style={{
             position: 'absolute',
-            bottom: '-8px',
-            left: '8px',
-            width: '16px',
-            height: '16px',
+            bottom: '-6px',
+            left: '6px',
+            width: '12px',
+            height: '12px',
             background: 'radial-gradient(circle, #333, #000)',
             borderRadius: '50%',
             border: '2px solid #666',
@@ -175,10 +175,10 @@ export default function HighwayAnimation() {
         <Box
           style={{
             position: 'absolute',
-            bottom: '-8px',
-            right: '8px',
-            width: '16px',
-            height: '16px',
+            bottom: '-6px',
+            right: '6px',
+            width: '12px',
+            height: '12px',
             background: 'radial-gradient(circle, #333, #000)',
             borderRadius: '50%',
             border: '2px solid #666',
@@ -189,39 +189,39 @@ export default function HighwayAnimation() {
         <Box
           style={{
             position: 'absolute',
-            top: '3px',
-            left: '2px',
-            width: '4px',
-            height: '4px',
+            top: '2px',
+            left: '1px',
+            width: '3px',
+            height: '3px',
             background: 'radial-gradient(circle, #fff, #ffd700)',
             borderRadius: '50%',
-            boxShadow: '0 0 8px rgba(255,215,0,0.8)'
+            boxShadow: '0 0 6px rgba(255,215,0,0.8)'
           }}
         />
         {/* Lanterna traseira da moto */}
         <Box
           style={{
             position: 'absolute',
-            top: '2px',
-            right: '2px',
-            width: '3px',
-            height: '3px',
+            top: '1px',
+            right: '1px',
+            width: '2px',
+            height: '2px',
             background: 'radial-gradient(circle, #ff0000, #cc0000)',
             borderRadius: '50%',
-            boxShadow: '0 0 6px rgba(255,0,0,0.6)'
+            boxShadow: '0 0 4px rgba(255,0,0,0.6)'
           }}
         />
         {/* Escape da moto */}
         <Box
           style={{
             position: 'absolute',
-            top: '1px',
-            right: '5px',
-            width: '4px',
-            height: '2px',
+            top: '0px',
+            right: '4px',
+            width: '3px',
+            height: '1px',
             background: 'radial-gradient(circle, #666, #333)',
             borderRadius: '50%',
-            boxShadow: '0 0 4px rgba(102,102,102,0.6)'
+            boxShadow: '0 0 3px rgba(102,102,102,0.6)'
           }}
         />
       </motion.div>
@@ -232,10 +232,10 @@ export default function HighwayAnimation() {
           position: 'absolute',
           top: '65%',
           right: '-80px',
-          width: '50px',
-          height: '18px',
+          width: '35px',
+          height: '14px',
           background: 'linear-gradient(135deg, #1a1a1a, #333333, #1a1a1a)',
-          borderRadius: '8px 4px 4px 8px',
+          borderRadius: '6px 3px 3px 6px',
           boxShadow: '0 8px 16px rgba(0,0,0,0.4), 0 0 20px rgba(26,26,26,0.3)',
           transform: 'rotateX(60deg) translateZ(25px)',
           zIndex: 4
@@ -253,10 +253,10 @@ export default function HighwayAnimation() {
         <Box
           style={{
             position: 'absolute',
-            top: '-3px',
+            top: '-2px',
             left: '0px',
-            width: '6px',
-            height: '3px',
+            width: '5px',
+            height: '2px',
             background: 'linear-gradient(135deg, #000, #333)',
             borderRadius: '1px',
             border: '1px solid #000'
@@ -266,12 +266,12 @@ export default function HighwayAnimation() {
         <Box
           style={{
             position: 'absolute',
-            top: '1px',
-            left: '6px',
-            width: '12px',
-            height: '6px',
+            top: '0px',
+            left: '5px',
+            width: '10px',
+            height: '5px',
             background: 'linear-gradient(135deg, #000000, #1a1a1a)',
-            borderRadius: '3px',
+            borderRadius: '2px',
             border: '1px solid #000'
           }}
         />
@@ -279,12 +279,12 @@ export default function HighwayAnimation() {
         <Box
           style={{
             position: 'absolute',
-            top: '0px',
-            left: '18px',
-            width: '10px',
-            height: '4px',
+            top: '-1px',
+            left: '15px',
+            width: '8px',
+            height: '3px',
             background: 'linear-gradient(135deg, #000, #333)',
-            borderRadius: '2px',
+            borderRadius: '1px',
             border: '1px solid #000'
           }}
         />
@@ -292,10 +292,10 @@ export default function HighwayAnimation() {
         <Box
           style={{
             position: 'absolute',
-            bottom: '-7px',
-            left: '6px',
-            width: '15px',
-            height: '15px',
+            bottom: '-5px',
+            left: '4px',
+            width: '10px',
+            height: '10px',
             background: 'radial-gradient(circle, #333, #000)',
             borderRadius: '50%',
             border: '2px solid #666',
@@ -305,10 +305,10 @@ export default function HighwayAnimation() {
         <Box
           style={{
             position: 'absolute',
-            bottom: '-7px',
-            right: '6px',
-            width: '15px',
-            height: '15px',
+            bottom: '-5px',
+            right: '4px',
+            width: '10px',
+            height: '10px',
             background: 'radial-gradient(circle, #333, #000)',
             borderRadius: '50%',
             border: '2px solid #666',
@@ -319,49 +319,49 @@ export default function HighwayAnimation() {
         <Box
           style={{
             position: 'absolute',
-            top: '2px',
-            left: '1px',
-            width: '3px',
-            height: '3px',
+            top: '1px',
+            left: '0px',
+            width: '2px',
+            height: '2px',
             background: 'radial-gradient(circle, #fff, #ffd700)',
             borderRadius: '50%',
-            boxShadow: '0 0 6px rgba(255,215,0,0.8)'
+            boxShadow: '0 0 4px rgba(255,215,0,0.8)'
           }}
         />
         {/* Lanterna traseira esportiva da moto */}
         <Box
           style={{
             position: 'absolute',
-            top: '1px',
-            right: '1px',
-            width: '2px',
-            height: '2px',
+            top: '0px',
+            right: '0px',
+            width: '1px',
+            height: '1px',
             background: 'radial-gradient(circle, #ff0000, #cc0000)',
             borderRadius: '50%',
-            boxShadow: '0 0 4px rgba(255,0,0,0.6)'
+            boxShadow: '0 0 2px rgba(255,0,0,0.6)'
           }}
         />
         {/* Escape esportivo da moto */}
         <Box
           style={{
             position: 'absolute',
-            top: '0px',
-            right: '3px',
-            width: '3px',
+            top: '-1px',
+            right: '2px',
+            width: '2px',
             height: '1px',
             background: 'radial-gradient(circle, #666, #333)',
             borderRadius: '50%',
-            boxShadow: '0 0 3px rgba(102,102,102,0.6)'
+            boxShadow: '0 0 2px rgba(102,102,102,0.6)'
           }}
         />
         {/* Carenagem esportiva */}
         <Box
           style={{
             position: 'absolute',
-            top: '-1px',
-            right: '8px',
-            width: '8px',
-            height: '3px',
+            top: '-2px',
+            right: '6px',
+            width: '6px',
+            height: '2px',
             background: 'linear-gradient(135deg, #000, #333)',
             borderRadius: '1px',
             border: '1px solid #000'
