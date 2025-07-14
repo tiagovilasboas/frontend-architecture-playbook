@@ -42,11 +42,11 @@ export default function HighwayAnimation() {
         style={{
           position: 'absolute',
           top: '50%',
-          left: 0,
-          right: 0,
-          height: '8px',
-          background: 'linear-gradient(90deg, #ffd700 0%, #ffed4e 50%, #ffd700 100%)',
-          transform: 'translateY(-50%) rotateX(60deg) translateZ(20px)',
+          left: '50%',
+          width: '8px',
+          height: '100%',
+          background: 'linear-gradient(180deg, #ffd700 0%, #ffed4e 50%, #ffd700 100%)',
+          transform: 'translateX(-50%) translateY(-50%) rotateX(60deg) translateZ(20px)',
           boxShadow: '0 0 20px rgba(255, 215, 0, 0.5)',
           zIndex: 2
         }}
@@ -57,11 +57,11 @@ export default function HighwayAnimation() {
         style={{
           position: 'absolute',
           top: '50%',
-          left: 0,
-          right: 0,
-          height: '2px',
-          background: 'repeating-linear-gradient(90deg, #ffd700 0px, #ffd700 30px, transparent 30px, transparent 60px)',
-          transform: 'translateY(-50%) rotateX(60deg) translateZ(15px)',
+          left: '50%',
+          width: '2px',
+          height: '100%',
+          background: 'repeating-linear-gradient(180deg, #ffd700 0px, #ffd700 30px, transparent 30px, transparent 60px)',
+          transform: 'translateX(-50%) translateY(-50%) rotateX(60deg) translateZ(15px)',
           zIndex: 2
         }}
       />
