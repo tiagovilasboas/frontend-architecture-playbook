@@ -1,6 +1,7 @@
-import { Group, Burger, Title, UnstyledButton, Paper } from '@mantine/core';
+import { Group, Burger, UnstyledButton, Title, ActionIcon, Paper } from '@mantine/core';
 import { Link } from 'react-router-dom';
-import { IconCode } from '@tabler/icons-react';
+import { IconCode, IconSun, IconMoon } from '@tabler/icons-react';
+import { useState } from 'react';
 import type { DocMeta } from '../types/index.ts';
 
 interface Props {
@@ -12,6 +13,19 @@ interface Props {
 }
 
 export default function HeaderBar({ opened, onBurger }: Props) {
+  const [isDark, setIsDark] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return document.documentElement.getAttribute('data-mantine-color-scheme') === 'dark';
+    }
+    return true; // default to dark
+  });
+
+  const toggleTheme = () => {
+    const newTheme = isDark ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-mantine-color-scheme', newTheme);
+    setIsDark(!isDark);
+  };
+
   return (
     <Paper withBorder p={0} radius={0} className="header-bar" style={{ 
       position: 'sticky',
@@ -28,6 +42,19 @@ export default function HeaderBar({ opened, onBurger }: Props) {
             </Group>
           </UnstyledButton>
         </Group>
+        
+        <ActionIcon
+          onClick={toggleTheme}
+          variant="light"
+          size="lg"
+          aria-label="Toggle color scheme"
+        >
+          {isDark ? (
+            <IconSun size={18} />
+          ) : (
+            <IconMoon size={18} />
+          )}
+        </ActionIcon>
       </Group>
     </Paper>
   );
