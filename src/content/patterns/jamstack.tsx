@@ -1,6 +1,7 @@
 import { Title, Text, Stack, Paper, Alert, List, ThemeIcon, Group, Card, Badge } from '@mantine/core';
 import { IconBulb, IconAlertTriangle, IconCheck, IconCode, IconBolt, IconCloud } from '@tabler/icons-react';
 import CodeExample from '../../components/CodeExample';
+import jamstackExamples from '../../utils/code-examples/jamstack.json';
 
 function JAMstack() {
   return (
@@ -62,7 +63,10 @@ function JAMstack() {
                   Interatividade no cliente. React, Vue, vanilla JS. 
                   Tudo que roda no browser.
                 </Text>
-                <CodeExample title="JavaScript no cliente" code="JavaScript no cliente" />
+                <CodeExample 
+                  title={jamstackExamples.find(e => e.id === 'jamstack-javascript-client')?.title || ''}
+                  code={jamstackExamples.find(e => e.id === 'jamstack-javascript-client')?.content || ''}
+                />
               </div>
             </Group>
           </Card>
@@ -76,7 +80,10 @@ function JAMstack() {
                   Dados e funcionalidades via APIs. REST, GraphQL, 
                   serverless functions.
                 </Text>
-                <CodeExample title="APIs" code="APIs" />
+                <CodeExample 
+                  title={jamstackExamples.find(e => e.id === 'jamstack-apis')?.title || ''}
+                  code={jamstackExamples.find(e => e.id === 'jamstack-apis')?.content || ''}
+                />
               </div>
             </Group>
           </Card>
@@ -90,7 +97,10 @@ function JAMstack() {
                   HTML pré-renderizado. Gatsby, Next.js, Nuxt. 
                   Sites estáticos servidos por CDN.
                 </Text>
-                <CodeExample title="HTML pré-renderizado" code="HTML pré-renderizado" />
+                <CodeExample 
+                  title={jamstackExamples.find(e => e.id === 'jamstack-html-prerendered')?.title || ''}
+                  code={jamstackExamples.find(e => e.id === 'jamstack-html-prerendered')?.content || ''}
+                />
               </div>
             </Group>
           </Card>
@@ -264,21 +274,10 @@ function JAMstack() {
                 Sites de conteúdo, marketing, portfolios. Não pra tudo.
               </Text>
               
-              <CodeExample code={{ content: `// ❌ RUIM - JAMstack pra tudo
-// Dashboard admin em JAMstack
-// Aplicação de chat em JAMstack
-// Sistema de pagamentos em JAMstack
-
-// Complexidade desnecessária
-
-// ✅ BOM - JAMstack quando faz sentido
-// Blog - JAMstack ✅
-// Portfolio - JAMstack ✅
-// Site de marketing - JAMstack ✅
-// Dashboard admin - SPA/SSR ❌
-// Chat app - WebSocket/SSR ❌
-
-// Use a ferramenta certa pro problema certo` }} />
+              <CodeExample 
+                title={jamstackExamples.find(e => e.id === 'jamstack-pitfall-wrong-use')?.title || ''}
+                code={jamstackExamples.find(e => e.id === 'jamstack-pitfall-wrong-use')?.content || ''}
+              />
             </Stack>
           </Paper>
 
@@ -296,34 +295,10 @@ function JAMstack() {
                 considere ISR (Incremental Static Regeneration).
               </Text>
               
-              <CodeExample code={{ content: `// ❌ RUIM - Build lento
-// Gatsby build - 30 minutos
-// Next.js build - 45 minutos
-// Deploy demora muito
-
-// ✅ BOM - Build otimizado
-// next.config.js
-module.exports = {
-  experimental: {
-    incrementalCacheHandlerPath: require.resolve('./cache-handler.js'),
-  },
-  images: {
-    loader: 'custom',
-    loaderFile: './image-loader.js',
-  },
-};
-
-// pages/[slug].js
-export async function getStaticProps({ params }) {
-  return {
-    props: { data },
-    revalidate: 60, // Revalida a cada minuto
-  };
-}
-
-// Build incremental
-// Deploy rápido
-// Desenvolvimento fluido` }} />
+              <CodeExample 
+                title={jamstackExamples.find(e => e.id === 'jamstack-pitfall-slow-build')?.title || ''}
+                code={jamstackExamples.find(e => e.id === 'jamstack-pitfall-slow-build')?.content || ''}
+              />
             </Stack>
           </Paper>
 
@@ -341,37 +316,10 @@ export async function getStaticProps({ params }) {
                 ou considere SSR para conteúdo muito dinâmico.
               </Text>
               
-              <CodeExample code={{ content: `// ❌ RUIM - Build a cada mudança
-// Conteúdo muda -> Build -> Deploy
-// Deploy constante, lento
-
-// ✅ BOM - Estratégias híbridas
-// pages/products/[id].js
-export async function getStaticProps({ params }) {
-  const product = await fetchProduct(params.id);
-  
-  return {
-    props: { product },
-    revalidate: 3600, // Revalida a cada hora
-  };
-}
-
-// pages/dashboard.js
-export default function Dashboard() {
-  const [data, setData] = useState(null);
-  
-  useEffect(() => {
-    // Client-side fetching para dados dinâmicos
-    fetch('/api/dashboard')
-      .then(res => res.json())
-      .then(setData);
-  }, []);
-  
-  return <div>{/* Dashboard dinâmico */}</div>;
-}
-
-// ISR para conteúdo semi-dinâmico
-// Client-side para dados em tempo real` }} />
+              <CodeExample 
+                title={jamstackExamples.find(e => e.id === 'jamstack-pitfall-dynamic-content')?.title || ''}
+                code={jamstackExamples.find(e => e.id === 'jamstack-pitfall-dynamic-content')?.content || ''}
+              />
             </Stack>
           </Paper>
 
@@ -389,47 +337,10 @@ export default function Dashboard() {
                 use SSR para páginas críticas de SEO.
               </Text>
               
-              <CodeExample code={{ content: `// ❌ RUIM - SPA puro
-// Tudo renderizado no cliente
-// Crawlers não veem conteúdo
-
-// ✅ BOM - Pre-renderização
-// pages/blog/[slug].js
-export async function getStaticProps({ params }) {
-  const post = await fetchPost(params.slug);
-  
-  return {
-    props: {
-      post,
-      meta: {
-        title: post.title,
-        description: post.excerpt,
-        image: post.coverImage,
-      },
-    },
-  };
-}
-
-// next.config.js
-module.exports = {
-  async headers() {
-    return [
-      {
-        source: '/blog/:slug',
-        headers: [
-          {
-            key: 'X-Robots-Tag',
-            value: 'index, follow',
-          },
-        ],
-      },
-    ];
-  },
-};
-
-// HTML pré-renderizado
-// Meta tags dinâmicas
-// SEO perfeito` }} />
+              <CodeExample 
+                title={jamstackExamples.find(e => e.id === 'jamstack-pitfall-seo-issues')?.title || ''}
+                code={jamstackExamples.find(e => e.id === 'jamstack-pitfall-seo-issues')?.content || ''}
+              />
             </Stack>
           </Paper>
 
@@ -447,36 +358,10 @@ module.exports = {
                 considere BFF (Backend for Frontend).
               </Text>
               
-              <CodeExample code={{ content: `// ❌ RUIM - Muitas APIs
-// /api/products
-// /api/categories  
-// /api/users
-// /api/orders
-// /api/payments
-// /api/shipping
-
-// Complexidade de integração
-
-// ✅ BOM - APIs simplificadas
-// GraphQL
-const typeDefs = \`
-  type Product {
-    id: ID!
-    name: String!
-    category: Category!
-    variants: [Variant!]!
-  }
-  
-  type Query {
-    products: [Product!]!
-    product(id: ID!): Product
-  }
-\`;
-
-// Uma API, múltiplos dados
-// Queries específicas
-// Menos requests
-// Mais eficiente` }} />
+              <CodeExample 
+                title={jamstackExamples.find(e => e.id === 'jamstack-pitfall-api-complexity')?.title || ''}
+                code={jamstackExamples.find(e => e.id === 'jamstack-pitfall-api-complexity')?.content || ''}
+              />
             </Stack>
           </Paper>
         </Stack>
@@ -508,7 +393,6 @@ const typeDefs = \`
                   <strong>"Static Site Generators"</strong> - Various Authors
                 </List.Item>
               </List>
-              
               <Text>
                 <strong>Artigos & Blogs:</strong>
               </Text>
@@ -529,77 +413,6 @@ const typeDefs = \`
                   </a>
                 </List.Item>
               </List>
-            </Stack>
-          </Paper>
-
-          {/* Real Cases */}
-          <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">🏢 Casos Reais de Sucesso</Title>
-            <Stack gap="md">
-              
-              <Card withBorder p="md">
-                <Title order={4} mb="sm">Netlify</Title>
-                <Text size="sm" mb="sm">
-                  <strong>Problema:</strong> Deploy complexo, performance ruim, 
-                  custo alto de hosting.
-                </Text>
-                <Text size="sm" mb="sm">
-                  <strong>Solução:</strong> JAMstack com Gatsby. 
-                  Deploy automático, performance máxima.
-                </Text>
-                <Text size="sm" c="dimmed">
-                  <strong>Resultado:</strong> Deploy em segundos, 
-                  performance excepcional, custo mínimo.
-                </Text>
-              </Card>
-
-              <Card withBorder p="md">
-                <Title order={4} mb="sm">Smashing Magazine</Title>
-                <Text size="sm" mb="sm">
-                  <strong>Problema:</strong> WordPress lento, 
-                  SEO ruim, manutenção difícil.
-                </Text>
-                <Text size="sm" mb="sm">
-                  <strong>Solução:</strong> Migração para JAMstack. 
-                  Gatsby + Headless CMS.
-                </Text>
-                <Text size="sm" c="dimmed">
-                  <strong>Resultado:</strong> Performance 10x melhor, 
-                  SEO perfeito, manutenção simples.
-                </Text>
-              </Card>
-
-              <Card withBorder p="md">
-                <Title order={4} mb="sm">React</Title>
-                <Text size="sm" mb="sm">
-                  <strong>Problema:</strong> Site lento, 
-                  documentação difícil de navegar.
-                </Text>
-                <Text size="sm" mb="sm">
-                  <strong>Solução:</strong> JAMstack com Docusaurus. 
-                  Documentação estática, performance máxima.
-                </Text>
-                <Text size="sm" c="dimmed">
-                  <strong>Resultado:</strong> Site rápido, 
-                  documentação excelente, SEO perfeito.
-                </Text>
-              </Card>
-
-              <Card withBorder p="md">
-                <Title order={4} mb="sm">Vercel</Title>
-                <Text size="sm" mb="sm">
-                  <strong>Problema:</strong> Deploy complexo, 
-                  performance inconsistente.
-                </Text>
-                <Text size="sm" mb="sm">
-                  <strong>Solução:</strong> JAMstack com Next.js. 
-                  Deploy automático, edge functions.
-                </Text>
-                <Text size="sm" c="dimmed">
-                  <strong>Resultado:</strong> Deploy instantâneo, 
-                  performance global, custo mínimo.
-                </Text>
-              </Card>
             </Stack>
           </Paper>
 
