@@ -124,7 +124,7 @@ export default function Home() {
               </motion.div>
               
               <motion.div variants={itemVariants}>
-                <Text size={isMobile ? 'md' : 'xl'} c="dimmed" mb={isMobile ? 'sm' : 'md'} maw={800}>
+                <Text size={isMobile ? 'md' : 'xl'} c="dimmed" mb={isMobile ? 'sm' : 'md'}>
                   Sabe aquele código que vira um inferno de manter? Então, quase sempre é culpa de arquitetura ruim. Não é papo de arquiteto, é dor real de dev. <strong>Arquitetura não é luxo, é sobrevivência.</strong>
                 </Text>
               </motion.div>
@@ -183,12 +183,12 @@ export default function Home() {
                     <Text size={isMobile ? 'md' : 'lg'} fw={600}>
                       Por que Arquitetura Importa (de verdade)
                     </Text>
-                    <Text size={isMobile ? 'md' : 'lg'} c="dimmed" ta="center" maw={700}>
+                    <Text size={isMobile ? 'md' : 'lg'} c="dimmed" ta="center">
                       18 anos de front-end me ensinaram uma coisa: <strong>escolha errada de arquitetura custa caro.</strong> 
                       E não é só dinheiro: é tempo, paciência, saúde mental e até sua reputação no time.
                     </Text>
                   </Group>
-                  <Alert color="brand" icon={<IconBulb size={isMobile ? 16 : 24} />} radius="md" maw={800}>
+                  <Alert color="brand" icon={<IconBulb size={isMobile ? 16 : 24} />} radius="md">
                     <Text size={isMobile ? 'sm' : 'md'} fw={500}>
                       <strong>O segredo de qualquer arquitetura:</strong> esquece hype, esquece modinha. <span style={{ color: 'var(--mantine-color-accent-6)', fontWeight: 600 }}>Respeita a</span>
                       <Text 
@@ -225,11 +225,11 @@ export default function Home() {
                 {/* Highway Animation - Dentro da seção */}
                 <HighwayAnimation />
                 
-                <Text size="lg" c="dimmed" maw={900} lh={1.8}>
+                <Text size="lg" c="dimmed" lh={1.8}>
                   Arquitetura de software front‑end é tipo rodovia: se nasce torta, estreita ou sem sinalização, o trânsito vira caos. Não adianta culpar o motorista depois.
                 </Text>
 
-                <Text size="lg" c="dimmed" maw={900} lh={1.8} fw={600}>
+                <Text size="lg" c="dimmed" lh={1.8} fw={600}>
                   No código é igual. Se a base é ruim, não tem dev sênior que salve.
                 </Text>
 
@@ -305,7 +305,7 @@ export default function Home() {
                   </Card>
                 </SimpleGrid>
 
-                <Alert color="brand" icon={<IconBulb size={20} />} radius="md" maw={900}>
+                <Alert color="brand" icon={<IconBulb size={20} />} radius="md">
                   <Text size="md" lh={1.6}>
                     Quando esses elementos faltam, o resultado é sempre o mesmo: gargalo, retrabalho, bug bizarro, deploy travado, time estressado. Já quando a arquitetura é bem pensada, ninguém nem percebe: tudo flui, entrega chega no prazo, e o usuário nem imagina o perrengue que você evitou.
                   </Text>
@@ -459,7 +459,7 @@ export default function Home() {
                   </motion.div>
                 </SimpleGrid>
                 
-                <Alert color="brand" icon={<IconBulb size={20} />} radius="md" maw={800}>
+                <Alert color="brand" icon={<IconBulb size={20} />} radius="md">
                   <Text size="md" fw={500}>
                     <strong>ROI Real:</strong> Time que escolhe arquitetura certa economiza 3-6 meses de refatoração por ano. 
                     <strong>Dívida técnica reduzida em 70%</strong> com padrões testados.
