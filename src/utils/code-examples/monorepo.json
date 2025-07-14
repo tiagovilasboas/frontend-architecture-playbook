@@ -1,0 +1,79 @@
+[
+  {
+    "id": "monorepo-shared-components",
+    "title": "Componentes Compartilhados",
+    "description": "Componentes compartilhados em monorepo",
+    "file": "monorepo",
+    "content": "// packages/ui/src/components/Button.tsx\nexport function Button({ children, variant = 'primary', ...props }) {\n  return (\n    <button \n      className={`btn btn-${variant}`}\n      {...props}\n    >\n      {children}\n    </button>\n  );\n}\n\n// packages/ui/src/components/Input.tsx\nexport function Input({ label, ...props }) {\n  return (\n    <div className=\"input-wrapper\">\n      {label && <label>{label}</label>}\n      <input {...props} />\n    </div>\n  );\n}\n\n// apps/web-app/src/pages/Login.tsx\nimport { Button, Input } from '@repo/ui';\n\nexport function Login() {\n  return (\n    <form>\n      <Input label=\"Email\" type=\"email\" />\n      <Input label=\"Senha\" type=\"password\" />\n      <Button>Entrar</Button>\n    </form>\n  );\n}\n\n// apps/mobile-app/src/screens/Login.tsx\nimport { Button, Input } from '@repo/ui';\n\nexport function Login() {\n  return (\n    <form>\n      <Input label=\"Email\" type=\"email\" />\n      <Input label=\"Senha\" type=\"password\" />\n      <Button>Entrar</Button>\n    </form>\n  );\n}\n\n// Muda um componente, muda em todo lugar\n// Consistência visual garantida"
+  },
+  {
+    "id": "monorepo-shared-types",
+    "title": "Tipos Compartilhados",
+    "description": "Tipos compartilhados em monorepo",
+    "file": "monorepo",
+    "content": "// packages/shared/src/types/User.ts\nexport interface User {\n  id: string;\n  name: string;\n  email: string;\n  role: 'admin' | 'user';\n}\n\n// packages/shared/src/validations/userSchema.ts\nimport { z } from 'zod';\n\nexport const userSchema = z.object({\n  name: z.string().min(2),\n  email: z.string().email(),\n  role: z.enum(['admin', 'user'])\n});\n\n// apps/frontend/src/pages/UserProfile.tsx\nimport { User } from '@repo/shared/types';\nimport { userSchema } from '@repo/shared/validations';\n\nexport function UserProfile({ user }: { user: User }) {\n  return <div>{user.name}</div>;\n}\n\n// apps/backend/src/routes/users.ts\nimport { User } from '@repo/shared/types';\nimport { userSchema } from '@repo/shared/validations';\n\napp.post('/users', (req, res) => {\n  const validatedData = userSchema.parse(req.body);\n  // ...\n});\n\n// Tipos compartilhados\n// Validações consistentes"
+  },
+  {
+    "id": "monorepo-shared-config",
+    "title": "Configurações Compartilhadas",
+    "description": "Configurações compartilhadas em monorepo",
+    "file": "monorepo",
+    "content": "// packages/config/eslint-config/index.js\nmodule.exports = {\n  extends: ['@repo/config/eslint-config/base'],\n  rules: {\n    // Regras compartilhadas\n  }\n};\n\n// packages/config/prettier-config/index.js\nmodule.exports = {\n  semi: true,\n  singleQuote: true,\n  tabWidth: 2\n};\n\n// apps/web-app/.eslintrc.js\nmodule.exports = {\n  extends: ['@repo/config/eslint-config']\n};\n\n// apps/mobile-app/.eslintrc.js\nmodule.exports = {\n  extends: ['@repo/config/eslint-config']\n};\n\n// apps/admin-panel/.eslintrc.js\nmodule.exports = {\n  extends: ['@repo/config/eslint-config']\n};\n\n// Tooling centralizado\n// Configurações consistentes"
+  },
+  {
+    "id": "monorepo-design-system",
+    "title": "Design System - Componentes Compartilhados",
+    "description": "Design system em monorepo",
+    "file": "monorepo",
+    "content": "// ❌ RUIM - Múltiplos repositórios\n// repo-web-app/\n// ├── src/components/Button.tsx\n// ├── src/components/Input.tsx\n// └── src/components/Card.tsx\n\n// repo-mobile-app/\n// ├── src/components/Button.tsx\n// ├── src/components/Input.tsx\n// └── src/components/Card.tsx\n\n// repo-admin-panel/\n// ├── src/components/Button.tsx\n// ├── src/components/Input.tsx\n// └── src/components/Card.tsx\n\n// Código duplicado, inconsistência visual\n\n// ✅ BOM - Monorepo\n// packages/ui/\n// ├── src/components/Button.tsx\n// ├── src/components/Input.tsx\n// └── src/components/Card.tsx\n\n// apps/web-app/\n// ├── src/pages/\n// └── package.json (depende de @repo/ui)\n\n// apps/mobile-app/\n// ├── src/screens/\n// └── package.json (depende de @repo/ui)\n\n// apps/admin-panel/\n// ├── src/pages/\n// └── package.json (depende de @repo/ui)\n\n// Muda um componente, muda em todo lugar\n// Consistência visual garantida\n// Fácil de manter"
+  },
+  {
+    "id": "monorepo-fullstack",
+    "title": "Full-Stack - Front-end + Back-end",
+    "description": "Aplicação full-stack em monorepo",
+    "file": "monorepo",
+    "content": "// ❌ RUIM - Repositórios separados\n// repo-frontend/\n// ├── src/types/User.ts\n// ├── src/validations/userSchema.ts\n// └── src/api/users.ts\n\n// repo-backend/\n// ├── src/types/User.ts\n// ├── src/validations/userSchema.ts\n// └── src/routes/users.ts\n\n// repo-mobile/\n// ├── src/types/User.ts\n// ├── src/validations/userSchema.ts\n// └── src/api/users.ts\n\n// Tipos duplicados, validações diferentes\n\n// ✅ BOM - Monorepo\n// packages/shared/\n// ├── src/types/User.ts\n// ├── src/validations/userSchema.ts\n// └── src/constants/api.ts\n\n// apps/frontend/\n// ├── src/pages/\n// └── package.json (depende de @repo/shared)\n\n// apps/backend/\n// ├── src/routes/\n// └── package.json (depende de @repo/shared)\n\n// apps/mobile/\n// ├── src/screens/\n// └── package.json (depende de @repo/shared)\n\n// Tipos compartilhados\n// Validações consistentes\n// Fácil de sincronizar"
+  },
+  {
+    "id": "monorepo-microfrontends",
+    "title": "Micro-frontends - Múltiplas Apps",
+    "description": "Micro-frontends em monorepo",
+    "file": "monorepo",
+    "content": "// ❌ RUIM - Repositórios separados\n// repo-shell/\n// ├── .eslintrc.js\n// ├── .prettierrc\n// ├── tsconfig.json\n// └── package.json\n\n// repo-catalog/\n// ├── .eslintrc.js\n// ├── .prettierrc\n// ├── tsconfig.json\n// └── package.json\n\n// repo-cart/\n// ├── .eslintrc.js\n// ├── .prettierrc\n// ├── tsconfig.json\n// └── package.json\n\n// Configurações duplicadas, tooling diferente\n\n// ✅ BOM - Monorepo\n// packages/config/\n// ├── eslint-config/\n// ├── prettier-config/\n// └── typescript-config/\n\n// apps/shell/\n// ├── src/\n// └── package.json (usa @repo/config)\n\n// apps/catalog/\n// ├── src/\n// └── package.json (usa @repo/config)\n\n// apps/cart/\n// ├── src/\n// └── package.json (usa @repo/config)\n\n// apps/checkout/\n// ├── src/\n// └── package.json (usa @repo/config)\n\n// apps/profile/\n// ├── src/\n// └── package.json (usa @repo/config)\n\n// Tooling centralizado\n// Configurações consistentes\n// Fácil de manter"
+  },
+  {
+    "id": "monorepo-pitfall-giant",
+    "title": "Monorepo Gigante",
+    "description": "Problema: Monorepo gigante e bagunçado",
+    "file": "monorepo",
+    "content": "// ❌ RUIM - Monorepo gigante\n// repo/\n// ├── src/\n// │   ├── components/\n// │   ├── pages/\n// │   ├── utils/\n// │   ├── hooks/\n// │   ├── types/\n// │   ├── validations/\n// │   ├── api/\n// │   ├── styles/\n// │   ├── tests/\n// │   └── ...\n// ├── mobile/\n// ├── admin/\n// ├── backend/\n// ├── shared/\n// └── ...\n\n// Bagunça total\n// Impossível de navegar\n// Build lento\n// Difícil de manter\n\n// ✅ BOM - Estrutura organizada\n// packages/\n// ├── ui/\n// ├── shared/\n// ├── config/\n// └── utils/\n\n// apps/\n// ├── web-app/\n// ├── mobile-app/\n// ├── admin-panel/\n// └── backend-api/\n\n// Estrutura clara\n// Fácil de navegar\n// Build otimizado"
+  },
+  {
+    "id": "monorepo-pitfall-dependencies",
+    "title": "Dependências Circulares",
+    "description": "Problema: Dependências circulares entre pacotes",
+    "file": "monorepo",
+    "content": "// ❌ RUIM - Dependências circulares\n// packages/ui/\n// ├── package.json (depende de @repo/shared)\n// └── src/\n\n// packages/shared/\n// ├── package.json (depende de @repo/ui)\n// └── src/\n\n// packages/utils/\n// ├── package.json (depende de @repo/ui, @repo/shared)\n// └── src/\n\n// Build quebra\n// Dependências confusas\n\n// ✅ BOM - Dependências claras\n// packages/shared/ (base)\n// ├── package.json (sem dependências internas)\n// └── src/\n\n// packages/ui/ (depende de shared)\n// ├── package.json (depende de @repo/shared)\n// └── src/\n\n// packages/utils/ (depende de shared)\n// ├── package.json (depende de @repo/shared)\n// └── src/\n\n// apps/web-app/ (depende de ui, shared)\n// ├── package.json (depende de @repo/ui, @repo/shared)\n// └── src/\n\n// Hierarquia clara\n// Sem dependências circulares"
+  },
+  {
+    "id": "monorepo-pitfall-build-slow",
+    "title": "Build Lento",
+    "description": "Problema: Build lento em monorepo",
+    "file": "monorepo",
+    "content": "// ❌ RUIM - Build lento\n// yarn build\n// Builda tudo sempre\n// 30 minutos de build\n\n// ✅ BOM - Build otimizado\n// nx.json\n{\n  \"tasksRunnerOptions\": {\n    \"default\": {\n      \"runner\": \"nx/tasks-runners/default\",\n      \"options\": {\n        \"cacheableOperations\": [\"build\", \"test\", \"lint\"]\n      }\n    }\n  }\n}\n\n// package.json\n{\n  \"scripts\": {\n    \"build\": \"nx build\",\n    \"build:affected\": \"nx affected:build\",\n    \"test\": \"nx test\",\n    \"test:affected\": \"nx affected:test\"\n  }\n}\n\n// Build só o que mudou\n// Cache inteligente\n// Build rápido"
+  },
+  {
+    "id": "monorepo-pitfall-versioning",
+    "title": "Versionamento Complexo",
+    "description": "Problema: Versionamento complexo em monorepo",
+    "file": "monorepo",
+    "content": "// ❌ RUIM - Versionamento manual\n// packages/ui/package.json\n{\n  \"name\": \"@repo/ui\",\n  \"version\": \"1.2.3\"\n}\n\n// packages/shared/package.json\n{\n  \"name\": \"@repo/shared\",\n  \"version\": \"2.1.0\"\n}\n\n// Versionamento manual\n// Fácil de esquecer\n// Inconsistências\n\n// ✅ BOM - Versionamento automático\n// lerna.json\n{\n  \"version\": \"independent\",\n  \"command\": {\n    \"publish\": {\n      \"conventionalCommits\": true,\n      \"message\": \"chore(release): publish\"\n    }\n  }\n}\n\n// package.json\n{\n  \"scripts\": {\n    \"version\": \"lerna version\",\n    \"publish\": \"lerna publish\"\n  }\n}\n\n// Versionamento automático\n// Conventional commits\n// Fácil de gerenciar"
+  },
+  {
+    "id": "monorepo-pitfall-permissions",
+    "title": "Permissões Complexas",
+    "description": "Problema: Permissões complexas em monorepo",
+    "file": "monorepo",
+    "content": "// ❌ RUIM - Permissões complexas\n// packages/ui/\n// ├── .github/workflows/publish.yml\n// ├── .github/workflows/test.yml\n// └── .github/workflows/deploy.yml\n\n// packages/shared/\n// ├── .github/workflows/publish.yml\n// ├── .github/workflows/test.yml\n// └── .github/workflows/deploy.yml\n\n// Configurações duplicadas\n// Difícil de manter\n\n// ✅ BOM - CI/CD centralizado\n// .github/workflows/ci.yml\nname: CI\non: [push, pull_request]\njobs:\n  test:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v3\n      - uses: actions/setup-node@v3\n      - run: yarn install\n      - run: yarn affected:test\n\n  build:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v3\n      - uses: actions/setup-node@v3\n      - run: yarn install\n      - run: yarn affected:build\n\n// CI/CD centralizado\n// Configuração única\n// Fácil de manter"
+  }
+] 

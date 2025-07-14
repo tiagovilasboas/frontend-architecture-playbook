@@ -28,8 +28,16 @@ export default function CodeExample({
   const codeDescription = typeof code === 'string' ? description : (code.description || description);
   // Futuro: const codeLanguage = typeof code === 'string' ? undefined : code.language;
 
+  const toggleExpanded = () => setExpanded(!expanded);
+
   return (
-    <Paper withBorder p="md" radius="md">
+    <Paper 
+      withBorder 
+      p="md" 
+      radius="md" 
+      style={{ cursor: 'pointer' }}
+      onClick={toggleExpanded}
+    >
       <Stack gap="sm">
         <Group justify="space-between" align="center">
           <Group gap="xs" align="center">
@@ -39,7 +47,10 @@ export default function CodeExample({
           <Button
             variant="subtle"
             size="xs"
-            onClick={() => setExpanded(!expanded)}
+            onClick={(e) => {
+              e.stopPropagation();
+              toggleExpanded();
+            }}
             rightSection={expanded ? <IconChevronDown size={14} /> : <IconChevronRight size={14} />}
           >
             {expanded ? 'Ocultar' : 'Ver código'}

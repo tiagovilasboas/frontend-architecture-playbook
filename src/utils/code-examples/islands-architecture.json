@@ -1,0 +1,72 @@
+[
+  {
+    "id": "islands-html-static",
+    "title": "HTML estático",
+    "description": "Base da página é HTML puro. Rápido, SEO-friendly, sem JavaScript desnecessário.",
+    "file": "islands-architecture",
+    "content": "<!DOCTYPE html>\n<html>\n<head>\n  <title>E-commerce - Produtos</title>\n  <meta name=\"description\" content=\"Produtos incríveis\">\n</head>\n<body>\n  <header>\n    <nav>\n      <a href=\"/\">Home</a>\n      <a href=\"/produtos\">Produtos</a>\n      <a href=\"/sobre\">Sobre</a>\n    </nav>\n  </header>\n  \n  <main>\n    <h1>Nossos Produtos</h1>\n    <p>HTML puro, carregamento instantâneo</p>\n    \n    <div id=\"carrinho\">\n      <!-- Ilha de carrinho será hidratada -->\n    </div>\n  </main>\n</body>\n</html>"
+  },
+  {
+    "id": "islands-cart-island",
+    "title": "Ilha de carrinho",
+    "description": "JavaScript só nos componentes que precisam de interatividade.",
+    "file": "islands-architecture",
+    "content": "// Carrinho.tsx - Ilha de interatividade\nimport { useState } from 'react';\n\nexport function Carrinho() {\n  const [items, setItems] = useState([]);\n  const [total, setTotal] = useState(0);\n\n  const addItem = (product) => {\n    setItems([...items, product]);\n    setTotal(total + product.price);\n  };\n\n  const removeItem = (id) => {\n    setItems(items.filter(item => item.id !== id));\n    // Recalcula total...\n  };\n\n  return (\n    <div className=\"carrinho\">\n      <h3>Carrinho ({items.length})</h3>\n      {items.map(item => (\n        <div key={item.id}>\n          {item.name} - R$ {item.price}\n          <button onClick={() => removeItem(item.id)}>Remover</button>\n        </div>\n      ))}\n      <div>Total: R$ {total}</div>\n    </div>\n  );\n}"
+  },
+  {
+    "id": "islands-hydration",
+    "title": "Hidratação seletiva",
+    "description": "JavaScript hidrata apenas as ilhas. Resto da página permanece estático.",
+    "file": "islands-architecture",
+    "content": "// Hidratação seletiva\n// app.js\nimport { hydrateRoot } from 'react-dom/client';\nimport Carrinho from './components/Carrinho';\nimport Busca from './components/Busca';\n\n// Hidrata apenas o carrinho\nconst carrinhoContainer = document.getElementById('carrinho');\nif (carrinhoContainer) {\n  hydrateRoot(carrinhoContainer, <Carrinho />);\n}\n\n// Hidrata apenas a busca\nconst buscaContainer = document.getElementById('busca');\nif (buscaContainer) {\n  hydrateRoot(buscaContainer, <Busca />);\n}\n\n// Resto da página permanece estático\n// Performance máxima\n// JavaScript mínimo\n\n// Resultado:\n// - HTML estático: 95% da página\n// - JavaScript: apenas 5% (ilhas)\n// - Performance: 10x melhor que SPA"
+  },
+  {
+    "id": "islands-blog-example",
+    "title": "Blog - Conteúdo + Comentários",
+    "description": "Blog com artigos estáticos e sistema de comentários interativo",
+    "file": "islands-architecture",
+    "content": "// ❌ RUIM - SPA\n// Tudo JavaScript\n// Carregamento lento\n// SEO ruim\n\n// ❌ RUIM - SSR\n// Servidor renderiza tudo\n// Overhead desnecessário\n// Performance ruim\n\n// ✅ BOM - Islands Architecture\n// pages/blog/[slug].html\n<!DOCTYPE html>\n<html>\n<head>\n  <title>Como usar Islands Architecture</title>\n  <meta name=\"description\" content=\"Guia completo...\">\n</head>\n<body>\n  <header>\n    <nav>\n      <a href=\"/\">Home</a>\n      <a href=\"/blog\">Blog</a>\n    </nav>\n  </header>\n  \n  <main>\n    <article>\n      <h1>Como usar Islands Architecture</h1>\n      <p>Conteúdo estático, SEO perfeito...</p>\n      <p>Artigo completo em HTML puro...</p>\n    </article>\n    \n    <div id=\"comentarios\">\n      <!-- Ilha de comentários -->\n    </div>\n  </main>\n</body>\n</html>"
+  },
+  {
+    "id": "islands-ecommerce-example",
+    "title": "E-commerce - Produtos + Carrinho",
+    "description": "Catálogo estático com carrinho interativo",
+    "file": "islands-architecture",
+    "content": "// ✅ BOM - Islands Architecture\n// pages/produtos.html\n<!DOCTYPE html>\n<html>\n<head>\n  <title>Produtos - Nossa Loja</title>\n</head>\n<body>\n  <header>\n    <nav>\n      <a href=\"/\">Home</a>\n      <a href=\"/produtos\">Produtos</a>\n    </nav>\n  </header>\n  \n  <main>\n    <h1>Nossos Produtos</h1>\n    \n    <!-- Conteúdo estático -->\n    <div class=\"produtos\">\n      <div class=\"produto\">\n        <img src=\"/produto1.jpg\" alt=\"Produto 1\">\n        <h3>Produto 1</h3>\n        <p>Descrição do produto...</p>\n        <p>R$ 99,90</p>\n      </div>\n      <!-- Mais produtos estáticos... -->\n    </div>\n    \n    <!-- Ilha de carrinho -->\n    <div id=\"carrinho\">\n      <!-- Hidratado com React -->\n    </div>\n  </main>\n</body>\n</html>"
+  },
+  {
+    "id": "islands-pitfall-everything-island",
+    "title": "Tudo ilha",
+    "description": "Problema: Transformar tudo em ilha",
+    "file": "islands-architecture",
+    "content": "// ❌ RUIM - Tudo ilha\n// Perde o benefício do HTML estático\n\n// pages/produtos.html\n<!DOCTYPE html>\n<html>\n<body>\n  <div id=\"header\">\n    <!-- Ilha desnecessária -->\n  </div>\n  \n  <div id=\"nav\">\n    <!-- Ilha desnecessária -->\n  </div>\n  \n  <div id=\"produtos\">\n    <!-- Ilha desnecessária -->\n  </div>\n  \n  <div id=\"footer\">\n    <!-- Ilha desnecessária -->\n  </div>\n</body>\n</html>\n\n// Resultado:\n// - JavaScript em tudo\n// - Performance ruim\n// - Perde o benefício das ilhas\n\n// ✅ BOM - Apenas o necessário\n// HTML estático para conteúdo\n// Ilhas apenas para interatividade"
+  },
+  {
+    "id": "islands-pitfall-shared-state",
+    "title": "Estado compartilhado complexo",
+    "description": "Problema: Estado global entre ilhas",
+    "file": "islands-architecture",
+    "content": "// ❌ RUIM - Estado compartilhado complexo\n// Ilhas precisam se comunicar\n\n// Carrinho.tsx\nconst [items, setItems] = useState([]);\n\n// Busca.tsx  \nconst [filters, setFilters] = useState({});\n\n// Produtos.tsx\nconst [products, setProducts] = useState([]);\n\n// Problema: Como sincronizar?\n// - Carrinho precisa saber dos filtros\n// - Produtos precisam atualizar carrinho\n// - Estado global complexo\n\n// ✅ BOM - Ilhas independentes\n// Cada ilha gerencia seu próprio estado\n// Comunicação via eventos simples\n// Sem dependências entre ilhas"
+  },
+  {
+    "id": "islands-pitfall-complex-build",
+    "title": "Build manual complexo",
+    "description": "Problema: Build manual para hidratação",
+    "file": "islands-architecture",
+    "content": "// ❌ RUIM - Build manual complexo\n// Precisa identificar ilhas manualmente\n// Build customizado para cada página\n\n// build.js\nconst pages = [\n  'pages/produtos.html',\n  'pages/blog.html',\n  'pages/sobre.html'\n];\n\npages.forEach(page => {\n  // Identificar ilhas manualmente\n  const islands = findIslands(page);\n  \n  // Build customizado\n  islands.forEach(island => {\n    buildIsland(island);\n  });\n});\n\n// Resultado:\n// - Build complexo\n// - Manutenção difícil\n// - Propenso a erros\n\n// ✅ BOM - Ferramentas automáticas\n// Astro, Fresh, Qwik\n// Hidratação automática\n// Zero configuração"
+  },
+  {
+    "id": "islands-pitfall-dynamic-content",
+    "title": "Conteúdo dinâmico nas ilhas",
+    "description": "Problema: Conteúdo que deveria ser estático",
+    "file": "islands-architecture",
+    "content": "// ❌ RUIM - Conteúdo dinâmico nas ilhas\n// Produtos.tsx\nexport function Produtos() {\n  const [products, setProducts] = useState([]);\n  \n  useEffect(() => {\n    fetchProducts().then(setProducts);\n  }, []);\n\n  return (\n    <div>\n      {products.map(product => (\n        <div key={product.id}>\n          <h3>{product.name}</h3>\n          <p>{product.description}</p>\n        </div>\n      ))}\n    </div>\n  );\n}\n\n// Problema:\n// - Conteúdo deveria ser estático\n// - SEO ruim\n// - Carregamento lento\n\n// ✅ BOM - Conteúdo estático + ilhas\n// HTML estático para produtos\n// Ilhas apenas para interatividade (filtros, busca)"
+  },
+  {
+    "id": "islands-pitfall-many-small-islands",
+    "title": "Muitas ilhas pequenas",
+    "description": "Problema: Fragmentação excessiva",
+    "file": "islands-architecture",
+    "content": "// ❌ RUIM - Muitas ilhas pequenas\n// pages/produto.html\n<div id=\"rating\">\n  <!-- Ilha de rating -->\n</div>\n\n<div id=\"reviews\">\n  <!-- Ilha de reviews -->\n</div>\n\n<div id=\"related\">\n  <!-- Ilha de produtos relacionados -->\n</div>\n\n<div id=\"share\">\n  <!-- Ilha de compartilhamento -->\n</div>\n\n// Problema:\n// - Muitos bundles pequenos\n// - Overhead de hidratação\n// - Performance ruim\n\n// ✅ BOM - Ilhas maiores\n// Agrupar funcionalidades relacionadas\n// Menos ilhas, mais eficiente"
+  }
+] 

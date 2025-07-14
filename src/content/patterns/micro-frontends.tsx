@@ -1,6 +1,7 @@
 import { Title, Text, Stack, Paper, Alert, List, ThemeIcon, Group, Card, Badge } from '@mantine/core';
-import { IconBulb, IconAlertTriangle, IconCheck, IconCode, IconApps, IconBuilding } from '@tabler/icons-react';
+import { IconBulb, IconAlertTriangle, IconCheck, IconCode, IconApps } from '@tabler/icons-react';
 import CodeExample from '../../components/CodeExample';
+import microFrontendsExamples from '../../utils/code-examples/micro-frontends.json';
 
 function MicroFrontends() {
   return (
@@ -8,11 +9,11 @@ function MicroFrontends() {
       {/* Hero Section */}
       <div>
         <Title order={1} mb="md">
-          Micro-frontends
+          Micro-Frontends
         </Title>
         <Text size="lg" c="dimmed">
-          Quebre aplicações grandes em pedaços pequenos. Times independentes, 
-          tecnologias diferentes, deploy separado. Escalabilidade real.
+          Quebre aplicações grandes em pedaços menores. Times independentes, 
+          tecnologias heterogêneas, deploy separado. Escalabilidade real.
         </Text>
       </div>
 
@@ -25,19 +26,23 @@ function MicroFrontends() {
             </ThemeIcon>
             <div>
               <Title order={3}>O que é?</Title>
-              <Text c="dimmed">Arquitetura que quebra front-ends grandes em pedaços pequenos</Text>
+              <Text c="dimmed">Arquitetura que quebra aplicações grandes em micro-aplicações</Text>
             </div>
           </Group>
+          
           <Text>
-            Micro-frontends é sobre uma coisa só: <strong>quebrar aplicações grandes em pedaços pequenos</strong>.
+            Micro-Frontends é sobre uma coisa só: <strong>quebrar aplicações grandes em pedaços menores</strong>.
           </Text>
+          
           <Text>
-            Pensa assim: ao invés de uma aplicação gigante que todo mundo mexe, 
-            você tem várias aplicações pequenas, cada uma com seu time, sua tecnologia, seu deploy.
+            Pensa assim: você tem uma aplicação gigante com 50 desenvolvedores. 
+            Vira uma bagunça total. Micro-Frontends quebra em 5 aplicações menores, 
+            cada uma com seu time, sua tecnologia, seu deploy.
           </Text>
+          
           <Text>
             A regra é simples: <em>cada micro-frontend é independente</em>. 
-            Pode usar React, Vue, Angular, o que quiser. Pode fazer deploy quando quiser.
+            Time A não depende do Time B, tecnologia A não depende da tecnologia B.
           </Text>
         </Stack>
       </Paper>
@@ -45,76 +50,23 @@ function MicroFrontends() {
       {/* Concepts */}
       <div>
         <Title order={2} mb="lg">
-          <IconBuilding size={28} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
+          <IconApps size={28} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
           Os 4 Conceitos Principais
         </Title>
+        
         <Stack gap="md">
-          <Card withBorder p="md">
-            <Group>
-              <Badge size="lg" variant="light" color="green">1</Badge>
-              <div>
-                <Title order={4}>Independência de Times</Title>
-                <Text size="sm" c="dimmed">
-                  Cada micro-frontend tem seu time. Não precisa esperar ninguém.
-                </Text>
-                <CodeExample
-                  title="Independência de Times"
-                  code="Independência de Times"
-                />
-              </div>
-            </Group>
-          </Card>
-
-          <Card withBorder p="md">
-            <Group>
-              <Badge size="lg" variant="light" color="blue">2</Badge>
-              <div>
-                <Title order={4}>Tecnologias Heterogêneas</Title>
-                <Text size="sm" c="dimmed">
-                  Cada micro-frontend pode usar tecnologia diferente. 
-                  React, Vue, Angular, vanilla JS.
-                </Text>
-                <CodeExample
-                  title="Tecnologias Heterogêneas"
-                  code="Tecnologias Heterogêneas"
-                />
-              </div>
-            </Group>
-          </Card>
-
-          <Card withBorder p="md">
-            <Group>
-              <Badge size="lg" variant="light" color="orange">3</Badge>
-              <div>
-                <Title order={4}>Deploy Independente</Title>
-                <Text size="sm" c="dimmed">
-                  Cada micro-frontend faz deploy separado. 
-                  Não precisa esperar ninguém.
-                </Text>
-                <CodeExample
-                  title="Deploy Independente"
-                  code="Deploy Independente"
-                />
-              </div>
-            </Group>
-          </Card>
-
-          <Card withBorder p="md">
-            <Group>
-              <Badge size="lg" variant="light" color="red">4</Badge>
-              <div>
-                <Title order={4}>Integração via Shell</Title>
-                <Text size="sm" c="dimmed">
-                  Shell (container) orquestra os micro-frontends. 
-                  Carrega e integra tudo.
-                </Text>
-                <CodeExample
-                  title="Integração via Shell"
-                  code="Integração via Shell"
-                />
-              </div>
-            </Group>
-          </Card>
+          {microFrontendsExamples.map((ex, idx) => (
+            <Card withBorder p="md" key={ex.title}>
+              <Group>
+                <Badge size="lg" variant="light" color={['green','blue','orange','red'][idx] || 'gray'}>{idx+1}</Badge>
+                <div>
+                  <Title order={4}>{ex.title}</Title>
+                  <Text size="sm" c="dimmed">{ex.description}</Text>
+                  <CodeExample title={ex.title} code={ex.code} />
+                </div>
+              </Group>
+            </Card>
+          ))}
         </Stack>
       </div>
 

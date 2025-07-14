@@ -1,0 +1,58 @@
+[
+  {
+    "id": "state-machines-simple",
+    "title": "State Machine Simples",
+    "description": "State machine simples",
+    "file": "state-machines",
+    "content": "// State Machine Simples\nconst trafficLightMachine = {\n  initial: 'red',\n  states: {\n    red: {\n      on: { NEXT: 'green' }\n    },\n    green: {\n      on: { NEXT: 'yellow' }\n    },\n    yellow: {\n      on: { NEXT: 'red' }\n    }\n  }\n};\n\n// Uso\nconst [state, send] = useMachine(trafficLightMachine);\n\n// state.value = 'red'\n// send('NEXT') -> 'green'\n// send('NEXT') -> 'yellow'\n// send('NEXT') -> 'red'"
+  },
+  {
+    "id": "state-machines-complex",
+    "title": "State Machine Complexa",
+    "description": "State machine complexa",
+    "file": "state-machines",
+    "content": "// State Machine Complexa\nconst orderMachine = {\n  initial: 'idle',\n  states: {\n    idle: {\n      on: { ADD_ITEM: 'cart' }\n    },\n    cart: {\n      on: {\n        CHECKOUT: 'checkout',\n        REMOVE_ALL: 'idle'\n      }\n    },\n    checkout: {\n      on: {\n        PAY: 'payment',\n        CANCEL: 'cart'\n      }\n    },\n    payment: {\n      on: {\n        SUCCESS: 'confirmed',\n        FAIL: 'checkout'\n      }\n    },\n    confirmed: {\n      type: 'final'\n    }\n  }\n};"
+  },
+  {
+    "id": "state-machines-actions",
+    "title": "Actions e Guards",
+    "description": "Actions e guards em state machines",
+    "file": "state-machines",
+    "content": "// Actions e Guards\nconst loginMachine = {\n  initial: 'idle',\n  states: {\n    idle: {\n      on: { SUBMIT: 'loading' }\n    },\n    loading: {\n      invoke: {\n        src: 'loginService',\n        onDone: 'success',\n        onError: 'error'\n      }\n    },\n    success: {\n      type: 'final'\n    },\n    error: {\n      on: { RETRY: 'loading' }\n    }\n  }\n};\n\n// Guards\nconst guardedMachine = {\n  initial: 'idle',\n  states: {\n    idle: {\n      on: {\n        SUBMIT: {\n          target: 'loading',\n          cond: 'isValidForm'\n        }\n      }\n    }\n  }\n};"
+  },
+  {
+    "id": "state-machines-pitfall-spaghetti",
+    "title": "Código Spaghetti",
+    "description": "Problema: Código spaghetti com múltiplos estados",
+    "file": "state-machines",
+    "content": "// ❌ RUIM - Código spaghetti\nfunction OrderComponent() {\n  const [isLoading, setIsLoading] = useState(false);\n  const [isError, setIsError] = useState(false);\n  const [isSuccess, setIsSuccess] = useState(false);\n  const [isProcessing, setIsProcessing] = useState(false);\n  const [isCancelled, setIsCancelled] = useState(false);\n  \n  const handleSubmit = async () => {\n    setIsLoading(true);\n    setIsError(false);\n    setIsSuccess(false);\n    \n    try {\n      const result = await submitOrder();\n      setIsLoading(false);\n      setIsSuccess(true);\n    } catch (error) {\n      setIsLoading(false);\n      setIsError(true);\n    }\n  };\n  \n  const handleCancel = () => {\n    setIsLoading(false);\n    setIsError(false);\n    setIsSuccess(false);\n    setIsCancelled(true);\n  };\n  \n  // Renderização confusa\n  if (isLoading) return <Loading />;\n  if (isError) return <Error />;\n  if (isSuccess) return <Success />;\n  if (isCancelled) return <Cancelled />;\n  return <Form onSubmit={handleSubmit} />;\n}\n\n// Problemas:\n// - Estados inconsistentes\n// - Lógica espalhada\n// - Difícil de debugar\n// - Bugs difíceis de encontrar"
+  },
+  {
+    "id": "state-machines-pitfall-race-conditions",
+    "title": "Race Conditions",
+    "description": "Problema: Race conditions com estados",
+    "file": "state-machines",
+    "content": "// ❌ RUIM - Race conditions\nfunction Component() {\n  const [state, setState] = useState('idle');\n  \n  const handleClick = async () => {\n    setState('loading');\n    \n    // Race condition: usuário clica várias vezes\n    const result = await apiCall();\n    \n    // Estado pode ter mudado durante a chamada\n    setState('success');\n  };\n  \n  return (\n    <button onClick={handleClick} disabled={state === 'loading'}>\n      {state === 'loading' ? 'Loading...' : 'Submit'}\n    </button>\n  );\n}\n\n// Problemas:\n// - Múltiplas chamadas simultâneas\n// - Estados inconsistentes\n// - UI confusa\n\n// ✅ BOM - State Machine\nconst machine = {\n  initial: 'idle',\n  states: {\n    idle: {\n      on: { SUBMIT: 'loading' }\n    },\n    loading: {\n      invoke: {\n        src: 'apiCall',\n        onDone: 'success',\n        onError: 'error'\n      }\n    },\n    success: {},\n    error: {\n      on: { RETRY: 'loading' }\n    }\n  }\n};\n\n// Race conditions impossíveis\n// Estados sempre consistentes"
+  },
+  {
+    "id": "state-machines-pitfall-impossible-states",
+    "title": "Estados Impossíveis",
+    "description": "Problema: Estados impossíveis e inconsistentes",
+    "file": "state-machines",
+    "content": "// ❌ RUIM - Estados impossíveis\nfunction Component() {\n  const [isLoading, setIsLoading] = useState(false);\n  const [data, setData] = useState(null);\n  const [error, setError] = useState(null);\n  \n  // Estados impossíveis:\n  // - isLoading: true, data: null, error: null ✅\n  // - isLoading: false, data: {...}, error: null ✅\n  // - isLoading: false, data: null, error: {...} ✅\n  // - isLoading: true, data: {...}, error: {...} ❌ IMPOSSÍVEL\n  // - isLoading: false, data: {...}, error: {...} ❌ IMPOSSÍVEL\n  \n  return (\n    <div>\n      {isLoading && <Loading />}\n      {data && <Data data={data} />}\n      {error && <Error error={error} />}\n    </div>\n  );\n}\n\n// ✅ BOM - State Machine\nconst machine = {\n  initial: 'idle',\n  states: {\n    idle: {\n      on: { FETCH: 'loading' }\n    },\n    loading: {\n      invoke: {\n        src: 'fetchData',\n        onDone: 'success',\n        onError: 'error'\n      }\n    },\n    success: {\n      data: {}\n    },\n    error: {\n      error: {}\n    }\n  }\n};\n\n// Estados sempre válidos\n// Impossível ter estados inconsistentes"
+  },
+  {
+    "id": "state-machines-pitfall-complex-transitions",
+    "title": "Transições Complexas",
+    "description": "Problema: Transições complexas e confusas",
+    "file": "state-machines",
+    "content": "// ❌ RUIM - Transições complexas\nfunction Component() {\n  const [state, setState] = useState('idle');\n  \n  const handleAction = (action) => {\n    switch (state) {\n      case 'idle':\n        if (action === 'start') setState('loading');\n        break;\n      case 'loading':\n        if (action === 'success') setState('success');\n        else if (action === 'error') setState('error');\n        else if (action === 'cancel') setState('idle');\n        break;\n      case 'success':\n        if (action === 'reset') setState('idle');\n        break;\n      case 'error':\n        if (action === 'retry') setState('loading');\n        else if (action === 'reset') setState('idle');\n        break;\n    }\n  };\n  \n  // Lógica confusa\n  // Difícil de entender\n  // Fácil de quebrar\n}\n\n// ✅ BOM - State Machine\nconst machine = {\n  initial: 'idle',\n  states: {\n    idle: {\n      on: { START: 'loading' }\n    },\n    loading: {\n      on: {\n        SUCCESS: 'success',\n        ERROR: 'error',\n        CANCEL: 'idle'\n      }\n    },\n    success: {\n      on: { RESET: 'idle' }\n    },\n    error: {\n      on: {\n        RETRY: 'loading',\n        RESET: 'idle'\n      }\n    }\n  }\n};\n\n// Transições claras\n// Fácil de entender\n// Impossível de quebrar"
+  },
+  {
+    "id": "state-machines-pitfall-testing",
+    "title": "Testes Complexos",
+    "description": "Problema: Testes complexos com múltiplos estados",
+    "file": "state-machines",
+    "content": "// ❌ RUIM - Testes complexos\nit('should handle all states', () => {\n  const { getByText } = render(<Component />);\n  \n  // Testa estado inicial\n  expect(getByText('Idle')).toBeInTheDocument();\n  \n  // Simula loading\n  fireEvent.click(getByText('Start'));\n  expect(getByText('Loading')).toBeInTheDocument();\n  \n  // Simula sucesso\n  act(() => {\n    // Mock da API\n  });\n  expect(getByText('Success')).toBeInTheDocument();\n  \n  // Testa todos os caminhos...\n  // Testes frágeis\n  // Difícil de manter\n});\n\n// ✅ BOM - Testes de State Machine\nit('should transition correctly', () => {\n  const service = interpret(machine);\n  \n  service.start();\n  expect(service.state.value).toBe('idle');\n  \n  service.send('START');\n  expect(service.state.value).toBe('loading');\n  \n  service.send('SUCCESS');\n  expect(service.state.value).toBe('success');\n});\n\n// Testes simples\n// Fácil de manter\n// Cobertura completa"
+  }
+] 

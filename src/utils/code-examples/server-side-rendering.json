@@ -1,0 +1,58 @@
+[
+  {
+    "id": "ssr-getserversideprops",
+    "title": "getServerSideProps",
+    "description": "getServerSideProps em Next.js",
+    "file": "server-side-rendering",
+    "content": "// getServerSideProps\n// pages/products/[id].js\nexport async function getServerSideProps({ params, req, res }) {\n  const { id } = params;\n  \n  try {\n    const product = await fetchProduct(id);\n    \n    return {\n      props: {\n        product,\n        meta: {\n          title: product.name,\n          description: product.description\n        }\n      }\n    };\n  } catch (error) {\n    return {\n      notFound: true\n    };\n  }\n}\n\n// Componente recebe dados já renderizados\nfunction ProductPage({ product }) {\n  return (\n    <div>\n      <h1>{product.name}</h1>\n      <p>{product.description}</p>\n    </div>\n  );\n}\n\n// HTML pré-renderizado\n// SEO perfeito\n// Performance otimizada"
+  },
+  {
+    "id": "ssr-getstaticprops",
+    "title": "getStaticProps",
+    "description": "getStaticProps em Next.js",
+    "file": "server-side-rendering",
+    "content": "// getStaticProps\n// pages/blog/[slug].js\nexport async function getStaticProps({ params }) {\n  const { slug } = params;\n  const post = await fetchPost(slug);\n  \n  return {\n    props: {\n      post,\n      meta: {\n        title: post.title,\n        description: post.excerpt\n      }\n    },\n    revalidate: 3600 // Revalida a cada hora\n  };\n}\n\nexport async function getStaticPaths() {\n  const posts = await fetchAllPosts();\n  \n  const paths = posts.map(post => ({\n    params: { slug: post.slug }\n  }));\n  \n  return {\n    paths,\n    fallback: 'blocking'\n  };\n}\n\n// Build time generation\n// Cache inteligente\n// Performance máxima"
+  },
+  {
+    "id": "ssr-express",
+    "title": "Express + React",
+    "description": "SSR com Express e React",
+    "file": "server-side-rendering",
+    "content": "// Express + React SSR\nimport express from 'express';\nimport { renderToString } from 'react-dom/server';\nimport { StaticRouter } from 'react-router-dom/server';\nimport App from './App';\n\nconst app = express();\n\napp.get('*', async (req, res) => {\n  const context = {};\n  \n  const app = renderToString(\n    <StaticRouter location={req.url} context={context}>\n      <App />\n    </StaticRouter>\n  );\n  \n  const html = `\n    <!DOCTYPE html>\n    <html>\n      <head>\n        <title>SSR App</title>\n      </head>\n      <body>\n        <div id=\"root\">${app}</div>\n        <script src=\"/client.js\"></script>\n      </body>\n    </html>\n  `;\n  \n  res.send(html);\n});\n\napp.listen(3000);\n\n// HTML pré-renderizado\n// SEO perfeito\n// Performance otimizada"
+  },
+  {
+    "id": "ssr-pitfall-hydration",
+    "title": "Problemas de Hidratação",
+    "description": "Problema: Mismatch entre servidor e cliente",
+    "file": "server-side-rendering",
+    "content": "// ❌ RUIM - Hydration mismatch\nfunction Component() {\n  const [isClient, setIsClient] = useState(false);\n  \n  useEffect(() => {\n    setIsClient(true);\n  }, []);\n  \n  return (\n    <div>\n      {isClient ? (\n        <div>Cliente: {new Date().toLocaleString()}</div>\n      ) : (\n        <div>Servidor: {new Date().toLocaleString()}</div>\n      )}\n    </div>\n  );\n}\n\n// Problemas:\n// - Servidor renderiza um horário\n// - Cliente renderiza outro horário\n// - Hydration mismatch\n// - Console warnings\n\n// ✅ BOM - Hydration segura\nfunction Component() {\n  const [mounted, setMounted] = useState(false);\n  \n  useEffect(() => {\n    setMounted(true);\n  }, []);\n  \n  return (\n    <div>\n      <div>Horário: {new Date().toLocaleString()}</div>\n      {mounted && (\n        <div>Componente cliente: {window.innerWidth}px</div>\n      )}\n    </div>\n  );\n}\n\n// Sem mismatch\n// Hydration segura\n// Sem warnings"
+  },
+  {
+    "id": "ssr-pitfall-performance",
+    "title": "Performance Lenta",
+    "description": "Problema: SSR lento e bloqueante",
+    "file": "server-side-rendering",
+    "content": "// ❌ RUIM - SSR lento\n// pages/products/[id].js\nexport async function getServerSideProps({ params }) {\n  const { id } = params;\n  \n  // Chamadas sequenciais\n  const product = await fetchProduct(id);\n  const reviews = await fetchReviews(id);\n  const related = await fetchRelated(id);\n  const analytics = await fetchAnalytics(id);\n  \n  return {\n    props: {\n      product,\n      reviews,\n      related,\n      analytics\n    }\n  };\n}\n\n// Problemas:\n// - 4 segundos de loading\n// - Timeout do servidor\n// - UX ruim\n\n// ✅ BOM - SSR otimizado\n// pages/products/[id].js\nexport async function getServerSideProps({ params }) {\n  const { id } = params;\n  \n  // Chamadas paralelas\n  const [product, reviews, related, analytics] = await Promise.all([\n    fetchProduct(id),\n    fetchReviews(id),\n    fetchRelated(id),\n    fetchAnalytics(id)\n  ]);\n  \n  return {\n    props: {\n      product,\n      reviews,\n      related,\n      analytics\n    }\n  };\n}\n\n// 1 segundo de loading\n// Performance otimizada\n// UX excelente"
+  },
+  {
+    "id": "ssr-pitfall-caching",
+    "title": "Problemas de Cache",
+    "description": "Problema: Cache inadequado em SSR",
+    "file": "server-side-rendering",
+    "content": "// ❌ RUIM - Sem cache\n// pages/products/[id].js\nexport async function getServerSideProps({ params }) {\n  const { id } = params;\n  \n  // Sempre busca do banco\n  const product = await fetchFromDatabase(id);\n  \n  return {\n    props: { product }\n  };\n}\n\n// Problemas:\n// - Sempre lento\n// - Sobrecarga do banco\n// - Performance ruim\n\n// ✅ BOM - Cache inteligente\n// pages/products/[id].js\nexport async function getServerSideProps({ params }) {\n  const { id } = params;\n  \n  // Cache em Redis\n  const cached = await redis.get(`product:${id}`);\n  \n  if (cached) {\n    return {\n      props: { product: JSON.parse(cached) }\n    };\n  }\n  \n  const product = await fetchFromDatabase(id);\n  \n  // Salva no cache por 1 hora\n  await redis.setex(`product:${id}`, 3600, JSON.stringify(product));\n  \n  return {\n    props: { product }\n  };\n}\n\n// Cache inteligente\n// Performance otimizada\n// Sobrecarga reduzida"
+  },
+  {
+    "id": "ssr-pitfall-seo",
+    "title": "SEO Inadequado",
+    "description": "Problema: SEO inadequado em SSR",
+    "file": "server-side-rendering",
+    "content": "// ❌ RUIM - SEO inadequado\n// pages/products/[id].js\nexport async function getServerSideProps({ params }) {\n  const { id } = params;\n  const product = await fetchProduct(id);\n  \n  return {\n    props: { product }\n  };\n}\n\nfunction ProductPage({ product }) {\n  return (\n    <div>\n      <h1>{product.name}</h1>\n      <p>{product.description}</p>\n    </div>\n  );\n}\n\n// Problemas:\n// - Sem meta tags\n// - Sem structured data\n// - SEO básico\n\n// ✅ BOM - SEO completo\n// pages/products/[id].js\nexport async function getServerSideProps({ params }) {\n  const { id } = params;\n  const product = await fetchProduct(id);\n  \n  return {\n    props: {\n      product,\n      meta: {\n        title: `${product.name} - Loja Online`,\n        description: product.description,\n        image: product.image,\n        url: `/products/${id}`\n      }\n    }\n  };\n}\n\nfunction ProductPage({ product, meta }) {\n  return (\n    <>\n      <Head>\n        <title>{meta.title}</title>\n        <meta name=\"description\" content={meta.description} />\n        <meta property=\"og:title\" content={meta.title} />\n        <meta property=\"og:description\" content={meta.description} />\n        <meta property=\"og:image\" content={meta.image} />\n        <meta property=\"og:url\" content={meta.url} />\n        <link rel=\"canonical\" href={meta.url} />\n        <script type=\"application/ld+json\">\n          {JSON.stringify({\n            '@context': 'https://schema.org',\n            '@type': 'Product',\n            name: product.name,\n            description: product.description,\n            image: product.image,\n            price: product.price\n          })}\n        </script>\n      </Head>\n      <div>\n        <h1>{product.name}</h1>\n        <p>{product.description}</p>\n      </div>\n    </>\n  );\n}\n\n// Meta tags completas\n// Structured data\n// SEO perfeito"
+  },
+  {
+    "id": "ssr-pitfall-error-handling",
+    "title": "Tratamento de Erro",
+    "description": "Problema: Tratamento de erro inadequado em SSR",
+    "file": "server-side-rendering",
+    "content": "// ❌ RUIM - Sem tratamento de erro\n// pages/products/[id].js\nexport async function getServerSideProps({ params }) {\n  const { id } = params;\n  const product = await fetchProduct(id);\n  \n  return {\n    props: { product }\n  };\n}\n\n// Problemas:\n// - Erro quebra a página\n// - UX ruim\n// - Sem fallback\n\n// ✅ BOM - Tratamento robusto\n// pages/products/[id].js\nexport async function getServerSideProps({ params, res }) {\n  const { id } = params;\n  \n  try {\n    const product = await fetchProduct(id);\n    \n    if (!product) {\n      return {\n        notFound: true\n      };\n    }\n    \n    return {\n      props: { product }\n    };\n  } catch (error) {\n    // Log do erro\n    console.error('Error fetching product:', error);\n    \n    // Retorna página de erro\n    return {\n      props: {\n        error: 'Produto não encontrado',\n        product: null\n      }\n    };\n  }\n}\n\nfunction ProductPage({ product, error }) {\n  if (error) {\n    return (\n      <div>\n        <h1>Erro</h1>\n        <p>{error}</p>\n        <Link href=\"/products\">Voltar aos produtos</Link>\n      </div>\n    );\n  }\n  \n  return (\n    <div>\n      <h1>{product.name}</h1>\n      <p>{product.description}</p>\n    </div>\n  );\n}\n\n// Tratamento robusto\n// UX consistente\n// Fallbacks adequados"
+  }
+] 

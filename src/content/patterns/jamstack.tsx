@@ -199,56 +199,28 @@ function JAMstack() {
         </Title>
         
         <Stack gap="xl">
-          {/* Example 1: Blog */}
-          <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">📝 Blog - Conteúdo Estático</Title>
-            
-            <Stack gap="md">
-              <Text>
-                <strong>Cenário:</strong> Blog com artigos, categorias, busca. 
-                Conteúdo que não muda frequentemente.
-                <br />
-                <strong>Problema:</strong> Servidor lento, SEO ruim, 
-                custo alto de hosting.
-              </Text>
+          {jamstackExamples.slice(8).map((ex, idx) => (
+            <Paper withBorder p="xl" radius="md" key={ex.title}>
+              <Title order={3} mb="md">
+                {['📝', '🛒', '🎨'][idx]} {ex.title.split(' - ')[1]}
+              </Title>
               
-              <CodeExample title="WordPress tradicional" code="WordPress tradicional" />
-            </Stack>
-          </Paper>
-
-          {/* Example 2: E-commerce */}
-          <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">🛒 E-commerce - Performance Crítica</Title>
-            
-            <Stack gap="md">
-              <Text>
-                <strong>Cenário:</strong> E-commerce com produtos, carrinho, checkout. 
-                Performance crítica para conversão.
-                <br />
-                <strong>Problema:</strong> Servidor lento, abandono de carrinho, 
-                SEO ruim.
-              </Text>
-              
-              <CodeExample title="E-commerce tradicional" code="E-commerce tradicional" />
-            </Stack>
-          </Paper>
-
-          {/* Example 3: Portfolio */}
-          <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">🎨 Portfolio - Simplicidade e Performance</Title>
-            
-            <Stack gap="md">
-              <Text>
-                <strong>Cenário:</strong> Portfolio pessoal com projetos, 
-                contato, blog. Simplicidade e performance.
-                <br />
-                <strong>Problema:</strong> Complexidade desnecessária, 
-                custo alto, manutenção difícil.
-              </Text>
-              
-              <CodeExample title="Portfolio complexo" code="Portfolio complexo" />
-            </Stack>
-          </Paper>
+              <Stack gap="md">
+                <Text>
+                  <strong>Cenário:</strong> {ex.description}
+                  <br />
+                  <strong>Problema:</strong> {ex.description.includes('WordPress') ? 
+                    'Servidor lento, SEO ruim, custo alto de hosting.' :
+                    ex.description.includes('E-commerce') ?
+                    'Servidor lento, abandono de carrinho, SEO ruim.' :
+                    'Complexidade desnecessária, custo alto, manutenção difícil.'
+                  }
+                </Text>
+                
+                <CodeExample title={ex.title} code={ex.code || ''} />
+              </Stack>
+            </Paper>
+          ))}
         </Stack>
       </div>
 

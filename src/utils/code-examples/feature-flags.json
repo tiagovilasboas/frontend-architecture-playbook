@@ -1,0 +1,72 @@
+[
+  {
+    "id": "feature-flags-use-flag",
+    "title": "useFeatureFlag",
+    "description": "Hook para controlar funcionalidades dinamicamente",
+    "file": "feature-flags",
+    "content": "import { useEffect, useState } from 'react';\n\nexport function useFeatureFlag(flagKey: string, defaultValue = false) {\n  const [isEnabled, setIsEnabled] = useState(defaultValue);\n\n  useEffect(() => {\n    fetch(`/api/flags/${flagKey}`)\n      .then((res) => res.json())\n      .then((data) => setIsEnabled(!!data.enabled))\n      .catch(() => setIsEnabled(defaultValue));\n  }, [flagKey, defaultValue]);\n\n  return isEnabled;\n}"
+  },
+  {
+    "id": "feature-flags-provider",
+    "title": "Provider simples",
+    "description": "Provider para gerenciar feature flags",
+    "file": "feature-flags",
+    "content": "// Provider simples\nconst FeatureFlagsProvider = ({ children }) => {\n  const [flags, setFlags] = useState({});\n  \n  useEffect(() => {\n    fetch('/api/flags')\n      .then(res => res.json())\n      .then(setFlags);\n  }, []);\n  \n  return (\n    <FeatureFlagsContext.Provider value={flags}>\n      {children}\n    </FeatureFlagsContext.Provider>\n  );\n};"
+  },
+  {
+    "id": "feature-flags-targeting",
+    "title": "Targeting por usuário",
+    "description": "Targeting por usuário",
+    "file": "feature-flags",
+    "content": "// Targeting por usuário\nfunction useFeatureFlag(flagKey: string, user?: User) {\n  const [isEnabled, setIsEnabled] = useState(false);\n  \n  useEffect(() => {\n    if (!user) return;\n    \n    fetch(`/api/flags/${flagKey}?userId=${user.id}`)\n      .then(res => res.json())\n      .then(data => setIsEnabled(data.enabled));\n  }, [flagKey, user]);\n  \n  return isEnabled;\n}"
+  },
+  {
+    "id": "feature-flags-rollback",
+    "title": "Rollback automático",
+    "description": "Rollback automático",
+    "file": "feature-flags",
+    "content": "// Rollback automático\nfunction useFeatureFlagWithRollback(flagKey: string) {\n  const [isEnabled, setIsEnabled] = useState(false);\n  const [errorRate, setErrorRate] = useState(0);\n  \n  useEffect(() => {\n    // Monitora taxa de erro\n    const interval = setInterval(() => {\n      fetch('/api/metrics/errors')\n        .then(res => res.json())\n        .then(data => {\n          if (data.errorRate > 0.05) { // 5%\n            setIsEnabled(false); // Rollback automático\n          }\n        });\n    }, 60000);\n    \n    return () => clearInterval(interval);\n  }, []);\n  \n  return isEnabled;\n}"
+  },
+  {
+    "id": "feature-flags-pitfall-traditional-deploy",
+    "title": "Deploy tradicional",
+    "description": "Deploy tradicional sem feature flags",
+    "file": "feature-flags",
+    "content": "// ❌ RUIM - Deploy tradicional\n// 1. Desenvolve nova funcionalidade\nfunction NewFeature() {\n  return <div>Nova funcionalidade</div>;\n}\n\n// 2. Testa localmente\n// 3. Faz PR\n// 4. Code review\n// 5. Merge\n// 6. Deploy para staging\n// 7. Testa staging\n// 8. Deploy para produção\n// 9. Reza para não quebrar\n// 10. Se quebrar, rollback manual\n\n// Problemas:\n// - Deploy lento\n// - Risco alto\n// - Rollback manual\n// - Não pode testar em produção"
+  },
+  {
+    "id": "feature-flags-pitfall-env-deploy",
+    "title": "Deploy por ambiente",
+    "description": "Deploy por ambiente",
+    "file": "feature-flags",
+    "content": "// ❌ RUIM - Deploy por ambiente\n// staging\nif (process.env.NODE_ENV === 'staging') {\n  // Nova funcionalidade\n  <NewFeature />\n} else {\n  // Funcionalidade antiga\n  <OldFeature />\n}\n\n// Problemas:\n// - Código morto em produção\n// - Não pode testar em produção\n// - Deploy por ambiente\n// - Difícil de gerenciar"
+  },
+  {
+    "id": "feature-flags-pitfall-scattered",
+    "title": "Flags espalhadas",
+    "description": "Flags espalhadas pelo código",
+    "file": "feature-flags",
+    "content": "// ❌ RUIM - Flags espalhadas\n// Componente A\nif (window.featureFlags.newUI) {\n  return <NewUI />;\n}\n\n// Componente B\nif (localStorage.getItem('newFeature')) {\n  return <NewFeature />;\n}\n\n// Componente C\nif (process.env.REACT_APP_NEW_FEATURE === 'true') {\n  return <NewFeature />;\n}\n\n// Problemas:\n// - Inconsistente\n// - Difícil de gerenciar\n// - Sem centralização\n// - Debugging difícil"
+  },
+  {
+    "id": "feature-flags-pitfall-dead-code",
+    "title": "Código morto",
+    "description": "Código morto com feature flags",
+    "file": "feature-flags",
+    "content": "// ❌ RUIM - Código morto\nfunction Component() {\n  const isNewFeatureEnabled = useFeatureFlag('new-feature');\n  \n  return (\n    <div>\n      {isNewFeatureEnabled ? (\n        <NewFeature />\n      ) : (\n        <OldFeature />\n      )}\n      \n      {/* Código morto que nunca será usado */}\n      <DeprecatedComponent />\n      <UnusedFeature />\n      <LegacyCode />\n    </div>\n  );\n}\n\n// Problemas:\n// - Bundle maior\n// - Código morto\n// - Manutenção difícil\n// - Confusão"
+  },
+  {
+    "id": "feature-flags-pitfall-many-calls",
+    "title": "Muitas chamadas",
+    "description": "Muitas chamadas para API de flags",
+    "file": "feature-flags",
+    "content": "// ❌ RUIM - Muitas chamadas\nfunction App() {\n  const isNewUI = useFeatureFlag('new-ui');\n  const isDarkMode = useFeatureFlag('dark-mode');\n  const isAnalytics = useFeatureFlag('analytics');\n  const isNotifications = useFeatureFlag('notifications');\n  const isChat = useFeatureFlag('chat');\n  \n  // 5 chamadas para API\n  // Performance ruim\n  // Sem cache\n  \n  return <div>...</div>;\n}\n\n// ✅ BOM - Uma chamada\nfunction App() {\n  const flags = useFeatureFlags();\n  \n  // Uma chamada para API\n  // Cache automático\n  // Performance boa\n  \n  return <div>...</div>;\n}"
+  },
+  {
+    "id": "feature-flags-pitfall-complex-tests",
+    "title": "Testes complexos",
+    "description": "Testes complexos com feature flags",
+    "file": "feature-flags",
+    "content": "// ❌ RUIM - Testes complexos\nit('should render new feature when enabled', () => {\n  // Mock complexo\n  jest.spyOn(global, 'fetch').mockResolvedValue({\n    json: () => Promise.resolve({ enabled: true })\n  });\n  \n  render(<Component />);\n  \n  // Teste frágil\n  expect(screen.getByText('New Feature')).toBeInTheDocument();\n});\n\n// ✅ BOM - Testes simples\nit('should render new feature when enabled', () => {\n  render(\n    <FeatureFlagsProvider flags={{ 'new-feature': true }}>\n      <Component />\n    </FeatureFlagsProvider>\n  );\n  \n  expect(screen.getByText('New Feature')).toBeInTheDocument();\n});"
+  }
+] 
