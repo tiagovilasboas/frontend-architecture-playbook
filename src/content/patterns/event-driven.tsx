@@ -301,16 +301,6 @@ function EventDriven() {
           </Card>
 
           <Card withBorder p="md">
-            <Title order={4}>🌐 Casos Reais</Title>
-            <List>
-              <List.Item><strong>Netflix:</strong> Event-driven para streaming e recomendações</List.Item>
-              <List.Item><strong>Uber:</strong> Eventos para tracking de viagens</List.Item>
-              <List.Item><strong>Airbnb:</strong> Eventos para reservas e notificações</List.Item>
-              <List.Item><strong>Spotify:</strong> Eventos para playlists e recomendações</List.Item>
-            </List>
-          </Card>
-
-          <Card withBorder p="md">
             <Title order={4}>🛠️ Ferramentas</Title>
             <List>
               <List.Item><strong>EventEmitter:</strong> Node.js built-in</List.Item>

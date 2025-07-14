@@ -62,10 +62,16 @@ function Monorepo() {
                 <Text size="sm" c="dimmed">
                   Libs compartilhadas entre projetos. Muda uma vez, todo mundo ganha.
                 </Text>
-                <CodeExample
-                  title={monorepoExamples.find(e => e.id === 'monorepo-code-sharing')?.title || ''}
-                  code={monorepoExamples.find(e => e.id === 'monorepo-code-sharing')?.content || ''}
-                />
+                <Stack gap="xl">
+                  {monorepoExamples.map(example => (
+                    <CodeExample
+                      key={example.id}
+                      title={example.title}
+                      description={example.description}
+                      code={example.content}
+                    />
+                  ))}
+                </Stack>
               </div>
             </Group>
           </Card>
@@ -79,10 +85,16 @@ function Monorepo() {
                   ESLint, Prettier, TypeScript, testes. Configura uma vez, 
                   funciona em todo lugar.
                 </Text>
-                <CodeExample
-                  title={monorepoExamples.find(e => e.id === 'monorepo-tooling-centralized')?.title || ''}
-                  code={monorepoExamples.find(e => e.id === 'monorepo-tooling-centralized')?.content || ''}
-                />
+                <Stack gap="xl">
+                  {monorepoExamples.map(example => (
+                    <CodeExample
+                      key={example.id}
+                      title={example.title}
+                      description={example.description}
+                      code={example.content}
+                    />
+                  ))}
+                </Stack>
               </div>
             </Group>
           </Card>
@@ -96,10 +108,16 @@ function Monorepo() {
                   Muda uma lib, vê o impacto em todos os projetos. 
                   Sem quebrar nada.
                 </Text>
-                <CodeExample
-                  title={monorepoExamples.find(e => e.id === 'monorepo-safe-refactoring')?.title || ''}
-                  code={monorepoExamples.find(e => e.id === 'monorepo-safe-refactoring')?.content || ''}
-                />
+                <Stack gap="xl">
+                  {monorepoExamples.map(example => (
+                    <CodeExample
+                      key={example.id}
+                      title={example.title}
+                      description={example.description}
+                      code={example.content}
+                    />
+                  ))}
+                </Stack>
               </div>
             </Group>
           </Card>
@@ -113,10 +131,16 @@ function Monorepo() {
                   Um commit pode afetar múltiplos projetos. 
                   Histórico completo, rastreabilidade total.
                 </Text>
-                <CodeExample
-                  title={monorepoExamples.find(e => e.id === 'monorepo-unified-versioning')?.title || ''}
-                  code={monorepoExamples.find(e => e.id === 'monorepo-unified-versioning')?.content || ''}
-                />
+                <Stack gap="xl">
+                  {monorepoExamples.map(example => (
+                    <CodeExample
+                      key={example.id}
+                      title={example.title}
+                      description={example.description}
+                      code={example.content}
+                    />
+                  ))}
+                </Stack>
               </div>
             </Group>
           </Card>
@@ -227,10 +251,16 @@ function Monorepo() {
                 difícil de manter.
               </Text>
               
-              <CodeExample
-                title={monorepoExamples.find(e => e.id === 'monorepo-design-system')?.title || ''}
-                code={monorepoExamples.find(e => e.id === 'monorepo-design-system')?.content || ''}
-              />
+              <Stack gap="xl">
+                {monorepoExamples.map(example => (
+                  <CodeExample
+                    key={example.id}
+                    title={example.title}
+                    description={example.description}
+                    code={example.content}
+                  />
+                ))}
+              </Stack>
             </Stack>
           </Paper>
 
@@ -247,10 +277,16 @@ function Monorepo() {
                 difícil de sincronizar.
               </Text>
               
-              <CodeExample
-                title={monorepoExamples.find(e => e.id === 'monorepo-fullstack')?.title || ''}
-                code={monorepoExamples.find(e => e.id === 'monorepo-fullstack')?.content || ''}
-              />
+              <Stack gap="xl">
+                {monorepoExamples.map(example => (
+                  <CodeExample
+                    key={example.id}
+                    title={example.title}
+                    description={example.description}
+                    code={example.content}
+                  />
+                ))}
+              </Stack>
             </Stack>
           </Paper>
 
@@ -267,10 +303,16 @@ function Monorepo() {
                 tooling diferente, difícil de manter.
               </Text>
               
-              <CodeExample
-                title={monorepoExamples.find(e => e.id === 'monorepo-microfrontends')?.title || ''}
-                code={monorepoExamples.find(e => e.id === 'monorepo-microfrontends')?.content || ''}
-              />
+              <Stack gap="xl">
+                {monorepoExamples.map(example => (
+                  <CodeExample
+                    key={example.id}
+                    title={example.title}
+                    description={example.description}
+                    code={example.content}
+                  />
+                ))}
+              </Stack>
             </Stack>
           </Paper>
         </Stack>
@@ -298,10 +340,16 @@ function Monorepo() {
                 Use ferramentas como Nx, Lerna, Turborepo.
               </Text>
               
-              <CodeExample
-                title={monorepoExamples.find(e => e.id === 'monorepo-pitfall-giant')?.title || ''}
-                code={monorepoExamples.find(e => e.id === 'monorepo-pitfall-giant')?.content || ''}
-              />
+              <Stack gap="xl">
+                {monorepoExamples.map(example => (
+                  <CodeExample
+                    key={example.id}
+                    title={example.title}
+                    description={example.description}
+                    code={example.content}
+                  />
+                ))}
+              </Stack>
             </Stack>
           </Paper>
 
@@ -319,10 +367,16 @@ function Monorepo() {
                 Use ferramentas que detectam dependências circulares.
               </Text>
               
-              <CodeExample
-                title={monorepoExamples.find(e => e.id === 'monorepo-pitfall-dependencies')?.title || ''}
-                code={monorepoExamples.find(e => e.id === 'monorepo-pitfall-dependencies')?.content || ''}
-              />
+              <Stack gap="xl">
+                {monorepoExamples.map(example => (
+                  <CodeExample
+                    key={example.id}
+                    title={example.title}
+                    description={example.description}
+                    code={example.content}
+                  />
+                ))}
+              </Stack>
             </Stack>
           </Paper>
 
@@ -340,10 +394,16 @@ function Monorepo() {
                 Configure cache e build incremental.
               </Text>
               
-              <CodeExample
-                title={monorepoExamples.find(e => e.id === 'monorepo-pitfall-build-slow')?.title || ''}
-                code={monorepoExamples.find(e => e.id === 'monorepo-pitfall-build-slow')?.content || ''}
-              />
+              <Stack gap="xl">
+                {monorepoExamples.map(example => (
+                  <CodeExample
+                    key={example.id}
+                    title={example.title}
+                    description={example.description}
+                    code={example.content}
+                  />
+                ))}
+              </Stack>
             </Stack>
           </Paper>
 
@@ -361,10 +421,16 @@ function Monorepo() {
                 Lerna, Changesets, ou versionamento manual coordenado.
               </Text>
               
-              <CodeExample
-                title={monorepoExamples.find(e => e.id === 'monorepo-pitfall-versioning')?.title || ''}
-                code={monorepoExamples.find(e => e.id === 'monorepo-pitfall-versioning')?.content || ''}
-              />
+              <Stack gap="xl">
+                {monorepoExamples.map(example => (
+                  <CodeExample
+                    key={example.id}
+                    title={example.title}
+                    description={example.description}
+                    code={example.content}
+                  />
+                ))}
+              </Stack>
             </Stack>
           </Paper>
 
@@ -382,10 +448,16 @@ function Monorepo() {
                 code review obrigatório.
               </Text>
               
-              <CodeExample
-                title={monorepoExamples.find(e => e.id === 'monorepo-pitfall-permissions')?.title || ''}
-                code={monorepoExamples.find(e => e.id === 'monorepo-pitfall-permissions')?.content || ''}
-              />
+              <Stack gap="xl">
+                {monorepoExamples.map(example => (
+                  <CodeExample
+                    key={example.id}
+                    title={example.title}
+                    description={example.description}
+                    code={example.content}
+                  />
+                ))}
+              </Stack>
             </Stack>
           </Paper>
         </Stack>

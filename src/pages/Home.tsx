@@ -19,8 +19,7 @@ import {
   IconStar,
   IconAward,
   IconArrowRight,
-  IconBrandLinkedin,
-  IconBrandTwitter
+  IconBrandLinkedin
 } from '@tabler/icons-react';
 import { useMediaQuery } from '@mantine/hooks';
 
@@ -66,13 +65,13 @@ export default function Home() {
               </Button>
               <Button 
                 component="a" 
-                href="https://github.com/tiagovilasboas" 
+                href="https://github.com/tiagovilasboas/frontend-architecture-playbook" 
                 target="_blank"
                 size={isMobile ? 'md' : 'lg'} 
-                variant="light"
+                variant="outline"
                 leftSection={<IconBrandGithub size={isMobile ? 16 : 20} />}
               >
-                Ver Projetos
+                Ver repositório no GitHub
               </Button>
             </Group>
           </Stack>
@@ -436,16 +435,6 @@ export default function Home() {
                     leftSection={<IconBrandLinkedin size={16} />}
                   >
                     LinkedIn
-                  </Button>
-                  <Button 
-                    component="a" 
-                    href="https://twitter.com/tiagovilasboas" 
-                    target="_blank" 
-                    size="sm" 
-                    variant="light"
-                    leftSection={<IconBrandTwitter size={16} />}
-                  >
-                    Twitter
                   </Button>
                 </Group>
               </div>

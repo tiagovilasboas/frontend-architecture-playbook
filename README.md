@@ -33,7 +33,7 @@ Este playbook é um guia prático que resolve problemas reais de arquitetura fro
 - **Prático** - Baseado em experiência real
 
 ### **💻 Exemplos Reais**
-- **Código centralizado** - Todos os exemplos em `src/utils/code-examples.json`
+- **Exemplos por arquitetura** - Cada arquitetura tem seu próprio arquivo em `src/utils/code-examples/`
 - **Componente CodeExample** - Renderização dinâmica e consistente
 - **Casos de uso** - E-commerce, dashboard, analytics
 - **Armadilhas** - Problemas comuns e como evitar

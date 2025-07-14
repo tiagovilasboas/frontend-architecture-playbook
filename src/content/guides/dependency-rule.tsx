@@ -462,7 +462,7 @@ class UserService {
       {/* Summary */}
       <section>
         <Paper withBorder p="xl" radius="lg">
-          <Stack gap="lg" align="center" ta="center">
+          <Stack gap="lg">
             <Title order={2} mb="sm">
               <IconBulb size={32} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
               Resumo

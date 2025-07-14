@@ -64,10 +64,16 @@ function SPA() {
                   Página inicial que carrega JavaScript. 
                   O resto é renderizado pelo JavaScript.
                 </Text>
-                <CodeExample
-                  title={spaExamples.find(e => e.id === 'spa-html-page')?.title || ''}
-                  code={spaExamples.find(e => e.id === 'spa-html-page')?.content || ''}
-                />
+                <Stack gap="xl">
+                  {spaExamples.map(example => (
+                    <CodeExample
+                      key={example.id}
+                      title={example.title}
+                      description={example.description}
+                      code={example.content}
+                    />
+                  ))}
+                </Stack>
               </div>
             </Group>
           </Card>
@@ -81,10 +87,16 @@ function SPA() {
                   JavaScript gerencia rotas. URL muda, 
                   componente renderiza, sem reload.
                 </Text>
-                <CodeExample
-                  title={spaExamples.find(e => e.id === 'spa-routing')?.title || ''}
-                  code={spaExamples.find(e => e.id === 'spa-routing')?.content || ''}
-                />
+                <Stack gap="xl">
+                  {spaExamples.map(example => (
+                    <CodeExample
+                      key={example.id}
+                      title={example.title}
+                      description={example.description}
+                      code={example.content}
+                    />
+                  ))}
+                </Stack>
               </div>
             </Group>
           </Card>
@@ -98,10 +110,16 @@ function SPA() {
                   Estado compartilhado entre componentes. 
                   Redux, Context, Zustand.
                 </Text>
-                <CodeExample
-                  title={spaExamples.find(e => e.id === 'spa-state-management')?.title || ''}
-                  code={spaExamples.find(e => e.id === 'spa-state-management')?.content || ''}
-                />
+                <Stack gap="xl">
+                  {spaExamples.map(example => (
+                    <CodeExample
+                      key={example.id}
+                      title={example.title}
+                      description={example.description}
+                      code={example.content}
+                    />
+                  ))}
+                </Stack>
               </div>
             </Group>
           </Card>
@@ -221,10 +239,16 @@ function SPA() {
                 experiência fragmentada.
               </Text>
               
-              <CodeExample
-                title={spaExamples.find(e => e.id === 'spa-dashboard-complex')?.title || ''}
-                code={spaExamples.find(e => e.id === 'spa-dashboard-complex')?.content || ''}
-              />
+              <Stack gap="xl">
+                {spaExamples.map(example => (
+                  <CodeExample
+                    key={example.id}
+                    title={example.title}
+                    description={example.description}
+                    code={example.content}
+                  />
+                ))}
+              </Stack>
             </Stack>
           </Paper>
 
@@ -241,10 +265,16 @@ function SPA() {
                 experiência fragmentada.
               </Text>
               
-              <CodeExample
-                title={spaExamples.find(e => e.id === 'spa-ecommerce-cart')?.title || ''}
-                code={spaExamples.find(e => e.id === 'spa-ecommerce-cart')?.content || ''}
-              />
+              <Stack gap="xl">
+                {spaExamples.map(example => (
+                  <CodeExample
+                    key={example.id}
+                    title={example.title}
+                    description={example.description}
+                    code={example.content}
+                  />
+                ))}
+              </Stack>
             </Stack>
           </Paper>
 
@@ -261,10 +291,16 @@ function SPA() {
                 experiência fragmentada.
               </Text>
               
-              <CodeExample
-                title={spaExamples.find(e => e.id === 'spa-social-media-feed')?.title || ''}
-                code={spaExamples.find(e => e.id === 'spa-social-media-feed')?.content || ''}
-              />
+              <Stack gap="xl">
+                {spaExamples.map(example => (
+                  <CodeExample
+                    key={example.id}
+                    title={example.title}
+                    description={example.description}
+                    code={example.content}
+                  />
+                ))}
+              </Stack>
             </Stack>
           </Paper>
         </Stack>
@@ -338,16 +374,6 @@ function SPA() {
               <List.Item>"Learning React" - Alex Banks</List.Item>
               <List.Item>"React Router v6" - Documentation</List.Item>
               <List.Item>"Redux Toolkit" - Official Guide</List.Item>
-            </List>
-          </Card>
-
-          <Card withBorder p="md">
-            <Title order={4}>🌐 Casos Reais</Title>
-            <List>
-              <List.Item><strong>Netflix:</strong> SPA para streaming, navegação instantânea</List.Item>
-              <List.Item><strong>Spotify:</strong> Player persistente, playlists dinâmicas</List.Item>
-              <List.Item><strong>Gmail:</strong> Interface de email, múltiplas abas</List.Item>
-              <List.Item><strong>Airbnb:</strong> Busca de acomodações, filtros complexos</List.Item>
             </List>
           </Card>
 

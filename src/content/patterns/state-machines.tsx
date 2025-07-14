@@ -64,10 +64,16 @@ function StateMachines() {
                   Condições bem definidas da aplicação. 
                   Cada estado tem comportamentos específicos.
                 </Text>
-                <CodeExample
-                  title={stateMachinesExamples.find(e => e.id === 'state-machines-states')?.title || ''}
-                  code={stateMachinesExamples.find(e => e.id === 'state-machines-states')?.content || ''}
-                />
+                <Stack gap="xl">
+                  {stateMachinesExamples.map(example => (
+                    <CodeExample
+                      key={example.id}
+                      title={example.title}
+                      description={example.description}
+                      code={example.content}
+                    />
+                  ))}
+                </Stack>
               </div>
             </Group>
           </Card>
@@ -81,10 +87,16 @@ function StateMachines() {
                   Ações que causam transições. 
                   Cada evento pode mudar o estado.
                 </Text>
-                <CodeExample
-                  title={stateMachinesExamples.find(e => e.id === 'state-machines-events')?.title || ''}
-                  code={stateMachinesExamples.find(e => e.id === 'state-machines-events')?.content || ''}
-                />
+                <Stack gap="xl">
+                  {stateMachinesExamples.map(example => (
+                    <CodeExample
+                      key={example.id}
+                      title={example.title}
+                      description={example.description}
+                      code={example.content}
+                    />
+                  ))}
+                </Stack>
               </div>
             </Group>
           </Card>
@@ -98,10 +110,16 @@ function StateMachines() {
                   Regras que definem como mudar de estado. 
                   Cada transição tem condições e ações.
                 </Text>
-                <CodeExample
-                  title={stateMachinesExamples.find(e => e.id === 'state-machines-transitions')?.title || ''}
-                  code={stateMachinesExamples.find(e => e.id === 'state-machines-transitions')?.content || ''}
-                />
+                <Stack gap="xl">
+                  {stateMachinesExamples.map(example => (
+                    <CodeExample
+                      key={example.id}
+                      title={example.title}
+                      description={example.description}
+                      code={example.content}
+                    />
+                  ))}
+                </Stack>
               </div>
             </Group>
           </Card>
@@ -213,10 +231,16 @@ function StateMachines() {
                 UX inconsistente.
               </Text>
               
-              <CodeExample
-                title={stateMachinesExamples.find(e => e.id === 'state-machines-form-bad')?.title || ''}
-                code={stateMachinesExamples.find(e => e.id === 'state-machines-form-bad')?.content || ''}
-              />
+              <Stack gap="xl">
+                {stateMachinesExamples.map(example => (
+                  <CodeExample
+                    key={example.id}
+                    title={example.title}
+                    description={example.description}
+                    code={example.content}
+                  />
+                ))}
+              </Stack>
             </Stack>
           </Paper>
 
@@ -233,10 +257,16 @@ function StateMachines() {
                 race conditions, bugs de segurança.
               </Text>
               
-              <CodeExample
-                title={stateMachinesExamples.find(e => e.id === 'state-machines-auth-bad')?.title || ''}
-                code={stateMachinesExamples.find(e => e.id === 'state-machines-auth-bad')?.content || ''}
-              />
+              <Stack gap="xl">
+                {stateMachinesExamples.map(example => (
+                  <CodeExample
+                    key={example.id}
+                    title={example.title}
+                    description={example.description}
+                    code={example.content}
+                  />
+                ))}
+              </Stack>
             </Stack>
           </Paper>
 
@@ -253,10 +283,16 @@ function StateMachines() {
                 progresso inconsistente, UX ruim.
               </Text>
               
-              <CodeExample
-                title={stateMachinesExamples.find(e => e.id === 'state-machines-upload-bad')?.title || ''}
-                code={stateMachinesExamples.find(e => e.id === 'state-machines-upload-bad')?.content || ''}
-              />
+              <Stack gap="xl">
+                {stateMachinesExamples.map(example => (
+                  <CodeExample
+                    key={example.id}
+                    title={example.title}
+                    description={example.description}
+                    code={example.content}
+                  />
+                ))}
+              </Stack>
             </Stack>
           </Paper>
         </Stack>
@@ -284,10 +320,16 @@ function StateMachines() {
                 Lógica simples não precisa de state machine.
               </Text>
               
-              <CodeExample
-                title={stateMachinesExamples.find(e => e.id === 'state-machines-pitfall-spaghetti')?.title || ''}
-                code={stateMachinesExamples.find(e => e.id === 'state-machines-pitfall-spaghetti')?.content || ''}
-              />
+              <Stack gap="xl">
+                {stateMachinesExamples.map(example => (
+                  <CodeExample
+                    key={example.id}
+                    title={example.title}
+                    description={example.description}
+                    code={example.content}
+                  />
+                ))}
+              </Stack>
             </Stack>
           </Paper>
 
@@ -305,10 +347,16 @@ function StateMachines() {
                 use guards para condições complexas.
               </Text>
               
-              <CodeExample
-                title={stateMachinesExamples.find(e => e.id === 'state-machines-pitfall-complex-transitions')?.title || ''}
-                code={stateMachinesExamples.find(e => e.id === 'state-machines-pitfall-complex-transitions')?.content || ''}
-              />
+              <Stack gap="xl">
+                {stateMachinesExamples.map(example => (
+                  <CodeExample
+                    key={example.id}
+                    title={example.title}
+                    description={example.description}
+                    code={example.content}
+                  />
+                ))}
+              </Stack>
             </Stack>
           </Paper>
 
@@ -326,10 +374,16 @@ function StateMachines() {
                 use hierarquia, simplifique.
               </Text>
               
-              <CodeExample
-                title={stateMachinesExamples.find(e => e.id === 'state-machines-pitfall-impossible-states')?.title || ''}
-                code={stateMachinesExamples.find(e => e.id === 'state-machines-pitfall-impossible-states')?.content || ''}
-              />
+              <Stack gap="xl">
+                {stateMachinesExamples.map(example => (
+                  <CodeExample
+                    key={example.id}
+                    title={example.title}
+                    description={example.description}
+                    code={example.content}
+                  />
+                ))}
+              </Stack>
             </Stack>
           </Paper>
 
@@ -347,10 +401,16 @@ function StateMachines() {
                 mantenha transições puras.
               </Text>
               
-              <CodeExample
-                title={stateMachinesExamples.find(e => e.id === 'state-machines-actions')?.title || ''}
-                code={stateMachinesExamples.find(e => e.id === 'state-machines-actions')?.content || ''}
-              />
+              <Stack gap="xl">
+                {stateMachinesExamples.map(example => (
+                  <CodeExample
+                    key={example.id}
+                    title={example.title}
+                    description={example.description}
+                    code={example.content}
+                  />
+                ))}
+              </Stack>
             </Stack>
           </Paper>
 
@@ -368,10 +428,16 @@ function StateMachines() {
                 use ferramentas de testing específicas.
               </Text>
               
-              <CodeExample
-                title={stateMachinesExamples.find(e => e.id === 'state-machines-pitfall-testing')?.title || ''}
-                code={stateMachinesExamples.find(e => e.id === 'state-machines-pitfall-testing')?.content || ''}
-              />
+              <Stack gap="xl">
+                {stateMachinesExamples.map(example => (
+                  <CodeExample
+                    key={example.id}
+                    title={example.title}
+                    description={example.description}
+                    code={example.content}
+                  />
+                ))}
+              </Stack>
             </Stack>
           </Paper>
         </Stack>
