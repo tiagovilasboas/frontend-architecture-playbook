@@ -11,17 +11,18 @@ import Spa from '../content/patterns/spa.tsx';
 import StateMachines from '../content/patterns/state-machines.tsx';
 import EventDriven from '../content/patterns/event-driven.tsx';
 import FeatureFlags from '../content/patterns/feature-flags.tsx';
+import Dry from '../content/patterns/dry.tsx';
 
 export interface DocMeta {
   slug: string;
   title: string;
   description?: string;
-  collection: 'guides' | 'architectures' | 'patterns' | 'techniques';
+  collection: 'guides' | 'architectures' | 'patterns' | 'techniques' | 'best-practices';
   component: React.ComponentType;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-function toMeta(module: any, slug: string, collection: 'guides' | 'architectures' | 'patterns' | 'techniques'): DocMeta {
+function toMeta(module: any, slug: string, collection: 'guides' | 'architectures' | 'patterns' | 'techniques' | 'best-practices'): DocMeta {
   const meta = module.metadata ?? module.default?.metadata ?? {};
   return {
     slug,
@@ -60,9 +61,20 @@ export const techniques: DocMeta[] = [
   toMeta(StateMachines, 'state-machines', 'techniques'),
 ];
 
-export function getDoc(collection: 'guides' | 'architectures' | 'patterns' | 'techniques', slug: string): DocMeta | undefined {
+// Boas práticas - princípios fundamentais de código limpo
+export const bestPractices: DocMeta[] = [
+  toMeta(Dry, 'dry', 'best-practices'),
+  toMeta({ default: () => null, metadata: { title: 'KISS - Keep It Simple, Stupid', description: 'Simplicidade acima de tudo' } }, 'kiss', 'best-practices'),
+  toMeta({ default: () => null, metadata: { title: 'YAGNI - You Aren\'t Gonna Need It', description: 'Não implemente features futuras' } }, 'yagni', 'best-practices'),
+  toMeta({ default: () => null, metadata: { title: 'Clean Code', description: 'Código legível e manutenível' } }, 'clean-code', 'best-practices'),
+  toMeta({ default: () => null, metadata: { title: 'Single Responsibility Principle', description: 'Uma classe, uma responsabilidade' } }, 'srp', 'best-practices'),
+  toMeta({ default: () => null, metadata: { title: 'Separation of Concerns', description: 'Separe responsabilidades claramente' } }, 'soc', 'best-practices'),
+];
+
+export function getDoc(collection: 'guides' | 'architectures' | 'patterns' | 'techniques' | 'best-practices', slug: string): DocMeta | undefined {
   const list = collection === 'guides' ? guides : 
                collection === 'architectures' ? architectures :
-               collection === 'patterns' ? patterns : techniques;
+               collection === 'patterns' ? patterns : 
+               collection === 'techniques' ? techniques : bestPractices;
   return list.find((d) => d.slug === slug);
 } 
