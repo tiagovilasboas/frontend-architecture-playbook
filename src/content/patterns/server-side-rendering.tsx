@@ -811,7 +811,6 @@ export async function getServerSideProps({ req }) {
                   <strong>"Universal JavaScript"</strong> - Various Authors
                 </List.Item>
               </List>
-              
               <Text>
                 <strong>Artigos & Blogs:</strong>
               </Text>
@@ -830,107 +829,6 @@ export async function getServerSideProps({ req }) {
                   <a href="https://reactjs.org/docs/react-dom-server.html" target="_blank">
                     React Server-Side Rendering
                   </a>
-                </List.Item>
-              </List>
-            </Stack>
-          </Paper>
-
-          {/* Real Cases */}
-          <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">🏢 Casos Reais de Sucesso</Title>
-            <Stack gap="md">
-              
-              <Card withBorder p="md">
-                <Title order={4} mb="sm">Netflix</Title>
-                <Text size="sm" mb="sm">
-                  <strong>Problema:</strong> Performance inicial lenta, 
-                  SEO ruim para páginas de filmes.
-                </Text>
-                <Text size="sm" mb="sm">
-                  <strong>Solução:</strong> SSR com Next.js. 
-                  HTML pré-renderizado, hidratação otimizada.
-                </Text>
-                <Text size="sm" c="dimmed">
-                  <strong>Resultado:</strong> Performance 50% melhor, 
-                  SEO perfeito, conversão maior.
-                </Text>
-              </Card>
-
-              <Card withBorder p="md">
-                <Title order={4} mb="sm">Airbnb</Title>
-                <Text size="sm" mb="sm">
-                  <strong>Problema:</strong> Páginas de busca não indexavam, 
-                  performance inicial lenta.
-                </Text>
-                <Text size="sm" mb="sm">
-                  <strong>Solução:</strong> SSR para páginas de busca. 
-                  HTML com resultados, SEO otimizado.
-                </Text>
-                <Text size="sm" c="dimmed">
-                  <strong>Resultado:</strong> SEO melhor, 
-                  performance inicial rápida.
-                </Text>
-              </Card>
-
-              <Card withBorder p="md">
-                <Title order={4} mb="sm">Hulu</Title>
-                <Text size="sm" mb="sm">
-                  <strong>Problema:</strong> Streaming app lento, 
-                  SEO ruim para conteúdo.
-                </Text>
-                <Text size="sm" mb="sm">
-                  <strong>Solução:</strong> SSR com React. 
-                  Páginas de conteúdo pré-renderizadas.
-                </Text>
-                <Text size="sm" c="dimmed">
-                  <strong>Resultado:</strong> Performance melhor, 
-                  SEO otimizado para conteúdo.
-                </Text>
-              </Card>
-
-              <Card withBorder p="md">
-                <Title order={4} mb="sm">Shopify</Title>
-                <Text size="sm" mb="sm">
-                  <strong>Problema:</strong> Lojas lentas, 
-                  SEO ruim para produtos.
-                </Text>
-                <Text size="sm" mb="sm">
-                  <strong>Solução:</strong> SSR para páginas de produtos. 
-                  HTML com dados de produtos.
-                </Text>
-                <Text size="sm" c="dimmed">
-                  <strong>Resultado:</strong> Performance melhor, 
-                  SEO perfeito para produtos.
-                </Text>
-              </Card>
-            </Stack>
-          </Paper>
-
-          {/* Tools & Libraries */}
-          <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">🛠️ Ferramentas & Bibliotecas</Title>
-            <Stack gap="md">
-              <Text>
-                <strong>Ferramentas que facilitam SSR:</strong>
-              </Text>
-              <List>
-                <List.Item>
-                  <strong>Next.js</strong> - React framework com SSR
-                </List.Item>
-                <List.Item>
-                  <strong>Nuxt.js</strong> - Vue framework com SSR
-                </List.Item>
-                <List.Item>
-                  <strong>Remix</strong> - React framework com SSR
-                </List.Item>
-                <List.Item>
-                  <strong>Gatsby</strong> - Static site generator
-                </List.Item>
-                <List.Item>
-                  <strong>Vite SSR</strong> - SSR com Vite
-                </List.Item>
-                <List.Item>
-                  <strong>Express + React</strong> - SSR manual
                 </List.Item>
               </List>
             </Stack>
