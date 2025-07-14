@@ -16,16 +16,12 @@ export interface DocMeta {
   slug: string;
   title: string;
   description?: string;
-  collection: 'guides' | 'patterns';
+  collection: 'guides' | 'architectures' | 'patterns' | 'techniques';
   component: React.ComponentType;
 }
 
-interface ModuleWithMetadata {
-  metadata?: { title?: string; description?: string };
-  default?: { metadata?: { title?: string; description?: string } };
-}
-
-function toMeta(module: ModuleWithMetadata, slug: string, collection: 'guides' | 'patterns'): DocMeta {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function toMeta(module: any, slug: string, collection: 'guides' | 'architectures' | 'patterns' | 'techniques'): DocMeta {
   const meta = module.metadata ?? module.default?.metadata ?? {};
   return {
     slug,
@@ -41,21 +37,32 @@ export const guides: DocMeta[] = [
   toMeta(DependencyRule, 'dependency-rule', 'guides')
 ];
 
-export const patterns: DocMeta[] = [
-  toMeta(AtomicDesign, 'atomic-design', 'patterns'),
-  toMeta(CleanArchitecture, 'clean-architecture', 'patterns'),
-  toMeta(ComponentDriven, 'component-driven', 'patterns'),
-  toMeta(IslandsArchitecture, 'islands-architecture', 'patterns'),
-  toMeta(Jamstack, 'jamstack', 'patterns'),
-  toMeta(MicroFrontends, 'micro-frontends', 'patterns'),
-  toMeta(Monorepo, 'monorepo', 'patterns'),
-  toMeta(Spa, 'spa', 'patterns'),
-  toMeta(StateMachines, 'state-machines', 'patterns'),
-  toMeta(EventDriven, 'event-driven', 'patterns'),
-  toMeta(FeatureFlags, 'feature-flags', 'patterns'),
+// Arquiteturas reais - estrutura fundamental do sistema
+export const architectures: DocMeta[] = [
+  toMeta(CleanArchitecture, 'clean-architecture', 'architectures'),
+  toMeta(MicroFrontends, 'micro-frontends', 'architectures'),
+  toMeta(Monorepo, 'monorepo', 'architectures'),
+  toMeta(Spa, 'spa', 'architectures'),
+  toMeta(Jamstack, 'jamstack', 'architectures'),
+  toMeta(IslandsArchitecture, 'islands-architecture', 'architectures'),
 ];
 
-export function getDoc(collection: 'guides' | 'patterns', slug: string): DocMeta | undefined {
-  const list = collection === 'guides' ? guides : patterns;
+// Padrões de design - organização de componentes
+export const patterns: DocMeta[] = [
+  toMeta(ComponentDriven, 'component-driven', 'patterns'),
+  toMeta(AtomicDesign, 'atomic-design', 'patterns'),
+  toMeta(EventDriven, 'event-driven', 'patterns'),
+];
+
+// Técnicas de desenvolvimento - ferramentas e estratégias
+export const techniques: DocMeta[] = [
+  toMeta(FeatureFlags, 'feature-flags', 'techniques'),
+  toMeta(StateMachines, 'state-machines', 'techniques'),
+];
+
+export function getDoc(collection: 'guides' | 'architectures' | 'patterns' | 'techniques', slug: string): DocMeta | undefined {
+  const list = collection === 'guides' ? guides : 
+               collection === 'architectures' ? architectures :
+               collection === 'patterns' ? patterns : techniques;
   return list.find((d) => d.slug === slug);
 } 

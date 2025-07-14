@@ -12,20 +12,22 @@ import type { DocMeta } from '../types/index.ts';
 
 interface Props {
   guides: DocMeta[];
+  architectures: DocMeta[];
   patterns: DocMeta[];
+  techniques: DocMeta[];
   children: React.ReactNode;
 }
 
-export default function DocsShell({ guides, patterns, children }: Props) {
+export default function DocsShell({ guides, architectures, patterns, techniques, children }: Props) {
   const [opened, setOpened] = useState(false);
-  const actions = useNavigationActions(guides, patterns);
+  const actions = useNavigationActions(guides, architectures, patterns, techniques);
 
   return (
     <>
       <Spotlight shortcut="mod + k" actions={actions} />
 
       <Drawer opened={opened} onClose={() => setOpened(false)} padding="xs" hiddenFrom="sm" title="Menu" zIndex={3000}>
-        <NavMenu guides={guides} patterns={patterns} onNavigate={() => setOpened(false)} />
+        <NavMenu guides={guides} architectures={architectures} patterns={patterns} techniques={techniques} onNavigate={() => setOpened(false)} />
       </Drawer>
 
       <Box style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
@@ -50,7 +52,7 @@ export default function DocsShell({ guides, patterns, children }: Props) {
               overflow: 'visible'
             }} 
           >
-            <NavMenu guides={guides} patterns={patterns} />
+            <NavMenu guides={guides} architectures={architectures} patterns={patterns} techniques={techniques} />
           </Box>
 
           {/* Content */}

@@ -1,16 +1,18 @@
 import { ScrollArea, Title, Stack, Divider, Group } from '@mantine/core';
-import { IconBook, IconPuzzle } from '@tabler/icons-react';
+import { IconBook, IconPuzzle, IconStack, IconTools } from '@tabler/icons-react';
 import { useLocation } from 'react-router-dom';
 import type { DocMeta } from '../types/index.ts';
 import NavItem from './NavItem.tsx';
 
 interface Props {
   guides: DocMeta[];
+  architectures: DocMeta[];
   patterns: DocMeta[];
+  techniques: DocMeta[];
   onNavigate?: () => void;
 }
 
-export default function NavMenu({ guides, patterns, onNavigate }: Props) {
+export default function NavMenu({ guides, architectures, patterns, techniques, onNavigate }: Props) {
   const location = useLocation();
   const current = location.pathname;
 
@@ -39,6 +41,28 @@ export default function NavMenu({ guides, patterns, onNavigate }: Props) {
 
         <Divider />
 
+        {/* Architectures Section */}
+        <div>
+          <Group gap="xs" mb="sm">
+            <IconStack size={16} color="var(--mantine-color-green-6)" />
+            <Title order={6} c="dimmed">Architectures</Title>
+          </Group>
+          <Stack gap={8}>
+            {architectures.map((a) => (
+              <NavItem
+                key={a.slug}
+                href={`/architectures/${a.slug}`}
+                label={a.title}
+                icon={<IconStack size={16} />}
+                active={current === `/architectures/${a.slug}`}
+                onNavigate={onNavigate}
+              />
+            ))}
+          </Stack>
+        </div>
+
+        <Divider />
+
         {/* Patterns Section */}
         <div>
           <Group gap="xs" mb="sm">
@@ -53,6 +77,28 @@ export default function NavMenu({ guides, patterns, onNavigate }: Props) {
                 label={p.title}
                 icon={<IconPuzzle size={16} />}
                 active={current === `/patterns/${p.slug}`}
+                onNavigate={onNavigate}
+              />
+            ))}
+          </Stack>
+        </div>
+
+        <Divider />
+
+        {/* Techniques Section */}
+        <div>
+          <Group gap="xs" mb="sm">
+            <IconTools size={16} color="var(--mantine-color-orange-6)" />
+            <Title order={6} c="dimmed">Techniques</Title>
+          </Group>
+          <Stack gap={8}>
+            {techniques.map((t) => (
+              <NavItem
+                key={t.slug}
+                href={`/techniques/${t.slug}`}
+                label={t.title}
+                icon={<IconTools size={16} />}
+                active={current === `/techniques/${t.slug}`}
                 onNavigate={onNavigate}
               />
             ))}
