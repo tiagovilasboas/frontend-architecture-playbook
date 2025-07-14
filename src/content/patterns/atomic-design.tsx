@@ -58,9 +58,9 @@ function AtomicDesign() {
           />
         ))}
         {/* Exemplos completos para todos os níveis */}
-        <CodeExample title="Organismo - Header" code="Organismo - Header" />
-        <CodeExample title="Template - Página de Produto" code="Template - Página de Produto" />
-        <CodeExample title="Página - Produto Real" code="Página - Produto Real" />
+        <CodeExample title="Organismo - Header" code={{ content: "// components/organisms/Header.tsx\nimport { Logo } from '../atoms/Logo';\nimport { NavBar } from '../molecules/NavBar';\n\nexport function Header() {\n  return (\n    <header>\n      <Logo />\n      <NavBar />\n    </header>\n  );\n}\n// Organismo: combina moléculas para formar uma seção maior" }} />
+        <CodeExample title="Template - Página de Produto" code={{ content: "// components/templates/ProductPageTemplate.tsx\nimport { Header } from '../organisms/Header';\nimport { ProductList } from '../organisms/ProductList';\nimport { Footer } from '../organisms/Footer';\n\nexport function ProductPageTemplate({ children }) {\n  return (\n    <div>\n      <Header />\n      <main>{children}</main>\n      <Footer />\n    </div>\n  );\n}\n// Template: estrutura da página, sem conteúdo real" }} />
+        <CodeExample title="Página - Produto Real" code={{ content: "// pages/ProductPage.tsx\nimport { ProductPageTemplate } from '../templates/ProductPageTemplate';\nimport { ProductDetails } from '../organisms/ProductDetails';\n\nexport default function ProductPage() {\n  return (\n    <ProductPageTemplate>\n      <ProductDetails productId=\"123\" />\n    </ProductPageTemplate>\n  );\n}\n// Página: instancia o template com conteúdo real" }} />
       </Stack>
 
       {/* Concepts */}
