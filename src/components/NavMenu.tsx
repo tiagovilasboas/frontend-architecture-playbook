@@ -42,6 +42,28 @@ export default function NavMenu({ guides, architectures, patterns, techniques, b
 
         <Divider />
 
+        {/* Best Practices Section */}
+        <div>
+          <Group gap="xs" mb="sm">
+            <IconCheck size={16} color="var(--mantine-color-teal-6)" />
+            <Title order={6} c="dimmed">Best Practices</Title>
+          </Group>
+          <Stack gap={8}>
+            {bestPractices.map((b) => (
+              <NavItem
+                key={b.slug}
+                href={`/best-practices/${b.slug}`}
+                label={b.title}
+                icon={<IconCheck size={16} />}
+                active={current === `/best-practices/${b.slug}`}
+                onNavigate={onNavigate}
+              />
+            ))}
+          </Stack>
+        </div>
+
+        <Divider />
+
         {/* Architectures Section */}
         <div>
           <Group gap="xs" mb="sm">
@@ -100,28 +122,6 @@ export default function NavMenu({ guides, architectures, patterns, techniques, b
                 label={t.title}
                 icon={<IconTools size={16} />}
                 active={current === `/techniques/${t.slug}`}
-                onNavigate={onNavigate}
-              />
-            ))}
-          </Stack>
-        </div>
-
-        <Divider />
-
-        {/* Best Practices Section */}
-        <div>
-          <Group gap="xs" mb="sm">
-            <IconCheck size={16} color="var(--mantine-color-teal-6)" />
-            <Title order={6} c="dimmed">Best Practices</Title>
-          </Group>
-          <Stack gap={8}>
-            {bestPractices.map((b) => (
-              <NavItem
-                key={b.slug}
-                href={`/best-practices/${b.slug}`}
-                label={b.title}
-                icon={<IconCheck size={16} />}
-                active={current === `/best-practices/${b.slug}`}
                 onNavigate={onNavigate}
               />
             ))}

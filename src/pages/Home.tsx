@@ -127,6 +127,32 @@ export default function Home() {
             Encontre exatamente o que você precisa, quando precisa
           </Text>
           <SimpleGrid cols={{ base: 1, md: 2, lg: 3 }} spacing="md">
+            <Card withBorder p="lg" radius="md" component={Link} to="/guides" style={{ textDecoration: 'none', transition: 'transform 0.2s ease' }} className="content-card">
+              <Stack gap="md" align="center" ta="center">
+                <ThemeIcon size={60} radius="md" variant="light" color="blue">
+                  <IconBook size={30} />
+                </ThemeIcon>
+                <Title order={3} size="h4">📖 Guias</Title>
+                <Text size="sm" c="dimmed">
+                  Guias práticos: Como escolher, Dependency Rule, decisões arquiteturais
+                </Text>
+                <Badge color="blue" variant="light">2 guias</Badge>
+              </Stack>
+            </Card>
+
+            <Card withBorder p="lg" radius="md" component={Link} to="/best-practices" style={{ textDecoration: 'none', transition: 'transform 0.2s ease' }} className="content-card">
+              <Stack gap="md" align="center" ta="center">
+                <ThemeIcon size={60} radius="md" variant="light" color="red">
+                  <IconHeart size={30} />
+                </ThemeIcon>
+                <Title order={3} size="h4">✅ Boas Práticas</Title>
+                <Text size="sm" c="dimmed">
+                  Princípios fundamentais: DRY, KISS, YAGNI, Clean Code, SRP, SOC
+                </Text>
+                <Badge color="red" variant="light">6 princípios</Badge>
+              </Stack>
+            </Card>
+
             <Card withBorder p="lg" radius="md" component={Link} to="/architectures" style={{ textDecoration: 'none', transition: 'transform 0.2s ease' }} className="content-card">
               <Stack gap="md" align="center" ta="center">
                 <ThemeIcon size={60} radius="md" variant="light" color="brand">
@@ -163,32 +189,6 @@ export default function Home() {
                   Técnicas específicas: Code Splitting, Lazy Loading, Error Boundaries
                 </Text>
                 <Badge color="orange" variant="light">4 técnicas</Badge>
-              </Stack>
-            </Card>
-
-            <Card withBorder p="lg" radius="md" component={Link} to="/guides" style={{ textDecoration: 'none', transition: 'transform 0.2s ease' }} className="content-card">
-              <Stack gap="md" align="center" ta="center">
-                <ThemeIcon size={60} radius="md" variant="light" color="blue">
-                  <IconBook size={30} />
-                </ThemeIcon>
-                <Title order={3} size="h4">📖 Guias</Title>
-                <Text size="sm" c="dimmed">
-                  Guias práticos: Como escolher, Dependency Rule, decisões arquiteturais
-                </Text>
-                <Badge color="blue" variant="light">2 guias</Badge>
-              </Stack>
-            </Card>
-
-            <Card withBorder p="lg" radius="md" component={Link} to="/best-practices" style={{ textDecoration: 'none', transition: 'transform 0.2s ease' }} className="content-card">
-              <Stack gap="md" align="center" ta="center">
-                <ThemeIcon size={60} radius="md" variant="light" color="red">
-                  <IconHeart size={30} />
-                </ThemeIcon>
-                <Title order={3} size="h4">✅ Boas Práticas</Title>
-                <Text size="sm" c="dimmed">
-                  Princípios fundamentais: DRY, KISS, YAGNI, Clean Code, SRP, SOC
-                </Text>
-                <Badge color="red" variant="light">6 princípios</Badge>
               </Stack>
             </Card>
 
