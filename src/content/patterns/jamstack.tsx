@@ -1,5 +1,6 @@
-import { Title, Text, Stack, Paper, Code, Alert, List, ThemeIcon, Group, Card, Badge } from '@mantine/core';
+import { Title, Text, Stack, Paper, Alert, List, ThemeIcon, Group, Card, Badge } from '@mantine/core';
 import { IconBulb, IconAlertTriangle, IconCheck, IconCode, IconBolt, IconCloud } from '@tabler/icons-react';
+import CodeExample from '../../components/CodeExample';
 
 function JAMstack() {
   return (
@@ -61,27 +62,7 @@ function JAMstack() {
                   Interatividade no cliente. React, Vue, vanilla JS. 
                   Tudo que roda no browser.
                 </Text>
-                <Code mt="xs" block>
-{`// JavaScript no cliente
-function ProductList() {
-  const [products, setProducts] = useState([]);
-  
-  useEffect(() => {
-    // Chama API para buscar dados
-    fetch('/api/products')
-      .then(res => res.json())
-      .then(data => setProducts(data));
-  }, []);
-  
-  return (
-    <div>
-      {products.map(product => (
-        <ProductCard key={product.id} product={product} />
-      ))}
-    </div>
-  );
-}`}
-                </Code>
+                <CodeExample title="JavaScript no cliente" code="JavaScript no cliente" />
               </div>
             </Group>
           </Card>
@@ -95,28 +76,7 @@ function ProductList() {
                   Dados e funcionalidades via APIs. REST, GraphQL, 
                   serverless functions.
                 </Text>
-                <Code mt="xs" block>
-{`// APIs para dados e funcionalidades
-// REST API
-GET /api/products
-POST /api/orders
-PUT /api/users/123
-
-// GraphQL
-query {
-  products {
-    id
-    name
-    price
-  }
-}
-
-// Serverless Functions
-export default function handler(req, res) {
-  // Lógica de negócio
-  res.json({ data: 'result' });
-}`}
-                </Code>
+                <CodeExample title="APIs" code="APIs" />
               </div>
             </Group>
           </Card>
@@ -130,27 +90,7 @@ export default function handler(req, res) {
                   HTML pré-renderizado. Gatsby, Next.js, Nuxt. 
                   Sites estáticos servidos por CDN.
                 </Text>
-                <Code mt="xs" block>
-{`// HTML pré-renderizado
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Meu Site</title>
-  <meta name="description" content="Site JAMstack">
-</head>
-<body>
-  <div id="root">
-    <h1>Bem-vindo</h1>
-    <p>Site estático servido por CDN</p>
-  </div>
-  <script src="/app.js"></script>
-</body>
-</html>
-
-// Servido por CDN
-// Performance máxima
-// SEO perfeito`}
-                </Code>
+                <CodeExample title="HTML pré-renderizado" code="HTML pré-renderizado" />
               </div>
             </Group>
           </Card>
@@ -262,62 +202,7 @@ export default function handler(req, res) {
                 custo alto de hosting.
               </Text>
               
-              <Code block>
-{`// ❌ RUIM - WordPress tradicional
-// Servidor PHP + MySQL
-// Cada página renderizada no servidor
-// Lento, inseguro, caro
-
-// ✅ BOM - JAMstack
-// Gatsby/Next.js + Headless CMS
-// Build gera HTML estático
-// Servido por CDN
-
-// gatsby-config.js
-module.exports = {
-  plugins: [
-    {
-      resolve: 'gatsby-source-contentful',
-      options: {
-        spaceId: process.env.CONTENTFUL_SPACE_ID,
-        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-      },
-    },
-  ],
-};
-
-// gatsby-node.js
-exports.createPages = async ({ graphql, actions }) => {
-  const { createPage } = actions;
-  const result = await graphql(\`
-    query {
-      allContentfulBlogPost {
-        edges {
-          node {
-            slug
-          }
-        }
-      }
-    }
-  \`);
-  
-  result.data.allContentfulBlogPost.edges.forEach(({ node }) => {
-    createPage({
-      path: \`/blog/\${node.slug}\`,
-      component: path.resolve(\`./src/templates/blog-post.js\`),
-      context: {
-        slug: node.slug,
-      },
-    });
-  });
-};
-
-// Build gera HTML estático
-// Deploy na Netlify/Vercel
-// CDN serve instantaneamente
-// SEO perfeito
-// Custo mínimo`}
-              </Code>
+              <CodeExample title="WordPress tradicional" code="WordPress tradicional" />
             </Stack>
           </Paper>
 
@@ -334,53 +219,7 @@ exports.createPages = async ({ graphql, actions }) => {
                 SEO ruim.
               </Text>
               
-              <Code block>
-{`// ❌ RUIM - E-commerce tradicional
-// Servidor renderiza cada página
-// Lento, inseguro, caro
-
-// ✅ BOM - JAMstack E-commerce
-// Next.js + Stripe + Headless CMS
-
-// pages/products/[slug].js
-export async function getStaticPaths() {
-  const products = await fetchProducts();
-  
-  const paths = products.map(product => ({
-    params: { slug: product.slug }
-  }));
-  
-  return { paths, fallback: false };
-}
-
-export async function getStaticProps({ params }) {
-  const product = await fetchProduct(params.slug);
-  
-  return {
-    props: { product },
-    revalidate: 3600 // Revalida a cada hora
-  };
-}
-
-// pages/api/create-checkout-session.js
-export default async function handler(req, res) {
-  const session = await stripe.checkout.sessions.create({
-    payment_method_types: ['card'],
-    line_items: req.body.items,
-    mode: 'payment',
-    success_url: \`\${req.headers.origin}/success\`,
-    cancel_url: \`\${req.headers.origin}/cancel\`,
-  });
-  
-  res.json({ id: session.id });
-}
-
-// HTML pré-renderizado
-// JavaScript para interatividade
-// APIs para funcionalidades
-// Performance máxima
-// SEO perfeito`}
-              </Code>
+              <CodeExample title="E-commerce tradicional" code="E-commerce tradicional" />
             </Stack>
           </Paper>
 
@@ -397,52 +236,7 @@ export default async function handler(req, res) {
                 custo alto, manutenção difícil.
               </Text>
               
-              <Code block>
-{`// ❌ RUIM - Portfolio complexo
-// WordPress + plugins
-// Lento, inseguro, difícil de manter
-
-// ✅ BOM - JAMstack Portfolio
-// Astro + Markdown + Netlify
-
-// src/pages/projects/[slug].astro
----
-export async function getStaticPaths() {
-  const projects = await Astro.glob('../content/projects/*.md');
-  
-  return projects.map(project => ({
-    params: { slug: project.frontmatter.slug },
-    props: { project }
-  }));
-}
-
-const { project } = Astro.props;
----
-
-<html>
-  <head>
-    <title>{project.frontmatter.title}</title>
-  </head>
-  <body>
-    <h1>{project.frontmatter.title}</h1>
-    <div set:html={project.body} />
-    
-    <script>
-      // Interatividade no cliente
-      document.querySelector('form').addEventListener('submit', async (e) => {
-        e.preventDefault();
-        // Envia para API
-      });
-    </script>
-  </body>
-</html>
-
-// Markdown para conteúdo
-// HTML estático para performance
-// JavaScript para interatividade
-// Deploy simples na Netlify
-// Custo zero`}
-              </Code>
+              <CodeExample title="Portfolio complexo" code="Portfolio complexo" />
             </Stack>
           </Paper>
         </Stack>
@@ -470,8 +264,7 @@ const { project } = Astro.props;
                 Sites de conteúdo, marketing, portfolios. Não pra tudo.
               </Text>
               
-              <Code block>
-{`// ❌ RUIM - JAMstack pra tudo
+              <CodeExample code={{ content: `// ❌ RUIM - JAMstack pra tudo
 // Dashboard admin em JAMstack
 // Aplicação de chat em JAMstack
 // Sistema de pagamentos em JAMstack
@@ -485,8 +278,7 @@ const { project } = Astro.props;
 // Dashboard admin - SPA/SSR ❌
 // Chat app - WebSocket/SSR ❌
 
-// Use a ferramenta certa pro problema certo`}
-              </Code>
+// Use a ferramenta certa pro problema certo` }} />
             </Stack>
           </Paper>
 
@@ -504,8 +296,7 @@ const { project } = Astro.props;
                 considere ISR (Incremental Static Regeneration).
               </Text>
               
-              <Code block>
-{`// ❌ RUIM - Build lento
+              <CodeExample code={{ content: `// ❌ RUIM - Build lento
 // Gatsby build - 30 minutos
 // Next.js build - 45 minutos
 // Deploy demora muito
@@ -532,8 +323,7 @@ export async function getStaticProps({ params }) {
 
 // Build incremental
 // Deploy rápido
-// Desenvolvimento fluido`}
-              </Code>
+// Desenvolvimento fluido` }} />
             </Stack>
           </Paper>
 
@@ -551,8 +341,7 @@ export async function getStaticProps({ params }) {
                 ou considere SSR para conteúdo muito dinâmico.
               </Text>
               
-              <Code block>
-{`// ❌ RUIM - Build a cada mudança
+              <CodeExample code={{ content: `// ❌ RUIM - Build a cada mudança
 // Conteúdo muda -> Build -> Deploy
 // Deploy constante, lento
 
@@ -582,8 +371,7 @@ export default function Dashboard() {
 }
 
 // ISR para conteúdo semi-dinâmico
-// Client-side para dados em tempo real`}
-              </Code>
+// Client-side para dados em tempo real` }} />
             </Stack>
           </Paper>
 
@@ -601,8 +389,7 @@ export default function Dashboard() {
                 use SSR para páginas críticas de SEO.
               </Text>
               
-              <Code block>
-{`// ❌ RUIM - SPA puro
+              <CodeExample code={{ content: `// ❌ RUIM - SPA puro
 // Tudo renderizado no cliente
 // Crawlers não veem conteúdo
 
@@ -642,8 +429,7 @@ module.exports = {
 
 // HTML pré-renderizado
 // Meta tags dinâmicas
-// SEO perfeito`}
-              </Code>
+// SEO perfeito` }} />
             </Stack>
           </Paper>
 
@@ -661,8 +447,7 @@ module.exports = {
                 considere BFF (Backend for Frontend).
               </Text>
               
-              <Code block>
-{`// ❌ RUIM - Muitas APIs
+              <CodeExample code={{ content: `// ❌ RUIM - Muitas APIs
 // /api/products
 // /api/categories  
 // /api/users
@@ -691,8 +476,7 @@ const typeDefs = \`
 // Uma API, múltiplos dados
 // Queries específicas
 // Menos requests
-// Mais eficiente`}
-              </Code>
+// Mais eficiente` }} />
             </Stack>
           </Paper>
         </Stack>
