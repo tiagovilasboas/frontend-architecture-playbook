@@ -12,6 +12,8 @@ import StateMachines from '../content/patterns/state-machines.tsx';
 import EventDriven from '../content/patterns/event-driven.tsx';
 import FeatureFlags from '../content/patterns/feature-flags.tsx';
 import Dry from '../content/patterns/dry.tsx';
+import Kiss from '../content/patterns/kiss.tsx';
+import Yagni from '../content/patterns/yagni.tsx';
 
 export interface DocMeta {
   slug: string;
@@ -64,8 +66,8 @@ export const techniques: DocMeta[] = [
 // Boas práticas - princípios fundamentais de código limpo
 export const bestPractices: DocMeta[] = [
   toMeta(Dry, 'dry', 'best-practices'),
-  toMeta({ default: () => null, metadata: { title: 'KISS - Keep It Simple, Stupid', description: 'Simplicidade acima de tudo' } }, 'kiss', 'best-practices'),
-  toMeta({ default: () => null, metadata: { title: 'YAGNI - You Aren\'t Gonna Need It', description: 'Não implemente features futuras' } }, 'yagni', 'best-practices'),
+  toMeta(Kiss, 'kiss', 'best-practices'),
+  toMeta(Yagni, 'yagni', 'best-practices'),
   toMeta({ default: () => null, metadata: { title: 'Clean Code', description: 'Código legível e manutenível' } }, 'clean-code', 'best-practices'),
   toMeta({ default: () => null, metadata: { title: 'Single Responsibility Principle', description: 'Uma classe, uma responsabilidade' } }, 'srp', 'best-practices'),
   toMeta({ default: () => null, metadata: { title: 'Separation of Concerns', description: 'Separe responsabilidades claramente' } }, 'soc', 'best-practices'),
