@@ -1,0 +1,57 @@
+[
+  {
+    "title": "Button Atômico",
+    "description": "Componente atômico reutilizável com variantes.",
+    "code": "import React from 'react';\nimport { ButtonHTMLAttributes } from 'react';\n\ninterface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {\n  variant?: 'primary' | 'secondary';\n}\n\nexport function Button({ variant = 'primary', ...props }: ButtonProps) {\n  return (\n    <button\n      style={{\n        background: variant === 'primary' ? '#228be6' : '#e9ecef',\n        color: variant === 'primary' ? '#fff' : '#222',\n        border: 'none',\n        borderRadius: 4,\n        padding: '8px 16px',\n        fontWeight: 600,\n        cursor: 'pointer',\n      }}\n      {...props}\n    />\n  );\n}"
+  },
+  {
+    "title": "Reutilização",
+    "description": "Mesmo componente usado em diferentes contextos.",
+    "code": "// Mesmo Button usado em vários lugares\nfunction ProductCard({ product }) {\n  return (\n    <Card>\n      <h3>{product.name}</h3>\n      <Button onClick={() => addToCart(product)}>\n        Adicionar ao Carrinho\n      </Button>\n    </Card>\n  );\n}\n\nfunction CheckoutForm() {\n  return (\n    <form>\n      <Button type=\"submit\" variant=\"primary\">\n        Finalizar Compra\n      </Button>\n      <Button type=\"button\" variant=\"secondary\">\n        Cancelar\n      </Button>\n    </form>\n  );\n}"
+  },
+  {
+    "title": "Isolamento",
+    "description": "Cada componente funciona independentemente.",
+    "code": "// Cada componente testado isoladamente\nfunction Button({ children, onClick, variant = 'primary' }) {\n  return (\n    <button \n      className={`btn btn-${variant}`}\n      onClick={onClick}\n    >\n      {children}\n    </button>\n  );\n}\n\n// Teste isolado\nit('should render button with correct text', () => {\n  render(<Button>Click me</Button>);\n  expect(screen.getByText('Click me')).toBeInTheDocument();\n});\n\nit('should call onClick when clicked', () => {\n  const handleClick = jest.fn();\n  render(<Button onClick={handleClick}>Click me</Button>);\n  \n  fireEvent.click(screen.getByText('Click me'));\n  expect(handleClick).toHaveBeenCalled();\n});"
+  },
+  {
+    "title": "E-commerce - Sistema de Produtos",
+    "description": "Componentes reutilizáveis para produtos e carrinho.",
+    "code": "// ❌ RUIM - Sem componentes\nfunction ProductPage() {\n  return (\n    <div>\n      <div className=\"product-image\">\n        <img src={product.image} />\n      </div>\n      <div className=\"product-info\">\n        <h1>{product.name}</h1>\n        <p>{product.description}</p>\n        <div className=\"price\">R$ {product.price}</div>\n        <button className=\"btn btn-primary\">Adicionar ao Carrinho</button>\n      </div>\n    </div>\n  );\n}\n\n// ✅ BOM - Com componentes\nfunction ProductCard({ product, onAddToCart }) {\n  return (\n    <Card>\n      <ProductImage src={product.image} alt={product.name} />\n      <ProductInfo>\n        <ProductTitle>{product.name}</ProductTitle>\n        <ProductDescription>{product.description}</ProductDescription>\n        <ProductPrice value={product.price} />\n        <AddToCartButton onClick={() => onAddToCart(product)} />\n      </ProductInfo>\n    </Card>\n  );\n}\n\n// Mesmo componente usado em ProductPage e CartPage\nfunction ProductPage() {\n  return <ProductCard product={product} onAddToCart={handleAddToCart} />;\n}\n\nfunction CartPage() {\n  return (\n    <div>\n      {items.map(item => (\n        <ProductCard \n          key={item.id}\n          product={item} \n          onAddToCart={handleRemoveFromCart}\n        />\n      ))}\n    </div>\n  );\n}"
+  },
+  {
+    "title": "Dashboard - Métricas Reutilizáveis",
+    "description": "Componente MetricCard usado em diferentes dashboards.",
+    "code": "// ❌ RUIM - Sem componentes\nfunction SalesDashboard() {\n  return (\n    <div>\n      <div className=\"metric-card\">\n        <h3>Vendas Hoje</h3>\n        <div className=\"metric-value\">R$ 15.420</div>\n        <div className=\"metric-change positive\">+12%</div>\n      </div>\n    </div>\n  );\n}\n\n// ✅ BOM - Com componentes\nfunction MetricCard({ title, value, change, type = 'default' }) {\n  return (\n    <Card>\n      <Title order={4}>{title}</Title>\n      <Text size=\"xl\" fw={700}>{value}</Text>\n      <Text size=\"sm\" c={change > 0 ? 'green' : 'red'}>\n        {change > 0 ? '+' : ''}{change}%\n      </Text>\n    </Card>\n  );\n}\n\nfunction SalesDashboard() {\n  return (\n    <div>\n      <MetricCard \n        title=\"Vendas Hoje\"\n        value=\"R$ 15.420\"\n        change={12}\n      />\n      <MetricCard \n        title=\"Usuários Ativos\"\n        value=\"1.234\"\n        change={-3}\n      />\n    </div>\n  );\n}\n\nfunction AnalyticsDashboard() {\n  return (\n    <div>\n      <MetricCard \n        title=\"Taxa de Conversão\"\n        value=\"2.4%\"\n        change={0.5}\n      />\n    </div>\n  );\n}"
+  },
+  {
+    "title": "Formulários - Sistema de Inputs",
+    "description": "Componente FormInput reutilizável com validação.",
+    "code": "// ❌ RUIM - Sem componentes\nfunction UserForm() {\n  return (\n    <form>\n      <div>\n        <label>Nome</label>\n        <input \n          type=\"text\" \n          className=\"form-input\"\n          onChange={handleNameChange}\n        />\n        {errors.name && <span className=\"error\">{errors.name}</span>}\n      </div>\n      \n      <div>\n        <label>Email</label>\n        <input \n          type=\"email\" \n          className=\"form-input\"\n          onChange={handleEmailChange}\n        />\n        {errors.email && <span className=\"error\">{errors.email}</span>}\n      </div>\n    </form>\n  );\n}\n\n// ✅ BOM - Com componentes\nfunction FormInput({ \n  label, \n  type = 'text', \n  value, \n  onChange, \n  error, \n  mask \n}) {\n  return (\n    <div>\n      <label>{label}</label>\n      <input \n        type={type}\n        value={value}\n        onChange={onChange}\n        className={`form-input ${error ? 'error' : ''}`}\n      />\n      {error && <span className=\"error\">{error}</span>}\n    </div>\n  );\n}\n\nfunction UserForm() {\n  return (\n    <form>\n      <FormInput \n        label=\"Nome\"\n        value={formData.name}\n        onChange={handleNameChange}\n        error={errors.name}\n      />\n      \n      <FormInput \n        label=\"Email\"\n        type=\"email\"\n        value={formData.email}\n        onChange={handleEmailChange}\n        error={errors.email}\n      />\n    </form>\n  );\n}"
+  },
+  {
+    "title": "Abstração Excessiva",
+    "description": "Criando componentes desnecessários.",
+    "code": "// ❌ RUIM - Abstração excessiva\nfunction UserNameDisplay({ name }) {\n  return <span>{name}</span>;\n}\n\nfunction UserEmailDisplay({ email }) {\n  return <span>{email}</span>;\n}\n\n// ✅ BOM - Só abstrai quando precisa\nfunction UserCard({ user }) {\n  return (\n    <Card>\n      <span>{user.name}</span>\n      <span>{user.email}</span>\n    </Card>\n  );\n}"
+  },
+  {
+    "title": "Props Drilling",
+    "description": "Passando props desnecessárias por vários níveis.",
+    "code": "// ❌ RUIM - Props drilling\nfunction App({ user }) {\n  return <Header user={user} />;\n}\n\nfunction Header({ user }) {\n  return <Nav user={user} />;\n}\n\nfunction Nav({ user }) {\n  return <UserMenu user={user} />;\n}\n\nfunction UserMenu({ user }) {\n  return <UserAvatar user={user} />;\n}\n\n// ✅ BOM - Context ou reorganização\nfunction App({ user }) {\n  return (\n    <UserContext.Provider value={user}>\n      <Header />\n    </UserContext.Provider>\n  );\n}\n\nfunction UserAvatar() {\n  const user = useContext(UserContext);\n  return <Avatar src={user.avatar} />;\n}"
+  },
+  {
+    "title": "Componentes Gigantes",
+    "description": "Um componente fazendo tudo, impossível de manter.",
+    "code": "// ❌ RUIM - Componente gigante\nfunction ProductPage() {\n  // 500 linhas de código\n  // Renderiza tudo\n  // Lógica de negócio\n  // Validações\n  // Estados\n  // Efeitos\n  return <div>...</div>;\n}\n\n// ✅ BOM - Componentes pequenos\nfunction ProductPage() {\n  return (\n    <div>\n      <ProductHeader />\n      <ProductGallery />\n      <ProductInfo />\n      <ProductActions />\n      <ProductReviews />\n    </div>\n  );\n}\n\nfunction ProductHeader() {\n  return <div>...</div>;\n}\n\nfunction ProductGallery() {\n  return <div>...</div>;\n}\n\n// Cada um com uma responsabilidade só"
+  },
+  {
+    "title": "Props Inconsistentes",
+    "description": "Mesmo componente com props diferentes em cada lugar.",
+    "code": "// ❌ RUIM - Props inconsistentes\n<Button onClick={handleClick}>Salvar</Button>\n<Button onPress={handlePress}>Cancelar</Button>\n<Button handleClick={handleClick}>Excluir</Button>\n\n// ✅ BOM - Props padronizadas\ninterface ButtonProps {\n  onClick: () => void;\n  children: React.ReactNode;\n  variant?: 'primary' | 'secondary' | 'danger';\n  size?: 'small' | 'medium' | 'large';\n}\n\n<Button onClick={handleClick}>Salvar</Button>\n<Button onClick={handleCancel} variant=\"secondary\">Cancelar</Button>\n<Button onClick={handleDelete} variant=\"danger\">Excluir</Button>"
+  },
+  {
+    "title": "Testando Componentes",
+    "description": "Testes isolados para cada componente.",
+    "code": "// ✅ BOM - Testando componentes\ndescribe('Button', () => {\n  it('should render correctly', () => {\n    render(<Button>Click me</Button>);\n    expect(screen.getByText('Click me')).toBeInTheDocument();\n  });\n  \n  it('should call onClick when clicked', () => {\n    const handleClick = jest.fn();\n    render(<Button onClick={handleClick}>Click me</Button>);\n    \n    fireEvent.click(screen.getByText('Click me'));\n    expect(handleClick).toHaveBeenCalled();\n  });\n});\n\n// Storybook para testes visuais\nexport const Primary = () => <Button variant=\"primary\">Button</Button>;\nexport const Secondary = () => <Button variant=\"secondary\">Button</Button>;"
+  }
+] 

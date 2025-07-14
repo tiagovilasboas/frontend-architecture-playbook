@@ -1,0 +1,37 @@
+[
+  {
+    "id": "event-driven-emitter",
+    "title": "Event Emitter",
+    "description": "Componente que dispara eventos",
+    "file": "event-driven",
+    "content": "// Componente que dispara evento\nfunction AddToCartButton({ product }) {\n  const handleClick = () => {\n    // Dispara evento, não chama função diretamente\n    window.dispatchEvent(new CustomEvent('cart:add', {\n      detail: { product, quantity: 1 }\n    }));\n  };\n\n  return <button onClick={handleClick}>Adicionar</button>;\n}"
+  },
+  {
+    "id": "event-driven-listener",
+    "title": "Event Listener",
+    "description": "Componente que escuta eventos",
+    "file": "event-driven",
+    "content": "// Componente que escuta evento\nfunction CartWidget() {\n  useEffect(() => {\n    const handleAddToCart = (event) => {\n      const { product, quantity } = event.detail;\n      // Atualiza carrinho\n      updateCart(product, quantity);\n    };\n\n    window.addEventListener('cart:add', handleAddToCart);\n    return () => window.removeEventListener('cart:add', handleAddToCart);\n  }, []);\n\n  return <div>Items: {cartItems.length}</div>;\n}"
+  },
+  {
+    "id": "event-driven-bus",
+    "title": "Event Bus",
+    "description": "Sistema que gerencia eventos",
+    "file": "event-driven",
+    "content": "// Event Bus centralizado\nclass EventBus {\n  private listeners = new Map();\n\n  on(event, callback) {\n    if (!this.listeners.has(event)) {\n      this.listeners.set(event, []);\n    }\n    this.listeners.get(event).push(callback);\n  }\n\n  emit(event, data) {\n    const callbacks = this.listeners.get(event) || [];\n    callbacks.forEach(callback => callback(data));\n  }\n}\n\n// Uso global\nconst eventBus = new EventBus();\neventBus.on('user:login', (user) => {\n  // Múltiplos listeners podem reagir\n  updateHeader(user);\n  loadUserPreferences(user);\n  trackAnalytics(user);\n});"
+  },
+  {
+    "id": "event-driven-ecommerce",
+    "title": "E-commerce - Event-driven",
+    "description": "E-commerce usando eventos",
+    "file": "event-driven",
+    "content": "// ❌ RUIM - Acoplamento direto\nfunction AddToCartButton({ product }) {\n  const { updateCart, updateCounter, trackAnalytics, showNotification, checkStock } = useCart();\n  \n  const handleClick = async () => {\n    await updateCart(product);\n    updateCounter();\n    trackAnalytics('add_to_cart', product);\n    showNotification('Produto adicionado!');\n    await checkStock(product.id);\n  };\n\n  return <button onClick={handleClick}>Adicionar</button>;\n}\n\n// ✅ BOM - Event-Driven\nfunction AddToCartButton({ product }) {\n  const handleClick = () => {\n    // Só dispara evento, não conhece ninguém\n    window.dispatchEvent(new CustomEvent('cart:add', {\n      detail: { product, quantity: 1 }\n    }));\n  };\n\n  return <button onClick={handleClick}>Adicionar</button>;\n}\n\n// Listeners independentes\nfunction CartWidget() {\n  useEffect(() => {\n    const handleAddToCart = (event) => {\n      updateCart(event.detail.product);\n    };\n    window.addEventListener('cart:add', handleAddToCart);\n    return () => window.removeEventListener('cart:add', handleAddToCart);\n  }, []);\n}\n\nfunction AnalyticsTracker() {\n  useEffect(() => {\n    const handleAddToCart = (event) => {\n      trackEvent('add_to_cart', event.detail.product);\n    };\n    window.addEventListener('cart:add', handleAddToCart);\n    return () => window.removeEventListener('cart:add', handleAddToCart);\n  }, []);\n}\n\nfunction NotificationSystem() {\n  useEffect(() => {\n    const handleAddToCart = (event) => {\n      showToast('Produto adicionado ao carrinho!');\n    };\n    window.addEventListener('cart:add', handleAddToCart);\n    return () => window.removeEventListener('cart:add', handleAddToCart);\n  }, []);\n}\n\n// Adicione novos listeners sem modificar o botão\nfunction StockChecker() {\n  useEffect(() => {\n    const handleAddToCart = async (event) => {\n      await checkStock(event.detail.product.id);\n    };\n    window.addEventListener('cart:add', handleAddToCart);\n    return () => window.removeEventListener('cart:add', handleAddToCart);\n  }, []);\n}"
+  },
+  {
+    "id": "event-driven-dashboard",
+    "title": "Dashboard - Event-driven",
+    "description": "Dashboard usando eventos",
+    "file": "event-driven",
+    "content": "// ❌ RUIM - Prop drilling e callbacks\nfunction Dashboard() {\n  const [data, setData] = useState({});\n  \n  const handleDataUpdate = (newData) => {\n    setData(newData);\n    // Precisa chamar todos os widgets\n    updateChart(newData);\n    updateMetrics(newData);\n    checkAlerts(newData);\n    logActivity(newData);\n  };\n\n  return (\n    <div>\n      <DataFetcher onUpdate={handleDataUpdate} />\n      <ChartWidget data={data} />\n      <MetricsWidget data={data} />\n      <AlertsWidget data={data} />\n      <LogWidget data={data} />\n    </div>\n  );\n}\n\n// ✅ BOM - Event-Driven\nfunction DataFetcher() {\n  useEffect(() => {\n    const interval = setInterval(async () => {\n      const newData = await fetchData();\n      // Dispara evento, não conhece widgets\n      window.dispatchEvent(new CustomEvent('data:updated', {\n        detail: { data: newData, timestamp: Date.now() }\n      }));\n    }, 5000);\n\n    return () => clearInterval(interval);\n  }, []);\n\n  return null;\n}\n\nfunction ChartWidget() {\n  const [data, setData] = useState({});\n  \n  useEffect(() => {\n    const handleDataUpdate = (event) => {\n      setData(event.detail.data);\n    };\n    window.addEventListener('data:updated', handleDataUpdate);\n    return () => window.removeEventListener('data:updated', handleDataUpdate);\n  }, []);\n\n  return <Chart data={data} />;\n}\n\nfunction MetricsWidget() {\n  const [data, setData] = useState({});\n  \n  useEffect(() => {\n    const handleDataUpdate = (event) => {\n      setData(event.detail.data);\n    };\n    window.addEventListener('data:updated', handleDataUpdate);\n    return () => window.removeEventListener('data:updated', handleDataUpdate);\n  }, []);\n\n  return <Metrics data={data} />;\n}\n\n// Adicione novos widgets sem modificar DataFetcher\nfunction AlertsWidget() {\n  useEffect(() => {\n    const handleDataUpdate = (event) => {\n      checkAlerts(event.detail.data);\n    };\n    window.addEventListener('data:updated', handleDataUpdate);\n    return () => window.removeEventListener('data:updated', handleDataUpdate);\n  }, []);\n\n  return <Alerts />;\n}"
+  }
+] 

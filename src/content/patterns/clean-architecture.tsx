@@ -1,6 +1,7 @@
 import { Title, Text, Stack, Paper, Alert, List, ThemeIcon, Group, Card, Badge } from '@mantine/core';
 import { IconBulb, IconAlertTriangle, IconCheck, IconCode, IconTestPipe, IconStack } from '@tabler/icons-react';
 import CodeExample from '../../components/CodeExample';
+import codeExamples from '../../utils/code-examples/clean-architecture.json';
 
 function CleanArchitecture() {
   return (
@@ -53,69 +54,18 @@ function CleanArchitecture() {
         </Title>
         
         <Stack gap="md">
-          <Card withBorder p="md">
-            <Group>
-              <Badge size="lg" variant="light" color="green">1</Badge>
-              <div>
-                <Title order={4}>Entidades (Entities)</Title>
-                <Text size="sm" c="dimmed">
-                  Regras de negócio puras. User, Order, Product. Sem dependências externas.
-                </Text>
-                <CodeExample
-                  title="User Entity"
-                  code="User Entity"
-                />
-              </div>
-            </Group>
-          </Card>
-
-          <Card withBorder p="md">
-            <Group>
-              <Badge size="lg" variant="light" color="blue">2</Badge>
-              <div>
-                <Title order={4}>Casos de Uso (Use Cases)</Title>
-                <Text size="sm" c="dimmed">
-                  Orquestram as entidades. CreateUser, ProcessOrder. Lógica de aplicação.
-                </Text>
-                <CodeExample
-                  title="CreateUser Use Case"
-                  code="CreateUser Use Case"
-                />
-              </div>
-            </Group>
-          </Card>
-
-          <Card withBorder p="md">
-            <Group>
-              <Badge size="lg" variant="light" color="orange">3</Badge>
-              <div>
-                <Title order={4}>Adaptadores (Adapters)</Title>
-                <Text size="sm" c="dimmed">
-                  Conectam com o mundo externo. APIs, localStorage, React components.
-                </Text>
-                <CodeExample
-                  title="User Repository Implementation"
-                  code="User Repository Implementation"
-                />
-              </div>
-            </Group>
-          </Card>
-
-          <Card withBorder p="md">
-            <Group>
-              <Badge size="lg" variant="light" color="red">4</Badge>
-              <div>
-                <Title order={4}>Frameworks & Drivers</Title>
-                <Text size="sm" c="dimmed">
-                  React, Vue, APIs externas. Detalhes de implementação.
-                </Text>
-                <CodeExample
-                  title="React Component"
-                  code="React Component"
-                />
-              </div>
-            </Group>
-          </Card>
+          {codeExamples.map((ex, idx) => (
+            <Card withBorder p="md" key={ex.title}>
+              <Group>
+                <Badge size="lg" variant="light" color={['green','blue','orange','red'][idx] || 'gray'}>{idx+1}</Badge>
+                <div>
+                  <Title order={4}>{ex.title}</Title>
+                  <Text size="sm" c="dimmed">{ex.description}</Text>
+                  <CodeExample title={ex.title} code={ex.code} />
+                </div>
+              </Group>
+            </Card>
+          ))}
         </Stack>
       </div>
 
@@ -210,27 +160,13 @@ function CleanArchitecture() {
         </Title>
         
         <Stack gap="md">
-          <Card withBorder p="md">
-            <Title order={4} mb="sm">Over-engineering</Title>
-            <Text size="sm" mb="md">
-              Criar interfaces desnecessárias para tudo. Às vezes um objeto simples é suficiente.
-            </Text>
-            <CodeExample
-              title="Over-engineering"
-              code="Over-engineering"
-            />
-          </Card>
-
-          <Card withBorder p="md">
-            <Title order={4} mb="sm">Dependências Circulares</Title>
-            <Text size="sm" mb="md">
-              Quebrar a regra das dependências. Negócio não pode depender de framework.
-            </Text>
-            <CodeExample
-              title="Dependência Circular"
-              code="Dependência Circular"
-            />
-          </Card>
+          {codeExamples.slice(4).map((ex) => (
+            <Card withBorder p="md" key={ex.title}>
+              <Title order={4} mb="sm">{ex.title}</Title>
+              <Text size="sm" mb="md">{ex.description}</Text>
+              <CodeExample title={ex.title} code={ex.code} />
+            </Card>
+          ))}
         </Stack>
       </div>
 

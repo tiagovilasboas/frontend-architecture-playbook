@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Independência de Times",
+    "description": "Cada micro-frontend tem seu time. Não precisa esperar ninguém.",
+    "code": "// Time A - Produto\n// apps/product/src/App.tsx\nexport function ProductApp() {\n  return (\n    <div>\n      <ProductList />\n      <ProductDetails />\n      <AddToCart />\n    </div>\n  );\n}\n\n// Time B - Carrinho\n// apps/cart/src/App.tsx\nexport function CartApp() {\n  return (\n    <div>\n      <CartItems />\n      <CartSummary />\n      <CheckoutButton />\n    </div>\n  );\n}\n\n// Cada time desenvolve independentemente\n// Não precisa esperar o outro time\n// Deploy separado, sem conflitos"
+  },
+  {
+    "title": "Tecnologias Heterogêneas",
+    "description": "Cada micro-frontend pode usar tecnologia diferente.",
+    "code": "// Time A - React + TypeScript\n// apps/product/src/App.tsx\nimport React from 'react';\n\nexport function ProductApp() {\n  return <ProductList />;\n}\n\n// Time B - Vue + JavaScript\n// apps/cart/src/App.vue\n<template>\n  <div>\n    <CartItems />\n  </div>\n</template>\n\n<script>\nexport default {\n  name: 'CartApp'\n};\n</script>\n\n// Time C - Angular\n// apps/checkout/src/app.component.ts\n@Component({\n  selector: 'app-checkout',\n  template: '<CheckoutForm />'\n})\nexport class CheckoutApp {}\n\n// Cada time escolhe sua tecnologia\n// Sem imposição de stack única"
+  },
+  {
+    "title": "Deploy Independente",
+    "description": "Cada micro-frontend faz deploy separado.",
+    "code": "// Time A - Deploy do produto\n// apps/product/package.json\n{\n  \"name\": \"product-app\",\n  \"scripts\": {\n    \"build\": \"vite build\",\n    \"deploy\": \"npm run build && aws s3 sync dist/ s3://product-app\"\n  }\n}\n\n// Time B - Deploy do carrinho\n// apps/cart/package.json\n{\n  \"name\": \"cart-app\",\n  \"scripts\": {\n    \"build\": \"vue-cli-service build\",\n    \"deploy\": \"npm run build && netlify deploy\"\n  }\n}\n\n// Deploy independente\n// Muda um, não afeta os outros\n// Rollback individual"
+  },
+  {
+    "title": "Integração via Shell",
+    "description": "Shell (container) orquestra os micro-frontends.",
+    "code": "// Shell - Container principal\n// apps/shell/src/App.tsx\nimport { loadMicroFrontend } from './utils/micro-frontend-loader';\n\nexport function ShellApp() {\n  const [currentRoute, setCurrentRoute] = useState('/');\n\n  const loadApp = async (route: string) => {\n    switch (route) {\n      case '/products':\n        return await loadMicroFrontend('product-app');\n      case '/cart':\n        return await loadMicroFrontend('cart-app');\n      case '/checkout':\n        return await loadMicroFrontend('checkout-app');\n    }\n  };\n\n  return (\n    <div>\n      <Navigation />\n      <main>\n        {loadApp(currentRoute)}\n      </main>\n    </div>\n  );\n}\n\n// utils/micro-frontend-loader.ts\nexport async function loadMicroFrontend(appName: string) {\n  const script = document.createElement('script');\n  script.src = `https://cdn.example.com/${appName}/main.js`;\n  document.head.appendChild(script);\n  \n  return new Promise((resolve) => {\n    script.onload = () => {\n      // Micro-frontend carregado\n      resolve(window[appName]);\n    };\n  });\n}"
+  }
+] 

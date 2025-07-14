@@ -1,6 +1,7 @@
 import { Title, Text, Stack, Paper, Alert, List, ThemeIcon, Group, Card, Badge } from '@mantine/core';
 import { IconBulb, IconAlertTriangle, IconCheck, IconCode, IconLayout, IconBolt } from '@tabler/icons-react';
 import CodeExample from '../../components/CodeExample';
+import spaExamples from '../../utils/code-examples/spa.json';
 
 function SPA() {
   return (
@@ -64,8 +65,8 @@ function SPA() {
                   O resto é renderizado pelo JavaScript.
                 </Text>
                 <CodeExample
-                  title="index.html"
-                  code="index.html"
+                  title={spaExamples.find(e => e.id === 'spa-html-page')?.title || ''}
+                  code={spaExamples.find(e => e.id === 'spa-html-page')?.content || ''}
                 />
               </div>
             </Group>
@@ -81,8 +82,8 @@ function SPA() {
                   componente renderiza, sem reload.
                 </Text>
                 <CodeExample
-                  title="Roteamento client-side"
-                  code="Roteamento client-side"
+                  title={spaExamples.find(e => e.id === 'spa-routing')?.title || ''}
+                  code={spaExamples.find(e => e.id === 'spa-routing')?.content || ''}
                 />
               </div>
             </Group>
@@ -98,8 +99,8 @@ function SPA() {
                   Redux, Context, Zustand.
                 </Text>
                 <CodeExample
-                  title="Estado global compartilhado"
-                  code="Estado global compartilhado"
+                  title={spaExamples.find(e => e.id === 'spa-state-management')?.title || ''}
+                  code={spaExamples.find(e => e.id === 'spa-state-management')?.content || ''}
                 />
               </div>
             </Group>
@@ -213,8 +214,8 @@ function SPA() {
               </Text>
               
               <CodeExample
-                title="Dashboard - Múltiplas páginas"
-                code="Dashboard - Múltiplas páginas"
+                title={spaExamples.find(e => e.id === 'spa-dashboard-complex')?.title || ''}
+                code={spaExamples.find(e => e.id === 'spa-dashboard-complex')?.content || ''}
               />
             </Stack>
           </Paper>
@@ -233,8 +234,8 @@ function SPA() {
               </Text>
               
               <CodeExample
-                title="E-commerce - Carrinho persistente"
-                code="E-commerce - Carrinho persistente"
+                title={spaExamples.find(e => e.id === 'spa-ecommerce-cart')?.title || ''}
+                code={spaExamples.find(e => e.id === 'spa-ecommerce-cart')?.content || ''}
               />
             </Stack>
           </Paper>
@@ -253,8 +254,8 @@ function SPA() {
               </Text>
               
               <CodeExample
-                title="Social Media - Feed dinâmico"
-                code="Social Media - Feed dinâmico"
+                title={spaExamples.find(e => e.id === 'spa-social-media-feed')?.title || ''}
+                code={spaExamples.find(e => e.id === 'spa-social-media-feed')?.content || ''}
               />
             </Stack>
           </Paper>

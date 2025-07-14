@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Entidade: User (Entities)",
+    "description": "Entidade de domínio pura, sem dependências externas.",
+    "code": "export class User {\n  constructor(\n    public id: string,\n    public name: string,\n    public email: string,\n    private active: boolean = true\n  ) {}\n\n  isActive(): boolean {\n    return this.active;\n  }\n}"
+  },
+  {
+    "title": "Caso de Uso: CreateUser (Use Cases)",
+    "description": "Orquestra entidades e regras de negócio.",
+    "code": "import { User } from './user-entity';\n\nexport interface UserRepository {\n  save(user: User): Promise<User>;\n}\n\nexport class CreateUserUseCase {\n  constructor(private userRepo: UserRepository) {}\n\n  async execute(data: { id: string; name: string; email: string }): Promise<User> {\n    // Validações e regras de negócio\n    const user = new User(data.id, data.name, data.email);\n    return this.userRepo.save(user);\n  }\n}"
+  },
+  {
+    "title": "Adaptador: UserRepository (Adapters)",
+    "description": "Implementação concreta conectando com o mundo externo.",
+    "code": "import { User } from './user-entity';\nimport { UserRepository } from './create-user-usecase';\n\nexport class UserRepositoryImpl implements UserRepository {\n  async save(user: User): Promise<User> {\n    // Aqui poderia ser uma chamada para API, banco, etc\n    return user;\n  }\n}"
+  },
+  {
+    "title": "Framework: React Component (Frameworks & Drivers)",
+    "description": "Componente React consumindo o caso de uso.",
+    "code": "import { CreateUserUseCase } from './create-user-usecase';\nimport { UserRepositoryImpl } from './user-repository-impl';\n\nconst useCase = new CreateUserUseCase(new UserRepositoryImpl());\n\nexport function CreateUserForm() {\n  // ... lógica de formulário\n  const handleSubmit = async (data) => {\n    await useCase.execute(data);\n  };\n  return (\n    <form>{/* ... */}</form>\n  );\n}"
+  },
+  {
+    "title": "Over-engineering",
+    "description": "Criando interfaces desnecessárias para tudo.",
+    "code": "// ❌ RUIM - Over-engineering\nexport interface IUserService {\n  createUser(user: IUser): Promise<IUser>;\n  updateUser(user: IUser): Promise<IUser>;\n  deleteUser(id: string): Promise<void>;\n  getUserById(id: string): Promise<IUser>;\n  getAllUsers(): Promise<IUser[]>;\n}\n\nexport interface IUserRepository {\n  save(user: IUser): Promise<IUser>;\n  update(user: IUser): Promise<IUser>;\n  delete(id: string): Promise<void>;\n  findById(id: string): Promise<IUser>;\n  findAll(): Promise<IUser[]>;\n}\n\nexport interface IUserValidator {\n  validate(user: IUser): boolean;\n}\n\nexport interface IUserMapper {\n  toEntity(dto: IUserDTO): IUser;\n  toDTO(entity: IUser): IUserDTO;\n}\n\n// Às vezes um objeto simples é suficiente\n// ✅ BOM - Simples e direto\nexport class UserService {\n  async createUser(data: { name: string; email: string }) {\n    const user = new User(data.name, data.email);\n    return this.repository.save(user);\n  }\n}"
+  },
+  {
+    "title": "Dependência Circular",
+    "description": "Quebrando a regra das dependências.",
+    "code": "// ❌ RUIM - Dependência circular\n// entities/User.ts\nexport class User {\n  constructor(\n    public id: string,\n    public name: string,\n    public email: string\n  ) {}\n\n  // Negócio dependendo de framework!\n  toReactComponent() {\n    return <UserCard user={this} />;\n  }\n}\n\n// usecases/CreateUser.ts\nexport class CreateUserUseCase {\n  constructor(private userRepo: UserRepository) {}\n\n  async execute(data: CreateUserDTO) {\n    // Use case dependendo de framework!\n    const user = new User(data.id, data.name, data.email);\n    return user.toReactComponent();\n  }\n}\n\n// ✅ BOM - Dependências apontam para dentro\n// entities/User.ts\nexport class User {\n  constructor(\n    public id: string,\n    public name: string,\n    public email: string\n  ) {}\n\n  // Só lógica de negócio\n  isValid(): boolean {\n    return this.name.length > 0 && this.email.includes('@');\n  }\n}\n\n// usecases/CreateUser.ts\nexport class CreateUserUseCase {\n  constructor(private userRepo: UserRepository) {}\n\n  async execute(data: CreateUserDTO) {\n    const user = new User(data.id, data.name, data.email);\n    return this.userRepo.save(user);\n  }\n}\n\n// UI fica separada\n// components/UserCard.tsx\nexport function UserCard({ user }: { user: User }) {\n  return <div>{user.name}</div>;\n}"
+  }
+] 

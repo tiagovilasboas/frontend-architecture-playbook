@@ -1,6 +1,7 @@
 import { Title, Text, Stack, Paper, Alert, List, ThemeIcon, Group, Card, Badge } from '@mantine/core';
 import { IconBulb, IconAlertTriangle, IconCheck, IconCode, IconBolt } from '@tabler/icons-react';
 import CodeExample from '../../components/CodeExample';
+import eventDrivenExamples from '../../utils/code-examples/event-driven.json';
 
 function EventDriven() {
   return (
@@ -64,8 +65,8 @@ function EventDriven() {
                   Não conhece quem vai escutar.
                 </Text>
                 <CodeExample
-                  title="Event Emitter"
-                  code="Event Emitter"
+                  title={eventDrivenExamples.find(e => e.id === 'event-driven-emitter')?.title || ''}
+                  code={eventDrivenExamples.find(e => e.id === 'event-driven-emitter')?.content || ''}
                 />
               </div>
             </Group>
@@ -81,8 +82,8 @@ function EventDriven() {
                   Reage quando evento acontece.
                 </Text>
                 <CodeExample
-                  title="Event Listener"
-                  code="Event Listener"
+                  title={eventDrivenExamples.find(e => e.id === 'event-driven-listener')?.title || ''}
+                  code={eventDrivenExamples.find(e => e.id === 'event-driven-listener')?.content || ''}
                 />
               </div>
             </Group>
@@ -98,8 +99,8 @@ function EventDriven() {
                   Conecta emitters e listeners.
                 </Text>
                 <CodeExample
-                  title="Event Bus"
-                  code="Event Bus"
+                  title={eventDrivenExamples.find(e => e.id === 'event-driven-bus')?.title || ''}
+                  code={eventDrivenExamples.find(e => e.id === 'event-driven-bus')?.content || ''}
                 />
               </div>
             </Group>
@@ -213,8 +214,8 @@ function EventDriven() {
               </Text>
               
               <CodeExample
-                title="E-commerce - Event-driven"
-                code="E-commerce - Event-driven"
+                title={eventDrivenExamples.find(e => e.id === 'event-driven-ecommerce')?.title || ''}
+                code={eventDrivenExamples.find(e => e.id === 'event-driven-ecommerce')?.content || ''}
               />
             </Stack>
           </Paper>
@@ -233,8 +234,8 @@ function EventDriven() {
               </Text>
               
               <CodeExample
-                title="Dashboard - Event-driven"
-                code="Dashboard - Event-driven"
+                title={eventDrivenExamples.find(e => e.id === 'event-driven-dashboard')?.title || ''}
+                code={eventDrivenExamples.find(e => e.id === 'event-driven-dashboard')?.content || ''}
               />
             </Stack>
           </Paper>
