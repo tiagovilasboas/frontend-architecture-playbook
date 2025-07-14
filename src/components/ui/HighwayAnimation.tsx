@@ -42,11 +42,11 @@ export default function HighwayAnimation() {
         style={{
           position: 'absolute',
           top: '50%',
-          left: '50%',
-          width: '8px',
-          height: '100%',
-          background: 'linear-gradient(180deg, rgba(255, 215, 0, 0.7) 0%, rgba(255, 237, 78, 0.8) 50%, rgba(255, 215, 0, 0.7) 100%)',
-          transform: 'translateX(-50%) translateY(-50%) rotateX(60deg) translateZ(20px)',
+          left: 0,
+          right: 0,
+          height: '8px',
+          background: 'linear-gradient(90deg, rgba(255, 215, 0, 0.7) 0%, rgba(255, 237, 78, 0.8) 50%, rgba(255, 215, 0, 0.7) 100%)',
+          transform: 'translateY(-50%) rotateX(60deg) translateZ(20px)',
           boxShadow: '0 0 20px rgba(255, 215, 0, 0.3)',
           zIndex: 2
         }}
@@ -57,11 +57,11 @@ export default function HighwayAnimation() {
         style={{
           position: 'absolute',
           top: '50%',
-          left: '50%',
-          width: '2px',
-          height: '100%',
-          background: 'repeating-linear-gradient(180deg, rgba(255, 215, 0, 0.7) 0px, rgba(255, 215, 0, 0.7) 30px, transparent 30px, transparent 60px)',
-          transform: 'translateX(-50%) translateY(-50%) rotateX(60deg) translateZ(15px)',
+          left: 0,
+          right: 0,
+          height: '2px',
+          background: 'repeating-linear-gradient(90deg, rgba(255, 215, 0, 0.7) 0px, rgba(255, 215, 0, 0.7) 30px, transparent 30px, transparent 60px)',
+          transform: 'translateY(-50%) rotateX(60deg) translateZ(15px)',
           zIndex: 2
         }}
       />
