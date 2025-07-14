@@ -96,17 +96,17 @@ export default function HighwayAnimation() {
         }}
       />
 
-      {/* Carrinho 1 - 3D indo para direita */}
+      {/* Opala - 3D indo para direita */}
       <motion.div
         style={{
           position: 'absolute',
           top: '35%',
           left: '-80px',
-          width: '50px',
-          height: '25px',
-          background: 'linear-gradient(135deg, #ff6b6b, #ee5a52, #ff6b6b)',
-          borderRadius: '8px',
-          boxShadow: '0 8px 16px rgba(0,0,0,0.4), 0 0 20px rgba(255,107,107,0.3)',
+          width: '55px',
+          height: '28px',
+          background: 'linear-gradient(135deg, #8B4513, #A0522D, #8B4513)',
+          borderRadius: '6px 12px 6px 6px',
+          boxShadow: '0 8px 16px rgba(0,0,0,0.4), 0 0 20px rgba(139,69,19,0.3)',
           transform: 'rotateX(60deg) translateZ(25px)',
           zIndex: 4
         }}
@@ -119,14 +119,27 @@ export default function HighwayAnimation() {
           ease: "linear"
         }}
       >
-        {/* Janelas do carro 3D */}
+        {/* Capô do Opala */}
         <Box
           style={{
             position: 'absolute',
-            top: '3px',
-            left: '10px',
-            width: '15px',
-            height: '10px',
+            top: '0px',
+            left: '0px',
+            width: '20px',
+            height: '12px',
+            background: 'linear-gradient(135deg, #654321, #8B4513)',
+            borderRadius: '4px 8px 0px 0px',
+            borderBottom: '1px solid #654321'
+          }}
+        />
+        {/* Janelas do Opala */}
+        <Box
+          style={{
+            position: 'absolute',
+            top: '4px',
+            left: '12px',
+            width: '18px',
+            height: '12px',
             background: 'linear-gradient(135deg, #87ceeb, #b0e0e6)',
             borderRadius: '3px',
             boxShadow: 'inset 0 1px 2px rgba(255,255,255,0.3)'
@@ -135,23 +148,36 @@ export default function HighwayAnimation() {
         <Box
           style={{
             position: 'absolute',
-            top: '3px',
-            right: '10px',
-            width: '15px',
-            height: '10px',
+            top: '4px',
+            right: '12px',
+            width: '18px',
+            height: '12px',
             background: 'linear-gradient(135deg, #87ceeb, #b0e0e6)',
             borderRadius: '3px',
             boxShadow: 'inset 0 1px 2px rgba(255,255,255,0.3)'
           }}
         />
-        {/* Rodas 3D */}
+        {/* Grade frontal do Opala */}
+        <Box
+          style={{
+            position: 'absolute',
+            top: '2px',
+            left: '2px',
+            width: '8px',
+            height: '6px',
+            background: 'linear-gradient(135deg, #333, #555)',
+            borderRadius: '2px',
+            border: '1px solid #222'
+          }}
+        />
+        {/* Rodas do Opala */}
         <Box
           style={{
             position: 'absolute',
             bottom: '-4px',
             left: '8px',
-            width: '10px',
-            height: '10px',
+            width: '12px',
+            height: '12px',
             background: 'radial-gradient(circle, #333, #000)',
             borderRadius: '50%',
             border: '2px solid #666',
@@ -163,40 +189,65 @@ export default function HighwayAnimation() {
             position: 'absolute',
             bottom: '-4px',
             right: '8px',
-            width: '10px',
-            height: '10px',
+            width: '12px',
+            height: '12px',
             background: 'radial-gradient(circle, #333, #000)',
             borderRadius: '50%',
             border: '2px solid #666',
             boxShadow: '0 2px 4px rgba(0,0,0,0.5)'
           }}
         />
-        {/* Faróis */}
+        {/* Faróis do Opala */}
+        <Box
+          style={{
+            position: 'absolute',
+            top: '3px',
+            left: '3px',
+            width: '3px',
+            height: '3px',
+            background: 'radial-gradient(circle, #fff, #ffd700)',
+            borderRadius: '50%',
+            boxShadow: '0 0 6px rgba(255,215,0,0.8)'
+          }}
+        />
+        <Box
+          style={{
+            position: 'absolute',
+            top: '3px',
+            left: '6px',
+            width: '3px',
+            height: '3px',
+            background: 'radial-gradient(circle, #fff, #ffd700)',
+            borderRadius: '50%',
+            boxShadow: '0 0 6px rgba(255,215,0,0.8)'
+          }}
+        />
+        {/* Lanterna traseira do Opala */}
         <Box
           style={{
             position: 'absolute',
             top: '2px',
-            left: '2px',
+            right: '2px',
             width: '4px',
-            height: '4px',
-            background: 'radial-gradient(circle, #fff, #ffd700)',
+            height: '3px',
+            background: 'radial-gradient(circle, #ff0000, #cc0000)',
             borderRadius: '50%',
-            boxShadow: '0 0 8px rgba(255,215,0,0.8)'
+            boxShadow: '0 0 4px rgba(255,0,0,0.6)'
           }}
         />
       </motion.div>
 
-      {/* Carrinho 2 - 3D indo para esquerda */}
+      {/* Skyline R33 - 3D indo para esquerda */}
       <motion.div
         style={{
           position: 'absolute',
           top: '65%',
           right: '-80px',
-          width: '50px',
-          height: '25px',
-          background: 'linear-gradient(135deg, #4ecdc4, #44a08d, #4ecdc4)',
-          borderRadius: '8px',
-          boxShadow: '0 8px 16px rgba(0,0,0,0.4), 0 0 20px rgba(78,205,196,0.3)',
+          width: '60px',
+          height: '22px',
+          background: 'linear-gradient(135deg, #1a1a1a, #333333, #1a1a1a)',
+          borderRadius: '8px 4px 4px 8px',
+          boxShadow: '0 8px 16px rgba(0,0,0,0.4), 0 0 20px rgba(26,26,26,0.3)',
           transform: 'rotateX(60deg) translateZ(25px)',
           zIndex: 4
         }}
@@ -209,13 +260,26 @@ export default function HighwayAnimation() {
           ease: "linear"
         }}
       >
-        {/* Janelas do carro 3D */}
+        {/* Capô do Skyline */}
+        <Box
+          style={{
+            position: 'absolute',
+            top: '0px',
+            left: '0px',
+            width: '25px',
+            height: '10px',
+            background: 'linear-gradient(135deg, #000000, #1a1a1a)',
+            borderRadius: '6px 4px 0px 0px',
+            borderBottom: '1px solid #000'
+          }}
+        />
+        {/* Janelas do Skyline */}
         <Box
           style={{
             position: 'absolute',
             top: '3px',
-            left: '10px',
-            width: '15px',
+            left: '15px',
+            width: '20px',
             height: '10px',
             background: 'linear-gradient(135deg, #87ceeb, #b0e0e6)',
             borderRadius: '3px',
@@ -226,52 +290,103 @@ export default function HighwayAnimation() {
           style={{
             position: 'absolute',
             top: '3px',
-            right: '10px',
-            width: '15px',
+            right: '15px',
+            width: '20px',
             height: '10px',
             background: 'linear-gradient(135deg, #87ceeb, #b0e0e6)',
             borderRadius: '3px',
             boxShadow: 'inset 0 1px 2px rgba(255,255,255,0.3)'
           }}
         />
-        {/* Rodas 3D */}
-        <Box
-          style={{
-            position: 'absolute',
-            bottom: '-4px',
-            left: '8px',
-            width: '10px',
-            height: '10px',
-            background: 'radial-gradient(circle, #333, #000)',
-            borderRadius: '50%',
-            border: '2px solid #666',
-            boxShadow: '0 2px 4px rgba(0,0,0,0.5)'
-          }}
-        />
-        <Box
-          style={{
-            position: 'absolute',
-            bottom: '-4px',
-            right: '8px',
-            width: '10px',
-            height: '10px',
-            background: 'radial-gradient(circle, #333, #000)',
-            borderRadius: '50%',
-            border: '2px solid #666',
-            boxShadow: '0 2px 4px rgba(0,0,0,0.5)'
-          }}
-        />
-        {/* Faróis */}
+        {/* Grade frontal do Skyline */}
         <Box
           style={{
             position: 'absolute',
             top: '2px',
-            right: '2px',
-            width: '4px',
-            height: '4px',
+            left: '3px',
+            width: '10px',
+            height: '5px',
+            background: 'linear-gradient(135deg, #000, #333)',
+            borderRadius: '2px',
+            border: '1px solid #000'
+          }}
+        />
+        {/* Rodas do Skyline */}
+        <Box
+          style={{
+            position: 'absolute',
+            bottom: '-4px',
+            left: '10px',
+            width: '12px',
+            height: '12px',
+            background: 'radial-gradient(circle, #333, #000)',
+            borderRadius: '50%',
+            border: '2px solid #666',
+            boxShadow: '0 2px 4px rgba(0,0,0,0.5)'
+          }}
+        />
+        <Box
+          style={{
+            position: 'absolute',
+            bottom: '-4px',
+            right: '10px',
+            width: '12px',
+            height: '12px',
+            background: 'radial-gradient(circle, #333, #000)',
+            borderRadius: '50%',
+            border: '2px solid #666',
+            boxShadow: '0 2px 4px rgba(0,0,0,0.5)'
+          }}
+        />
+        {/* Faróis do Skyline */}
+        <Box
+          style={{
+            position: 'absolute',
+            top: '2px',
+            left: '4px',
+            width: '3px',
+            height: '3px',
             background: 'radial-gradient(circle, #fff, #ffd700)',
             borderRadius: '50%',
-            boxShadow: '0 0 8px rgba(255,215,0,0.8)'
+            boxShadow: '0 0 6px rgba(255,215,0,0.8)'
+          }}
+        />
+        <Box
+          style={{
+            position: 'absolute',
+            top: '2px',
+            left: '8px',
+            width: '3px',
+            height: '3px',
+            background: 'radial-gradient(circle, #fff, #ffd700)',
+            borderRadius: '50%',
+            boxShadow: '0 0 6px rgba(255,215,0,0.8)'
+          }}
+        />
+        {/* Lanterna traseira do Skyline */}
+        <Box
+          style={{
+            position: 'absolute',
+            top: '2px',
+            right: '3px',
+            width: '5px',
+            height: '3px',
+            background: 'radial-gradient(circle, #ff0000, #cc0000)',
+            borderRadius: '50%',
+            boxShadow: '0 0 4px rgba(255,0,0,0.6)'
+          }}
+        />
+        {/* Spoiler do Skyline */}
+        <Box
+          style={{
+            position: 'absolute',
+            top: '-2px',
+            right: '8px',
+            width: '8px',
+            height: '3px',
+            background: 'linear-gradient(135deg, #000, #333)',
+            borderRadius: '1px',
+            border: '1px solid #000'
           }}
         />
       </motion.div>
