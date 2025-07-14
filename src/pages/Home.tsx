@@ -216,11 +216,6 @@ export default function Home() {
             </motion.div>
           </motion.section>
 
-          {/* Highway Animation - Topo */}
-          <motion.section variants={itemVariants}>
-            <HighwayAnimation />
-          </motion.section>
-
           {/* Arquitetura como Rodovia */}
           <motion.section variants={itemVariants}>
             <Paper withBorder p="xl" radius="lg">
@@ -229,6 +224,9 @@ export default function Home() {
                   <IconBuilding size={32} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
                   Arquitetura de Software é como Projetar uma Rodovia
                 </Title>
+                
+                {/* Highway Animation - Dentro da seção */}
+                <HighwayAnimation />
                 
                 <Text size="lg" c="dimmed" maw={900} lh={1.8}>
                   Arquitetura de software front‑end é tão crucial quanto o projeto de uma rodovia.
