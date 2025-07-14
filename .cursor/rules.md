@@ -1,9 +1,27 @@
 
 ## 📦 Regras para Exemplos de Código
 
-- **Todos os exemplos de código devem ser extraídos para um arquivo JSON central** (ex: `src/utils/code-examples.json`).
-- **Renderize exemplos dinamicamente usando o componente `<CodeExample />`**.
-- **Não é permitido deixar blocos de código estáticos** nos arquivos de padrão (ex: `src/content/patterns/*.tsx`).
-- Sempre importar e mapear os exemplos do JSON.
-- O JSON deve conter: `file`, `title`, `description` (opcional) e `code` (string).
-- O objetivo é facilitar manutenção, tradução e reuso dos exemplos. 
+### **Componente CodeExample**
+- Use `<CodeExample title="..." code="..." />` para renderizar exemplos de código
+- O componente aceita dois formatos:
+  1. **Referência do JSON**: `code="Título do Exemplo"` (busca no JSON central)
+  2. **Código inline**: `code={{ content: "código aqui" }}`
+
+### **JSON Centralizado (`src/utils/code-examples.json`)**
+- Estrutura: `{ file, title, description, code }`
+- Use para exemplos reutilizáveis e complexos
+- Mantenha exemplos simples inline nos arquivos `.tsx`
+
+### **Quando usar cada abordagem:**
+- **JSON**: Exemplos longos, reutilizáveis, com syntax highlighting
+- **Inline**: Exemplos curtos, específicos do contexto, snippets simples
+
+### **Padrões de Nomenclatura**
+- Títulos únicos e descritivos
+- Use o mesmo título no JSON e no componente
+- Mantenha consistência entre arquivos
+
+### **Manutenção**
+- Adicione novos exemplos ao JSON quando necessário
+- Mantenha o JSON organizado por arquivo de origem
+- Teste sempre se os exemplos aparecem corretamente 
