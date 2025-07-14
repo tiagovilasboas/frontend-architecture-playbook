@@ -1,11 +1,10 @@
 import { Title, Text, Stack, Paper, Alert, List, ThemeIcon, Group, Card, Badge } from '@mantine/core';
 import { IconBulb, IconAlertTriangle, IconCheck, IconAtom, IconBolt } from '@tabler/icons-react';
-import codeExamples from '../../utils/code-examples.json';
+import atomicExamples from '../../utils/code-examples/atomic-design.json';
 import CodeExample from '../../components/CodeExample';
 
 function AtomicDesign() {
-  // Exemplo: renderizar todos exemplos deste padrão vindos do JSON
-  const atomicExamples = codeExamples.filter(e => e.file.includes('atomic-design'));
+  // atomicExamples já vem do JSON
 
   return (
     <Stack gap="xl">
@@ -47,26 +46,12 @@ function AtomicDesign() {
         </Stack>
       </Paper>
 
-      {/* Exemplos Dinâmicos do JSON */}
-      <Stack gap="xl">
-        {atomicExamples.map((ex, idx) => (
-          <CodeExample
-            key={ex.title || idx}
-            title={ex.title || ''}
-            description={ex.description || undefined}
-            code={{ content: ex.code }}
-          />
-        ))}
-
-      </Stack>
-
-      {/* Concepts */}
+      {/* Concepts - OS 5 NÍVEIS */}
       <div>
         <Title order={2} mb="lg">
           <IconBolt size={28} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
           Os 5 Níveis
         </Title>
-        
         <Stack gap="md">
           <Card withBorder p="md">
             <Group>
@@ -80,7 +65,6 @@ function AtomicDesign() {
               </div>
             </Group>
           </Card>
-
           <Card withBorder p="md">
             <Group>
               <Badge size="lg" variant="light" color="blue">2</Badge>
@@ -93,7 +77,6 @@ function AtomicDesign() {
               </div>
             </Group>
           </Card>
-
           <Card withBorder p="md">
             <Group>
               <Badge size="lg" variant="light" color="orange">3</Badge>
@@ -106,7 +89,6 @@ function AtomicDesign() {
               </div>
             </Group>
           </Card>
-
           <Card withBorder p="md">
             <Group>
               <Badge size="lg" variant="light" color="red">4</Badge>
@@ -119,7 +101,6 @@ function AtomicDesign() {
               </div>
             </Group>
           </Card>
-
           <Card withBorder p="md">
             <Group>
               <Badge size="lg" variant="light" color="purple">5</Badge>
@@ -134,6 +115,18 @@ function AtomicDesign() {
           </Card>
         </Stack>
       </div>
+
+      {/* Exemplos Dinâmicos do JSON */}
+      <Stack gap="xl">
+        {atomicExamples.map((ex, idx) => (
+          <CodeExample
+            key={ex.title || idx}
+            title={ex.title || ''}
+            description={ex.description || undefined}
+            code={{ content: ex.code }}
+          />
+        ))}
+      </Stack>
 
       {/* Benefits */}
       <div>
@@ -354,107 +347,6 @@ function AtomicDesign() {
                   <a href="https://www.designsystems.com/" target="_blank">
                     Design Systems - Recursos
                   </a>
-                </List.Item>
-              </List>
-            </Stack>
-          </Paper>
-
-          {/* Real Cases */}
-          <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">🏢 Casos Reais de Sucesso</Title>
-            <Stack gap="md">
-              
-              <Card withBorder p="md">
-                <Title order={4} mb="sm">Salesforce</Title>
-                <Text size="sm" mb="sm">
-                  <strong>Problema:</strong> Múltiplos produtos, 
-                  inconsistência visual, desenvolvimento lento.
-                </Text>
-                <Text size="sm" mb="sm">
-                  <strong>Solução:</strong> Lightning Design System. 
-                  Atomic design com componentes reutilizáveis.
-                </Text>
-                <Text size="sm" c="dimmed">
-                  <strong>Resultado:</strong> Desenvolvimento 50% mais rápido, 
-                  consistência visual, melhor UX.
-                </Text>
-              </Card>
-
-              <Card withBorder p="md">
-                <Title order={4} mb="sm">Airbnb</Title>
-                <Text size="sm" mb="sm">
-                  <strong>Problema:</strong> Múltiplos produtos, 
-                  inconsistência visual, manutenção difícil.
-                </Text>
-                <Text size="sm" mb="sm">
-                  <strong>Solução:</strong> Design system com atomic design. 
-                  Componentes reutilizáveis em todos os produtos.
-                </Text>
-                <Text size="sm" c="dimmed">
-                  <strong>Resultado:</strong> Desenvolvimento mais rápido, 
-                  consistência visual, melhor manutenção.
-                </Text>
-              </Card>
-
-              <Card withBorder p="md">
-                <Title order={4} mb="sm">Microsoft</Title>
-                <Text size="sm" mb="sm">
-                  <strong>Problema:</strong> Múltiplos produtos, 
-                  inconsistência visual, desenvolvimento lento.
-                </Text>
-                <Text size="sm" mb="sm">
-                  <strong>Solução:</strong> Fluent Design System. 
-                  Atomic design com componentes reutilizáveis.
-                </Text>
-                <Text size="sm" c="dimmed">
-                  <strong>Resultado:</strong> Desenvolvimento mais rápido, 
-                  consistência visual, melhor UX.
-                </Text>
-              </Card>
-
-              <Card withBorder p="md">
-                <Title order={4} mb="sm">IBM</Title>
-                <Text size="sm" mb="sm">
-                  <strong>Problema:</strong> Múltiplos produtos, 
-                  inconsistência visual, manutenção difícil.
-                </Text>
-                <Text size="sm" mb="sm">
-                  <strong>Solução:</strong> Carbon Design System. 
-                  Atomic design com componentes reutilizáveis.
-                </Text>
-                <Text size="sm" c="dimmed">
-                  <strong>Resultado:</strong> Desenvolvimento mais rápido, 
-                  consistência visual, melhor manutenção.
-                </Text>
-              </Card>
-            </Stack>
-          </Paper>
-
-          {/* Tools & Libraries */}
-          <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">🛠️ Ferramentas & Bibliotecas</Title>
-            <Stack gap="md">
-              <Text>
-                <strong>Ferramentas que facilitam Atomic Design:</strong>
-              </Text>
-              <List>
-                <List.Item>
-                  <strong>Storybook</strong> - Documentação de componentes
-                </List.Item>
-                <List.Item>
-                  <strong>Figma</strong> - Design de componentes
-                </List.Item>
-                <List.Item>
-                  <strong>Sketch</strong> - Design de componentes
-                </List.Item>
-                <List.Item>
-                  <strong>React</strong> - Biblioteca para componentes
-                </List.Item>
-                <List.Item>
-                  <strong>Vue.js</strong> - Framework para componentes
-                </List.Item>
-                <List.Item>
-                  <strong>Angular</strong> - Framework para componentes
                 </List.Item>
               </List>
             </Stack>
