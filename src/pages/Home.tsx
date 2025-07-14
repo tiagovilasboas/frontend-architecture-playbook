@@ -98,6 +98,7 @@ const pulseVariants = {
 
 export default function Home() {
   const isMobile = useMediaQuery('(max-width: 600px)');
+  const isSmallMobile = useMediaQuery('(max-width: 400px)');
   
   return (
     <Container size="lg" px={isMobile ? 'xs' : 'md'}>
@@ -118,7 +119,7 @@ export default function Home() {
               </motion.div>
               
               <motion.div variants={itemVariants}>
-                <HeroTitle size={isMobile ? '2.2rem' : '3.5rem'} mb={isMobile ? 'sm' : 'md'}>
+                <HeroTitle size={isSmallMobile ? '1.5rem' : isMobile ? '2rem' : '3.5rem'} mb={isMobile ? 'sm' : 'md'} style={{ lineHeight: isMobile ? 1.1 : 1.2 }}>
                   Front-End Architecture Playbook
                 </HeroTitle>
               </motion.div>
@@ -130,7 +131,7 @@ export default function Home() {
               </motion.div>
               
               <motion.div variants={itemVariants}>
-                <Group gap={isMobile ? 'xs' : 'md'} mt={isMobile ? 'xs' : 'md'}>
+                <Group gap={isMobile ? 'sm' : 'md'} mt={isMobile ? 'sm' : 'md'}>
                   <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                     <Button 
                       component={Link} 
@@ -455,29 +456,35 @@ export default function Home() {
                   Por que este Playbook Vale a Pena?
                 </Title>
                 
-                <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing="md" w="100%">
+                <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing={isMobile ? 'sm' : 'md'} w="100%">
                   <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}>
                     <FeatureCard 
                       icon={IconCheck}
-                      title="Evita Refatoração"
-                      description="Escolha a arquitetura certa desde o início. Economize meses de refatoração e dívida técnica."
+                      title={<span style={{ fontSize: isMobile ? '1.1rem' : '1.25rem' }}>Evita Refatoração</span>}
+                      description={<span style={{ fontSize: isMobile ? '0.95rem' : '1rem' }}>Escolha a arquitetura certa desde o início. Economize meses de refatoração e dívida técnica.</span>}
                       color="green"
+                      style={{ padding: isMobile ? 12 : 20 }}
+                      iconSize={isMobile ? 28 : 40}
                     />
                   </motion.div>
                   <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}>
                     <FeatureCard 
                       icon={IconRocket}
-                      title="Decisões Sólidas"
-                      description="Base para justificar escolhas arquiteturais. Não mais 'achismo' técnico."
+                      title={<span style={{ fontSize: isMobile ? '1.1rem' : '1.25rem' }}>Decisões Sólidas</span>}
+                      description={<span style={{ fontSize: isMobile ? '0.95rem' : '1rem' }}>Base para justificar escolhas arquiteturais. Não mais 'achismo' técnico.</span>}
                       color="brand"
+                      style={{ padding: isMobile ? 12 : 20 }}
+                      iconSize={isMobile ? 28 : 40}
                     />
                   </motion.div>
                   <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}>
                     <FeatureCard 
                       icon={IconBolt}
-                      title="Experiência Real"
-                      description="18 anos de front-end convertidos em decisões práticas. Não é teoria acadêmica."
+                      title={<span style={{ fontSize: isMobile ? '1.1rem' : '1.25rem' }}>Experiência Real</span>}
+                      description={<span style={{ fontSize: isMobile ? '0.95rem' : '1rem' }}>18 anos de front-end convertidos em decisões práticas. Não é teoria acadêmica.</span>}
                       color="orange"
+                      style={{ padding: isMobile ? 12 : 20 }}
+                      iconSize={isMobile ? 28 : 40}
                     />
                   </motion.div>
                 </SimpleGrid>
