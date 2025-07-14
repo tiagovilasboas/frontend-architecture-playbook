@@ -2,6 +2,7 @@ import { Group, Burger, UnstyledButton, Title, ActionIcon, Paper } from '@mantin
 import { Link } from 'react-router-dom';
 import { IconCode, IconSun, IconMoon } from '@tabler/icons-react';
 import { useState } from 'react';
+import { useMediaQuery } from '@mantine/hooks';
 import type { DocMeta } from '../types/index.ts';
 
 interface Props {
@@ -13,6 +14,7 @@ interface Props {
 }
 
 export default function HeaderBar({ opened, onBurger }: Props) {
+  const isMobile = useMediaQuery('(max-width: 768px)');
   const [isDark, setIsDark] = useState(() => {
     if (typeof window !== 'undefined') {
       return document.documentElement.getAttribute('data-mantine-color-scheme') === 'dark';
@@ -34,7 +36,9 @@ export default function HeaderBar({ opened, onBurger }: Props) {
     }}>
       <Group h={56} px="md" justify="space-between">
         <Group>
-          <Burger opened={opened} onClick={onBurger} size="sm" />
+          {isMobile && (
+            <Burger opened={opened} onClick={onBurger} size="sm" />
+          )}
           <UnstyledButton component={Link} to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
             <Group gap="xs">
               <IconCode size={24} color="var(--mantine-color-brand-6)" />
