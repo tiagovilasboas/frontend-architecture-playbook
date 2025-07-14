@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Paper, Text, Button, Stack, Group, Badge, Tooltip, useMantineTheme, useMantineColorScheme } from '@mantine/core';
-import { IconChevronDown, IconChevronRight, IconCode, IconCopy, IconCheck } from '@tabler/icons-react';
+import { IconChevronDown, IconChevronUp, IconCode, IconCopy, IconCheck } from '@tabler/icons-react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
@@ -79,7 +79,7 @@ export default function CodeExample({
               style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', marginLeft: 8 }}
               onClick={(e) => { e.stopPropagation(); handleToggle(); }}
             >
-              {expanded ? <IconChevronDown size={24} /> : <IconChevronRight size={24} />}
+              {expanded ? <IconChevronUp size={24} /> : <IconChevronDown size={24} />}
             </div>
           </Group>
         </Group>
