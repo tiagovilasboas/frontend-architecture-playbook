@@ -15,19 +15,20 @@ interface Props {
   architectures: DocMeta[];
   patterns: DocMeta[];
   techniques: DocMeta[];
+  bestPractices: DocMeta[];
   children: React.ReactNode;
 }
 
-export default function DocsShell({ guides, architectures, patterns, techniques, children }: Props) {
+export default function DocsShell({ guides, architectures, patterns, techniques, bestPractices, children }: Props) {
   const [opened, setOpened] = useState(false);
-  const actions = useNavigationActions(guides, architectures, patterns, techniques);
+  const actions = useNavigationActions(guides, architectures, patterns, techniques, bestPractices);
 
   return (
     <>
       <Spotlight shortcut="mod + k" actions={actions} />
 
       <Drawer opened={opened} onClose={() => setOpened(false)} padding="xs" hiddenFrom="sm" title="Menu" zIndex={3000}>
-        <NavMenu guides={guides} architectures={architectures} patterns={patterns} techniques={techniques} onNavigate={() => setOpened(false)} />
+        <NavMenu guides={guides} architectures={architectures} patterns={patterns} techniques={techniques} bestPractices={bestPractices} onNavigate={() => setOpened(false)} />
       </Drawer>
 
       <Box style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
@@ -52,7 +53,7 @@ export default function DocsShell({ guides, architectures, patterns, techniques,
               overflow: 'visible'
             }} 
           >
-            <NavMenu guides={guides} architectures={architectures} patterns={patterns} techniques={techniques} />
+            <NavMenu guides={guides} architectures={architectures} patterns={patterns} techniques={techniques} bestPractices={bestPractices} />
           </Box>
 
           {/* Content */}

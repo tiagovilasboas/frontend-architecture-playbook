@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Validação de Email Duplicada",
+    "description": "Código duplicado em múltiplos componentes",
+    "code": "// ❌ RUIM - Validação duplicada\n\n// Componente LoginForm\nconst validateEmail = (email: string) => {\n  const emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;\n  return emailRegex.test(email);\n};\n\n// Componente SignupForm\nconst validateEmail = (email: string) => {\n  const emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;\n  return emailRegex.test(email);\n};\n\n// Componente ContactForm\nconst validateEmail = (email: string) => {\n  const emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;\n  return emailRegex.test(email);\n};"
+  },
+  {
+    "title": "Validação Centralizada",
+    "description": "Uma função reutilizável para validar email",
+    "code": "// ✅ BOM - Validação centralizada\n\n// utils/validation.ts\nexport const validateEmail = (email: string): boolean => {\n  const emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;\n  return emailRegex.test(email);\n};\n\n// Componentes reutilizam a função\nimport { validateEmail } from '../utils/validation';\n\n// LoginForm, SignupForm, ContactForm - todos usam a mesma função"
+  },
+  {
+    "title": "Over-Abstração",
+    "description": "Criando abstrações desnecessárias",
+    "code": "// ❌ RUIM - Over-abstração\n\n// Criando um \"framework\" para tudo\nclass ValidationFramework {\n  private validators: Map<string, Function> = new Map();\n  \n  registerValidator(name: string, validator: Function) {\n    this.validators.set(name, validator);\n  }\n  \n  validate(type: string, value: any) {\n    const validator = this.validators.get(type);\n    return validator ? validator(value) : true;\n  }\n}\n\n// Configuração complexa\nconst validationFramework = new ValidationFramework();\nvalidationFramework.registerValidator('email', validateEmail);\nvalidationFramework.registerValidator('password', validatePassword);\n\n// Uso desnecessariamente complexo\nconst isValid = validationFramework.validate('email', userEmail);"
+  },
+  {
+    "title": "Abstração Simples",
+    "description": "Funções simples e diretas",
+    "code": "// ✅ BOM - Abstração simples\n\n// utils/validation.ts\nexport const validateEmail = (email: string): boolean => {\n  const emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;\n  return emailRegex.test(email);\n};\n\nexport const validatePassword = (password: string): boolean => {\n  return password.length >= 8;\n};\n\n// Uso direto e simples\nimport { validateEmail, validatePassword } from '../utils/validation';\n\nconst isEmailValid = validateEmail(userEmail);\nconst isPasswordValid = validatePassword(userPassword);"
+  }
+] 

@@ -1,5 +1,5 @@
 import { ScrollArea, Title, Stack, Divider, Group } from '@mantine/core';
-import { IconBook, IconPuzzle, IconStack, IconTools } from '@tabler/icons-react';
+import { IconBook, IconPuzzle, IconStack, IconTools, IconCheck } from '@tabler/icons-react';
 import { useLocation } from 'react-router-dom';
 import type { DocMeta } from '../types/index.ts';
 import NavItem from './NavItem.tsx';
@@ -9,10 +9,11 @@ interface Props {
   architectures: DocMeta[];
   patterns: DocMeta[];
   techniques: DocMeta[];
+  bestPractices: DocMeta[];
   onNavigate?: () => void;
 }
 
-export default function NavMenu({ guides, architectures, patterns, techniques, onNavigate }: Props) {
+export default function NavMenu({ guides, architectures, patterns, techniques, bestPractices, onNavigate }: Props) {
   const location = useLocation();
   const current = location.pathname;
 
@@ -99,6 +100,28 @@ export default function NavMenu({ guides, architectures, patterns, techniques, o
                 label={t.title}
                 icon={<IconTools size={16} />}
                 active={current === `/techniques/${t.slug}`}
+                onNavigate={onNavigate}
+              />
+            ))}
+          </Stack>
+        </div>
+
+        <Divider />
+
+        {/* Best Practices Section */}
+        <div>
+          <Group gap="xs" mb="sm">
+            <IconCheck size={16} color="var(--mantine-color-teal-6)" />
+            <Title order={6} c="dimmed">Best Practices</Title>
+          </Group>
+          <Stack gap={8}>
+            {bestPractices.map((b) => (
+              <NavItem
+                key={b.slug}
+                href={`/best-practices/${b.slug}`}
+                label={b.title}
+                icon={<IconCheck size={16} />}
+                active={current === `/best-practices/${b.slug}`}
                 onNavigate={onNavigate}
               />
             ))}
