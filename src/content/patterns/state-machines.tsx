@@ -1,5 +1,6 @@
-import { Title, Text, Stack, Paper, Code, Alert, List, ThemeIcon, Group, Card, Badge } from '@mantine/core';
+import { Title, Text, Stack, Paper, Alert, List, ThemeIcon, Group, Card, Badge } from '@mantine/core';
 import { IconBulb, IconAlertTriangle, IconCheck, IconCode, IconSettings, IconBolt } from '@tabler/icons-react';
+import CodeExample from '../../components/CodeExample';
 
 function StateMachines() {
   return (
@@ -62,8 +63,9 @@ function StateMachines() {
                   Condições bem definidas da aplicação. 
                   Cada estado tem comportamentos específicos.
                 </Text>
-                <Code mt="xs" block>
-{`// Estados de um formulário
+                <CodeExample
+                  title="Estados de um formulário"
+                  code={{ content: `// Estados de um formulário
 const states = {
   IDLE: 'idle',           // Formulário vazio
   FILLING: 'filling',     // Usuário preenchendo
@@ -79,8 +81,8 @@ const states = {
 // VALIDATING: campos desabilitados, loading
 // SUBMITTING: formulário travado, loading
 // SUCCESS: mensagem de sucesso, reset disponível
-// ERROR: mensagem de erro, retry disponível`}
-                </Code>
+// ERROR: mensagem de erro, retry disponível` }}
+                />
               </div>
             </Group>
           </Card>
@@ -94,8 +96,9 @@ const states = {
                   Ações que causam transições. 
                   Cada evento pode mudar o estado.
                 </Text>
-                <Code mt="xs" block>
-{`// Eventos que causam transições
+                <CodeExample
+                  title="Eventos que causam transições"
+                  code={{ content: `// Eventos que causam transições
 const events = {
   START_FILLING: 'START_FILLING',
   VALIDATE: 'VALIDATE',
@@ -113,8 +116,8 @@ const events = {
 // QUALQUER_ESTADO + RESET = IDLE
 
 // Eventos são disparados por ações do usuário
-// ou por respostas de APIs`}
-                </Code>
+// ou por respostas de APIs` }}
+                />
               </div>
             </Group>
           </Card>
@@ -128,8 +131,9 @@ const events = {
                   Regras que definem como mudar de estado. 
                   Cada transição tem condições e ações.
                 </Text>
-                <Code mt="xs" block>
-{`// Transições bem definidas
+                <CodeExample
+                  title="Transições bem definidas"
+                  code={{ content: `// Transições bem definidas
 const transitions = {
   [states.IDLE]: {
     [events.START_FILLING]: {
@@ -157,8 +161,8 @@ const transitions = {
 
 // Transições são previsíveis
 // Comportamento controlado
-// Bugs impossíveis`}
-                </Code>
+// Bugs impossíveis` }}
+                />
               </div>
             </Group>
           </Card>
@@ -270,8 +274,9 @@ const transitions = {
                 UX inconsistente.
               </Text>
               
-              <Code block>
-{`// ❌ RUIM - Estados confusos
+              <CodeExample
+                title="Formulário - Estados Complexos"
+                code={{ content: `// ❌ RUIM - Estados confusos
 function Form() {
   const [isLoading, setIsLoading] = useState(false);
   const [isValid, setIsValid] = useState(false);
@@ -411,8 +416,8 @@ function Form() {
 
 // Estados previsíveis
 // Transições claras
-// UX consistente`}
-              </Code>
+// UX consistente` }}
+              />
             </Stack>
           </Paper>
 
@@ -429,8 +434,9 @@ function Form() {
                 race conditions, bugs de segurança.
               </Text>
               
-              <Code block>
-{`// ❌ RUIM - Estados confusos
+              <CodeExample
+                title="Autenticação - Estados de Login"
+                code={{ content: `// ❌ RUIM - Estados confusos
 function AuthProvider() {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -563,8 +569,8 @@ function AuthProvider({ children }) {
 
 // Estados previsíveis
 // Transições seguras
-// Sem race conditions`}
-              </Code>
+// Sem race conditions` }}
+              />
             </Stack>
           </Paper>
 
@@ -581,8 +587,9 @@ function AuthProvider({ children }) {
                 progresso inconsistente, UX ruim.
               </Text>
               
-              <Code block>
-{`// ❌ RUIM - Estados confusos
+              <CodeExample
+                title="Upload de Arquivos - Estados de Progresso"
+                code={{ content: `// ❌ RUIM - Estados confusos
 function FileUpload() {
   const [isUploading, setIsUploading] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -737,8 +744,8 @@ function FileUpload() {
 
 // Estados previsíveis
 // Progresso consistente
-// UX excelente`}
-              </Code>
+// UX excelente` }}
+              />
             </Stack>
           </Paper>
         </Stack>
@@ -766,8 +773,9 @@ function FileUpload() {
                 Lógica simples não precisa de state machine.
               </Text>
               
-              <Code block>
-{`// ❌ RUIM - State machine desnecessário
+              <CodeExample
+                title="Over-engineering"
+                code={{ content: `// ❌ RUIM - State machine desnecessário
 const simpleMachine = createMachine({
   id: 'simple',
   initial: 'off',
@@ -795,8 +803,8 @@ function Toggle() {
 }
 
 // State machine só quando necessário
-// Lógica complexa, múltiplos estados`}
-              </Code>
+// Lógica complexa, múltiplos estados` }}
+                />
             </Stack>
           </Paper>
 
@@ -814,8 +822,9 @@ function Toggle() {
                 use guards para condições complexas.
               </Text>
               
-              <Code block>
-{`// ❌ RUIM - Transições complexas
+              <CodeExample
+                title="Transições Complexas"
+                code={{ content: `// ❌ RUIM - Transições complexas
 const complexMachine = createMachine({
   states: {
     idle: {
@@ -861,8 +870,8 @@ const simpleMachine = createMachine({
 
 // Transições claras
 // Fácil de entender
-// Fácil de testar`}
-              </Code>
+// Fácil de testar` }}
+                />
             </Stack>
           </Paper>
 
@@ -880,8 +889,9 @@ const simpleMachine = createMachine({
                 use hierarquia, simplifique.
               </Text>
               
-              <Code block>
-{`// ❌ RUIM - Muitos estados
+              <CodeExample
+                title="Explosão de Estados"
+                code={{ content: `// ❌ RUIM - Muitos estados
 const complexMachine = createMachine({
   states: {
     idle: {},
@@ -927,8 +937,8 @@ const simpleMachine = createMachine({
 
 // Estados simples
 // Fácil de manter
-// Fácil de entender`}
-              </Code>
+// Fácil de entender` }}
+                />
             </Stack>
           </Paper>
 
@@ -946,8 +956,9 @@ const simpleMachine = createMachine({
                 mantenha transições puras.
               </Text>
               
-              <Code block>
-{`// ❌ RUIM - Side effects misturados
+              <CodeExample
+                title="Side Effects"
+                code={{ content: `// ❌ RUIM - Side effects misturados
 const badMachine = createMachine({
   states: {
     idle: {
@@ -999,8 +1010,8 @@ const goodMachine = createMachine({
 
 // Side effects organizados
 // Fácil de testar
-// Lógica clara`}
-              </Code>
+// Lógica clara` }}
+                />
             </Stack>
           </Paper>
 
@@ -1018,8 +1029,9 @@ const goodMachine = createMachine({
                 use ferramentas de testing específicas.
               </Text>
               
-              <Code block>
-{`// ❌ RUIM - Testes difíceis
+              <CodeExample
+                title="Testes"
+                code={{ content: `// ❌ RUIM - Testes difíceis
 // Como testar estados complexos?
 // Como testar transições?
 
@@ -1061,8 +1073,8 @@ testPlans.forEach((plan) => {
 
 // Testa todas as transições
 // Cobertura completa
-// Bugs detectados`}
-              </Code>
+// Bugs detectados` }}
+                />
             </Stack>
           </Paper>
         </Stack>
