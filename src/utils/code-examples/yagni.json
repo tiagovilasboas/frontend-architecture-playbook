@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Implementando Features Futuras",
+    "description": "Código que implementa funcionalidades que não são necessárias hoje",
+    "code": "// ❌ RUIM - Implementando features futuras\n\n// Interface genérica para \"qualquer tipo de usuário\"\ninterface User {\n  id: string;\n  name: string;\n  email: string;\n  role: 'admin' | 'user' | 'moderator' | 'guest';\n  permissions: string[];\n  preferences: {\n    theme: 'light' | 'dark' | 'auto';\n    language: string;\n    notifications: boolean;\n    privacy: 'public' | 'private' | 'friends';\n  };\n  metadata: {\n    lastLogin: Date;\n    loginCount: number;\n    ipAddress: string;\n    userAgent: string;\n  };\n}\n\n// Componente que \"pode ser usado no futuro\"\nconst UserProfile = ({ user }: { user: User }) => {\n  return (\n    <div>\n      <h1>{user.name}</h1>\n      <p>{user.email}</p>\n      <p>Role: {user.role}</p>\n      <p>Permissions: {user.permissions.join(', ')}</p>\n      <p>Theme: {user.preferences.theme}</p>\n      <p>Language: {user.preferences.language}</p>\n      <p>Last Login: {user.metadata.lastLogin.toLocaleDateString()}</p>\n      <p>Login Count: {user.metadata.loginCount}</p>\n    </div>\n  );\n};"
+  },
+  {
+    "title": "Implementando Apenas o Necessário",
+    "description": "Código focado no que é realmente necessário hoje",
+    "code": "// ✅ BOM - Implementando apenas o necessário\n\n// Interface simples para o que precisamos hoje\ninterface User {\n  id: string;\n  name: string;\n  email: string;\n}\n\n// Componente simples e focado\nconst UserProfile = ({ user }: { user: User }) => {\n  return (\n    <div>\n      <h1>{user.name}</h1>\n      <p>{user.email}</p>\n    </div>\n  );\n};\n\n// Quando precisar de mais campos, adicione conforme necessário\n// Não implemente \"por precaução\""
+  },
+  {
+    "title": "Abstrações Prematuras",
+    "description": "Criando abstrações para casos que podem não acontecer",
+    "code": "// ❌ RUIM - Abstrações prematuras\n\n// Sistema de notificações \"genérico\" para o futuro\nclass NotificationSystem {\n  private channels: Map<string, NotificationChannel> = new Map();\n  \n  registerChannel(type: string, channel: NotificationChannel) {\n    this.channels.set(type, channel);\n  }\n  \n  async sendNotification(type: string, message: string, user: User) {\n    const channel = this.channels.get(type);\n    if (channel) {\n      await channel.send(message, user);\n    }\n  }\n}\n\n// Configurando canais que não são usados\nconst notificationSystem = new NotificationSystem();\nnotificationSystem.registerChannel('email', new EmailChannel());\nnotificationSystem.registerChannel('sms', new SMSChannel());\nnotificationSystem.registerChannel('push', new PushChannel());\nnotificationSystem.registerChannel('slack', new SlackChannel());\n\n// Usando apenas email, mas implementando tudo"
+  },
+  {
+    "title": "Implementação Simples",
+    "description": "Implementando apenas o que é usado hoje",
+    "code": "// ✅ BOM - Implementação simples\n\n// Função simples para enviar email\nconst sendEmail = async (to: string, subject: string, body: string) => {\n  // Implementação real de envio de email\n  console.log(`Sending email to ${to}: ${subject}`);\n};\n\n// Usando apenas o que precisamos\nconst notifyUser = async (user: User, message: string) => {\n  await sendEmail(user.email, 'Notification', message);\n};\n\n// Quando precisar de SMS, implemente SMS\n// Quando precisar de push, implemente push\n// Não implemente \"por precaução\""
+  }
+] 

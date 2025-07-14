@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Função Complexa e Confusa",
+    "description": "Código que ninguém entende na primeira leitura",
+    "code": "// ❌ RUIM - Função complexa e confusa\n\nconst processUserData = (userData: any[], config: any) => {\n  const result = userData\n    .filter((item: any) => {\n      if (config.filters && config.filters.length > 0) {\n        return config.filters.some((filter: any) => {\n          if (filter.type === 'string') {\n            return item[filter.field] && \n                   item[filter.field].toLowerCase().includes(filter.value.toLowerCase());\n          } else if (filter.type === 'number') {\n            return item[filter.field] >= filter.value;\n          } else if (filter.type === 'date') {\n            return new Date(item[filter.field]) >= new Date(filter.value);\n          }\n          return false;\n        });\n      }\n      return true;\n    })\n    .map((item: any) => {\n      const transformed = {};\n      if (config.fields) {\n        config.fields.forEach((field: string) => {\n          transformed[field] = item[field];\n        });\n      }\n      return transformed;\n    })\n    .sort((a: any, b: any) => {\n      if (config.sortBy) {\n        const aVal = a[config.sortBy];\n        const bVal = b[config.sortBy];\n        return config.sortOrder === 'desc' ? bVal - aVal : aVal - bVal;\n      }\n      return 0;\n    });\n  \n  return result;\n};"
+  },
+  {
+    "title": "Função Simples e Clara",
+    "description": "Código que qualquer dev entende na primeira leitura",
+    "code": "// ✅ BOM - Função simples e clara\n\ninterface User {\n  id: number;\n  name: string;\n  email: string;\n  age: number;\n  createdAt: Date;\n}\n\n// Funções pequenas e específicas\nconst filterByName = (users: User[], name: string): User[] => {\n  return users.filter(user => \n    user.name.toLowerCase().includes(name.toLowerCase())\n  );\n};\n\nconst filterByAge = (users: User[], minAge: number): User[] => {\n  return users.filter(user => user.age >= minAge);\n};\n\nconst sortByName = (users: User[]): User[] => {\n  return users.sort((a, b) => a.name.localeCompare(b.name));\n};\n\n// Função principal simples\nconst getUsersByName = (users: User[], name: string): User[] => {\n  const filtered = filterByName(users, name);\n  return sortByName(filtered);\n};"
+  },
+  {
+    "title": "Nomes Confusos",
+    "description": "Variáveis e funções com nomes que não explicam nada",
+    "code": "// ❌ RUIM - Nomes confusos\n\nconst x = 10;\nconst y = 20;\nconst z = x + y;\n\nconst fn = (a: any, b: any) => {\n  const temp = a.filter((item: any) => item.status === 'active');\n  const result = temp.map((item: any) => ({\n    id: item.id,\n    name: item.name,\n    value: item.value * 1.1\n  }));\n  return result;\n};\n\nconst process = (data: any) => {\n  const filtered = data.filter((item: any) => item.active);\n  const transformed = filtered.map((item: any) => ({\n    ...item,\n    processed: true\n  }));\n  return transformed;\n};"
+  },
+  {
+    "title": "Nomes Descritivos",
+    "description": "Variáveis e funções que se explicam sozinhas",
+    "code": "// ✅ BOM - Nomes descritivos\n\nconst maxRetryAttempts = 10;\nconst requestTimeout = 20000;\nconst totalTimeout = maxRetryAttempts + requestTimeout;\n\nconst calculateUserDiscount = (user: User, products: Product[]) => {\n  const activeProducts = products.filter(product => product.status === 'active');\n  const discountedProducts = activeProducts.map(product => ({\n    id: product.id,\n    name: product.name,\n    finalPrice: product.price * 0.9 // 10% discount\n  }));\n  return discountedProducts;\n};\n\nconst processActiveOrders = (orders: Order[]) => {\n  const activeOrders = orders.filter(order => order.status === 'active');\n  const processedOrders = activeOrders.map(order => ({\n    ...order,\n    processedAt: new Date()\n  }));\n  return processedOrders;\n};"
+  }
+] 
