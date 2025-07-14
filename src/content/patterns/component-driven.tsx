@@ -67,6 +67,14 @@ function ComponentDriven() {
             </Card>
           ))}
         </Stack>
+        
+        <Paper withBorder p="md" radius="md" mt="lg">
+          <Text size="sm" c="dimmed">
+            <strong>Como funciona:</strong> Componentes atômicos (Button, Input) se juntam em componentes maiores (Form, Card). 
+            Cada componente é testado isoladamente e pode ser reutilizado em qualquer lugar. 
+            A mudança em um componente se reflete em todos os lugares onde ele é usado.
+          </Text>
+        </Paper>
       </div>
 
       {/* Benefits */}
