@@ -119,13 +119,13 @@ function AtomicDesign() {
       {/* Exemplos Dinâmicos do JSON */}
       <Stack gap="xl">
         {atomicExamples.map((ex, idx) => (
-          <CodeExample
-            key={ex.title || idx}
-            title={ex.title || ''}
-            description={ex.description || undefined}
-            code={{ content: ex.code }}
-          />
-        ))}
+  <CodeExample
+    key={ex.title || idx}
+    title={ex.title || ''}
+    description={ex.description || undefined}
+    code={{ content: ex.code }}
+  />
+))}
       </Stack>
       
       <Paper withBorder p="md" radius="md">

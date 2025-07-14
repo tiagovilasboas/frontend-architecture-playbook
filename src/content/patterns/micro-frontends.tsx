@@ -56,10 +56,10 @@ function MicroFrontends() {
         
         <Stack gap="md">
           {microFrontendsExamples.map((ex, idx) => (
-            <Card withBorder p="md" key={ex.title}>
-              <Group>
+            <Card withBorder p="md" key={ex.title} w="100%" style={{ minWidth: 0, width: '100%' }}>
+              <Group w="100%" style={{ minWidth: 0, width: '100%' }}>
                 <Badge size="lg" variant="light" color={['green','blue','orange','red'][idx] || 'gray'}>{idx+1}</Badge>
-                <div>
+                <div style={{ flex: 1, width: '100%' }}>
                   <Title order={4}>{ex.title}</Title>
                   <Text size="sm" c="dimmed">{ex.description}</Text>
                   <CodeExample title={ex.title} code={ex.code} />

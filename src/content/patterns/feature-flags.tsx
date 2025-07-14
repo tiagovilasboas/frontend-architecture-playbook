@@ -67,9 +67,9 @@ function FeatureFlags() {
                   Veja o exemplo real em <b>/examples/feature-flags/use-feature-flag.ts</b>
                 </Text>
                 <CodeExample
-                  title={featureFlagsExamples.find(e => e.id === 'feature-flags-use-flag')?.title || ''}
-                  code={featureFlagsExamples.find(e => e.id === 'feature-flags-use-flag')?.content || ''}
-                />
+  title={featureFlagsExamples.find(e => e.id === 'feature-flags-use-flag')?.title || ''}
+  code={featureFlagsExamples.find(e => e.id === 'feature-flags-use-flag')?.content || ''}
+/>
               </div>
             </Group>
           </Card>
@@ -85,6 +85,7 @@ function FeatureFlags() {
                 <CodeExample
                   title={featureFlagsExamples.find(e => e.id === 'feature-flags-provider')?.title || ''}
                   code={featureFlagsExamples.find(e => e.id === 'feature-flags-provider')?.content || ''}
+                 
                 />
               </div>
             </Group>
@@ -101,6 +102,7 @@ function FeatureFlags() {
                 <CodeExample
                   title={featureFlagsExamples.find(e => e.id === 'feature-flags-targeting')?.title || ''}
                   code={featureFlagsExamples.find(e => e.id === 'feature-flags-targeting')?.content || ''}
+                 
                 />
               </div>
             </Group>
@@ -117,6 +119,7 @@ function FeatureFlags() {
                 <CodeExample
                   title={featureFlagsExamples.find(e => e.id === 'feature-flags-rollback')?.title || ''}
                   code={featureFlagsExamples.find(e => e.id === 'feature-flags-rollback')?.content || ''}
+                 
                 />
               </div>
             </Group>
@@ -221,6 +224,7 @@ function FeatureFlags() {
               title={example.title}
               description={example.description}
               code={example.content}
+             
             />
           ))}
         </Stack>
@@ -252,6 +256,7 @@ function FeatureFlags() {
                   title={featureFlagsExamples.find(e => e.id === 'feature-flags-pitfall-flag-hell')?.title || ''}
                   description={featureFlagsExamples.find(e => e.id === 'feature-flags-pitfall-flag-hell')?.description || ''}
                   code={featureFlagsExamples.find(e => e.id === 'feature-flags-pitfall-flag-hell')?.content || ''}
+                 
                 />
               </Card>
 
@@ -269,6 +274,7 @@ function FeatureFlags() {
                   title={featureFlagsExamples.find(e => e.id === 'feature-flags-pitfall-dead-code')?.title || ''}
                   description={featureFlagsExamples.find(e => e.id === 'feature-flags-pitfall-dead-code')?.description || ''}
                   code={featureFlagsExamples.find(e => e.id === 'feature-flags-pitfall-dead-code')?.content || ''}
+                 
                 />
               </Card>
 
@@ -286,6 +292,7 @@ function FeatureFlags() {
                   title={featureFlagsExamples.find(e => e.id === 'feature-flags-pitfall-many-calls')?.title || ''}
                   description={featureFlagsExamples.find(e => e.id === 'feature-flags-pitfall-many-calls')?.description || ''}
                   code={featureFlagsExamples.find(e => e.id === 'feature-flags-pitfall-many-calls')?.content || ''}
+                 
                 />
               </Card>
 
@@ -303,6 +310,7 @@ function FeatureFlags() {
                   title={featureFlagsExamples.find(e => e.id === 'feature-flags-pitfall-complex-tests')?.title || ''}
                   description={featureFlagsExamples.find(e => e.id === 'feature-flags-pitfall-complex-tests')?.description || ''}
                   code={featureFlagsExamples.find(e => e.id === 'feature-flags-pitfall-complex-tests')?.content || ''}
+                 
                 />
               </Card>
             </Stack>

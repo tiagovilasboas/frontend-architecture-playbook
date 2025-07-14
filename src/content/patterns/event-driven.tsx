@@ -216,6 +216,7 @@ function EventDriven() {
               <CodeExample
                 title={eventDrivenExamples.find(e => e.id === 'event-driven-ecommerce')?.title || ''}
                 code={eventDrivenExamples.find(e => e.id === 'event-driven-ecommerce')?.content || ''}
+               
               />
             </Stack>
           </Paper>
@@ -236,6 +237,7 @@ function EventDriven() {
               <CodeExample
                 title={eventDrivenExamples.find(e => e.id === 'event-driven-dashboard')?.title || ''}
                 code={eventDrivenExamples.find(e => e.id === 'event-driven-dashboard')?.content || ''}
+               
               />
             </Stack>
           </Paper>

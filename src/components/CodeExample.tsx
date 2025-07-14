@@ -59,7 +59,13 @@ export default function CodeExample({
       p="md" 
       radius="md"
       w="100%"
-      style={{ cursor: 'pointer' }}
+      style={{
+        cursor: 'pointer',
+        minWidth: 0,
+        width: '100%',
+        flex: 1,
+        margin: 0,
+      }}
       onClick={handleToggle}
     >
       <Stack gap="sm">
@@ -69,20 +75,6 @@ export default function CodeExample({
             <Text fw={600} size="sm">{title}</Text>
           </Group>
           <Group gap={4} align="center">
-            {expanded && (
-              <Tooltip label={copied ? 'Copiado!' : 'Copiar código'} withArrow>
-                <Button
-                  variant="subtle"
-                  size="xs"
-                  onClick={handleCopy}
-                  leftSection={copied ? <IconCheck size={16} /> : <IconCopy size={16} />}
-                  color={copied ? 'green' : 'blue'}
-                  tabIndex={0}
-                >
-                  {copied ? 'Copiado!' : 'Copiar'}
-                </Button>
-              </Tooltip>
-            )}
             <div
               style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', marginLeft: 8 }}
               onClick={(e) => { e.stopPropagation(); handleToggle(); }}
@@ -109,11 +101,11 @@ export default function CodeExample({
                   variant="subtle"
                   size="xs"
                   onClick={handleCopy}
-                  leftSection={copied ? <IconCheck size={16} /> : <IconCopy size={16} />}
                   color={copied ? 'green' : 'blue'}
                   tabIndex={0}
+                  style={{ padding: 4, minWidth: 0, width: 28, height: 28 }}
                 >
-                  {copied ? 'Copiado!' : 'Copiar'}
+                  {copied ? <IconCheck size={18} /> : <IconCopy size={18} />}
                 </Button>
               </Tooltip>
             </div>

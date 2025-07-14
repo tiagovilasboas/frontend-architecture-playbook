@@ -68,6 +68,7 @@ function IslandsArchitecture() {
                 <CodeExample 
                   title={islandsExamples.find(e => e.id === 'islands-html-static')?.title || ''}
                   code={islandsExamples.find(e => e.id === 'islands-html-static')?.content || ''}
+                 
                 />
               </div>
             </Group>
@@ -85,6 +86,7 @@ function IslandsArchitecture() {
                 <CodeExample 
                   title={islandsExamples.find(e => e.id === 'islands-cart-island')?.title || ''}
                   code={islandsExamples.find(e => e.id === 'islands-cart-island')?.content || ''}
+                 
                 />
               </div>
             </Group>
@@ -102,6 +104,7 @@ function IslandsArchitecture() {
                 <CodeExample 
                   title={islandsExamples.find(e => e.id === 'islands-hydration')?.title || ''}
                   code={islandsExamples.find(e => e.id === 'islands-hydration')?.content || ''}
+                 
                 />
               </div>
             </Group>
@@ -217,6 +220,7 @@ function IslandsArchitecture() {
               <CodeExample 
                 title={islandsExamples.find(e => e.id === 'islands-blog-example')?.title || ''}
                 code={islandsExamples.find(e => e.id === 'islands-blog-example')?.content || ''}
+               
               />
             </Stack>
           </Paper>
@@ -237,6 +241,7 @@ function IslandsArchitecture() {
               <CodeExample 
                 title={islandsExamples.find(e => e.id === 'islands-ecommerce-example')?.title || ''}
                 code={islandsExamples.find(e => e.id === 'islands-ecommerce-example')?.content || ''}
+               
               />
             </Stack>
           </Paper>
