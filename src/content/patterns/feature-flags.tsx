@@ -1,5 +1,6 @@
-import { Title, Text, Stack, Paper, Code, Alert, List, ThemeIcon, Group, Card, Badge } from '@mantine/core';
+import { Title, Text, Stack, Paper, Alert, List, ThemeIcon, Group, Card, Badge } from '@mantine/core';
 import { IconBulb, IconAlertTriangle, IconCheck, IconCode, IconSettings2, IconSettings } from '@tabler/icons-react';
+import CodeExample from '../../components/CodeExample';
 
 function FeatureFlags() {
   return (
@@ -64,22 +65,10 @@ function FeatureFlags() {
                 <Text size="xs" c="blue" mb="xs">
                   Veja o exemplo real em <b>/examples/feature-flags/use-feature-flag.ts</b>
                 </Text>
-                <Code mt="xs" block>
-{`import { useEffect, useState } from 'react';
-
-export function useFeatureFlag(flagKey: string, defaultValue = false) {
-  const [isEnabled, setIsEnabled] = useState(defaultValue);
-
-  useEffect(() => {
-    fetch(\`/api/flags/\${flagKey}\`)
-      .then((res) => res.json())
-      .then((data) => setIsEnabled(!!data.enabled))
-      .catch(() => setIsEnabled(defaultValue));
-  }, [flagKey, defaultValue]);
-
-  return isEnabled;
-}`}
-                </Code>
+                <CodeExample
+                  title="useFeatureFlag"
+                  code="useFeatureFlag"
+                />
               </div>
             </Group>
           </Card>
@@ -92,30 +81,10 @@ export function useFeatureFlag(flagKey: string, defaultValue = false) {
                 <Text size="sm" c="dimmed">
                   Sistemas que gerenciam e distribuem flags. Local, API, CDN.
                 </Text>
-                <Code mt="xs" block>
-{`// Provider simples
-class FeatureFlagProvider {
-  async getFlags() {
-    return fetch('/api/flags')
-      .then(res => res.json());
-  }
-}
-
-// Provider com cache
-class CachedFlagProvider {
-  private cache = new Map();
-  
-  async getFlag(key: string) {
-    if (this.cache.has(key)) {
-      return this.cache.get(key);
-    }
-    
-    const value = await fetch(\`/api/flags/\${key}\`);
-    this.cache.set(key, value);
-    return value;
-  }
-}`}
-                </Code>
+                <CodeExample
+                  title="Provider simples"
+                  code="Provider simples"
+                />
               </div>
             </Group>
           </Card>
@@ -128,24 +97,10 @@ class CachedFlagProvider {
                 <Text size="sm" c="dimmed">
                   Regras que determinam quem vê qual funcionalidade. Usuário, localização, porcentagem.
                 </Text>
-                <Code mt="xs" block>
-{`// Targeting por usuário
-const isUserInBeta = (user) => {
-  return user.role === 'beta-tester' || 
-         user.email.includes('@company.com');
-};
-
-// Targeting por porcentagem
-const isUserInRollout = (userId, percentage) => {
-  const hash = hashUserId(userId);
-  return hash % 100 < percentage;
-};
-
-// Targeting por localização
-const isUserInRegion = (user, regions) => {
-  return regions.includes(user.country);
-};`}
-                </Code>
+                <CodeExample
+                  title="Targeting por usuário"
+                  code="Targeting por usuário"
+                />
               </div>
             </Group>
           </Card>
@@ -158,30 +113,10 @@ const isUserInRegion = (user, regions) => {
                 <Text size="sm" c="dimmed">
                   Sistemas para desativar flags rapidamente e monitorar impacto.
                 </Text>
-                <Code mt="xs" block>
-{`// Rollback automático
-class FlagMonitor {
-  checkMetrics(flagKey) {
-    const metrics = getMetrics(flagKey);
-    
-    if (metrics.errorRate > 0.05) { // 5% de erro
-      disableFlag(flagKey);
-      alertTeam(\`Flag \${flagKey} disabled due to high error rate\`);
-    }
-  }
-}
-
-// Monitoring
-const flagAnalytics = {
-  trackFlagView: (flagKey, userId) => {
-    analytics.track('flag_viewed', { flagKey, userId });
-  },
-  
-  trackFlagConversion: (flagKey, userId, action) => {
-    analytics.track('flag_conversion', { flagKey, userId, action });
-  }
-};`}
-                </Code>
+                <CodeExample
+                  title="Rollback automático"
+                  code="Rollback automático"
+                />
               </div>
             </Group>
           </Card>
@@ -291,8 +226,10 @@ const flagAnalytics = {
                 <strong>Problema:</strong> Se der problema, precisa fazer rollback rápido.
               </Text>
               
-              <Code block>
-{`// ❌ RUIM - Deploy tradicional
+              <CodeExample
+                title="E-commerce - Novo Checkout"
+                description="Exemplo de uso de feature flags para controlar o novo checkout"
+                code={{ content: `// ❌ RUIM - Deploy tradicional
 // Deploy com novo checkout
 // Se der problema, precisa fazer novo deploy
 // Rollback demora 30 minutos
@@ -341,8 +278,8 @@ function NewCheckoutFlow() {
 
 // Se der problema, desativa flag
 // Rollback em segundos, não em minutos
-// Testa com 10%, depois 50%, depois 100%`}
-              </Code>
+// Testa com 10%, depois 50%, depois 100%` }}
+              />
             </Stack>
           </Paper>
 
@@ -358,8 +295,10 @@ function NewCheckoutFlow() {
                 <strong>Problema:</strong> Precisa controlar por usuário específico.
               </Text>
               
-              <Code block>
-{`// ❌ RUIM - Deploy por ambiente
+              <CodeExample
+                title="Dashboard - Nova UI"
+                description="Exemplo de uso de feature flags para controlar a nova UI do dashboard"
+                code={{ content: `// ❌ RUIM - Deploy por ambiente
 // Deploy em staging
 // Testa com time
 // Deploy em produção
@@ -430,8 +369,8 @@ const FLAG_CONFIG = {
 // Ativa para usuários específicos
 // Testa com beta testers
 // Expande gradualmente
-// Rollback instantâneo se necessário`}
-              </Code>
+// Rollback instantâneo se necessário` }}
+              />
             </Stack>
           </Paper>
         </Stack>
@@ -459,8 +398,10 @@ const FLAG_CONFIG = {
                   <strong>Como evitar:</strong> Centralize lógica de flags, use padrões 
                   consistentes, documente flags.
                 </Text>
-                <Code mt="xs" block>
-{`// ❌ RUIM - Flags espalhadas
+                <CodeExample
+                  title="Flag Hell"
+                  description="Como evitar a complexidade de múltiplas flags"
+                  code={{ content: `// ❌ RUIM - Flags espalhadas
 function Component() {
   const flag1 = useFeatureFlag('flag1');
   const flag2 = useFeatureFlag('flag2');
@@ -492,8 +433,8 @@ function Component() {
   const variant = flagManager.getComponentVariant(flags);
   
   return <Component variant={variant} />;
-}`}
-                </Code>
+}` }}
+                />
               </Card>
 
               <Card withBorder p="md">
@@ -506,8 +447,10 @@ function Component() {
                   <strong>Como evitar:</strong> Limpe flags antigas, use timeouts, 
                   documente quando remover.
                 </Text>
-                <Code mt="xs" block>
-{`// ❌ RUIM - Código morto
+                <CodeExample
+                  title="Dead Code"
+                  description="Como evitar o código morto"
+                  code={{ content: `// ❌ RUIM - Código morto
 function Component() {
   const oldFeature = useFeatureFlag('old-feature'); // Nunca usado
   const newFeature = useFeatureFlag('new-feature');
@@ -534,8 +477,8 @@ const FLAG_LIFECYCLE = {
     cleanupAfter: '2024-02-01', // Remove em 30 dias
     description: 'Novo checkout - remover código antigo após estabilização'
   }
-};`}
-                </Code>
+};` }}
+                />
               </Card>
 
               <Card withBorder p="md">
@@ -548,8 +491,10 @@ const FLAG_LIFECYCLE = {
                   <strong>Como evitar:</strong> Cache flags, batch requests, 
                   carregue flags no início.
                 </Text>
-                <Code mt="xs" block>
-{`// ❌ RUIM - Muitas chamadas
+                <CodeExample
+                  title="Performance Issues"
+                  description="Como evitar problemas de performance com feature flags"
+                  code={{ content: `// ❌ RUIM - Muitas chamadas
 function Component() {
   const flag1 = useFeatureFlag('flag1'); // API call
   const flag2 = useFeatureFlag('flag2'); // API call
@@ -586,8 +531,8 @@ class FlagProvider {
     const flags = await fetch('/api/flags');
     flags.forEach(flag => this.cache.set(flag.key, flag.value));
   }
-}`}
-                </Code>
+}` }}
+                />
               </Card>
 
               <Card withBorder p="md">
@@ -600,8 +545,10 @@ class FlagProvider {
                   <strong>Como evitar:</strong> Mock flags nos testes, 
                   teste cada variante isoladamente.
                 </Text>
-                <Code mt="xs" block>
-{`// ❌ RUIM - Testes complexos
+                <CodeExample
+                  title="Testing Complexity"
+                  description="Como evitar testes complexos com múltiplas combinações de flags"
+                  code={{ content: `// ❌ RUIM - Testes complexos
 test('Component with flags', () => {
   // Testa todas as combinações
   const flagCombinations = [
@@ -645,8 +592,8 @@ test('Component without new feature', () => {
   );
   
   expect(screen.getByText('Old Feature')).toBeInTheDocument();
-});`}
-                </Code>
+});` }}
+                />
               </Card>
             </Stack>
           </Paper>
