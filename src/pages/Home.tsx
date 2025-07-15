@@ -386,7 +386,7 @@ export default function Home() {
                       <Title order={3} size="h4">Boas Práticas</Title>
                     </Group>
                     <Text size="sm" c="dimmed">
-                      Princípios fundamentais: Don't Repeat Yourself, Keep It Simple, You Aren't Gonna Need It, Clean Code, Single Responsibility Principle, Separation of Concerns. Base para qualquer projeto.
+                      Princípios fundamentais: DRY, KISS, YAGNI, Clean Code, Single Responsibility Principle, Separation of Concerns. Base para qualquer projeto.
                     </Text>
                     <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                       <Button 
