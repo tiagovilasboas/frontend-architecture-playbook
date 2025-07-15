@@ -24,7 +24,7 @@ Este playbook é um guia prático que resolve problemas reais de arquitetura fro
 - **Component-Driven Development** - Reutilização e composição
 - **Micro-frontends** - Escalabilidade de times
 - **Monorepo** - Compartilhamento de código
-- **SPA** - Aplicações de página única
+- **Single Page Application** - Aplicações de página única
 - **SSR/SSG** - Performance e SEO
 - **PWA** - Experiência mobile
 - **Islands Architecture** - Performance híbrida
@@ -245,7 +245,7 @@ O projeto usa code splitting inteligente:
 - **Component-Driven** - Reutilização
 - **Micro-frontends** - Escalabilidade
 - **Monorepo** - Compartilhamento
-- **SPA** - Aplicações modernas
+- **Single Page Application** - Aplicações modernas
 - **SSR/SSG** - Performance
 - **PWA** - Mobile
 - **Islands** - Híbrido

@@ -413,7 +413,7 @@ export default function Home() {
                       <Title order={3} size="h4">Arquiteturas</Title>
                     </Group>
                     <Text size="sm" c="dimmed">
-                      13 padrões arquiteturais testados: Clean Architecture, Micro-frontends, Monorepo, SPA, SSR/SSG e mais.
+                      13 padrões arquiteturais testados: Clean Architecture, Micro-frontends, Monorepo, Single Page Application, SSR/SSG e mais.
                     </Text>
                     <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                       <Button 
