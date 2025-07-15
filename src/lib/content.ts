@@ -58,13 +58,13 @@ export const patterns: DocMeta[] = [
   toMeta(AtomicDesign, 'atomic-design', 'patterns'),
   toMeta(EventDriven, 'event-driven', 'patterns'),
   toMeta(RepositoryPattern, 'repository-pattern', 'patterns'),
+  toMeta(SecurityPatterns, 'security', 'patterns'),
 ];
 
 // Técnicas de desenvolvimento - ferramentas e estratégias
 export const techniques: DocMeta[] = [
   toMeta(FeatureFlags, 'feature-flags', 'techniques'),
   toMeta(StateMachines, 'state-machines', 'techniques'),
-  toMeta(SecurityPatterns, 'security', 'techniques'),
 ];
 
 // Boas práticas - princípios fundamentais de código limpo
