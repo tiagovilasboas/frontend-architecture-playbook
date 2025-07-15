@@ -101,6 +101,10 @@ export default function Home() {
   const isMobile = useMediaQuery('(max-width: 600px)');
   const isSmallMobile = useMediaQuery('(max-width: 400px)');
   
+  // Helper para desabilitar animações em mobile
+  const mobileAnimationProps = isMobile ? {} : { whileHover: { scale: 1.05 }, whileTap: { scale: 0.95 } };
+  const mobileCardAnimationProps = isMobile ? {} : { whileHover: { scale: 1.02 }, transition: { duration: 0.2 } };
+  
   return (
     <Container size="lg" px={isMobile ? 'xs' : 'md'} mt={0}>
       <motion.div
@@ -112,12 +116,21 @@ export default function Home() {
           {/* Hero Section */}
           <motion.section variants={heroVariants}>
             <Stack align="center" ta="center" mb={isMobile ? 'md' : 56} mt={0}>
-              <motion.div variants={floatingVariants} animate="animate">
-                <Badge size={isMobile ? 'sm' : 'lg'} variant="light" color="brand" mb={isMobile ? 'xs' : 24}>
-                  <IconStar size={isMobile ? 12 : 16} style={{ marginRight: 8 }} />
-                  Guia Prático para Devs
-                </Badge>
-              </motion.div>
+              {isMobile ? (
+                <div>
+                  <Badge size={isMobile ? 'sm' : 'lg'} variant="light" color="brand" mb={isMobile ? 'xs' : 24}>
+                    <IconStar size={isMobile ? 12 : 16} style={{ marginRight: 8 }} />
+                    Guia Prático para Devs
+                  </Badge>
+                </div>
+              ) : (
+                <motion.div variants={floatingVariants} animate="animate">
+                  <Badge size={isMobile ? 'sm' : 'lg'} variant="light" color="brand" mb={isMobile ? 'xs' : 24}>
+                    <IconStar size={isMobile ? 12 : 16} style={{ marginRight: 8 }} />
+                    Guia Prático para Devs
+                  </Badge>
+                </motion.div>
+              )}
               
               <motion.div variants={itemVariants}>
                 <HeroTitle size={isSmallMobile ? '1.5rem' : isMobile ? '2rem' : '3.5rem'} mb={isMobile ? 'sm' : 24} style={{ lineHeight: isMobile ? 1.1 : 1.15 }}>
@@ -133,7 +146,7 @@ export default function Home() {
               
               <motion.div variants={itemVariants}>
                 <Group gap={isMobile ? 'sm' : 24} mt={isMobile ? 'sm' : 0} mb={isMobile ? 0 : 8}>
-                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <motion.div {...mobileAnimationProps}>
                     <Button 
                       component={Link} 
                       to="/guides/how-to-choose" 
@@ -146,7 +159,7 @@ export default function Home() {
                     </Button>
                   </motion.div>
                   
-                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <motion.div {...mobileAnimationProps}>
                     <Button 
                       component={Link} 
                       to="/guides/dependency-rule" 
@@ -159,7 +172,7 @@ export default function Home() {
                     </Button>
                   </motion.div>
                   
-                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <motion.div {...mobileAnimationProps}>
                     <Button 
                       component="a" 
                       href="https://github.com/tiagovilasboas/frontend-architecture-playbook" 
@@ -180,9 +193,15 @@ export default function Home() {
                 <Stack gap={isMobile ? 'sm' : 'md'} align="center">
                 
                   <Group justify="center" gap={isMobile ? 'xs' : 'sm'}>
-                    <motion.div variants={pulseVariants} animate="animate">
-                      <IconAward size={isMobile ? 16 : 24} color="var(--mantine-color-yellow-6)" />
-                    </motion.div>
+                    {isMobile ? (
+                      <div>
+                        <IconAward size={isMobile ? 16 : 24} color="var(--mantine-color-yellow-6)" />
+                      </div>
+                    ) : (
+                      <motion.div variants={pulseVariants} animate="animate">
+                        <IconAward size={isMobile ? 16 : 24} color="var(--mantine-color-yellow-6)" />
+                      </motion.div>
+                    )}
                     <Title order={2} size={isMobile ? 'md' : 'lg'} ta="center" mb={0}>
                       Por que Arquitetura Importa (de verdade)
                     </Title>
@@ -227,7 +246,7 @@ export default function Home() {
               <Stack gap={isMobile ? 12 : 20} align="center" ta="center">
                 {/* Highway Animation - Dentro da seção */}
                 <div style={{ margin: isMobile ? '8px 0 8px 0' : '12px 0 12px 0', width: '100%' }}>
-                  <HighwayAnimationCanvas />
+                  <HighwayAnimationCanvas isMobile={isMobile} />
                 </div>
                 <Text size="lg" c="dimmed" lh={1.6} mt={isMobile ? 4 : 8} mb={isMobile ? 4 : 8} ta="left">
                   Arquitetura de software é como arquitetura civil: sem alicerce, não escala. Sem base sólida, não cresce.
@@ -349,7 +368,7 @@ export default function Home() {
             <Paper withBorder p="lg" radius="lg">
               <Stack gap="md">
                             <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="md">
-              <motion.div variants={itemVariants} whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
+              <motion.div variants={itemVariants} {...mobileCardAnimationProps}>
                 <Card withBorder p="md" radius="md">
                   <Stack gap="sm">
                     <Group gap="sm">
@@ -361,7 +380,7 @@ export default function Home() {
                     <Text size="sm" c="dimmed">
                       Aprenda a escolher a arquitetura certa e entenda a Dependency Rule - a regra fundamental de qualquer arquitetura.
                     </Text>
-                    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                    <motion.div {...mobileAnimationProps}>
                       <Button 
                         component={Link} 
                         to="/guides/how-to-choose" 
@@ -471,7 +490,7 @@ export default function Home() {
                 </Title>
                 
                 <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing={isMobile ? 'sm' : 'md'} w="100%">
-                  <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}>
+                  <motion.div {...mobileCardAnimationProps}>
                     <FeatureCard 
                       icon={IconCheck}
                       title={<span style={{ fontSize: isMobile ? '1.1rem' : '1.25rem' }}>Evita Refatoração</span>}
@@ -481,7 +500,7 @@ export default function Home() {
                       iconSize={isMobile ? 28 : 40}
                     />
                   </motion.div>
-                  <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}>
+                  <motion.div {...mobileCardAnimationProps}>
                     <FeatureCard 
                       icon={IconRocket}
                       title={<span style={{ fontSize: isMobile ? '1.1rem' : '1.25rem' }}>Decisões Sólidas</span>}
@@ -491,7 +510,7 @@ export default function Home() {
                       iconSize={isMobile ? 28 : 40}
                     />
                   </motion.div>
-                  <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}>
+                  <motion.div {...mobileCardAnimationProps}>
                     <FeatureCard 
                       icon={IconBolt}
                       title={<span style={{ fontSize: isMobile ? '1.1rem' : '1.25rem' }}>Experiência Real</span>}
@@ -523,7 +542,7 @@ export default function Home() {
               Experiência real em arquiteturas front-end - sem bullshit
             </Text>
             <SimpleGrid cols={{ base: 1, sm: 2, md: 4 }} spacing="md" mb="lg">
-              <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}>
+              <motion.div {...mobileCardAnimationProps}>
                 <StatsCard 
                   icon={IconCode}
                   value="13+"
@@ -531,7 +550,7 @@ export default function Home() {
                   color="brand"
                 />
               </motion.div>
-              <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}>
+              <motion.div {...mobileCardAnimationProps}>
                 <StatsCard 
                   icon={IconCheck}
                   value="18"
@@ -539,7 +558,7 @@ export default function Home() {
                   color="green"
                 />
               </motion.div>
-              <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}>
+              <motion.div {...mobileCardAnimationProps}>
                 <StatsCard 
                   icon={IconRocket}
                   value="50+"
@@ -547,7 +566,7 @@ export default function Home() {
                   color="brand"
                 />
               </motion.div>
-              <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}>
+              <motion.div {...mobileCardAnimationProps}>
                 <StatsCard 
                   icon={IconBolt}
                   value="100%"
@@ -565,7 +584,7 @@ export default function Home() {
               Por que esse Guia?
             </Title>
             <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing="md">
-              <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}>
+              <motion.div {...mobileCardAnimationProps}>
                 <Card withBorder p="lg" radius="md" style={{ position: 'relative', overflow: 'hidden' }}>
                   <div style={{
                     position: 'absolute',
@@ -587,7 +606,7 @@ export default function Home() {
                 </Card>
               </motion.div>
 
-              <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}>
+              <motion.div {...mobileCardAnimationProps}>
                 <Card withBorder p="lg" radius="md" style={{ position: 'relative', overflow: 'hidden' }}>
                   <div style={{
                     position: 'absolute',
@@ -609,7 +628,7 @@ export default function Home() {
                 </Card>
               </motion.div>
 
-              <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}>
+              <motion.div {...mobileCardAnimationProps}>
                 <Card withBorder p="lg" radius="md" style={{ position: 'relative', overflow: 'hidden' }}>
                   <div style={{
                     position: 'absolute',
@@ -645,7 +664,7 @@ export default function Home() {
               Veja como essas arquiteturas funcionam na vida real. Cada projeto demonstra um padrão diferente.
             </Text>
             <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="md">
-              <motion.div whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
+              <motion.div {...mobileCardAnimationProps}>
                 <Card withBorder p="lg" radius="md" component="a" href="https://github.com/tiagovilasboas/ponto-pj" target="_blank" style={{ textDecoration: 'none', transition: 'transform 0.2s ease' }} className="project-card">
                   <Stack gap="md">
                     <Group justify="space-between">
@@ -672,7 +691,7 @@ export default function Home() {
                 </Card>
               </motion.div>
 
-              <motion.div whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
+              <motion.div {...mobileCardAnimationProps}>
                 <Card withBorder p="lg" radius="md" component="a" href="https://github.com/tiagovilasboas/react-vite-boilerplate" target="_blank" style={{ textDecoration: 'none', transition: 'transform 0.2s ease' }} className="project-card">
                   <Stack gap="md">
                     <Group justify="space-between">
@@ -699,7 +718,7 @@ export default function Home() {
                 </Card>
               </motion.div>
 
-              <motion.div whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
+              <motion.div {...mobileCardAnimationProps}>
                 <Card withBorder p="lg" radius="md" component="a" href="https://github.com/tiagovilasboas/betalent-desafio-frontend" target="_blank" style={{ textDecoration: 'none', transition: 'transform 0.2s ease' }} className="project-card">
                   <Stack gap="md">
                     <Group justify="space-between">
@@ -726,7 +745,7 @@ export default function Home() {
                 </Card>
               </motion.div>
 
-              <motion.div whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
+              <motion.div {...mobileCardAnimationProps}>
                 <Card withBorder p="lg" radius="md" component="a" href="https://github.com/tiagovilasboas/react-layered-boilerplate" target="_blank" style={{ textDecoration: 'none', transition: 'transform 0.2s ease' }} className="project-card">
                   <Stack gap="md">
                     <Group justify="space-between">
@@ -759,16 +778,24 @@ export default function Home() {
           <motion.section variants={itemVariants}>
             <Paper withBorder p="lg" radius="lg" ta="center">
               <Stack gap="md" align="center">
-                <motion.div variants={pulseVariants} animate="animate">
-                  <ThemeIcon size={80} radius="xl" variant="light" color="brand" mb="md">
-                    <IconTrendingUp size={40} />
-                  </ThemeIcon>
-                </motion.div>
+                {isMobile ? (
+                  <div>
+                    <ThemeIcon size={80} radius="xl" variant="light" color="brand" mb="md">
+                      <IconTrendingUp size={40} />
+                    </ThemeIcon>
+                  </div>
+                ) : (
+                  <motion.div variants={pulseVariants} animate="animate">
+                    <ThemeIcon size={80} radius="xl" variant="light" color="brand" mb="md">
+                      <IconTrendingUp size={40} />
+                    </ThemeIcon>
+                  </motion.div>
+                )}
                 <Title order={2}>Não sabe por onde começar?</Title>
                 <Text size="lg" c="dimmed" maw={500}>
                   Responde o wizard e descobre qual arquitetura faz sentido pro seu projeto. Sem enrolação.
                 </Text>
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <motion.div {...mobileAnimationProps}>
                   <Button 
                     component={Link} 
                     to="/guides/how-to-choose" 
@@ -792,7 +819,7 @@ export default function Home() {
             </Title>
             <Paper withBorder p="lg" radius="lg" mx="auto">
               <Group align="flex-start" gap="xl" style={{ flexDirection: isMobile ? 'column' : 'row' }}>
-                <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}>
+                <motion.div {...mobileCardAnimationProps}>
                   <Avatar src="https://avatars.githubusercontent.com/u/2006720?v=4" size={isMobile ? 80 : 120} radius="xl" />
                 </motion.div>
                 <div style={{ flex: 1 }}>
@@ -804,7 +831,7 @@ export default function Home() {
                     Sou o dev que transforma código em resultado: turbinei checkouts, simplifiquei cadastros bancários, acelerei fluxos de KYC e salvei dashboards engasgados. Fora dos horários de entrega, lapido os open-sources Ponto PJ e DataForge Tools e escrevo "Código Bonito Não Paga Boleto", tudo focado na mesma pegada: impacto real primeiro.
                   </Text>
                   <Group gap="sm">
-                    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                    <motion.div {...mobileAnimationProps}>
                       <Button 
                         component="a" 
                         href="https://github.com/tiagovilasboas" 
@@ -816,7 +843,7 @@ export default function Home() {
                         GitHub
                       </Button>
                     </motion.div>
-                    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                    <motion.div {...mobileAnimationProps}>
                       <Button 
                         component="a" 
                         href="https://www.linkedin.com/in/tiagovilasboas" 

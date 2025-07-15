@@ -49,7 +49,7 @@ interface SmokeParticle {
   size: number;
 }
 
-export default function HighwayAnimationCanvas({ config = DEFAULT_HIGHWAY_CONFIG }: { config?: HighwayConfig }) {
+export default function HighwayAnimationCanvas({ config = DEFAULT_HIGHWAY_CONFIG, isMobile = false }: { config?: HighwayConfig, isMobile?: boolean }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [sprites, setSprites] = useState<HTMLImageElement[]>([]);
 
@@ -234,8 +234,15 @@ export default function HighwayAnimationCanvas({ config = DEFAULT_HIGHWAY_CONFIG
       
       // Calcular tamanho de renderização baseado na configuração
       const vehicleScale = getVehicleScale(v.lane, config);
-      const renderWidth = vehicles.spriteWidth * vehicleScale;
-      const renderHeight = vehicles.spriteHeight * vehicleScale;
+      // Proporção diferenciada para mobile: mais comprido
+      let renderWidth, renderHeight;
+      if (isMobile) {
+        renderWidth = vehicles.spriteWidth * vehicleScale * 1.7;
+        renderHeight = vehicles.spriteHeight * vehicleScale * 1.2;
+      } else {
+        renderWidth = vehicles.spriteWidth * vehicleScale;
+        renderHeight = vehicles.spriteHeight * vehicleScale;
+      }
       
       if (v.direction === 'right') {
         ctx.rotate(Math.PI / 2);
@@ -368,7 +375,7 @@ export default function HighwayAnimationCanvas({ config = DEFAULT_HIGHWAY_CONFIG
 
     animate();
     return () => cancelAnimationFrame(animationId);
-  }, [sprites, config]);
+  }, [sprites, config, isMobile]);
 
   return (
     <Box style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
