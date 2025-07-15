@@ -20,18 +20,18 @@ import CleanCode from '../content/patterns/clean-code.tsx';
 import SRP from '../content/patterns/srp.tsx';
 import SOC from '../content/patterns/soc.tsx';
 
-
+export type CollectionType = 'guides' | 'architectures' | 'patterns' | 'techniques' | 'best-practices';
 
 export interface DocMeta {
   slug: string;
   title: string;
   description?: string;
-  collection: 'guides' | 'architectures' | 'patterns' | 'techniques' | 'best-practices';
+  collection: CollectionType;
   component: React.ComponentType;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-function toMeta(module: any, slug: string, collection: 'guides' | 'architectures' | 'patterns' | 'techniques' | 'best-practices'): DocMeta {
+function toMeta(module: any, slug: string, collection: CollectionType): DocMeta {
   const meta = module.metadata ?? module.default?.metadata ?? {};
   return {
     slug,
@@ -42,6 +42,7 @@ function toMeta(module: any, slug: string, collection: 'guides' | 'architectures
   };
 }
 
+// Organização por categorias com comentários explicativos
 export const guides: DocMeta[] = [
   toMeta(HowToChoose, 'how-to-choose', 'guides'),
   toMeta(DependencyRule, 'dependency-rule', 'guides')
@@ -82,10 +83,16 @@ export const bestPractices: DocMeta[] = [
   toMeta(SOC, 'soc', 'best-practices'),
 ];
 
-export function getDoc(collection: 'guides' | 'architectures' | 'patterns' | 'techniques' | 'best-practices', slug: string): DocMeta | undefined {
-  const list = collection === 'guides' ? guides : 
-               collection === 'architectures' ? architectures :
-               collection === 'patterns' ? patterns : 
-               collection === 'techniques' ? techniques : bestPractices;
-  return list.find((d) => d.slug === slug);
+// Mapa de coleções para facilitar lookup
+const collectionMap: Record<CollectionType, DocMeta[]> = {
+  guides,
+  architectures,
+  patterns,
+  techniques,
+  'best-practices': bestPractices,
+};
+
+export function getDoc(collection: CollectionType, slug: string): DocMeta | undefined {
+  const list = collectionMap[collection];
+  return list.find((doc) => doc.slug === slug);
 } 

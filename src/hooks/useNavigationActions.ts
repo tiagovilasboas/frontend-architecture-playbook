@@ -1,36 +1,43 @@
-import type { DocMeta } from '../types/index.ts';
+import type { DocMeta, CollectionType } from '../lib/content.ts';
 
-export function useNavigationActions(guides: DocMeta[], architectures: DocMeta[], patterns: DocMeta[], techniques: DocMeta[], bestPractices: DocMeta[]) {
+interface NavigationAction {
+  id: string;
+  label: string;
+  description: string;
+  onTrigger: () => void;
+}
+
+export function useNavigationActions(
+  guides: DocMeta[], 
+  architectures: DocMeta[], 
+  patterns: DocMeta[], 
+  techniques: DocMeta[], 
+  bestPractices: DocMeta[]
+): NavigationAction[] {
+  const createActions = (docs: DocMeta[], collection: CollectionType): NavigationAction[] => 
+    docs.map((doc) => ({
+      id: doc.slug,
+      label: doc.title,
+      description: getCollectionLabel(collection),
+      onTrigger: () => (window.location.pathname = `/${collection}/${doc.slug}`),
+    }));
+
   return [
-    ...guides.map((g) => ({
-      id: g.slug,
-      label: g.title,
-      description: 'Guide',
-      onTrigger: () => (window.location.pathname = `/guides/${g.slug}`),
-    })),
-    ...architectures.map((a) => ({
-      id: a.slug,
-      label: a.title,
-      description: 'Architecture',
-      onTrigger: () => (window.location.pathname = `/architectures/${a.slug}`),
-    })),
-    ...patterns.map((p) => ({
-      id: p.slug,
-      label: p.title,
-      description: 'Pattern',
-      onTrigger: () => (window.location.pathname = `/patterns/${p.slug}`),
-    })),
-    ...techniques.map((t) => ({
-      id: t.slug,
-      label: t.title,
-      description: 'Technique',
-      onTrigger: () => (window.location.pathname = `/techniques/${t.slug}`),
-    })),
-    ...bestPractices.map((b) => ({
-      id: b.slug,
-      label: b.title,
-      description: 'Best Practice',
-      onTrigger: () => (window.location.pathname = `/best-practices/${b.slug}`),
-    })),
+    ...createActions(guides, 'guides'),
+    ...createActions(architectures, 'architectures'),
+    ...createActions(patterns, 'patterns'),
+    ...createActions(techniques, 'techniques'),
+    ...createActions(bestPractices, 'best-practices'),
   ];
+}
+
+function getCollectionLabel(collection: CollectionType): string {
+  const labels: Record<CollectionType, string> = {
+    guides: 'Guide',
+    architectures: 'Architecture',
+    patterns: 'Pattern',
+    techniques: 'Technique',
+    'best-practices': 'Best Practice',
+  };
+  return labels[collection];
 } 

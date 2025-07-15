@@ -9,9 +9,9 @@ import HeaderBar from './HeaderBar.tsx';
 import NavMenu from './NavMenu.tsx';
 import Footer from './Footer.tsx';
 import { useNavigationActions } from '../hooks/useNavigationActions.ts';
-import type { DocMeta } from '../types/index.ts';
+import type { DocMeta } from '../lib/content.ts';
 
-interface Props {
+interface DocsShellProps {
   guides: DocMeta[];
   architectures: DocMeta[];
   patterns: DocMeta[];
@@ -20,25 +20,50 @@ interface Props {
   children: React.ReactNode;
 }
 
-export default function DocsShell({ guides, architectures, patterns, techniques, bestPractices, children }: Props) {
+export default function DocsShell({ 
+  guides, 
+  architectures, 
+  patterns, 
+  techniques, 
+  bestPractices, 
+  children 
+}: DocsShellProps) {
   const [opened, setOpened] = useState(false);
   const isMobile = useMediaQuery('(max-width: 768px)');
   const actions = useNavigationActions(guides, architectures, patterns, techniques, bestPractices);
+
+  const handleBurgerClick = () => setOpened((prev) => !prev);
+  const handleDrawerClose = () => setOpened(false);
+  const handleSearchClick = () => Spotlight.open();
 
   return (
     <>
       <Spotlight shortcut="mod + k" actions={actions} />
 
-      <Drawer opened={opened} onClose={() => setOpened(false)} padding="xs" hiddenFrom="sm" title="Menu" zIndex={3000}>
-        <NavMenu guides={guides} architectures={architectures} patterns={patterns} techniques={techniques} bestPractices={bestPractices} onNavigate={() => setOpened(false)} />
+      <Drawer 
+        opened={opened} 
+        onClose={handleDrawerClose} 
+        padding="xs" 
+        hiddenFrom="sm" 
+        title="Menu" 
+        zIndex={3000}
+      >
+        <NavMenu 
+          guides={guides} 
+          architectures={architectures} 
+          patterns={patterns} 
+          techniques={techniques} 
+          bestPractices={bestPractices} 
+          onNavigate={handleDrawerClose} 
+        />
       </Drawer>
 
       <Box style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
         {/* Header */}
         <HeaderBar
           opened={opened}
-          onBurger={() => setOpened((o) => !o)}
-          onSearch={() => Spotlight.open()}
+          onBurger={handleBurgerClick}
+          onSearch={handleSearchClick}
           guides={guides}
           patterns={patterns}
         />
@@ -56,7 +81,13 @@ export default function DocsShell({ guides, architectures, patterns, techniques,
                 overflow: 'visible'
               }} 
             >
-              <NavMenu guides={guides} architectures={architectures} patterns={patterns} techniques={techniques} bestPractices={bestPractices} />
+              <NavMenu 
+                guides={guides} 
+                architectures={architectures} 
+                patterns={patterns} 
+                techniques={techniques} 
+                bestPractices={bestPractices} 
+              />
             </Box>
           )}
 
