@@ -277,7 +277,7 @@ MIT - Use livremente para seus projetos.
 
 ## 👨‍💻 **Autor**
 
-**Tiago Boas** - Front-end engineer há 18 anos
+**Tiago Vilas Boas** - Front-end engineer há 18 anos
 
 Sou o dev que transforma código em resultado: turbinei checkouts, simplifiquei cadastros bancários, acelerei fluxos de KYC e salvei dashboards engasgados. Fora dos horários de entrega, lapido os open-sources Ponto PJ e DataForge Tools e escrevo "Código Bonito Não Paga Boleto", tudo focado na mesma pegada: impacto real primeiro.
 
