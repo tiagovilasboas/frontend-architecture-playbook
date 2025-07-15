@@ -38,9 +38,9 @@ Este playbook é um guia prático que resolve problemas reais de arquitetura fro
 ### **🎯 Padrões de Design**
 - **Repository Pattern** - Abstração de acesso a dados
 - **Security Patterns** - Padrões de segurança e autenticação
-- **DRY** - Don't Repeat Yourself (lógica de negócio)
-- **KISS** - Keep It Simple, Stupid
-- **YAGNI** - You Aren't Gonna Need It
+- **Don't Repeat Yourself** - Não repita lógica de negócio
+- **Keep It Simple, Stupid** - Mantenha simples
+- **You Aren't Gonna Need It** - Não implemente o que não precisa
 
 ### **⚡ Técnicas Avançadas**
 - **Dependency Injection** - Inversão de controle
@@ -50,12 +50,12 @@ Este playbook é um guia prático que resolve problemas reais de arquitetura fro
 - **Performance Monitoring** - Métricas reais
 
 ### **✅ Boas Práticas Fundamentais**
-- **DRY** - Não repita lógica de negócio
-- **KISS** - Mantenha simples
-- **YAGNI** - Não implemente o que não precisa
+- **Don't Repeat Yourself** - Não repita lógica de negócio
+- **Keep It Simple, Stupid** - Mantenha simples
+- **You Aren't Gonna Need It** - Não implemente o que não precisa
 - **Clean Code** - Código legível e manutenível
-- **SRP** - Single Responsibility Principle
-- **SOC** - Separation of Concerns
+- **Single Responsibility Principle** - Uma classe, uma responsabilidade
+- **Separation of Concerns** - Separe responsabilidades claramente
 
 ### **🎯 Decision Wizard**
 - **Interativo** - Responde perguntas e encontra a arquitetura ideal
@@ -180,8 +180,8 @@ O projeto usa code splitting inteligente:
 
 ## 🧪 **Qualidade do Código**
 
-- **SRP** - Single Responsibility Principle
-- **SOC** - Separation of Concerns
+- **Single Responsibility Principle** - Uma classe, uma responsabilidade
+- **Separation of Concerns** - Separe responsabilidades claramente
 - **Clean Code** - Legível e manutenível
 - **TypeScript** - Tipagem forte
 - **ESLint** - Padrões consistentes
@@ -226,12 +226,12 @@ O projeto usa code splitting inteligente:
 - **Dependency Rule** - Regra fundamental de arquitetura
 
 ### **Boas Práticas**
-- **DRY** - Não repita lógica de negócio
-- **KISS** - Mantenha simples
-- **YAGNI** - Não implemente o que não precisa
+- **Don't Repeat Yourself** - Não repita lógica de negócio
+- **Keep It Simple, Stupid** - Mantenha simples
+- **You Aren't Gonna Need It** - Não implemente o que não precisa
 - **Clean Code** - Código legível e manutenível
-- **SRP** - Single Responsibility Principle
-- **SOC** - Separation of Concerns
+- **Single Responsibility Principle** - Uma classe, uma responsabilidade
+- **Separation of Concerns** - Separe responsabilidades claramente
 
 ### **Padrões**
 - **Repository Pattern** - Abstração de acesso a dados
