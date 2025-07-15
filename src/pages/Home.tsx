@@ -1,6 +1,6 @@
 import { Title, Stack, Text, Button, Group, Avatar, Paper, Container, SimpleGrid, Alert, Badge, Divider, Card, ThemeIcon } from '@mantine/core';
 import { Link } from 'react-router-dom';
-import { HeroTitle, FeatureCard, StatsCard, HighwayAnimation } from '../components/ui';
+import { HeroTitle, FeatureCard, StatsCard } from '../components/ui';
 import { motion } from 'framer-motion';
 import { 
   IconBook, 
@@ -24,9 +24,10 @@ import {
   IconHeart,
   IconBrain,
   IconTools,
-  IconStack
+  IconStack,
 } from '@tabler/icons-react';
 import { useMediaQuery } from '@mantine/hooks';
+import { HighwayAnimationCanvas } from '../components/ui/highway';
 
 // Variantes de animação
 const containerVariants = {
@@ -101,16 +102,16 @@ export default function Home() {
   const isSmallMobile = useMediaQuery('(max-width: 400px)');
   
   return (
-    <Container size="lg" px={isMobile ? 'xs' : 'md'}>
+    <Container size="lg" px={isMobile ? 'xs' : 'md'} mt={0}>
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
-        <Stack gap={isMobile ? 'sm' : 'lg'}>
+        <Stack mt={0} gap={isMobile ? 'sm' : 'lg'}>
           {/* Hero Section */}
           <motion.section variants={heroVariants}>
-            <Stack align="center" ta="center" mb={isMobile ? 'md' : 56} mt={isMobile ? 0 : 32}>
+            <Stack align="center" ta="center" mb={isMobile ? 'md' : 56} mt={0}>
               <motion.div variants={floatingVariants} animate="animate">
                 <Badge size={isMobile ? 'sm' : 'lg'} variant="light" color="brand" mb={isMobile ? 'xs' : 24}>
                   <IconStar size={isMobile ? 12 : 16} style={{ marginRight: 8 }} />
@@ -177,18 +178,18 @@ export default function Home() {
             <motion.div variants={itemVariants}>
               <Paper withBorder p={isMobile ? 'md' : 'lg'} radius="lg" mb={isMobile ? 'md' : 40} mt={isMobile ? 0 : 32} bg="none">
                 <Stack gap={isMobile ? 'sm' : 'md'} align="center">
-                  <Group gap={isMobile ? 'xs' : 'sm'}>
+                
+                  <Group justify="center" gap={isMobile ? 'xs' : 'sm'}>
                     <motion.div variants={pulseVariants} animate="animate">
                       <IconAward size={isMobile ? 16 : 24} color="var(--mantine-color-yellow-6)" />
                     </motion.div>
-                    <Text size={isMobile ? 'md' : 'lg'} fw={600}>
+                    <Title order={2} size={isMobile ? 'md' : 'lg'} ta="center" mb={0}>
                       Por que Arquitetura Importa (de verdade)
-                    </Text>
-                    <Text size={isMobile ? 'md' : 'lg'} c="dimmed" ta="center">
-                      18 anos de front-end me ensinaram uma coisa: <strong>escolha errada de arquitetura custa caro.</strong> 
-                      E não é só dinheiro: é tempo, paciência, saúde mental e até sua reputação no time.
-                    </Text>
+                    </Title>
                   </Group>
+                  <Text size={isMobile ? 'md' : 'lg'} c="dimmed" ta="center" style={{ maxWidth: isMobile ? 340 : 700, margin: '0 auto', lineHeight: isMobile ? 1.4 : 1.6 }}>
+                    18 anos de front-end me ensinaram uma coisa: <strong>escolha errada de arquitetura custa caro.</strong> E não é só dinheiro: é tempo, paciência, saúde mental e até sua reputação no time.
+                  </Text>
                   <Alert color="brand" icon={<IconBulb size={isMobile ? 16 : 24} />} radius="md">
                     <Text size={isMobile ? 'sm' : 'md'} fw={500}>
                       <strong>O segredo de qualquer arquitetura:</strong> esquece hype, esquece modinha. <span style={{ color: 'var(--mantine-color-accent-6)', fontWeight: 600 }}>Respeita a</span>
@@ -216,22 +217,29 @@ export default function Home() {
 
           {/* Arquitetura como Rodovia */}
           <motion.section variants={itemVariants}>
-            <Paper withBorder p="xl" radius="lg">
-              <Stack gap="lg" align="center" ta="center">
-                <Title order={2} mb="md" size="h3">
-                  <IconBuilding size={32} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
-                  Arquitetura de Software é como Projetar uma Rodovia
-                </Title>
-                
+            <Group justify="center" gap={isMobile ? 'xs' : 'sm'} mb={isMobile ? 8 : 16}>
+              <IconBuilding size={isMobile ? 20 : 32} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
+              <Title order={2} mb={0} size="h3">
+                Arquitetura de Software ?
+              </Title>
+            </Group>
+            <Paper withBorder p={isMobile ? 'md' : 'lg'} radius="lg" mt={isMobile ? 0 : 16} mb={isMobile ? 'md' : 24}>
+              <Stack gap={isMobile ? 12 : 20} align="center" ta="center">
                 {/* Highway Animation - Dentro da seção */}
-                <HighwayAnimation />
-                
-                <Text size="lg" c="dimmed" lh={1.8}>
-                  Arquitetura de software front‑end é tipo rodovia: se nasce torta, estreita ou sem sinalização, o trânsito vira caos. Não adianta culpar o motorista depois.
+                <div style={{ margin: isMobile ? '8px 0 8px 0' : '12px 0 12px 0', width: '100%' }}>
+                  <HighwayAnimationCanvas />
+                </div>
+                <Text size="lg" c="dimmed" lh={1.6} mt={isMobile ? 4 : 8} mb={isMobile ? 4 : 8} ta="left">
+                  Arquitetura de software é como arquitetura civil: sem alicerce, não escala. Sem base sólida, não cresce.
+                </Text>
+                <Text size="lg" c="dimmed" lh={1.6} fw={600} mt={isMobile ? 2 : 4} mb={isMobile ? 2 : 4} ta="left">
+                  No código é igual. Base ruim = bugs, deploy quebrado, time estressado. Base boa = features voam, bugs raros, dev feliz.
                 </Text>
 
-                <Text size="lg" c="dimmed" lh={1.8} fw={600}>
-                  No código é igual. Se a base é ruim, não tem dev sênior que salve.
+                <Text size="md" c="dimmed" lh={1.6} mt={isMobile ? 4 : 8} mb={isMobile ? 4 : 8} ta="left">
+                  <strong>Prédio com alicerce:</strong> estrutura sólida, crescimento seguro, sem stress. <strong>Prédio sem alicerce:</strong> rachaduras, infiltrações, obra parada. 
+                  <br /><br />
+                  <strong>Software com arquitetura:</strong> features voam, bugs raros, time feliz. <strong>Software sem arquitetura:</strong> deploy quebrado, bug bizarro, dev chorando.
                 </Text>
 
                 <SimpleGrid cols={{ base: 1, sm: 2 }} spacing={isMobile ? 'lg' : 32} w="100%" mt="md">
@@ -277,6 +285,19 @@ export default function Home() {
                   <Card withBorder p={isMobile ? 'md' : 28} radius="md">
                     <Stack gap="sm">
                       <Group gap="sm">
+                        <ThemeIcon size={isMobile ? 'lg' : 44} radius="md" variant="light" color="yellow">
+                          <IconBulb size={isMobile ? 20 : 28} />
+                        </ThemeIcon>
+                        <Text fw={700} size={isMobile ? 'md' : 'lg'} style={{ letterSpacing: -0.5 }}>Iluminação noturna</Text>
+                      </Group>
+                      <Text size={isMobile ? 'sm' : 'md'} c="dimmed" ta="left">
+                        ⇒ logs e métricas que mostram o caminho até no escuro.
+                      </Text>
+                    </Stack>
+                  </Card>
+                  <Card withBorder p={isMobile ? 'md' : 28} radius="md">
+                    <Stack gap="sm">
+                      <Group gap="sm">
                         <ThemeIcon size={isMobile ? 'lg' : 44} radius="md" variant="light" color="purple">
                           <IconPuzzle size={isMobile ? 20 : 28} />
                         </ThemeIcon>
@@ -287,7 +308,7 @@ export default function Home() {
                       </Text>
                     </Stack>
                   </Card>
-                  <Card withBorder p={isMobile ? 'md' : 28} radius="md" style={{ ...(typeof window !== 'undefined' && window.innerWidth >= 640 ? { gridColumn: 'span 2' } : {}) }}>
+                  <Card withBorder p={isMobile ? 'md' : 28} radius="md">
                     <Stack gap="sm">
                       <Group gap="sm">
                         <ThemeIcon size={isMobile ? 'lg' : 44} radius="md" variant="light" color="red">
@@ -303,8 +324,12 @@ export default function Home() {
                 </SimpleGrid>
 
                 <Alert color="brand" icon={<IconBulb size={isMobile ? 20 : 28} />} radius="md" style={{ padding: isMobile ? 16 : 32, maxWidth: 900, margin: '32px auto 0 auto' }}>
-                  <Text size={isMobile ? 'md' : 'lg'} lh={1.6} ta="center">
-                    Quando esses elementos faltam, o resultado é sempre o mesmo: gargalo, retrabalho, bug bizarro, deploy travado, time estressado. Já quando a arquitetura é bem pensada, ninguém nem percebe: tudo flui, entrega chega no prazo, e o usuário nem imagina o perrengue que você evitou.
+                  <Text size={isMobile ? 'md' : 'lg'} lh={1.6} ta="left">
+                    <strong>Sem alicerce:</strong> rachaduras, infiltrações, obra parada, time estressado. 
+                    <br />
+                    <strong>Com alicerce:</strong> crescimento seguro, features voam, usuário nem imagina o perrengue que você evitou.
+                    <br /><br />
+                    <em>Moral da história: arquitetura não é luxo, é sobrevivência.</em>
                   </Text>
                 </Alert>
               </Stack>
