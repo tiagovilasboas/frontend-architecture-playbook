@@ -53,15 +53,7 @@ export default function HighwayAnimationCanvas({ config = DEFAULT_HIGHWAY_CONFIG
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [sprites, setSprites] = useState<HTMLImageElement[]>([]);
 
-  // Debug: Log das configurações recebidas
-  console.log('HighwayAnimationCanvas - Config recebida:', {
-    visual: config.visual,
-    lanes: config.lanes.map(lane => ({
-      id: lane.id,
-      position: lane.position,
-      sublanes: lane.sublanes.map(s => ({ id: s.id, numCars: s.numCars }))
-    }))
-  });
+
 
   // Carregar todos os sprites ao montar
   useEffect(() => {
@@ -88,17 +80,6 @@ export default function HighwayAnimationCanvas({ config = DEFAULT_HIGHWAY_CONFIG
     const { visual, vehicles } = config;
     const positions = calculateLanePositions(config);
     const imperfections = generateImperfections(config);
-
-    // Debug: Log das posições calculadas
-    console.log('Posições calculadas:', {
-      yellowLineY: positions.lines.yellow,
-      visual: {
-        yellowLineYOffset: visual.yellowLineYOffset,
-        canvasHeight: visual.canvasHeight,
-        laneHeight: visual.laneHeight,
-        laneGap: visual.laneGap
-      }
-    });
 
     // Partículas de fumaça
     let smokeParticles: SmokeParticle[] = [];
