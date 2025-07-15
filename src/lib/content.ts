@@ -15,6 +15,7 @@ import Dry from '../content/patterns/dry.tsx';
 import Kiss from '../content/patterns/kiss.tsx';
 import Yagni from '../content/patterns/yagni.tsx';
 import RepositoryPattern from '../content/patterns/repository-pattern.tsx';
+import SecurityPatterns from '../content/patterns/security.tsx';
 
 export interface DocMeta {
   slug: string;
@@ -63,6 +64,7 @@ export const patterns: DocMeta[] = [
 export const techniques: DocMeta[] = [
   toMeta(FeatureFlags, 'feature-flags', 'techniques'),
   toMeta(StateMachines, 'state-machines', 'techniques'),
+  toMeta(SecurityPatterns, 'security', 'techniques'),
 ];
 
 // Boas práticas - princípios fundamentais de código limpo
