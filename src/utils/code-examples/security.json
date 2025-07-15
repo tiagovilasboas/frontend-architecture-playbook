@@ -1,0 +1,94 @@
+{
+  "inputValidation": {
+    "title": "Input Validation",
+    "description": "Valide tudo que vem do usuário. Não confie em ninguém.",
+    "bad": {
+      "title": "❌ RUIM - Confiando no usuário",
+      "code": "// ❌ RUIM - Confiando no usuário\nconst handleSubmit = (data) => {\n  // Usuário pode enviar qualquer coisa\n  fetch('/api/users', {\n    method: 'POST',\n    body: JSON.stringify(data) // Sem validação\n  });\n};"
+    },
+    "good": {
+      "title": "✅ BOM - Validando tudo",
+      "code": "// ✅ BOM - Validando tudo\nconst handleSubmit = (data) => {\n  const schema = z.object({\n    email: z.string().email(),\n    password: z.string().min(8),\n    name: z.string().min(2).max(50)\n  });\n  \n  const validated = schema.parse(data);\n  fetch('/api/users', {\n    method: 'POST',\n    body: JSON.stringify(validated)\n  });\n};"
+    }
+  },
+  "xssPrevention": {
+    "title": "XSS Prevention",
+    "description": "Nunca renderize HTML do usuário sem sanitizar.",
+    "bad": {
+      "title": "❌ RUIM - XSS vulnerável",
+      "code": "// ❌ RUIM - XSS vulnerável\nconst Comment = ({ content }) => (\n  <div dangerouslySetInnerHTML={{ __html: content }} />\n);"
+    },
+    "good": {
+      "title": "✅ BOM - Sanitizado",
+      "code": "// ✅ BOM - Sanitizado\nimport DOMPurify from 'dompurify';\n\nconst Comment = ({ content }) => (\n  <div dangerouslySetInnerHTML={{ \n    __html: DOMPurify.sanitize(content) \n  }} />\n);"
+    },
+    "better": {
+      "title": "✅ MELHOR - Sem HTML",
+      "code": "// ✅ MELHOR - Sem HTML\nconst Comment = ({ content }) => (\n  <div>{content}</div> // Texto puro\n);"
+    }
+  },
+  "secureStorage": {
+    "title": "Secure Storage",
+    "description": "Dados sensíveis não ficam no localStorage.",
+    "bad": {
+      "title": "❌ RUIM - Dados sensíveis no localStorage",
+      "code": "// ❌ RUIM - Dados sensíveis no localStorage\nlocalStorage.setItem('token', 'jwt-token');\nlocalStorage.setItem('user', JSON.stringify(userData));"
+    },
+    "good": {
+      "title": "✅ BOM - HttpOnly cookies + sessionStorage",
+      "code": "// ✅ BOM - HttpOnly cookies + sessionStorage\n// Backend: Set-Cookie: token=abc; HttpOnly; Secure; SameSite=Strict\n// Frontend: sessionStorage só para dados não sensíveis\nsessionStorage.setItem('theme', 'dark');\nsessionStorage.setItem('language', 'pt-BR');"
+    },
+    "better": {
+      "title": "✅ MELHOR - Memory storage para dados sensíveis",
+      "code": "// ✅ MELHOR - Memory storage para dados sensíveis\nconst authStore = {\n  token: null,\n  setToken(token) {\n    this.token = token; // Só em memória\n  },\n  getToken() {\n    return this.token;\n  }\n};"
+    }
+  },
+  "corsConfiguration": {
+    "title": "CORS Configuration",
+    "description": "Configure CORS corretamente. Não seja permissivo.",
+    "bad": {
+      "title": "❌ RUIM - CORS permissivo",
+      "code": "// ❌ RUIM - CORS permissivo\napp.use(cors()); // Permite qualquer origem"
+    },
+    "good": {
+      "title": "✅ BOM - CORS restritivo",
+      "code": "// ✅ BOM - CORS restritivo\napp.use(cors({\n  origin: ['https://meuapp.com', 'https://admin.meuapp.com'],\n  credentials: true,\n  methods: ['GET', 'POST', 'PUT', 'DELETE'],\n  allowedHeaders: ['Content-Type', 'Authorization']\n}));"
+    },
+    "better": {
+      "title": "✅ MELHOR - Environment-based",
+      "code": "// ✅ MELHOR - Environment-based\napp.use(cors({\n  origin: process.env.ALLOWED_ORIGINS?.split(',') || [],\n  credentials: true\n}));"
+    }
+  },
+  "securityHeaders": {
+    "title": "Security Headers",
+    "description": "Configure headers de segurança no servidor.",
+    "bad": {
+      "title": "❌ RUIM - Sem headers de segurança",
+      "code": "// ❌ RUIM - Sem headers de segurança\n// Servidor não envia headers de proteção"
+    },
+    "good": {
+      "title": "✅ BOM - Headers básicos",
+      "code": "// ✅ BOM - Headers básicos\napp.use(helmet());\n\n// Headers configurados:\n// - X-Frame-Options: DENY\n// - X-Content-Type-Options: nosniff\n// - X-XSS-Protection: 1; mode=block\n// - Strict-Transport-Security: max-age=31536000"
+    },
+    "better": {
+      "title": "✅ MELHOR - CSP personalizado",
+      "code": "// ✅ MELHOR - CSP personalizado\napp.use(helmet({\n  contentSecurityPolicy: {\n    directives: {\n      defaultSrc: [\"'self'\"],\n      scriptSrc: [\"'self'\", \"'unsafe-inline'\"],\n      styleSrc: [\"'self'\", \"'unsafe-inline'\"],\n      imgSrc: [\"'self'\", \"data:\", \"https:\"],\n      connectSrc: [\"'self'\"],\n      fontSrc: [\"'self'\"],\n      objectSrc: [\"'none'\"],\n      mediaSrc: [\"'self'\"],\n      frameSrc: [\"'none'\"]\n    }\n  }\n}));"
+    }
+  },
+  "rateLimiting": {
+    "title": "Rate Limiting",
+    "description": "Proteja suas APIs contra abuso.",
+    "bad": {
+      "title": "❌ RUIM - Sem rate limiting",
+      "code": "// ❌ RUIM - Sem rate limiting\napp.post('/api/login', (req, res) => {\n  // Usuário pode tentar quantas vezes quiser\n  authenticateUser(req.body);\n});"
+    },
+    "good": {
+      "title": "✅ BOM - Rate limiting básico",
+      "code": "// ✅ BOM - Rate limiting básico\nimport rateLimit from 'express-rate-limit';\n\nconst loginLimiter = rateLimit({\n  windowMs: 15 * 60 * 1000, // 15 minutos\n  max: 5, // 5 tentativas\n  message: 'Muitas tentativas de login. Tente novamente em 15 minutos.'\n});\n\napp.post('/api/login', loginLimiter, (req, res) => {\n  authenticateUser(req.body);\n});"
+    },
+    "better": {
+      "title": "✅ MELHOR - Rate limiting por IP e rota",
+      "code": "// ✅ MELHOR - Rate limiting por IP e rota\nconst apiLimiter = rateLimit({\n  windowMs: 15 * 60 * 1000,\n  max: 100, // 100 requests por IP\n  message: 'Muitas requisições. Tente novamente mais tarde.'\n});\n\nconst authLimiter = rateLimit({\n  windowMs: 15 * 60 * 1000,\n  max: 5,\n  skipSuccessfulRequests: true,\n  message: 'Muitas tentativas de login.'\n});\n\napp.use('/api/', apiLimiter);\napp.use('/api/auth/', authLimiter);"
+    }
+  }
+} 
