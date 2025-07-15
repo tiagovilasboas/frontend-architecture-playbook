@@ -1,0 +1,15 @@
+{
+  "vehicles": [
+    { "id": "blue-car-1", "name": "Carro Azul", "size": 48, "color": "#3b82f6", "speed": 7, "direction": "left", "type": "car", "delay": 0 },
+    { "id": "brown-van-1", "name": "Van Marrom", "size": 54, "color": "#8B4513", "speed": 13, "direction": "left", "type": "van", "delay": 2 },
+    { "id": "red-car-1", "name": "Carro Vermelho", "size": 48, "color": "#ef4444", "speed": 8, "direction": "left", "type": "car", "delay": 4 },
+    { "id": "blue-truck-1", "name": "Caminhão Azul", "size": 60, "color": "#2563eb", "speed": 18, "direction": "left", "type": "truck", "delay": 6 },
+    { "id": "purple-car-1", "name": "Carro Roxo", "size": 48, "color": "#a78bfa", "speed": 9, "direction": "left", "type": "car", "delay": 8 },
+
+    { "id": "blue-car-2", "name": "Carro Azul", "size": 48, "color": "#3b82f6", "speed": 8, "direction": "right", "type": "car", "delay": 0 },
+    { "id": "brown-van-2", "name": "Van Marrom", "size": 54, "color": "#8B4513", "speed": 11, "direction": "right", "type": "van", "delay": 2 },
+    { "id": "red-car-2", "name": "Carro Vermelho", "size": 48, "color": "#ef4444", "speed": 7, "direction": "right", "type": "car", "delay": 4 },
+    { "id": "blue-truck-2", "name": "Caminhão Azul", "size": 60, "color": "#2563eb", "speed": 17, "direction": "right", "type": "truck", "delay": 6 },
+    { "id": "purple-car-2", "name": "Carro Roxo", "size": 48, "color": "#a78bfa", "speed": 9, "direction": "right", "type": "car", "delay": 8 }
+  ]
+} 
