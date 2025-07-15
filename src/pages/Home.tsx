@@ -797,7 +797,7 @@ export default function Home() {
                 </motion.div>
                 <div style={{ flex: 1 }}>
                   <Group align="center" mb="sm">
-                    <Title order={3}>Tiago Boas</Title>
+                    <Title order={3}>Tiago Vilas Boas</Title>
                     <Badge color="brand" variant="light">Front-End Engineer</Badge>
                   </Group>
                   <Text size="md" mb="md" lh={1.6}>
