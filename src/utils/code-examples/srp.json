@@ -1,0 +1,27 @@
+[
+  {
+    "title": "❌ Violando SRP",
+    "description": "Função fazendo múltiplas responsabilidades",
+    "code": "function processUser(user) {\n  if (!validateUser(user)) throw new Error('Invalid');\n  saveUser(user);\n  sendWelcomeEmail(user);\n  logUserCreation(user);\n}\n\n// Uma função fazendo validação, salvamento, email e log."
+  },
+  {
+    "title": "✅ Seguindo SRP",
+    "description": "Cada função com uma responsabilidade específica",
+    "code": "function validateUser(user) {\n  // Validação apenas\n}\n\nfunction saveUser(user) {\n  // Salvamento apenas\n}\n\nfunction sendWelcomeEmail(user) {\n  // Email apenas\n}\n\nfunction logUserCreation(user) {\n  // Log apenas\n}\n\nfunction processUser(user) {\n  if (!validateUser(user)) throw new Error('Invalid');\n  saveUser(user);\n  sendWelcomeEmail(user);\n  logUserCreation(user);\n}"
+  },
+  {
+    "title": "Classes com Responsabilidade Única",
+    "description": "Cada classe deve ter apenas um motivo para mudar",
+    "code": "// ❌ Classe fazendo tudo\nclass UserManager {\n  validateUser(user) { ... }\n  saveUser(user) { ... }\n  sendEmail(user) { ... }\n  generateReport() { ... }\n}\n\n// ✅ Classes separadas\nclass UserValidator {\n  validate(user) { ... }\n}\n\nclass UserRepository {\n  save(user) { ... }\n}\n\nclass EmailService {\n  sendWelcome(user) { ... }\n}\n\nclass ReportGenerator {\n  generateUserReport() { ... }\n}"
+  },
+  {
+    "title": "Identificando Violações",
+    "description": "Como saber se está violando SRP",
+    "code": "// Sinais de violação:\n// 1. Múltiplos \"e\" na descrição\n// \"Essa classe valida E salva E envia email\"\n\n// 2. Métodos não relacionados\nclass OrderProcessor {\n  processOrder() { ... }\n  sendEmail() { ... } // ❌ Não relacionado\n  generateInvoice() { ... } // ❌ Não relacionado\n}\n\n// 3. Mudanças frequentes por motivos diferentes\n// Classe muda porque: validação mudou, email mudou, banco mudou"
+  },
+  {
+    "title": "Testes Focados",
+    "description": "Cada classe deve ter seus testes específicos",
+    "code": "// ❌ Teste complexo testando tudo\nit('should process user completely', () => {\n  // Mock de validação, salvamento, email, log...\n  // Teste difícil de manter\n});\n\n// ✅ Testes focados\nit('should validate user correctly', () => {\n  // Teste só de validação\n});\n\nit('should save user to database', () => {\n  // Teste só de salvamento\n});\n\nit('should send welcome email', () => {\n  // Teste só de email\n});"
+  }
+] 

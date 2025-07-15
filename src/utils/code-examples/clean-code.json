@@ -1,0 +1,27 @@
+[
+  {
+    "title": "❌ Código Sujo",
+    "description": "Nomes ruins, funções grandes, lógica confusa",
+    "code": "function x(a, b) {\n  let c = 0;\n  for(let i = 0; i < a.length; i++) {\n    if(a[i] > b) c++;\n  }\n  return c;\n}\n\n// O que essa função faz? Ninguém sabe."
+  },
+  {
+    "title": "✅ Código Limpo",
+    "description": "Nomes descritivos, funções pequenas, lógica clara",
+    "code": "function countUsersAboveAge(users, minimumAge) {\n  return users.filter(user => user.age > minimumAge).length;\n}\n\n// Nome descritivo, lógica clara, fácil de entender."
+  },
+  {
+    "title": "Nomes Descritivos",
+    "description": "Use nomes que explicam o que a função faz",
+    "code": "// ❌ Ruim\nfunction getData() { ... }\nfunction process() { ... }\n\n// ✅ Bom\nfunction getUserById(id) { ... }\nfunction calculateTotalPrice(items) { ... }"
+  },
+  {
+    "title": "Funções Pequenas",
+    "description": "Uma função, uma responsabilidade. Máximo 20 linhas",
+    "code": "// ❌ Função grande fazendo tudo\nfunction processOrder(order) {\n  // 50 linhas de validação, cálculo, salvamento, email...\n}\n\n// ✅ Funções pequenas e focadas\nfunction validateOrder(order) { ... }\nfunction calculateTotal(order) { ... }\nfunction saveOrder(order) { ... }\nfunction sendConfirmation(order) { ... }"
+  },
+  {
+    "title": "Sem Comentários Desnecessários",
+    "description": "O código deve se explicar sozinho",
+    "code": "// ❌ Comentário desnecessário\n// Loop para contar usuários\nfor (let i = 0; i < users.length; i++) {\n  if (users[i].age > 18) count++;\n}\n\n// ✅ Código auto-explicativo\nconst adultUsers = users.filter(user => user.age > 18).length;"
+  }
+] 
