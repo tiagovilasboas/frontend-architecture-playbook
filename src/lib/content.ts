@@ -16,6 +16,9 @@ import Kiss from '../content/patterns/kiss.tsx';
 import Yagni from '../content/patterns/yagni.tsx';
 import RepositoryPattern from '../content/patterns/repository-pattern.tsx';
 import SecurityPatterns from '../content/patterns/security.tsx';
+import CleanCode from '../content/patterns/clean-code.tsx';
+import SRP from '../content/patterns/srp.tsx';
+import SOC from '../content/patterns/soc.tsx';
 
 export interface DocMeta {
   slug: string;
@@ -72,9 +75,9 @@ export const bestPractices: DocMeta[] = [
   toMeta(Dry, 'dry', 'best-practices'),
   toMeta(Kiss, 'kiss', 'best-practices'),
   toMeta(Yagni, 'yagni', 'best-practices'),
-  toMeta({ default: () => null, metadata: { title: 'Clean Code', description: 'Código legível e manutenível' } }, 'clean-code', 'best-practices'),
-  toMeta({ default: () => null, metadata: { title: 'Single Responsibility Principle', description: 'Uma classe, uma responsabilidade' } }, 'srp', 'best-practices'),
-  toMeta({ default: () => null, metadata: { title: 'Separation of Concerns', description: 'Separe responsabilidades claramente' } }, 'soc', 'best-practices'),
+  toMeta(CleanCode, 'clean-code', 'best-practices'),
+  toMeta(SRP, 'srp', 'best-practices'),
+  toMeta(SOC, 'soc', 'best-practices'),
 ];
 
 export function getDoc(collection: 'guides' | 'architectures' | 'patterns' | 'techniques' | 'best-practices', slug: string): DocMeta | undefined {
