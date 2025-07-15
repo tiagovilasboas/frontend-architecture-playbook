@@ -145,46 +145,92 @@ export default function Home() {
               </motion.div>
               
               <motion.div variants={itemVariants}>
-                <Group gap={isMobile ? 'sm' : 24} mt={isMobile ? 'sm' : 0} mb={isMobile ? 0 : 8}>
-                  <motion.div {...mobileAnimationProps}>
-                    <Button 
-                      component={Link} 
-                      to="/guides/how-to-choose" 
-                      size={isMobile ? 'md' : 'lg'} 
-                      variant="filled"
-                      leftSection={<IconRocket size={isMobile ? 16 : 20} />}
-                      rightSection={<IconArrowRight size={isMobile ? 12 : 16} />}
-                    >
-                      Encontre sua Arquitetura
-                    </Button>
-                  </motion.div>
-                  
-                  <motion.div {...mobileAnimationProps}>
-                    <Button 
-                      component={Link} 
-                      to="/guides/dependency-rule" 
-                      size={isMobile ? 'md' : 'lg'} 
-                      variant="light"
-                      leftSection={<IconShield size={isMobile ? 16 : 20} />}
-                      rightSection={<IconArrowRight size={isMobile ? 12 : 16} />}
-                    >
-                      Dependency Rule
-                    </Button>
-                  </motion.div>
-                  
-                  <motion.div {...mobileAnimationProps}>
-                    <Button 
-                      component="a" 
-                      href="https://github.com/tiagovilasboas/frontend-architecture-playbook" 
-                      target="_blank"
-                      size={isMobile ? 'md' : 'lg'} 
-                      variant="outline"
-                      leftSection={<IconBrandGithub size={isMobile ? 16 : 20} />}
-                    >
-                      Ver repositório no GitHub
-                    </Button>
-                  </motion.div>
-                </Group>
+                {isMobile ? (
+                  <Stack gap="sm" w="100%">
+                    <motion.div {...mobileAnimationProps}>
+                      <Button 
+                        component={Link} 
+                        to="/guides/how-to-choose" 
+                        size="md" 
+                        variant="filled"
+                        leftSection={<IconRocket size={16} />}
+                        rightSection={<IconArrowRight size={12} />}
+                        fullWidth
+                      >
+                        Encontre sua Arquitetura
+                      </Button>
+                    </motion.div>
+                    
+                    <motion.div {...mobileAnimationProps}>
+                      <Button 
+                        component={Link} 
+                        to="/guides/dependency-rule" 
+                        size="md" 
+                        variant="light"
+                        leftSection={<IconShield size={16} />}
+                        rightSection={<IconArrowRight size={12} />}
+                        fullWidth
+                      >
+                        Dependency Rule
+                      </Button>
+                    </motion.div>
+                    
+                    <motion.div {...mobileAnimationProps}>
+                      <Button 
+                        component="a" 
+                        href="https://github.com/tiagovilasboas/frontend-architecture-playbook" 
+                        target="_blank"
+                        size="md" 
+                        variant="outline"
+                        leftSection={<IconBrandGithub size={16} />}
+                        fullWidth
+                      >
+                        Ver repositório no GitHub
+                      </Button>
+                    </motion.div>
+                  </Stack>
+                ) : (
+                  <Group gap={24} mt={0} mb={8}>
+                    <motion.div {...mobileAnimationProps}>
+                      <Button 
+                        component={Link} 
+                        to="/guides/how-to-choose" 
+                        size="lg" 
+                        variant="filled"
+                        leftSection={<IconRocket size={20} />}
+                        rightSection={<IconArrowRight size={16} />}
+                      >
+                        Encontre sua Arquitetura
+                      </Button>
+                    </motion.div>
+                    
+                    <motion.div {...mobileAnimationProps}>
+                      <Button 
+                        component={Link} 
+                        to="/guides/dependency-rule" 
+                        size="lg" 
+                        variant="light"
+                        leftSection={<IconShield size={20} />}
+                        rightSection={<IconArrowRight size={16} />}
+                      >
+                        Dependency Rule
+                      </Button>
+                    </motion.div>
+                    
+                    <motion.div {...mobileAnimationProps}>
+                      <Button 
+                        component="a" 
+                        href="https://github.com/tiagovilasboas/frontend-architecture-playbook" 
+                        target="_blank"
+                        size="lg" 
+                        variant="outline"
+                        leftSection={<IconBrandGithub size={20} />}
+                      >
+                        Ver repositório no GitHub
+                      </Button>
+                    </motion.div>
+                  </Group>
+                )}
               </motion.div>
             </Stack>
             
@@ -246,7 +292,7 @@ export default function Home() {
               <Stack gap={isMobile ? 12 : 20} align="center" ta="center">
                 {/* Highway Animation - Dentro da seção */}
                 <div style={{ margin: isMobile ? '8px 0 8px 0' : '12px 0 12px 0', width: '100%' }}>
-                  <HighwayAnimationCanvas isMobile={isMobile} />
+                  <HighwayAnimationCanvas />
                 </div>
                 <Text size="lg" c="dimmed" lh={1.6} mt={isMobile ? 4 : 8} mb={isMobile ? 4 : 8} ta="left">
                   Arquitetura de software é como arquitetura civil: sem alicerce, não escala. Sem base sólida, não cresce.
@@ -387,6 +433,7 @@ export default function Home() {
                         size="sm" 
                         variant="light"
                         leftSection={<IconRocket size={16} />}
+                        fullWidth={isMobile}
                       >
                         Decision Wizard
                       </Button>
@@ -414,6 +461,7 @@ export default function Home() {
                         size="sm" 
                         variant="light"
                         leftSection={<IconCheck size={16} />}
+                        fullWidth={isMobile}
                       >
                         Ver Princípios
                       </Button>
@@ -441,6 +489,7 @@ export default function Home() {
                         size="sm" 
                         variant="light"
                         leftSection={<IconStack size={16} />}
+                        fullWidth={isMobile}
                       >
                         Ver Arquiteturas
                       </Button>
@@ -468,6 +517,7 @@ export default function Home() {
                         size="sm" 
                         variant="light"
                         leftSection={<IconTools size={16} />}
+                        fullWidth={isMobile}
                       >
                         Ver Padrões
                       </Button>
@@ -803,6 +853,7 @@ export default function Home() {
                     variant="filled"
                     leftSection={<IconRocket size={20} />}
                     rightSection={<IconArrowRight size={16} />}
+                    fullWidth={isMobile}
                   >
                     Encontre sua Arquitetura
                   </Button>
@@ -830,32 +881,63 @@ export default function Home() {
                   <Text size="md" mb="md" lh={1.6}>
                     Sou o dev que transforma código em resultado: turbinei checkouts, simplifiquei cadastros bancários, acelerei fluxos de KYC e salvei dashboards engasgados. Fora dos horários de entrega, lapido os open-sources Ponto PJ e DataForge Tools e escrevo "Código Bonito Não Paga Boleto", tudo focado na mesma pegada: impacto real primeiro.
                   </Text>
-                  <Group gap="sm">
-                    <motion.div {...mobileAnimationProps}>
-                      <Button 
-                        component="a" 
-                        href="https://github.com/tiagovilasboas" 
-                        target="_blank" 
-                        size="sm" 
-                        variant="light"
-                        leftSection={<IconBrandGithub size={16} />}
-                      >
-                        GitHub
-                      </Button>
-                    </motion.div>
-                    <motion.div {...mobileAnimationProps}>
-                      <Button 
-                        component="a" 
-                        href="https://www.linkedin.com/in/tiagovilasboas" 
-                        target="_blank" 
-                        size="sm" 
-                        variant="light"
-                        leftSection={<IconBrandLinkedin size={16} />}
-                      >
-                        LinkedIn
-                      </Button>
-                    </motion.div>
-                  </Group>
+                  {isMobile ? (
+                    <Stack gap="sm" w="100%">
+                      <motion.div {...mobileAnimationProps}>
+                        <Button 
+                          component="a" 
+                          href="https://github.com/tiagovilasboas" 
+                          target="_blank" 
+                          size="sm" 
+                          variant="light"
+                          leftSection={<IconBrandGithub size={16} />}
+                          fullWidth
+                        >
+                          GitHub
+                        </Button>
+                      </motion.div>
+                      <motion.div {...mobileAnimationProps}>
+                        <Button 
+                          component="a" 
+                          href="https://www.linkedin.com/in/tiagovilasboas" 
+                          target="_blank" 
+                          size="sm" 
+                          variant="light"
+                          leftSection={<IconBrandLinkedin size={16} />}
+                          fullWidth
+                        >
+                          LinkedIn
+                        </Button>
+                      </motion.div>
+                    </Stack>
+                  ) : (
+                    <Group gap="sm">
+                      <motion.div {...mobileAnimationProps}>
+                        <Button 
+                          component="a" 
+                          href="https://github.com/tiagovilasboas" 
+                          target="_blank" 
+                          size="sm" 
+                          variant="light"
+                          leftSection={<IconBrandGithub size={16} />}
+                        >
+                          GitHub
+                        </Button>
+                      </motion.div>
+                      <motion.div {...mobileAnimationProps}>
+                        <Button 
+                          component="a" 
+                          href="https://www.linkedin.com/in/tiagovilasboas" 
+                          target="_blank" 
+                          size="sm" 
+                          variant="light"
+                          leftSection={<IconBrandLinkedin size={16} />}
+                        >
+                          LinkedIn
+                        </Button>
+                      </motion.div>
+                    </Group>
+                  )}
                 </div>
               </Group>
             </Paper>

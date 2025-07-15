@@ -38,6 +38,8 @@ interface Vehicle {
   derrapagemCooldown?: number;
   sublane: number;
   isNearPothole?: boolean; // Nova propriedade para detectar proximidade de buraco
+  laneSpacingMultiplier?: number; // Adicionar multiplicadores específicos da pista
+  laneSafeDistanceMultiplier?: number; // Adicionar multiplicadores específicos da pista
 }
 
 interface SmokeParticle {
@@ -49,10 +51,12 @@ interface SmokeParticle {
   size: number;
 }
 
-export default function HighwayAnimationCanvas({ config = DEFAULT_HIGHWAY_CONFIG, isMobile = false }: { config?: HighwayConfig, isMobile?: boolean }) {
+export default function HighwayAnimationCanvas({ config = DEFAULT_HIGHWAY_CONFIG }: { config?: HighwayConfig }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [sprites, setSprites] = useState<HTMLImageElement[]>([]);
-
+  
+  // Detectar resolução pequena (até 430px)
+  const isSmallScreen = typeof window !== 'undefined' && window.innerWidth <= 430;
 
 
   // Carregar todos os sprites ao montar
@@ -115,6 +119,19 @@ export default function HighwayAnimationCanvas({ config = DEFAULT_HIGHWAY_CONFIG
       return array;
     }
     
+    // Configuração mobile vs desktop
+    const mobileConfig = isSmallScreen ? {
+      widthScale: 1,
+      heightScale: 2.2,
+      spacingMultiplier: 2.5,
+      safeDistanceMultiplier: 3.5
+    } : {
+      widthScale: 1,
+      heightScale: 1,
+      spacingMultiplier: 1,
+      safeDistanceMultiplier: 1
+    };
+    
     // Embaralhar os sprites e dividir entre as lanes
     const shuffledSprites = shuffle([...sprites]);
     const half = Math.ceil(shuffledSprites.length / 2);
@@ -127,9 +144,17 @@ export default function HighwayAnimationCanvas({ config = DEFAULT_HIGHWAY_CONFIG
     config.lanes.forEach((lane, laneIndex) => {
       lane.sublanes.forEach((sublane, sublaneIndex) => {
         const spritePool = laneIndex === 0 ? spritesLane0 : spritesLane1;
-        const spacing = calculateCarSpacing(sublane, visual.canvasWidth, visual.lateralMargin);
         
-        for (let i = 0; i < sublane.numCars; i++) {
+        // Ajuste específico para pista de baixo no mobile
+        const laneSpacingMultiplier = isSmallScreen && laneIndex === 1 ? 4.0 : mobileConfig.spacingMultiplier;
+        const laneSafeDistanceMultiplier = isSmallScreen && laneIndex === 1 ? 4.0 : mobileConfig.safeDistanceMultiplier;
+        
+        const spacing = calculateCarSpacing(sublane, visual.canvasWidth, visual.lateralMargin) * laneSpacingMultiplier;
+        
+        // Reduzir número de carros no mobile
+        const numCars = isSmallScreen ? Math.max(2, Math.floor(sublane.numCars * 0.6)) : sublane.numCars;
+        
+        for (let i = 0; i < numCars; i++) {
           const sprite = spritePool[i % spritePool.length];
           const x = visual.lateralMargin + i * spacing;
           
@@ -148,7 +173,10 @@ export default function HighwayAnimationCanvas({ config = DEFAULT_HIGHWAY_CONFIG
             derrapando: false,
             derrapagemTimer: Math.random() * 300 + 200,
             derrapagemCooldown: 0,
-            isNearPothole: false, // Inicializar como false
+            isNearPothole: false,
+            // Adicionar multiplicadores específicos da pista
+            laneSpacingMultiplier,
+            laneSafeDistanceMultiplier,
           });
         }
       });
@@ -234,15 +262,8 @@ export default function HighwayAnimationCanvas({ config = DEFAULT_HIGHWAY_CONFIG
       
       // Calcular tamanho de renderização baseado na configuração
       const vehicleScale = getVehicleScale(v.lane, config);
-      // Proporção diferenciada para mobile: mais comprido
-      let renderWidth, renderHeight;
-      if (isMobile) {
-        renderWidth = vehicles.spriteWidth * vehicleScale * 1.7;
-        renderHeight = vehicles.spriteHeight * vehicleScale * 1.2;
-      } else {
-        renderWidth = vehicles.spriteWidth * vehicleScale;
-        renderHeight = vehicles.spriteHeight * vehicleScale;
-      }
+      const renderWidth = vehicles.spriteWidth * vehicleScale * mobileConfig.widthScale;
+      const renderHeight = vehicles.spriteHeight * vehicleScale * mobileConfig.heightScale;
       
       if (v.direction === 'right') {
         ctx.rotate(Math.PI / 2);
@@ -330,7 +351,7 @@ export default function HighwayAnimationCanvas({ config = DEFAULT_HIGHWAY_CONFIG
             // Frenagem por buracos (mais agressiva que frenagem normal)
             if (v.isNearPothole) {
               v.speed = Math.max(laneConfig.minSpeed * 0.5, v.speed - laneConfig.deceleration * 2);
-            } else if (dist < laneConfig.safeDistance) {
+            } else if (dist < laneConfig.safeDistance * (v.laneSafeDistanceMultiplier || mobileConfig.safeDistanceMultiplier)) {
               v.speed = Math.max(laneConfig.minSpeed, v.speed - laneConfig.deceleration);
             } else if (v.speed < v.maxSpeed) {
               v.speed = Math.min(v.maxSpeed, v.speed + laneConfig.acceleration);
@@ -340,11 +361,14 @@ export default function HighwayAnimationCanvas({ config = DEFAULT_HIGHWAY_CONFIG
 
             // Hover detection
             let isHovered = false;
+            const vehicleScale = getVehicleScale(v.lane, config);
+            const actualVehicleWidth = vehicles.spriteWidth * vehicleScale * mobileConfig.widthScale;
+            const actualVehicleHeight = vehicles.spriteHeight * vehicleScale * mobileConfig.heightScale;
             if (
-              mouseX >= v.x - vehicles.spriteWidth / 2 &&
-              mouseX <= v.x + vehicles.spriteWidth / 2 &&
-              mouseY >= getLaneY(lane, v.sublane, config) - vehicles.spriteHeight / 2 &&
-              mouseY <= getLaneY(lane, v.sublane, config) + vehicles.spriteHeight / 2
+              mouseX >= v.x - actualVehicleWidth / 2 &&
+              mouseX <= v.x + actualVehicleWidth / 2 &&
+              mouseY >= getLaneY(lane, v.sublane, config) - actualVehicleHeight / 2 &&
+              mouseY <= getLaneY(lane, v.sublane, config) + actualVehicleHeight / 2
             ) {
               isHovered = true;
             }
@@ -362,10 +386,10 @@ export default function HighwayAnimationCanvas({ config = DEFAULT_HIGHWAY_CONFIG
             
             if (v.direction === 'right') {
               v.x += v.speed;
-              if (v.x > visual.canvasWidth + vehicles.spriteWidth) v.x = -vehicles.spriteWidth;
+              if (v.x > visual.canvasWidth + actualVehicleWidth) v.x = -actualVehicleWidth;
             } else {
               v.x -= v.speed;
-              if (v.x < -vehicles.spriteWidth) v.x = visual.canvasWidth + vehicles.spriteWidth;
+              if (v.x < -actualVehicleWidth) v.x = visual.canvasWidth + actualVehicleWidth;
             }
           }
         }
@@ -375,7 +399,7 @@ export default function HighwayAnimationCanvas({ config = DEFAULT_HIGHWAY_CONFIG
 
     animate();
     return () => cancelAnimationFrame(animationId);
-  }, [sprites, config, isMobile]);
+  }, [sprites, config, isSmallScreen]);
 
   return (
     <Box style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
