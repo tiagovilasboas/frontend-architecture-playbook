@@ -1,9 +1,10 @@
+import React from 'react';
 import { Group, Burger, UnstyledButton, Title, ActionIcon, Paper } from '@mantine/core';
 import { Link } from 'react-router-dom';
 import { IconCode, IconSun, IconMoon } from '@tabler/icons-react';
 import { useState } from 'react';
 import { useMediaQuery } from '@mantine/hooks';
-import type { DocMeta } from '../types/index.ts';
+import type { DocMeta } from '../lib/content.ts';
 
 interface Props {
   opened: boolean;

@@ -1,7 +1,8 @@
+import React from 'react';
 import { ScrollArea, Title, Stack, Divider, Group } from '@mantine/core';
 import { IconBook, IconPuzzle, IconStack, IconTools, IconCheck } from '@tabler/icons-react';
 import { useLocation } from 'react-router-dom';
-import type { DocMeta } from '../types/index.ts';
+import type { DocMeta } from '../lib/content.ts';
 import NavItem from './NavItem.tsx';
 
 interface Props {
