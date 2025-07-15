@@ -19,6 +19,10 @@ import SecurityPatterns from '../content/patterns/security.tsx';
 import CleanCode from '../content/patterns/clean-code.tsx';
 import SRP from '../content/patterns/srp.tsx';
 import SOC from '../content/patterns/soc.tsx';
+import { metadata as cleanCodeMeta } from '../content/patterns/clean-code.meta';
+import { metadata as srpMeta } from '../content/patterns/srp.meta';
+import { metadata as socMeta } from '../content/patterns/soc.meta';
+
 
 export interface DocMeta {
   slug: string;
@@ -75,9 +79,9 @@ export const bestPractices: DocMeta[] = [
   toMeta(Dry, 'dry', 'best-practices'),
   toMeta(Kiss, 'kiss', 'best-practices'),
   toMeta(Yagni, 'yagni', 'best-practices'),
-  toMeta(CleanCode, 'clean-code', 'best-practices'),
-  toMeta(SRP, 'srp', 'best-practices'),
-  toMeta(SOC, 'soc', 'best-practices'),
+  toMeta({ ...CleanCode, metadata: cleanCodeMeta }, 'clean-code', 'best-practices'),
+  toMeta({ ...SRP, metadata: srpMeta }, 'srp', 'best-practices'),
+  toMeta({ ...SOC, metadata: socMeta }, 'soc', 'best-practices'),
 ];
 
 export function getDoc(collection: 'guides' | 'architectures' | 'patterns' | 'techniques' | 'best-practices', slug: string): DocMeta | undefined {

@@ -75,15 +75,16 @@ export default function SRP() {
                   <Text fw={700} size="lg">❌ Violando SRP</Text>
                 </Group>
                 <Code block>
-{`class UserManager {
-  saveUser(user) { /* salva no banco */ }
-  sendEmail(user) { /* envia email */ }
-  validateUser(user) { /* valida dados */ }
-  generateReport() { /* gera relatório */ }
-}`}
+{`function processUser(user) {
+  if (!validateUser(user)) throw new Error('Invalid');
+  saveUser(user);
+  sendWelcomeEmail(user);
+  logUserCreation(user);
+}
+`}
                 </Code>
                 <Text size="sm" c="dimmed">
-                  Uma classe fazendo tudo: persistência, email, validação e relatórios.
+                  Função faz tudo: valida, salva, envia e-mail e loga. Difícil de testar, manter e reutilizar.
                 </Text>
               </Stack>
             </Card>
@@ -97,24 +98,29 @@ export default function SRP() {
                   <Text fw={700} size="lg">✅ Seguindo SRP</Text>
                 </Group>
                 <Code block>
-{`class UserRepository {
-  saveUser(user) { /* só salva */ }
+{`function validateUser(user) {
+  // ...
+}
+function saveUser(user) {
+  // ...
+}
+function sendWelcomeEmail(user) {
+  // ...
+}
+function logUserCreation(user) {
+  // ...
 }
 
-class EmailService {
-  sendEmail(user) { /* só envia email */ }
+function processUser(user) {
+  if (!validateUser(user)) throw new Error('Invalid');
+  saveUser(user);
+  sendWelcomeEmail(user);
+  logUserCreation(user);
 }
-
-class UserValidator {
-  validateUser(user) { /* só valida */ }
-}
-
-class ReportGenerator {
-  generateReport() { /* só gera relatório */ }
-}`}
+`}
                 </Code>
                 <Text size="sm" c="dimmed">
-                  Cada classe com uma responsabilidade específica.
+                  Cada função tem uma responsabilidade. O fluxo principal só orquestra.
                 </Text>
               </Stack>
             </Card>
