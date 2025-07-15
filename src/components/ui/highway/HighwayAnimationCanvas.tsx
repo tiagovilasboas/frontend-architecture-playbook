@@ -20,7 +20,7 @@ const SPRITE_PATHS = [
   'Mini_van.png',
   'truck.png',
   'taxi.png',
-].map(f => `/src/assets/cars/${f}`);
+].map(f => `/assets/cars/${f}`);
 
 interface Vehicle {
   lane: number;

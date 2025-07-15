@@ -48,5 +48,6 @@ export default defineConfig({
       }
     },
     chunkSizeWarningLimit: 1000
-  }
+  },
+  assetsInclude: ['**/*.png', '**/*.jpg', '**/*.jpeg', '**/*.gif', '**/*.svg']
 })
