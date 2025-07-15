@@ -1,233 +1,195 @@
-import { Title, Text, Stack, Paper, Code, Alert, List, ThemeIcon, Group, Card, SimpleGrid } from '@mantine/core';
-import { IconBulb, IconAlertTriangle, IconCheck, IconCode, IconStack } from '@tabler/icons-react';
+import { Title, Text, Stack, Paper, Alert, List, ThemeIcon, Group, Card, Badge } from '@mantine/core';
+import { IconBulb, IconAlertTriangle, IconCheck, IconCode, IconTarget } from '@tabler/icons-react';
+import CodeExample from '../../components/CodeExample';
+import codeExamples from '../../utils/code-examples/srp.json';
 
-export default function SRP() {
+function SRP() {
   return (
     <Stack gap="xl">
       {/* Hero Section */}
-      <Paper withBorder p="xl" radius="lg">
+      <div>
+        <Title order={1} mb="md">
+          Single Responsibility Principle
+        </Title>
+        <Text size="lg" c="dimmed">
+          Uma classe, uma responsabilidade. Cada módulo deve ter apenas um motivo para mudar.
+        </Text>
+      </div>
+
+      {/* What is it */}
+      <Paper withBorder p="xl" radius="md">
         <Stack gap="md">
-          <Group gap="sm">
+          <Group>
             <ThemeIcon size={50} radius="md" variant="light" color="blue">
-              <IconCode size={30} />
+              <IconTarget size={25} />
             </ThemeIcon>
             <div>
-              <Title order={1} size="h2">Single Responsibility Principle</Title>
-              <Text c="dimmed" size="lg">Uma classe, uma responsabilidade</Text>
+              <Title order={3}>O que é?</Title>
+              <Text c="dimmed">Princípio que define responsabilidade única para cada módulo</Text>
             </div>
           </Group>
           
-          <Text size="lg" lh={1.6}>
-            SRP é simples: <strong>uma classe deve ter apenas um motivo para mudar.</strong> 
-            Se você precisa alterar uma classe por múltiplas razões, ela está fazendo demais.
+          <Text>
+            SRP significa <strong>"Single Responsibility Principle"</strong>. É sobre cada classe, 
+            função ou módulo ter apenas <em>uma responsabilidade</em>.
+          </Text>
+          
+          <Text>
+            Pensa assim: se você precisa alterar uma classe por múltiplas razões (validação mudou, 
+            email mudou, banco mudou), ela está fazendo demais. Cada mudança deve afetar apenas um módulo.
+          </Text>
+          
+          <Text>
+            A regra é clara: <em>uma classe deve ter apenas um motivo para mudar</em>. 
+            Se há múltiplos motivos, quebre em classes menores.
           </Text>
         </Stack>
       </Paper>
 
-      {/* O que é? */}
-      <Paper withBorder p="xl" radius="lg">
-        <Stack gap="lg">
-          <Title order={2} size="h3">
-            <IconBulb size={24} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
-            O que é SRP?
-          </Title>
-          
-          <Text size="lg" lh={1.6}>
-            Uma classe deve ter apenas <strong>uma responsabilidade</strong>, ou seja, apenas um motivo para ser modificada.
-          </Text>
-          
-          <List size="lg" spacing="md">
-            <List.Item>
-              <Text fw={600}>Responsabilidade única</Text>
-              <Text c="dimmed">Uma classe faz uma coisa e faz bem</Text>
-            </List.Item>
-            <List.Item>
-              <Text fw={600}>Mudanças isoladas</Text>
-              <Text c="dimmed">Alterar uma funcionalidade não afeta outras</Text>
-            </List.Item>
-            <List.Item>
-              <Text fw={600}>Testes focados</Text>
-              <Text c="dimmed">Cada classe tem seus testes específicos</Text>
-            </List.Item>
-            <List.Item>
-              <Text fw={600}>Reutilização</Text>
-              <Text c="dimmed">Classes pequenas são mais fáceis de reutilizar</Text>
-            </List.Item>
-          </List>
-        </Stack>
-      </Paper>
-
-      {/* Exemplos Práticos */}
-      <Paper withBorder p="xl" radius="lg">
-        <Stack gap="lg">
-          <Title order={2} size="h3">
-            <IconCode size={24} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
-            Exemplos Práticos
-          </Title>
-
-          <SimpleGrid cols={{ base: 1, md: 2 }} spacing="lg">
-            <Card withBorder p="lg" radius="md">
-              <Stack gap="md">
-                <Group gap="sm">
-                  <ThemeIcon size={40} radius="md" variant="light" color="red">
-                    <IconAlertTriangle size={20} />
-                  </ThemeIcon>
-                  <Text fw={700} size="lg">❌ Violando SRP</Text>
-                </Group>
-                <Code block>
-{`function processUser(user) {
-  if (!validateUser(user)) throw new Error('Invalid');
-  saveUser(user);
-  sendWelcomeEmail(user);
-  logUserCreation(user);
-}
-`}
-                </Code>
-                <Text size="sm" c="dimmed">
-                  Função faz tudo: valida, salva, envia e-mail e loga. Difícil de testar, manter e reutilizar.
-                </Text>
-              </Stack>
-            </Card>
-
-            <Card withBorder p="lg" radius="md">
-              <Stack gap="md">
-                <Group gap="sm">
-                  <ThemeIcon size={40} radius="md" variant="light" color="green">
-                    <IconCheck size={20} />
-                  </ThemeIcon>
-                  <Text fw={700} size="lg">✅ Seguindo SRP</Text>
-                </Group>
-                <Code block>
-{`function validateUser(user) {
-  // ...
-}
-function saveUser(user) {
-  // ...
-}
-function sendWelcomeEmail(user) {
-  // ...
-}
-function logUserCreation(user) {
-  // ...
-}
-
-function processUser(user) {
-  if (!validateUser(user)) throw new Error('Invalid');
-  saveUser(user);
-  sendWelcomeEmail(user);
-  logUserCreation(user);
-}
-`}
-                </Code>
-                <Text size="sm" c="dimmed">
-                  Cada função tem uma responsabilidade. O fluxo principal só orquestra.
-                </Text>
-              </Stack>
-            </Card>
-          </SimpleGrid>
-        </Stack>
-      </Paper>
-
-      {/* Como Identificar */}
-      <Paper withBorder p="xl" radius="lg">
-        <Stack gap="lg">
-          <Title order={2} size="h3">
-            <IconStack size={24} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
-            Como Identificar Violações
-          </Title>
-
-          <SimpleGrid cols={{ base: 1, md: 2 }} spacing="lg">
-            <Card withBorder p="lg" radius="md">
-              <Stack gap="sm">
-                <Text fw={700} size="lg">Múltiplos "e"</Text>
-                <Text size="sm" c="dimmed">
-                  "Essa classe salva usuários E envia emails E valida dados"
-                </Text>
-              </Stack>
-            </Card>
-
-            <Card withBorder p="lg" radius="md">
-              <Stack gap="sm">
-                <Text fw={700} size="lg">Métodos não relacionados</Text>
-                <Text size="sm" c="dimmed">
-                  Uma classe com métodos de domínios diferentes
-                </Text>
-              </Stack>
-            </Card>
-
-            <Card withBorder p="lg" radius="md">
-              <Stack gap="sm">
-                <Text fw={700} size="lg">Mudanças frequentes</Text>
-                <Text size="sm" c="dimmed">
-                  A classe muda por motivos diferentes
-                </Text>
-              </Stack>
-            </Card>
-
-            <Card withBorder p="lg" radius="md">
-              <Stack gap="sm">
-                <Text fw={700} size="lg">Testes complexos</Text>
-                <Text size="sm" c="dimmed">
-                  Precisa mockar muitas dependências
-                </Text>
-              </Stack>
-            </Card>
-          </SimpleGrid>
-        </Stack>
-      </Paper>
-
-      {/* Armadilhas */}
-      <Paper withBorder p="xl" radius="lg">
-        <Stack gap="lg">
-          <Title order={2} size="h3">
-            <IconAlertTriangle size={24} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
-            Armadilhas Comuns
-          </Title>
-
-          <Alert color="red" icon={<IconAlertTriangle size={20} />}>
-            <Text size="lg" fw={600}>Classes anêmicas</Text>
-            <Text size="md">
-              Não quebre demais. Uma classe com apenas getters/setters não tem valor.
-            </Text>
-          </Alert>
-
-          <Alert color="orange" icon={<IconAlertTriangle size={20} />}>
-            <Text size="lg" fw={600}>Over-engineering</Text>
-            <Text size="md">
-              Não crie classes desnecessárias. SRP não significa "uma classe por método".
-            </Text>
-          </Alert>
-
-          <Alert color="yellow" icon={<IconAlertTriangle size={20} />}>
-            <Text size="lg" fw={600}>Ignorar contexto</Text>
-            <Text size="md">
-              O que é "uma responsabilidade" depende do contexto do seu projeto.
-            </Text>
-          </Alert>
-        </Stack>
-      </Paper>
-
-      {/* Resumo */}
-      <Paper withBorder p="xl" radius="lg">
+      {/* Examples */}
+      <div>
+        <Title order={2} mb="lg">
+          <IconCode size={28} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
+          Exemplos Práticos
+        </Title>
+        
         <Stack gap="md">
-          <Title order={2} size="h3">
-            <IconCheck size={24} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
-            Resumo
-          </Title>
-          
-          <Text size="lg" lh={1.6}>
-            <strong>SRP é sobre coesão.</strong> Mantenha classes focadas em uma coisa. 
-            Se você precisa explicar o que uma classe faz com "e", ela provavelmente viola SRP.
-          </Text>
+          {codeExamples.map((ex, idx) => (
+            <Card withBorder p="md" key={ex.title} w="100%" style={{ minWidth: 0, width: '100%' }}>
+              <Group w="100%" style={{ minWidth: 0, width: '100%' }}>
+                <Badge size="lg" variant="light" color={['red','green'][idx] || 'gray'}>{idx === 0 ? '❌' : '✅'}</Badge>
+                <div style={{ flex: 1, width: '100%' }}>
+                  <Title order={4}>{ex.title}</Title>
+                  <Text size="sm" c="dimmed">{ex.description}</Text>
+                  <CodeExample title={ex.title} code={ex.code} />
+                </div>
+              </Group>
+            </Card>
+          ))}
+        </Stack>
+      </div>
 
-          <Alert color="green" icon={<IconBulb size={20} />}>
-            <Text size="md" fw={600}>
-              <strong>Regra prática:</strong> Se você mudar uma funcionalidade e precisar alterar 
-              múltiplas partes da mesma classe, ela viola SRP.
-            </Text>
+      {/* Benefits */}
+      <div>
+        <Title order={2} mb="lg">
+          <IconCheck size={28} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
+          Por que vale a pena?
+        </Title>
+        
+        <Stack gap="md">
+          <Card withBorder p="md">
+            <Group>
+              <ThemeIcon size={40} radius="md" variant="light" color="green">
+                <IconCheck size={20} />
+              </ThemeIcon>
+              <div>
+                <Title order={4}>Mudanças Isoladas</Title>
+                <Text size="sm">
+                  Alterar uma funcionalidade não afeta outras. Menos bugs, menos regressões.
+                </Text>
+              </div>
+            </Group>
+          </Card>
+
+          <Card withBorder p="md">
+            <Group>
+              <ThemeIcon size={40} radius="md" variant="light" color="blue">
+                <IconCode size={20} />
+              </ThemeIcon>
+              <div>
+                <Title order={4}>Testes Focados</Title>
+                <Text size="sm">
+                  Cada classe tem seus testes específicos. Mais fácil de testar e manter.
+                </Text>
+              </div>
+            </Group>
+          </Card>
+
+          <Card withBorder p="md">
+            <Group>
+              <ThemeIcon size={40} radius="md" variant="light" color="orange">
+                <IconBulb size={20} />
+              </ThemeIcon>
+              <div>
+                <Title order={4}>Reutilização</Title>
+                <Text size="sm">
+                  Classes pequenas são mais fáceis de reutilizar em diferentes contextos.
+                </Text>
+              </div>
+            </Group>
+          </Card>
+        </Stack>
+      </div>
+
+      {/* When to use */}
+      <div>
+        <Title order={2} mb="lg">
+          <IconBulb size={28} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
+          Quando aplicar?
+        </Title>
+        
+        <Stack gap="md">
+          <Alert color="green" icon={<IconCheck size={16} />} radius="md">
+            <Text size="sm" fw={600} mb={4}>✅ Sempre aplique:</Text>
+            <List size="sm" c="dimmed">
+              <List.Item>Classes com múltiplas responsabilidades</List.Item>
+              <List.Item>Funções que fazem muitas coisas</List.Item>
+              <List.Item>Módulos que mudam por motivos diferentes</List.Item>
+              <List.Item>Testes que precisam mockar muitas dependências</List.Item>
+              <List.Item>Código difícil de entender e manter</List.Item>
+            </List>
           </Alert>
+
+          <Alert color="orange" icon={<IconAlertTriangle size={16} />} radius="md">
+            <Text size="sm" fw={600} mb={4}>⚠️ Cuidado com:</Text>
+            <List size="sm" c="dimmed">
+              <List.Item>Classes anêmicas (só getters/setters)</List.Item>
+              <List.Item>Over-engineering (YAGNI)</List.Item>
+              <List.Item>Quebrar demais sem necessidade</List.Item>
+            </List>
+          </Alert>
+        </Stack>
+      </div>
+
+      {/* Pitfalls */}
+      <div>
+        <Title order={2} mb="lg">
+          <IconAlertTriangle size={28} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
+          Armadilhas Comuns
+        </Title>
+        
+        <Stack gap="md">
+          {codeExamples.slice(2).map((ex) => (
+            <Card withBorder p="md" key={ex.title} w="100%" style={{ minWidth: 0, width: '100%' }}>
+              <Title order={4} mb="sm">{ex.title}</Title>
+              <Text size="sm" mb="md">{ex.description}</Text>
+              <CodeExample title={ex.title} code={ex.code} />
+            </Card>
+          ))}
+        </Stack>
+      </div>
+
+      {/* Summary */}
+      <Paper withBorder p="xl" radius="md">
+        <Stack gap="md">
+          <Title order={3}>Resumo</Title>
+          <Text>
+            SRP é sobre foco. Cada classe deve ter uma responsabilidade clara e única. 
+            Se você precisa mudar uma classe por múltiplas razões, quebre em classes menores.
+          </Text>
+          <Text>
+            <strong>Regra de ouro:</strong> Se você pode descrever uma classe com múltiplos "e", 
+            ela está violando SRP. "Essa classe valida E salva E envia email" = violação.
+          </Text>
         </Stack>
       </Paper>
     </Stack>
   );
-} 
+}
+
+SRP.metadata = {
+  title: 'Single Responsibility Principle',
+  description: 'Uma classe, uma responsabilidade. Cada módulo deve ter apenas um motivo para mudar.'
+};
+
+export default SRP; 

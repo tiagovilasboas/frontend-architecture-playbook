@@ -1,217 +1,196 @@
-import { Title, Text, Stack, Paper, Code, Alert, List, ThemeIcon, Group, Card, SimpleGrid } from '@mantine/core';
-import { IconBulb, IconAlertTriangle, IconCheck, IconCode, IconStack } from '@tabler/icons-react';
+import { Title, Text, Stack, Paper, Alert, List, ThemeIcon, Group, Card, Badge } from '@mantine/core';
+import { IconBulb, IconAlertTriangle, IconCheck, IconCode, IconFileText } from '@tabler/icons-react';
+import CodeExample from '../../components/CodeExample';
+import codeExamples from '../../utils/code-examples/clean-code.json';
 
-export default function CleanCode() {
+function CleanCode() {
   return (
     <Stack gap="xl">
       {/* Hero Section */}
-      <Paper withBorder p="xl" radius="lg">
+      <div>
+        <Title order={1} mb="md">
+          Clean Code
+        </Title>
+        <Text size="lg" c="dimmed">
+          Código legível e manutenível. Se você precisa explicar seu código para funcionar, 
+          você já perdeu.
+        </Text>
+      </div>
+
+      {/* What is it */}
+      <Paper withBorder p="xl" radius="md">
         <Stack gap="md">
-          <Group gap="sm">
-            <ThemeIcon size={50} radius="md" variant="light" color="green">
-              <IconCode size={30} />
+          <Group>
+            <ThemeIcon size={50} radius="md" variant="light" color="blue">
+              <IconFileText size={25} />
             </ThemeIcon>
             <div>
-              <Title order={1} size="h2">Clean Code</Title>
-              <Text c="dimmed" size="lg">Código legível e manutenível</Text>
+              <Title order={3}>O que é?</Title>
+              <Text c="dimmed">Código que outros devs conseguem entender e manter</Text>
             </div>
           </Group>
           
-          <Text size="lg" lh={1.6}>
-            Clean Code não é sobre escrever código perfeito. É sobre escrever código que <strong>outros devs conseguem entender e manter</strong> sem enlouquecer. 
-            Se você precisa explicar seu código para funcionar, você já perdeu.
+          <Text>
+            Clean Code não é sobre escrever código perfeito. É sobre escrever código que 
+            <strong> outros devs conseguem entender e manter</strong> sem enlouquecer.
+          </Text>
+          
+          <Text>
+            Pensa assim: se você precisa explicar seu código para funcionar, você já perdeu. 
+            Se um dev júnior não entende seu código na primeira leitura, você está violando Clean Code.
+          </Text>
+          
+          <Text>
+            A regra é clara: <em>código deve se explicar sozinho</em>. 
+            Nomes descritivos, funções pequenas, lógica clara.
           </Text>
         </Stack>
       </Paper>
 
-      {/* O que é? */}
-      <Paper withBorder p="xl" radius="lg">
-        <Stack gap="lg">
-          <Title order={2} size="h3">
-            <IconBulb size={24} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
-            O que é Clean Code?
-          </Title>
-          
-          <Text size="lg" lh={1.6}>
-            Clean Code é código que:
-          </Text>
-          
-          <List size="lg" spacing="md">
-            <List.Item>
-              <Text fw={600}>Lê como uma história</Text>
-              <Text c="dimmed">Nomes descritivos, funções pequenas, lógica clara</Text>
-            </List.Item>
-            <List.Item>
-              <Text fw={600}>Não precisa de comentários</Text>
-              <Text c="dimmed">O código se explica sozinho</Text>
-            </List.Item>
-            <List.Item>
-              <Text fw={600}>É fácil de testar</Text>
-              <Text c="dimmed">Funções puras, sem efeitos colaterais</Text>
-            </List.Item>
-            <List.Item>
-              <Text fw={600}>É fácil de modificar</Text>
-              <Text c="dimmed">Mudanças não quebram outras partes</Text>
-            </List.Item>
-          </List>
-        </Stack>
-      </Paper>
-
-      {/* Exemplos Práticos */}
-      <Paper withBorder p="xl" radius="lg">
-        <Stack gap="lg">
-          <Title order={2} size="h3">
-            <IconCode size={24} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
-            Exemplos Práticos
-          </Title>
-
-          <SimpleGrid cols={{ base: 1, md: 2 }} spacing="lg">
-            <Card withBorder p="lg" radius="md">
-              <Stack gap="md">
-                <Group gap="sm">
-                  <ThemeIcon size={40} radius="md" variant="light" color="red">
-                    <IconAlertTriangle size={20} />
-                  </ThemeIcon>
-                  <Text fw={700} size="lg">❌ Código Sujo</Text>
-                </Group>
-                <Code block>
-{`function x(a, b) {
-  let c = 0;
-  for(let i = 0; i < a.length; i++) {
-    if(a[i] > b) c++;
-  }
-  return c;
-}`}
-                </Code>
-                <Text size="sm" c="dimmed">
-                  O que essa função faz? Ninguém sabe. Nomes ruins, lógica confusa.
-                </Text>
-              </Stack>
-            </Card>
-
-            <Card withBorder p="lg" radius="md">
-              <Stack gap="md">
-                <Group gap="sm">
-                  <ThemeIcon size={40} radius="md" variant="light" color="green">
-                    <IconCheck size={20} />
-                  </ThemeIcon>
-                  <Text fw={700} size="lg">✅ Código Limpo</Text>
-                </Group>
-                <Code block>
-{`function countUsersAboveAge(users, minimumAge) {
-  return users.filter(user => user.age > minimumAge).length;
-}`}
-                </Code>
-                <Text size="sm" c="dimmed">
-                  Nome descritivo, lógica clara, fácil de entender.
-                </Text>
-              </Stack>
-            </Card>
-          </SimpleGrid>
-        </Stack>
-      </Paper>
-
-      {/* Princípios */}
-      <Paper withBorder p="xl" radius="lg">
-        <Stack gap="lg">
-          <Title order={2} size="h3">
-            <IconStack size={24} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
-            Princípios do Clean Code
-          </Title>
-
-          <SimpleGrid cols={{ base: 1, md: 2 }} spacing="lg">
-            <Card withBorder p="lg" radius="md">
-              <Stack gap="sm">
-                <Text fw={700} size="lg">Nomes Descritivos</Text>
-                <Text size="sm" c="dimmed">
-                  <Code>getUserById</Code> é melhor que <Code>getUser</Code>
-                </Text>
-              </Stack>
-            </Card>
-
-            <Card withBorder p="lg" radius="md">
-              <Stack gap="sm">
-                <Text fw={700} size="lg">Funções Pequenas</Text>
-                <Text size="sm" c="dimmed">
-                  Uma função, uma responsabilidade. Máximo 20 linhas.
-                </Text>
-              </Stack>
-            </Card>
-
-            <Card withBorder p="lg" radius="md">
-              <Stack gap="sm">
-                <Text fw={700} size="lg">Sem Comentários</Text>
-                <Text size="sm" c="dimmed">
-                  O código deve se explicar sozinho.
-                </Text>
-              </Stack>
-            </Card>
-
-            <Card withBorder p="lg" radius="md">
-              <Stack gap="sm">
-                <Text fw={700} size="lg">Tratamento de Erros</Text>
-                <Text size="sm" c="dimmed">
-                  Use try/catch ou Result types, não ignore erros.
-                </Text>
-              </Stack>
-            </Card>
-          </SimpleGrid>
-        </Stack>
-      </Paper>
-
-      {/* Armadilhas */}
-      <Paper withBorder p="xl" radius="lg">
-        <Stack gap="lg">
-          <Title order={2} size="h3">
-            <IconAlertTriangle size={24} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
-            Armadilhas Comuns
-          </Title>
-
-          <Alert color="red" icon={<IconAlertTriangle size={20} />}>
-            <Text size="lg" fw={600}>Over-engineering</Text>
-            <Text size="md">
-              Não torne simples em complexo. Clean Code é sobre simplicidade, não sobre mostrar que você é inteligente.
-            </Text>
-          </Alert>
-
-          <Alert color="orange" icon={<IconAlertTriangle size={20} />}>
-            <Text size="lg" fw={600}>Nomes muito longos</Text>
-            <Text size="md">
-              <Code>getUserByIdAndIncludeProfileAndPreferences</Code> é exagero. 
-              <Code>getUserWithProfile</Code> é suficiente.
-            </Text>
-          </Alert>
-
-          <Alert color="yellow" icon={<IconAlertTriangle size={20} />}>
-            <Text size="lg" fw={600}>Ignorar performance</Text>
-            <Text size="md">
-              Clean Code não significa código lento. Otimize quando necessário, mas mantenha legível.
-            </Text>
-          </Alert>
-        </Stack>
-      </Paper>
-
-      {/* Resumo */}
-      <Paper withBorder p="xl" radius="lg">
+      {/* Examples */}
+      <div>
+        <Title order={2} mb="lg">
+          <IconCode size={28} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
+          Exemplos Práticos
+        </Title>
+        
         <Stack gap="md">
-          <Title order={2} size="h3">
-            <IconCheck size={24} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
-            Resumo
-          </Title>
-          
-          <Text size="lg" lh={1.6}>
-            <strong>Clean Code é sobre empatia.</strong> Escreva para outros devs, não para você mesmo. 
-            Se você não conseguir explicar seu código em 30 segundos, ele não está limpo.
-          </Text>
+          {codeExamples.map((ex, idx) => (
+            <Card withBorder p="md" key={ex.title} w="100%" style={{ minWidth: 0, width: '100%' }}>
+              <Group w="100%" style={{ minWidth: 0, width: '100%' }}>
+                <Badge size="lg" variant="light" color={['red','green'][idx] || 'gray'}>{idx === 0 ? '❌' : '✅'}</Badge>
+                <div style={{ flex: 1, width: '100%' }}>
+                  <Title order={4}>{ex.title}</Title>
+                  <Text size="sm" c="dimmed">{ex.description}</Text>
+                  <CodeExample title={ex.title} code={ex.code} />
+                </div>
+              </Group>
+            </Card>
+          ))}
+        </Stack>
+      </div>
 
-          <Alert color="green" icon={<IconBulb size={20} />}>
-            <Text size="md" fw={600}>
-              <strong>Regra de ouro:</strong> Se você voltar ao código depois de 6 meses e não entender, 
-              ele não está limpo. Se outro dev não entende, ele não está limpo.
-            </Text>
+      {/* Benefits */}
+      <div>
+        <Title order={2} mb="lg">
+          <IconCheck size={28} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
+          Por que vale a pena?
+        </Title>
+        
+        <Stack gap="md">
+          <Card withBorder p="md">
+            <Group>
+              <ThemeIcon size={40} radius="md" variant="light" color="green">
+                <IconCheck size={20} />
+              </ThemeIcon>
+              <div>
+                <Title order={4}>Legibilidade</Title>
+                <Text size="sm">
+                  Código que qualquer dev entende na primeira leitura. Menos tempo debugando.
+                </Text>
+              </div>
+            </Group>
+          </Card>
+
+          <Card withBorder p="md">
+            <Group>
+              <ThemeIcon size={40} radius="md" variant="light" color="blue">
+                <IconCode size={20} />
+              </ThemeIcon>
+              <div>
+                <Title order={4}>Manutenibilidade</Title>
+                <Text size="sm">
+                  Mudanças mais fáceis, menos bugs, menos tempo refatorando.
+                </Text>
+              </div>
+            </Group>
+          </Card>
+
+          <Card withBorder p="md">
+            <Group>
+              <ThemeIcon size={40} radius="md" variant="light" color="orange">
+                <IconBulb size={20} />
+              </ThemeIcon>
+              <div>
+                <Title order={4}>Onboarding</Title>
+                <Text size="sm">
+                  Novos devs no time entendem o código rapidamente. Menos tempo treinando.
+                </Text>
+              </div>
+            </Group>
+          </Card>
+        </Stack>
+      </div>
+
+      {/* When to use */}
+      <div>
+        <Title order={2} mb="lg">
+          <IconBulb size={28} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
+          Quando aplicar?
+        </Title>
+        
+        <Stack gap="md">
+          <Alert color="green" icon={<IconCheck size={16} />} radius="md">
+            <Text size="sm" fw={600} mb={4}>✅ Sempre aplique:</Text>
+            <List size="sm" c="dimmed">
+              <List.Item>Nomes de variáveis e funções</List.Item>
+              <List.Item>Estrutura de funções</List.Item>
+              <List.Item>Comentários e documentação</List.Item>
+              <List.Item>Tratamento de erros</List.Item>
+              <List.Item>Organização de código</List.Item>
+            </List>
           </Alert>
+
+          <Alert color="orange" icon={<IconAlertTriangle size={16} />} radius="md">
+            <Text size="sm" fw={600} mb={4}>⚠️ Cuidado com:</Text>
+            <List size="sm" c="dimmed">
+              <List.Item>Over-engineering (YAGNI)</List.Item>
+              <List.Item>Nomes muito longos</List.Item>
+              <List.Item>Ignorar performance</List.Item>
+            </List>
+          </Alert>
+        </Stack>
+      </div>
+
+      {/* Pitfalls */}
+      <div>
+        <Title order={2} mb="lg">
+          <IconAlertTriangle size={28} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
+          Armadilhas Comuns
+        </Title>
+        
+        <Stack gap="md">
+          {codeExamples.slice(2).map((ex) => (
+            <Card withBorder p="md" key={ex.title} w="100%" style={{ minWidth: 0, width: '100%' }}>
+              <Title order={4} mb="sm">{ex.title}</Title>
+              <Text size="sm" mb="md">{ex.description}</Text>
+              <CodeExample title={ex.title} code={ex.code} />
+            </Card>
+          ))}
+        </Stack>
+      </div>
+
+      {/* Summary */}
+      <Paper withBorder p="xl" radius="md">
+        <Stack gap="md">
+          <Title order={3}>Resumo</Title>
+          <Text>
+            Clean Code é sobre simplicidade e clareza. Se você precisa explicar seu código para funcionar, 
+            você já perdeu. Escreva código que se explica sozinho.
+          </Text>
+          <Text>
+            <strong>Regra de ouro:</strong> Se um dev júnior não entende seu código na primeira leitura, 
+            você está violando Clean Code.
+          </Text>
         </Stack>
       </Paper>
     </Stack>
   );
-} 
+}
+
+CleanCode.metadata = {
+  title: 'Clean Code',
+  description: 'Código legível e manutenível - princípios fundamentais para escrever código que outros devs conseguem entender e manter.'
+};
+
+export default CleanCode; 

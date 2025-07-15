@@ -1,0 +1,27 @@
+[
+  {
+    "title": "❌ Violando SOC",
+    "description": "Componente misturando UI, lógica de negócio e API",
+    "code": "function UserCard({ user }) {\n  const [data, setData] = useState(null);\n  \n  // UI fazendo lógica de negócio\n  const calculateDiscount = (price) => {\n    if (user.type === 'premium') return price * 0.2;\n    if (user.type === 'vip') return price * 0.3;\n    return 0;\n  };\n  \n  // UI fazendo chamada de API\n  useEffect(() => {\n    fetch('/api/users/' + user.id)\n      .then(res => res.json())\n      .then(setData);\n  }, []);\n  \n  return <div>{/* renderização */}</div>;\n}"
+  },
+  {
+    "title": "✅ Seguindo SOC",
+    "description": "Cada parte com sua responsabilidade específica",
+    "code": "// Lógica de negócio separada\nconst calculateDiscount = (user, price) => {\n  if (user.type === 'premium') return price * 0.2;\n  if (user.type === 'vip') return price * 0.3;\n  return 0;\n};\n\n// Serviço de API separado\nconst userService = {\n  getUser: (id) => fetch('/api/users/' + id).then(r => r.json())\n};\n\n// Componente só com UI\nfunction UserCard({ user, discount }) {\n  return <div>{/* só renderização */}</div>;\n}"
+  },
+  {
+    "title": "Camadas Bem Definidas",
+    "description": "Separe claramente as responsabilidades",
+    "code": "// Presentation Layer (UI)\nfunction UserList({ users }) {\n  return users.map(user => <UserCard key={user.id} user={user} />);\n}\n\n// Business Logic Layer\nclass UserService {\n  calculateDiscount(user, price) { ... }\n  validateUser(user) { ... }\n}\n\n// Data Access Layer\nclass UserRepository {\n  async findById(id) { ... }\n  async save(user) { ... }\n}\n\n// Infrastructure Layer\nclass EmailService {\n  sendWelcome(user) { ... }\n}"
+  },
+  {
+    "title": "Identificando Violações",
+    "description": "Como saber se está violando SOC",
+    "code": "// Sinais de violação:\n// 1. Componentes fazendo cálculos complexos\nfunction ProductCard({ product }) {\n  // ❌ Lógica de negócio no componente\n  const finalPrice = product.price * (1 - product.discount);\n  const tax = finalPrice * 0.1;\n  return <div>Total: {finalPrice + tax}</div>;\n}\n\n// 2. Modelos sabendo sobre UI\nclass User {\n  // ❌ Modelo preocupado com apresentação\n  getDisplayName() {\n    return `${this.firstName} ${this.lastName}`;\n  }\n}\n\n// 3. Configuração misturada com código\nfunction apiCall() {\n  // ❌ URL hardcoded\n  return fetch('https://api.example.com/users');\n}"
+  },
+  {
+    "title": "Benefícios da Separação",
+    "description": "Por que SOC vale a pena",
+    "code": "// ✅ Testes mais fáceis\n// Teste só da lógica de negócio\nit('should calculate discount correctly', () => {\n  const discount = calculateDiscount(premiumUser, 100);\n  expect(discount).toBe(20);\n});\n\n// ✅ Reutilização\n// Lógica de negócio pode ser usada em diferentes UIs\nconst discount = calculateDiscount(user, price);\n// Usado em: web, mobile, API, etc.\n\n// ✅ Mudanças isoladas\n// Mudar UI não afeta lógica de negócio\n// Mudar lógica não afeta UI\n// Mudar API não afeta nada"
+  }
+] 
