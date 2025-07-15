@@ -26,7 +26,7 @@ export default function NavMenu({ guides, architectures, patterns, techniques, b
             <IconBook size={16} color="var(--mantine-color-blue-6)" />
             <Title order={6} c="dimmed">Guides</Title>
           </Group>
-          <Stack gap={8}>
+          <Stack gap={4}>
             {guides.map((g) => (
               <NavItem
                 key={g.slug}
@@ -48,7 +48,7 @@ export default function NavMenu({ guides, architectures, patterns, techniques, b
             <IconCheck size={16} color="var(--mantine-color-teal-6)" />
             <Title order={6} c="dimmed">Best Practices</Title>
           </Group>
-          <Stack gap={8}>
+          <Stack gap={4}>
             {bestPractices.map((b) => (
               <NavItem
                 key={b.slug}
@@ -70,7 +70,7 @@ export default function NavMenu({ guides, architectures, patterns, techniques, b
             <IconStack size={16} color="var(--mantine-color-green-6)" />
             <Title order={6} c="dimmed">Architectures</Title>
           </Group>
-          <Stack gap={8}>
+          <Stack gap={4}>
             {architectures.map((a) => (
               <NavItem
                 key={a.slug}
@@ -92,7 +92,7 @@ export default function NavMenu({ guides, architectures, patterns, techniques, b
             <IconPuzzle size={16} color="var(--mantine-color-purple-6)" />
             <Title order={6} c="dimmed">Patterns</Title>
           </Group>
-          <Stack gap={8}>
+          <Stack gap={4}>
             {patterns.map((p) => (
               <NavItem
                 key={p.slug}
@@ -114,7 +114,7 @@ export default function NavMenu({ guides, architectures, patterns, techniques, b
             <IconTools size={16} color="var(--mantine-color-orange-6)" />
             <Title order={6} c="dimmed">Techniques</Title>
           </Group>
-          <Stack gap={8}>
+          <Stack gap={4}>
             {techniques.map((t) => (
               <NavItem
                 key={t.slug}
