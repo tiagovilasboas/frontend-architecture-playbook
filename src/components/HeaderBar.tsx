@@ -31,7 +31,7 @@ export default function HeaderBar({ opened, onBurger }: Props) {
 
   const getTitle = () => {
     if (isSmallMobile) {
-      return 'Arch Playbook';
+      return 'Front-end Arch. Playbook';
     }
     if (isMobile) {
       return 'Front-End Arch Playbook';
