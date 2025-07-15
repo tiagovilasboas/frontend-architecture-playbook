@@ -33,9 +33,11 @@ Este playbook é um guia prático que resolve problemas reais de arquitetura fro
 - **Feature Flags** - Deploy seguro
 - **Atomic Design** - Design systems
 - **JAMstack** - Performance e simplicidade
+- **Security Patterns** - Padrões de segurança e autenticação
 
 ### **🎯 Padrões de Design**
 - **Repository Pattern** - Abstração de acesso a dados
+- **Security Patterns** - Padrões de segurança e autenticação
 - **DRY** - Don't Repeat Yourself (lógica de negócio)
 - **KISS** - Keep It Simple, Stupid
 - **YAGNI** - You Aren't Gonna Need It
@@ -233,6 +235,7 @@ O projeto usa code splitting inteligente:
 
 ### **Padrões**
 - **Repository Pattern** - Abstração de acesso a dados
+- **Security Patterns** - Padrões de segurança e autenticação
 - **Dependency Injection** - Inversão de controle
 - **Observer Pattern** - Desacoplamento
 - **Factory Pattern** - Criação de objetos
