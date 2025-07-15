@@ -31,7 +31,7 @@ export default function Footer() {
         </Group>
         
         <Text size="sm" c="dimmed">
-          Feito com <IconHeart size={14} style={{ verticalAlign: 'middle', color: 'var(--mantine-color-red-6)' }} /> por Tiago Boas
+          Feito com <IconHeart size={14} style={{ verticalAlign: 'middle', color: 'var(--mantine-color-red-6)' }} /> por Tiago Vilas Boas
         </Text>
         
         <Text size="xs" c="dimmed">
