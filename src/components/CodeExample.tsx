@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Paper, Text, Button, Stack, Group, Badge, Tooltip, useMantineTheme, useMantineColorScheme } from '@mantine/core';
+import { Paper, Text, Button, Stack, Group, Badge, Tooltip } from '@mantine/core';
 import { IconChevronDown, IconChevronUp, IconCode, IconCopy, IconCheck } from '@tabler/icons-react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
@@ -25,8 +25,6 @@ export default function CodeExample({
 }: CodeExampleProps) {
   const [expanded, setExpanded] = useState(defaultExpanded);
   const [copied, setCopied] = useState(false);
-  const theme = useMantineTheme();
-  const { colorScheme } = useMantineColorScheme();
 
   // Suporte a string ou objeto
   const codeContent = typeof code === 'string' ? code : code.content;
@@ -118,16 +116,17 @@ export default function CodeExample({
                 margin: 0,
                 padding: 12,
                 overflowX: 'auto' as const,
-                background: colorScheme === 'dark' ? theme.colors.dark[7] : theme.white,
-                color: colorScheme === 'dark' ? theme.colors.gray[0] : theme.colors.gray[9],
-                border: `1px solid ${colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.gray[3]}`,
+                // Fundo escuro fixo, independente do tema
+                background: '#2d2d2d',
+                color: '#f8f8f2',
+                border: '1px solid #444',
               }}
               showLineNumbers
               lineNumberStyle={{
                 minWidth: '1.8em',
                 paddingRight: '0.5em',
                 textAlign: 'left',
-                color: colorScheme === 'dark' ? theme.colors.gray[5] : theme.colors.gray[6],
+                color: '#888',
                 fontVariantNumeric: 'tabular-nums',
               }}
             >

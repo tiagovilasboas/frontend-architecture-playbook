@@ -131,4 +131,4 @@ export default function NavMenu({ guides, architectures, patterns, techniques, b
       </Stack>
     </ScrollArea>
   );
-} 
+}

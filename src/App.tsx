@@ -20,7 +20,7 @@ function App() {
       <Suspense fallback={<LoadingOverlay visible />}>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/:collection/:slug" element={<DocPage />} />
+          <Route path=":collection/:slug" element={<DocPage />} />
         </Routes>
       </Suspense>
     </DocsShell>
