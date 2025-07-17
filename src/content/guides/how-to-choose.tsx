@@ -28,14 +28,20 @@ export default function HowToChoose() {
 
         {/* Decision Wizard */}
         <section>
-          <Paper withBorder p={isMobile ? 'md' : 'xl'} radius="lg">
+          <Paper withBorder p={isMobile ? 'xs' : 'md'} radius="lg">
             <Stack gap={isMobile ? 'sm' : 'lg'}>
               <Stack align="center" ta="center" mb={isMobile ? 'sm' : 'md'}>
                 <Title order={2} mb={isMobile ? 'xs' : 'sm'} size={isMobile ? '1.2rem' : undefined}>
                   <IconRocket size={isMobile ? 20 : 32} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
                   Decision Wizard
                 </Title>
-                <Text size={isMobile ? 'sm' : 'lg'} c="dimmed" maw={600}>
+                <Text 
+                  size={isMobile ? 'xs' : 'lg'} 
+                  c="dimmed" 
+                  maw={isMobile ? '90vw' : 600}
+                  mb={isMobile ? 0 : undefined}
+                  lineClamp={isMobile ? 2 : undefined}
+                >
                   Responde algumas perguntas e descobre qual arquitetura faz mais sentido para o seu projeto.
                 </Text>
               </Stack>
