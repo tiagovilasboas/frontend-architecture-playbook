@@ -114,7 +114,7 @@ export default function DecisionWizard() {
                   key={opt.value}
                   withBorder
                   shadow={isMobile ? undefined : 'sm'}
-                  padding={isMobile ? 'sm' : 'lg'}
+                  padding={isMobile ? 'sm' : 'md'}
                   radius="md"
                   style={{ cursor: 'pointer', minWidth: 0, ...(isMobile ? { marginBottom: 8 } : {}) }}
                   onClick={() => { setProjectType(opt.value); setStep(2); }}
@@ -157,7 +157,7 @@ export default function DecisionWizard() {
                 Mas lembra: isso é só um ponto de partida! A decisão final deve vir do seu conhecimento técnico e das necessidades reais do negócio. Contexto é tudo! 💡
               </Text>
             </Alert>
-            <Stack gap={isMobile ? 2 : 'sm'}>
+            <Stack gap={isMobile ? 2 : 'xs'}>
               {[...patternResults, ...bonusResults].map((pat, index) => (
                 <Card
                   key={pat.slug}
@@ -165,18 +165,18 @@ export default function DecisionWizard() {
                   to={`/patterns/${pat.slug}`}
                   withBorder
                   shadow={isMobile ? undefined : 'md'}
-                  padding={isMobile ? 'xs' : 'xl'}
+                  padding={isMobile ? 'xs' : 'md'}
                   radius="md"
                   className="wizard-recommendation-card"
-                  style={isMobile ? { marginBottom: 6, height: 'auto', display: 'flex', flexDirection: 'column', justifyContent: 'center' } : { marginBottom: 8, aspectRatio: '1 / 1', minHeight: 120, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}
+                  style={isMobile ? { marginBottom: 6, height: 'auto', display: 'flex', flexDirection: 'column', justifyContent: 'center' } : { marginBottom: 8, minHeight: 100, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}
                 >
-                  <Group align="flex-start" gap={isMobile ? 6 : 'md'} wrap="nowrap">
-                    <ThemeIcon size={isMobile ? 28 : 44} radius="md" variant="light" color="gray">
-                      {patternIcons[pat.slug] || <IconPuzzle size={isMobile ? 16 : 28} />}
+                  <Group align="flex-start" gap={isMobile ? 6 : 'sm'} wrap="nowrap">
+                    <ThemeIcon size={isMobile ? 28 : 36} radius="md" variant="light" color="gray">
+                      {patternIcons[pat.slug] || <IconPuzzle size={isMobile ? 16 : 20} />}
                     </ThemeIcon>
                     <div style={{ flex: 1 }}>
                       <Group gap={isMobile ? 2 : 'xs'} align="center" mb={4}>
-                        <Text fw={700} size={isMobile ? 'sm' : 'lg'}>{pat.title}</Text>
+                        <Text fw={700} size={isMobile ? 'sm' : 'md'}>{pat.title}</Text>
                         {index === 0 && (
                           <ThemeIcon size={isMobile ? 14 : 20} radius="sm" variant="light" color="green">
                             <IconBulb size={isMobile ? 10 : 12} />
