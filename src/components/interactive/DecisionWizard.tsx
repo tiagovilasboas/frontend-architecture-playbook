@@ -114,9 +114,9 @@ export default function DecisionWizard() {
                   key={opt.value}
                   withBorder
                   shadow={isMobile ? undefined : 'sm'}
-                  padding={isMobile ? 'sm' : 'md'}
-                  radius="md"
-                  style={{ cursor: 'pointer', minWidth: 0, ...(isMobile ? { marginBottom: 8 } : {}) }}
+                  padding={isMobile ? 'xs' : 'md'}
+                  radius={isMobile ? 'sm' : 'md'}
+                  style={{ cursor: 'pointer', minWidth: 0, ...(isMobile ? { marginBottom: 4 } : {}) }}
                   onClick={() => { setProjectType(opt.value); setStep(2); }}
                 >
                   <Text fw={600} size={isMobile ? 'xs' : 'sm'}>{opt.label}</Text>
@@ -216,7 +216,7 @@ export default function DecisionWizard() {
   };
 
   return (
-    <Stack gap="xl" className="wizard-container">
+    <Stack gap={isMobile ? 4 : 'md'} className="wizard-container">
       {renderStep()}
     </Stack>
   );
