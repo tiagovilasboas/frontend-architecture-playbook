@@ -9,7 +9,7 @@ function SPA() {
       {/* Hero Section */}
       <div>
         <Title order={1} mb="md">
-          Single Page Application (SPA)
+          Single Page Application
         </Title>
         <Text size="lg" c="dimmed">
           Uma página, múltiplas rotas. JavaScript renderiza tudo, 
@@ -31,7 +31,7 @@ function SPA() {
           </Group>
           
           <Text>
-            SPA é sobre uma coisa só: <strong>JavaScript renderiza tudo</strong>.
+            Single Page Application é sobre uma coisa só: <strong>JavaScript renderiza tudo</strong>.
           </Text>
           
           <Text>
@@ -327,7 +327,7 @@ function SPA() {
             </Text>
             <Text>
               <strong>Solução:</strong> SSR (Next.js), SSG (Gatsby), 
-              ou SPA para conteúdo privado.
+              ou Single Page Application para conteúdo privado.
             </Text>
           </Alert>
 
@@ -397,14 +397,14 @@ function SPA() {
 
       {/* Summary */}
       <Paper withBorder p="xl" radius="md">
-        <Title order={2} mb="md">
-          <IconCheck size={28} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
-          Resumo - SPA
-        </Title>
+                  <Title order={2} mb="md">
+            <IconCheck size={28} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
+            Resumo - Single Page Application
+          </Title>
         
         <Stack gap="md">
           <Text>
-            <strong>SPA é sobre:</strong> JavaScript renderiza tudo, uma página HTML, 
+            <strong>Single Page Application é sobre:</strong> JavaScript renderiza tudo, uma página HTML, 
             navegação instantânea, experiência de app nativo.
           </Text>
           
@@ -432,5 +432,10 @@ function SPA() {
     </Stack>
   );
 }
+
+SPA.metadata = {
+  title: 'Single Page Application',
+  description: 'Uma página, múltiplas rotas. JavaScript renderiza tudo, navegação instantânea, experiência de app nativo.',
+};
 
 export default SPA;

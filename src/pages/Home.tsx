@@ -292,7 +292,87 @@ export default function Home() {
               <Stack gap={isMobile ? 12 : 20} align="center" ta="center">
                 {/* Highway Animation - Dentro da seção */}
                 <div style={{ margin: isMobile ? '8px 0 8px 0' : '12px 0 12px 0', width: '100%' }}>
-                  <HighwayAnimationCanvas />
+                  {isMobile ? (
+                    <div style={{
+                      height: 160,
+                      background: 'linear-gradient(90deg, var(--mantine-color-dark-6) 0%, var(--mantine-color-dark-7) 100%)',
+                      borderRadius: 8,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      position: 'relative',
+                      overflow: 'hidden',
+                    }}>
+                      {/* Linhas da rodovia estáticas */}
+                      <div style={{
+                        position: 'absolute',
+                        top: '50%',
+                        left: 0,
+                        right: 0,
+                        height: 4,
+                        background: 'linear-gradient(90deg, transparent 0%, #fff 20%, #fff 80%, transparent 100%)',
+                        opacity: 0.5,
+                        transform: 'translateY(-50%)',
+                      }} />
+                      <div style={{
+                        position: 'absolute',
+                        top: '30%',
+                        left: 0,
+                        right: 0,
+                        height: 2,
+                        background: 'linear-gradient(90deg, transparent 0%, #fff 20%, #fff 80%, transparent 100%)',
+                        opacity: 0.3,
+                      }} />
+                      <div style={{
+                        position: 'absolute',
+                        top: '70%',
+                        left: 0,
+                        right: 0,
+                        height: 2,
+                        background: 'linear-gradient(90deg, transparent 0%, #fff 20%, #fff 80%, transparent 100%)',
+                        opacity: 0.3,
+                      }} />
+                      {/* Carros estáticos */}
+                      <div style={{
+                        position: 'absolute',
+                        left: '20%',
+                        top: '25%',
+                        width: 40,
+                        height: 20,
+                        background: '#4DABF7',
+                        borderRadius: 4,
+                        boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
+                        transform: 'translateY(-50%)',
+                      }} />
+                      <div style={{
+                        position: 'absolute',
+                        right: '30%',
+                        top: '50%',
+                        width: 35,
+                        height: 18,
+                        background: '#51CF66',
+                        borderRadius: 4,
+                        boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
+                        transform: 'translateY(-50%)',
+                      }} />
+                      <div style={{
+                        position: 'absolute',
+                        left: '60%',
+                        top: '75%',
+                        width: 45,
+                        height: 22,
+                        background: '#FFD43B',
+                        borderRadius: 4,
+                        boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
+                        transform: 'translateY(-50%)',
+                      }} />
+                      <Text size="sm" c="dimmed" style={{ zIndex: 1, position: 'relative', marginTop: 120 }}>
+                        Arquitetura em movimento
+                      </Text>
+                    </div>
+                  ) : (
+                    <HighwayAnimationCanvas />
+                  )}
                 </div>
                 <Text size="lg" c="dimmed" lh={1.6} mt={isMobile ? 4 : 8} mb={isMobile ? 4 : 8} ta="left">
                   Arquitetura de software é como arquitetura civil: sem alicerce, não escala. Sem base sólida, não cresce.

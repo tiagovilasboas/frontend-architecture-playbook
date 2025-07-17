@@ -2,56 +2,56 @@
   {
     "id": "spa-routing",
     "title": "Client-side Routing",
-    "description": "Client-side routing em SPA",
+    "description": "Client-side routing em Single Page Application",
     "file": "spa",
     "content": "// Client-side Routing\nimport { BrowserRouter, Routes, Route } from 'react-router-dom';\n\nfunction App() {\n  return (\n    <BrowserRouter>\n      <Routes>\n        <Route path=\"/\" element={<Home />} />\n        <Route path=\"/products\" element={<Products />} />\n        <Route path=\"/products/:id\" element={<ProductDetail />} />\n        <Route path=\"/cart\" element={<Cart />} />\n        <Route path=\"*\" element={<NotFound />} />\n      </Routes>\n    </BrowserRouter>\n  );\n}\n\n// Navegação sem reload\n// URLs limpas\n// Transições suaves"
   },
   {
     "id": "spa-state-management",
     "title": "State Management",
-    "description": "State management em SPA",
+    "description": "State management em Single Page Application",
     "file": "spa",
     "content": "// State Management\nimport { createStore } from 'redux';\n\nconst initialState = {\n  user: null,\n  cart: [],\n  products: []\n};\n\nconst reducer = (state = initialState, action) => {\n  switch (action.type) {\n    case 'SET_USER':\n      return { ...state, user: action.payload };\n    case 'ADD_TO_CART':\n      return { ...state, cart: [...state.cart, action.payload] };\n    default:\n      return state;\n  }\n};\n\nconst store = createStore(reducer);\n\n// Estado centralizado\n// Mudanças previsíveis\n// Debugging fácil"
   },
   {
     "id": "spa-api-calls",
     "title": "API Calls",
-    "description": "Chamadas de API em SPA",
+    "description": "Chamadas de API em Single Page Application",
     "file": "spa",
     "content": "// API Calls\nasync function fetchProducts() {\n  const response = await fetch('/api/products');\n  const products = await response.json();\n  return products;\n}\n\nasync function createOrder(orderData) {\n  const response = await fetch('/api/orders', {\n    method: 'POST',\n    headers: {\n      'Content-Type': 'application/json'\n    },\n    body: JSON.stringify(orderData)\n  });\n  return response.json();\n}\n\n// Comunicação com backend\n// Dados dinâmicos\n// Interações em tempo real"
   },
   {
     "id": "spa-pitfall-seo",
     "title": "Problemas de SEO",
-    "description": "Problema: SEO ruim em SPA",
+    "description": "Problema: SEO ruim em Single Page Application",
     "file": "spa",
-    "content": "// ❌ RUIM - SPA puro\n// Tudo renderizado no cliente\n// Crawlers não veem conteúdo\n\n// index.html\n<!DOCTYPE html>\n<html>\n<head>\n  <title>E-commerce</title>\n</head>\n<body>\n  <div id=\"root\"></div>\n  <script src=\"/app.js\"></script>\n</body>\n</html>\n\n// app.js\nfunction App() {\n  return (\n    <div>\n      <h1>Produtos Incríveis</h1>\n      <p>Descrição dos produtos...</p>\n    </div>\n  );\n}\n\n// Problemas:\n// - Crawlers veem só <div id=\"root\"></div>\n// - SEO ruim\n// - Social sharing quebrado\n\n// ✅ BOM - SPA + SSR\n// next.config.js\nmodule.exports = {\n  async rewrites() {\n    return [\n      {\n        source: '/products/:id',\n        destination: '/api/products/:id'\n      }\n    ];\n  }\n};\n\n// pages/products/[id].js\nexport async function getServerSideProps({ params }) {\n  const product = await fetchProduct(params.id);\n  \n  return {\n    props: {\n      product,\n      meta: {\n        title: product.name,\n        description: product.description\n      }\n    }\n  };\n}\n\n// HTML pré-renderizado\n// Meta tags dinâmicas\n// SEO perfeito"
+    "content": "// ❌ RUIM - Single Page Application puro\n// Tudo renderizado no cliente\n// Crawlers não veem conteúdo\n\n// index.html\n<!DOCTYPE html>\n<html>\n<head>\n  <title>E-commerce</title>\n</head>\n<body>\n  <div id=\"root\"></div>\n  <script src=\"/app.js\"></script>\n</body>\n</html>\n\n// app.js\nfunction App() {\n  return (\n    <div>\n      <h1>Produtos Incríveis</h1>\n      <p>Descrição dos produtos...</p>\n    </div>\n  );\n}\n\n// Problemas:\n// - Crawlers veem só <div id=\"root\"></div>\n// - SEO ruim\n// - Social sharing quebrado\n\n// ✅ BOM - SPA + SSR\n// next.config.js\nmodule.exports = {\n  async rewrites() {\n    return [\n      {\n        source: '/products/:id',\n        destination: '/api/products/:id'\n      }\n    ];\n  }\n};\n\n// pages/products/[id].js\nexport async function getServerSideProps({ params }) {\n  const product = await fetchProduct(params.id);\n  \n  return {\n    props: {\n      product,\n      meta: {\n        title: product.name,\n        description: product.description\n      }\n    }\n  };\n}\n\n// HTML pré-renderizado\n// Meta tags dinâmicas\n// SEO perfeito"
   },
   {
     "id": "spa-pitfall-performance",
     "title": "Performance Lenta",
-    "description": "Problema: Performance lenta em SPA",
+    "description": "Problema: Performance lenta em Single Page Application",
     "file": "spa",
     "content": "// ❌ RUIM - Bundle gigante\n// app.js - 2MB\n// Carregamento lento\n// Time to Interactive alto\n\n// ✅ BOM - Code splitting\n// App.js\nimport { lazy, Suspense } from 'react';\n\nconst Products = lazy(() => import('./pages/Products'));\nconst Cart = lazy(() => import('./pages/Cart'));\nconst Checkout = lazy(() => import('./pages/Checkout'));\n\nfunction App() {\n  return (\n    <Suspense fallback={<Loading />}>\n      <Routes>\n        <Route path=\"/products\" element={<Products />} />\n        <Route path=\"/cart\" element={<Cart />} />\n        <Route path=\"/checkout\" element={<Checkout />} />\n      </Routes>\n    </Suspense>\n  );\n}\n\n// Bundle inicial pequeno\n// Carregamento sob demanda\n// Performance otimizada"
   },
   {
     "id": "spa-pitfall-accessibility",
     "title": "Problemas de Acessibilidade",
-    "description": "Problema: Acessibilidade ruim em SPA",
+    "description": "Problema: Acessibilidade ruim em Single Page Application",
     "file": "spa",
     "content": "// ❌ RUIM - Sem acessibilidade\nfunction ProductList() {\n  return (\n    <div>\n      {products.map(product => (\n        <div key={product.id}>\n          <img src={product.image} />\n          <span>{product.name}</span>\n          <button onClick={() => addToCart(product)}>\n            Adicionar\n          </button>\n        </div>\n      ))}\n    </div>\n  );\n}\n\n// Problemas:\n// - Sem landmarks\n// - Sem ARIA labels\n// - Navegação por teclado quebrada\n// - Screen readers não funcionam\n\n// ✅ BOM - Acessível\nfunction ProductList() {\n  return (\n    <main role=\"main\">\n      <h1>Produtos</h1>\n      <ul role=\"list\">\n        {products.map(product => (\n          <li key={product.id} role=\"listitem\">\n            <article>\n              <img \n                src={product.image} \n                alt={`${product.name} - ${product.description}`}\n              />\n              <h2>{product.name}</h2>\n              <p>{product.description}</p>\n              <button \n                onClick={() => addToCart(product)}\n                aria-label={`Adicionar ${product.name} ao carrinho`}\n              >\n                Adicionar\n              </button>\n            </article>\n          </li>\n        ))}\n      </ul>\n    </main>\n  );\n}\n\n// Landmarks corretos\n// ARIA labels\n// Navegação por teclado\n// Screen reader friendly"
   },
   {
     "id": "spa-pitfall-offline",
     "title": "Funciona Só Online",
-    "description": "Problema: SPA não funciona offline",
+    "description": "Problema: Single Page Application não funciona offline",
     "file": "spa",
     "content": "// ❌ RUIM - Só funciona online\nfunction App() {\n  const [products, setProducts] = useState([]);\n  \n  useEffect(() => {\n    fetch('/api/products')\n      .then(res => res.json())\n      .then(setProducts);\n  }, []);\n  \n  return <ProductList products={products} />;\n}\n\n// Problemas:\n// - Não funciona offline\n// - Sem cache\n// - UX ruim\n\n// ✅ BOM - PWA\n// public/manifest.json\n{\n  \"name\": \"E-commerce App\",\n  \"short_name\": \"Shop\",\n  \"start_url\": \"/\",\n  \"display\": \"standalone\",\n  \"background_color\": \"#ffffff\",\n  \"theme_color\": \"#000000\"\n}\n\n// public/sw.js\nself.addEventListener('fetch', event => {\n  event.respondWith(\n    caches.match(event.request)\n      .then(response => {\n        return response || fetch(event.request);\n      })\n  );\n});\n\n// App.js\nfunction App() {\n  const [products, setProducts] = useState([]);\n  \n  useEffect(() => {\n    // Tenta cache primeiro\n    caches.match('/api/products')\n      .then(response => response?.json())\n      .then(cachedProducts => {\n        if (cachedProducts) {\n          setProducts(cachedProducts);\n        }\n        \n        // Atualiza do servidor\n        return fetch('/api/products');\n      })\n      .then(res => res.json())\n      .then(freshProducts => {\n        setProducts(freshProducts);\n        // Salva no cache\n        caches.open('v1').then(cache => {\n          cache.put('/api/products', new Response(JSON.stringify(freshProducts)));\n        });\n      });\n  }, []);\n  \n  return <ProductList products={products} />;\n}\n\n// Funciona offline\n// Cache inteligente\n// UX excelente"
   },
   {
     "id": "spa-pitfall-security",
     "title": "Problemas de Segurança",
-    "description": "Problema: Segurança frágil em SPA",
+    "description": "Problema: Segurança frágil em Single Page Application",
     "file": "spa",
     "content": "// ❌ RUIM - Segurança frágil\nfunction App() {\n  const [user, setUser] = useState(null);\n  \n  const login = (credentials) => {\n    fetch('/api/login', {\n      method: 'POST',\n      body: JSON.stringify(credentials)\n    })\n    .then(res => res.json())\n    .then(user => {\n      setUser(user);\n      localStorage.setItem('user', JSON.stringify(user));\n    });\n  };\n  \n  // Problemas:\n  // - Credenciais em localStorage\n  // - Sem HTTPS\n  // - Sem validação\n  // - XSS vulnerável\n\n// ✅ BOM - Segurança robusta\nfunction App() {\n  const [user, setUser] = useState(null);\n  \n  const login = async (credentials) => {\n    const response = await fetch('/api/login', {\n      method: 'POST',\n      headers: {\n        'Content-Type': 'application/json'\n      },\n      body: JSON.stringify(credentials)\n    });\n    \n    if (response.ok) {\n      const { user, token } = await response.json();\n      \n      // Token seguro\n      sessionStorage.setItem('token', token);\n      setUser(user);\n    }\n  };\n  \n  // Interceptor para requests\n  const apiCall = async (url, options = {}) => {\n    const token = sessionStorage.getItem('token');\n    \n    const response = await fetch(url, {\n      ...options,\n      headers: {\n        ...options.headers,\n        'Authorization': `Bearer ${token}`\n      }\n    });\n    \n    if (response.status === 401) {\n      // Token expirado\n      sessionStorage.removeItem('token');\n      setUser(null);\n    }\n    \n    return response;\n  };\n}\n\n// HTTPS obrigatório\n// Tokens seguros\n// Validação robusta\n// XSS protegido"
   }
