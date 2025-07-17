@@ -146,7 +146,7 @@ export default function Home() {
               
               <motion.div variants={itemVariants}>
                 {isMobile ? (
-                  <Stack gap="sm" w="100%">
+                  <Stack gap="sm" w="100%" style={{ width: '100%' }}>
                     <motion.div {...mobileAnimationProps}>
                       <Button 
                         component={Link} 
@@ -156,6 +156,7 @@ export default function Home() {
                         leftSection={<IconRocket size={16} />}
                         rightSection={<IconArrowRight size={12} />}
                         fullWidth
+                        style={{ width: '100%' }}
                       >
                         Encontre sua Arquitetura
                       </Button>
@@ -170,6 +171,7 @@ export default function Home() {
                         leftSection={<IconShield size={16} />}
                         rightSection={<IconArrowRight size={12} />}
                         fullWidth
+                        style={{ width: '100%' }}
                       >
                         Dependency Rule
                       </Button>
@@ -184,6 +186,7 @@ export default function Home() {
                         variant="outline"
                         leftSection={<IconBrandGithub size={16} />}
                         fullWidth
+                        style={{ width: '100%' }}
                       >
                         Ver repositório no GitHub
                       </Button>
@@ -294,81 +297,21 @@ export default function Home() {
                 <div style={{ margin: isMobile ? '8px 0 8px 0' : '12px 0 12px 0', width: '100%' }}>
                   {isMobile ? (
                     <div style={{
-                      height: 160,
-                      background: 'linear-gradient(90deg, var(--mantine-color-dark-6) 0%, var(--mantine-color-dark-7) 100%)',
-                      borderRadius: 8,
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
                       position: 'relative',
-                      overflow: 'hidden',
                     }}>
-                      {/* Linhas da rodovia estáticas */}
-                      <div style={{
-                        position: 'absolute',
-                        top: '50%',
-                        left: 0,
-                        right: 0,
-                        height: 4,
-                        background: 'linear-gradient(90deg, transparent 0%, #fff 20%, #fff 80%, transparent 100%)',
-                        opacity: 0.5,
-                        transform: 'translateY(-50%)',
-                      }} />
-                      <div style={{
-                        position: 'absolute',
-                        top: '30%',
-                        left: 0,
-                        right: 0,
-                        height: 2,
-                        background: 'linear-gradient(90deg, transparent 0%, #fff 20%, #fff 80%, transparent 100%)',
-                        opacity: 0.3,
-                      }} />
-                      <div style={{
-                        position: 'absolute',
-                        top: '70%',
-                        left: 0,
-                        right: 0,
-                        height: 2,
-                        background: 'linear-gradient(90deg, transparent 0%, #fff 20%, #fff 80%, transparent 100%)',
-                        opacity: 0.3,
-                      }} />
-                      {/* Carros estáticos */}
-                      <div style={{
-                        position: 'absolute',
-                        left: '20%',
-                        top: '25%',
-                        width: 40,
-                        height: 20,
-                        background: '#4DABF7',
-                        borderRadius: 4,
-                        boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
-                        transform: 'translateY(-50%)',
-                      }} />
-                      <div style={{
-                        position: 'absolute',
-                        right: '30%',
-                        top: '50%',
-                        width: 35,
-                        height: 18,
-                        background: '#51CF66',
-                        borderRadius: 4,
-                        boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
-                        transform: 'translateY(-50%)',
-                      }} />
-                      <div style={{
-                        position: 'absolute',
-                        left: '60%',
-                        top: '75%',
-                        width: 45,
-                        height: 22,
-                        background: '#FFD43B',
-                        borderRadius: 4,
-                        boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
-                        transform: 'translateY(-50%)',
-                      }} />
-                      <Text size="sm" c="dimmed" style={{ zIndex: 1, position: 'relative', marginTop: 120 }}>
-                        Arquitetura em movimento
-                      </Text>
+                      <img 
+                        src="/assets/cars/highway-mobile.png" 
+                        alt="Arquitetura em movimento"
+                        style={{
+                          width: '100%',
+                          maxWidth: 400,
+                          height: 'auto',
+                          borderRadius: 8,
+                        }}
+                      />
                     </div>
                   ) : (
                     <HighwayAnimationCanvas />
@@ -671,13 +614,22 @@ export default function Home() {
             <Text size="lg" c="dimmed" ta="center" mb="lg">
               Experiência real em arquiteturas front-end - sem bullshit
             </Text>
-            <SimpleGrid cols={{ base: 1, sm: 2, md: 4 }} spacing="md" mb="lg">
+            <SimpleGrid 
+              cols={{ base: 1, sm: 2, md: 4 }} 
+              spacing={isMobile ? 'sm' : 'md'} 
+              mb="lg"
+              style={{ 
+                gap: isMobile ? '0.75rem' : '1rem',
+                marginBottom: isMobile ? '1.5rem' : '2rem'
+              }}
+            >
               <motion.div {...mobileCardAnimationProps}>
                 <StatsCard 
                   icon={IconCode}
                   value="13+"
                   label="Arquiteturas Dominadas"
                   color="brand"
+                  layout="auto"
                 />
               </motion.div>
               <motion.div {...mobileCardAnimationProps}>
@@ -686,6 +638,7 @@ export default function Home() {
                   value="18"
                   label="Anos de Experiência"
                   color="green"
+                  layout="auto"
                 />
               </motion.div>
               <motion.div {...mobileCardAnimationProps}>
@@ -694,6 +647,7 @@ export default function Home() {
                   value="50+"
                   label="Projetos Entregues"
                   color="brand"
+                  layout="auto"
                 />
               </motion.div>
               <motion.div {...mobileCardAnimationProps}>
@@ -702,6 +656,7 @@ export default function Home() {
                   value="100%"
                   label="Código Testado"
                   color="orange"
+                  layout="auto"
                 />
               </motion.div>
             </SimpleGrid>
