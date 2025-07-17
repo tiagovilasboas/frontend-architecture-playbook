@@ -17,5 +17,12 @@
 
 /* Evita o "pulo" durante transições */
 .wizard-container {
-  min-height: 400px;
+  min-height: 0 !important;
+}
+
+@media (max-width: 600px) {
+  .wizard-container {
+    min-height: 0 !important;
+    padding-bottom: 0 !important;
+  }
 } 

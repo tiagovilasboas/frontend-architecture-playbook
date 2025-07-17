@@ -1,137 +1,194 @@
 import { recommendationsForTest } from './recommendationsForTest';
 
 describe('DecisionWizard recommendations', () => {
-  it('MVP com prazo apertado recomenda SPA em primeiro', () => {
+  it('MVP recomenda SPA em primeiro', () => {
     const result = recommendationsForTest({
       projectType: 'mvp',
-      teamSize: 'small',
-      timeConstraint: 'tight',
-      integrationNeeds: 'simple',
-      scalePlans: 'niche',
+      willGrow: false,
+      hasIntegrations: false,
     });
     expect(result[0]).toBe('spa');
     expect(result).toContain('spa');
+    expect(result).toContain('jamstack');
   });
 
-  it('SaaS com crescimento recomenda Clean Architecture', () => {
+  it('MVP com integrações recomenda Islands Architecture', () => {
+    const result = recommendationsForTest({
+      projectType: 'mvp',
+      willGrow: false,
+      hasIntegrations: true,
+    });
+    expect(result).toContain('spa');
+    expect(result).toContain('jamstack');
+    expect(result).toContain('islands-architecture');
+  });
+
+  it('SaaS recomenda Clean Architecture', () => {
     const result = recommendationsForTest({
       projectType: 'saas',
-      teamSize: 'medium',
-      timeConstraint: 'normal',
-      integrationNeeds: 'moderate',
-      scalePlans: 'growth',
+      willGrow: false,
+      hasIntegrations: false,
     });
-    expect(result).toContain('clean-architecture');
     expect(result[0]).toBe('clean-architecture');
+    expect(result).toContain('component-driven');
   });
 
-  it('E-commerce com integrações complexas recomenda Event-Driven', () => {
+  it('SaaS com crescimento recomenda Monorepo', () => {
+    const result = recommendationsForTest({
+      projectType: 'saas',
+      willGrow: true,
+      hasIntegrations: false,
+    });
+    expect(result).toContain('clean-architecture');
+    expect(result).toContain('component-driven');
+    expect(result).toContain('monorepo');
+  });
+
+  it('SaaS com integrações recomenda Feature Flags', () => {
+    const result = recommendationsForTest({
+      projectType: 'saas',
+      willGrow: false,
+      hasIntegrations: true,
+    });
+    expect(result).toContain('clean-architecture');
+    expect(result).toContain('component-driven');
+    expect(result).toContain('feature-flags');
+  });
+
+  it('E-commerce recomenda Event-Driven', () => {
     const result = recommendationsForTest({
       projectType: 'ecommerce',
-      teamSize: 'medium',
-      timeConstraint: 'normal',
-      integrationNeeds: 'complex',
-      scalePlans: 'growth',
+      willGrow: false,
+      hasIntegrations: false,
+    });
+    expect(result[0]).toBe('event-driven');
+    expect(result).toContain('clean-architecture');
+  });
+
+  it('E-commerce com integrações recomenda State Machines', () => {
+    const result = recommendationsForTest({
+      projectType: 'ecommerce',
+      willGrow: false,
+      hasIntegrations: true,
     });
     expect(result).toContain('event-driven');
-    expect(result[0]).toBe('event-driven');
+    expect(result).toContain('clean-architecture');
+    expect(result).toContain('state-machines');
   });
 
-  it('Enterprise com time grande recomenda Micro-frontends', () => {
+  it('Dashboard recomenda Component-Driven', () => {
+    const result = recommendationsForTest({
+      projectType: 'dashboard',
+      willGrow: false,
+      hasIntegrations: false,
+    });
+    expect(result[0]).toBe('component-driven');
+    expect(result).toContain('atomic-design');
+    expect(result).toContain('spa');
+  });
+
+  it('Enterprise com crescimento recomenda Micro-frontends', () => {
     const result = recommendationsForTest({
       projectType: 'enterprise',
-      teamSize: 'large',
-      timeConstraint: 'normal',
-      integrationNeeds: 'moderate',
-      scalePlans: 'growth',
+      willGrow: true,
+      hasIntegrations: false,
     });
-    expect(result).toContain('micro-frontends');
     expect(result[0]).toBe('micro-frontends');
+    expect(result).toContain('monorepo');
+    expect(result).toContain('clean-architecture');
   });
 
-  it('Startup com escala massiva recomenda Micro-frontends', () => {
+  it('Enterprise sem crescimento recomenda Monorepo', () => {
+    const result = recommendationsForTest({
+      projectType: 'enterprise',
+      willGrow: false,
+      hasIntegrations: false,
+    });
+    expect(result[0]).toBe('monorepo');
+    expect(result).toContain('clean-architecture');
+  });
+
+  it('Enterprise com integrações recomenda Feature Flags', () => {
+    const result = recommendationsForTest({
+      projectType: 'enterprise',
+      willGrow: false,
+      hasIntegrations: true,
+    });
+    expect(result).toContain('monorepo');
+    expect(result).toContain('clean-architecture');
+    expect(result).toContain('feature-flags');
+  });
+
+  it('Startup com crescimento recomenda Micro-frontends', () => {
     const result = recommendationsForTest({
       projectType: 'startup',
-      teamSize: 'medium',
-      timeConstraint: 'normal',
-      integrationNeeds: 'moderate',
-      scalePlans: 'massive',
+      willGrow: true,
+      hasIntegrations: false,
     });
-    expect(result).toContain('micro-frontends');
     expect(result[0]).toBe('micro-frontends');
-  });
-
-  it('Solo dev com prazo flexível recomenda Clean Architecture', () => {
-    const result = recommendationsForTest({
-      projectType: 'dashboard',
-      teamSize: 'solo',
-      timeConstraint: 'flexible',
-      integrationNeeds: 'simple',
-      scalePlans: 'niche',
-    });
     expect(result).toContain('clean-architecture');
-    expect(result[0]).toBe('clean-architecture');
+    expect(result).toContain('event-driven');
+    // Monorepo pode não estar nos top 3, mas deve estar na lista completa
   });
 
-  it('Time médio com integrações moderadas recomenda SPA', () => {
+  it('Startup sem crescimento recomenda Clean Architecture', () => {
     const result = recommendationsForTest({
-      projectType: 'dashboard',
-      teamSize: 'medium',
-      timeConstraint: 'normal',
-      integrationNeeds: 'moderate',
-      scalePlans: 'growth',
+      projectType: 'startup',
+      willGrow: false,
+      hasIntegrations: false,
     });
-    expect(result).toContain('spa');
-    expect(result[0]).toBe('spa');
+    expect(result[0]).toBe('clean-architecture');
+    expect(result).toContain('event-driven');
   });
 
   it('Fallback retorna pelo menos uma sugestão', () => {
     const result = recommendationsForTest({
       projectType: 'dashboard',
-      teamSize: 'medium',
-      timeConstraint: 'normal',
-      integrationNeeds: 'simple',
-      scalePlans: 'niche',
+      willGrow: false,
+      hasIntegrations: false,
     });
     expect(result.length).toBeGreaterThan(0);
-    expect(result).toContain('spa');
+    expect(result).toContain('component-driven');
   });
 
   it('Se faltar respostas, retorna array vazio', () => {
     const result = recommendationsForTest({
       projectType: null,
-      teamSize: null,
-      timeConstraint: null,
-      integrationNeeds: null,
-      scalePlans: null,
+      willGrow: null,
+      hasIntegrations: null,
     });
     expect(result).toEqual([]);
   });
 
-  it('todas as combinações possíveis retornam pelo menos uma arquitetura', () => {
+  it('todas as 24 combinações possíveis retornam pelo menos uma arquitetura', () => {
     const projectTypes = ['mvp', 'saas', 'ecommerce', 'dashboard', 'enterprise', 'startup'];
-    const teamSizes = ['solo', 'small', 'medium', 'large'];
-    const timeConstraints = ['tight', 'normal', 'flexible'];
-    const integrationNeeds = ['simple', 'moderate', 'complex'];
-    const scalePlans = ['niche', 'growth', 'massive'];
-
+    const willGrowOptions = [true, false];
+    const hasIntegrationsOptions = [true, false];
+    let tested = 0;
     for (const projectType of projectTypes) {
-      for (const teamSize of teamSizes) {
-        for (const timeConstraint of timeConstraints) {
-          for (const integrationNeedsValue of integrationNeeds) {
-            for (const scalePlansValue of scalePlans) {
-              const result = recommendationsForTest({
-                projectType,
-                teamSize,
-                timeConstraint,
-                integrationNeeds: integrationNeedsValue,
-                scalePlans: scalePlansValue,
-              });
-              expect(result.length).toBeGreaterThan(0);
-            }
-          }
+      for (const willGrow of willGrowOptions) {
+        for (const hasIntegrations of hasIntegrationsOptions) {
+          tested++;
+          const result = recommendationsForTest({
+            projectType,
+            willGrow,
+            hasIntegrations,
+          });
+          expect(Array.isArray(result)).toBe(true);
+          expect(result.length).toBeGreaterThan(0);
         }
       }
     }
+    expect(tested).toBe(24);
+  });
+
+  it('garante que sempre retorna pelo menos uma arquitetura mesmo com dados inválidos', () => {
+    const result = recommendationsForTest({
+      projectType: 'invalid-type',
+      willGrow: false,
+      hasIntegrations: false,
+    });
+    expect(result.length).toBeGreaterThan(0);
+    expect(result).toContain('spa');
   });
 }); 
