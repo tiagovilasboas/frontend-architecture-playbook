@@ -1,12 +1,12 @@
-import { Title, Text, Stack, Paper, Code, Alert, Badge, Group } from '@mantine/core';
+import { Title, Text, Stack, Paper, Code, Alert, Badge, Group, SimpleGrid } from '@mantine/core';
 import { 
   IconBulb, 
   IconCheck, 
   IconCode, 
-  IconShield
+  IconShield,
+  IconRocket
 } from '@tabler/icons-react';
-import { FeatureCard } from '../components/ui';
-import { IconRocket } from '@tabler/icons-react';
+import { FeatureCard, StatsCard } from '../components/ui';
 
 export function DesignSystemExamples() {
   return (
@@ -214,18 +214,92 @@ export function FeatureCard({ icon: Icon, title, description, color = 'brand', .
 }
 
 // src/components/ui/StatsCard.tsx
-export function StatsCard({ icon: Icon, value, label, color = 'brand', ...props }) {
+export function StatsCard({ 
+  icon: Icon, 
+  value, 
+  label, 
+  color = 'brand', 
+  layout = 'auto',
+  iconSize,
+  ...props 
+}) {
+  const isMobile = useMediaQuery('(max-width: 600px)');
+  const isSmallMobile = useMediaQuery('(max-width: 400px)');
+  
+  // Layout automático: horizontal no mobile, vertical no desktop
+  const finalLayout = layout === 'auto' ? (isMobile ? 'horizontal' : 'vertical') : layout;
+  
+  // Tamanhos responsivos
+  const finalIconSize = iconSize || (isSmallMobile ? 32 : isMobile ? 40 : 50);
+  const iconInnerSize = finalIconSize * 0.5;
+  const titleSize = isSmallMobile ? 'h5' : isMobile ? 'h4' : 'h3';
+  const textSize = isSmallMobile ? 'xs' : isMobile ? 'sm' : 'md';
+  const padding = isSmallMobile ? 'sm' : isMobile ? 'md' : 'lg';
+  
+  if (finalLayout === 'horizontal') {
+    return (
+      <Card withBorder p={padding} radius="md" {...props}>
+        <Group gap="sm" align="center" justify="flex-start">
+          <ThemeIcon size={finalIconSize} radius="md" variant="light" color={color}>
+            <Icon size={iconInnerSize} />
+          </ThemeIcon>
+          <Stack gap={2} style={{ flex: 1, minWidth: 0 }}>
+            <Title order={3} size={titleSize}>{value}</Title>
+            <Text size={textSize} c="dimmed">{label}</Text>
+          </Stack>
+        </Group>
+      </Card>
+    );
+  }
+  
   return (
-    <Card withBorder p="md" radius="md" ta="center" {...props}>
-      <ThemeIcon size={50} radius="md" variant="light" color={color} mb="sm">
-        <Icon size={25} />
+    <Card withBorder p={padding} radius="md" ta="center" {...props}>
+      <ThemeIcon size={finalIconSize} radius="md" variant="light" color={color} mb="sm">
+        <Icon size={iconInnerSize} />
       </ThemeIcon>
-      <Title order={3} size="h4">{value}</Title>
-      <Text size="sm" c="dimmed">{label}</Text>
+      <Title order={3} size={titleSize}>{value}</Title>
+      <Text size={textSize} c="dimmed">{label}</Text>
     </Card>
   );
 }`}
             </Code>
+          </div>
+
+          <div>
+            <Badge color="blue" mb="xs">📱 Melhorias Mobile - StatsCard</Badge>
+            <Text size="sm" c="dimmed" mb="md">
+              O StatsCard agora tem layout responsivo automático para melhor experiência mobile
+            </Text>
+            
+            <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="md" mb="lg">
+              <div>
+                <Text size="sm" fw={500} mb="xs">Desktop (Layout Vertical)</Text>
+                <StatsCard 
+                  icon={IconCode}
+                  value="13+"
+                  label="Arquiteturas Dominadas"
+                  color="brand"
+                  layout="vertical"
+                />
+              </div>
+              <div>
+                <Text size="sm" fw={500} mb="xs">Mobile (Layout Horizontal)</Text>
+                <StatsCard 
+                  icon={IconCheck}
+                  value="18"
+                  label="Anos de Experiência"
+                  color="green"
+                  layout="horizontal"
+                />
+              </div>
+            </SimpleGrid>
+            
+            <Alert color="blue" icon={<IconBulb size={16} />} radius="md">
+              <Text size="sm">
+                <strong>Melhorias implementadas:</strong> Layout horizontal automático no mobile, 
+                tamanhos responsivos, padding otimizado e props para controle manual do layout.
+              </Text>
+            </Alert>
           </div>
         </Stack>
       </Paper>
