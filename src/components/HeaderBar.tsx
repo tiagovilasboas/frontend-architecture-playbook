@@ -2,7 +2,7 @@ import React from 'react';
 import { Group, Burger, UnstyledButton, Title, ActionIcon, Paper } from '@mantine/core';
 import { Link } from 'react-router-dom';
 import { IconCode, IconSun, IconMoon } from '@tabler/icons-react';
-import { useState } from 'react';
+import { useMantineColorScheme } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import type { DocMeta } from '../lib/content.ts';
 
@@ -17,18 +17,7 @@ interface Props {
 export default function HeaderBar({ opened, onBurger }: Props) {
   const isMobile = useMediaQuery('(max-width: 768px)');
   const isSmallMobile = useMediaQuery('(max-width: 480px)');
-  const [isDark, setIsDark] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return document.documentElement.getAttribute('data-mantine-color-scheme') === 'dark';
-    }
-    return true; // default to dark
-  });
-
-  const toggleTheme = () => {
-    const newTheme = isDark ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-mantine-color-scheme', newTheme);
-    setIsDark(!isDark);
-  };
+  const { colorScheme, toggleColorScheme } = useMantineColorScheme();
 
   const getTitle = () => {
     if (isSmallMobile) {
@@ -79,13 +68,13 @@ export default function HeaderBar({ opened, onBurger }: Props) {
         </Group>
         
         <ActionIcon
-          onClick={toggleTheme}
+          onClick={() => toggleColorScheme()}
           variant="light"
           size="lg"
           aria-label="Toggle color scheme"
           style={{ flexShrink: 0 }}
         >
-          {isDark ? (
+          {colorScheme === 'dark' ? (
             <IconSun size={18} />
           ) : (
             <IconMoon size={18} />
