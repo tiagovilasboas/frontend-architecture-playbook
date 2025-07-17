@@ -125,6 +125,33 @@ a:focus {
   border-radius: 6px !important;
 }
 
+/* Tema Light - Melhor visibilidade dos links */
+[data-mantine-color-scheme="light"] .navmenu-link {
+  color: var(--mantine-color-gray-7) !important;
+}
+
+[data-mantine-color-scheme="light"] .navmenu-link:hover, 
+[data-mantine-color-scheme="light"] .navmenu-link[data-active="true"] {
+  background: var(--mantine-color-blue-1) !important;
+  color: var(--mantine-color-blue-7) !important;
+  transform: translateX(1px) !important;
+}
+
+[data-mantine-color-scheme="light"] .navmenu-link:hover::before, 
+[data-mantine-color-scheme="light"] .navmenu-link[data-active="true"]::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: -2px !important;
+  right: -2px !important;
+  bottom: 0 !important;
+  background: var(--mantine-color-blue-6) !important;
+  border-radius: 6px !important;
+  z-index: -1 !important;
+  opacity: 0.15 !important;
+}
+
+/* Tema Dark - Mantém o comportamento atual */
 .navmenu-link:hover, 
 .navmenu-link[data-active="true"] {
   background: var(--mantine-color-blue-0) !important;
