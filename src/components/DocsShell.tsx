@@ -33,13 +33,19 @@ export default function DocsShell({
   const actions = useNavigationActions(guides, architectures, patterns, techniques, bestPractices);
 
   const handleBurgerClick = () => setOpened((prev) => !prev);
-  const handleDrawerClose = () => setOpened(false);
+  
+  // Função que fecha o menu mobile - passada para o NavMenu
+  const handleDrawerClose = () => {
+    setOpened(false);
+  };
+  
   const handleSearchClick = () => Spotlight.open();
 
   return (
     <>
       <Spotlight shortcut="mod + k" actions={actions} />
 
+      {/* Drawer do menu mobile - apenas visível em telas pequenas */}
       <Drawer 
         opened={opened} 
         onClose={handleDrawerClose} 
@@ -54,7 +60,7 @@ export default function DocsShell({
           patterns={patterns} 
           techniques={techniques} 
           bestPractices={bestPractices} 
-          onNavigate={handleDrawerClose} 
+          onNavigate={handleDrawerClose} // Fecha o menu quando um link é clicado
         />
       </Drawer>
 
@@ -87,6 +93,7 @@ export default function DocsShell({
                 patterns={patterns} 
                 techniques={techniques} 
                 bestPractices={bestPractices} 
+                // No desktop não precisa fechar nada, então não passa onNavigate
               />
             </Box>
           )}
