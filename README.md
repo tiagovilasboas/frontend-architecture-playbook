@@ -61,6 +61,9 @@ Este playbook é um guia prático que resolve problemas reais de arquitetura fro
 - **Interativo** - Responde perguntas e encontra a arquitetura ideal
 - **Contextual** - Considera time, projeto e objetivos
 - **Prático** - Baseado em experiência real
+- **Mobile-optimized** - Cards clicáveis e responsivos
+- **3 perguntas** - Fluxo simplificado e direto
+- **Sugestões garantidas** - Sempre retorna pelo menos uma arquitetura
 
 ### **💻 Exemplos Reais**
 - **Exemplos por arquitetura** - Cada arquitetura tem seu próprio arquivo em `src/utils/code-examples/`
@@ -68,6 +71,13 @@ Este playbook é um guia prático que resolve problemas reais de arquitetura fro
 - **Casos de uso** - E-commerce, dashboard, analytics
 - **Armadilhas** - Problemas comuns e como evitar
 - **Referências** - Livros, artigos e casos reais
+
+### **📱 Mobile UX**
+- **Rodovia estática** - Performance otimizada no mobile
+- **Botões 100% width** - Melhor usabilidade em telas pequenas
+- **Cards compactos** - Layout adaptado para mobile
+- **Touch-friendly** - Elementos otimizados para toque
+- **Responsivo** - Funciona perfeitamente em qualquer dispositivo
 
 ### **🛡️ Dependency Rule Guide**
 - **Guia dedicado** - Regra fundamental de qualquer arquitetura
@@ -82,6 +92,7 @@ Este playbook é um guia prático que resolve problemas reais de arquitetura fro
 - **Mantine** - Design system completo
 - **React Router** - Navegação SPA
 - **Tabler Icons** - Ícones consistentes
+- **Cypress** - Testes E2E completos
 - **Husky** - Git hooks para qualidade
 - **Lint-staged** - Validação automática
 
@@ -90,8 +101,18 @@ Este playbook é um guia prático que resolve problemas reais de arquitetura fro
 - **Code splitting** - Chunks otimizados por funcionalidade
 - **Lazy loading** - Páginas carregam sob demanda
 - **Bundle otimizado** - 11 chunks separados
+- **Imagens otimizadas** - PNGs comprimidos pré-build (60% redução)
 - **Dark mode** - Suporte completo
 - **Responsivo** - Funciona em qualquer tela
+- **Mobile-first** - UX otimizada para dispositivos móveis
+
+## 🧪 **Testing**
+
+- **Cypress E2E** - Testes completos do Decision Wizard
+- **Cobertura total** - Todas as combinações de respostas testadas
+- **Mobile/Desktop** - Testes em diferentes viewports
+- **Performance** - Testes de carregamento e responsividade
+- **Acessibilidade** - Verificação de contraste e navegação
 
 ## 🏃‍♂️ **Quick Start**
 
@@ -103,7 +124,7 @@ cd frontend-architecture-playbook
 # Instale
 npm install
 
-# Dev
+# Dev (com kill-port automático)
 npm run dev
 
 # Build
@@ -111,6 +132,12 @@ npm run build
 
 # Lint
 npm run lint
+
+# Otimizar imagens
+npm run optimize:images
+
+# Testes E2E
+npx cypress run
 ```
 
 ## 🏗️ **Estrutura do Projeto**
@@ -187,6 +214,8 @@ O projeto usa code splitting inteligente:
 - **ESLint** - Padrões consistentes
 - **Husky** - Pre-commit hooks
 - **Lint-staged** - Validação automática
+- **Cypress E2E** - Testes completos automatizados
+- **Otimização de imagens** - Compressão pré-build automática
 - **Exemplos centralizados** - JSON único para todos os exemplos
 
 ## 🎨 **Diretrizes de Tema**

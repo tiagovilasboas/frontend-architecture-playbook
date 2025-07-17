@@ -4,12 +4,13 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "kill-port 5173 && vite",
     "build": "tsc && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "prepare": "husky",
-    "test": "jest"
+    "test": "jest",
+    "optimize:images": "imagemin src/assets/cars/*.png --plugin=pngquant --out-dir=public/assets/cars"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
@@ -49,8 +50,11 @@
     "eslint-plugin-react-refresh": "^0.4.20",
     "globals": "^16.3.0",
     "husky": "^9.1.7",
+    "imagemin-cli": "^8.0.0",
+    "imagemin-pngquant": "^10.0.0",
     "jest": "^30.0.4",
     "jest-environment-jsdom": "^30.0.4",
+    "kill-port": "^2.0.1",
     "lint-staged": "^16.1.2",
     "ts-jest": "^29.4.0",
     "ts-node": "^10.9.2",
