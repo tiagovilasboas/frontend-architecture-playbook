@@ -1,5 +1,6 @@
 import HowToChoose from '../content/guides/how-to-choose.tsx';
 import DependencyRule from '../content/guides/dependency-rule.tsx';
+import Cases from '../content/guides/cases.tsx';
 import AtomicDesign from '../content/patterns/atomic-design.tsx';
 import CleanArchitecture from '../content/patterns/clean-architecture.tsx';
 import ComponentDriven from '../content/patterns/component-driven.tsx';
@@ -44,6 +45,7 @@ function toMeta(module: any, slug: string, collection: CollectionType): DocMeta 
 
 // Organização por categorias com comentários explicativos
 export const guides: DocMeta[] = [
+  toMeta(Cases, 'cases', 'guides'),
   toMeta(HowToChoose, 'how-to-choose', 'guides'),
   toMeta(DependencyRule, 'dependency-rule', 'guides')
 ];
