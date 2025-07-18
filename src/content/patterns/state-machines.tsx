@@ -9,7 +9,7 @@ import {
   Group,
   Card,
   Badge,
-} from "@mantine/core";
+} from '@mantine/core';
 import {
   IconBulb,
   IconAlertTriangle,
@@ -17,9 +17,9 @@ import {
   IconCode,
   IconSettings,
   IconBolt,
-} from "@tabler/icons-react";
-import CodeExample from "../../components/CodeExample";
-import stateMachinesExamples from "../../utils/code-examples/state-machines.json";
+} from '@tabler/icons-react';
+import CodeExample from '../../components/CodeExample';
+import stateMachinesExamples from '../../utils/code-examples/state-machines.json';
 
 function StateMachines() {
   return (
@@ -51,7 +51,7 @@ function StateMachines() {
           </Group>
 
           <Text>
-            State Machines é sobre uma coisa só:{" "}
+            State Machines é sobre uma coisa só:{' '}
             <strong>estados previsíveis</strong>.
           </Text>
 
@@ -73,7 +73,7 @@ function StateMachines() {
         <Title order={2} mb="lg">
           <IconBolt
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Os 3 Conceitos Principais
         </Title>
@@ -91,7 +91,7 @@ function StateMachines() {
                   comportamentos específicos.
                 </Text>
                 <Stack gap="xl">
-                  {stateMachinesExamples.map((example) => (
+                  {stateMachinesExamples.map(example => (
                     <CodeExample
                       key={example.id}
                       title={example.title}
@@ -115,7 +115,7 @@ function StateMachines() {
                   Ações que causam transições. Cada evento pode mudar o estado.
                 </Text>
                 <Stack gap="xl">
-                  {stateMachinesExamples.map((example) => (
+                  {stateMachinesExamples.map(example => (
                     <CodeExample
                       key={example.id}
                       title={example.title}
@@ -140,7 +140,7 @@ function StateMachines() {
                   condições e ações.
                 </Text>
                 <Stack gap="xl">
-                  {stateMachinesExamples.map((example) => (
+                  {stateMachinesExamples.map(example => (
                     <CodeExample
                       key={example.id}
                       title={example.title}
@@ -160,7 +160,7 @@ function StateMachines() {
         <Title order={2} mb="lg">
           <IconCheck
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Por que vale a pena?
         </Title>
@@ -218,7 +218,7 @@ function StateMachines() {
         <Title order={2} mb="lg">
           <IconAlertTriangle
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Quando usar?
         </Title>
@@ -250,7 +250,7 @@ function StateMachines() {
         <Title order={2} mb="lg">
           <IconCode
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Exemplos Práticos no Front-End
         </Title>
@@ -272,7 +272,7 @@ function StateMachines() {
               </Text>
 
               <Stack gap="xl">
-                {stateMachinesExamples.map((example) => (
+                {stateMachinesExamples.map(example => (
                   <CodeExample
                     key={example.id}
                     title={example.title}
@@ -300,7 +300,7 @@ function StateMachines() {
               </Text>
 
               <Stack gap="xl">
-                {stateMachinesExamples.map((example) => (
+                {stateMachinesExamples.map(example => (
                   <CodeExample
                     key={example.id}
                     title={example.title}
@@ -328,7 +328,7 @@ function StateMachines() {
               </Text>
 
               <Stack gap="xl">
-                {stateMachinesExamples.map((example) => (
+                {stateMachinesExamples.map(example => (
                   <CodeExample
                     key={example.id}
                     title={example.title}
@@ -347,7 +347,7 @@ function StateMachines() {
         <Title order={2} mb="lg">
           <IconAlertTriangle
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Armadilhas & Como Evitar
         </Title>
@@ -371,7 +371,7 @@ function StateMachines() {
               </Text>
 
               <Stack gap="xl">
-                {stateMachinesExamples.map((example) => (
+                {stateMachinesExamples.map(example => (
                   <CodeExample
                     key={example.id}
                     title={example.title}
@@ -400,7 +400,7 @@ function StateMachines() {
               </Text>
 
               <Stack gap="xl">
-                {stateMachinesExamples.map((example) => (
+                {stateMachinesExamples.map(example => (
                   <CodeExample
                     key={example.id}
                     title={example.title}
@@ -429,7 +429,7 @@ function StateMachines() {
               </Text>
 
               <Stack gap="xl">
-                {stateMachinesExamples.map((example) => (
+                {stateMachinesExamples.map(example => (
                   <CodeExample
                     key={example.id}
                     title={example.title}
@@ -458,7 +458,7 @@ function StateMachines() {
               </Text>
 
               <Stack gap="xl">
-                {stateMachinesExamples.map((example) => (
+                {stateMachinesExamples.map(example => (
                   <CodeExample
                     key={example.id}
                     title={example.title}
@@ -487,7 +487,7 @@ function StateMachines() {
               </Text>
 
               <Stack gap="xl">
-                {stateMachinesExamples.map((example) => (
+                {stateMachinesExamples.map(example => (
                   <CodeExample
                     key={example.id}
                     title={example.title}
@@ -506,7 +506,7 @@ function StateMachines() {
         <Title order={2} mb="lg">
           <IconBulb
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Referências & Casos Reais
         </Title>
@@ -572,7 +572,7 @@ function StateMachines() {
           </Group>
 
           <Text>
-            State Machines é sobre uma coisa só:{" "}
+            State Machines é sobre uma coisa só:{' '}
             <strong>estados previsíveis</strong>. Estados bem definidos,
             transições claras, comportamento controlado. Use quando estados são
             complexos e comportamento precisa ser previsível.
@@ -592,9 +592,9 @@ function StateMachines() {
 }
 
 StateMachines.metadata = {
-  title: "State Machines",
+  title: 'State Machines',
   description:
-    "Estados previsíveis, transições claras, bugs impossíveis. Lógica de negócio organizada.",
+    'Estados previsíveis, transições claras, bugs impossíveis. Lógica de negócio organizada.',
 };
 
 export default StateMachines;

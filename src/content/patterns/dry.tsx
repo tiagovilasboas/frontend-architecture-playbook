@@ -9,16 +9,16 @@ import {
   Group,
   Card,
   Badge,
-} from "@mantine/core";
+} from '@mantine/core';
 import {
   IconBulb,
   IconAlertTriangle,
   IconCheck,
   IconCode,
   IconCopy,
-} from "@tabler/icons-react";
-import CodeExample from "../../components/CodeExample";
-import codeExamples from "../../utils/code-examples/dry.json";
+} from '@tabler/icons-react';
+import CodeExample from '../../components/CodeExample';
+import codeExamples from '../../utils/code-examples/dry.json';
 
 function Dry() {
   return (
@@ -59,7 +59,7 @@ function Dry() {
           </Text>
 
           <Text>
-            A regra é clara:{" "}
+            A regra é clara:{' '}
             <em>
               cada regra de negócio deve ter uma representação única, não
               ambígua e autoritativa
@@ -74,7 +74,7 @@ function Dry() {
         <Title order={2} mb="lg">
           <IconCode
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Exemplos Práticos
         </Title>
@@ -86,17 +86,17 @@ function Dry() {
               p="md"
               key={ex.title}
               w="100%"
-              style={{ minWidth: 0, width: "100%" }}
+              style={{ minWidth: 0, width: '100%' }}
             >
-              <Group w="100%" style={{ minWidth: 0, width: "100%" }}>
+              <Group w="100%" style={{ minWidth: 0, width: '100%' }}>
                 <Badge
                   size="lg"
                   variant="light"
-                  color={["red", "green"][idx] || "gray"}
+                  color={['red', 'green'][idx] || 'gray'}
                 >
-                  {idx === 0 ? "❌" : "✅"}
+                  {idx === 0 ? '❌' : '✅'}
                 </Badge>
-                <div style={{ flex: 1, width: "100%" }}>
+                <div style={{ flex: 1, width: '100%' }}>
                   <Title order={4}>{ex.title}</Title>
                   <Text size="sm" c="dimmed">
                     {ex.description}
@@ -114,7 +114,7 @@ function Dry() {
         <Title order={2} mb="lg">
           <IconCheck
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Por que vale a pena?
         </Title>
@@ -171,7 +171,7 @@ function Dry() {
         <Title order={2} mb="lg">
           <IconBulb
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Quando aplicar?
         </Title>
@@ -214,19 +214,19 @@ function Dry() {
         <Title order={2} mb="lg">
           <IconAlertTriangle
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Armadilhas Comuns
         </Title>
 
         <Stack gap="md">
-          {codeExamples.slice(2).map((ex) => (
+          {codeExamples.slice(2).map(ex => (
             <Card
               withBorder
               p="md"
               key={ex.title}
               w="100%"
-              style={{ minWidth: 0, width: "100%" }}
+              style={{ minWidth: 0, width: '100%' }}
             >
               <Title order={4} mb="sm">
                 {ex.title}
@@ -262,7 +262,7 @@ function Dry() {
 Dry.metadata = {
   title: "DRY - Don't Repeat Yourself",
   description:
-    "Elimine duplicação de código. Se você está escrevendo a mesma coisa duas vezes, você está fazendo algo errado.",
+    'Elimine duplicação de código. Se você está escrevendo a mesma coisa duas vezes, você está fazendo algo errado.',
 };
 
 export default Dry;

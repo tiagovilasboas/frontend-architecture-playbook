@@ -8,16 +8,16 @@ import {
   ThemeIcon,
   Group,
   Card,
-} from "@mantine/core";
+} from '@mantine/core';
 import {
   IconShield,
   IconAlertTriangle,
   IconCheck,
   IconCode,
   IconLock,
-} from "@tabler/icons-react";
-import securityExamples from "../../utils/code-examples/security.json";
-import CodeExample from "../../components/CodeExample";
+} from '@tabler/icons-react';
+import securityExamples from '../../utils/code-examples/security.json';
+import CodeExample from '../../components/CodeExample';
 
 function renderCodeExample(example: {
   title: string;
@@ -490,7 +490,7 @@ export default function SecurityPatterns() {
 }
 
 SecurityPatterns.metadata = {
-  title: "Security Patterns",
+  title: 'Security Patterns',
   description:
-    "Técnicas e práticas para proteger aplicações front-end contra vulnerabilidades comuns.",
+    'Técnicas e práticas para proteger aplicações front-end contra vulnerabilidades comuns.',
 };

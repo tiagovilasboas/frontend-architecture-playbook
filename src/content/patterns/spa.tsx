@@ -9,7 +9,7 @@ import {
   Group,
   Card,
   Badge,
-} from "@mantine/core";
+} from '@mantine/core';
 import {
   IconBulb,
   IconAlertTriangle,
@@ -17,9 +17,9 @@ import {
   IconCode,
   IconLayout,
   IconBolt,
-} from "@tabler/icons-react";
-import CodeExample from "../../components/CodeExample";
-import spaExamples from "../../utils/code-examples/spa.json";
+} from '@tabler/icons-react';
+import CodeExample from '../../components/CodeExample';
+import spaExamples from '../../utils/code-examples/spa.json';
 
 function SPA() {
   return (
@@ -51,7 +51,7 @@ function SPA() {
           </Group>
 
           <Text>
-            Single Page Application é sobre uma coisa só:{" "}
+            Single Page Application é sobre uma coisa só:{' '}
             <strong>JavaScript renderiza tudo</strong>.
           </Text>
 
@@ -62,7 +62,7 @@ function SPA() {
           </Text>
 
           <Text>
-            A regra é simples:{" "}
+            A regra é simples:{' '}
             <em>uma página, múltiplas rotas, JavaScript controla tudo</em>.
             Navegação instantânea, experiência de app nativo, sem reload.
           </Text>
@@ -74,7 +74,7 @@ function SPA() {
         <Title order={2} mb="lg">
           <IconBolt
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Os 3 Conceitos Principais
         </Title>
@@ -92,7 +92,7 @@ function SPA() {
                   pelo JavaScript.
                 </Text>
                 <Stack gap="xl">
-                  {spaExamples.map((example) => (
+                  {spaExamples.map(example => (
                     <CodeExample
                       key={example.id}
                       title={example.title}
@@ -117,7 +117,7 @@ function SPA() {
                   reload.
                 </Text>
                 <Stack gap="xl">
-                  {spaExamples.map((example) => (
+                  {spaExamples.map(example => (
                     <CodeExample
                       key={example.id}
                       title={example.title}
@@ -142,7 +142,7 @@ function SPA() {
                   Zustand.
                 </Text>
                 <Stack gap="xl">
-                  {spaExamples.map((example) => (
+                  {spaExamples.map(example => (
                     <CodeExample
                       key={example.id}
                       title={example.title}
@@ -171,7 +171,7 @@ function SPA() {
         <Title order={2} mb="lg">
           <IconCheck
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Por que vale a pena?
         </Title>
@@ -229,7 +229,7 @@ function SPA() {
         <Title order={2} mb="lg">
           <IconAlertTriangle
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Quando usar?
         </Title>
@@ -261,7 +261,7 @@ function SPA() {
         <Title order={2} mb="lg">
           <IconCode
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Exemplos Práticos no Front-End
         </Title>
@@ -283,7 +283,7 @@ function SPA() {
               </Text>
 
               <Stack gap="xl">
-                {spaExamples.map((example) => (
+                {spaExamples.map(example => (
                   <CodeExample
                     key={example.id}
                     title={example.title}
@@ -311,7 +311,7 @@ function SPA() {
               </Text>
 
               <Stack gap="xl">
-                {spaExamples.map((example) => (
+                {spaExamples.map(example => (
                   <CodeExample
                     key={example.id}
                     title={example.title}
@@ -339,7 +339,7 @@ function SPA() {
               </Text>
 
               <Stack gap="xl">
-                {spaExamples.map((example) => (
+                {spaExamples.map(example => (
                   <CodeExample
                     key={example.id}
                     title={example.title}
@@ -358,7 +358,7 @@ function SPA() {
         <Title order={2} mb="lg">
           <IconAlertTriangle
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Armadilhas Comuns
         </Title>
@@ -419,7 +419,7 @@ function SPA() {
         <Title order={2} mb="lg">
           <IconBulb
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Referências e Casos Reais
         </Title>
@@ -459,7 +459,7 @@ function SPA() {
         <Title order={2} mb="md">
           <IconCheck
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Resumo - Single Page Application
         </Title>
@@ -497,9 +497,9 @@ function SPA() {
 }
 
 SPA.metadata = {
-  title: "Single Page Application",
+  title: 'Single Page Application',
   description:
-    "Uma página, múltiplas rotas. JavaScript renderiza tudo, navegação instantânea, experiência de app nativo.",
+    'Uma página, múltiplas rotas. JavaScript renderiza tudo, navegação instantânea, experiência de app nativo.',
 };
 
 export default SPA;

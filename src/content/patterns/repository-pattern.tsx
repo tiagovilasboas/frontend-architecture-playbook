@@ -9,16 +9,16 @@ import {
   Group,
   Card,
   Badge,
-} from "@mantine/core";
+} from '@mantine/core';
 import {
   IconBulb,
   IconAlertTriangle,
   IconCheck,
   IconCode,
   IconDatabase,
-} from "@tabler/icons-react";
-import CodeExample from "../../components/CodeExample";
-import codeExamples from "../../utils/code-examples/repository-pattern.json";
+} from '@tabler/icons-react';
+import CodeExample from '../../components/CodeExample';
+import codeExamples from '../../utils/code-examples/repository-pattern.json';
 
 function RepositoryPattern() {
   return (
@@ -48,7 +48,7 @@ function RepositoryPattern() {
           </Group>
 
           <Text>
-            Repository Pattern é sobre{" "}
+            Repository Pattern é sobre{' '}
             <strong>separar a lógica de acesso aos dados</strong> da lógica de
             negócio. Seu código não precisa saber se os dados vêm de uma API,
             banco local ou arquivo JSON.
@@ -61,7 +61,7 @@ function RepositoryPattern() {
           </Text>
 
           <Text>
-            A regra é clara:{" "}
+            A regra é clara:{' '}
             <em>
               seu código de negócio não pode depender de como os dados são
               armazenados
@@ -76,7 +76,7 @@ function RepositoryPattern() {
         <Title order={2} mb="lg">
           <IconCode
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Exemplos Práticos
         </Title>
@@ -88,17 +88,17 @@ function RepositoryPattern() {
               p="md"
               key={ex.title}
               w="100%"
-              style={{ minWidth: 0, width: "100%" }}
+              style={{ minWidth: 0, width: '100%' }}
             >
-              <Group w="100%" style={{ minWidth: 0, width: "100%" }}>
+              <Group w="100%" style={{ minWidth: 0, width: '100%' }}>
                 <Badge
                   size="lg"
                   variant="light"
-                  color={["red", "green"][idx] || "gray"}
+                  color={['red', 'green'][idx] || 'gray'}
                 >
-                  {idx === 0 ? "❌" : "✅"}
+                  {idx === 0 ? '❌' : '✅'}
                 </Badge>
-                <div style={{ flex: 1, width: "100%" }}>
+                <div style={{ flex: 1, width: '100%' }}>
                   <Title order={4}>{ex.title}</Title>
                   <Text size="sm" c="dimmed">
                     {ex.description}
@@ -116,7 +116,7 @@ function RepositoryPattern() {
         <Title order={2} mb="lg">
           <IconCheck
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Por que vale a pena?
         </Title>
@@ -174,7 +174,7 @@ function RepositoryPattern() {
         <Title order={2} mb="lg">
           <IconBulb
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Quando usar?
         </Title>
@@ -214,19 +214,19 @@ function RepositoryPattern() {
         <Title order={2} mb="lg">
           <IconAlertTriangle
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Armadilhas Comuns
         </Title>
 
         <Stack gap="md">
-          {codeExamples.slice(2).map((ex) => (
+          {codeExamples.slice(2).map(ex => (
             <Card
               withBorder
               p="md"
               key={ex.title}
               w="100%"
-              style={{ minWidth: 0, width: "100%" }}
+              style={{ minWidth: 0, width: '100%' }}
             >
               <Title order={4} mb="sm">
                 {ex.title}
@@ -261,9 +261,9 @@ function RepositoryPattern() {
 }
 
 RepositoryPattern.metadata = {
-  title: "Repository Pattern",
+  title: 'Repository Pattern',
   description:
-    "Abstração da camada de dados. Seu código de negócio não precisa saber se os dados vêm de uma API, banco local ou arquivo JSON.",
+    'Abstração da camada de dados. Seu código de negócio não precisa saber se os dados vêm de uma API, banco local ou arquivo JSON.',
 };
 
 export default RepositoryPattern;

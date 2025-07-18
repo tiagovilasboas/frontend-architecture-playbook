@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Group,
   Burger,
@@ -8,17 +8,17 @@ import {
   Paper,
   Text,
   Anchor,
-} from "@mantine/core";
-import { Link } from "react-router-dom";
+} from '@mantine/core';
+import { Link } from 'react-router-dom';
 import {
   IconCode,
   IconSun,
   IconMoon,
   IconBrandGithub,
-} from "@tabler/icons-react";
-import { useMantineColorScheme } from "@mantine/core";
-import { useMediaQuery } from "@mantine/hooks";
-import type { DocMeta } from "../lib/content.ts";
+} from '@tabler/icons-react';
+import { useMantineColorScheme } from '@mantine/core';
+import { useMediaQuery } from '@mantine/hooks';
+import type { DocMeta } from '../lib/content.ts';
 
 interface Props {
   opened: boolean;
@@ -29,19 +29,19 @@ interface Props {
 }
 
 export default function HeaderBar({ opened, onBurger }: Props) {
-  const isMobile = useMediaQuery("(max-width: 768px)");
-  const isSmallMobile = useMediaQuery("(max-width: 480px)");
-  const isDesktop = useMediaQuery("(min-width: 1024px)");
+  const isMobile = useMediaQuery('(max-width: 768px)');
+  const isSmallMobile = useMediaQuery('(max-width: 480px)');
+  const isDesktop = useMediaQuery('(min-width: 1024px)');
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
 
   const getTitle = () => {
     if (isSmallMobile) {
-      return "Front-end Arch. Playbook";
+      return 'Front-end Arch. Playbook';
     }
     if (isMobile) {
-      return "Front-End Arch Playbook";
+      return 'Front-End Arch Playbook';
     }
-    return "Front-End Architecture Playbook";
+    return 'Front-End Architecture Playbook';
   };
 
   return (
@@ -51,7 +51,7 @@ export default function HeaderBar({ opened, onBurger }: Props) {
       radius={0}
       className="header-bar"
       style={{
-        position: "sticky",
+        position: 'sticky',
         top: 0,
         zIndex: 1000,
       }}
@@ -63,8 +63,8 @@ export default function HeaderBar({ opened, onBurger }: Props) {
             component={Link}
             to="/"
             style={{
-              textDecoration: "none",
-              color: "inherit",
+              textDecoration: 'none',
+              color: 'inherit',
               minWidth: 0,
               flex: 1,
             }}
@@ -74,9 +74,9 @@ export default function HeaderBar({ opened, onBurger }: Props) {
               <Title
                 size="h4"
                 style={{
-                  whiteSpace: "nowrap",
-                  overflow: "hidden",
-                  textOverflow: "ellipsis",
+                  whiteSpace: 'nowrap',
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
                   minWidth: 0,
                 }}
               >
@@ -92,7 +92,7 @@ export default function HeaderBar({ opened, onBurger }: Props) {
               href="https://github.com/tiagovilasboas"
               target="_blank"
               rel="noopener noreferrer"
-              style={{ textDecoration: "none" }}
+              style={{ textDecoration: 'none' }}
             >
               <Group gap={4} align="center">
                 <IconBrandGithub size={16} />
@@ -109,7 +109,7 @@ export default function HeaderBar({ opened, onBurger }: Props) {
             size="lg"
             aria-label="Toggle color scheme"
           >
-            {colorScheme === "dark" ? (
+            {colorScheme === 'dark' ? (
               <IconSun size={18} />
             ) : (
               <IconMoon size={18} />

@@ -10,4 +10,4 @@ export class User {
   isActive(): boolean {
     return this.active;
   }
-} 
+}

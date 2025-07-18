@@ -15,15 +15,15 @@ module.exports = {
         'categories:best-practices': ['warn', { minScore: 0.9 }],
         'categories:seo': ['warn', { minScore: 0.9 }],
         'categories:pwa': ['off'], // PWA não é obrigatório
-        
+
         // Core Web Vitals
         'first-contentful-paint': ['warn', { maxNumericValue: 2000 }],
         'largest-contentful-paint': ['warn', { maxNumericValue: 2500 }],
         'cumulative-layout-shift': ['warn', { maxNumericValue: 0.1 }],
         'total-blocking-time': ['warn', { maxNumericValue: 300 }],
-        
+
         // Outras métricas importantes
-        'interactive': ['warn', { maxNumericValue: 5000 }],
+        interactive: ['warn', { maxNumericValue: 5000 }],
         'speed-index': ['warn', { maxNumericValue: 3000 }],
         'uses-webp-images': 'off', // Opcional
         'offscreen-images': 'warn',

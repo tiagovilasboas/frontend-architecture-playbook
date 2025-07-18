@@ -10,7 +10,7 @@ import {
   Alert,
   List,
   Code,
-} from "@mantine/core";
+} from '@mantine/core';
 import {
   IconCode,
   IconCheck,
@@ -19,7 +19,7 @@ import {
   IconRocket,
   IconStack,
   IconDeviceMobile,
-} from "@tabler/icons-react";
+} from '@tabler/icons-react';
 
 export default function PWAArchitecture() {
   return (
@@ -53,15 +53,15 @@ export default function PWAArchitecture() {
         </Group>
 
         <Text size="lg" mb="md">
-          Imagine abrir uma página web que{" "}
+          Imagine abrir uma página web que{' '}
           <Text span fw={700} c="cyan">
             funciona offline
           </Text>
-          , pode ser{" "}
+          , pode ser{' '}
           <Text span fw={700} c="blue">
             instalada na tela inicial
-          </Text>{" "}
-          e manda{" "}
+          </Text>{' '}
+          e manda{' '}
           <Text span fw={700} c="green">
             notificações push
           </Text>
@@ -69,16 +69,16 @@ export default function PWAArchitecture() {
         </Text>
 
         <Text mb="lg">
-          É a web tentando competir com apps nativos usando{" "}
+          É a web tentando competir com apps nativos usando{' '}
           <Text span fw={700}>
             Service Workers
           </Text>
           ,
           <Text span fw={700}>
-            {" "}
+            {' '}
             Web App Manifest
-          </Text>{" "}
-          e{" "}
+          </Text>{' '}
+          e{' '}
           <Text span fw={700}>
             APIs modernas do browser
           </Text>
@@ -365,11 +365,11 @@ navigator.serviceWorker.ready.then(registration => {
         </Group>
 
         <Text mb="md">
-          Cenário: App de tarefas que funciona{" "}
+          Cenário: App de tarefas que funciona{' '}
           <Text span fw={700}>
             offline
-          </Text>{" "}
-          e sincroniza quando voltar{" "}
+          </Text>{' '}
+          e sincroniza quando voltar{' '}
           <Text span fw={700}>
             online
           </Text>
@@ -592,7 +592,7 @@ self.addEventListener('sync', (event) => {
             <Text size="sm" c="dimmed">
               <Text span fw={600}>
                 Solução:
-              </Text>{" "}
+              </Text>{' '}
               Graceful degradation. Funciona, mas sem algumas features.
             </Text>
           </Alert>
@@ -608,7 +608,7 @@ self.addEventListener('sync', (event) => {
             <Text size="sm" c="dimmed">
               <Text span fw={600}>
                 Solução:
-              </Text>{" "}
+              </Text>{' '}
               Versioning no cache name. Clear caches antigos no update.
             </Text>
           </Alert>
@@ -624,7 +624,7 @@ self.addEventListener('sync', (event) => {
             <Text size="sm" c="dimmed">
               <Text span fw={600}>
                 Solução:
-              </Text>{" "}
+              </Text>{' '}
               DevTools PWA tab. Logs extensivos. Clear storage frequente.
             </Text>
           </Alert>
@@ -640,7 +640,7 @@ self.addEventListener('sync', (event) => {
             <Text size="sm" c="dimmed">
               <Text span fw={600}>
                 Solução:
-              </Text>{" "}
+              </Text>{' '}
               Sync inteligente. Push notifications relevantes apenas.
             </Text>
           </Alert>
@@ -666,19 +666,19 @@ self.addEventListener('sync', (event) => {
             <Text size="sm" mb="xs">
               <Text span fw={600}>
                 Problema:
-              </Text>{" "}
+              </Text>{' '}
               Mobile web tinha 40% menos engagement que app nativo
             </Text>
             <Text size="sm" mb="xs">
               <Text span fw={600}>
                 Solução:
-              </Text>{" "}
+              </Text>{' '}
               PWA completa com offline, push notifications, install prompt
             </Text>
             <Text size="sm" c="green">
               <Text span fw={600}>
                 Resultado:
-              </Text>{" "}
+              </Text>{' '}
               +103% mobile engagement, +50% ad revenue, -60% bundle size
             </Text>
           </Card>
@@ -690,19 +690,19 @@ self.addEventListener('sync', (event) => {
             <Text size="sm" mb="xs">
               <Text span fw={600}>
                 Problema:
-              </Text>{" "}
+              </Text>{' '}
               App mobile pesado, muitos users não baixavam
             </Text>
             <Text size="sm" mb="xs">
               <Text span fw={600}>
                 Solução:
-              </Text>{" "}
+              </Text>{' '}
               PWA para ordering system que funciona offline
             </Text>
             <Text size="sm" c="green">
               <Text span fw={600}>
                 Resultado:
-              </Text>{" "}
+              </Text>{' '}
               2x daily active users, ordering experience nativa
             </Text>
           </Card>
@@ -714,19 +714,19 @@ self.addEventListener('sync', (event) => {
             <Text size="sm" mb="xs">
               <Text span fw={600}>
                 Problema:
-              </Text>{" "}
+              </Text>{' '}
               Site mobile lento em conexões ruins (mercados emergentes)
             </Text>
             <Text size="sm" mb="xs">
               <Text span fw={600}>
                 Solução:
-              </Text>{" "}
+              </Text>{' '}
               PWA com cache agressivo e offline-first approach
             </Text>
             <Text size="sm" c="green">
               <Text span fw={600}>
                 Resultado:
-              </Text>{" "}
+              </Text>{' '}
               +97% engagement increase, -84% time to interactive
             </Text>
           </Card>
@@ -748,25 +748,25 @@ self.addEventListener('sync', (event) => {
               <List.Item>
                 <Text span fw={600}>
                   Workbox:
-                </Text>{" "}
+                </Text>{' '}
                 Service Worker toolkit (Google)
               </List.Item>
               <List.Item>
                 <Text span fw={600}>
                   PWA Builder:
-                </Text>{" "}
+                </Text>{' '}
                 Microsoft's PWA tools
               </List.Item>
               <List.Item>
                 <Text span fw={600}>
                   Next.js:
-                </Text>{" "}
+                </Text>{' '}
                 Built-in PWA support
               </List.Item>
               <List.Item>
                 <Text span fw={600}>
                   Vite PWA:
-                </Text>{" "}
+                </Text>{' '}
                 Plugin pra Vite
               </List.Item>
             </List>
@@ -780,25 +780,25 @@ self.addEventListener('sync', (event) => {
               <List.Item>
                 <Text span fw={600}>
                   Lighthouse:
-                </Text>{" "}
+                </Text>{' '}
                 PWA audit score
               </List.Item>
               <List.Item>
                 <Text span fw={600}>
                   PWA Builder:
-                </Text>{" "}
+                </Text>{' '}
                 Validation tools
               </List.Item>
               <List.Item>
                 <Text span fw={600}>
                   Chrome DevTools:
-                </Text>{" "}
+                </Text>{' '}
                 Service Worker debugging
               </List.Item>
               <List.Item>
                 <Text span fw={600}>
                   Workbox:
-                </Text>{" "}
+                </Text>{' '}
                 Cache debugging
               </List.Item>
             </List>
@@ -812,25 +812,25 @@ self.addEventListener('sync', (event) => {
               <List.Item>
                 <Text span fw={600}>
                   HTTPS:
-                </Text>{" "}
+                </Text>{' '}
                 Obrigatório para Service Workers
               </List.Item>
               <List.Item>
                 <Text span fw={600}>
                   CDN:
-                </Text>{" "}
+                </Text>{' '}
                 Cache global pra assets
               </List.Item>
               <List.Item>
                 <Text span fw={600}>
                   HTTP/2:
-                </Text>{" "}
+                </Text>{' '}
                 Push de recursos críticos
               </List.Item>
               <List.Item>
                 <Text span fw={600}>
                   Compression:
-                </Text>{" "}
+                </Text>{' '}
                 gzip/brotli pra bundles
               </List.Item>
             </List>
@@ -850,7 +850,7 @@ self.addEventListener('sync', (event) => {
         </Group>
 
         <Alert color="cyan" icon={<IconBulb size={16} />} radius="md">
-          <Text fw={600} size="lg" mb="md" style={{ fontStyle: "italic" }}>
+          <Text fw={600} size="lg" mb="md" style={{ fontStyle: 'italic' }}>
             "PWA é web tentando ser nativo - e conseguindo. Offline, fast,
             installable."
           </Text>
@@ -894,7 +894,7 @@ self.addEventListener('sync', (event) => {
 }
 
 PWAArchitecture.metadata = {
-  title: "Progressive Web Apps (PWA)",
+  title: 'Progressive Web Apps (PWA)',
   description:
-    "Como criar web apps que funcionam offline, instalam como nativos e competem com App Store usando Service Workers e APIs modernas.",
+    'Como criar web apps que funcionam offline, instalam como nativos e competem com App Store usando Service Workers e APIs modernas.',
 };

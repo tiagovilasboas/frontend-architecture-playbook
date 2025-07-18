@@ -1,9 +1,9 @@
-import { Group, Text, ActionIcon, Stack, Paper } from "@mantine/core";
+import { Group, Text, ActionIcon, Stack, Paper } from '@mantine/core';
 import {
   IconBrandGithub,
   IconBrandLinkedin,
   IconHeart,
-} from "@tabler/icons-react";
+} from '@tabler/icons-react';
 
 export default function Footer() {
   return (
@@ -13,7 +13,7 @@ export default function Footer() {
       radius={0}
       className="footer-bar"
       style={{
-        marginTop: "auto",
+        marginTop: 'auto',
       }}
     >
       <Stack gap="md" py="xl" px="md" ta="center">
@@ -41,14 +41,14 @@ export default function Footer() {
         </Group>
 
         <Text size="sm" c="dimmed">
-          Feito com{" "}
+          Feito com{' '}
           <IconHeart
             size={14}
             style={{
-              verticalAlign: "middle",
-              color: "var(--mantine-color-red-6)",
+              verticalAlign: 'middle',
+              color: 'var(--mantine-color-red-6)',
             }}
-          />{" "}
+          />{' '}
           por Tiago Vilas Boas
         </Text>
 

@@ -1,5 +1,5 @@
-import { Code, Alert, Stack, Title, Text, Paper, Badge } from "@mantine/core";
-import { IconCheck, IconX, IconBulb } from "@tabler/icons-react";
+import { Code, Alert, Stack, Title, Text, Paper, Badge } from '@mantine/core';
+import { IconCheck, IconX, IconBulb } from '@tabler/icons-react';
 
 export function DependencyRuleExamples() {
   return (
@@ -7,7 +7,7 @@ export function DependencyRuleExamples() {
       <Title order={2} mb="lg">
         <IconBulb
           size={32}
-          style={{ verticalAlign: "middle", marginRight: "8px" }}
+          style={{ verticalAlign: 'middle', marginRight: '8px' }}
         />
         Exemplos Práticos de Dependency Rule
       </Title>

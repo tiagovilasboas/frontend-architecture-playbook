@@ -1,7 +1,7 @@
 // Layout components
-export { HeroTitle } from "./HeroTitle";
-export { SectionCard } from "./SectionCard";
+export { HeroTitle } from './HeroTitle';
+export { SectionCard } from './SectionCard';
 
 // Content components
-export { FeatureCard } from "./FeatureCard";
-export { StatsCard } from "./StatsCard";
+export { FeatureCard } from './FeatureCard';
+export { StatsCard } from './StatsCard';

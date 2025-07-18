@@ -1,5 +1,5 @@
-import { Title, Text, Stack, Paper, Code, Alert, Badge } from "@mantine/core";
-import { IconBulb, IconCheck } from "@tabler/icons-react";
+import { Title, Text, Stack, Paper, Code, Alert, Badge } from '@mantine/core';
+import { IconBulb, IconCheck } from '@tabler/icons-react';
 
 export function ArchitecturePatternsExamples() {
   return (
@@ -7,7 +7,7 @@ export function ArchitecturePatternsExamples() {
       <Title order={2} mb="lg">
         <IconBulb
           size={32}
-          style={{ verticalAlign: "middle", marginRight: "8px" }}
+          style={{ verticalAlign: 'middle', marginRight: '8px' }}
         />
         Exemplos de Padrões Arquiteturais
       </Title>

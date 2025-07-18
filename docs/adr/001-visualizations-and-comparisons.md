@@ -2,7 +2,7 @@
 
 **Status:** Proposto  
 **Data:** 2024-12-19  
-**Decisores:** Equipe Frontend Architecture Playbook  
+**Decisores:** Equipe Frontend Architecture Playbook
 
 ---
 
@@ -19,6 +19,7 @@ O Decision Wizard atual (v2.0) oferece recomendações contextuais de arquitetur
 ## 🔍 **Problema**
 
 ### **Limitações Atuais:**
+
 - ✅ Lógica de recomendação excelente
 - ✅ Contexto rico e scoring inteligente
 - ❌ **Falta de comparação visual** entre opções
@@ -27,6 +28,7 @@ O Decision Wizard atual (v2.0) oferece recomendações contextuais de arquitetur
 - ❌ **Decisão baseada apenas em texto**
 
 ### **Feedback Implícito:**
+
 - "Por que Clean Architecture e não Micro-frontends?"
 - "Quais são os trade-offs exatos?"
 - "Como essas arquiteturas se comparam em diferentes dimensões?"
@@ -38,21 +40,23 @@ O Decision Wizard atual (v2.0) oferece recomendações contextuais de arquitetur
 Implementar **4 visualizações principais** no Decision Wizard:
 
 ### **1. 📊 Radar Chart de Comparação**
+
 ```typescript
 interface RadarData {
   pattern: string;
   dimensions: {
-    complexity: number;      // 1-10
+    complexity: number; // 1-10
     maintainability: number; // 1-10
-    scalability: number;     // 1-10
-    performance: number;     // 1-10
-    learning_curve: number;  // 1-10 (invertido)
-    team_size_fit: number;   // 1-10
-  }
+    scalability: number; // 1-10
+    performance: number; // 1-10
+    learning_curve: number; // 1-10 (invertido)
+    team_size_fit: number; // 1-10
+  };
 }
 ```
 
 ### **2. 🔄 Trade-offs Matrix**
+
 ```typescript
 interface TradeOff {
   pattern: string;
@@ -64,6 +68,7 @@ interface TradeOff {
 ```
 
 ### **3. ⏱️ Implementation Timeline**
+
 ```typescript
 interface Timeline {
   pattern: string;
@@ -71,11 +76,12 @@ interface Timeline {
     setup: { duration: string; complexity: 'low' | 'medium' | 'high' };
     mvp: { duration: string; complexity: 'low' | 'medium' | 'high' };
     scale: { duration: string; complexity: 'low' | 'medium' | 'high' };
-  }
+  };
 }
 ```
 
 ### **4. 💰 ROI Estimation**
+
 ```typescript
 interface ROIData {
   pattern: string;
@@ -85,7 +91,7 @@ interface ROIData {
   scenarios: {
     best_case: string;
     worst_case: string;
-  }
+  };
 }
 ```
 
@@ -94,6 +100,7 @@ interface ROIData {
 ## 🏗️ **Arquitetura da Solução**
 
 ### **Componentes Novos:**
+
 ```
 src/components/interactive/visualizations/
 ├── RadarChart.tsx              → Recharts radar
@@ -104,6 +111,7 @@ src/components/interactive/visualizations/
 ```
 
 ### **Dados Estáticos:**
+
 ```
 src/data/visualizations/
 ├── radar-data.ts      → Scores por dimensão
@@ -113,14 +121,15 @@ src/data/visualizations/
 ```
 
 ### **Integration Point:**
+
 ```typescript
 // DecisionWizard.tsx - Step 6 (Results)
 <Stack>
   {/* Recomendações atuais */}
   <RecommendationCards />
-  
+
   {/* NOVO: Visualizações */}
-  <ComparisonView 
+  <ComparisonView
     patterns={recommendationResults}
     context={userAnswers}
   />
@@ -132,6 +141,7 @@ src/data/visualizations/
 ## 🎨 **Design System**
 
 ### **Cores por Dimensão:**
+
 - **Complexity:** `red` (alto = ruim)
 - **Maintainability:** `green` (alto = bom)
 - **Scalability:** `blue` (alto = bom)
@@ -140,6 +150,7 @@ src/data/visualizations/
 - **Team Fit:** `purple` (contextual)
 
 ### **Componentes Mantine:**
+
 - `Paper withBorder` para containers
 - `Tabs` para alternar entre visualizações
 - `Grid` para trade-offs matrix
@@ -151,11 +162,13 @@ src/data/visualizations/
 ## 📱 **Responsividade**
 
 ### **Desktop (>768px):**
+
 - Radar chart full size
 - Trade-offs em grid 2x2
 - Timeline horizontal
 
 ### **Mobile (<768px):**
+
 - Radar chart compacto
 - Trade-offs em accordion
 - Timeline vertical
@@ -166,13 +179,14 @@ src/data/visualizations/
 ## 🧪 **Estratégia de Testes**
 
 ### **Unit Tests:**
+
 ```typescript
 // RadarChart.test.tsx
 - Renderiza corretamente com dados válidos
 - Lida com dados ausentes gracefully
 - Respeita tema dark/light
 
-// TradeOffsMatrix.test.tsx  
+// TradeOffsMatrix.test.tsx
 - Mostra pros/cons corretos por padrão
 - Filtra baseado no contexto do usuário
 - Responsivo em mobile
@@ -184,6 +198,7 @@ src/data/visualizations/
 ```
 
 ### **Integration Tests:**
+
 ```typescript
 // DecisionWizard.integration.test.tsx
 - Fluxo completo com visualizações
@@ -196,12 +211,14 @@ src/data/visualizations/
 ## 📊 **Métricas de Sucesso**
 
 ### **Técnicas:**
+
 - ⚡ **Performance:** Render < 100ms
 - 📱 **Mobile:** Funcional em 320px+
 - 🎨 **Accessibility:** AA compliance
 - 🧪 **Coverage:** >95% dos componentes
 
 ### **UX:**
+
 - 👀 **Engagement:** Tempo na página +30%
 - 🎯 **Clareza:** "Entendi melhor" em feedback
 - 🔄 **Reuso:** Usuários voltam ao wizard
@@ -212,21 +229,25 @@ src/data/visualizations/
 ## 🚫 **Alternativas Consideradas**
 
 ### **1. Apenas Texto Melhorado**
+
 - ❌ Não resolve problema visual
 - ❌ Continua difícil comparar
 - ✅ Menor esforço de implementação
 
 ### **2. Visualizações Externas (D3.js)**
+
 - ❌ Bundle size maior
 - ❌ Complexity aumenta
 - ✅ Flexibilidade máxima
 
 ### **3. Charts Simples (Chart.js)**
+
 - ❌ Não integra bem com Mantine
 - ❌ Customização limitada
 - ✅ Menor learning curve
 
 ### **4. Recharts (ESCOLHIDA)**
+
 - ✅ Integra bem com React/Mantine
 - ✅ Bundle size razoável
 - ✅ Customizável e responsivo
@@ -237,17 +258,20 @@ src/data/visualizations/
 ## 🔮 **Consequências**
 
 ### **Positivas:**
+
 - ✅ **UX significativamente melhor**
 - ✅ **Decisões mais informadas**
 - ✅ **Ferramenta realmente 10/10**
 - ✅ **Diferencial competitivo**
 
 ### **Negativas:**
+
 - ❌ **Bundle size +~50kb** (Recharts)
 - ❌ **Complexity de manutenção** (dados visuais)
 - ❌ **Tempo de desenvolvimento** (~2-3 semanas)
 
 ### **Riscos:**
+
 - 🔻 **Performance mobile** se mal otimizado
 - 🔻 **Maintenance overhead** dos dados
 - 🔻 **Over-engineering** se não adicionar valor real
@@ -257,16 +281,19 @@ src/data/visualizations/
 ## 📅 **Timeline**
 
 ### **Fase 1: Foundation (1 semana)**
+
 - Setup Recharts
 - RadarChart básico
 - Dados estáticos iniciais
 
 ### **Fase 2: Core Features (1 semana)**
+
 - Trade-offs Matrix
 - Implementation Timeline
 - Integration com wizard
 
 ### **Fase 3: Polish (1 semana)**
+
 - ROI Estimation
 - Mobile optimization
 - Testes completos

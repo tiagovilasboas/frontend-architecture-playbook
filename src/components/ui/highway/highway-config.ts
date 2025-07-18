@@ -2,7 +2,7 @@
 export interface LaneConfig {
   id: string;
   name: string;
-  direction: "up" | "down";
+  direction: 'up' | 'down';
   sublanes: SubLaneConfig[];
   color: string;
   position: LanePositionConfig; // Nova configuração de posição
@@ -86,10 +86,10 @@ export const DEFAULT_HIGHWAY_CONFIG: HighwayConfig = {
   },
   lanes: [
     {
-      id: "up",
-      name: "Sentido de Cima",
-      direction: "up",
-      color: "#fff",
+      id: 'up',
+      name: 'Sentido de Cima',
+      direction: 'up',
+      color: '#fff',
       position: {
         yOffset: 0, // Posição base da faixa
         height: 35, // Altura da faixa
@@ -98,8 +98,8 @@ export const DEFAULT_HIGHWAY_CONFIG: HighwayConfig = {
       },
       sublanes: [
         {
-          id: "single",
-          name: "Faixa Única",
+          id: 'single',
+          name: 'Faixa Única',
           maxSpeed: 2.2,
           minSpeed: 1.5,
           acceleration: 0.008,
@@ -111,10 +111,10 @@ export const DEFAULT_HIGHWAY_CONFIG: HighwayConfig = {
       ],
     },
     {
-      id: "down",
-      name: "Sentido de Baixo",
-      direction: "down",
-      color: "#fff",
+      id: 'down',
+      name: 'Sentido de Baixo',
+      direction: 'down',
+      color: '#fff',
       position: {
         yOffset: 55, // Posição base da faixa (abaixo da amarela)
         height: 35, // Altura da faixa
@@ -123,8 +123,8 @@ export const DEFAULT_HIGHWAY_CONFIG: HighwayConfig = {
       },
       sublanes: [
         {
-          id: "single",
-          name: "Faixa Única",
+          id: 'single',
+          name: 'Faixa Única',
           maxSpeed: 0.8,
           minSpeed: 0.3,
           acceleration: 0.008,
@@ -200,7 +200,7 @@ export function calculateLanePositions(config: HighwayConfig) {
 export function getLaneY(
   laneIndex: number,
   sublaneIndex: number,
-  config: HighwayConfig,
+  config: HighwayConfig
 ): number {
   const positions = calculateLanePositions(config);
   const lane = config.lanes[laneIndex];
@@ -220,7 +220,7 @@ export function getLaneY(
 // Função para obter a escala dos veículos de uma faixa
 export function getVehicleScale(
   laneIndex: number,
-  config: HighwayConfig,
+  config: HighwayConfig
 ): number {
   const lane = config.lanes[laneIndex];
   return lane.position.vehicleScale;
@@ -239,7 +239,7 @@ export function generateImperfections(config: HighwayConfig) {
         imperfections.potholes.minRadius +
         (i % 2) *
           (imperfections.potholes.maxRadius - imperfections.potholes.minRadius),
-    }),
+    })
   );
 
   const cracks = Array.from({ length: imperfections.cracks.count }).map(
@@ -250,9 +250,9 @@ export function generateImperfections(config: HighwayConfig) {
         () => ({
           dx: 10 + Math.random() * 18,
           dy: (Math.random() - 0.5) * imperfections.cracks.maxOffset,
-        }),
+        })
       ),
-    }),
+    })
   );
 
   return { potholes, cracks };
@@ -262,7 +262,7 @@ export function generateImperfections(config: HighwayConfig) {
 export function calculateCarSpacing(
   laneConfig: SubLaneConfig,
   canvasWidth: number,
-  lateralMargin: number,
+  lateralMargin: number
 ): number {
   return (canvasWidth - 2 * lateralMargin) / laneConfig.numCars;
 }

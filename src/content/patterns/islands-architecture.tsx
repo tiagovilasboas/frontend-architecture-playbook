@@ -9,7 +9,7 @@ import {
   Group,
   Card,
   Badge,
-} from "@mantine/core";
+} from '@mantine/core';
 import {
   IconBulb,
   IconAlertTriangle,
@@ -17,9 +17,9 @@ import {
   IconCode,
   IconDeviceMobile,
   IconBolt,
-} from "@tabler/icons-react";
-import CodeExample from "../../components/CodeExample";
-import islandsExamples from "../../utils/code-examples/islands-architecture.json";
+} from '@tabler/icons-react';
+import CodeExample from '../../components/CodeExample';
+import islandsExamples from '../../utils/code-examples/islands-architecture.json';
 
 function IslandsArchitecture() {
   return (
@@ -51,7 +51,7 @@ function IslandsArchitecture() {
           </Group>
 
           <Text>
-            Islands Architecture é sobre uma coisa só:{" "}
+            Islands Architecture é sobre uma coisa só:{' '}
             <strong>JavaScript só onde precisa</strong>.
           </Text>
 
@@ -62,7 +62,7 @@ function IslandsArchitecture() {
           </Text>
 
           <Text>
-            A regra é simples:{" "}
+            A regra é simples:{' '}
             <em>
               HTML estático por padrão, JavaScript só onde interatividade
               importa
@@ -77,7 +77,7 @@ function IslandsArchitecture() {
         <Title order={2} mb="lg">
           <IconBolt
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Os 3 Conceitos Principais
         </Title>
@@ -96,12 +96,12 @@ function IslandsArchitecture() {
                 </Text>
                 <CodeExample
                   title={
-                    islandsExamples.find((e) => e.id === "islands-html-static")
-                      ?.title || ""
+                    islandsExamples.find(e => e.id === 'islands-html-static')
+                      ?.title || ''
                   }
                   code={
-                    islandsExamples.find((e) => e.id === "islands-html-static")
-                      ?.content || ""
+                    islandsExamples.find(e => e.id === 'islands-html-static')
+                      ?.content || ''
                   }
                 />
               </div>
@@ -121,12 +121,12 @@ function IslandsArchitecture() {
                 </Text>
                 <CodeExample
                   title={
-                    islandsExamples.find((e) => e.id === "islands-cart-island")
-                      ?.title || ""
+                    islandsExamples.find(e => e.id === 'islands-cart-island')
+                      ?.title || ''
                   }
                   code={
-                    islandsExamples.find((e) => e.id === "islands-cart-island")
-                      ?.content || ""
+                    islandsExamples.find(e => e.id === 'islands-cart-island')
+                      ?.content || ''
                   }
                 />
               </div>
@@ -146,12 +146,12 @@ function IslandsArchitecture() {
                 </Text>
                 <CodeExample
                   title={
-                    islandsExamples.find((e) => e.id === "islands-hydration")
-                      ?.title || ""
+                    islandsExamples.find(e => e.id === 'islands-hydration')
+                      ?.title || ''
                   }
                   code={
-                    islandsExamples.find((e) => e.id === "islands-hydration")
-                      ?.content || ""
+                    islandsExamples.find(e => e.id === 'islands-hydration')
+                      ?.content || ''
                   }
                 />
               </div>
@@ -165,7 +165,7 @@ function IslandsArchitecture() {
         <Title order={2} mb="lg">
           <IconCheck
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Por que vale a pena?
         </Title>
@@ -222,7 +222,7 @@ function IslandsArchitecture() {
         <Title order={2} mb="lg">
           <IconAlertTriangle
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Quando usar?
         </Title>
@@ -254,7 +254,7 @@ function IslandsArchitecture() {
         <Title order={2} mb="lg">
           <IconCode
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Exemplos Práticos no Front-End
         </Title>
@@ -277,12 +277,12 @@ function IslandsArchitecture() {
 
               <CodeExample
                 title={
-                  islandsExamples.find((e) => e.id === "islands-blog-example")
-                    ?.title || ""
+                  islandsExamples.find(e => e.id === 'islands-blog-example')
+                    ?.title || ''
                 }
                 code={
-                  islandsExamples.find((e) => e.id === "islands-blog-example")
-                    ?.content || ""
+                  islandsExamples.find(e => e.id === 'islands-blog-example')
+                    ?.content || ''
                 }
               />
             </Stack>
@@ -307,13 +307,13 @@ function IslandsArchitecture() {
               <CodeExample
                 title={
                   islandsExamples.find(
-                    (e) => e.id === "islands-ecommerce-example",
-                  )?.title || ""
+                    e => e.id === 'islands-ecommerce-example'
+                  )?.title || ''
                 }
                 code={
                   islandsExamples.find(
-                    (e) => e.id === "islands-ecommerce-example",
-                  )?.content || ""
+                    e => e.id === 'islands-ecommerce-example'
+                  )?.content || ''
                 }
               />
             </Stack>
@@ -486,7 +486,7 @@ if (buscaContainer) {
         <Title order={2} mb="lg">
           <IconAlertTriangle
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Armadilhas & Como Evitar
         </Title>
@@ -511,13 +511,13 @@ if (buscaContainer) {
               <CodeExample
                 title={
                   islandsExamples.find(
-                    (e) => e.id === "islands-pitfall-everything-island",
-                  )?.title || ""
+                    e => e.id === 'islands-pitfall-everything-island'
+                  )?.title || ''
                 }
                 code={
                   islandsExamples.find(
-                    (e) => e.id === "islands-pitfall-everything-island",
-                  )?.content || ""
+                    e => e.id === 'islands-pitfall-everything-island'
+                  )?.content || ''
                 }
               />
             </Stack>
@@ -542,13 +542,13 @@ if (buscaContainer) {
               <CodeExample
                 title={
                   islandsExamples.find(
-                    (e) => e.id === "islands-pitfall-shared-state",
-                  )?.title || ""
+                    e => e.id === 'islands-pitfall-shared-state'
+                  )?.title || ''
                 }
                 code={
                   islandsExamples.find(
-                    (e) => e.id === "islands-pitfall-shared-state",
-                  )?.content || ""
+                    e => e.id === 'islands-pitfall-shared-state'
+                  )?.content || ''
                 }
               />
             </Stack>
@@ -573,13 +573,13 @@ if (buscaContainer) {
               <CodeExample
                 title={
                   islandsExamples.find(
-                    (e) => e.id === "islands-pitfall-complex-build",
-                  )?.title || ""
+                    e => e.id === 'islands-pitfall-complex-build'
+                  )?.title || ''
                 }
                 code={
                   islandsExamples.find(
-                    (e) => e.id === "islands-pitfall-complex-build",
-                  )?.content || ""
+                    e => e.id === 'islands-pitfall-complex-build'
+                  )?.content || ''
                 }
               />
             </Stack>
@@ -604,13 +604,13 @@ if (buscaContainer) {
               <CodeExample
                 title={
                   islandsExamples.find(
-                    (e) => e.id === "islands-pitfall-dynamic-content",
-                  )?.title || ""
+                    e => e.id === 'islands-pitfall-dynamic-content'
+                  )?.title || ''
                 }
                 code={
                   islandsExamples.find(
-                    (e) => e.id === "islands-pitfall-dynamic-content",
-                  )?.content || ""
+                    e => e.id === 'islands-pitfall-dynamic-content'
+                  )?.content || ''
                 }
               />
             </Stack>
@@ -635,13 +635,13 @@ if (buscaContainer) {
               <CodeExample
                 title={
                   islandsExamples.find(
-                    (e) => e.id === "islands-pitfall-many-small-islands",
-                  )?.title || ""
+                    e => e.id === 'islands-pitfall-many-small-islands'
+                  )?.title || ''
                 }
                 code={
                   islandsExamples.find(
-                    (e) => e.id === "islands-pitfall-many-small-islands",
-                  )?.content || ""
+                    e => e.id === 'islands-pitfall-many-small-islands'
+                  )?.content || ''
                 }
               />
             </Stack>
@@ -654,7 +654,7 @@ if (buscaContainer) {
         <Title order={2} mb="lg">
           <IconBulb
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Referências & Casos Reais
         </Title>
@@ -751,7 +751,7 @@ if (buscaContainer) {
           </Group>
 
           <Text>
-            Islands Architecture é sobre uma coisa só:{" "}
+            Islands Architecture é sobre uma coisa só:{' '}
             <strong>JavaScript só onde precisa</strong>. HTML estático por
             padrão, ilhas de interatividade. Use quando performance e SEO
             importam.
@@ -771,9 +771,9 @@ if (buscaContainer) {
 }
 
 IslandsArchitecture.metadata = {
-  title: "Islands Architecture",
+  title: 'Islands Architecture',
   description:
-    "HTML estático com ilhas de interatividade. Performance máxima e SEO perfeito.",
+    'HTML estático com ilhas de interatividade. Performance máxima e SEO perfeito.',
 };
 
 export default IslandsArchitecture;

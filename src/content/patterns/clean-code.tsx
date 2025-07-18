@@ -9,16 +9,16 @@ import {
   Group,
   Card,
   Badge,
-} from "@mantine/core";
+} from '@mantine/core';
 import {
   IconBulb,
   IconAlertTriangle,
   IconCheck,
   IconCode,
   IconFileText,
-} from "@tabler/icons-react";
-import CodeExample from "../../components/CodeExample";
-import codeExamples from "../../utils/code-examples/clean-code.json";
+} from '@tabler/icons-react';
+import CodeExample from '../../components/CodeExample';
+import codeExamples from '../../utils/code-examples/clean-code.json';
 
 function CleanCode() {
   return (
@@ -74,7 +74,7 @@ function CleanCode() {
         <Title order={2} mb="lg">
           <IconCode
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Exemplos Práticos
         </Title>
@@ -86,17 +86,17 @@ function CleanCode() {
               p="md"
               key={ex.title}
               w="100%"
-              style={{ minWidth: 0, width: "100%" }}
+              style={{ minWidth: 0, width: '100%' }}
             >
-              <Group w="100%" style={{ minWidth: 0, width: "100%" }}>
+              <Group w="100%" style={{ minWidth: 0, width: '100%' }}>
                 <Badge
                   size="lg"
                   variant="light"
-                  color={["red", "green"][idx] || "gray"}
+                  color={['red', 'green'][idx] || 'gray'}
                 >
-                  {idx === 0 ? "❌" : "✅"}
+                  {idx === 0 ? '❌' : '✅'}
                 </Badge>
-                <div style={{ flex: 1, width: "100%" }}>
+                <div style={{ flex: 1, width: '100%' }}>
                   <Title order={4}>{ex.title}</Title>
                   <Text size="sm" c="dimmed">
                     {ex.description}
@@ -114,7 +114,7 @@ function CleanCode() {
         <Title order={2} mb="lg">
           <IconCheck
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Por que vale a pena?
         </Title>
@@ -171,7 +171,7 @@ function CleanCode() {
         <Title order={2} mb="lg">
           <IconBulb
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Quando aplicar?
         </Title>
@@ -212,19 +212,19 @@ function CleanCode() {
         <Title order={2} mb="lg">
           <IconAlertTriangle
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Armadilhas Comuns
         </Title>
 
         <Stack gap="md">
-          {codeExamples.slice(2).map((ex) => (
+          {codeExamples.slice(2).map(ex => (
             <Card
               withBorder
               p="md"
               key={ex.title}
               w="100%"
-              style={{ minWidth: 0, width: "100%" }}
+              style={{ minWidth: 0, width: '100%' }}
             >
               <Title order={4} mb="sm">
                 {ex.title}
@@ -258,9 +258,9 @@ function CleanCode() {
 }
 
 CleanCode.metadata = {
-  title: "Clean Code",
+  title: 'Clean Code',
   description:
-    "Código legível e manutenível - princípios fundamentais para escrever código que outros devs conseguem entender e manter.",
+    'Código legível e manutenível - princípios fundamentais para escrever código que outros devs conseguem entender e manter.',
 };
 
 export default CleanCode;

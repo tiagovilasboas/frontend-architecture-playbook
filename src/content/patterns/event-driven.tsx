@@ -9,16 +9,16 @@ import {
   Group,
   Card,
   Badge,
-} from "@mantine/core";
+} from '@mantine/core';
 import {
   IconBulb,
   IconAlertTriangle,
   IconCheck,
   IconCode,
   IconBolt,
-} from "@tabler/icons-react";
-import CodeExample from "../../components/CodeExample";
-import eventDrivenExamples from "../../utils/code-examples/event-driven.json";
+} from '@tabler/icons-react';
+import CodeExample from '../../components/CodeExample';
+import eventDrivenExamples from '../../utils/code-examples/event-driven.json';
 
 function EventDriven() {
   return (
@@ -48,7 +48,7 @@ function EventDriven() {
           </Group>
 
           <Text>
-            Event-Driven é sobre uma coisa só:{" "}
+            Event-Driven é sobre uma coisa só:{' '}
             <strong>componentes se comunicam via eventos</strong>.
           </Text>
 
@@ -71,7 +71,7 @@ function EventDriven() {
         <Title order={2} mb="lg">
           <IconBolt
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Os 3 Conceitos Principais
         </Title>
@@ -90,13 +90,13 @@ function EventDriven() {
                 <CodeExample
                   title={
                     eventDrivenExamples.find(
-                      (e) => e.id === "event-driven-emitter",
-                    )?.title || ""
+                      e => e.id === 'event-driven-emitter'
+                    )?.title || ''
                   }
                   code={
                     eventDrivenExamples.find(
-                      (e) => e.id === "event-driven-emitter",
-                    )?.content || ""
+                      e => e.id === 'event-driven-emitter'
+                    )?.content || ''
                   }
                 />
               </div>
@@ -116,13 +116,13 @@ function EventDriven() {
                 <CodeExample
                   title={
                     eventDrivenExamples.find(
-                      (e) => e.id === "event-driven-listener",
-                    )?.title || ""
+                      e => e.id === 'event-driven-listener'
+                    )?.title || ''
                   }
                   code={
                     eventDrivenExamples.find(
-                      (e) => e.id === "event-driven-listener",
-                    )?.content || ""
+                      e => e.id === 'event-driven-listener'
+                    )?.content || ''
                   }
                 />
               </div>
@@ -141,12 +141,12 @@ function EventDriven() {
                 </Text>
                 <CodeExample
                   title={
-                    eventDrivenExamples.find((e) => e.id === "event-driven-bus")
-                      ?.title || ""
+                    eventDrivenExamples.find(e => e.id === 'event-driven-bus')
+                      ?.title || ''
                   }
                   code={
-                    eventDrivenExamples.find((e) => e.id === "event-driven-bus")
-                      ?.content || ""
+                    eventDrivenExamples.find(e => e.id === 'event-driven-bus')
+                      ?.content || ''
                   }
                 />
               </div>
@@ -160,7 +160,7 @@ function EventDriven() {
         <Title order={2} mb="lg">
           <IconCheck
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Por que vale a pena?
         </Title>
@@ -216,7 +216,7 @@ function EventDriven() {
         <Title order={2} mb="lg">
           <IconAlertTriangle
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Quando usar?
         </Title>
@@ -248,7 +248,7 @@ function EventDriven() {
         <Title order={2} mb="lg">
           <IconCode
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Exemplos Práticos no Front-End
         </Title>
@@ -273,13 +273,13 @@ function EventDriven() {
               <CodeExample
                 title={
                   eventDrivenExamples.find(
-                    (e) => e.id === "event-driven-ecommerce",
-                  )?.title || ""
+                    e => e.id === 'event-driven-ecommerce'
+                  )?.title || ''
                 }
                 code={
                   eventDrivenExamples.find(
-                    (e) => e.id === "event-driven-ecommerce",
-                  )?.content || ""
+                    e => e.id === 'event-driven-ecommerce'
+                  )?.content || ''
                 }
               />
             </Stack>
@@ -304,13 +304,13 @@ function EventDriven() {
               <CodeExample
                 title={
                   eventDrivenExamples.find(
-                    (e) => e.id === "event-driven-dashboard",
-                  )?.title || ""
+                    e => e.id === 'event-driven-dashboard'
+                  )?.title || ''
                 }
                 code={
                   eventDrivenExamples.find(
-                    (e) => e.id === "event-driven-dashboard",
-                  )?.content || ""
+                    e => e.id === 'event-driven-dashboard'
+                  )?.content || ''
                 }
               />
             </Stack>
@@ -323,7 +323,7 @@ function EventDriven() {
         <Title order={2} mb="lg">
           <IconAlertTriangle
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Armadilhas Comuns
         </Title>
@@ -369,7 +369,7 @@ function EventDriven() {
         <Title order={2} mb="lg">
           <IconBulb
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Referências e Casos Reais
         </Title>
@@ -415,7 +415,7 @@ function EventDriven() {
         <Title order={2} mb="md">
           <IconCheck
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Resumo - Event-Driven
         </Title>

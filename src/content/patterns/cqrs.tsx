@@ -10,14 +10,14 @@ import {
   Alert,
   List,
   Code,
-} from "@mantine/core";
+} from '@mantine/core';
 import {
   IconCheck,
   IconAlertTriangle,
   IconBulb,
   IconRocket,
   IconGitFork,
-} from "@tabler/icons-react";
+} from '@tabler/icons-react';
 
 export default function CQRSArchitecture() {
   return (
@@ -572,7 +572,7 @@ function useOrderCQRS() {
       {/* Resumo */}
       <Paper withBorder p="xl" radius="md">
         <Alert color="pink" icon={<IconBulb size={16} />} radius="md">
-          <Text fw={600} size="lg" mb="md" style={{ fontStyle: "italic" }}>
+          <Text fw={600} size="lg" mb="md" style={{ fontStyle: 'italic' }}>
             "CQRS: optimize reads for speed, optimize writes for correctness."
           </Text>
           <List spacing="sm">
@@ -608,7 +608,7 @@ function useOrderCQRS() {
 }
 
 CQRSArchitecture.metadata = {
-  title: "CQRS Frontend",
+  title: 'CQRS Frontend',
   description:
-    "Command Query Responsibility Segregation - separa leitura de escrita para performance e clareza de responsabilidades.",
+    'Command Query Responsibility Segregation - separa leitura de escrita para performance e clareza de responsabilidades.',
 };

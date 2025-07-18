@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Clean Code",
+  title: 'Clean Code',
   description:
-    "Código legível e manutenível - princípios fundamentais para escrever código que outros devs conseguem entender e manter.",
+    'Código legível e manutenível - princípios fundamentais para escrever código que outros devs conseguem entender e manter.',
 };

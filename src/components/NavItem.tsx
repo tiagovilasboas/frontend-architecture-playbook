@@ -1,6 +1,6 @@
-import { NavLink } from "@mantine/core";
-import { Link } from "react-router-dom";
-import { IconChevronRight } from "@tabler/icons-react";
+import { NavLink } from '@mantine/core';
+import { Link } from 'react-router-dom';
+import { IconChevronRight } from '@tabler/icons-react';
 
 interface NavItemProps {
   href: string;
@@ -32,7 +32,7 @@ export default function NavItem({
       onClick={handleClick}
       leftSection={icon}
       rightSection={active ? <IconChevronRight size={12} /> : null}
-      variant={active ? "filled" : "subtle"}
+      variant={active ? 'filled' : 'subtle'}
       className="navmenu-link"
     />
   );

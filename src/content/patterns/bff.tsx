@@ -10,14 +10,14 @@ import {
   Alert,
   List,
   Code,
-} from "@mantine/core";
+} from '@mantine/core';
 import {
   IconCheck,
   IconAlertTriangle,
   IconBulb,
   IconRocket,
   IconApi,
-} from "@tabler/icons-react";
+} from '@tabler/icons-react';
 
 export default function BFFArchitecture() {
   return (
@@ -51,22 +51,22 @@ export default function BFFArchitecture() {
         </Group>
 
         <Text size="lg" mb="md">
-          Sabe quando você tem 5 APIs diferentes e precisa fazer{" "}
+          Sabe quando você tem 5 APIs diferentes e precisa fazer{' '}
           <Text span fw={700} c="violet">
             7 requests
-          </Text>{" "}
-          pra montar uma tela? BFF é uma camada que{" "}
+          </Text>{' '}
+          pra montar uma tela? BFF é uma camada que{' '}
           <Text span fw={700} c="blue">
             agrega, transforma e otimiza
-          </Text>{" "}
+          </Text>{' '}
           dados especificamente pro seu frontend.
         </Text>
 
         <Text mb="lg">
-          É tipo ter um{" "}
+          É tipo ter um{' '}
           <Text span fw={700}>
             garçom exclusivo
-          </Text>{" "}
+          </Text>{' '}
           que conhece exatamente como você gosta do seu pedido, em vez de ir
           direto na cozinha negociar com 5 chefs diferentes.
         </Text>
@@ -263,10 +263,10 @@ useEffect(() => {
         </Group>
 
         <Text mb="md">
-          Cenário: Dashboard que mostra{" "}
+          Cenário: Dashboard que mostra{' '}
           <Text span fw={700}>
             vendas + inventário + reviews
-          </Text>{" "}
+          </Text>{' '}
           de 3 microservices diferentes.
         </Text>
 
@@ -427,7 +427,7 @@ function Dashboard() {
             <Text size="sm" c="dimmed">
               <Text span fw={600}>
                 Solução:
-              </Text>{" "}
+              </Text>{' '}
               Comece simples (Express + Redis) e evolua conforme necessário.
             </Text>
           </Alert>
@@ -443,7 +443,7 @@ function Dashboard() {
             <Text size="sm" c="dimmed">
               <Text span fw={600}>
                 Solução:
-              </Text>{" "}
+              </Text>{' '}
               BFF só agrega e transforma. Lógica fica nos services.
             </Text>
           </Alert>
@@ -459,7 +459,7 @@ function Dashboard() {
             <Text size="sm" c="dimmed">
               <Text span fw={600}>
                 Solução:
-              </Text>{" "}
+              </Text>{' '}
               Circuit breakers, fallbacks, cache resiliente.
             </Text>
           </Alert>
@@ -474,7 +474,7 @@ function Dashboard() {
             <Text size="sm" c="dimmed">
               <Text span fw={600}>
                 Solução:
-              </Text>{" "}
+              </Text>{' '}
               Cache agressivo, conexões keep-alive, deploy próximo.
             </Text>
           </Alert>
@@ -500,19 +500,19 @@ function Dashboard() {
             <Text size="sm" mb="xs">
               <Text span fw={600}>
                 Problema:
-              </Text>{" "}
+              </Text>{' '}
               700+ microservices, cada device precisava de dados diferentes
             </Text>
             <Text size="sm" mb="xs">
               <Text span fw={600}>
                 Solução:
-              </Text>{" "}
+              </Text>{' '}
               BFF específico para TV, mobile, web - cada um otimizado
             </Text>
             <Text size="sm" c="green">
               <Text span fw={600}>
                 Resultado:
-              </Text>{" "}
+              </Text>{' '}
               -60% requests, +40% performance, UX específica por device
             </Text>
           </Card>
@@ -524,19 +524,19 @@ function Dashboard() {
             <Text size="sm" mb="xs">
               <Text span fw={600}>
                 Problema:
-              </Text>{" "}
+              </Text>{' '}
               Apps mobile faziam 20+ requests pra montar playlist
             </Text>
             <Text size="sm" mb="xs">
               <Text span fw={600}>
                 Solução:
-              </Text>{" "}
+              </Text>{' '}
               BFF que agrega músicas + metadata + recommendations
             </Text>
             <Text size="sm" c="green">
               <Text span fw={600}>
                 Resultado:
-              </Text>{" "}
+              </Text>{' '}
               Tempo de carregamento de playlist: 3s → 500ms
             </Text>
           </Card>
@@ -548,20 +548,20 @@ function Dashboard() {
             <Text size="sm" mb="xs">
               <Text span fw={600}>
                 Problema:
-              </Text>{" "}
+              </Text>{' '}
               Driver app e rider app precisavam de dados similares mas
               formatados diferente
             </Text>
             <Text size="sm" mb="xs">
               <Text span fw={600}>
                 Solução:
-              </Text>{" "}
+              </Text>{' '}
               BFF dedicado pra cada app com lógica específica de agregação
             </Text>
             <Text size="sm" c="green">
               <Text span fw={600}>
                 Resultado:
-              </Text>{" "}
+              </Text>{' '}
               Times independentes, deploy sem conflito, UX otimizada
             </Text>
           </Card>
@@ -583,25 +583,25 @@ function Dashboard() {
               <List.Item>
                 <Text span fw={600}>
                   Node.js:
-                </Text>{" "}
+                </Text>{' '}
                 Express, Fastify, Koa
               </List.Item>
               <List.Item>
                 <Text span fw={600}>
                   Python:
-                </Text>{" "}
+                </Text>{' '}
                 FastAPI, Flask
               </List.Item>
               <List.Item>
                 <Text span fw={600}>
                   Go:
-                </Text>{" "}
+                </Text>{' '}
                 Gin, Echo, Fiber
               </List.Item>
               <List.Item>
                 <Text span fw={600}>
                   Rust:
-                </Text>{" "}
+                </Text>{' '}
                 Axum, Warp
               </List.Item>
             </List>
@@ -615,25 +615,25 @@ function Dashboard() {
               <List.Item>
                 <Text span fw={600}>
                   Redis:
-                </Text>{" "}
+                </Text>{' '}
                 Cache distribuído
               </List.Item>
               <List.Item>
                 <Text span fw={600}>
                   Memcached:
-                </Text>{" "}
+                </Text>{' '}
                 Cache simples
               </List.Item>
               <List.Item>
                 <Text span fw={600}>
                   In-memory:
-                </Text>{" "}
+                </Text>{' '}
                 Cache local
               </List.Item>
               <List.Item>
                 <Text span fw={600}>
                   CDN:
-                </Text>{" "}
+                </Text>{' '}
                 Cache de borda
               </List.Item>
             </List>
@@ -647,25 +647,25 @@ function Dashboard() {
               <List.Item>
                 <Text span fw={600}>
                   Docker:
-                </Text>{" "}
+                </Text>{' '}
                 Deploy consistente
               </List.Item>
               <List.Item>
                 <Text span fw={600}>
                   K8s:
-                </Text>{" "}
+                </Text>{' '}
                 Orquestração
               </List.Item>
               <List.Item>
                 <Text span fw={600}>
                   Istio:
-                </Text>{" "}
+                </Text>{' '}
                 Service mesh
               </List.Item>
               <List.Item>
                 <Text span fw={600}>
                   Jaeger:
-                </Text>{" "}
+                </Text>{' '}
                 Distributed tracing
               </List.Item>
             </List>
@@ -685,7 +685,7 @@ function Dashboard() {
         </Group>
 
         <Alert color="violet" icon={<IconBulb size={16} />} radius="md">
-          <Text fw={600} size="lg" mb="md" style={{ fontStyle: "italic" }}>
+          <Text fw={600} size="lg" mb="md" style={{ fontStyle: 'italic' }}>
             "BFF é o garçom que traduz o que você quer pro chef da cozinha - e
             traz tudo numa bandeja só."
           </Text>
@@ -733,7 +733,7 @@ function Dashboard() {
 }
 
 BFFArchitecture.metadata = {
-  title: "Backend-for-Frontend (BFF)",
+  title: 'Backend-for-Frontend (BFF)',
   description:
-    "Como criar uma API sob medida pro seu frontend, agregando dados de múltiplos services de forma otimizada.",
+    'Como criar uma API sob medida pro seu frontend, agregando dados de múltiplos services de forma otimizada.',
 };

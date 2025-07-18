@@ -1,15 +1,15 @@
-import React from "react";
-import { ScrollArea, Title, Stack, Divider, Group } from "@mantine/core";
+import React from 'react';
+import { ScrollArea, Title, Stack, Divider, Group } from '@mantine/core';
 import {
   IconBook,
   IconPuzzle,
   IconStack,
   IconTools,
   IconCheck,
-} from "@tabler/icons-react";
-import { useLocation } from "react-router-dom";
-import type { DocMeta } from "../lib/content.ts";
-import NavItem from "./NavItem.tsx";
+} from '@tabler/icons-react';
+import { useLocation } from 'react-router-dom';
+import type { DocMeta } from '../lib/content.ts';
+import NavItem from './NavItem.tsx';
 
 interface Props {
   guides: DocMeta[];
@@ -32,7 +32,7 @@ export default function NavMenu({
   const current = location.pathname;
 
   return (
-    <ScrollArea h="100%" style={{ overflow: "visible" }}>
+    <ScrollArea h="100%" style={{ overflow: 'visible' }}>
       <Stack gap="md">
         {/* Guides Section */}
         <div>
@@ -43,7 +43,7 @@ export default function NavMenu({
             </Title>
           </Group>
           <Stack gap={4}>
-            {guides.map((g) => (
+            {guides.map(g => (
               <NavItem
                 key={g.slug}
                 href={`/guides/${g.slug}`}
@@ -67,7 +67,7 @@ export default function NavMenu({
             </Title>
           </Group>
           <Stack gap={4}>
-            {bestPractices.map((b) => (
+            {bestPractices.map(b => (
               <NavItem
                 key={b.slug}
                 href={`/best-practices/${b.slug}`}
@@ -91,7 +91,7 @@ export default function NavMenu({
             </Title>
           </Group>
           <Stack gap={4}>
-            {architectures.map((a) => (
+            {architectures.map(a => (
               <NavItem
                 key={a.slug}
                 href={`/architectures/${a.slug}`}
@@ -115,7 +115,7 @@ export default function NavMenu({
             </Title>
           </Group>
           <Stack gap={4}>
-            {patterns.map((p) => (
+            {patterns.map(p => (
               <NavItem
                 key={p.slug}
                 href={`/patterns/${p.slug}`}
@@ -139,7 +139,7 @@ export default function NavMenu({
             </Title>
           </Group>
           <Stack gap={4}>
-            {techniques.map((t) => (
+            {techniques.map(t => (
               <NavItem
                 key={t.slug}
                 href={`/techniques/${t.slug}`}

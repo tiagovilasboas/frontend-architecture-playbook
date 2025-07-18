@@ -10,7 +10,7 @@ import {
   Alert,
   List,
   Code,
-} from "@mantine/core";
+} from '@mantine/core';
 import {
   IconCode,
   IconCheck,
@@ -18,7 +18,7 @@ import {
   IconBulb,
   IconRocket,
   IconStack,
-} from "@tabler/icons-react";
+} from '@tabler/icons-react';
 
 export default function SSRSSGArchitecture() {
   return (
@@ -52,7 +52,7 @@ export default function SSRSSGArchitecture() {
         </Group>
 
         <Text size="lg" mb="md">
-          Imagine o seguinte: você abre um site e{" "}
+          Imagine o seguinte: você abre um site e{' '}
           <Text span fw={700} c="blue">
             vê o conteúdo na mesma hora
           </Text>
@@ -63,12 +63,12 @@ export default function SSRSSGArchitecture() {
         <Text mb="lg">
           <Text span fw={700}>
             SSR
-          </Text>{" "}
+          </Text>{' '}
           renderiza o HTML no servidor a cada request.
           <Text span fw={700}>
-            {" "}
+            {' '}
             SSG
-          </Text>{" "}
+          </Text>{' '}
           gera o HTML em build time. Ambos entregam conteúdo pronto pro browser,
           não JavaScript que vai construir a página.
         </Text>
@@ -285,11 +285,11 @@ export default function SSRSSGArchitecture() {
         </Group>
 
         <Text mb="md">
-          Cenário: página de produto que precisa ser{" "}
+          Cenário: página de produto que precisa ser{' '}
           <Text span fw={700}>
             rápida
-          </Text>{" "}
-          e{" "}
+          </Text>{' '}
+          e{' '}
           <Text span fw={700}>
             indexável
           </Text>
@@ -444,19 +444,19 @@ useEffect(() => setAgora(new Date()), [])`}
             <Text size="sm" mb="xs">
               <Text span fw={600}>
                 Problema:
-              </Text>{" "}
+              </Text>{' '}
               Lojas grandes com catálogos imensos tinham SEO ruim
             </Text>
             <Text size="sm" mb="xs">
               <Text span fw={600}>
                 Solução:
-              </Text>{" "}
+              </Text>{' '}
               SSG para produtos + SSR para carrinho/checkout
             </Text>
             <Text size="sm" c="green">
               <Text span fw={600}>
                 Resultado:
-              </Text>{" "}
+              </Text>{' '}
               +40% organic traffic, -50% bounce rate
             </Text>
           </Card>
@@ -468,19 +468,19 @@ useEffect(() => setAgora(new Date()), [])`}
             <Text size="sm" mb="xs">
               <Text span fw={600}>
                 Problema:
-              </Text>{" "}
+              </Text>{' '}
               Notícias competindo no Google, mobile lento
             </Text>
             <Text size="sm" mb="xs">
               <Text span fw={600}>
                 Solução:
-              </Text>{" "}
+              </Text>{' '}
               SSR para artigos + cache agressivo
             </Text>
             <Text size="sm" c="green">
               <Text span fw={600}>
                 Resultado:
-              </Text>{" "}
+              </Text>{' '}
               Core Web Vitals no verde, +30% page views
             </Text>
           </Card>
@@ -492,19 +492,19 @@ useEffect(() => setAgora(new Date()), [])`}
             <Text size="sm" mb="xs">
               <Text span fw={600}>
                 Problema:
-              </Text>{" "}
+              </Text>{' '}
               Landing pages competindo por "deploy frontend"
             </Text>
             <Text size="sm" mb="xs">
               <Text span fw={600}>
                 Solução:
-              </Text>{" "}
+              </Text>{' '}
               SSG + Edge Functions para personalização
             </Text>
             <Text size="sm" c="green">
               <Text span fw={600}>
                 Resultado:
-              </Text>{" "}
+              </Text>{' '}
               Lighthouse 100, +200% conversion de landing
             </Text>
           </Card>
@@ -526,25 +526,25 @@ useEffect(() => setAgora(new Date()), [])`}
               <List.Item>
                 <Text span fw={600}>
                   Next.js:
-                </Text>{" "}
+                </Text>{' '}
                 getServerSideProps
               </List.Item>
               <List.Item>
                 <Text span fw={600}>
                   Nuxt.js:
-                </Text>{" "}
+                </Text>{' '}
                 server-side rendering
               </List.Item>
               <List.Item>
                 <Text span fw={600}>
                   SvelteKit:
-                </Text>{" "}
+                </Text>{' '}
                 server routes
               </List.Item>
               <List.Item>
                 <Text span fw={600}>
                   Remix:
-                </Text>{" "}
+                </Text>{' '}
                 loader functions
               </List.Item>
             </List>
@@ -558,25 +558,25 @@ useEffect(() => setAgora(new Date()), [])`}
               <List.Item>
                 <Text span fw={600}>
                   Next.js:
-                </Text>{" "}
+                </Text>{' '}
                 getStaticProps
               </List.Item>
               <List.Item>
                 <Text span fw={600}>
                   Gatsby:
-                </Text>{" "}
+                </Text>{' '}
                 GraphQL + build
               </List.Item>
               <List.Item>
                 <Text span fw={600}>
                   11ty:
-                </Text>{" "}
+                </Text>{' '}
                 templating + data
               </List.Item>
               <List.Item>
                 <Text span fw={600}>
                   Astro:
-                </Text>{" "}
+                </Text>{' '}
                 islands architecture
               </List.Item>
             </List>
@@ -596,7 +596,7 @@ useEffect(() => setAgora(new Date()), [])`}
         </Group>
 
         <Alert color="blue" icon={<IconBulb size={16} />} radius="md">
-          <Text fw={600} size="lg" mb="md" style={{ fontStyle: "italic" }}>
+          <Text fw={600} size="lg" mb="md" style={{ fontStyle: 'italic' }}>
             "Se você compete no Google ou liga pra Core Web Vitals, SSR/SSG não
             é opcional - é obrigatório."
           </Text>
@@ -610,7 +610,7 @@ useEffect(() => setAgora(new Date()), [])`}
               <Text>
                 <Text span fw={600}>
                   SSR:
-                </Text>{" "}
+                </Text>{' '}
                 conteúdo dinâmico, dados personalizados
               </Text>
             </List.Item>
@@ -622,7 +622,7 @@ useEffect(() => setAgora(new Date()), [])`}
               <Text>
                 <Text span fw={600}>
                   SSG:
-                </Text>{" "}
+                </Text>{' '}
                 conteúdo estático, performance máxima
               </Text>
             </List.Item>
@@ -650,7 +650,7 @@ useEffect(() => setAgora(new Date()), [])`}
 }
 
 SSRSSGArchitecture.metadata = {
-  title: "SSR & SSG",
+  title: 'SSR & SSG',
   description:
-    "Server-Side Rendering e Static Site Generation - como entregar conteúdo instantâneo e SEO que funciona de verdade.",
+    'Server-Side Rendering e Static Site Generation - como entregar conteúdo instantâneo e SEO que funciona de verdade.',
 };

@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import { Drawer, Box } from "@mantine/core";
-import { Spotlight } from "@mantine/spotlight";
-import { useMediaQuery } from "@mantine/hooks";
-import HeaderBar from "./HeaderBar.tsx";
-import NavMenu from "./NavMenu.tsx";
-import Footer from "./Footer.tsx";
-import { useNavigationActions } from "../hooks/useNavigationActions.ts";
-import type { DocMeta } from "../lib/content.ts";
+import React, { useState } from 'react';
+import { Drawer, Box } from '@mantine/core';
+import { Spotlight } from '@mantine/spotlight';
+import { useMediaQuery } from '@mantine/hooks';
+import HeaderBar from './HeaderBar.tsx';
+import NavMenu from './NavMenu.tsx';
+import Footer from './Footer.tsx';
+import { useNavigationActions } from '../hooks/useNavigationActions.ts';
+import type { DocMeta } from '../lib/content.ts';
 
 interface DocsShellProps {
   guides: DocMeta[];
@@ -26,16 +26,16 @@ export default function DocsShell({
   children,
 }: DocsShellProps) {
   const [opened, setOpened] = useState(false);
-  const isMobile = useMediaQuery("(max-width: 768px)");
+  const isMobile = useMediaQuery('(max-width: 768px)');
   const actions = useNavigationActions(
     guides,
     architectures,
     patterns,
     techniques,
-    bestPractices,
+    bestPractices
   );
 
-  const handleBurgerClick = () => setOpened((prev) => !prev);
+  const handleBurgerClick = () => setOpened(prev => !prev);
 
   // Função que fecha o menu mobile - passada para o NavMenu
   const handleDrawerClose = () => {
@@ -68,7 +68,7 @@ export default function DocsShell({
       </Drawer>
 
       <Box
-        style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}
+        style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}
       >
         {/* Header */}
         <HeaderBar
@@ -80,7 +80,7 @@ export default function DocsShell({
         />
 
         {/* Main Content */}
-        <Box style={{ flex: 1, display: "flex" }}>
+        <Box style={{ flex: 1, display: 'flex' }}>
           {/* Sidebar - apenas no desktop */}
           {!isMobile && (
             <Box
@@ -89,7 +89,7 @@ export default function DocsShell({
                 width: 260,
                 padding: 12,
                 paddingRight: 20,
-                overflow: "visible",
+                overflow: 'visible',
               }}
             >
               <NavMenu
@@ -104,7 +104,7 @@ export default function DocsShell({
           )}
 
           {/* Content */}
-          <Box style={{ flex: 1, padding: "1rem" }}>{children}</Box>
+          <Box style={{ flex: 1, padding: '1rem' }}>{children}</Box>
         </Box>
 
         {/* Footer */}

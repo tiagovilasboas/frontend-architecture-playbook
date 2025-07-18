@@ -1,5 +1,5 @@
-import { useRef, useEffect, useState } from "react";
-import { Box } from "@mantine/core";
+import { useRef, useEffect, useState } from 'react';
+import { Box } from '@mantine/core';
 import {
   DEFAULT_HIGHWAY_CONFIG,
   calculateLanePositions,
@@ -8,26 +8,26 @@ import {
   generateImperfections,
   calculateCarSpacing,
   type HighwayConfig,
-} from "./highway-config";
+} from './highway-config';
 
 const SPRITE_PATHS = [
-  "Ambulance.png",
-  "Audi.png",
-  "Police.png",
-  "Black_viper.png",
-  "Car.png",
-  "Mini_truck.png",
-  "Mini_van.png",
-  "truck.png",
-  "taxi.png",
-].map((f) => `/assets/cars/${f}`);
+  'Ambulance.png',
+  'Audi.png',
+  'Police.png',
+  'Black_viper.png',
+  'Car.png',
+  'Mini_truck.png',
+  'Mini_van.png',
+  'truck.png',
+  'taxi.png',
+].map(f => `/assets/cars/${f}`);
 
 interface Vehicle {
   lane: number;
   x: number;
   speed: number;
   color: string;
-  direction: "left" | "right";
+  direction: 'left' | 'right';
   opacity: number;
   maxSpeed: number;
   sprite: HTMLImageElement;
@@ -61,7 +61,7 @@ export default function HighwayAnimationCanvas({
 
   // Detectar resolução pequena (até 430px)
   const isSmallScreen =
-    typeof window !== "undefined" && window.innerWidth <= 430;
+    typeof window !== 'undefined' && window.innerWidth <= 430;
 
   // Carregar todos os sprites ao montar
   useEffect(() => {
@@ -82,7 +82,7 @@ export default function HighwayAnimationCanvas({
     if (sprites.length === 0) return;
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
     const { visual, vehicles } = config;
@@ -97,7 +97,7 @@ export default function HighwayAnimationCanvas({
     // Função para detectar proximidade de buracos
     const checkPotholeProximity = (
       vehicle: Vehicle,
-      potholes: Array<{ x: number; y: number; r: number }>,
+      potholes: Array<{ x: number; y: number; r: number }>
     ) => {
       const vehicleY = getLaneY(vehicle.lane, vehicle.sublane, config);
       const proximityThreshold = 80; // Distância para considerar "próximo" do buraco
@@ -170,7 +170,7 @@ export default function HighwayAnimationCanvas({
           calculateCarSpacing(
             sublane,
             visual.canvasWidth,
-            visual.lateralMargin,
+            visual.lateralMargin
           ) * laneSpacingMultiplier;
 
         // Reduzir número de carros no mobile
@@ -188,7 +188,7 @@ export default function HighwayAnimationCanvas({
             x,
             speed: sublane.initialSpeed,
             color: lane.color,
-            direction: lane.direction === "up" ? "right" : "left",
+            direction: lane.direction === 'up' ? 'right' : 'left',
             opacity: 0,
             maxSpeed: sublane.maxSpeed,
             sprite,
@@ -209,7 +209,7 @@ export default function HighwayAnimationCanvas({
     // Mouse interaction
     let mouseX = -1,
       mouseY = -1;
-    canvas.onmousemove = (e) => {
+    canvas.onmousemove = e => {
       const rect = canvas.getBoundingClientRect();
       mouseX = ((e.clientX - rect.left) / rect.width) * canvas.width;
       mouseY = ((e.clientY - rect.top) / rect.height) * canvas.height;
@@ -223,13 +223,13 @@ export default function HighwayAnimationCanvas({
     const drawRoad = () => {
       ctx.save();
       // Rodovia retangular
-      ctx.fillStyle = "#23272a";
+      ctx.fillStyle = '#23272a';
       ctx.fillRect(0, 0, visual.canvasWidth, visual.canvasHeight);
       ctx.restore();
 
       // Linha amarela central
       ctx.save();
-      ctx.strokeStyle = "#FFD600";
+      ctx.strokeStyle = '#FFD600';
       ctx.lineWidth = 6;
       ctx.beginPath();
       ctx.moveTo(0, positions.lines.yellow - 20); // 20 pontos mais acima
@@ -243,17 +243,17 @@ export default function HighwayAnimationCanvas({
       for (const p of imperfections.potholes) {
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = "#181a1b";
+        ctx.fillStyle = '#181a1b';
         ctx.globalAlpha = 0.8;
         ctx.fill();
-        ctx.strokeStyle = "#333";
+        ctx.strokeStyle = '#333';
         ctx.lineWidth = 1;
         ctx.stroke();
       }
 
       // Trincados
       ctx.globalAlpha = 0.7;
-      ctx.strokeStyle = "#666";
+      ctx.strokeStyle = '#666';
       ctx.lineWidth = 3;
       for (const c of imperfections.cracks) {
         ctx.beginPath();
@@ -279,7 +279,7 @@ export default function HighwayAnimationCanvas({
       // Efeito visual para carros próximos de buracos
       if (v.isNearPothole) {
         ctx.globalAlpha = v.opacity * 0.7; // Mais transparente
-        ctx.filter = "brightness(1.2) saturate(1.5)"; // Mais brilhante e saturado
+        ctx.filter = 'brightness(1.2) saturate(1.5)'; // Mais brilhante e saturado
       } else {
         ctx.globalAlpha = v.opacity;
       }
@@ -293,14 +293,14 @@ export default function HighwayAnimationCanvas({
       const renderHeight =
         vehicles.spriteHeight * vehicleScale * mobileConfig.heightScale;
 
-      if (v.direction === "right") {
+      if (v.direction === 'right') {
         ctx.rotate(Math.PI / 2);
         ctx.drawImage(
           v.sprite,
           -renderWidth / 2,
           -renderHeight / 2,
           renderWidth,
-          renderHeight,
+          renderHeight
         );
       } else {
         ctx.rotate(-Math.PI / 2);
@@ -310,7 +310,7 @@ export default function HighwayAnimationCanvas({
           -renderWidth / 2,
           -renderHeight / 2,
           renderWidth,
-          renderHeight,
+          renderHeight
         );
       }
 
@@ -318,15 +318,15 @@ export default function HighwayAnimationCanvas({
       if (v.hasHeadlights && v.headlightsOn) {
         ctx.save();
         ctx.beginPath();
-        if (v.direction === "right") {
+        if (v.direction === 'right') {
           ctx.arc(renderHeight / 2 + 4, -renderWidth / 4, 4, 0, Math.PI * 2);
           ctx.arc(renderHeight / 2 + 4, +renderWidth / 4, 4, 0, Math.PI * 2);
         } else {
           ctx.arc(-renderHeight / 2 - 4, -renderWidth / 4, 4, 0, Math.PI * 2);
           ctx.arc(-renderHeight / 2 - 4, +renderWidth / 4, 4, 0, Math.PI * 2);
         }
-        ctx.fillStyle = "#fff";
-        ctx.shadowColor = "#fff";
+        ctx.fillStyle = '#fff';
+        ctx.shadowColor = '#fff';
         ctx.shadowBlur = 10;
         ctx.fill();
         ctx.restore();
@@ -339,7 +339,7 @@ export default function HighwayAnimationCanvas({
       drawRoad();
 
       // Atualizar e desenhar partículas de fumaça
-      smokeParticles = smokeParticles.filter((p) => p.alpha > 0.03);
+      smokeParticles = smokeParticles.filter(p => p.alpha > 0.03);
       for (const p of smokeParticles) {
         p.x += p.vx;
         p.y += p.vy;
@@ -347,7 +347,7 @@ export default function HighwayAnimationCanvas({
         p.size *= 1.04;
         ctx.save();
         ctx.globalAlpha = p.alpha;
-        ctx.fillStyle = "rgba(180,180,180,0.8)";
+        ctx.fillStyle = 'rgba(180,180,180,0.8)';
         ctx.beginPath();
         ctx.ellipse(p.x, p.y, p.size, p.size * 0.7, 0, 0, Math.PI * 2);
         ctx.fill();
@@ -357,10 +357,10 @@ export default function HighwayAnimationCanvas({
       // Separar carros por subfaixa
       const carsByLane = [
         [
-          vehiclesList.filter((v) => v.lane === 0 && v.sublane === 0),
-          vehiclesList.filter((v) => v.lane === 0 && v.sublane === 1),
+          vehiclesList.filter(v => v.lane === 0 && v.sublane === 0),
+          vehiclesList.filter(v => v.lane === 0 && v.sublane === 1),
         ],
-        [vehiclesList.filter((v) => v.lane === 1)],
+        [vehiclesList.filter(v => v.lane === 1)],
       ];
 
       for (let lane = 0; lane < 2; lane++) {
@@ -387,7 +387,7 @@ export default function HighwayAnimationCanvas({
             if (lane === 1) {
               v.isNearPothole = checkPotholeProximity(
                 v,
-                imperfections.potholes,
+                imperfections.potholes
               );
             }
 
@@ -395,7 +395,7 @@ export default function HighwayAnimationCanvas({
             if (v.isNearPothole) {
               v.speed = Math.max(
                 laneConfig.minSpeed * 0.5,
-                v.speed - laneConfig.deceleration * 2,
+                v.speed - laneConfig.deceleration * 2
               );
             } else if (
               dist <
@@ -405,7 +405,7 @@ export default function HighwayAnimationCanvas({
             ) {
               v.speed = Math.max(
                 laneConfig.minSpeed,
-                v.speed - laneConfig.deceleration,
+                v.speed - laneConfig.deceleration
               );
             } else if (v.speed < v.maxSpeed) {
               v.speed = Math.min(v.maxSpeed, v.speed + laneConfig.acceleration);
@@ -444,7 +444,7 @@ export default function HighwayAnimationCanvas({
 
             drawCar(v, vibrate);
 
-            if (v.direction === "right") {
+            if (v.direction === 'right') {
               v.x += v.speed;
               if (v.x > visual.canvasWidth + actualVehicleWidth)
                 v.x = -actualVehicleWidth;
@@ -464,17 +464,17 @@ export default function HighwayAnimationCanvas({
   }, [sprites, config, isSmallScreen]);
 
   return (
-    <Box style={{ width: "100%", display: "flex", justifyContent: "center" }}>
+    <Box style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
       <canvas
         ref={canvasRef}
         width={config.visual.canvasWidth}
         height={config.visual.canvasHeight}
         style={{
-          width: "100%",
+          width: '100%',
           maxWidth: 900,
           height: config.visual.canvasHeight,
-          background: "none",
-          display: "block",
+          background: 'none',
+          display: 'block',
         }}
       />
     </Box>

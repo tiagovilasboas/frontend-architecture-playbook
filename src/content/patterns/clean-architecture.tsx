@@ -9,7 +9,7 @@ import {
   Group,
   Card,
   Badge,
-} from "@mantine/core";
+} from '@mantine/core';
 import {
   IconBulb,
   IconAlertTriangle,
@@ -17,9 +17,9 @@ import {
   IconCode,
   IconTestPipe,
   IconStack,
-} from "@tabler/icons-react";
-import CodeExample from "../../components/CodeExample";
-import codeExamples from "../../utils/code-examples/clean-architecture.json";
+} from '@tabler/icons-react';
+import CodeExample from '../../components/CodeExample';
+import codeExamples from '../../utils/code-examples/clean-architecture.json';
 
 function CleanArchitecture() {
   return (
@@ -52,7 +52,7 @@ function CleanArchitecture() {
           </Group>
 
           <Text>
-            Clean Architecture é sobre uma coisa só:{" "}
+            Clean Architecture é sobre uma coisa só:{' '}
             <strong>
               seu código de negócio não pode depender de framework
             </strong>
@@ -78,7 +78,7 @@ function CleanArchitecture() {
         <Title order={2} mb="lg">
           <IconStack
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           As 4 Camadas
         </Title>
@@ -90,17 +90,17 @@ function CleanArchitecture() {
               p="md"
               key={ex.title}
               w="100%"
-              style={{ minWidth: 0, width: "100%" }}
+              style={{ minWidth: 0, width: '100%' }}
             >
-              <Group w="100%" style={{ minWidth: 0, width: "100%" }}>
+              <Group w="100%" style={{ minWidth: 0, width: '100%' }}>
                 <Badge
                   size="lg"
                   variant="light"
-                  color={["green", "blue", "orange", "red"][idx] || "gray"}
+                  color={['green', 'blue', 'orange', 'red'][idx] || 'gray'}
                 >
                   {idx + 1}
                 </Badge>
-                <div style={{ flex: 1, width: "100%" }}>
+                <div style={{ flex: 1, width: '100%' }}>
                   <Title order={4}>{ex.title}</Title>
                   <Text size="sm" c="dimmed">
                     {ex.description}
@@ -117,7 +117,7 @@ function CleanArchitecture() {
             <strong>Como funciona:</strong> As camadas se comunicam de fora para
             dentro. O React component (Framework) chama o caso de uso (Use
             Case), que usa a entidade (Entity). O adaptador (Repository) conecta
-            com o mundo externo. A regra é clara:{" "}
+            com o mundo externo. A regra é clara:{' '}
             <em>dependências apontam para dentro</em>.
           </Text>
         </Paper>
@@ -128,7 +128,7 @@ function CleanArchitecture() {
         <Title order={2} mb="lg">
           <IconCheck
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Por que vale a pena?
         </Title>
@@ -186,7 +186,7 @@ function CleanArchitecture() {
         <Title order={2} mb="lg">
           <IconBulb
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Quando usar?
         </Title>
@@ -224,19 +224,19 @@ function CleanArchitecture() {
         <Title order={2} mb="lg">
           <IconAlertTriangle
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Armadilhas Comuns
         </Title>
 
         <Stack gap="md">
-          {codeExamples.slice(4).map((ex) => (
+          {codeExamples.slice(4).map(ex => (
             <Card
               withBorder
               p="md"
               key={ex.title}
               w="100%"
-              style={{ minWidth: 0, width: "100%" }}
+              style={{ minWidth: 0, width: '100%' }}
             >
               <Title order={4} mb="sm">
                 {ex.title}
@@ -269,9 +269,9 @@ function CleanArchitecture() {
 }
 
 CleanArchitecture.metadata = {
-  title: "Clean Architecture no Front-End",
+  title: 'Clean Architecture no Front-End',
   description:
-    "Separação clara de responsabilidades, testes fáceis e independência de frameworks.",
+    'Separação clara de responsabilidades, testes fáceis e independência de frameworks.',
 };
 
 export default CleanArchitecture;

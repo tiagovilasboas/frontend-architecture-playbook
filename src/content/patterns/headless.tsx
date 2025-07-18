@@ -10,14 +10,14 @@ import {
   Alert,
   List,
   Code,
-} from "@mantine/core";
+} from '@mantine/core';
 import {
   IconCheck,
   IconAlertTriangle,
   IconBulb,
   IconRocket,
   IconDatabase,
-} from "@tabler/icons-react";
+} from '@tabler/icons-react';
 
 export default function HeadlessArchitecture() {
   return (
@@ -44,10 +44,10 @@ export default function HeadlessArchitecture() {
         <Text size="lg" mb="md">
           <Text span fw={700} c="orange">
             Backend que só serve dados
-          </Text>{" "}
+          </Text>{' '}
           +
           <Text span fw={700} c="blue">
-            {" "}
+            {' '}
             frontend que só renderiza
           </Text>
           . Zero acoplamento. CMS não dita como seu site vai parecer.
@@ -295,7 +295,7 @@ export default function ProductPage({ products }) {
       {/* Resumo */}
       <Paper withBorder p="xl" radius="md">
         <Alert color="orange" icon={<IconBulb size={16} />} radius="md">
-          <Text fw={600} size="lg" mb="md" style={{ fontStyle: "italic" }}>
+          <Text fw={600} size="lg" mb="md" style={{ fontStyle: 'italic' }}>
             "Headless é liberdade: CMS cuida do conteúdo, frontend cuida da
             experiência."
           </Text>
@@ -329,7 +329,7 @@ export default function ProductPage({ products }) {
 }
 
 HeadlessArchitecture.metadata = {
-  title: "Headless/API-First",
+  title: 'Headless/API-First',
   description:
-    "Separação total entre backend (dados) e frontend (apresentação) para performance máxima e flexibilidade de stack.",
+    'Separação total entre backend (dados) e frontend (apresentação) para performance máxima e flexibilidade de stack.',
 };

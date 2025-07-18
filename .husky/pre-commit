@@ -1,3 +1,10 @@
 #!/usr/bin/env sh
 
+# Run lint-staged for formatting and linting staged files
 npx lint-staged
+
+# Run full lint check
+npm run lint
+
+# Run tests
+npm run test

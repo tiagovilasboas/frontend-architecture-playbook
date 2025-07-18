@@ -5,6 +5,7 @@
 ### 1. **Home Page - Mais Direta e Focada**
 
 #### ❌ **Antes (Problemas):**
+
 - 984 linhas de código repetitivo
 - Múltiplas seções falando sobre a mesma coisa
 - Seção de "Arquitetura como Rodovia" muito longa
@@ -13,6 +14,7 @@
 - Seção de exemplos que poderia estar em lugar melhor
 
 #### ✅ **Depois (Soluções):**
+
 - **Reduzido para ~200 linhas** de código eficiente
 - **Hero Section mais direto**: vai direto ao ponto - "18 anos resumidos: arquitetura é sobrevivência"
 - **Grid de conteúdo claro**: 4 cards principais (Guias, Práticas, Arquiteturas, Padrões)
@@ -24,6 +26,7 @@
 ### 2. **Mobile Responsividade - 100% Funcional**
 
 #### ❌ **Antes (Problemas):**
+
 - Scroll horizontal em dispositivos móveis
 - Componente `CodeExample` quebrava layout
 - Textos muito pequenos em mobile
@@ -33,6 +36,7 @@
 #### ✅ **Depois (Soluções):**
 
 ##### **CodeExample Component:**
+
 ```typescript
 // Detecção mobile responsiva
 const isMobile = useMediaQuery('(max-width: 768px)');
@@ -55,18 +59,20 @@ wrapLongLines={isMobile}    // Força wrap de código
 ```
 
 ##### **CSS Global Mobile:**
+
 ```css
 @media (max-width: 768px) {
   * {
     max-width: 100% !important;
     box-sizing: border-box !important;
   }
-  
-  html, body {
+
+  html,
+  body {
     overflow-x: hidden !important;
     max-width: 100vw !important;
   }
-  
+
   pre {
     max-width: 100% !important;
     overflow-x: auto !important;
@@ -77,6 +83,7 @@ wrapLongLines={isMobile}    // Força wrap de código
 ```
 
 ##### **Layout Responsivo:**
+
 - **Containers**: Padding automático em mobile (`xs` em vez de `md`)
 - **Typography**: Tamanhos adaptativos (`isSmallMobile ? '1.8rem' : isMobile ? '2.2rem' : '3.5rem'`)
 - **Buttons**: `fullWidth={isMobile}` para botões em mobile
@@ -86,15 +93,19 @@ wrapLongLines={isMobile}    // Força wrap de código
 ### 3. **Performance e UX**
 
 #### **Animações Inteligentes:**
+
 ```typescript
 // Desabilita animações complexas em mobile
-const mobileAnimationProps = isMobile ? {} : { 
-  whileHover: { scale: 1.05 }, 
-  whileTap: { scale: 0.95 } 
-};
+const mobileAnimationProps = isMobile
+  ? {}
+  : {
+      whileHover: { scale: 1.05 },
+      whileTap: { scale: 0.95 },
+    };
 ```
 
 #### **Carregamento Otimizado:**
+
 - Removida animação da rodovia (highway) que era pesada
 - Animações mais simples e diretas
 - Menos variantes de animação (de 5 para 2)
@@ -102,12 +113,14 @@ const mobileAnimationProps = isMobile ? {} : {
 ## 📊 Resultados
 
 ### **Métricas de Código:**
+
 - **Home.tsx**: 984 → ~400 linhas (-60%)
 - **Seções**: 9 → 6 seções (-33%)
 - **Complexidade**: Muito alta → Baixa
 - **Manutenibilidade**: Difícil → Fácil
 
 ### **UX Mobile:**
+
 - ✅ **Zero scroll horizontal**
 - ✅ **Touch targets adequados** (44px mínimo)
 - ✅ **Tipografia legível** em todas as telas
@@ -115,6 +128,7 @@ const mobileAnimationProps = isMobile ? {} : {
 - ✅ **Performance melhorada** (menos animações)
 
 ### **Conteúdo:**
+
 - ✅ **Mensagem mais direta**: "arquitetura é sobrevivência"
 - ✅ **Menos repetição**: cada seção tem propósito único
 - ✅ **CTA claro**: um botão principal ("Encontre sua Arquitetura")
