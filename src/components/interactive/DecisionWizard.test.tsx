@@ -118,6 +118,40 @@ describe('DecisionWizard recommendations - Improved Version', () => {
       expect(result).toContain('clean-architecture');
       expect(result).not.toContain('state-machines');
     });
+
+    it('E-commerce sempre recomenda SSR/SSG para SEO', () => {
+      const result = recommendationsForTest({
+        projectType: 'ecommerce',
+        teamSize: 'medium',
+        techLevel: 'mid',
+        priority: 'maintainability',
+        hasIntegrations: false,
+      });
+      expect(result).toContain('ssr-ssg');
+    });
+
+    it('E-commerce sempre recomenda PWA para mobile', () => {
+      const result = recommendationsForTest({
+        projectType: 'ecommerce',
+        teamSize: 'small',
+        techLevel: 'junior',
+        priority: 'speed',
+        hasIntegrations: false,
+      });
+      expect(result).toContain('pwa');
+    });
+
+    it('E-commerce com integrações recomenda BFF e CQRS', () => {
+      const result = recommendationsForTest({
+        projectType: 'ecommerce',
+        teamSize: 'large',
+        techLevel: 'senior',
+        priority: 'scalability',
+        hasIntegrations: true,
+      });
+      expect(result).toContain('bff');
+      expect(result).toContain('cqrs');
+    });
   });
 
   describe('Dashboard scenarios', () => {
@@ -174,6 +208,41 @@ describe('DecisionWizard recommendations - Improved Version', () => {
       });
       expect(result[0]).toBe('clean-architecture');
       expect(result).not.toContain('micro-frontends');
+    });
+
+    it('Enterprise com integrações recomenda Hexagonal e BFF', () => {
+      const result = recommendationsForTest({
+        projectType: 'enterprise',
+        teamSize: 'medium',
+        techLevel: 'senior',
+        priority: 'maintainability',
+        hasIntegrations: true,
+      });
+      expect(result).toContain('hexagonal');
+      expect(result).toContain('bff');
+      expect(result).toContain('headless');
+    });
+
+    it('Enterprise com times grandes recomenda Microservices Frontend', () => {
+      const result = recommendationsForTest({
+        projectType: 'enterprise',
+        teamSize: 'large',
+        techLevel: 'senior',
+        priority: 'scalability',
+        hasIntegrations: true,
+      });
+      expect(result).toContain('microservices-frontend');
+    });
+
+    it('Enterprise com manutenibilidade oferece Layered como alternativa', () => {
+      const result = recommendationsForTest({
+        projectType: 'enterprise',
+        teamSize: 'medium',
+        techLevel: 'mid',
+        priority: 'maintainability',
+        hasIntegrations: false,
+      });
+      expect(result).toContain('layered');
     });
   });
 
@@ -285,7 +354,7 @@ describe('DecisionWizard recommendations - Improved Version', () => {
       expect(result).toContain('jamstack');
     });
 
-    it('Prioridade em performance favorece Islands Architecture', () => {
+    it('Prioridade em performance favorece Islands Architecture e SSR/SSG', () => {
       const result = recommendationsForTest({
         projectType: 'mvp',
         teamSize: 'medium',
@@ -294,6 +363,18 @@ describe('DecisionWizard recommendations - Improved Version', () => {
         hasIntegrations: false,
       });
       expect(result[0]).toBe('islands-architecture');
+      expect(result).toContain('ssr-ssg');
+    });
+
+    it('Performance priority recomenda PWA para cache offline', () => {
+      const result = recommendationsForTest({
+        projectType: 'startup',
+        teamSize: 'medium',
+        techLevel: 'mid',
+        priority: 'performance',
+        hasIntegrations: false,
+      });
+      expect(result).toContain('pwa');
     });
 
     it('Prioridade em manutenibilidade favorece Clean Architecture', () => {
