@@ -6,10 +6,10 @@ export function useFeatureFlag(flagKey: string, defaultValue = false) {
 
   useEffect(() => {
     fetch(`/api/flags/${flagKey}`)
-      .then((res) => res.json())
-      .then((data) => setIsEnabled(!!data.enabled))
+      .then(res => res.json())
+      .then(data => setIsEnabled(!!data.enabled))
       .catch(() => setIsEnabled(defaultValue));
   }, [flagKey, defaultValue]);
 
   return isEnabled;
-} 
+}

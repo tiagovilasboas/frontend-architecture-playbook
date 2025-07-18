@@ -7,13 +7,16 @@
     "dev": "kill-port 5173 && vite",
     "build": "tsc && vite build",
     "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "preview": "vite preview",
     "prepare": "husky",
     "test": "jest",
     "optimize:images": "imagemin src/assets/cars/*.png --plugin=pngquant --out-dir=public/assets/cars"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
+    "*.{js,jsx,ts,tsx,json,md,mdx}": [
+      "prettier --write",
       "eslint --fix"
     ]
   },
@@ -56,6 +59,7 @@
     "jest-environment-jsdom": "^30.0.4",
     "kill-port": "^2.0.1",
     "lint-staged": "^16.1.2",
+    "prettier": "^3.6.2",
     "ts-jest": "^29.4.0",
     "ts-node": "^10.9.2",
     "typescript": "~5.8.3",

@@ -5,9 +5,13 @@ import { compileSync } from '@mdx-js/mdx';
 const CONTENT_DIR = path.resolve('src/content');
 
 function walk(dir: string): string[] {
-  return fs.readdirSync(dir).flatMap((name) => {
+  return fs.readdirSync(dir).flatMap(name => {
     const file = path.join(dir, name);
-    return fs.statSync(file).isDirectory() ? walk(file) : file.endsWith('.mdx') ? [file] : [];
+    return fs.statSync(file).isDirectory()
+      ? walk(file)
+      : file.endsWith('.mdx')
+        ? [file]
+        : [];
   });
 }
 
@@ -51,4 +55,4 @@ export default function Doc() {
   }
 }
 
-walk(CONTENT_DIR).forEach(convertFile); 
+walk(CONTENT_DIR).forEach(convertFile);

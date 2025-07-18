@@ -12,15 +12,15 @@ interface VehicleProps {
   delay?: number;
 }
 
-export default function Vehicle({ 
-  y, 
-  width, 
-  height, 
-  color, 
-  speed, 
-  direction, 
-  type, 
-  delay = 0 
+export default function Vehicle({
+  y,
+  width,
+  height,
+  color,
+  speed,
+  direction,
+  type,
+  delay = 0,
 }: VehicleProps) {
   const startX = direction === 'right' ? '-100px' : 'calc(100vw + 100px)';
   const endX = direction === 'right' ? 'calc(100vw + 100px)' : '-100px';
@@ -35,18 +35,16 @@ export default function Vehicle({
         width: `${width}px`,
         height: `${height}px`,
         transform: 'rotateX(60deg) translateZ(5px)',
-        zIndex: 4
+        zIndex: 4,
       }}
       animate={{
-        x: direction === 'right' 
-          ? [startX, endX]
-          : [startX, endX]
+        x: direction === 'right' ? [startX, endX] : [startX, endX],
       }}
       transition={{
         duration: speed,
         repeat: Infinity,
-        ease: "linear",
-        delay
+        ease: 'linear',
+        delay,
       }}
     >
       {/* Corpo principal */}
@@ -58,8 +56,9 @@ export default function Vehicle({
           width: `${width}px`,
           height: `${height * 0.8}px`,
           background: `linear-gradient(135deg, ${color}, ${color}dd, ${color})`,
-          borderRadius: type === 'car' ? '8px 8px 4px 4px' : '10px 10px 5px 5px',
-          boxShadow: `0 4px 8px rgba(0,0,0,0.4), 0 0 10px ${color}33`
+          borderRadius:
+            type === 'car' ? '8px 8px 4px 4px' : '10px 10px 5px 5px',
+          boxShadow: `0 4px 8px rgba(0,0,0,0.4), 0 0 10px ${color}33`,
         }}
       />
 
@@ -74,7 +73,7 @@ export default function Vehicle({
             height: `${height * 0.3}px`,
             background: `linear-gradient(135deg, ${color}, ${color}dd)`,
             borderRadius: '4px 4px 0px 0px',
-            border: `1px solid ${color}`
+            border: `1px solid ${color}`,
           }}
         />
       )}
@@ -88,7 +87,7 @@ export default function Vehicle({
           width: type === 'car' ? `${width * 0.3}px` : `${width * 0.7}px`,
           height: type === 'car' ? `${height * 0.2}px` : `${height * 0.25}px`,
           background: `linear-gradient(135deg, ${color}, ${color}dd)`,
-          borderRadius: type === 'car' ? '3px 3px 0px 0px' : '4px 4px 0px 0px'
+          borderRadius: type === 'car' ? '3px 3px 0px 0px' : '4px 4px 0px 0px',
         }}
       />
 
@@ -103,7 +102,7 @@ export default function Vehicle({
             height: `${height * 0.12}px`,
             background: 'linear-gradient(135deg, #87ceeb, #b0e0e6)',
             borderRadius: '2px',
-            border: '1px solid #4682b4'
+            border: '1px solid #4682b4',
           }}
         />
       ) : (
@@ -118,7 +117,7 @@ export default function Vehicle({
               height: `${height * 0.15}px`,
               background: 'linear-gradient(135deg, #87ceeb, #b0e0e6)',
               borderRadius: '3px',
-              border: '1px solid #4682b4'
+              border: '1px solid #4682b4',
             }}
           />
           {/* Janelas traseira */}
@@ -131,7 +130,7 @@ export default function Vehicle({
               height: `${height * 0.15}px`,
               background: 'linear-gradient(135deg, #87ceeb, #b0e0e6)',
               borderRadius: '3px',
-              border: '1px solid #4682b4'
+              border: '1px solid #4682b4',
             }}
           />
         </>
@@ -148,7 +147,7 @@ export default function Vehicle({
           height: type === 'car' ? `${height * 0.15}px` : `${height * 0.15}px`,
           background: 'radial-gradient(circle, #fff, #ffd700)',
           borderRadius: type === 'car' ? '2px' : '2px',
-          boxShadow: '0 0 8px rgba(255,215,0,0.8)'
+          boxShadow: '0 0 8px rgba(255,215,0,0.8)',
         }}
       />
 
@@ -163,7 +162,7 @@ export default function Vehicle({
           height: type === 'car' ? `${height * 0.12}px` : `${height * 0.12}px`,
           background: 'radial-gradient(circle, #ff0000, #cc0000)',
           borderRadius: type === 'car' ? '2px' : '2px',
-          boxShadow: '0 0 6px rgba(255,0,0,0.6)'
+          boxShadow: '0 0 6px rgba(255,0,0,0.6)',
         }}
       />
 
@@ -178,7 +177,7 @@ export default function Vehicle({
           background: 'radial-gradient(circle, #333, #000)',
           borderRadius: '50%',
           border: '2px solid #666',
-          boxShadow: '0 2px 4px rgba(0,0,0,0.5)'
+          boxShadow: '0 2px 4px rgba(0,0,0,0.5)',
         }}
       />
 
@@ -193,7 +192,7 @@ export default function Vehicle({
           background: 'radial-gradient(circle, #333, #000)',
           borderRadius: '50%',
           border: '2px solid #666',
-          boxShadow: '0 2px 4px rgba(0,0,0,0.5)'
+          boxShadow: '0 2px 4px rgba(0,0,0,0.5)',
         }}
       />
 
@@ -207,10 +206,10 @@ export default function Vehicle({
             width: `${width}px`,
             height: `${height * 0.1}px`,
             background: color,
-            borderRadius: '1px'
+            borderRadius: '1px',
           }}
         />
       )}
     </motion.div>
   );
-} 
+}

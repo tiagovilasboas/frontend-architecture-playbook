@@ -11,4 +11,4 @@ export function HeroTitle({ children, ...props }: HeroTitleProps) {
       {children}
     </Title>
   );
-} 
+}

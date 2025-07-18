@@ -94,7 +94,8 @@ export const theme = createTheme({
       styles: {
         root: {
           '&[data-order="1"]': {
-            background: 'linear-gradient(135deg, var(--mantine-color-brand-6) 0%, var(--mantine-color-accent-6) 100%)',
+            background:
+              'linear-gradient(135deg, var(--mantine-color-brand-6) 0%, var(--mantine-color-accent-6) 100%)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             backgroundClip: 'text',
@@ -103,4 +104,4 @@ export const theme = createTheme({
       },
     },
   },
-}); 
+});

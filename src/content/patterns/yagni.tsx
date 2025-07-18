@@ -1,5 +1,22 @@
-import { Title, Text, Stack, Paper, Alert, List, ThemeIcon, Group, Card, Badge } from '@mantine/core';
-import { IconBulb, IconAlertTriangle, IconCheck, IconCode, IconClock } from '@tabler/icons-react';
+import {
+  Title,
+  Text,
+  Stack,
+  Paper,
+  Alert,
+  List,
+  ThemeIcon,
+  Group,
+  Card,
+  Badge,
+} from '@mantine/core';
+import {
+  IconBulb,
+  IconAlertTriangle,
+  IconCheck,
+  IconCode,
+  IconClock,
+} from '@tabler/icons-react';
 import CodeExample from '../../components/CodeExample';
 import codeExamples from '../../utils/code-examples/yagni.json';
 
@@ -12,8 +29,8 @@ function Yagni() {
           YAGNI - You Aren't Gonna Need It
         </Title>
         <Text size="lg" c="dimmed">
-          Não implemente features futuras. Se você não precisa hoje, não implemente hoje. 
-          O futuro é incerto, o presente é real.
+          Não implemente features futuras. Se você não precisa hoje, não
+          implemente hoje. O futuro é incerto, o presente é real.
         </Text>
       </div>
 
@@ -26,23 +43,26 @@ function Yagni() {
             </ThemeIcon>
             <div>
               <Title order={3}>O que é?</Title>
-              <Text c="dimmed">Princípio que evita implementar features futuras</Text>
+              <Text c="dimmed">
+                Princípio que evita implementar features futuras
+              </Text>
             </div>
           </Group>
-          
+
           <Text>
-            YAGNI significa <strong>"You Aren't Gonna Need It"</strong>. É sobre não implementar 
-            funcionalidades que você <em>acha</em> que vai precisar no futuro.
+            YAGNI significa <strong>"You Aren't Gonna Need It"</strong>. É sobre
+            não implementar funcionalidades que você <em>acha</em> que vai
+            precisar no futuro.
           </Text>
-          
+
           <Text>
-            Pensa assim: se você implementa uma feature que não está sendo usada hoje, 
-            você está gastando tempo e criando complexidade desnecessária. E quando você 
-            realmente precisar, os requisitos já mudaram.
+            Pensa assim: se você implementa uma feature que não está sendo usada
+            hoje, você está gastando tempo e criando complexidade desnecessária.
+            E quando você realmente precisar, os requisitos já mudaram.
           </Text>
-          
+
           <Text>
-            A regra é clara: <em>implemente apenas o que você precisa hoje</em>. 
+            A regra é clara: <em>implemente apenas o que você precisa hoje</em>.
             O futuro vai cuidar de si mesmo.
           </Text>
         </Stack>
@@ -51,18 +71,35 @@ function Yagni() {
       {/* Examples */}
       <div>
         <Title order={2} mb="lg">
-          <IconCode size={28} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
+          <IconCode
+            size={28}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
+          />
           Exemplos Práticos
         </Title>
-        
+
         <Stack gap="md">
           {codeExamples.map((ex, idx) => (
-            <Card withBorder p="md" key={ex.title} w="100%" style={{ minWidth: 0, width: '100%' }}>
+            <Card
+              withBorder
+              p="md"
+              key={ex.title}
+              w="100%"
+              style={{ minWidth: 0, width: '100%' }}
+            >
               <Group w="100%" style={{ minWidth: 0, width: '100%' }}>
-                <Badge size="lg" variant="light" color={['red','green'][idx] || 'gray'}>{idx === 0 ? '❌' : '✅'}</Badge>
+                <Badge
+                  size="lg"
+                  variant="light"
+                  color={['red', 'green'][idx] || 'gray'}
+                >
+                  {idx === 0 ? '❌' : '✅'}
+                </Badge>
                 <div style={{ flex: 1, width: '100%' }}>
                   <Title order={4}>{ex.title}</Title>
-                  <Text size="sm" c="dimmed">{ex.description}</Text>
+                  <Text size="sm" c="dimmed">
+                    {ex.description}
+                  </Text>
                   <CodeExample title={ex.title} code={ex.code} />
                 </div>
               </Group>
@@ -74,10 +111,13 @@ function Yagni() {
       {/* Benefits */}
       <div>
         <Title order={2} mb="lg">
-          <IconCheck size={28} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
+          <IconCheck
+            size={28}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
+          />
           Por que vale a pena?
         </Title>
-        
+
         <Stack gap="md">
           <Card withBorder p="md">
             <Group>
@@ -87,7 +127,8 @@ function Yagni() {
               <div>
                 <Title order={4}>Velocidade</Title>
                 <Text size="sm">
-                  Menos código para escrever, testar e manter. Entregas mais rápidas.
+                  Menos código para escrever, testar e manter. Entregas mais
+                  rápidas.
                 </Text>
               </div>
             </Group>
@@ -101,7 +142,8 @@ function Yagni() {
               <div>
                 <Title order={4}>Simplicidade</Title>
                 <Text size="sm">
-                  Código mais simples, menos bugs, menos complexidade para entender.
+                  Código mais simples, menos bugs, menos complexidade para
+                  entender.
                 </Text>
               </div>
             </Group>
@@ -115,7 +157,8 @@ function Yagni() {
               <div>
                 <Title order={4}>Flexibilidade</Title>
                 <Text size="sm">
-                  Quando precisar da feature, implemente com os requisitos reais, não imaginários.
+                  Quando precisar da feature, implemente com os requisitos
+                  reais, não imaginários.
                 </Text>
               </div>
             </Group>
@@ -126,24 +169,37 @@ function Yagni() {
       {/* When to use */}
       <div>
         <Title order={2} mb="lg">
-          <IconBulb size={28} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
+          <IconBulb
+            size={28}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
+          />
           Quando aplicar?
         </Title>
-        
+
         <Stack gap="md">
           <Alert color="green" icon={<IconCheck size={16} />} radius="md">
-            <Text size="sm" fw={600} mb={4}>✅ Sempre aplique:</Text>
+            <Text size="sm" fw={600} mb={4}>
+              ✅ Sempre aplique:
+            </Text>
             <List size="sm" c="dimmed">
               <List.Item>Features que \"podem ser úteis no futuro\"</List.Item>
               <List.Item>Abstrações \"genéricas\" para casos futuros</List.Item>
               <List.Item>Configurações para cenários hipotéticos</List.Item>
               <List.Item>Validações para dados que não existem</List.Item>
-              <List.Item>Interfaces para APIs que não foram definidas</List.Item>
+              <List.Item>
+                Interfaces para APIs que não foram definidas
+              </List.Item>
             </List>
           </Alert>
 
-          <Alert color="orange" icon={<IconAlertTriangle size={16} />} radius="md">
-            <Text size="sm" fw={600} mb={4}>⚠️ Cuidado com:</Text>
+          <Alert
+            color="orange"
+            icon={<IconAlertTriangle size={16} />}
+            radius="md"
+          >
+            <Text size="sm" fw={600} mb={4}>
+              ⚠️ Cuidado com:
+            </Text>
             <List size="sm" c="dimmed">
               <List.Item>Ignorar requisitos reais do presente</List.Item>
               <List.Item>Não planejar arquitetura básica</List.Item>
@@ -156,15 +212,28 @@ function Yagni() {
       {/* Pitfalls */}
       <div>
         <Title order={2} mb="lg">
-          <IconAlertTriangle size={28} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
+          <IconAlertTriangle
+            size={28}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
+          />
           Armadilhas Comuns
         </Title>
-        
+
         <Stack gap="md">
-          {codeExamples.slice(2).map((ex) => (
-            <Card withBorder p="md" key={ex.title} w="100%" style={{ minWidth: 0, width: '100%' }}>
-              <Title order={4} mb="sm">{ex.title}</Title>
-              <Text size="sm" mb="md">{ex.description}</Text>
+          {codeExamples.slice(2).map(ex => (
+            <Card
+              withBorder
+              p="md"
+              key={ex.title}
+              w="100%"
+              style={{ minWidth: 0, width: '100%' }}
+            >
+              <Title order={4} mb="sm">
+                {ex.title}
+              </Title>
+              <Text size="sm" mb="md">
+                {ex.description}
+              </Text>
               <CodeExample title={ex.title} code={ex.code} />
             </Card>
           ))}
@@ -176,12 +245,13 @@ function Yagni() {
         <Stack gap="md">
           <Title order={3}>Resumo</Title>
           <Text>
-            YAGNI é sobre foco no presente. Implemente apenas o que você precisa hoje. 
-            O futuro vai trazer requisitos reais, não imaginários.
+            YAGNI é sobre foco no presente. Implemente apenas o que você precisa
+            hoje. O futuro vai trazer requisitos reais, não imaginários.
           </Text>
           <Text>
-            <strong>Regra de ouro:</strong> Se você não tem um requisito real hoje, 
-            não implemente. Quando precisar, implemente com os requisitos reais.
+            <strong>Regra de ouro:</strong> Se você não tem um requisito real
+            hoje, não implemente. Quando precisar, implemente com os requisitos
+            reais.
           </Text>
         </Stack>
       </Paper>
@@ -190,8 +260,9 @@ function Yagni() {
 }
 
 Yagni.metadata = {
-  title: 'YAGNI - You Aren\'t Gonna Need It',
-  description: 'Não implemente features futuras. Se você não precisa hoje, não implemente hoje. O futuro é incerto, o presente é real.'
+  title: "YAGNI - You Aren't Gonna Need It",
+  description:
+    'Não implemente features futuras. Se você não precisa hoje, não implemente hoje. O futuro é incerto, o presente é real.',
 };
 
-export default Yagni; 
+export default Yagni;

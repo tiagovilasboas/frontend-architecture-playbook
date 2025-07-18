@@ -24,4 +24,4 @@
     "description": "O código deve se explicar sozinho",
     "code": "// ❌ Comentário desnecessário\n// Loop para contar usuários\nfor (let i = 0; i < users.length; i++) {\n  if (users[i].age > 18) count++;\n}\n\n// ✅ Código auto-explicativo\nconst adultUsers = users.filter(user => user.age > 18).length;"
   }
-] 
+]

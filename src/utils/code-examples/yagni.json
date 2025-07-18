@@ -19,4 +19,4 @@
     "description": "Implementando apenas o que é usado hoje",
     "code": "// ✅ BOM - Implementação simples\n\n// Função simples para enviar email\nconst sendEmail = async (to: string, subject: string, body: string) => {\n  // Implementação real de envio de email\n  console.log(`Sending email to ${to}: ${subject}`);\n};\n\n// Usando apenas o que precisamos\nconst notifyUser = async (user: User, message: string) => {\n  await sendEmail(user.email, 'Notification', message);\n};\n\n// Quando precisar de SMS, implemente SMS\n// Quando precisar de push, implemente push\n// Não implemente \"por precaução\""
   }
-] 
+]

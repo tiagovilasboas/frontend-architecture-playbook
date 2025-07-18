@@ -1,41 +1,87 @@
-# Front-End Architecture Playbook
+# 🚀 Front-End Architecture Playbook
 
-> **Guia prático, direto e realista sobre arquiteturas front-end. Dev para dev, sem enrolação.**
+> **Decision wizard interativo + casos reais que provam ROI de arquitetura. Dev para dev, sem enrolação.**
 
-Um playbook que traz as arquiteturas mais conhecidas e que, na experiência de 18 anos de front-end, realmente entregam resultado. Existem dezenas de outras, mas aqui estão as que eu confio pra projetos reais.
+Não é mais um guia teórico. É um **assistente de decisão** que considera seu contexto real (time, prazo, objetivo) e recomenda a arquitetura certa. Baseado em 18 anos de front-end e casos reais de Netflix, Spotify, Airbnb e outras.
 
 ## 🎯 **O que é?**
 
-Este playbook é um guia prático que resolve problemas reais de arquitetura front-end. Não é teoria acadêmica - é experiência de batalha convertida em decisões arquiteturais claras.
+Um **sistema de suporte à decisão** que resolve a pergunta que todo dev já teve: "Qual arquitetura usar no meu projeto?". Combina:
 
-**O grande segredo de qualquer arquitetura:** respeite a **Dependency Rule**. Se a regra de dependência for ignorada, nenhuma arquitetura salva seu projeto do caos. Camadas de fora só podem depender das de dentro. Negócio nunca depende de framework. Simples assim.
+- **🧙‍♂️ Decision Wizard:** 5 perguntas contextuais → recomendação personalizada + justificativa
+- **💼 Casos Reais:** Como Netflix, Spotify, Airbnb geraram milhões com decisões técnicas certas
+- **📚 Guias Práticos:** Implementação passo-a-passo de cada arquitetura
+- **⚡ Tom dev-to-dev:** Direto, sem academicismo. Foco em resultado.
+
+**A base de tudo:** **Dependency Rule**. Camadas externas dependem das internas. Negócio nunca depende de framework. Respeite isso e qualquer arquitetura funciona. Ignore e nenhuma salva.
 
 ## 🚀 **Features**
 
-### **📚 Conteúdo Organizado por Contexto**
-- **🏗️ Arquiteturas** - Padrões arquiteturais principais
-- **🎯 Padrões** - Padrões de design e implementação
-- **⚡ Técnicas** - Técnicas específicas de desenvolvimento
-- **📖 Guias** - Guias práticos e decisões
-- **✅ Boas Práticas** - Princípios fundamentais
+### **🧙‍♂️ Decision Wizard v3.0 (LATEST!)**
 
-### **🏗️ Arquiteturas Cobertas**
+- **6 steps contextuais:** Tipo projeto, tamanho time, nível técnico, prioridade, integrações + resumo
+- **15 arquiteturas cobertas:** Todas as arquiteturas do playbook incluídas no wizard
+- **Lógica sofisticada:** Sistema de scoring multi-dimensional com 47+ testes
+- **Recomendações inteligentes:** Cada sugestão vem com justificativa contextual específica
+- **Bonus patterns:** Padrões complementares baseados no seu contexto completo
+- **Mobile-optimized:** UX responsiva e intuitiva com animações suaves
+
+### **💼 Casos Reais de Impacto (UPDATED!)**
+
+- **16 empresas:** Pinterest, Tinder, Slack, Uber, WhatsApp, Zoom, Figma, Discord + originais
+- **Métricas concretas:** "+103% engagement", "-84% time to interactive", "99.9% sync accuracy"
+- **Business impact:** Como decisões técnicas viraram milhões em receita
+- **Links verificáveis:** Fontes originais dos casos
+- **Prova de ROI:** Justifique refactors e decisões técnicas
+
+### **📚 Conteúdo Organizado por Contexto**
+
+- **📖 Guias** - Decision wizard, casos reais, dependency rule
+- **🏗️ Arquiteturas** - 13+ padrões arquiteturais testados
+- **🎯 Padrões** - Repository, Security, State Machines
+- **⚡ Técnicas** - Code splitting, lazy loading, performance
+- **✅ Boas Práticas** - DRY, KISS, YAGNI, Clean Code, SRP, SOC
+
+### **🎯 SEO & Discoverability (UPDATED!)**
+
+- **Meta tags otimizadas:** Decision Wizard v3.0, 15 arquiteturas, Open Graph completo
+- **Author attribution:** "By Tiago Vilas Boas" link no header e social media
+- **Sitemap.xml** + **robots.txt** para melhor indexação
+- **Shareable content:** Cases, decisions e architecture patterns linkáveis
+- **Long-tail keywords:** "decision wizard v3", "frontend architecture guide", "interactive wizard", "architectural patterns comparison"
+
+### **🏗️ Arquiteturas Cobertas (15 TOTAL!)**
+
+**🔥 TIER 1: Essenciais**
+
+- **SSR & SSG** - "Se você liga pra SEO, você usa SSR"
+- **Backend-for-Frontend (BFF)** - "Uma API sob medida pro seu front"
+- **Progressive Web Apps (PWA)** - "Web que se comporta como app nativo"
+
+**🚀 TIER 2: Importantes**
+
+- **Headless/API-First** - "Separação igreja-estado entre content e apresentação"
+- **Hexagonal Architecture** - "Clean Architecture mais flexível e menos dogmática"
+- **Layered Architecture** - "Clean Architecture sem a complexidade - direto ao ponto"
+
+**📚 TIER 3: Específicas**
+
+- **Event Sourcing Frontend** - "Toda ação é um evento - debug e auditoria que funciona"
+- **CQRS Frontend** - "Read diferente de write - performance e clareza"
+- **Microservices Frontend** - "Dividir pra conquistar - times, deploys, responsabilidades"
+
+**⚡ Clássicas**
+
 - **Clean Architecture** - Separação clara de responsabilidades
 - **Component-Driven Development** - Reutilização e composição
 - **Micro-frontends** - Escalabilidade de times
 - **Monorepo** - Compartilhamento de código
 - **Single Page Application** - Aplicações de página única
-- **SSR/SSG** - Performance e SEO
-- **PWA** - Experiência mobile
 - **Islands Architecture** - Performance híbrida
-- **State Machines** - Lógica complexa
-- **Event-Driven** - Desacoplamento
-- **Feature Flags** - Deploy seguro
-- **Atomic Design** - Design systems
 - **JAMstack** - Performance e simplicidade
-- **Security Patterns** - Padrões de segurança e autenticação
 
 ### **🎯 Padrões de Design**
+
 - **Repository Pattern** - Abstração de acesso a dados
 - **Security Patterns** - Padrões de segurança e autenticação
 - **DRY** - Don't Repeat Yourself (lógica de negócio)
@@ -43,13 +89,14 @@ Este playbook é um guia prático que resolve problemas reais de arquitetura fro
 - **YAGNI** - You Aren't Gonna Need It
 
 ### **⚡ Técnicas Avançadas**
+
+- **Performance** - Code splitting, lazy loading, chunks e métricas que fazem diferença real
 - **Dependency Injection** - Inversão de controle
-- **Code Splitting** - Otimização de performance
-- **Lazy Loading** - Carregamento sob demanda
 - **Error Boundaries** - Tratamento de erros
 - **Performance Monitoring** - Métricas reais
 
 ### **✅ Boas Práticas Fundamentais**
+
 - **DRY** - Don't Repeat Yourself (lógica de negócio)
 - **KISS** - Keep It Simple, Stupid
 - **YAGNI** - You Aren't Gonna Need It
@@ -57,15 +104,17 @@ Este playbook é um guia prático que resolve problemas reais de arquitetura fro
 - **Single Responsibility Principle** - Uma classe, uma responsabilidade
 - **Separation of Concerns** - Separe responsabilidades claramente
 
-### **🎯 Decision Wizard**
-- **Interativo** - Responde perguntas e encontra a arquitetura ideal
-- **Contextual** - Considera time, projeto e objetivos
-- **Prático** - Baseado em experiência real
-- **Mobile-optimized** - Cards clicáveis e responsivos
-- **3 perguntas** - Fluxo simplificado e direto
-- **Sugestões garantidas** - Sempre retorna pelo menos uma arquitetura
+### **🎯 Decision Wizard v2.0**
+
+- **6 perguntas contextuais** - Tipo, time, nível técnico, prioridade, integrações + resumo
+- **Sistema de scoring sofisticado** - Multi-dimensional com ajustes dinâmicos
+- **Recomendações com justificativa** - "Por que Clean Architecture para seu contexto"
+- **37 testes automatizados** - Cobertura completa de cenários
+- **Bonus patterns inteligentes** - Padrões complementares baseados nas respostas
+- **UX responsiva** - Mobile-first com navegação intuitiva
 
 ### **💻 Exemplos Reais**
+
 - **Exemplos por arquitetura** - Cada arquitetura tem seu próprio arquivo em `src/utils/code-examples/`
 - **Componente CodeExample** - Renderização dinâmica e consistente
 - **Casos de uso** - E-commerce, dashboard, analytics
@@ -73,6 +122,7 @@ Este playbook é um guia prático que resolve problemas reais de arquitetura fro
 - **Referências** - Livros, artigos e casos reais
 
 ### **📱 Mobile UX**
+
 - **Rodovia estática** - Performance otimizada no mobile
 - **Botões 100% width** - Melhor usabilidade em telas pequenas
 - **Cards compactos** - Layout adaptado para mobile
@@ -80,6 +130,7 @@ Este playbook é um guia prático que resolve problemas reais de arquitetura fro
 - **Responsivo** - Funciona perfeitamente em qualquer dispositivo
 
 ### **🛡️ Dependency Rule Guide**
+
 - **Guia dedicado** - Regra fundamental de qualquer arquitetura
 - **Exemplos práticos** - Código real com cenários
 - **Armadilhas comuns** - Como evitar quebrar a regra
@@ -108,11 +159,13 @@ Este playbook é um guia prático que resolve problemas reais de arquitetura fro
 
 ## 🧪 **Testing**
 
-- **Cypress E2E** - Testes completos do Decision Wizard
-- **Cobertura total** - Todas as combinações de respostas testadas
-- **Mobile/Desktop** - Testes em diferentes viewports
-- **Performance** - Testes de carregamento e responsividade
-- **Acessibilidade** - Verificação de contraste e navegação
+- **Jest** - 37 testes unitários do Decision Wizard v2.0
+- **Lógica de scoring** - Todos os cenários de recomendação testados
+- **Bonus patterns** - Validação de padrões complementares
+- **Coverage completo** - DecisionWizard + getBonusPatterns
+- **Cenários reais** - MVP, SaaS, E-commerce, Enterprise, Startup
+- **Context validation** - Time size, tech level, priorities testados
+- **15 arquiteturas** - Todas testadas e funcionais
 
 ## 🏃‍♂️ **Quick Start**
 
@@ -133,11 +186,11 @@ npm run build
 # Lint
 npm run lint
 
+# Testes
+npm test
+
 # Otimizar imagens
 npm run optimize:images
-
-# Testes E2E
-npx cypress run
 ```
 
 ## 🏗️ **Estrutura do Projeto**
@@ -157,6 +210,7 @@ src/
 │   └── diagrams/      # Diagramas arquiteturais
 ├── content/            # Conteúdo organizado por contexto
 │   ├── guides/         # Guias práticos
+│   │   ├── cases.tsx   # NEW: Casos reais com ROI
 │   │   ├── how-to-choose.tsx
 │   │   └── dependency-rule.tsx
 │   ├── patterns/       # Padrões de design
@@ -231,18 +285,21 @@ O projeto usa code splitting inteligente:
 ## 🎯 **Para Quem é?**
 
 ### **Júnior/Pleno**
+
 - Aprenda a escolher arquitetura certa
 - Evite over-engineering
 - Entenda trade-offs reais
 - Aplique boas práticas desde o início
 
 ### **Sênior/Tech Lead**
+
 - Base para decisões arquiteturais
 - Justificativas técnicas sólidas
 - Padrões testados em produção
 - Guia para refatoração
 
 ### **CTO/Arquitetos**
+
 - ROI das decisões técnicas
 - Escalabilidade de longo prazo
 - Redução de dívida técnica
@@ -251,10 +308,13 @@ O projeto usa code splitting inteligente:
 ## 📚 **Conteúdo**
 
 ### **Guias**
-- **Como Escolher** - Decision wizard interativo
-- **Dependency Rule** - Regra fundamental de arquitetura
+
+- **Cases** - Casos reais de impacto com métricas de ROI
+- **Como Escolher** - Decision wizard v2.0 interativo e inteligente
+- **Dependency Rule** - Regra fundamental de qualquer arquitetura
 
 ### **Boas Práticas**
+
 - **DRY** - Don't Repeat Yourself (lógica de negócio)
 - **KISS** - Keep It Simple, Stupid
 - **YAGNI** - You Aren't Gonna Need It
@@ -263,6 +323,7 @@ O projeto usa code splitting inteligente:
 - **Separation of Concerns** - Separe responsabilidades claramente
 
 ### **Padrões**
+
 - **Repository Pattern** - Abstração de acesso a dados
 - **Security Patterns** - Padrões de segurança e autenticação
 - **Dependency Injection** - Inversão de controle
@@ -270,6 +331,7 @@ O projeto usa code splitting inteligente:
 - **Factory Pattern** - Criação de objetos
 
 ### **Arquiteturas (13 padrões)**
+
 - **Clean Architecture** - Separação de camadas
 - **Component-Driven** - Reutilização
 - **Micro-frontends** - Escalabilidade
@@ -285,20 +347,38 @@ O projeto usa code splitting inteligente:
 - **JAMstack** - Performance e simplicidade
 
 ### **Técnicas**
+
 - **Code Splitting** - Otimização de performance
 - **Lazy Loading** - Carregamento sob demanda
 - **Error Boundaries** - Tratamento de erros
 - **Performance Monitoring** - Métricas reais
 
+## 🗺️ **Roadmap**
+
+Veja onde estamos indo no [ROADMAP.md](./ROADMAP.md):
+
+- **Q1 2025:** Visualizações e comparações (radar charts, trade-offs matrix)
+- **Q2 2025:** Contexto rico (budget, stack analysis, team skills)
+- **Q3 2025:** Machine Learning e feedback loop
+- **Q4 2025:** Gamification e community features
+- **2026:** AI Architecture Assistant
+
+## 📋 **Architecture Decision Records**
+
+Documentamos decisões importantes em [docs/adr/](./docs/adr/):
+
+- **[ADR-001](./docs/adr/001-visualizations-and-comparisons.md):** Visualizações com Recharts
+
 ## 🤝 **Contribuindo**
 
 Contribuições são bem-vindas! Se você tem:
+
 - Experiência real com alguma arquitetura
-- Casos de uso interessantes
-- Melhorias no código
+- Casos de uso interessantes com métricas
+- Melhorias no Decision Wizard
 - Correções ou sugestões
 
-Abra uma issue ou pull request!
+Abra uma issue ou pull request! Veja [CONTRIBUTING.md](./CONTRIBUTING.md) para guidelines.
 
 ## 📄 **Licença**
 
@@ -311,6 +391,7 @@ MIT - Use livremente para seus projetos.
 Sou o dev que transforma código em resultado: turbinei checkouts, simplifiquei cadastros bancários, acelerei fluxos de KYC e salvei dashboards engasgados. Fora dos horários de entrega, lapido os open-sources Ponto PJ e DataForge Tools e escrevo "Código Bonito Não Paga Boleto", tudo focado na mesma pegada: impacto real primeiro.
 
 **Links:**
+
 - [GitHub](https://github.com/tiagovilasboas)
 - [LinkedIn](https://www.linkedin.com/in/tiagovilasboas)
 

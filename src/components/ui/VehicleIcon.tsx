@@ -1,9 +1,5 @@
 import { motion } from 'framer-motion';
-import { 
-  IconCar, 
-  IconTruck, 
-  IconCarSuv
-} from '@tabler/icons-react';
+import { IconCar, IconTruck, IconCarSuv } from '@tabler/icons-react';
 
 interface Vehicle {
   id: string;
@@ -23,7 +19,7 @@ interface VehicleIconProps {
 
 export default function VehicleIcon({ vehicle }: VehicleIconProps) {
   const { y, size, color, speed, direction, type, delay = 0 } = vehicle;
-  
+
   const startX = direction === 'right' ? -100 : window.innerWidth + 100;
   const endX = direction === 'right' ? window.innerWidth + 100 : -100;
 
@@ -45,7 +41,13 @@ export default function VehicleIcon({ vehicle }: VehicleIconProps) {
         icon = <IconCar {...iconProps} />;
     }
     return (
-      <span style={direction === 'left' ? { display: 'inline-block', transform: 'scaleX(-1)' } : undefined}>
+      <span
+        style={
+          direction === 'left'
+            ? { display: 'inline-block', transform: 'scaleX(-1)' }
+            : undefined
+        }
+      >
         {icon}
       </span>
     );
@@ -59,19 +61,19 @@ export default function VehicleIcon({ vehicle }: VehicleIconProps) {
         left: 0,
         transform: 'rotateX(60deg) translateZ(5px)',
         zIndex: 4,
-        filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.4))'
+        filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.4))',
       }}
       animate={{
-        x: [startX, endX]
+        x: [startX, endX],
       }}
       transition={{
         duration: speed,
         repeat: Infinity,
-        ease: "linear",
-        delay
+        ease: 'linear',
+        delay,
       }}
     >
       {getIcon()}
     </motion.div>
   );
-} 
+}

@@ -1,4 +1,4 @@
-import type { DocMeta, CollectionType } from '../lib/content.ts';
+import type { DocMeta, CollectionType } from '../lib/content.tsx';
 
 interface NavigationAction {
   id: string;
@@ -8,18 +8,22 @@ interface NavigationAction {
 }
 
 export function useNavigationActions(
-  guides: DocMeta[], 
-  architectures: DocMeta[], 
-  patterns: DocMeta[], 
-  techniques: DocMeta[], 
+  guides: DocMeta[],
+  architectures: DocMeta[],
+  patterns: DocMeta[],
+  techniques: DocMeta[],
   bestPractices: DocMeta[]
 ): NavigationAction[] {
-  const createActions = (docs: DocMeta[], collection: CollectionType): NavigationAction[] => 
-    docs.map((doc) => ({
+  const createActions = (
+    docs: DocMeta[],
+    collection: CollectionType
+  ): NavigationAction[] =>
+    docs.map(doc => ({
       id: doc.slug,
       label: doc.title,
       description: getCollectionLabel(collection),
-      onTrigger: () => (window.location.pathname = `/${collection}/${doc.slug}`),
+      onTrigger: () =>
+        (window.location.pathname = `/${collection}/${doc.slug}`),
     }));
 
   return [
@@ -40,4 +44,4 @@ function getCollectionLabel(collection: CollectionType): string {
     'best-practices': 'Best Practice',
   };
   return labels[collection];
-} 
+}

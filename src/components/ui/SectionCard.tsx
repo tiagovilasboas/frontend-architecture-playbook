@@ -11,4 +11,4 @@ export function SectionCard({ children, ...props }: SectionCardProps) {
       {children}
     </Card>
   );
-} 
+}

@@ -11,14 +11,31 @@ interface FeatureCardProps extends CardProps {
   iconSize?: number;
 }
 
-export function FeatureCard({ icon: Icon, title, description, color = 'brand', iconSize = 50, ...props }: FeatureCardProps) {
+export function FeatureCard({
+  icon: Icon,
+  title,
+  description,
+  color = 'brand',
+  iconSize = 50,
+  ...props
+}: FeatureCardProps) {
   return (
     <Card withBorder p="md" radius="md" ta="center" {...props}>
-      <ThemeIcon size={iconSize} radius="md" variant="light" color={color} mb="sm">
+      <ThemeIcon
+        size={iconSize}
+        radius="md"
+        variant="light"
+        color={color}
+        mb="sm"
+      >
         <Icon size={iconSize * 0.5} />
       </ThemeIcon>
-      <Title order={4} size="h5">{title}</Title>
-      <Text size="sm" c="dimmed">{description}</Text>
+      <Title order={4} size="h5">
+        {title}
+      </Title>
+      <Text size="sm" c="dimmed">
+        {description}
+      </Text>
     </Card>
   );
-} 
+}

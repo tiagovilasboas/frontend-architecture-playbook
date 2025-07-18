@@ -1,5 +1,23 @@
-import { Title, Text, Stack, Paper, Alert, List, ThemeIcon, Group, Card, Badge } from '@mantine/core';
-import { IconBulb, IconAlertTriangle, IconCheck, IconCode, IconLayout, IconBolt } from '@tabler/icons-react';
+import {
+  Title,
+  Text,
+  Stack,
+  Paper,
+  Alert,
+  List,
+  ThemeIcon,
+  Group,
+  Card,
+  Badge,
+} from '@mantine/core';
+import {
+  IconBulb,
+  IconAlertTriangle,
+  IconCheck,
+  IconCode,
+  IconLayout,
+  IconBolt,
+} from '@tabler/icons-react';
 import CodeExample from '../../components/CodeExample';
 import spaExamples from '../../utils/code-examples/spa.json';
 
@@ -12,8 +30,8 @@ function SPA() {
           Single Page Application
         </Title>
         <Text size="lg" c="dimmed">
-          Uma página, múltiplas rotas. JavaScript renderiza tudo, 
-          navegação instantânea, experiência de app nativo.
+          Uma página, múltiplas rotas. JavaScript renderiza tudo, navegação
+          instantânea, experiência de app nativo.
         </Text>
       </div>
 
@@ -26,22 +44,26 @@ function SPA() {
             </ThemeIcon>
             <div>
               <Title order={3}>O que é?</Title>
-              <Text c="dimmed">Aplicação que roda em uma única página HTML</Text>
+              <Text c="dimmed">
+                Aplicação que roda em uma única página HTML
+              </Text>
             </div>
           </Group>
-          
+
           <Text>
-            Single Page Application é sobre uma coisa só: <strong>JavaScript renderiza tudo</strong>.
+            Single Page Application é sobre uma coisa só:{' '}
+            <strong>JavaScript renderiza tudo</strong>.
           </Text>
-          
+
           <Text>
-            Pensa assim: ao invés de servidor renderizar cada página, 
-            você tem uma página HTML que carrega JavaScript. O JavaScript 
-            renderiza diferentes componentes baseado na URL.
+            Pensa assim: ao invés de servidor renderizar cada página, você tem
+            uma página HTML que carrega JavaScript. O JavaScript renderiza
+            diferentes componentes baseado na URL.
           </Text>
-          
+
           <Text>
-            A regra é simples: <em>uma página, múltiplas rotas, JavaScript controla tudo</em>. 
+            A regra é simples:{' '}
+            <em>uma página, múltiplas rotas, JavaScript controla tudo</em>.
             Navegação instantânea, experiência de app nativo, sem reload.
           </Text>
         </Stack>
@@ -50,19 +72,24 @@ function SPA() {
       {/* Concepts */}
       <div>
         <Title order={2} mb="lg">
-          <IconBolt size={28} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
+          <IconBolt
+            size={28}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
+          />
           Os 3 Conceitos Principais
         </Title>
-        
+
         <Stack gap="md">
           <Card withBorder p="md">
             <Group>
-              <Badge size="lg" variant="light" color="green">1</Badge>
+              <Badge size="lg" variant="light" color="green">
+                1
+              </Badge>
               <div>
                 <Title order={4}>Uma Página HTML</Title>
                 <Text size="sm" c="dimmed">
-                  Página inicial que carrega JavaScript. 
-                  O resto é renderizado pelo JavaScript.
+                  Página inicial que carrega JavaScript. O resto é renderizado
+                  pelo JavaScript.
                 </Text>
                 <Stack gap="xl">
                   {spaExamples.map(example => (
@@ -71,7 +98,6 @@ function SPA() {
                       title={example.title}
                       description={example.description}
                       code={example.content}
-                     
                     />
                   ))}
                 </Stack>
@@ -81,12 +107,14 @@ function SPA() {
 
           <Card withBorder p="md">
             <Group>
-              <Badge size="lg" variant="light" color="blue">2</Badge>
+              <Badge size="lg" variant="light" color="blue">
+                2
+              </Badge>
               <div>
                 <Title order={4}>Roteamento Client-Side</Title>
                 <Text size="sm" c="dimmed">
-                  JavaScript gerencia rotas. URL muda, 
-                  componente renderiza, sem reload.
+                  JavaScript gerencia rotas. URL muda, componente renderiza, sem
+                  reload.
                 </Text>
                 <Stack gap="xl">
                   {spaExamples.map(example => (
@@ -95,7 +123,6 @@ function SPA() {
                       title={example.title}
                       description={example.description}
                       code={example.content}
-                     
                     />
                   ))}
                 </Stack>
@@ -105,12 +132,14 @@ function SPA() {
 
           <Card withBorder p="md">
             <Group>
-              <Badge size="lg" variant="light" color="orange">3</Badge>
+              <Badge size="lg" variant="light" color="orange">
+                3
+              </Badge>
               <div>
                 <Title order={4}>Estado Global</Title>
                 <Text size="sm" c="dimmed">
-                  Estado compartilhado entre componentes. 
-                  Redux, Context, Zustand.
+                  Estado compartilhado entre componentes. Redux, Context,
+                  Zustand.
                 </Text>
                 <Stack gap="xl">
                   {spaExamples.map(example => (
@@ -119,7 +148,6 @@ function SPA() {
                       title={example.title}
                       description={example.description}
                       code={example.content}
-                     
                     />
                   ))}
                 </Stack>
@@ -127,12 +155,13 @@ function SPA() {
             </Group>
           </Card>
         </Stack>
-        
+
         <Paper withBorder p="md" radius="md" mt="lg">
           <Text size="sm" c="dimmed">
-            <strong>Como funciona:</strong> Uma única página HTML carrega o JavaScript inicial. 
-            O roteamento client-side gerencia as rotas sem reload, renderizando componentes dinamicamente. 
-            O estado global mantém dados entre navegações. Resultado: experiência de app nativo.
+            <strong>Como funciona:</strong> Uma única página HTML carrega o
+            JavaScript inicial. O roteamento client-side gerencia as rotas sem
+            reload, renderizando componentes dinamicamente. O estado global
+            mantém dados entre navegações. Resultado: experiência de app nativo.
           </Text>
         </Paper>
       </div>
@@ -140,10 +169,13 @@ function SPA() {
       {/* Benefits */}
       <div>
         <Title order={2} mb="lg">
-          <IconCheck size={28} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
+          <IconCheck
+            size={28}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
+          />
           Por que vale a pena?
         </Title>
-        
+
         <Stack gap="md">
           <Card withBorder p="md">
             <Group>
@@ -153,8 +185,8 @@ function SPA() {
               <div>
                 <Title order={4}>Navegação Instantânea</Title>
                 <Text size="sm">
-                  Sem reload de página, transições suaves, 
-                  experiência de app nativo.
+                  Sem reload de página, transições suaves, experiência de app
+                  nativo.
                 </Text>
               </div>
             </Group>
@@ -168,8 +200,8 @@ function SPA() {
               <div>
                 <Title order={4}>Estado Persistente</Title>
                 <Text size="sm">
-                  Estado mantido entre navegações, 
-                  dados compartilhados, UX fluida.
+                  Estado mantido entre navegações, dados compartilhados, UX
+                  fluida.
                 </Text>
               </div>
             </Group>
@@ -183,8 +215,8 @@ function SPA() {
               <div>
                 <Title order={4}>Interatividade Rica</Title>
                 <Text size="sm">
-                  Animações, transições, feedback visual. 
-                  Experiência moderna e responsiva.
+                  Animações, transições, feedback visual. Experiência moderna e
+                  responsiva.
                 </Text>
               </div>
             </Group>
@@ -195,10 +227,13 @@ function SPA() {
       {/* When to use */}
       <div>
         <Title order={2} mb="lg">
-          <IconAlertTriangle size={28} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
+          <IconAlertTriangle
+            size={28}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
+          />
           Quando usar?
         </Title>
-        
+
         <Stack gap="md">
           <Alert variant="light" color="green" title="✅ Use quando:">
             <List>
@@ -224,24 +259,29 @@ function SPA() {
       {/* Real Examples */}
       <div>
         <Title order={2} mb="lg">
-          <IconCode size={28} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
+          <IconCode
+            size={28}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
+          />
           Exemplos Práticos no Front-End
         </Title>
-        
+
         <Stack gap="xl">
           {/* Example 1: Dashboard */}
           <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">📊 Dashboard - Aplicação Complexa</Title>
-            
+            <Title order={3} mb="md">
+              📊 Dashboard - Aplicação Complexa
+            </Title>
+
             <Stack gap="md">
               <Text>
-                <strong>Cenário:</strong> Dashboard administrativo com múltiplas seções, 
-                gráficos interativos, filtros dinâmicos.
+                <strong>Cenário:</strong> Dashboard administrativo com múltiplas
+                seções, gráficos interativos, filtros dinâmicos.
                 <br />
-                <strong>Problema:</strong> Navegação lenta, estado perdido, 
+                <strong>Problema:</strong> Navegação lenta, estado perdido,
                 experiência fragmentada.
               </Text>
-              
+
               <Stack gap="xl">
                 {spaExamples.map(example => (
                   <CodeExample
@@ -249,7 +289,6 @@ function SPA() {
                     title={example.title}
                     description={example.description}
                     code={example.content}
-                   
                   />
                 ))}
               </Stack>
@@ -258,17 +297,19 @@ function SPA() {
 
           {/* Example 2: E-commerce */}
           <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">🛒 E-commerce - Carrinho Persistente</Title>
-            
+            <Title order={3} mb="md">
+              🛒 E-commerce - Carrinho Persistente
+            </Title>
+
             <Stack gap="md">
               <Text>
-                <strong>Cenário:</strong> Loja online com carrinho de compras, 
+                <strong>Cenário:</strong> Loja online com carrinho de compras,
                 navegação entre produtos, checkout.
                 <br />
-                <strong>Problema:</strong> Carrinho perdido ao navegar, 
+                <strong>Problema:</strong> Carrinho perdido ao navegar,
                 experiência fragmentada.
               </Text>
-              
+
               <Stack gap="xl">
                 {spaExamples.map(example => (
                   <CodeExample
@@ -276,7 +317,6 @@ function SPA() {
                     title={example.title}
                     description={example.description}
                     code={example.content}
-                   
                   />
                 ))}
               </Stack>
@@ -285,17 +325,19 @@ function SPA() {
 
           {/* Example 3: Social Media */}
           <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">📱 Social Media - Feed Dinâmico</Title>
-            
+            <Title order={3} mb="md">
+              📱 Social Media - Feed Dinâmico
+            </Title>
+
             <Stack gap="md">
               <Text>
-                <strong>Cenário:</strong> Rede social com feed infinito, 
+                <strong>Cenário:</strong> Rede social com feed infinito,
                 notificações em tempo real, chat.
                 <br />
-                <strong>Problema:</strong> Feed recarrega, notificações perdidas, 
-                experiência fragmentada.
+                <strong>Problema:</strong> Feed recarrega, notificações
+                perdidas, experiência fragmentada.
               </Text>
-              
+
               <Stack gap="xl">
                 {spaExamples.map(example => (
                   <CodeExample
@@ -303,7 +345,6 @@ function SPA() {
                     title={example.title}
                     description={example.description}
                     code={example.content}
-                   
                   />
                 ))}
               </Stack>
@@ -315,52 +356,59 @@ function SPA() {
       {/* Pitfalls */}
       <div>
         <Title order={2} mb="lg">
-          <IconAlertTriangle size={28} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
+          <IconAlertTriangle
+            size={28}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
+          />
           Armadilhas Comuns
         </Title>
-        
+
         <Stack gap="md">
-          <Alert variant="light" color="red" title="🚨 SEO - Conteúdo não indexa">
+          <Alert
+            variant="light"
+            color="red"
+            title="🚨 SEO - Conteúdo não indexa"
+          >
             <Text>
-              <strong>Problema:</strong> JavaScript renderiza conteúdo, 
-              crawlers não veem nada.
+              <strong>Problema:</strong> JavaScript renderiza conteúdo, crawlers
+              não veem nada.
             </Text>
             <Text>
-              <strong>Solução:</strong> SSR (Next.js), SSG (Gatsby), 
-              ou Single Page Application para conteúdo privado.
+              <strong>Solução:</strong> SSR (Next.js), SSG (Gatsby), ou Single
+              Page Application para conteúdo privado.
             </Text>
           </Alert>
 
           <Alert variant="light" color="red" title="🚨 Performance Inicial">
             <Text>
-              <strong>Problema:</strong> Bundle grande, carregamento lento, 
+              <strong>Problema:</strong> Bundle grande, carregamento lento,
               primeira renderização demora.
             </Text>
             <Text>
-              <strong>Solução:</strong> Code splitting, lazy loading, 
-              otimização de bundle.
+              <strong>Solução:</strong> Code splitting, lazy loading, otimização
+              de bundle.
             </Text>
           </Alert>
 
           <Alert variant="light" color="red" title="🚨 Complexidade de Estado">
             <Text>
-              <strong>Problema:</strong> Estado global complexo, 
-              difícil de gerenciar, bugs sutis.
+              <strong>Problema:</strong> Estado global complexo, difícil de
+              gerenciar, bugs sutis.
             </Text>
             <Text>
-              <strong>Solução:</strong> Redux Toolkit, Zustand, 
-              Context API bem estruturado.
+              <strong>Solução:</strong> Redux Toolkit, Zustand, Context API bem
+              estruturado.
             </Text>
           </Alert>
 
           <Alert variant="light" color="red" title="🚨 JavaScript Desabilitado">
             <Text>
-              <strong>Problema:</strong> Usuários sem JavaScript 
-              não conseguem usar a aplicação.
+              <strong>Problema:</strong> Usuários sem JavaScript não conseguem
+              usar a aplicação.
             </Text>
             <Text>
-              <strong>Solução:</strong> Progressive enhancement, 
-              fallbacks para funcionalidades críticas.
+              <strong>Solução:</strong> Progressive enhancement, fallbacks para
+              funcionalidades críticas.
             </Text>
           </Alert>
         </Stack>
@@ -369,10 +417,13 @@ function SPA() {
       {/* References */}
       <div>
         <Title order={2} mb="lg">
-          <IconBulb size={28} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
+          <IconBulb
+            size={28}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
+          />
           Referências e Casos Reais
         </Title>
-        
+
         <Stack gap="md">
           <Card withBorder p="md">
             <Title order={4}>📚 Livros</Title>
@@ -386,10 +437,18 @@ function SPA() {
           <Card withBorder p="md">
             <Title order={4}>🛠️ Ferramentas</Title>
             <List>
-              <List.Item><strong>React Router:</strong> Roteamento client-side</List.Item>
-              <List.Item><strong>Redux Toolkit:</strong> Gerenciamento de estado</List.Item>
-              <List.Item><strong>Vite:</strong> Build tool rápida</List.Item>
-              <List.Item><strong>React Query:</strong> Cache e sincronização</List.Item>
+              <List.Item>
+                <strong>React Router:</strong> Roteamento client-side
+              </List.Item>
+              <List.Item>
+                <strong>Redux Toolkit:</strong> Gerenciamento de estado
+              </List.Item>
+              <List.Item>
+                <strong>Vite:</strong> Build tool rápida
+              </List.Item>
+              <List.Item>
+                <strong>React Query:</strong> Cache e sincronização
+              </List.Item>
             </List>
           </Card>
         </Stack>
@@ -397,34 +456,38 @@ function SPA() {
 
       {/* Summary */}
       <Paper withBorder p="xl" radius="md">
-                  <Title order={2} mb="md">
-            <IconCheck size={28} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
-            Resumo - Single Page Application
-          </Title>
-        
+        <Title order={2} mb="md">
+          <IconCheck
+            size={28}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
+          />
+          Resumo - Single Page Application
+        </Title>
+
         <Stack gap="md">
           <Text>
-            <strong>Single Page Application é sobre:</strong> JavaScript renderiza tudo, uma página HTML, 
-            navegação instantânea, experiência de app nativo.
+            <strong>Single Page Application é sobre:</strong> JavaScript
+            renderiza tudo, uma página HTML, navegação instantânea, experiência
+            de app nativo.
           </Text>
-          
+
           <Text>
-            <strong>Use quando:</strong> Aplicações interativas, dashboards, 
+            <strong>Use quando:</strong> Aplicações interativas, dashboards,
             apps com estado complexo, experiência fluida é importante.
           </Text>
-          
+
           <Text>
-            <strong>Evite quando:</strong> SEO é crítico, performance inicial é prioridade, 
-            sites de conteúdo estático.
+            <strong>Evite quando:</strong> SEO é crítico, performance inicial é
+            prioridade, sites de conteúdo estático.
           </Text>
-          
+
           <Text>
-            <strong>Principais benefícios:</strong> Navegação instantânea, estado persistente, 
-            interatividade rica, experiência moderna.
+            <strong>Principais benefícios:</strong> Navegação instantânea,
+            estado persistente, interatividade rica, experiência moderna.
           </Text>
-          
+
           <Text>
-            <strong>Principais desafios:</strong> SEO, performance inicial, 
+            <strong>Principais desafios:</strong> SEO, performance inicial,
             complexidade de estado, dependência de JavaScript.
           </Text>
         </Stack>
@@ -435,7 +498,8 @@ function SPA() {
 
 SPA.metadata = {
   title: 'Single Page Application',
-  description: 'Uma página, múltiplas rotas. JavaScript renderiza tudo, navegação instantânea, experiência de app nativo.',
+  description:
+    'Uma página, múltiplas rotas. JavaScript renderiza tudo, navegação instantânea, experiência de app nativo.',
 };
 
 export default SPA;
