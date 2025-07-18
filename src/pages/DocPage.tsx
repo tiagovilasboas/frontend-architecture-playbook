@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import { getDoc } from '../lib/content.ts';
+import { getDoc } from '../lib/content.tsx';
 import { TypographyStylesProvider, Container } from '@mantine/core';
 import { CodeHighlight } from '@mantine/code-highlight';
 
