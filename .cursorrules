@@ -275,3 +275,82 @@ Para cada nova arquitetura:
 ---
 
 **Lembre-se:** O objetivo é criar um guia que devs realmente usem, não um livro acadêmico. Foque em resolver problemas reais com linguagem direta e exemplos práticos. 
+
+## 🚨 **Prevenção de Travamentos de Agentes**
+
+### **Regras Críticas para Execução Estável:**
+
+#### **1. Comandos Não-Interativos**
+- **SEMPRE** usar flags não-interativas: `--yes`, `--no-interaction`, `-y`
+- **NUNCA** executar comandos que esperem input do usuário
+- **Exemplos:**
+  ```bash
+  npx create-react-app myapp --yes
+  npm install --save-dev @types/node --yes
+  npm audit fix --force
+  ```
+
+#### **2. Limite de Iterações**
+- **MÁXIMO 3 tentativas** para corrigir o mesmo erro
+- **Após 3 tentativas**: parar e pedir orientação ao usuário
+- **Evitar loops infinitos** de correção
+
+#### **3. Timeouts e Background**
+- **Usar `timeout`** para comandos que podem travar:
+  ```bash
+  timeout 30s npm test
+  ```
+- **Executar em background** servidores e processos longos:
+  ```bash
+  npm run dev &  # background
+  npm run dev > /dev/null 2>&1 &  # sem output
+  ```
+
+#### **4. Verificação de Saúde**
+- **Antes de grandes mudanças**, sempre verificar:
+  ```bash
+  npm test -- --passWithNoTests
+  npm run lint
+  npx tsc --noEmit
+  ```
+
+#### **5. Gestão de Processos**
+- **Verificar processos órfãos**:
+  ```bash
+  ps aux | grep -E "(npm|node|jest)"
+  pkill -f "npm|node" # se necessário
+  ```
+
+#### **6. Análise de Arquivos**
+- **Limitar leitura** de arquivos grandes (>1000 linhas)
+- **Usar grep/search** ao invés de ler arquivos inteiros
+- **Processar em chunks** quando necessário
+
+#### **7. Comandos Seguros**
+```bash
+# ✅ BOM
+npm test -- --passWithNoTests --maxWorkers=1
+npm run build || echo "Build failed"
+curl -s http://localhost:3000 || echo "Server not responding"
+
+# ❌ EVITAR
+npm test  # pode travar esperando watch mode
+npm run dev  # sem background
+read -p "Continue?" # espera input
+```
+
+### **Checklist Anti-Travamento:**
+- [ ] Todos comandos têm flags não-interativas?
+- [ ] Servidores rodando em background?
+- [ ] Timeouts configurados para comandos longos?
+- [ ] Verificação de saúde antes de mudanças?
+- [ ] Limite de 3 tentativas respeitado?
+- [ ] Processos órfãos verificados?
+
+### **Se o Agente Travar:**
+1. Verificar processos: `ps aux | grep -E "(npm|node)"`
+2. Matar processos órfãos: `pkill -f "npm|node"`
+3. Limpar cache: `npm cache clean --force`
+4. Reiniciar ambiente: `npm install`
+
+**Importante:** Priorize estabilidade sobre perfeição. É melhor ter um código funcional com pequenos avisos do que travar tentando corrigi-los infinitamente. 
