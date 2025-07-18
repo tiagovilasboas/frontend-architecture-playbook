@@ -1,4 +1,4 @@
-import type { DocMeta, CollectionType } from '../lib/content.ts';
+import type { DocMeta, CollectionType } from '../lib/content.tsx';
 
 interface NavigationAction {
   id: string;

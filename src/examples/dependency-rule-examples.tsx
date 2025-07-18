@@ -1,3 +1,4 @@
+import React from 'react';
 import { Code, Alert, Stack, Title, Text, Paper, Badge } from '@mantine/core';
 import { IconCheck, IconX, IconBulb } from '@tabler/icons-react';
 
@@ -157,7 +158,10 @@ function ProductPage({ productId }) {
     <div>
       <h1>{product.name}</h1>
       <p>{product.description}</p>
-      <button onClick={() => addToCart(product)}>
+      <button 
+        onClick={() => addToCart(product)}
+        aria-label="Adicionar produto ao carrinho"
+      >
         Adicionar ao Carrinho
       </button>
     </div>

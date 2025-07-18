@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   Title,
   Text,
@@ -320,7 +321,10 @@ export default function PaginaProduto({ produto }: Props) {
       <p>R$ {produto.preco}</p>
       
       {/* JavaScript vai fazer hydration depois */}
-      <button onClick={() => adicionarCarrinho(produto.id)}>
+      <button 
+  onClick={() => adicionarCarrinho(produto.id)}
+  aria-label="Adicionar produto ao carrinho"
+>
         Comprar ({produto.estoque} disponíveis)
       </button>
     </div>
