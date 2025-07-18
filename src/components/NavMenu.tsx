@@ -8,7 +8,7 @@ import {
   IconCheck,
 } from '@tabler/icons-react';
 import { useLocation } from 'react-router-dom';
-import type { DocMeta } from '../lib/content.ts';
+import type { DocMeta } from '../lib/content.tsx';
 import NavItem from './NavItem.tsx';
 
 interface Props {

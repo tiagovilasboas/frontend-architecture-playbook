@@ -1,3 +1,4 @@
+import React from 'react';
 import { Group, Text, ActionIcon, Stack, Paper } from '@mantine/core';
 import {
   IconBrandGithub,
@@ -25,6 +26,7 @@ export default function Footer() {
             size="lg"
             variant="light"
             color="gray"
+            aria-label="GitHub - Tiago Vilas Boas"
           >
             <IconBrandGithub size={20} />
           </ActionIcon>
@@ -35,6 +37,7 @@ export default function Footer() {
             size="lg"
             variant="light"
             color="gray"
+            aria-label="LinkedIn - Tiago Vilas Boas"
           >
             <IconBrandLinkedin size={20} />
           </ActionIcon>

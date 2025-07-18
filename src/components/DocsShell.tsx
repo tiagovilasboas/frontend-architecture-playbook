@@ -6,7 +6,7 @@ import HeaderBar from './HeaderBar.tsx';
 import NavMenu from './NavMenu.tsx';
 import Footer from './Footer.tsx';
 import { useNavigationActions } from '../hooks/useNavigationActions.ts';
-import type { DocMeta } from '../lib/content.ts';
+import type { DocMeta } from '../lib/content.tsx';
 
 interface DocsShellProps {
   guides: DocMeta[];
