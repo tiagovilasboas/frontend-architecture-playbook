@@ -1,10 +1,27 @@
-import { Title, Text, Stack, Paper, Alert, List, ThemeIcon, Group, Card, Badge } from '@mantine/core';
-import { IconBulb, IconAlertTriangle, IconCheck, IconCode, IconDeviceMobile, IconBolt } from '@tabler/icons-react';
-import CodeExample from '../../components/CodeExample';
-import islandsExamples from '../../utils/code-examples/islands-architecture.json';
+import {
+  Title,
+  Text,
+  Stack,
+  Paper,
+  Alert,
+  List,
+  ThemeIcon,
+  Group,
+  Card,
+  Badge,
+} from "@mantine/core";
+import {
+  IconBulb,
+  IconAlertTriangle,
+  IconCheck,
+  IconCode,
+  IconDeviceMobile,
+  IconBolt,
+} from "@tabler/icons-react";
+import CodeExample from "../../components/CodeExample";
+import islandsExamples from "../../utils/code-examples/islands-architecture.json";
 
 function IslandsArchitecture() {
-
   return (
     <Stack gap="xl">
       {/* Hero Section */}
@@ -13,8 +30,8 @@ function IslandsArchitecture() {
           Islands Architecture
         </Title>
         <Text size="lg" c="dimmed">
-          HTML estático com ilhas de interatividade. Performance máxima, 
-          SEO perfeito, JavaScript só onde precisa. O melhor dos dois mundos.
+          HTML estático com ilhas de interatividade. Performance máxima, SEO
+          perfeito, JavaScript só onde precisa. O melhor dos dois mundos.
         </Text>
       </div>
 
@@ -27,23 +44,30 @@ function IslandsArchitecture() {
             </ThemeIcon>
             <div>
               <Title order={3}>O que é?</Title>
-              <Text c="dimmed">HTML estático com ilhas de JavaScript interativo</Text>
+              <Text c="dimmed">
+                HTML estático com ilhas de JavaScript interativo
+              </Text>
             </div>
           </Group>
-          
+
           <Text>
-            Islands Architecture é sobre uma coisa só: <strong>JavaScript só onde precisa</strong>.
+            Islands Architecture é sobre uma coisa só:{" "}
+            <strong>JavaScript só onde precisa</strong>.
           </Text>
-          
+
           <Text>
-            Pensa assim: ao invés de SPA (tudo JavaScript) ou SSR (tudo servidor), 
-            você tem HTML estático com pequenas ilhas de interatividade. 
-            O resto é HTML puro, rápido e SEO-friendly.
+            Pensa assim: ao invés de SPA (tudo JavaScript) ou SSR (tudo
+            servidor), você tem HTML estático com pequenas ilhas de
+            interatividade. O resto é HTML puro, rápido e SEO-friendly.
           </Text>
-          
+
           <Text>
-            A regra é simples: <em>HTML estático por padrão, JavaScript só onde interatividade importa</em>. 
-            Performance máxima, SEO perfeito, JavaScript mínimo.
+            A regra é simples:{" "}
+            <em>
+              HTML estático por padrão, JavaScript só onde interatividade
+              importa
+            </em>
+            . Performance máxima, SEO perfeito, JavaScript mínimo.
           </Text>
         </Stack>
       </Paper>
@@ -51,24 +75,34 @@ function IslandsArchitecture() {
       {/* Concepts */}
       <div>
         <Title order={2} mb="lg">
-          <IconBolt size={28} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
+          <IconBolt
+            size={28}
+            style={{ verticalAlign: "middle", marginRight: "8px" }}
+          />
           Os 3 Conceitos Principais
         </Title>
-        
+
         <Stack gap="md">
           <Card withBorder p="md">
             <Group>
-              <Badge size="lg" variant="light" color="green">1</Badge>
+              <Badge size="lg" variant="light" color="green">
+                1
+              </Badge>
               <div>
                 <Title order={4}>HTML Estático</Title>
                 <Text size="sm" c="dimmed">
-                  Base da página é HTML puro. Rápido, SEO-friendly, 
-                  sem JavaScript desnecessário.
+                  Base da página é HTML puro. Rápido, SEO-friendly, sem
+                  JavaScript desnecessário.
                 </Text>
-                <CodeExample 
-                  title={islandsExamples.find(e => e.id === 'islands-html-static')?.title || ''}
-                  code={islandsExamples.find(e => e.id === 'islands-html-static')?.content || ''}
-                 
+                <CodeExample
+                  title={
+                    islandsExamples.find((e) => e.id === "islands-html-static")
+                      ?.title || ""
+                  }
+                  code={
+                    islandsExamples.find((e) => e.id === "islands-html-static")
+                      ?.content || ""
+                  }
                 />
               </div>
             </Group>
@@ -76,17 +110,24 @@ function IslandsArchitecture() {
 
           <Card withBorder p="md">
             <Group>
-              <Badge size="lg" variant="light" color="blue">2</Badge>
+              <Badge size="lg" variant="light" color="blue">
+                2
+              </Badge>
               <div>
                 <Title order={4}>Ilhas de Interatividade</Title>
                 <Text size="sm" c="dimmed">
-                  JavaScript só nos componentes que precisam de interatividade. 
+                  JavaScript só nos componentes que precisam de interatividade.
                   Carrinho, busca, formulários.
                 </Text>
-                <CodeExample 
-                  title={islandsExamples.find(e => e.id === 'islands-cart-island')?.title || ''}
-                  code={islandsExamples.find(e => e.id === 'islands-cart-island')?.content || ''}
-                 
+                <CodeExample
+                  title={
+                    islandsExamples.find((e) => e.id === "islands-cart-island")
+                      ?.title || ""
+                  }
+                  code={
+                    islandsExamples.find((e) => e.id === "islands-cart-island")
+                      ?.content || ""
+                  }
                 />
               </div>
             </Group>
@@ -94,17 +135,24 @@ function IslandsArchitecture() {
 
           <Card withBorder p="md">
             <Group>
-              <Badge size="lg" variant="light" color="orange">3</Badge>
+              <Badge size="lg" variant="light" color="orange">
+                3
+              </Badge>
               <div>
                 <Title order={4}>Hidratação Seletiva</Title>
                 <Text size="sm" c="dimmed">
-                  JavaScript hidrata apenas as ilhas. 
-                  Resto da página permanece estático.
+                  JavaScript hidrata apenas as ilhas. Resto da página permanece
+                  estático.
                 </Text>
-                <CodeExample 
-                  title={islandsExamples.find(e => e.id === 'islands-hydration')?.title || ''}
-                  code={islandsExamples.find(e => e.id === 'islands-hydration')?.content || ''}
-                 
+                <CodeExample
+                  title={
+                    islandsExamples.find((e) => e.id === "islands-hydration")
+                      ?.title || ""
+                  }
+                  code={
+                    islandsExamples.find((e) => e.id === "islands-hydration")
+                      ?.content || ""
+                  }
                 />
               </div>
             </Group>
@@ -115,10 +163,13 @@ function IslandsArchitecture() {
       {/* Benefits */}
       <div>
         <Title order={2} mb="lg">
-          <IconCheck size={28} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
+          <IconCheck
+            size={28}
+            style={{ verticalAlign: "middle", marginRight: "8px" }}
+          />
           Por que vale a pena?
         </Title>
-        
+
         <Stack gap="md">
           <Card withBorder p="md">
             <Group>
@@ -128,8 +179,8 @@ function IslandsArchitecture() {
               <div>
                 <Title order={4}>Performance Máxima</Title>
                 <Text size="sm">
-                  HTML estático carrega instantaneamente. 
-                  JavaScript só onde precisa.
+                  HTML estático carrega instantaneamente. JavaScript só onde
+                  precisa.
                 </Text>
               </div>
             </Group>
@@ -143,8 +194,8 @@ function IslandsArchitecture() {
               <div>
                 <Title order={4}>SEO Perfeito</Title>
                 <Text size="sm">
-                  HTML estático é indexável por padrão. 
-                  Crawlers veem todo o conteúdo.
+                  HTML estático é indexável por padrão. Crawlers veem todo o
+                  conteúdo.
                 </Text>
               </div>
             </Group>
@@ -158,8 +209,7 @@ function IslandsArchitecture() {
               <div>
                 <Title order={4}>JavaScript Mínimo</Title>
                 <Text size="sm">
-                  Bundle pequeno, carregamento rápido, 
-                  menos bugs de JavaScript.
+                  Bundle pequeno, carregamento rápido, menos bugs de JavaScript.
                 </Text>
               </div>
             </Group>
@@ -170,10 +220,13 @@ function IslandsArchitecture() {
       {/* When to use */}
       <div>
         <Title order={2} mb="lg">
-          <IconAlertTriangle size={28} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
+          <IconAlertTriangle
+            size={28}
+            style={{ verticalAlign: "middle", marginRight: "8px" }}
+          />
           Quando usar?
         </Title>
-        
+
         <Stack gap="md">
           <Alert variant="light" color="green" title="✅ Use quando:">
             <List>
@@ -199,67 +252,92 @@ function IslandsArchitecture() {
       {/* Real Examples */}
       <div>
         <Title order={2} mb="lg">
-          <IconCode size={28} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
+          <IconCode
+            size={28}
+            style={{ verticalAlign: "middle", marginRight: "8px" }}
+          />
           Exemplos Práticos no Front-End
         </Title>
-        
+
         <Stack gap="xl">
           {/* Example 1: Blog */}
           <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">📝 Blog - Conteúdo + Comentários</Title>
-            
+            <Title order={3} mb="md">
+              📝 Blog - Conteúdo + Comentários
+            </Title>
+
             <Stack gap="md">
               <Text>
-                <strong>Cenário:</strong> Blog com artigos estáticos e sistema de comentários. 
-                Conteúdo não muda, comentários são interativos.
+                <strong>Cenário:</strong> Blog com artigos estáticos e sistema
+                de comentários. Conteúdo não muda, comentários são interativos.
                 <br />
-                <strong>Problema:</strong> SPA lento para conteúdo, 
-                SSR desnecessário para comentários.
+                <strong>Problema:</strong> SPA lento para conteúdo, SSR
+                desnecessário para comentários.
               </Text>
-              
-              <CodeExample 
-                title={islandsExamples.find(e => e.id === 'islands-blog-example')?.title || ''}
-                code={islandsExamples.find(e => e.id === 'islands-blog-example')?.content || ''}
-               
+
+              <CodeExample
+                title={
+                  islandsExamples.find((e) => e.id === "islands-blog-example")
+                    ?.title || ""
+                }
+                code={
+                  islandsExamples.find((e) => e.id === "islands-blog-example")
+                    ?.content || ""
+                }
               />
             </Stack>
           </Paper>
 
           {/* Example 2: E-commerce */}
           <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">🛒 E-commerce - Produtos + Carrinho</Title>
-            
+            <Title order={3} mb="md">
+              🛒 E-commerce - Produtos + Carrinho
+            </Title>
+
             <Stack gap="md">
               <Text>
-                <strong>Cenário:</strong> E-commerce com páginas de produtos estáticas 
-                e carrinho interativo. Produtos não mudam, carrinho é dinâmico.
+                <strong>Cenário:</strong> E-commerce com páginas de produtos
+                estáticas e carrinho interativo. Produtos não mudam, carrinho é
+                dinâmico.
                 <br />
-                <strong>Problema:</strong> SPA lento para produtos, 
-                SSR desnecessário para carrinho.
+                <strong>Problema:</strong> SPA lento para produtos, SSR
+                desnecessário para carrinho.
               </Text>
-              
-              <CodeExample 
-                title={islandsExamples.find(e => e.id === 'islands-ecommerce-example')?.title || ''}
-                code={islandsExamples.find(e => e.id === 'islands-ecommerce-example')?.content || ''}
-               
+
+              <CodeExample
+                title={
+                  islandsExamples.find(
+                    (e) => e.id === "islands-ecommerce-example",
+                  )?.title || ""
+                }
+                code={
+                  islandsExamples.find(
+                    (e) => e.id === "islands-ecommerce-example",
+                  )?.content || ""
+                }
               />
             </Stack>
           </Paper>
 
           {/* Example 3: Documentation */}
           <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">📚 Documentação - Conteúdo + Busca</Title>
-            
+            <Title order={3} mb="md">
+              📚 Documentação - Conteúdo + Busca
+            </Title>
+
             <Stack gap="md">
               <Text>
-                <strong>Cenário:</strong> Documentação técnica com conteúdo estático 
-                e busca interativa. Conteúdo não muda, busca é dinâmica.
+                <strong>Cenário:</strong> Documentação técnica com conteúdo
+                estático e busca interativa. Conteúdo não muda, busca é
+                dinâmica.
                 <br />
-                <strong>Problema:</strong> SPA lento para documentação, 
-                SSR desnecessário para busca.
+                <strong>Problema:</strong> SPA lento para documentação, SSR
+                desnecessário para busca.
               </Text>
-              
-              <CodeExample code={{ content: `// ✅ BOM - Islands Architecture
+
+              <CodeExample
+                code={{
+                  content: `// ✅ BOM - Islands Architecture
 // pages/docs/getting-started.html
 <!DOCTYPE html>
 <html>
@@ -395,7 +473,9 @@ if (buscaContainer) {
 // - HTML estático: 98% da página
 // - JavaScript: apenas busca
 // - Performance: máxima
-// - SEO: perfeito` }} />
+// - SEO: perfeito`,
+                }}
+              />
             </Stack>
           </Paper>
         </Stack>
@@ -404,112 +484,165 @@ if (buscaContainer) {
       {/* Pitfalls & How to Avoid */}
       <div>
         <Title order={2} mb="lg">
-          <IconAlertTriangle size={28} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
+          <IconAlertTriangle
+            size={28}
+            style={{ verticalAlign: "middle", marginRight: "8px" }}
+          />
           Armadilhas & Como Evitar
         </Title>
-        
+
         <Stack gap="xl">
           {/* Over-engineering */}
           <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">🚫 Over-engineering</Title>
+            <Title order={3} mb="md">
+              🚫 Over-engineering
+            </Title>
             <Stack gap="md">
               <Text>
-                <strong>Problema:</strong> Você transforma tudo em ilhas. 
-                HTML simples vira JavaScript desnecessário.
+                <strong>Problema:</strong> Você transforma tudo em ilhas. HTML
+                simples vira JavaScript desnecessário.
               </Text>
-              
+
               <Text>
-                <strong>Como evitar:</strong> Use ilhas só onde interatividade importa. 
-                HTML estático para o resto.
+                <strong>Como evitar:</strong> Use ilhas só onde interatividade
+                importa. HTML estático para o resto.
               </Text>
-              
-              <CodeExample 
-                title={islandsExamples.find(e => e.id === 'islands-pitfall-everything-island')?.title || ''}
-                code={islandsExamples.find(e => e.id === 'islands-pitfall-everything-island')?.content || ''}
+
+              <CodeExample
+                title={
+                  islandsExamples.find(
+                    (e) => e.id === "islands-pitfall-everything-island",
+                  )?.title || ""
+                }
+                code={
+                  islandsExamples.find(
+                    (e) => e.id === "islands-pitfall-everything-island",
+                  )?.content || ""
+                }
               />
             </Stack>
           </Paper>
 
           {/* State Management */}
           <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">🔄 Gestão de Estado</Title>
+            <Title order={3} mb="md">
+              🔄 Gestão de Estado
+            </Title>
             <Stack gap="md">
               <Text>
-                <strong>Problema:</strong> Estado compartilhado entre ilhas. 
+                <strong>Problema:</strong> Estado compartilhado entre ilhas.
                 Carrinho em uma ilha, contador em outra.
               </Text>
-              
+
               <Text>
-                <strong>Como evitar:</strong> Use eventos customizados, 
+                <strong>Como evitar:</strong> Use eventos customizados,
                 localStorage, ou considere uma ilha maior.
               </Text>
-              
-              <CodeExample 
-                title={islandsExamples.find(e => e.id === 'islands-pitfall-shared-state')?.title || ''}
-                code={islandsExamples.find(e => e.id === 'islands-pitfall-shared-state')?.content || ''}
+
+              <CodeExample
+                title={
+                  islandsExamples.find(
+                    (e) => e.id === "islands-pitfall-shared-state",
+                  )?.title || ""
+                }
+                code={
+                  islandsExamples.find(
+                    (e) => e.id === "islands-pitfall-shared-state",
+                  )?.content || ""
+                }
               />
             </Stack>
           </Paper>
 
           {/* Build Complexity */}
           <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">🔧 Complexidade de Build</Title>
+            <Title order={3} mb="md">
+              🔧 Complexidade de Build
+            </Title>
             <Stack gap="md">
               <Text>
-                <strong>Problema:</strong> Build complexo, múltiplos bundles, 
+                <strong>Problema:</strong> Build complexo, múltiplos bundles,
                 configuração complicada.
               </Text>
-              
+
               <Text>
-                <strong>Como evitar:</strong> Use ferramentas como Astro, 
-                ou configure build simples.
+                <strong>Como evitar:</strong> Use ferramentas como Astro, ou
+                configure build simples.
               </Text>
-              
-              <CodeExample 
-                title={islandsExamples.find(e => e.id === 'islands-pitfall-complex-build')?.title || ''}
-                code={islandsExamples.find(e => e.id === 'islands-pitfall-complex-build')?.content || ''}
+
+              <CodeExample
+                title={
+                  islandsExamples.find(
+                    (e) => e.id === "islands-pitfall-complex-build",
+                  )?.title || ""
+                }
+                code={
+                  islandsExamples.find(
+                    (e) => e.id === "islands-pitfall-complex-build",
+                  )?.content || ""
+                }
               />
             </Stack>
           </Paper>
 
           {/* SEO Issues */}
           <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">�� Problemas de SEO</Title>
+            <Title order={3} mb="md">
+              �� Problemas de SEO
+            </Title>
             <Stack gap="md">
               <Text>
-                <strong>Problema:</strong> Conteúdo dinâmico nas ilhas. 
-                Crawlers não veem conteúdo gerado por JavaScript.
+                <strong>Problema:</strong> Conteúdo dinâmico nas ilhas. Crawlers
+                não veem conteúdo gerado por JavaScript.
               </Text>
-              
+
               <Text>
-                <strong>Como evitar:</strong> Mantenha conteúdo importante no HTML estático. 
-                Use ilhas só para interatividade.
+                <strong>Como evitar:</strong> Mantenha conteúdo importante no
+                HTML estático. Use ilhas só para interatividade.
               </Text>
-              
-              <CodeExample 
-                title={islandsExamples.find(e => e.id === 'islands-pitfall-dynamic-content')?.title || ''}
-                code={islandsExamples.find(e => e.id === 'islands-pitfall-dynamic-content')?.content || ''}
+
+              <CodeExample
+                title={
+                  islandsExamples.find(
+                    (e) => e.id === "islands-pitfall-dynamic-content",
+                  )?.title || ""
+                }
+                code={
+                  islandsExamples.find(
+                    (e) => e.id === "islands-pitfall-dynamic-content",
+                  )?.content || ""
+                }
               />
             </Stack>
           </Paper>
 
           {/* Performance */}
           <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">⚡ Performance</Title>
+            <Title order={3} mb="md">
+              ⚡ Performance
+            </Title>
             <Stack gap="md">
               <Text>
-                <strong>Problema:</strong> Muitas ilhas pequenas. 
-                Múltiplos bundles, hidratação lenta.
+                <strong>Problema:</strong> Muitas ilhas pequenas. Múltiplos
+                bundles, hidratação lenta.
               </Text>
-              
+
               <Text>
-                <strong>Como evitar:</strong> Agrupe ilhas relacionadas, 
-                use lazy loading, otimize bundles.
+                <strong>Como evitar:</strong> Agrupe ilhas relacionadas, use
+                lazy loading, otimize bundles.
               </Text>
-              
-              <CodeExample 
-                title={islandsExamples.find(e => e.id === 'islands-pitfall-many-small-islands')?.title || ''}
-                code={islandsExamples.find(e => e.id === 'islands-pitfall-many-small-islands')?.content || ''}
+
+              <CodeExample
+                title={
+                  islandsExamples.find(
+                    (e) => e.id === "islands-pitfall-many-small-islands",
+                  )?.title || ""
+                }
+                code={
+                  islandsExamples.find(
+                    (e) => e.id === "islands-pitfall-many-small-islands",
+                  )?.content || ""
+                }
               />
             </Stack>
           </Paper>
@@ -519,14 +652,19 @@ if (buscaContainer) {
       {/* References & Real Cases */}
       <div>
         <Title order={2} mb="lg">
-          <IconBulb size={28} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
+          <IconBulb
+            size={28}
+            style={{ verticalAlign: "middle", marginRight: "8px" }}
+          />
           Referências & Casos Reais
         </Title>
-        
+
         <Stack gap="xl">
           {/* References */}
           <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">📚 Referências</Title>
+            <Title order={3} mb="md">
+              📚 Referências
+            </Title>
             <Stack gap="md">
               <Text>
                 <strong>Livros:</strong>
@@ -567,7 +705,9 @@ if (buscaContainer) {
 
           {/* Tools & Libraries */}
           <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">🛠️ Ferramentas & Bibliotecas</Title>
+            <Title order={3} mb="md">
+              🛠️ Ferramentas & Bibliotecas
+            </Title>
             <Stack gap="md">
               <Text>
                 <strong>Ferramentas que facilitam Islands Architecture:</strong>
@@ -609,19 +749,20 @@ if (buscaContainer) {
               <Text c="dimmed">Islands Architecture na prática</Text>
             </div>
           </Group>
-          
+
           <Text>
-            Islands Architecture é sobre uma coisa só: <strong>JavaScript só onde precisa</strong>. 
-            HTML estático por padrão, ilhas de interatividade. 
-            Use quando performance e SEO importam.
+            Islands Architecture é sobre uma coisa só:{" "}
+            <strong>JavaScript só onde precisa</strong>. HTML estático por
+            padrão, ilhas de interatividade. Use quando performance e SEO
+            importam.
           </Text>
-          
+
           <Text size="sm" c="dimmed">
-            <strong>Lembre-se:</strong> Não é sobre transformar tudo em ilhas. 
-            É sobre usar HTML estático por padrão. E você não enlouquece.
+            <strong>Lembre-se:</strong> Não é sobre transformar tudo em ilhas. É
+            sobre usar HTML estático por padrão. E você não enlouquece.
             <br />
-            <strong>Dica:</strong> Comece com HTML estático, adicione ilhas conforme necessário. 
-            Foque em performance e simplicidade.
+            <strong>Dica:</strong> Comece com HTML estático, adicione ilhas
+            conforme necessário. Foque em performance e simplicidade.
           </Text>
         </Stack>
       </Paper>
@@ -630,8 +771,9 @@ if (buscaContainer) {
 }
 
 IslandsArchitecture.metadata = {
-  title: 'Islands Architecture',
-  description: 'HTML estático com ilhas de interatividade. Performance máxima e SEO perfeito.'
+  title: "Islands Architecture",
+  description:
+    "HTML estático com ilhas de interatividade. Performance máxima e SEO perfeito.",
 };
 
 export default IslandsArchitecture;

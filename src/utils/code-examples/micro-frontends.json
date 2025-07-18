@@ -19,4 +19,4 @@
     "description": "Shell (container) orquestra os micro-frontends.",
     "code": "// Shell - Container principal\n// apps/shell/src/App.tsx\nimport { loadMicroFrontend } from './utils/micro-frontend-loader';\n\nexport function ShellApp() {\n  const [currentRoute, setCurrentRoute] = useState('/');\n\n  const loadApp = async (route: string) => {\n    switch (route) {\n      case '/products':\n        return await loadMicroFrontend('product-app');\n      case '/cart':\n        return await loadMicroFrontend('cart-app');\n      case '/checkout':\n        return await loadMicroFrontend('checkout-app');\n    }\n  };\n\n  return (\n    <div>\n      <Navigation />\n      <main>\n        {loadApp(currentRoute)}\n      </main>\n    </div>\n  );\n}\n\n// utils/micro-frontend-loader.ts\nexport async function loadMicroFrontend(appName: string) {\n  const script = document.createElement('script');\n  script.src = `https://cdn.example.com/${appName}/main.js`;\n  document.head.appendChild(script);\n  \n  return new Promise((resolve) => {\n    script.onload = () => {\n      // Micro-frontend carregado\n      resolve(window[appName]);\n    };\n  });\n}"
   }
-] 
+]

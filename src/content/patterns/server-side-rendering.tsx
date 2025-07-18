@@ -1,5 +1,24 @@
-import { Title, Text, Stack, Paper, Code, Alert, List, ThemeIcon, Group, Card, Badge } from '@mantine/core';
-import { IconBulb, IconAlertTriangle, IconCheck, IconCode, IconServer, IconBolt } from '@tabler/icons-react';
+import {
+  Title,
+  Text,
+  Stack,
+  Paper,
+  Code,
+  Alert,
+  List,
+  ThemeIcon,
+  Group,
+  Card,
+  Badge,
+} from "@mantine/core";
+import {
+  IconBulb,
+  IconAlertTriangle,
+  IconCheck,
+  IconCode,
+  IconServer,
+  IconBolt,
+} from "@tabler/icons-react";
 
 function ServerSideRendering() {
   return (
@@ -10,8 +29,8 @@ function ServerSideRendering() {
           Server-Side Rendering (SSR)
         </Title>
         <Text size="lg" c="dimmed">
-          Renderiza no servidor, serve HTML pronto. SEO perfeito, 
-          performance inicial rápida. O melhor dos dois mundos.
+          Renderiza no servidor, serve HTML pronto. SEO perfeito, performance
+          inicial rápida. O melhor dos dois mundos.
         </Text>
       </div>
 
@@ -24,22 +43,25 @@ function ServerSideRendering() {
             </ThemeIcon>
             <div>
               <Title order={3}>O que é?</Title>
-              <Text c="dimmed">Renderização no servidor antes de enviar para o cliente</Text>
+              <Text c="dimmed">
+                Renderização no servidor antes de enviar para o cliente
+              </Text>
             </div>
           </Group>
-          
+
           <Text>
             SSR é sobre uma coisa só: <strong>renderizar no servidor</strong>.
           </Text>
-          
+
           <Text>
-            Pensa assim: ao invés do browser carregar JavaScript e renderizar, 
-            o servidor já manda o HTML pronto. O cliente só hidrata e adiciona interatividade.
+            Pensa assim: ao invés do browser carregar JavaScript e renderizar, o
+            servidor já manda o HTML pronto. O cliente só hidrata e adiciona
+            interatividade.
           </Text>
-          
+
           <Text>
-            A regra é simples: <em>servidor renderiza, cliente hidrata</em>. 
-            SEO perfeito, performance inicial rápida, interatividade mantida.
+            A regra é simples: <em>servidor renderiza, cliente hidrata</em>. SEO
+            perfeito, performance inicial rápida, interatividade mantida.
           </Text>
         </Stack>
       </Paper>
@@ -47,21 +69,26 @@ function ServerSideRendering() {
       {/* Concepts */}
       <div>
         <Title order={2} mb="lg">
-                      <IconBolt size={28} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
+          <IconBolt
+            size={28}
+            style={{ verticalAlign: "middle", marginRight: "8px" }}
+          />
           Como Funciona
         </Title>
-        
+
         <Stack gap="md">
           <Card withBorder p="md">
             <Group>
-              <Badge size="lg" variant="light" color="green">1</Badge>
+              <Badge size="lg" variant="light" color="green">
+                1
+              </Badge>
               <div>
                 <Title order={4}>Servidor Renderiza</Title>
                 <Text size="sm" c="dimmed">
                   React/Vue roda no servidor, gera HTML completo com dados.
                 </Text>
                 <Code mt="xs" block>
-{`// Servidor renderiza
+                  {`// Servidor renderiza
 // pages/products/[id].js
 export async function getServerSideProps({ params }) {
   const product = await fetchProduct(params.id);
@@ -99,14 +126,16 @@ function ProductPage({ product, reviews }) {
 
           <Card withBorder p="md">
             <Group>
-              <Badge size="lg" variant="light" color="blue">2</Badge>
+              <Badge size="lg" variant="light" color="blue">
+                2
+              </Badge>
               <div>
                 <Title order={4}>Cliente Recebe HTML</Title>
                 <Text size="sm" c="dimmed">
                   Browser recebe HTML pronto, renderiza instantaneamente.
                 </Text>
                 <Code mt="xs" block>
-{`// Cliente recebe HTML pronto
+                  {`// Cliente recebe HTML pronto
 <!DOCTYPE html>
 <html>
 <head>
@@ -138,14 +167,16 @@ function ProductPage({ product, reviews }) {
 
           <Card withBorder p="md">
             <Group>
-              <Badge size="lg" variant="light" color="orange">3</Badge>
+              <Badge size="lg" variant="light" color="orange">
+                3
+              </Badge>
               <div>
                 <Title order={4}>Cliente Hidrata</Title>
                 <Text size="sm" c="dimmed">
                   JavaScript adiciona interatividade, mantém estado.
                 </Text>
                 <Code mt="xs" block>
-{`// Cliente hidrata
+                  {`// Cliente hidrata
 // app.js carrega
 ReactDOM.hydrate(
   <ProductPage 
@@ -191,13 +222,15 @@ function ProductPage({ product, reviews }) {
             </Group>
           </Card>
         </Stack>
-        
+
         <Paper withBorder p="md" radius="md" mt="lg">
           <Text size="sm" c="dimmed">
-            <strong>Como funciona:</strong> O servidor renderiza o React/Vue e gera HTML completo com dados (Passo 1). 
-            O cliente recebe HTML pronto e renderiza instantaneamente (Passo 2). 
-            O JavaScript hidrata a página, adicionando interatividade sem perder o estado (Passo 3). 
-            Resultado: SEO perfeito + performance inicial rápida + interatividade mantida.
+            <strong>Como funciona:</strong> O servidor renderiza o React/Vue e
+            gera HTML completo com dados (Passo 1). O cliente recebe HTML pronto
+            e renderiza instantaneamente (Passo 2). O JavaScript hidrata a
+            página, adicionando interatividade sem perder o estado (Passo 3).
+            Resultado: SEO perfeito + performance inicial rápida +
+            interatividade mantida.
           </Text>
         </Paper>
       </div>
@@ -205,10 +238,13 @@ function ProductPage({ product, reviews }) {
       {/* Benefits */}
       <div>
         <Title order={2} mb="lg">
-          <IconCheck size={28} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
+          <IconCheck
+            size={28}
+            style={{ verticalAlign: "middle", marginRight: "8px" }}
+          />
           Por que vale a pena?
         </Title>
-        
+
         <Stack gap="md">
           <Card withBorder p="md">
             <Group>
@@ -218,8 +254,8 @@ function ProductPage({ product, reviews }) {
               <div>
                 <Title order={4}>SEO Perfeito</Title>
                 <Text size="sm">
-                  Crawlers veem HTML completo. Meta tags dinâmicas, 
-                  conteúdo indexável.
+                  Crawlers veem HTML completo. Meta tags dinâmicas, conteúdo
+                  indexável.
                 </Text>
               </div>
             </Group>
@@ -233,8 +269,8 @@ function ProductPage({ product, reviews }) {
               <div>
                 <Title order={4}>Performance Inicial Rápida</Title>
                 <Text size="sm">
-                  HTML pronto no primeiro request. 
-                  Sem esperar JavaScript carregar.
+                  HTML pronto no primeiro request. Sem esperar JavaScript
+                  carregar.
                 </Text>
               </div>
             </Group>
@@ -248,8 +284,8 @@ function ProductPage({ product, reviews }) {
               <div>
                 <Title order={4}>Interatividade Mantida</Title>
                 <Text size="sm">
-                  JavaScript hidrata, adiciona interatividade. 
-                  Melhor dos dois mundos.
+                  JavaScript hidrata, adiciona interatividade. Melhor dos dois
+                  mundos.
                 </Text>
               </div>
             </Group>
@@ -260,10 +296,13 @@ function ProductPage({ product, reviews }) {
       {/* When to use */}
       <div>
         <Title order={2} mb="lg">
-          <IconAlertTriangle size={28} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
+          <IconAlertTriangle
+            size={28}
+            style={{ verticalAlign: "middle", marginRight: "8px" }}
+          />
           Quando usar?
         </Title>
-        
+
         <Stack gap="md">
           <Alert variant="light" color="green" title="✅ Use quando:">
             <List>
@@ -289,26 +328,31 @@ function ProductPage({ product, reviews }) {
       {/* Real Examples */}
       <div>
         <Title order={2} mb="lg">
-          <IconCode size={28} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
+          <IconCode
+            size={28}
+            style={{ verticalAlign: "middle", marginRight: "8px" }}
+          />
           Exemplos Práticos no Front-End
         </Title>
-        
+
         <Stack gap="xl">
           {/* Example 1: E-commerce */}
           <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">🛒 E-commerce - SEO Crítico</Title>
-            
+            <Title order={3} mb="md">
+              🛒 E-commerce - SEO Crítico
+            </Title>
+
             <Stack gap="md">
               <Text>
-                <strong>Cenário:</strong> E-commerce com produtos, categorias, busca. 
-                SEO crítico para conversão.
+                <strong>Cenário:</strong> E-commerce com produtos, categorias,
+                busca. SEO crítico para conversão.
                 <br />
-                <strong>Problema:</strong> SPA não indexa, performance inicial lenta, 
-                SEO ruim.
+                <strong>Problema:</strong> SPA não indexa, performance inicial
+                lenta, SEO ruim.
               </Text>
-              
+
               <Code block>
-{`// ❌ RUIM - SPA puro
+                {`// ❌ RUIM - SPA puro
 // JavaScript renderiza tudo
 // Crawlers não veem produtos
 // SEO ruim
@@ -360,19 +404,21 @@ export async function getServerSideProps({ params }) {
 
           {/* Example 2: Blog */}
           <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">📝 Blog - Conteúdo Dinâmico</Title>
-            
+            <Title order={3} mb="md">
+              📝 Blog - Conteúdo Dinâmico
+            </Title>
+
             <Stack gap="md">
               <Text>
-                <strong>Cenário:</strong> Blog com artigos, comentários, busca. 
+                <strong>Cenário:</strong> Blog com artigos, comentários, busca.
                 Conteúdo que muda, mas não em tempo real.
                 <br />
-                <strong>Problema:</strong> Conteúdo não indexa, 
-                performance inicial lenta.
+                <strong>Problema:</strong> Conteúdo não indexa, performance
+                inicial lenta.
               </Text>
-              
+
               <Code block>
-{`// ❌ RUIM - SPA
+                {`// ❌ RUIM - SPA
 // JavaScript renderiza artigos
 // Crawlers não veem conteúdo
 // SEO ruim
@@ -428,19 +474,21 @@ export async function getServerSideProps({ query }) {
 
           {/* Example 3: Dashboard */}
           <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">📊 Dashboard - Dados Frescos</Title>
-            
+            <Title order={3} mb="md">
+              📊 Dashboard - Dados Frescos
+            </Title>
+
             <Stack gap="md">
               <Text>
-                <strong>Cenário:</strong> Dashboard com métricas, gráficos, tabelas. 
-                Dados que precisam ser frescos.
+                <strong>Cenário:</strong> Dashboard com métricas, gráficos,
+                tabelas. Dados que precisam ser frescos.
                 <br />
-                <strong>Problema:</strong> Dados desatualizados, 
-                loading states longos.
+                <strong>Problema:</strong> Dados desatualizados, loading states
+                longos.
               </Text>
-              
+
               <Code block>
-{`// ❌ RUIM - SPA
+                {`// ❌ RUIM - SPA
 // Loading state longo
 // Dados podem estar desatualizados
 
@@ -505,27 +553,32 @@ export async function getServerSideProps({ req, query }) {
       {/* Pitfalls & How to Avoid */}
       <div>
         <Title order={2} mb="lg">
-          <IconAlertTriangle size={28} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
+          <IconAlertTriangle
+            size={28}
+            style={{ verticalAlign: "middle", marginRight: "8px" }}
+          />
           Armadilhas & Como Evitar
         </Title>
-        
+
         <Stack gap="xl">
           {/* Server Load */}
           <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">🐌 Carga no Servidor</Title>
+            <Title order={3} mb="md">
+              🐌 Carga no Servidor
+            </Title>
             <Stack gap="md">
               <Text>
-                <strong>Problema:</strong> Servidor renderiza cada request. 
+                <strong>Problema:</strong> Servidor renderiza cada request.
                 Carga alta, performance degrada com tráfego.
               </Text>
-              
+
               <Text>
-                <strong>Como evitar:</strong> Use cache, ISR, ou considere SSG 
+                <strong>Como evitar:</strong> Use cache, ISR, ou considere SSG
                 para conteúdo que não muda frequentemente.
               </Text>
-              
+
               <Code block>
-{`// ❌ RUIM - Sem cache
+                {`// ❌ RUIM - Sem cache
 // Cada request renderiza no servidor
 // Carga alta, lento
 
@@ -562,20 +615,22 @@ export async function getStaticProps({ params }) {
 
           {/* Hydration Mismatch */}
           <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">🔄 Mismatch de Hidratação</Title>
+            <Title order={3} mb="md">
+              🔄 Mismatch de Hidratação
+            </Title>
             <Stack gap="md">
               <Text>
-                <strong>Problema:</strong> HTML do servidor diferente do cliente. 
-                Erros de hidratação, warnings no console.
+                <strong>Problema:</strong> HTML do servidor diferente do
+                cliente. Erros de hidratação, warnings no console.
               </Text>
-              
+
               <Text>
-                <strong>Como evitar:</strong> Evite dados que mudam entre servidor e cliente. 
-                Use useEffect para dados dinâmicos.
+                <strong>Como evitar:</strong> Evite dados que mudam entre
+                servidor e cliente. Use useEffect para dados dinâmicos.
               </Text>
-              
+
               <Code block>
-{`// ❌ RUIM - Mismatch
+                {`// ❌ RUIM - Mismatch
 function ProductPage({ product }) {
   const [price, setPrice] = useState(product.price);
   
@@ -624,20 +679,22 @@ function ProductPage({ product }) {
 
           {/* Bundle Size */}
           <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">📦 Bundle Size</Title>
+            <Title order={3} mb="md">
+              📦 Bundle Size
+            </Title>
             <Stack gap="md">
               <Text>
-                <strong>Problema:</strong> JavaScript ainda precisa carregar. 
+                <strong>Problema:</strong> JavaScript ainda precisa carregar.
                 Bundle grande = hidratação lenta.
               </Text>
-              
+
               <Text>
-                <strong>Como evitar:</strong> Code splitting, lazy loading, 
+                <strong>Como evitar:</strong> Code splitting, lazy loading,
                 otimize bundle size.
               </Text>
-              
+
               <Code block>
-{`// ❌ RUIM - Bundle grande
+                {`// ❌ RUIM - Bundle grande
 // Todo JavaScript carrega de uma vez
 // Hidratação lenta
 
@@ -673,20 +730,22 @@ function Dashboard({ data }) {
 
           {/* API Calls */}
           <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">🔗 Chamadas de API</Title>
+            <Title order={3} mb="md">
+              🔗 Chamadas de API
+            </Title>
             <Stack gap="md">
               <Text>
-                <strong>Problema:</strong> Muitas chamadas de API no servidor. 
+                <strong>Problema:</strong> Muitas chamadas de API no servidor.
                 Request lento, timeout.
               </Text>
-              
+
               <Text>
-                <strong>Como evitar:</strong> Otimize queries, use cache, 
+                <strong>Como evitar:</strong> Otimize queries, use cache,
                 considere GraphQL para múltiplas APIs.
               </Text>
-              
+
               <Code block>
-{`// ❌ RUIM - Muitas chamadas
+                {`// ❌ RUIM - Muitas chamadas
 export async function getServerSideProps() {
   const user = await fetchUser();
   const posts = await fetchPosts();
@@ -729,20 +788,22 @@ const query = \`
 
           {/* Authentication */}
           <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">🔐 Autenticação</Title>
+            <Title order={3} mb="md">
+              🔐 Autenticação
+            </Title>
             <Stack gap="md">
               <Text>
-                <strong>Problema:</strong> Autenticação complexa no servidor. 
+                <strong>Problema:</strong> Autenticação complexa no servidor.
                 Sessões, tokens, refresh tokens.
               </Text>
-              
+
               <Text>
-                <strong>Como evitar:</strong> Use bibliotecas de auth, 
-                considere JWT ou session-based auth.
+                <strong>Como evitar:</strong> Use bibliotecas de auth, considere
+                JWT ou session-based auth.
               </Text>
-              
+
               <Code block>
-{`// ❌ RUIM - Auth manual
+                {`// ❌ RUIM - Auth manual
 export async function getServerSideProps({ req }) {
   const token = req.cookies.token;
   if (!token) {
@@ -797,21 +858,27 @@ export async function getServerSideProps({ req }) {
       {/* References & Real Cases */}
       <div>
         <Title order={2} mb="lg">
-          <IconBulb size={28} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
+          <IconBulb
+            size={28}
+            style={{ verticalAlign: "middle", marginRight: "8px" }}
+          />
           Referências & Casos Reais
         </Title>
-        
+
         <Stack gap="xl">
           {/* References */}
           <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">📚 Referências</Title>
+            <Title order={3} mb="md">
+              📚 Referências
+            </Title>
             <Stack gap="md">
               <Text>
                 <strong>Livros:</strong>
               </Text>
               <List>
                 <List.Item>
-                  <strong>"Server-Side Rendering with React"</strong> - Various Authors
+                  <strong>"Server-Side Rendering with React"</strong> - Various
+                  Authors
                 </List.Item>
                 <List.Item>
                   <strong>"Next.js: The React Framework"</strong> - Vercel Team
@@ -835,7 +902,10 @@ export async function getServerSideProps({ req }) {
                   </a>
                 </List.Item>
                 <List.Item>
-                  <a href="https://reactjs.org/docs/react-dom-server.html" target="_blank">
+                  <a
+                    href="https://reactjs.org/docs/react-dom-server.html"
+                    target="_blank"
+                  >
                     React Server-Side Rendering
                   </a>
                 </List.Item>
@@ -857,19 +927,19 @@ export async function getServerSideProps({ req }) {
               <Text c="dimmed">SSR na prática</Text>
             </div>
           </Group>
-          
+
           <Text>
-            SSR é sobre uma coisa só: <strong>renderizar no servidor</strong>. 
-            SEO perfeito, performance inicial rápida, interatividade mantida. 
+            SSR é sobre uma coisa só: <strong>renderizar no servidor</strong>.
+            SEO perfeito, performance inicial rápida, interatividade mantida.
             Use quando SEO e performance inicial importam.
           </Text>
-          
+
           <Text size="sm" c="dimmed">
-            <strong>Lembre-se:</strong> Não é sobre usar SSR pra tudo. 
-            É sobre usar quando faz sentido. E você não enlouquece.
+            <strong>Lembre-se:</strong> Não é sobre usar SSR pra tudo. É sobre
+            usar quando faz sentido. E você não enlouquece.
             <br />
-            <strong>Dica:</strong> Comece com páginas críticas de SEO, 
-            evolua conforme necessário. Foque em performance e SEO.
+            <strong>Dica:</strong> Comece com páginas críticas de SEO, evolua
+            conforme necessário. Foque em performance e SEO.
           </Text>
         </Stack>
       </Paper>
@@ -878,8 +948,9 @@ export async function getServerSideProps({ req }) {
 }
 
 ServerSideRendering.metadata = {
-  title: 'Server-Side Rendering (SSR)',
-  description: 'Renderiza no servidor, serve HTML pronto. SEO perfeito e performance inicial rápida.'
+  title: "Server-Side Rendering (SSR)",
+  description:
+    "Renderiza no servidor, serve HTML pronto. SEO perfeito e performance inicial rápida.",
 };
 
-export default ServerSideRendering; 
+export default ServerSideRendering;

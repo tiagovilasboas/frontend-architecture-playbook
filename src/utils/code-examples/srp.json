@@ -24,4 +24,4 @@
     "description": "Cada classe deve ter seus testes específicos",
     "code": "// ❌ Teste complexo testando tudo\nit('should process user completely', () => {\n  // Mock de validação, salvamento, email, log...\n  // Teste difícil de manter\n});\n\n// ✅ Testes focados\nit('should validate user correctly', () => {\n  // Teste só de validação\n});\n\nit('should save user to database', () => {\n  // Teste só de salvamento\n});\n\nit('should send welcome email', () => {\n  // Teste só de email\n});"
   }
-] 
+]

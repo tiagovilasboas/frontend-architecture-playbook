@@ -76,4 +76,4 @@
     "file": "monorepo",
     "content": "// ❌ RUIM - Permissões complexas\n// packages/ui/\n// ├── .github/workflows/publish.yml\n// ├── .github/workflows/test.yml\n// └── .github/workflows/deploy.yml\n\n// packages/shared/\n// ├── .github/workflows/publish.yml\n// ├── .github/workflows/test.yml\n// └── .github/workflows/deploy.yml\n\n// Configurações duplicadas\n// Difícil de manter\n\n// ✅ BOM - CI/CD centralizado\n// .github/workflows/ci.yml\nname: CI\non: [push, pull_request]\njobs:\n  test:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v3\n      - uses: actions/setup-node@v3\n      - run: yarn install\n      - run: yarn affected:test\n\n  build:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v3\n      - uses: actions/setup-node@v3\n      - run: yarn install\n      - run: yarn affected:build\n\n// CI/CD centralizado\n// Configuração única\n// Fácil de manter"
   }
-] 
+]

@@ -19,4 +19,4 @@
     "description": "Repository focado apenas no acesso aos dados",
     "code": "// ✅ BOM - Repository simples\n\nclass UserRepository {\n  async getUser(id: string): Promise<User> {\n    const response = await fetch(`/api/users/${id}`);\n    return response.json();\n  }\n  \n  async createUser(user: CreateUser): Promise<User> {\n    const response = await fetch('/api/users', {\n      method: 'POST',\n      body: JSON.stringify(user)\n    });\n    return response.json();\n  }\n  \n  async updateUser(id: string, updates: Partial<User>): Promise<User> {\n    const response = await fetch(`/api/users/${id}`, {\n      method: 'PATCH',\n      body: JSON.stringify(updates)\n    });\n    return response.json();\n  }\n}\n\n// Lógica de negócio separada\nconst getUserWithPermissions = async (userId: string, userRepo: UserRepository) => {\n  const user = await userRepo.getUser(userId);\n  \n  // Lógica de negócio aqui\n  const permissions = user.role === 'admin' \n    ? ['read', 'write', 'delete'] \n    : ['read'];\n  \n  return { ...user, permissions };\n};"
   }
-] 
+]

@@ -69,4 +69,4 @@
     "file": "feature-flags",
     "content": "// ❌ RUIM - Testes complexos\nit('should render new feature when enabled', () => {\n  // Mock complexo\n  jest.spyOn(global, 'fetch').mockResolvedValue({\n    json: () => Promise.resolve({ enabled: true })\n  });\n  \n  render(<Component />);\n  \n  // Teste frágil\n  expect(screen.getByText('New Feature')).toBeInTheDocument();\n});\n\n// ✅ BOM - Testes simples\nit('should render new feature when enabled', () => {\n  render(\n    <FeatureFlagsProvider flags={{ 'new-feature': true }}>\n      <Component />\n    </FeatureFlagsProvider>\n  );\n  \n  expect(screen.getByText('New Feature')).toBeInTheDocument();\n});"
   }
-] 
+]

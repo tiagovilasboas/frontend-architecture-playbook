@@ -24,4 +24,4 @@
     "description": "Páginas: instâncias reais dos templates, já com dados e conteúdo final renderizado.",
     "code": "// pages/HomePage.tsx\nimport { MainTemplate } from '../components/templates/MainTemplate';\nimport { ProductList } from '../components/organisms/ProductList';\n\nfunction HomePage({ products }) {\n  return (\n    <MainTemplate>\n      <h1>Bem-vindo!</h1>\n      <ProductList products={products} />\n    </MainTemplate>\n  );\n}\n\n// Páginas são o topo da hierarquia\n// Cada página é uma combinação de template + dados reais"
   }
-] 
+]

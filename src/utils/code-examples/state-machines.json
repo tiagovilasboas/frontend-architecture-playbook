@@ -55,4 +55,4 @@
     "file": "state-machines",
     "content": "// ❌ RUIM - Testes complexos\nit('should handle all states', () => {\n  const { getByText } = render(<Component />);\n  \n  // Testa estado inicial\n  expect(getByText('Idle')).toBeInTheDocument();\n  \n  // Simula loading\n  fireEvent.click(getByText('Start'));\n  expect(getByText('Loading')).toBeInTheDocument();\n  \n  // Simula sucesso\n  act(() => {\n    // Mock da API\n  });\n  expect(getByText('Success')).toBeInTheDocument();\n  \n  // Testa todos os caminhos...\n  // Testes frágeis\n  // Difícil de manter\n});\n\n// ✅ BOM - Testes de State Machine\nit('should transition correctly', () => {\n  const service = interpret(machine);\n  \n  service.start();\n  expect(service.state.value).toBe('idle');\n  \n  service.send('START');\n  expect(service.state.value).toBe('loading');\n  \n  service.send('SUCCESS');\n  expect(service.state.value).toBe('success');\n});\n\n// Testes simples\n// Fácil de manter\n// Cobertura completa"
   }
-] 
+]

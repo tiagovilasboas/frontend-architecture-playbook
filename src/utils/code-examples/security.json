@@ -91,4 +91,4 @@
       "code": "// ✅ MELHOR - Rate limiting por IP e rota\nconst apiLimiter = rateLimit({\n  windowMs: 15 * 60 * 1000,\n  max: 100, // 100 requests por IP\n  message: 'Muitas requisições. Tente novamente mais tarde.'\n});\n\nconst authLimiter = rateLimit({\n  windowMs: 15 * 60 * 1000,\n  max: 5,\n  skipSuccessfulRequests: true,\n  message: 'Muitas tentativas de login.'\n});\n\napp.use('/api/', apiLimiter);\napp.use('/api/auth/', authLimiter);"
     }
   }
-} 
+}
