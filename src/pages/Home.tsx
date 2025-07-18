@@ -157,6 +157,71 @@ export default function Home() {
             </Stack>
           </motion.section>
 
+          {/* Analogia da Rodovia - Versão concisa */}
+          <motion.section variants={itemVariants}>
+            <Paper withBorder p={isMobile ? 'md' : 'lg'} radius="lg">
+              <Stack gap="md" align="center" ta="center">
+                <Group justify="center" gap={isMobile ? 'xs' : 'sm'}>
+                  <IconBuilding size={isMobile ? 20 : 28} />
+                  <Title order={2} size={isMobile ? 'h4' : 'h3'}>
+                    Arquitetura é como Rodovia
+                  </Title>
+                </Group>
+                
+                <Text size={isMobile ? 'md' : 'lg'} c="dimmed" lh={1.6} maw={isMobile ? 340 : 600}>
+                  <strong>Rodovia bem planejada:</strong> pistas largas, sinalização clara, saídas estratégicas. 
+                  <br />
+                  <strong>Software bem arquitetado:</strong> componentes desacoplados, testes automatizados, pontos de extensão.
+                </Text>
+
+                <SimpleGrid cols={{ base: 1, sm: 3 }} spacing={isMobile ? 'sm' : 'md'} w="100%" mt="sm">
+                  <Card withBorder p={isMobile ? 'sm' : 'md'} radius="md">
+                    <Stack gap="xs" align="center" ta="center">
+                      <ThemeIcon size={isMobile ? 'md' : 'lg'} variant="light" color="green">
+                        <IconRocket size={isMobile ? 16 : 20} />
+                      </ThemeIcon>
+                      <Text fw={600} size={isMobile ? 'sm' : 'md'}>Pistas Largas</Text>
+                      <Text size={isMobile ? 'xs' : 'sm'} c="dimmed">
+                        = componentes desacoplados
+                      </Text>
+                    </Stack>
+                  </Card>
+                  
+                  <Card withBorder p={isMobile ? 'sm' : 'md'} radius="md">
+                    <Stack gap="xs" align="center" ta="center">
+                      <ThemeIcon size={isMobile ? 'md' : 'lg'} variant="light" color="orange">
+                        <IconShield size={isMobile ? 16 : 20} />
+                      </ThemeIcon>
+                      <Text fw={600} size={isMobile ? 'sm' : 'md'}>Radares</Text>
+                      <Text size={isMobile ? 'xs' : 'sm'} c="dimmed">
+                        = testes automatizados
+                      </Text>
+                    </Stack>
+                  </Card>
+                  
+                  <Card withBorder p={isMobile ? 'sm' : 'md'} radius="md">
+                    <Stack gap="xs" align="center" ta="center">
+                      <ThemeIcon size={isMobile ? 'md' : 'lg'} variant="light" color="purple">
+                        <IconPuzzle size={isMobile ? 16 : 20} />
+                      </ThemeIcon>
+                      <Text fw={600} size={isMobile ? 'sm' : 'md'}>Saídas</Text>
+                      <Text size={isMobile ? 'xs' : 'sm'} c="dimmed">
+                        = pontos de extensão
+                      </Text>
+                    </Stack>
+                  </Card>
+                </SimpleGrid>
+
+                <Alert color="brand" icon={<IconBulb size={isMobile ? 16 : 20} />} radius="md" mt="md">
+                  <Text size={isMobile ? 'sm' : 'md'}>
+                    <strong>Sem base sólida:</strong> bugs, deploy quebrado, time estressado. 
+                    <strong> Com base sólida:</strong> features voam, usuário nem imagina o perrengue que você evitou.
+                  </Text>
+                </Alert>
+              </Stack>
+            </Paper>
+          </motion.section>
+
           {/* Content Grid - Mais direto */}
           <motion.section variants={itemVariants}>
             <Title order={2} mb="lg" ta="center">
