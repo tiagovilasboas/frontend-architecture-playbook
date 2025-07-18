@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Stack, Card, Title, Text, Button, Group, SimpleGrid, ThemeIcon, Alert } from '@mantine/core';
 import { Link } from 'react-router-dom';
 import { architectures, patterns } from '../../lib/content.ts';
-import { IconPuzzle, IconHierarchy, IconStack2, IconShare, IconGitBranch, IconDeviceDesktop, IconSettings, IconTopologyStar3, IconArrowRight, IconBroadcast, IconSettings2, IconBulb, IconAlertTriangle, IconInfoCircle, IconRocket, IconApi, IconDeviceMobile, IconCloud, IconHexagon, IconLayers, IconHistory, IconSeparator, IconBoxMultiple } from '@tabler/icons-react';
+import { IconPuzzle, IconHierarchy, IconStack2, IconShare, IconGitBranch, IconDeviceDesktop, IconSettings, IconTopologyStar3, IconArrowRight, IconBroadcast, IconSettings2, IconBulb, IconAlertTriangle, IconInfoCircle, IconRocket, IconApi, IconDeviceMobile, IconCloud, IconHexagon, IconStack, IconHistory, IconSeparator, IconBoxMultiple } from '@tabler/icons-react';
 import './DecisionWizard.css';
 import { useMediaQuery } from '@mantine/hooks';
 import { getBonusPatterns } from './getBonusPatterns';
@@ -27,7 +27,7 @@ const patternIcons: Record<string, React.ReactNode> = {
   // TIER 2 - Arquiteturas importantes adicionadas
   'headless': <IconCloud size={28} />,
   'hexagonal': <IconHexagon size={28} />,
-  'layered': <IconLayers size={28} />,
+  'layered': <IconStack size={28} />,
   // TIER 3 - Arquiteturas específicas adicionadas
   'event-sourcing': <IconHistory size={28} />,
   'cqrs': <IconSeparator size={28} />,
