@@ -17,12 +17,13 @@ Um **sistema de suporte à decisão** que resolve a pergunta que todo dev já te
 
 ## 🚀 **Features**
 
-### **🧙‍♂️ Decision Wizard v2.0 (NEW!)**
+### **🧙‍♂️ Decision Wizard v3.0 (LATEST!)**
 - **6 steps contextuais:** Tipo projeto, tamanho time, nível técnico, prioridade, integrações + resumo
-- **Lógica sofisticada:** Sistema de scoring multi-dimensional com 37 testes
-- **Recomendações inteligentes:** Cada sugestão vem com justificativa específica
-- **Bonus patterns:** Padrões complementares baseados no contexto
-- **Mobile-optimized:** UX responsiva e intuitiva
+- **15 arquiteturas cobertas:** Todas as arquiteturas do playbook incluídas no wizard
+- **Lógica sofisticada:** Sistema de scoring multi-dimensional com 47+ testes
+- **Recomendações inteligentes:** Cada sugestão vem com justificativa contextual específica
+- **Bonus patterns:** Padrões complementares baseados no seu contexto completo
+- **Mobile-optimized:** UX responsiva e intuitiva com animações suaves
 
 ### **💼 Casos Reais de Impacto (UPDATED!)**
 - **16 empresas:** Pinterest, Tinder, Slack, Uber, WhatsApp, Zoom, Figma, Discord + originais
@@ -38,12 +39,12 @@ Um **sistema de suporte à decisão** que resolve a pergunta que todo dev já te
 - **⚡ Técnicas** - Code splitting, lazy loading, performance
 - **✅ Boas Práticas** - DRY, KISS, YAGNI, Clean Code, SRP, SOC
 
-### **🎯 SEO & Discoverability (NEW!)**
-- **Meta tags otimizadas:** Keywords, structured data, Open Graph
-- **Author attribution:** "By Tiago Vilas Boas" link no header
+### **🎯 SEO & Discoverability (UPDATED!)**
+- **Meta tags otimizadas:** Decision Wizard v3.0, 15 arquiteturas, Open Graph completo
+- **Author attribution:** "By Tiago Vilas Boas" link no header e social media
 - **Sitemap.xml** + **robots.txt** para melhor indexação
-- **Shareable content:** Cases e decisions linkáveis
-- **Long-tail keywords:** "frontend architecture decision", "micro frontends when to use"
+- **Shareable content:** Cases, decisions e architecture patterns linkáveis
+- **Long-tail keywords:** "decision wizard v3", "frontend architecture guide", "interactive wizard", "architectural patterns comparison"
 
 ### **🏗️ Arquiteturas Cobertas (15 TOTAL!)**
 
