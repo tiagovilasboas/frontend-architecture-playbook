@@ -18,7 +18,7 @@ import {
 } from '@tabler/icons-react';
 import { useMantineColorScheme } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
-import type { DocMeta } from '../lib/content.ts';
+import type { DocMeta } from '../lib/content.tsx';
 
 interface Props {
   opened: boolean;
