@@ -211,10 +211,4 @@
     <priority>0.8</priority>
   </url>
   
-  <url>
-    <loc>https://frontend-architecture-playbook.vercel.app/techniques/velocity-impact</loc>
-    <lastmod>2024-12-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
 </urlset>
