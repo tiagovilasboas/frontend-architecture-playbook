@@ -1,23 +1,30 @@
-import { Code, Alert, Stack, Title, Text, Paper, Badge } from '@mantine/core';
-import { IconCheck, IconX, IconBulb } from '@tabler/icons-react';
+import { Code, Alert, Stack, Title, Text, Paper, Badge } from "@mantine/core";
+import { IconCheck, IconX, IconBulb } from "@tabler/icons-react";
 
 export function DependencyRuleExamples() {
   return (
     <Stack gap="xl">
       <Title order={2} mb="lg">
-        <IconBulb size={32} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
+        <IconBulb
+          size={32}
+          style={{ verticalAlign: "middle", marginRight: "8px" }}
+        />
         Exemplos Práticos de Dependency Rule
       </Title>
 
       {/* Clean Architecture Example */}
       <Paper withBorder p="xl" radius="lg">
         <Stack gap="lg">
-          <Title order={3} mb="md">Clean Architecture - Dependency Rule Correta</Title>
-          
+          <Title order={3} mb="md">
+            Clean Architecture - Dependency Rule Correta
+          </Title>
+
           <div>
-            <Badge color="green" mb="xs">✅ Correto</Badge>
+            <Badge color="green" mb="xs">
+              ✅ Correto
+            </Badge>
             <Code block>
-{`// UI Layer - PODE usar Service
+              {`// UI Layer - PODE usar Service
 function UserProfile({ userId }) {
   const { user, loading } = useUserService(userId);
   
@@ -59,7 +66,8 @@ class User {
 
           <Alert color="green" icon={<IconCheck size={20} />} radius="md">
             <Text size="md" fw={500}>
-              <strong>Dependências só apontam para baixo:</strong> UI → Service → Repository → Domain
+              <strong>Dependências só apontam para baixo:</strong> UI → Service
+              → Repository → Domain
             </Text>
           </Alert>
         </Stack>
@@ -68,12 +76,16 @@ class User {
       {/* Broken Architecture Example */}
       <Paper withBorder p="xl" radius="lg">
         <Stack gap="lg">
-          <Title order={3} mb="md">Arquitetura Quebrada - Dependency Rule Violada</Title>
-          
+          <Title order={3} mb="md">
+            Arquitetura Quebrada - Dependency Rule Violada
+          </Title>
+
           <div>
-            <Badge color="red" mb="xs">❌ Incorreto</Badge>
+            <Badge color="red" mb="xs">
+              ❌ Incorreto
+            </Badge>
             <Code block>
-{`// Domain Layer - QUEBRANDO A REGRA
+              {`// Domain Layer - QUEBRANDO A REGRA
 class User {
   constructor(data) {
     this.id = data.id;
@@ -116,7 +128,8 @@ function UserService() {
 
           <Alert color="red" icon={<IconX size={20} />} radius="md">
             <Text size="md" fw={500}>
-              <strong>Dependências circulares:</strong> Domain → Service → UI → Domain = CAOS
+              <strong>Dependências circulares:</strong> Domain → Service → UI →
+              Domain = CAOS
             </Text>
           </Alert>
         </Stack>
@@ -125,12 +138,16 @@ function UserService() {
       {/* Real World Example */}
       <Paper withBorder p="xl" radius="lg">
         <Stack gap="lg">
-          <Title order={3} mb="md">Exemplo Real - E-commerce</Title>
-          
+          <Title order={3} mb="md">
+            Exemplo Real - E-commerce
+          </Title>
+
           <div>
-            <Badge color="green" mb="xs">✅ Implementação Correta</Badge>
+            <Badge color="green" mb="xs">
+              ✅ Implementação Correta
+            </Badge>
             <Code block>
-{`// UI Layer (React Component)
+              {`// UI Layer (React Component)
 function ProductPage({ productId }) {
   const { product, addToCart, loading } = useProductService(productId);
   
@@ -207,8 +224,8 @@ class Cart {
 
           <Alert color="brand" icon={<IconBulb size={20} />} radius="md">
             <Text size="md" fw={500}>
-              <strong>Benefícios:</strong> Teste cada camada isoladamente, troque banco de dados sem afetar UI, 
-              refatore com segurança.
+              <strong>Benefícios:</strong> Teste cada camada isoladamente,
+              troque banco de dados sem afetar UI, refatore com segurança.
             </Text>
           </Alert>
         </Stack>
@@ -217,12 +234,16 @@ class Cart {
       {/* Testing Example */}
       <Paper withBorder p="xl" radius="lg">
         <Stack gap="lg">
-          <Title order={3} mb="md">Testes com Dependency Rule</Title>
-          
+          <Title order={3} mb="md">
+            Testes com Dependency Rule
+          </Title>
+
           <div>
-            <Badge color="green" mb="xs">✅ Testes Isolados</Badge>
+            <Badge color="green" mb="xs">
+              ✅ Testes Isolados
+            </Badge>
             <Code block>
-{`// Teste do Domain (sem dependências externas)
+              {`// Teste do Domain (sem dependências externas)
 describe('Product', () => {
   it('should format price correctly', () => {
     const product = new Product({ id: 1, name: 'Test', price: 99.99 });
@@ -264,11 +285,12 @@ describe('ProductRepository', () => {
 
           <Alert color="green" icon={<IconCheck size={20} />} radius="md">
             <Text size="md" fw={500}>
-              <strong>Resultado:</strong> Testes rápidos, mocks simples, bugs fáceis de encontrar.
+              <strong>Resultado:</strong> Testes rápidos, mocks simples, bugs
+              fáceis de encontrar.
             </Text>
           </Alert>
         </Stack>
       </Paper>
     </Stack>
   );
-} 
+}

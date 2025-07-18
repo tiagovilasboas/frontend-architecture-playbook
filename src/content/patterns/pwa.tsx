@@ -1,5 +1,25 @@
-import { Title, Text, Stack, Paper, Card, Group, ThemeIcon, Badge, Alert, List, Code } from '@mantine/core';
-import { IconCode, IconCheck, IconAlertTriangle, IconBulb, IconRocket, IconStack, IconDeviceMobile } from '@tabler/icons-react';
+import {
+  Title,
+  Text,
+  Stack,
+  Paper,
+  Card,
+  Group,
+  ThemeIcon,
+  Badge,
+  Alert,
+  List,
+  Code,
+} from "@mantine/core";
+import {
+  IconCode,
+  IconCheck,
+  IconAlertTriangle,
+  IconBulb,
+  IconRocket,
+  IconStack,
+  IconDeviceMobile,
+} from "@tabler/icons-react";
 
 export default function PWAArchitecture() {
   return (
@@ -11,7 +31,9 @@ export default function PWAArchitecture() {
             <IconDeviceMobile size={28} />
           </ThemeIcon>
           <div>
-            <Title order={1} size="h1">📱 Progressive Web Apps (PWA)</Title>
+            <Title order={1} size="h1">
+              📱 Progressive Web Apps (PWA)
+            </Title>
             <Text size="xl" c="dimmed" mt="xs">
               Web que se comporta como app nativo
             </Text>
@@ -25,23 +47,46 @@ export default function PWAArchitecture() {
           <ThemeIcon size="lg" radius="md" variant="light" color="cyan">
             <IconStack size={20} />
           </ThemeIcon>
-          <Title order={2} size="h2">🤔 O que é?</Title>
+          <Title order={2} size="h2">
+            🤔 O que é?
+          </Title>
         </Group>
 
         <Text size="lg" mb="md">
-          Imagine abrir uma página web que <Text span fw={700} c="cyan">funciona offline</Text>, 
-          pode ser <Text span fw={700} c="blue">instalada na tela inicial</Text> e 
-          manda <Text span fw={700} c="green">notificações push</Text>. Isso é PWA.
+          Imagine abrir uma página web que{" "}
+          <Text span fw={700} c="cyan">
+            funciona offline
+          </Text>
+          , pode ser{" "}
+          <Text span fw={700} c="blue">
+            instalada na tela inicial
+          </Text>{" "}
+          e manda{" "}
+          <Text span fw={700} c="green">
+            notificações push
+          </Text>
+          . Isso é PWA.
         </Text>
 
         <Text mb="lg">
-          É a web tentando competir com apps nativos usando <Text span fw={700}>Service Workers</Text>, 
-          <Text span fw={700}> Web App Manifest</Text> e <Text span fw={700}>APIs modernas do browser</Text>. 
-          O resultado? App experience sem App Store.
+          É a web tentando competir com apps nativos usando{" "}
+          <Text span fw={700}>
+            Service Workers
+          </Text>
+          ,
+          <Text span fw={700}>
+            {" "}
+            Web App Manifest
+          </Text>{" "}
+          e{" "}
+          <Text span fw={700}>
+            APIs modernas do browser
+          </Text>
+          . O resultado? App experience sem App Store.
         </Text>
 
         <Code block>
-{`// ❌ App tradicional
+          {`// ❌ App tradicional
 <div id="app">Carregando...</div>
 <!-- Se offline = tela branca da morte -->
 
@@ -67,47 +112,75 @@ self.addEventListener('fetch', (event) => {
           <ThemeIcon size="lg" radius="md" variant="light" color="orange">
             <IconBulb size={20} />
           </ThemeIcon>
-          <Title order={2} size="h2">🎯 Quando usar?</Title>
+          <Title order={2} size="h2">
+            🎯 Quando usar?
+          </Title>
         </Group>
 
         <Stack gap="md">
           <Card withBorder p="md">
-            <Text fw={600} c="orange" mb="sm">📱 Mobile-first experience</Text>
-            <Text>User precisa acessar rápido e frequente. Tipo WhatsApp Web, Instagram, Twitter.</Text>
+            <Text fw={600} c="orange" mb="sm">
+              📱 Mobile-first experience
+            </Text>
+            <Text>
+              User precisa acessar rápido e frequente. Tipo WhatsApp Web,
+              Instagram, Twitter.
+            </Text>
           </Card>
 
           <Card withBorder p="md">
-            <Text fw={600} c="orange" mb="sm">🌐 Conectividade ruim</Text>
-            <Text>Mercados emergentes, transporte público, áreas rurais. Offline é obrigatório.</Text>
+            <Text fw={600} c="orange" mb="sm">
+              🌐 Conectividade ruim
+            </Text>
+            <Text>
+              Mercados emergentes, transporte público, áreas rurais. Offline é
+              obrigatório.
+            </Text>
           </Card>
 
           <Card withBorder p="md">
-            <Text fw={600} c="orange" mb="sm">🔄 Engagement crítico</Text>
-            <Text>Push notifications, ícone na home screen, load time brutal. User retention matters.</Text>
+            <Text fw={600} c="orange" mb="sm">
+              🔄 Engagement crítico
+            </Text>
+            <Text>
+              Push notifications, ícone na home screen, load time brutal. User
+              retention matters.
+            </Text>
           </Card>
 
           <Card withBorder p="md">
-            <Text fw={600} c="orange" mb="sm">💰 Budget vs App Store</Text>
-            <Text>Não quer (ou pode) desenvolver app nativo. Uma codebase que roda everywhere.</Text>
+            <Text fw={600} c="orange" mb="sm">
+              💰 Budget vs App Store
+            </Text>
+            <Text>
+              Não quer (ou pode) desenvolver app nativo. Uma codebase que roda
+              everywhere.
+            </Text>
           </Card>
         </Stack>
       </Paper>
 
       {/* Pilares do PWA */}
       <Paper withBorder p="xl" radius="md">
-        <Title order={2} size="h2" mb="md">🏗️ Os 3 Pilares do PWA</Title>
+        <Title order={2} size="h2" mb="md">
+          🏗️ Os 3 Pilares do PWA
+        </Title>
 
         <Stack gap="lg">
           <Card withBorder p="md">
             <Group gap="sm" mb="sm">
-              <Badge variant="light" color="blue" size="lg">Service Workers</Badge>
+              <Badge variant="light" color="blue" size="lg">
+                Service Workers
+              </Badge>
               <Text fw={600}>O cérebro offline</Text>
             </Group>
-            
-            <Text size="sm" c="dimmed" mb="md">JavaScript que roda em background, intercepta requests</Text>
-            
+
+            <Text size="sm" c="dimmed" mb="md">
+              JavaScript que roda em background, intercepta requests
+            </Text>
+
             <Code size="sm" mb="md">
-{`// sw.js - Service Worker básico
+              {`// sw.js - Service Worker básico
 const CACHE_NAME = 'app-v1'
 const urlsToCache = [
   '/',
@@ -132,7 +205,7 @@ self.addEventListener('fetch', (event) => {
   )
 })`}
             </Code>
-            
+
             <List size="sm" spacing={4}>
               <List.Item>Cache inteligente de recursos</List.Item>
               <List.Item>Funcionalidade offline</List.Item>
@@ -143,14 +216,18 @@ self.addEventListener('fetch', (event) => {
 
           <Card withBorder p="md">
             <Group gap="sm" mb="sm">
-              <Badge variant="light" color="green" size="lg">Web App Manifest</Badge>
+              <Badge variant="light" color="green" size="lg">
+                Web App Manifest
+              </Badge>
               <Text fw={600}>A cara do app</Text>
             </Group>
-            
-            <Text size="sm" c="dimmed" mb="md">JSON que define como o app aparece quando instalado</Text>
-            
+
+            <Text size="sm" c="dimmed" mb="md">
+              JSON que define como o app aparece quando instalado
+            </Text>
+
             <Code size="sm" mb="md">
-{`// manifest.json
+              {`// manifest.json
 {
   "name": "Meu E-commerce",
   "short_name": "Shop",
@@ -173,7 +250,7 @@ self.addEventListener('fetch', (event) => {
   ]
 }`}
             </Code>
-            
+
             <List size="sm" spacing={4}>
               <List.Item>Ícone na tela inicial</List.Item>
               <List.Item>Splash screen customizada</List.Item>
@@ -184,14 +261,18 @@ self.addEventListener('fetch', (event) => {
 
           <Card withBorder p="md">
             <Group gap="sm" mb="sm">
-              <Badge variant="light" color="violet" size="lg">APIs Modernas</Badge>
+              <Badge variant="light" color="violet" size="lg">
+                APIs Modernas
+              </Badge>
               <Text fw={600}>Superpowers do browser</Text>
             </Group>
-            
-            <Text size="sm" c="dimmed" mb="md">Push notifications, camera, geolocation, device APIs</Text>
-            
+
+            <Text size="sm" c="dimmed" mb="md">
+              Push notifications, camera, geolocation, device APIs
+            </Text>
+
             <Code size="sm" mb="md">
-{`// Push Notifications
+              {`// Push Notifications
 // Pede permissão
 const permission = await Notification.requestPermission()
 
@@ -207,7 +288,7 @@ navigator.serviceWorker.ready.then(registration => {
   registration.sync.register('background-sync')
 })`}
             </Code>
-            
+
             <List size="sm" spacing={4}>
               <List.Item>Push notifications</List.Item>
               <List.Item>Background sync</List.Item>
@@ -224,28 +305,50 @@ navigator.serviceWorker.ready.then(registration => {
           <ThemeIcon size="lg" radius="md" variant="light" color="green">
             <IconCheck size={20} />
           </ThemeIcon>
-          <Title order={2} size="h2">💚 Por que vale a pena?</Title>
+          <Title order={2} size="h2">
+            💚 Por que vale a pena?
+          </Title>
         </Group>
 
         <Stack gap="md">
           <Alert color="green" icon={<IconCheck size={16} />}>
-            <Text fw={600} mb="xs">📱 Mobile experience nativa</Text>
-            <Text size="sm">Instala sem App Store. Carrega instant. Funciona offline. User nem percebe que é web.</Text>
+            <Text fw={600} mb="xs">
+              📱 Mobile experience nativa
+            </Text>
+            <Text size="sm">
+              Instala sem App Store. Carrega instant. Funciona offline. User nem
+              percebe que é web.
+            </Text>
           </Alert>
 
           <Alert color="green" icon={<IconCheck size={16} />}>
-            <Text fw={600} mb="xs">🚀 Performance brutal</Text>
-            <Text size="sm">Cache strategy agressiva. Segundo acesso é quase instantâneo. App shell carrega em 200ms.</Text>
+            <Text fw={600} mb="xs">
+              🚀 Performance brutal
+            </Text>
+            <Text size="sm">
+              Cache strategy agressiva. Segundo acesso é quase instantâneo. App
+              shell carrega em 200ms.
+            </Text>
           </Alert>
 
           <Alert color="green" icon={<IconCheck size={16} />}>
-            <Text fw={600} mb="xs">💰 Cost-effective</Text>
-            <Text size="sm">Uma codebase = iOS + Android + Desktop. Não precisa manter 3 teams diferentes.</Text>
+            <Text fw={600} mb="xs">
+              💰 Cost-effective
+            </Text>
+            <Text size="sm">
+              Uma codebase = iOS + Android + Desktop. Não precisa manter 3 teams
+              diferentes.
+            </Text>
           </Alert>
 
           <Alert color="green" icon={<IconCheck size={16} />}>
-            <Text fw={600} mb="xs">🔄 Engagement maior</Text>
-            <Text size="sm">Push notifications + ícone na home = user volta mais. Pinterest viu +103% engagement.</Text>
+            <Text fw={600} mb="xs">
+              🔄 Engagement maior
+            </Text>
+            <Text size="sm">
+              Push notifications + ícone na home = user volta mais. Pinterest
+              viu +103% engagement.
+            </Text>
           </Alert>
         </Stack>
       </Paper>
@@ -256,16 +359,25 @@ navigator.serviceWorker.ready.then(registration => {
           <ThemeIcon size="lg" radius="md" variant="light" color="orange">
             <IconCode size={20} />
           </ThemeIcon>
-          <Title order={2} size="h2">💻 Exemplo Prático: To-Do App Offline</Title>
+          <Title order={2} size="h2">
+            💻 Exemplo Prático: To-Do App Offline
+          </Title>
         </Group>
 
         <Text mb="md">
-          Cenário: App de tarefas que funciona <Text span fw={700}>offline</Text> e 
-          sincroniza quando voltar <Text span fw={700}>online</Text>.
+          Cenário: App de tarefas que funciona{" "}
+          <Text span fw={700}>
+            offline
+          </Text>{" "}
+          e sincroniza quando voltar{" "}
+          <Text span fw={700}>
+            online
+          </Text>
+          .
         </Text>
 
         <Code block mb="md">
-{`// App.jsx - PWA com cache strategy
+          {`// App.jsx - PWA com cache strategy
 import { useState, useEffect } from 'react'
 
 function App() {
@@ -399,40 +511,60 @@ self.addEventListener('sync', (event) => {
 
       {/* Cache Strategies */}
       <Paper withBorder p="xl" radius="md">
-        <Title order={2} size="h2" mb="md">🗄️ Cache Strategies que Funcionam</Title>
+        <Title order={2} size="h2" mb="md">
+          🗄️ Cache Strategies que Funcionam
+        </Title>
 
         <Group grow align="flex-start" gap="lg">
           <Card withBorder p="md">
-            <Badge variant="light" color="blue" mb="sm">Cache First</Badge>
-            <Text size="sm" mb="md">Cache → Network (se miss)</Text>
+            <Badge variant="light" color="blue" mb="sm">
+              Cache First
+            </Badge>
+            <Text size="sm" mb="md">
+              Cache → Network (se miss)
+            </Text>
             <List size="sm" spacing={4} mb="md">
               <List.Item>CSS, JS, imagens</List.Item>
               <List.Item>Assets que não mudam</List.Item>
               <List.Item>Performance máxima</List.Item>
             </List>
-            <Text size="xs" c="dimmed">Use para: static files</Text>
+            <Text size="xs" c="dimmed">
+              Use para: static files
+            </Text>
           </Card>
 
           <Card withBorder p="md">
-            <Badge variant="light" color="green" mb="sm">Network First</Badge>
-            <Text size="sm" mb="md">Network → Cache (se fail)</Text>
+            <Badge variant="light" color="green" mb="sm">
+              Network First
+            </Badge>
+            <Text size="sm" mb="md">
+              Network → Cache (se fail)
+            </Text>
             <List size="sm" spacing={4} mb="md">
               <List.Item>API calls críticas</List.Item>
               <List.Item>Dados que mudam</List.Item>
               <List.Item>Fallback resiliente</List.Item>
             </List>
-            <Text size="xs" c="dimmed">Use para: dynamic data</Text>
+            <Text size="xs" c="dimmed">
+              Use para: dynamic data
+            </Text>
           </Card>
 
           <Card withBorder p="md">
-            <Badge variant="light" color="orange" mb="sm">Stale While Revalidate</Badge>
-            <Text size="sm" mb="md">Cache + Background Update</Text>
+            <Badge variant="light" color="orange" mb="sm">
+              Stale While Revalidate
+            </Badge>
+            <Text size="sm" mb="md">
+              Cache + Background Update
+            </Text>
             <List size="sm" spacing={4} mb="md">
               <List.Item>Response instant do cache</List.Item>
               <List.Item>Update em background</List.Item>
               <List.Item>Best of both worlds</List.Item>
             </List>
-            <Text size="xs" c="dimmed">Use para: content sites</Text>
+            <Text size="xs" c="dimmed">
+              Use para: content sites
+            </Text>
           </Card>
         </Group>
       </Paper>
@@ -443,47 +575,73 @@ self.addEventListener('sync', (event) => {
           <ThemeIcon size="lg" radius="md" variant="light" color="red">
             <IconAlertTriangle size={20} />
           </ThemeIcon>
-          <Title order={2} size="h2">⚠️ Armadilhas</Title>
+          <Title order={2} size="h2">
+            ⚠️ Armadilhas
+          </Title>
         </Group>
 
         <Stack gap="md">
           <Alert color="red" icon={<IconAlertTriangle size={16} />}>
-            <Text fw={600} mb="xs">🍎 iOS Safari Limitations</Text>
+            <Text fw={600} mb="xs">
+              🍎 iOS Safari Limitations
+            </Text>
             <Text size="sm" mb="xs">
-              iOS ainda é problemático. Push notifications limitadas, install prompt inconsistente.
+              iOS ainda é problemático. Push notifications limitadas, install
+              prompt inconsistente.
             </Text>
             <Text size="sm" c="dimmed">
-              <Text span fw={600}>Solução:</Text> Graceful degradation. Funciona, mas sem algumas features.
+              <Text span fw={600}>
+                Solução:
+              </Text>{" "}
+              Graceful degradation. Funciona, mas sem algumas features.
             </Text>
           </Alert>
 
           <Alert color="red" icon={<IconAlertTriangle size={16} />}>
-            <Text fw={600} mb="xs">🗄️ Cache Hell</Text>
+            <Text fw={600} mb="xs">
+              🗄️ Cache Hell
+            </Text>
             <Text size="sm" mb="xs">
-              Cache muito agressivo = user não vê updates. Cache pouco = performance ruim.
+              Cache muito agressivo = user não vê updates. Cache pouco =
+              performance ruim.
             </Text>
             <Text size="sm" c="dimmed">
-              <Text span fw={600}>Solução:</Text> Versioning no cache name. Clear caches antigos no update.
+              <Text span fw={600}>
+                Solução:
+              </Text>{" "}
+              Versioning no cache name. Clear caches antigos no update.
             </Text>
           </Alert>
 
           <Alert color="red" icon={<IconAlertTriangle size={16} />}>
-            <Text fw={600} mb="xs">🔧 Debugging Nightmare</Text>
+            <Text fw={600} mb="xs">
+              🔧 Debugging Nightmare
+            </Text>
             <Text size="sm" mb="xs">
-              Service Worker bugs são infernais. Roda em background, estado inconsistente.
+              Service Worker bugs são infernais. Roda em background, estado
+              inconsistente.
             </Text>
             <Text size="sm" c="dimmed">
-              <Text span fw={600}>Solução:</Text> DevTools PWA tab. Logs extensivos. Clear storage frequente.
+              <Text span fw={600}>
+                Solução:
+              </Text>{" "}
+              DevTools PWA tab. Logs extensivos. Clear storage frequente.
             </Text>
           </Alert>
 
           <Alert color="red" icon={<IconAlertTriangle size={16} />}>
-            <Text fw={600} mb="xs">⚡ Battery Drain</Text>
+            <Text fw={600} mb="xs">
+              ⚡ Battery Drain
+            </Text>
             <Text size="sm" mb="xs">
-              Background sync e push notifications podem drenar bateria se abusados.
+              Background sync e push notifications podem drenar bateria se
+              abusados.
             </Text>
             <Text size="sm" c="dimmed">
-              <Text span fw={600}>Solução:</Text> Sync inteligente. Push notifications relevantes apenas.
+              <Text span fw={600}>
+                Solução:
+              </Text>{" "}
+              Sync inteligente. Push notifications relevantes apenas.
             </Text>
           </Alert>
         </Stack>
@@ -495,46 +653,81 @@ self.addEventListener('sync', (event) => {
           <ThemeIcon size="lg" radius="md" variant="light" color="violet">
             <IconRocket size={20} />
           </ThemeIcon>
-          <Title order={2} size="h2">🚀 Cases Reais</Title>
+          <Title order={2} size="h2">
+            🚀 Cases Reais
+          </Title>
         </Group>
 
         <Stack gap="md">
           <Card withBorder p="md">
-            <Text fw={600} c="blue" mb="sm">📌 Pinterest</Text>
-            <Text size="sm" mb="xs">
-              <Text span fw={600}>Problema:</Text> Mobile web tinha 40% menos engagement que app nativo
+            <Text fw={600} c="blue" mb="sm">
+              📌 Pinterest
             </Text>
             <Text size="sm" mb="xs">
-              <Text span fw={600}>Solução:</Text> PWA completa com offline, push notifications, install prompt
+              <Text span fw={600}>
+                Problema:
+              </Text>{" "}
+              Mobile web tinha 40% menos engagement que app nativo
+            </Text>
+            <Text size="sm" mb="xs">
+              <Text span fw={600}>
+                Solução:
+              </Text>{" "}
+              PWA completa com offline, push notifications, install prompt
             </Text>
             <Text size="sm" c="green">
-              <Text span fw={600}>Resultado:</Text> +103% mobile engagement, +50% ad revenue, -60% bundle size
+              <Text span fw={600}>
+                Resultado:
+              </Text>{" "}
+              +103% mobile engagement, +50% ad revenue, -60% bundle size
             </Text>
           </Card>
 
           <Card withBorder p="md">
-            <Text fw={600} c="blue" mb="sm">☕ Starbucks</Text>
-            <Text size="sm" mb="xs">
-              <Text span fw={600}>Problema:</Text> App mobile pesado, muitos users não baixavam
+            <Text fw={600} c="blue" mb="sm">
+              ☕ Starbucks
             </Text>
             <Text size="sm" mb="xs">
-              <Text span fw={600}>Solução:</Text> PWA para ordering system que funciona offline
+              <Text span fw={600}>
+                Problema:
+              </Text>{" "}
+              App mobile pesado, muitos users não baixavam
+            </Text>
+            <Text size="sm" mb="xs">
+              <Text span fw={600}>
+                Solução:
+              </Text>{" "}
+              PWA para ordering system que funciona offline
             </Text>
             <Text size="sm" c="green">
-              <Text span fw={600}>Resultado:</Text> 2x daily active users, ordering experience nativa
+              <Text span fw={600}>
+                Resultado:
+              </Text>{" "}
+              2x daily active users, ordering experience nativa
             </Text>
           </Card>
 
           <Card withBorder p="md">
-            <Text fw={600} c="blue" mb="sm">🏨 Trivago</Text>
-            <Text size="sm" mb="xs">
-              <Text span fw={600}>Problema:</Text> Site mobile lento em conexões ruins (mercados emergentes)
+            <Text fw={600} c="blue" mb="sm">
+              🏨 Trivago
             </Text>
             <Text size="sm" mb="xs">
-              <Text span fw={600}>Solução:</Text> PWA com cache agressivo e offline-first approach
+              <Text span fw={600}>
+                Problema:
+              </Text>{" "}
+              Site mobile lento em conexões ruins (mercados emergentes)
+            </Text>
+            <Text size="sm" mb="xs">
+              <Text span fw={600}>
+                Solução:
+              </Text>{" "}
+              PWA com cache agressivo e offline-first approach
             </Text>
             <Text size="sm" c="green">
-              <Text span fw={600}>Resultado:</Text> +97% engagement increase, -84% time to interactive
+              <Text span fw={600}>
+                Resultado:
+              </Text>{" "}
+              +97% engagement increase, -84% time to interactive
             </Text>
           </Card>
         </Stack>
@@ -542,36 +735,104 @@ self.addEventListener('sync', (event) => {
 
       {/* Ferramentas */}
       <Paper withBorder p="xl" radius="md">
-        <Title order={2} size="h2" mb="md">🛠️ Stack PWA</Title>
+        <Title order={2} size="h2" mb="md">
+          🛠️ Stack PWA
+        </Title>
 
         <Group grow align="flex-start" gap="lg">
           <Card withBorder p="md">
-            <Badge variant="light" color="blue" mb="sm">Frameworks</Badge>
+            <Badge variant="light" color="blue" mb="sm">
+              Frameworks
+            </Badge>
             <List size="sm" spacing={4}>
-              <List.Item><Text span fw={600}>Workbox:</Text> Service Worker toolkit (Google)</List.Item>
-              <List.Item><Text span fw={600}>PWA Builder:</Text> Microsoft's PWA tools</List.Item>
-              <List.Item><Text span fw={600}>Next.js:</Text> Built-in PWA support</List.Item>
-              <List.Item><Text span fw={600}>Vite PWA:</Text> Plugin pra Vite</List.Item>
+              <List.Item>
+                <Text span fw={600}>
+                  Workbox:
+                </Text>{" "}
+                Service Worker toolkit (Google)
+              </List.Item>
+              <List.Item>
+                <Text span fw={600}>
+                  PWA Builder:
+                </Text>{" "}
+                Microsoft's PWA tools
+              </List.Item>
+              <List.Item>
+                <Text span fw={600}>
+                  Next.js:
+                </Text>{" "}
+                Built-in PWA support
+              </List.Item>
+              <List.Item>
+                <Text span fw={600}>
+                  Vite PWA:
+                </Text>{" "}
+                Plugin pra Vite
+              </List.Item>
             </List>
           </Card>
 
           <Card withBorder p="md">
-            <Badge variant="light" color="green" mb="sm">Testing</Badge>
+            <Badge variant="light" color="green" mb="sm">
+              Testing
+            </Badge>
             <List size="sm" spacing={4}>
-              <List.Item><Text span fw={600}>Lighthouse:</Text> PWA audit score</List.Item>
-              <List.Item><Text span fw={600}>PWA Builder:</Text> Validation tools</List.Item>
-              <List.Item><Text span fw={600}>Chrome DevTools:</Text> Service Worker debugging</List.Item>
-              <List.Item><Text span fw={600}>Workbox:</Text> Cache debugging</List.Item>
+              <List.Item>
+                <Text span fw={600}>
+                  Lighthouse:
+                </Text>{" "}
+                PWA audit score
+              </List.Item>
+              <List.Item>
+                <Text span fw={600}>
+                  PWA Builder:
+                </Text>{" "}
+                Validation tools
+              </List.Item>
+              <List.Item>
+                <Text span fw={600}>
+                  Chrome DevTools:
+                </Text>{" "}
+                Service Worker debugging
+              </List.Item>
+              <List.Item>
+                <Text span fw={600}>
+                  Workbox:
+                </Text>{" "}
+                Cache debugging
+              </List.Item>
             </List>
           </Card>
 
           <Card withBorder p="md">
-            <Badge variant="light" color="orange" mb="sm">Deploy</Badge>
+            <Badge variant="light" color="orange" mb="sm">
+              Deploy
+            </Badge>
             <List size="sm" spacing={4}>
-              <List.Item><Text span fw={600}>HTTPS:</Text> Obrigatório para Service Workers</List.Item>
-              <List.Item><Text span fw={600}>CDN:</Text> Cache global pra assets</List.Item>
-              <List.Item><Text span fw={600}>HTTP/2:</Text> Push de recursos críticos</List.Item>
-              <List.Item><Text span fw={600}>Compression:</Text> gzip/brotli pra bundles</List.Item>
+              <List.Item>
+                <Text span fw={600}>
+                  HTTPS:
+                </Text>{" "}
+                Obrigatório para Service Workers
+              </List.Item>
+              <List.Item>
+                <Text span fw={600}>
+                  CDN:
+                </Text>{" "}
+                Cache global pra assets
+              </List.Item>
+              <List.Item>
+                <Text span fw={600}>
+                  HTTP/2:
+                </Text>{" "}
+                Push de recursos críticos
+              </List.Item>
+              <List.Item>
+                <Text span fw={600}>
+                  Compression:
+                </Text>{" "}
+                gzip/brotli pra bundles
+              </List.Item>
             </List>
           </Card>
         </Group>
@@ -583,25 +844,46 @@ self.addEventListener('sync', (event) => {
           <ThemeIcon size="lg" radius="md" variant="light" color="green">
             <IconCheck size={20} />
           </ThemeIcon>
-          <Title order={2} size="h2">📝 Resumo</Title>
+          <Title order={2} size="h2">
+            📝 Resumo
+          </Title>
         </Group>
 
         <Alert color="cyan" icon={<IconBulb size={16} />} radius="md">
-          <Text fw={600} size="lg" mb="md" style={{ fontStyle: 'italic' }}>
-            "PWA é web tentando ser nativo - e conseguindo. Offline, fast, installable."
+          <Text fw={600} size="lg" mb="md" style={{ fontStyle: "italic" }}>
+            "PWA é web tentando ser nativo - e conseguindo. Offline, fast,
+            installable."
           </Text>
-          
+
           <List spacing="sm">
-            <List.Item icon={<IconCheck size={14} color="var(--mantine-color-green-6)" />}>
+            <List.Item
+              icon={
+                <IconCheck size={14} color="var(--mantine-color-green-6)" />
+              }
+            >
               <Text>Use quando mobile experience e offline são críticos</Text>
             </List.Item>
-            <List.Item icon={<IconCheck size={14} color="var(--mantine-color-green-6)" />}>
-              <Text>Service Workers + Manifest + APIs modernas = app experience</Text>
+            <List.Item
+              icon={
+                <IconCheck size={14} color="var(--mantine-color-green-6)" />
+              }
+            >
+              <Text>
+                Service Workers + Manifest + APIs modernas = app experience
+              </Text>
             </List.Item>
-            <List.Item icon={<IconCheck size={14} color="var(--mantine-color-green-6)" />}>
+            <List.Item
+              icon={
+                <IconCheck size={14} color="var(--mantine-color-green-6)" />
+              }
+            >
               <Text>Trade-off: complexidade vs cross-platform reach</Text>
             </List.Item>
-            <List.Item icon={<IconCheck size={14} color="var(--mantine-color-green-6)" />}>
+            <List.Item
+              icon={
+                <IconCheck size={14} color="var(--mantine-color-green-6)" />
+              }
+            >
               <Text>Pinterest, Starbucks, Trivago provaram que funciona</Text>
             </List.Item>
           </List>
@@ -612,6 +894,7 @@ self.addEventListener('sync', (event) => {
 }
 
 PWAArchitecture.metadata = {
-  title: 'Progressive Web Apps (PWA)',
-  description: 'Como criar web apps que funcionam offline, instalam como nativos e competem com App Store usando Service Workers e APIs modernas.'
+  title: "Progressive Web Apps (PWA)",
+  description:
+    "Como criar web apps que funcionam offline, instalam como nativos e competem com App Store usando Service Workers e APIs modernas.",
 };

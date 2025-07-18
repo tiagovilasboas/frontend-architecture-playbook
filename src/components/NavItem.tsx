@@ -1,6 +1,6 @@
-import { NavLink } from '@mantine/core';
-import { Link } from 'react-router-dom';
-import { IconChevronRight } from '@tabler/icons-react';
+import { NavLink } from "@mantine/core";
+import { Link } from "react-router-dom";
+import { IconChevronRight } from "@tabler/icons-react";
 
 interface NavItemProps {
   href: string;
@@ -10,7 +10,13 @@ interface NavItemProps {
   onNavigate?: () => void;
 }
 
-export default function NavItem({ href, label, icon, active, onNavigate }: NavItemProps) {
+export default function NavItem({
+  href,
+  label,
+  icon,
+  active,
+  onNavigate,
+}: NavItemProps) {
   const handleClick = () => {
     // Fecha o menu mobile automaticamente quando um link é clicado
     // onNavigate é passado apenas no mobile (Drawer), não no desktop (sidebar)
@@ -30,4 +36,4 @@ export default function NavItem({ href, label, icon, active, onNavigate }: NavIt
       className="navmenu-link"
     />
   );
-} 
+}

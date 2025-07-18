@@ -2,7 +2,7 @@
 export interface LaneConfig {
   id: string;
   name: string;
-  direction: 'up' | 'down';
+  direction: "up" | "down";
   sublanes: SubLaneConfig[];
   color: string;
 }
@@ -75,14 +75,14 @@ export const DEFAULT_HIGHWAY_CONFIG: HighwayConfig = {
   },
   lanes: [
     {
-      id: 'up',
-      name: 'Sentido de Cima',
-      direction: 'up',
-      color: '#fff',
+      id: "up",
+      name: "Sentido de Cima",
+      direction: "up",
+      color: "#fff",
       sublanes: [
         {
-          id: 'single',
-          name: 'Faixa Única',
+          id: "single",
+          name: "Faixa Única",
           maxSpeed: 2.2,
           minSpeed: 1.5,
           acceleration: 0.008,
@@ -94,14 +94,14 @@ export const DEFAULT_HIGHWAY_CONFIG: HighwayConfig = {
       ],
     },
     {
-      id: 'down',
-      name: 'Sentido de Baixo',
-      direction: 'down',
-      color: '#fff',
+      id: "down",
+      name: "Sentido de Baixo",
+      direction: "down",
+      color: "#fff",
       sublanes: [
         {
-          id: 'single',
-          name: 'Faixa Única',
+          id: "single",
+          name: "Faixa Única",
           maxSpeed: 0.8,
           minSpeed: 0.3,
           acceleration: 0.008,
@@ -141,18 +141,18 @@ export const DEFAULT_HIGHWAY_CONFIG: HighwayConfig = {
 export function calculateLanePositions(config: HighwayConfig) {
   const { visual } = config;
   const { marginTop, laneHeight, laneGap } = visual;
-  
+
   const yLineTop = marginTop;
   const yLine1 = yLineTop + laneHeight;
   const yYellow = yLine1 + laneHeight + laneGap;
   const yLine2 = yYellow + laneGap + laneHeight;
   const yLineBottom = yLine2 + laneHeight;
-  
+
   // Centros das faixas
   const yFast = (yLineTop + yLine1) / 2;
   const yMedium = (yLine1 + yYellow - laneGap) / 2;
   const ySlow = (yLine2 + yLineBottom) / 2;
-  
+
   return {
     lines: {
       top: yLineTop,
@@ -170,12 +170,18 @@ export function calculateLanePositions(config: HighwayConfig) {
 }
 
 // Função para obter a posição Y de uma faixa específica
-export function getLaneY(laneIndex: number, sublaneIndex: number, config: HighwayConfig): number {
+export function getLaneY(
+  laneIndex: number,
+  sublaneIndex: number,
+  config: HighwayConfig,
+): number {
   const positions = calculateLanePositions(config);
-  
+
   if (laneIndex === 0) {
     // Sentido de cima
-    return sublaneIndex === 0 ? positions.centers.fast : positions.centers.medium;
+    return sublaneIndex === 0
+      ? positions.centers.fast
+      : positions.centers.medium;
   } else {
     // Sentido de baixo
     return positions.centers.slow;
@@ -186,26 +192,39 @@ export function getLaneY(laneIndex: number, sublaneIndex: number, config: Highwa
 export function generateImperfections(config: HighwayConfig) {
   const { imperfections } = config;
   const positions = calculateLanePositions(config);
-  
-  const potholes = Array.from({ length: imperfections.potholes.count }).map((_, i) => ({
-    x: imperfections.potholes.baseX + i * imperfections.potholes.spacing + 15,
-    y: positions.centers.slow + 6,
-    r: imperfections.potholes.minRadius + (i % 2) * (imperfections.potholes.maxRadius - imperfections.potholes.minRadius),
-  }));
-  
-  const cracks = Array.from({ length: imperfections.cracks.count }).map((_, i) => ({
-    x: imperfections.cracks.baseX + i * imperfections.cracks.spacing + 20,
-    y: positions.centers.slow - 8,
-    points: Array.from({ length: imperfections.cracks.pointsPerCrack }).map(() => ({
-      dx: 10 + Math.random() * 18,
-      dy: (Math.random() - 0.5) * imperfections.cracks.maxOffset,
-    })),
-  }));
-  
+
+  const potholes = Array.from({ length: imperfections.potholes.count }).map(
+    (_, i) => ({
+      x: imperfections.potholes.baseX + i * imperfections.potholes.spacing + 15,
+      y: positions.centers.slow + 6,
+      r:
+        imperfections.potholes.minRadius +
+        (i % 2) *
+          (imperfections.potholes.maxRadius - imperfections.potholes.minRadius),
+    }),
+  );
+
+  const cracks = Array.from({ length: imperfections.cracks.count }).map(
+    (_, i) => ({
+      x: imperfections.cracks.baseX + i * imperfections.cracks.spacing + 20,
+      y: positions.centers.slow - 8,
+      points: Array.from({ length: imperfections.cracks.pointsPerCrack }).map(
+        () => ({
+          dx: 10 + Math.random() * 18,
+          dy: (Math.random() - 0.5) * imperfections.cracks.maxOffset,
+        }),
+      ),
+    }),
+  );
+
   return { potholes, cracks };
 }
 
 // Função para calcular espaçamento entre carros baseado na configuração
-export function calculateCarSpacing(laneConfig: SubLaneConfig, canvasWidth: number, lateralMargin: number): number {
+export function calculateCarSpacing(
+  laneConfig: SubLaneConfig,
+  canvasWidth: number,
+  lateralMargin: number,
+): number {
   return (canvasWidth - 2 * lateralMargin) / laneConfig.numCars;
-} 
+}

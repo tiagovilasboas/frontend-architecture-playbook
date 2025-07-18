@@ -1,26 +1,30 @@
-import { Title, Text, Stack, Paper, Code, Alert, Badge } from '@mantine/core';
-import { 
-  IconBulb, 
-  IconCheck
-} from '@tabler/icons-react';
+import { Title, Text, Stack, Paper, Code, Alert, Badge } from "@mantine/core";
+import { IconBulb, IconCheck } from "@tabler/icons-react";
 
 export function ArchitecturePatternsExamples() {
   return (
     <Stack gap="xl">
       <Title order={2} mb="lg">
-        <IconBulb size={32} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
+        <IconBulb
+          size={32}
+          style={{ verticalAlign: "middle", marginRight: "8px" }}
+        />
         Exemplos de Padrões Arquiteturais
       </Title>
 
       {/* Clean Architecture */}
       <Paper withBorder p="xl" radius="lg">
         <Stack gap="lg">
-          <Title order={3} mb="md">Clean Architecture</Title>
-          
+          <Title order={3} mb="md">
+            Clean Architecture
+          </Title>
+
           <div>
-            <Badge color="green" mb="xs">✅ Implementação Correta</Badge>
+            <Badge color="green" mb="xs">
+              ✅ Implementação Correta
+            </Badge>
             <Code block>
-{`// Domain Layer (Entities)
+              {`// Domain Layer (Entities)
 class User {
   constructor(id, name, email) {
     this.id = id;
@@ -104,8 +108,8 @@ function CreateUserForm() {
 
           <Alert color="green" icon={<IconCheck size={20} />} radius="md">
             <Text size="md" fw={500}>
-              <strong>Benefícios:</strong> Testabilidade, independência de frameworks, 
-              separação clara de responsabilidades.
+              <strong>Benefícios:</strong> Testabilidade, independência de
+              frameworks, separação clara de responsabilidades.
             </Text>
           </Alert>
         </Stack>
@@ -114,12 +118,16 @@ function CreateUserForm() {
       {/* Component-Driven */}
       <Paper withBorder p="xl" radius="lg">
         <Stack gap="lg">
-          <Title order={3} mb="md">Component-Driven Development</Title>
-          
+          <Title order={3} mb="md">
+            Component-Driven Development
+          </Title>
+
           <div>
-            <Badge color="green" mb="xs">✅ Componentes Reutilizáveis</Badge>
+            <Badge color="green" mb="xs">
+              ✅ Componentes Reutilizáveis
+            </Badge>
             <Code block>
-{`// Atomic Design - Atoms
+              {`// Atomic Design - Atoms
 function Button({ children, variant = 'primary', size = 'md', ...props }) {
   const baseClasses = 'btn';
   const variantClasses = {
@@ -231,8 +239,8 @@ function UserDashboardPage() {
 
           <Alert color="green" icon={<IconCheck size={20} />} radius="md">
             <Text size="md" fw={500}>
-              <strong>Benefícios:</strong> Reutilização, composição, design system, 
-              desenvolvimento paralelo.
+              <strong>Benefícios:</strong> Reutilização, composição, design
+              system, desenvolvimento paralelo.
             </Text>
           </Alert>
         </Stack>
@@ -241,12 +249,16 @@ function UserDashboardPage() {
       {/* State Management */}
       <Paper withBorder p="xl" radius="lg">
         <Stack gap="lg">
-          <Title order={3} mb="md">State Management Patterns</Title>
-          
+          <Title order={3} mb="md">
+            State Management Patterns
+          </Title>
+
           <div>
-            <Badge color="green" mb="xs">✅ Zustand (Simple State)</Badge>
+            <Badge color="green" mb="xs">
+              ✅ Zustand (Simple State)
+            </Badge>
             <Code block>
-{`// Store simples
+              {`// Store simples
 import { create } from 'zustand';
 
 interface UserStore {
@@ -303,9 +315,11 @@ function LoginForm() {
           </div>
 
           <div>
-            <Badge color="green" mb="xs">✅ Redux Toolkit (Complex State)</Badge>
+            <Badge color="green" mb="xs">
+              ✅ Redux Toolkit (Complex State)
+            </Badge>
             <Code block>
-{`// Slice
+              {`// Slice
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 export const fetchUsers = createAsyncThunk(
@@ -374,12 +388,13 @@ function UserList() {
 
           <Alert color="green" icon={<IconCheck size={20} />} radius="md">
             <Text size="md" fw={500}>
-              <strong>Escolha baseada na complexidade:</strong> Zustand para apps simples, 
-              Redux Toolkit para apps complexos com muitas interações.
+              <strong>Escolha baseada na complexidade:</strong> Zustand para
+              apps simples, Redux Toolkit para apps complexos com muitas
+              interações.
             </Text>
           </Alert>
         </Stack>
       </Paper>
     </Stack>
   );
-} 
+}

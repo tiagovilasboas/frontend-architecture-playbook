@@ -24,4 +24,4 @@
     "description": "Por que SOC vale a pena",
     "code": "// ✅ Testes mais fáceis\n// Teste só da lógica de negócio\nit('should calculate discount correctly', () => {\n  const discount = calculateDiscount(premiumUser, 100);\n  expect(discount).toBe(20);\n});\n\n// ✅ Reutilização\n// Lógica de negócio pode ser usada em diferentes UIs\nconst discount = calculateDiscount(user, price);\n// Usado em: web, mobile, API, etc.\n\n// ✅ Mudanças isoladas\n// Mudar UI não afeta lógica de negócio\n// Mudar lógica não afeta UI\n// Mudar API não afeta nada"
   }
-] 
+]

@@ -1,5 +1,23 @@
-import { Title, Text, Stack, Paper, Card, Group, ThemeIcon, Badge, Alert, List, Code } from '@mantine/core';
-import { IconCheck, IconAlertTriangle, IconBulb, IconRocket, IconNetworkOff } from '@tabler/icons-react';
+import {
+  Title,
+  Text,
+  Stack,
+  Paper,
+  Card,
+  Group,
+  ThemeIcon,
+  Badge,
+  Alert,
+  List,
+  Code,
+} from "@mantine/core";
+import {
+  IconCheck,
+  IconAlertTriangle,
+  IconBulb,
+  IconRocket,
+  IconNetworkOff,
+} from "@tabler/icons-react";
 
 export default function MicroservicesFrontendArchitecture() {
   return (
@@ -11,7 +29,9 @@ export default function MicroservicesFrontendArchitecture() {
             <IconNetworkOff size={28} />
           </ThemeIcon>
           <div>
-            <Title order={1} size="h1">🕸️ Microservices Frontend</Title>
+            <Title order={1} size="h1">
+              🕸️ Microservices Frontend
+            </Title>
             <Text size="xl" c="dimmed" mt="xs">
               Dividir pra conquistar - times, deploys, responsabilidades
             </Text>
@@ -22,13 +42,19 @@ export default function MicroservicesFrontendArchitecture() {
       {/* O que é? */}
       <Paper withBorder p="xl" radius="md">
         <Text size="lg" mb="md">
-          <Text span fw={700} c="yellow">Frontend espelhando backend</Text>: cada microservice tem seu próprio frontend. 
-          Times autônomos, deploys independentes, tecnologias diferentes. 
-          <Text span fw={700} c="blue">Conway's Law</Text> aplicado conscientemente.
+          <Text span fw={700} c="yellow">
+            Frontend espelhando backend
+          </Text>
+          : cada microservice tem seu próprio frontend. Times autônomos, deploys
+          independentes, tecnologias diferentes.
+          <Text span fw={700} c="blue">
+            Conway's Law
+          </Text>{" "}
+          aplicado conscientemente.
         </Text>
 
         <Code block>
-{`// ❌ Monolito Frontend - tudo junto
+          {`// ❌ Monolito Frontend - tudo junto
 src/
 ├── components/
 │   ├── UserProfile/
@@ -67,39 +93,65 @@ shell-app/
 
       {/* Quando usar? */}
       <Paper withBorder p="xl" radius="md">
-        <Title order={2} size="h2" mb="md">🎯 Quando usar?</Title>
+        <Title order={2} size="h2" mb="md">
+          🎯 Quando usar?
+        </Title>
         <Stack gap="md">
           <Card withBorder p="md">
-            <Text fw={600} c="yellow" mb="sm">👥 Times grandes (30+ devs)</Text>
-            <Text>Conway's Law: arquitetura vai espelhar organização. Aceite e otimize pra isso.</Text>
+            <Text fw={600} c="yellow" mb="sm">
+              👥 Times grandes (30+ devs)
+            </Text>
+            <Text>
+              Conway's Law: arquitetura vai espelhar organização. Aceite e
+              otimize pra isso.
+            </Text>
           </Card>
           <Card withBorder p="md">
-            <Text fw={600} c="yellow" mb="sm">🏢 Domínios diferentes</Text>
-            <Text>User, Order, Payment, Catalog. Business domains naturalmente separados.</Text>
+            <Text fw={600} c="yellow" mb="sm">
+              🏢 Domínios diferentes
+            </Text>
+            <Text>
+              User, Order, Payment, Catalog. Business domains naturalmente
+              separados.
+            </Text>
           </Card>
           <Card withBorder p="md">
-            <Text fw={600} c="yellow" mb="sm">⚡ Deploy independente</Text>
-            <Text>Payment team deploy sem quebrar User. Zero coordination overhead.</Text>
+            <Text fw={600} c="yellow" mb="sm">
+              ⚡ Deploy independente
+            </Text>
+            <Text>
+              Payment team deploy sem quebrar User. Zero coordination overhead.
+            </Text>
           </Card>
           <Card withBorder p="md">
-            <Text fw={600} c="yellow" mb="sm">🔧 Tech diversity</Text>
-            <Text>React, Vue, Angular no mesmo app. Team escolhe stack que domina.</Text>
+            <Text fw={600} c="yellow" mb="sm">
+              🔧 Tech diversity
+            </Text>
+            <Text>
+              React, Vue, Angular no mesmo app. Team escolhe stack que domina.
+            </Text>
           </Card>
         </Stack>
       </Paper>
 
       {/* Estratégias de Composição */}
       <Paper withBorder p="xl" radius="md">
-        <Title order={2} size="h2" mb="md">🧩 Estratégias de Composição</Title>
+        <Title order={2} size="h2" mb="md">
+          🧩 Estratégias de Composição
+        </Title>
         <Stack gap="lg">
           <Card withBorder p="md">
             <Group gap="sm" mb="sm">
-              <Badge variant="light" color="blue" size="lg">Build-time</Badge>
+              <Badge variant="light" color="blue" size="lg">
+                Build-time
+              </Badge>
               <Text fw={600}>NPM packages</Text>
             </Group>
-            <Text size="sm" c="dimmed" mb="md">Micro-frontends como bibliotecas</Text>
+            <Text size="sm" c="dimmed" mb="md">
+              Micro-frontends como bibliotecas
+            </Text>
             <Code size="sm" mb="md">
-{`// Shell app - instala micro-frontends
+              {`// Shell app - instala micro-frontends
 {
   "dependencies": {
     "@company/user-frontend": "^1.2.0",
@@ -129,12 +181,16 @@ function Dashboard() {
 
           <Card withBorder p="md">
             <Group gap="sm" mb="sm">
-              <Badge variant="light" color="green" size="lg">Runtime</Badge>
+              <Badge variant="light" color="green" size="lg">
+                Runtime
+              </Badge>
               <Text fw={600}>Module Federation / Single-SPA</Text>
             </Group>
-            <Text size="sm" c="dimmed" mb="md">Carregar micro-frontends dinamicamente</Text>
+            <Text size="sm" c="dimmed" mb="md">
+              Carregar micro-frontends dinamicamente
+            </Text>
             <Code size="sm" mb="md">
-{`// webpack.config.js - Module Federation
+              {`// webpack.config.js - Module Federation
 new ModuleFederationPlugin({
   name: 'shell',
   remotes: {
@@ -164,12 +220,16 @@ function Dashboard() {
 
           <Card withBorder p="md">
             <Group gap="sm" mb="sm">
-              <Badge variant="light" color="orange" size="lg">Iframe</Badge>
+              <Badge variant="light" color="orange" size="lg">
+                Iframe
+              </Badge>
               <Text fw={600}>Isolamento total</Text>
             </Group>
-            <Text size="sm" c="dimmed" mb="md">Cada micro-frontend como iframe</Text>
+            <Text size="sm" c="dimmed" mb="md">
+              Cada micro-frontend como iframe
+            </Text>
             <Code size="sm" mb="md">
-{`// Shell com iframes
+              {`// Shell com iframes
 function Dashboard() {
   return (
     <Layout>
@@ -191,7 +251,9 @@ function Dashboard() {
             </Code>
             <List size="sm" spacing={4}>
               <List.Item>✅ Isolamento perfeito, zero coupling</List.Item>
-              <List.Item>❌ UX ruim, SEO problem, performance overhead</List.Item>
+              <List.Item>
+                ❌ UX ruim, SEO problem, performance overhead
+              </List.Item>
             </List>
           </Card>
         </Stack>
@@ -203,33 +265,54 @@ function Dashboard() {
           <ThemeIcon size="lg" radius="md" variant="light" color="green">
             <IconCheck size={20} />
           </ThemeIcon>
-          <Title order={2} size="h2">💚 Por que vale a pena?</Title>
+          <Title order={2} size="h2">
+            💚 Por que vale a pena?
+          </Title>
         </Group>
         <Stack gap="md">
           <Alert color="green" icon={<IconCheck size={16} />}>
-            <Text fw={600} mb="xs">👥 Team autonomy</Text>
-            <Text size="sm">Cada time domina seu pedaço. Deploy, stack, roadmap independentes.</Text>
+            <Text fw={600} mb="xs">
+              👥 Team autonomy
+            </Text>
+            <Text size="sm">
+              Cada time domina seu pedaço. Deploy, stack, roadmap independentes.
+            </Text>
           </Alert>
           <Alert color="green" icon={<IconCheck size={16} />}>
-            <Text fw={600} mb="xs">🚀 Deploy velocity</Text>
-            <Text size="sm">Payment team não espera User team. Features chegam mais rápido.</Text>
+            <Text fw={600} mb="xs">
+              🚀 Deploy velocity
+            </Text>
+            <Text size="sm">
+              Payment team não espera User team. Features chegam mais rápido.
+            </Text>
           </Alert>
           <Alert color="green" icon={<IconCheck size={16} />}>
-            <Text fw={600} mb="xs">🔧 Technology diversity</Text>
-            <Text size="sm">React experts fazem React. Vue experts fazem Vue. Best tool for job.</Text>
+            <Text fw={600} mb="xs">
+              🔧 Technology diversity
+            </Text>
+            <Text size="sm">
+              React experts fazem React. Vue experts fazem Vue. Best tool for
+              job.
+            </Text>
           </Alert>
           <Alert color="green" icon={<IconCheck size={16} />}>
-            <Text fw={600} mb="xs">📈 Scaling organization</Text>
-            <Text size="sm">30 devs num repo = merge hell. 5 times com 6 devs = produtividade.</Text>
+            <Text fw={600} mb="xs">
+              📈 Scaling organization
+            </Text>
+            <Text size="sm">
+              30 devs num repo = merge hell. 5 times com 6 devs = produtividade.
+            </Text>
           </Alert>
         </Stack>
       </Paper>
 
       {/* Exemplo Prático */}
       <Paper withBorder p="xl" radius="md">
-        <Title order={2} size="h2" mb="md">💻 Exemplo: E-commerce Multi-team</Title>
+        <Title order={2} size="h2" mb="md">
+          💻 Exemplo: E-commerce Multi-team
+        </Title>
         <Code block mb="md">
-{`// 🏗️ Shell App - orquestra micro-frontends
+          {`// 🏗️ Shell App - orquestra micro-frontends
 // apps/shell/src/App.tsx
 import { Suspense } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
@@ -395,24 +478,45 @@ eventBus.on('user:logged-out', () => {
           <ThemeIcon size="lg" radius="md" variant="light" color="red">
             <IconAlertTriangle size={20} />
           </ThemeIcon>
-          <Title order={2} size="h2">⚠️ Armadilhas</Title>
+          <Title order={2} size="h2">
+            ⚠️ Armadilhas
+          </Title>
         </Group>
         <Stack gap="md">
           <Alert color="red" icon={<IconAlertTriangle size={16} />}>
-            <Text fw={600} mb="xs">🕸️ Integration complexity</Text>
-            <Text size="sm">Cross-app communication, shared state, routing. Complexity explode.</Text>
+            <Text fw={600} mb="xs">
+              🕸️ Integration complexity
+            </Text>
+            <Text size="sm">
+              Cross-app communication, shared state, routing. Complexity
+              explode.
+            </Text>
           </Alert>
           <Alert color="red" icon={<IconAlertTriangle size={16} />}>
-            <Text fw={600} mb="xs">📦 Bundle duplication</Text>
-            <Text size="sm">Cada app carrega React, libs comuns. Network overhead significativo.</Text>
+            <Text fw={600} mb="xs">
+              📦 Bundle duplication
+            </Text>
+            <Text size="sm">
+              Cada app carrega React, libs comuns. Network overhead
+              significativo.
+            </Text>
           </Alert>
           <Alert color="red" icon={<IconAlertTriangle size={16} />}>
-            <Text fw={600} mb="xs">🔧 DevEx overhead</Text>
-            <Text size="sm">Local development = 5 apps rodando. Build, test, debug mais complexo.</Text>
+            <Text fw={600} mb="xs">
+              🔧 DevEx overhead
+            </Text>
+            <Text size="sm">
+              Local development = 5 apps rodando. Build, test, debug mais
+              complexo.
+            </Text>
           </Alert>
           <Alert color="red" icon={<IconAlertTriangle size={16} />}>
-            <Text fw={600} mb="xs">🎨 UX inconsistency</Text>
-            <Text size="sm">Design system não garantido. User experience fragmentada.</Text>
+            <Text fw={600} mb="xs">
+              🎨 UX inconsistency
+            </Text>
+            <Text size="sm">
+              Design system não garantido. User experience fragmentada.
+            </Text>
           </Alert>
         </Stack>
       </Paper>
@@ -423,33 +527,58 @@ eventBus.on('user:logged-out', () => {
           <ThemeIcon size="lg" radius="md" variant="light" color="violet">
             <IconRocket size={20} />
           </ThemeIcon>
-          <Title order={2} size="h2">🚀 Cases Reais</Title>
+          <Title order={2} size="h2">
+            🚀 Cases Reais
+          </Title>
         </Group>
         <Stack gap="md">
           <Card withBorder p="md">
-            <Text fw={600} c="blue" mb="sm">🛒 Amazon</Text>
-            <Text size="sm" mb="xs">Times autônomos por categoria: Books, Electronics, Fashion. Deploy independente.</Text>
-            <Text size="sm" c="green">Teams escalaram de 10 → 1000+ devs sem perder velocidade</Text>
+            <Text fw={600} c="blue" mb="sm">
+              🛒 Amazon
+            </Text>
+            <Text size="sm" mb="xs">
+              Times autônomos por categoria: Books, Electronics, Fashion. Deploy
+              independente.
+            </Text>
+            <Text size="sm" c="green">
+              Teams escalaram de 10 → 1000+ devs sem perder velocidade
+            </Text>
           </Card>
           <Card withBorder p="md">
-            <Text fw={600} c="blue" mb="sm">💰 Klarna</Text>
-            <Text size="sm" mb="xs">Banking app: cada feature financeira é micro-frontend separado.</Text>
-            <Text size="sm" c="green">Deploy 100+ times/day, zero downtime, regulation compliance</Text>
+            <Text fw={600} c="blue" mb="sm">
+              💰 Klarna
+            </Text>
+            <Text size="sm" mb="xs">
+              Banking app: cada feature financeira é micro-frontend separado.
+            </Text>
+            <Text size="sm" c="green">
+              Deploy 100+ times/day, zero downtime, regulation compliance
+            </Text>
           </Card>
           <Card withBorder p="md">
-            <Text fw={600} c="blue" mb="sm">🏢 Microsoft Office</Text>
-            <Text size="sm" mb="xs">Word, Excel, PowerPoint como micro-frontends no Office 365.</Text>
-            <Text size="sm" c="green">Teams independentes, tech stacks diferentes, shared shell</Text>
+            <Text fw={600} c="blue" mb="sm">
+              🏢 Microsoft Office
+            </Text>
+            <Text size="sm" mb="xs">
+              Word, Excel, PowerPoint como micro-frontends no Office 365.
+            </Text>
+            <Text size="sm" c="green">
+              Teams independentes, tech stacks diferentes, shared shell
+            </Text>
           </Card>
         </Stack>
       </Paper>
 
       {/* Patterns de Sucesso */}
       <Paper withBorder p="xl" radius="md">
-        <Title order={2} size="h2" mb="md">🎯 Patterns de Sucesso</Title>
+        <Title order={2} size="h2" mb="md">
+          🎯 Patterns de Sucesso
+        </Title>
         <Group grow align="flex-start" gap="lg">
           <Card withBorder p="md">
-            <Badge variant="light" color="blue" mb="sm">Communication</Badge>
+            <Badge variant="light" color="blue" mb="sm">
+              Communication
+            </Badge>
             <List size="sm" spacing={4}>
               <List.Item>Event bus global</List.Item>
               <List.Item>Shared context/state</List.Item>
@@ -458,7 +587,9 @@ eventBus.on('user:logged-out', () => {
             </List>
           </Card>
           <Card withBorder p="md">
-            <Badge variant="light" color="green" mb="sm">Governance</Badge>
+            <Badge variant="light" color="green" mb="sm">
+              Governance
+            </Badge>
             <List size="sm" spacing={4}>
               <List.Item>Design system mandatório</List.Item>
               <List.Item>API contracts bem definidos</List.Item>
@@ -472,18 +603,36 @@ eventBus.on('user:logged-out', () => {
       {/* Resumo */}
       <Paper withBorder p="xl" radius="md">
         <Alert color="yellow" icon={<IconBulb size={16} />} radius="md">
-          <Text fw={600} size="lg" mb="md" style={{ fontStyle: 'italic' }}>
-            "Microservices Frontend: Conway's Law aplicado conscientemente. Organização define arquitetura."
+          <Text fw={600} size="lg" mb="md" style={{ fontStyle: "italic" }}>
+            "Microservices Frontend: Conway's Law aplicado conscientemente.
+            Organização define arquitetura."
           </Text>
           <List spacing="sm">
-            <List.Item icon={<IconCheck size={14} color="var(--mantine-color-green-6)" />}>
-              <Text>Use quando: 30+ devs, domínios separados, deploy independente</Text>
+            <List.Item
+              icon={
+                <IconCheck size={14} color="var(--mantine-color-green-6)" />
+              }
+            >
+              <Text>
+                Use quando: 30+ devs, domínios separados, deploy independente
+              </Text>
             </List.Item>
-            <List.Item icon={<IconCheck size={14} color="var(--mantine-color-green-6)" />}>
+            <List.Item
+              icon={
+                <IconCheck size={14} color="var(--mantine-color-green-6)" />
+              }
+            >
               <Text>Team autonomy vs integration complexity</Text>
             </List.Item>
-            <List.Item icon={<IconCheck size={14} color="var(--mantine-color-green-6)" />}>
-              <Text>Governance forte é obrigatório: design system, contracts, testing</Text>
+            <List.Item
+              icon={
+                <IconCheck size={14} color="var(--mantine-color-green-6)" />
+              }
+            >
+              <Text>
+                Governance forte é obrigatório: design system, contracts,
+                testing
+              </Text>
             </List.Item>
           </List>
         </Alert>
@@ -493,6 +642,7 @@ eventBus.on('user:logged-out', () => {
 }
 
 MicroservicesFrontendArchitecture.metadata = {
-  title: 'Microservices Frontend',
-  description: 'Arquitetura distribuída onde cada domínio tem seu próprio frontend. Times autônomos, deploys independentes, tech diversity.'
+  title: "Microservices Frontend",
+  description:
+    "Arquitetura distribuída onde cada domínio tem seu próprio frontend. Times autônomos, deploys independentes, tech diversity.",
 };

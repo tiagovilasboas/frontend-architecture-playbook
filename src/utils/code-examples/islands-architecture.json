@@ -69,4 +69,4 @@
     "file": "islands-architecture",
     "content": "// ❌ RUIM - Muitas ilhas pequenas\n// pages/produto.html\n<div id=\"rating\">\n  <!-- Ilha de rating -->\n</div>\n\n<div id=\"reviews\">\n  <!-- Ilha de reviews -->\n</div>\n\n<div id=\"related\">\n  <!-- Ilha de produtos relacionados -->\n</div>\n\n<div id=\"share\">\n  <!-- Ilha de compartilhamento -->\n</div>\n\n// Problema:\n// - Muitos bundles pequenos\n// - Overhead de hidratação\n// - Performance ruim\n\n// ✅ BOM - Ilhas maiores\n// Agrupar funcionalidades relacionadas\n// Menos ilhas, mais eficiente"
   }
-] 
+]

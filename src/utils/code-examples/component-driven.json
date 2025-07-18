@@ -54,4 +54,4 @@
     "description": "Testes isolados para cada componente.",
     "code": "// ✅ BOM - Testando componentes\ndescribe('Button', () => {\n  it('should render correctly', () => {\n    render(<Button>Click me</Button>);\n    expect(screen.getByText('Click me')).toBeInTheDocument();\n  });\n  \n  it('should call onClick when clicked', () => {\n    const handleClick = jest.fn();\n    render(<Button onClick={handleClick}>Click me</Button>);\n    \n    fireEvent.click(screen.getByText('Click me'));\n    expect(handleClick).toHaveBeenCalled();\n  });\n});\n\n// Storybook para testes visuais\nexport const Primary = () => <Button variant=\"primary\">Button</Button>;\nexport const Secondary = () => <Button variant=\"secondary\">Button</Button>;"
   }
-] 
+]

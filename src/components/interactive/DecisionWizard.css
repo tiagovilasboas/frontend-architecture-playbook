@@ -1,8 +1,12 @@
 .wizard-recommendation-card {
-  transition: box-shadow 0.2s, border-color 0.2s;
+  transition:
+    box-shadow 0.2s,
+    border-color 0.2s;
 }
 .wizard-recommendation-card:hover {
-  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.25), 0 1.5px 6px 0 rgba(255,255,255,0.1);
+  box-shadow:
+    0 4px 24px 0 rgba(0, 0, 0, 0.25),
+    0 1.5px 6px 0 rgba(255, 255, 255, 0.1);
   border-color: var(--mantine-color-gray-4, #868e96);
 }
 
@@ -11,7 +15,7 @@
 }
 .wizard-option-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px 0 rgba(0,0,0,0.15);
+  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.15);
   border-color: var(--mantine-color-gray-4, #868e96);
 }
 
@@ -25,4 +29,4 @@
     min-height: 0 !important;
     padding-bottom: 0 !important;
   }
-} 
+}

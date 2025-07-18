@@ -1,5 +1,23 @@
-import { Title, Text, Stack, Paper, Card, Group, ThemeIcon, Badge, Alert, List, Code } from '@mantine/core';
-import { IconCheck, IconAlertTriangle, IconBulb, IconRocket, IconHistory } from '@tabler/icons-react';
+import {
+  Title,
+  Text,
+  Stack,
+  Paper,
+  Card,
+  Group,
+  ThemeIcon,
+  Badge,
+  Alert,
+  List,
+  Code,
+} from "@mantine/core";
+import {
+  IconCheck,
+  IconAlertTriangle,
+  IconBulb,
+  IconRocket,
+  IconHistory,
+} from "@tabler/icons-react";
 
 export default function EventSourcingArchitecture() {
   return (
@@ -11,7 +29,9 @@ export default function EventSourcingArchitecture() {
             <IconHistory size={28} />
           </ThemeIcon>
           <div>
-            <Title order={1} size="h1">📜 Event Sourcing Frontend</Title>
+            <Title order={1} size="h1">
+              📜 Event Sourcing Frontend
+            </Title>
             <Text size="xl" c="dimmed" mt="xs">
               Toda ação é um evento - debug e auditoria que funciona
             </Text>
@@ -22,13 +42,24 @@ export default function EventSourcingArchitecture() {
       {/* O que é? */}
       <Paper withBorder p="xl" radius="md">
         <Text size="lg" mb="md">
-          Em vez de salvar <Text span fw={700} c="grape">estado atual</Text>, salva 
-          <Text span fw={700} c="blue"> sequência de eventos</Text> que levaram até ele. 
-          Quer saber como chegou aqui? Replay dos eventos. <Text span fw={700} c="green">Time travel debugging</Text> de graça.
+          Em vez de salvar{" "}
+          <Text span fw={700} c="grape">
+            estado atual
+          </Text>
+          , salva
+          <Text span fw={700} c="blue">
+            {" "}
+            sequência de eventos
+          </Text>{" "}
+          que levaram até ele. Quer saber como chegou aqui? Replay dos eventos.{" "}
+          <Text span fw={700} c="green">
+            Time travel debugging
+          </Text>{" "}
+          de graça.
         </Text>
 
         <Code block>
-{`// ❌ State tradicional - só o resultado final
+          {`// ❌ State tradicional - só o resultado final
 const user = {
   id: 1,
   name: "João Silva",
@@ -52,28 +83,46 @@ const currentState = events.reduce(applyEvent, initialState)`}
 
       {/* Quando usar? */}
       <Paper withBorder p="xl" radius="md">
-        <Title order={2} size="h2" mb="md">🎯 Quando usar?</Title>
+        <Title order={2} size="h2" mb="md">
+          🎯 Quando usar?
+        </Title>
         <Stack gap="md">
           <Card withBorder p="md">
-            <Text fw={600} c="grape" mb="sm">🕵️ Auditoria crítica</Text>
-            <Text>Finanças, saúde, compliance. Precisa provar como chegou no resultado.</Text>
+            <Text fw={600} c="grape" mb="sm">
+              🕵️ Auditoria crítica
+            </Text>
+            <Text>
+              Finanças, saúde, compliance. Precisa provar como chegou no
+              resultado.
+            </Text>
           </Card>
           <Card withBorder p="md">
-            <Text fw={600} c="grape" mb="sm">🔄 Undo/Redo complexo</Text>
-            <Text>Editores colaborativos, design tools. Voltar no tempo não é opcional.</Text>
+            <Text fw={600} c="grape" mb="sm">
+              🔄 Undo/Redo complexo
+            </Text>
+            <Text>
+              Editores colaborativos, design tools. Voltar no tempo não é
+              opcional.
+            </Text>
           </Card>
           <Card withBorder p="md">
-            <Text fw={600} c="grape" mb="sm">🐛 Debug nightmare</Text>
-            <Text>"Como esse bug aconteceu?" Replay exato da sequência que quebrou.</Text>
+            <Text fw={600} c="grape" mb="sm">
+              🐛 Debug nightmare
+            </Text>
+            <Text>
+              "Como esse bug aconteceu?" Replay exato da sequência que quebrou.
+            </Text>
           </Card>
         </Stack>
       </Paper>
 
       {/* Como funciona */}
       <Paper withBorder p="xl" radius="md">
-        <Title order={2} size="h2" mb="md">⚙️ Como funciona na prática?</Title>
+        <Title order={2} size="h2" mb="md">
+          ⚙️ Como funciona na prática?
+        </Title>
         <Code block mb="md">
-{`// Event Store - onde eventos vivem
+          {`// Event Store - onde eventos vivem
 class EventStore {
   private events: Event[] = []
   
@@ -180,33 +229,53 @@ function ShoppingCart() {
           <ThemeIcon size="lg" radius="md" variant="light" color="green">
             <IconCheck size={20} />
           </ThemeIcon>
-          <Title order={2} size="h2">💚 Por que vale a pena?</Title>
+          <Title order={2} size="h2">
+            💚 Por que vale a pena?
+          </Title>
         </Group>
         <Stack gap="md">
           <Alert color="green" icon={<IconCheck size={16} />}>
-            <Text fw={600} mb="xs">🕰️ Time travel debugging</Text>
-            <Text size="sm">Bug aconteceu ontem? Replay exato da sequência. Debug paradise.</Text>
+            <Text fw={600} mb="xs">
+              🕰️ Time travel debugging
+            </Text>
+            <Text size="sm">
+              Bug aconteceu ontem? Replay exato da sequência. Debug paradise.
+            </Text>
           </Alert>
           <Alert color="green" icon={<IconCheck size={16} />}>
-            <Text fw={600} mb="xs">📊 Analytics completo</Text>
-            <Text size="sm">User journey completo. Cada clique, cada decisão. BI team ama.</Text>
+            <Text fw={600} mb="xs">
+              📊 Analytics completo
+            </Text>
+            <Text size="sm">
+              User journey completo. Cada clique, cada decisão. BI team ama.
+            </Text>
           </Alert>
           <Alert color="green" icon={<IconCheck size={16} />}>
-            <Text fw={600} mb="xs">🔄 Undo/Redo natural</Text>
-            <Text size="sm">Voltar no tempo é só replay até ponto anterior. Figma-level UX.</Text>
+            <Text fw={600} mb="xs">
+              🔄 Undo/Redo natural
+            </Text>
+            <Text size="sm">
+              Voltar no tempo é só replay até ponto anterior. Figma-level UX.
+            </Text>
           </Alert>
           <Alert color="green" icon={<IconCheck size={16} />}>
-            <Text fw={600} mb="xs">🛡️ Auditoria built-in</Text>
-            <Text size="sm">Compliance de graça. Toda mudança tem timestamp + user + reason.</Text>
+            <Text fw={600} mb="xs">
+              🛡️ Auditoria built-in
+            </Text>
+            <Text size="sm">
+              Compliance de graça. Toda mudança tem timestamp + user + reason.
+            </Text>
           </Alert>
         </Stack>
       </Paper>
 
       {/* Exemplo Prático */}
       <Paper withBorder p="xl" radius="md">
-        <Title order={2} size="h2" mb="md">💻 Exemplo: Editor Colaborativo</Title>
+        <Title order={2} size="h2" mb="md">
+          💻 Exemplo: Editor Colaborativo
+        </Title>
         <Code block mb="md">
-{`// Document com Event Sourcing
+          {`// Document com Event Sourcing
 class DocumentEventSourcing {
   constructor() {
     this.events = []
@@ -333,24 +402,43 @@ function useEventSourcing(aggregateId: string) {
           <ThemeIcon size="lg" radius="md" variant="light" color="red">
             <IconAlertTriangle size={20} />
           </ThemeIcon>
-          <Title order={2} size="h2">⚠️ Armadilhas</Title>
+          <Title order={2} size="h2">
+            ⚠️ Armadilhas
+          </Title>
         </Group>
         <Stack gap="md">
           <Alert color="red" icon={<IconAlertTriangle size={16} />}>
-            <Text fw={600} mb="xs">💾 Storage explosion</Text>
-            <Text size="sm">Cada clique vira evento. TB de dados rapidinho. Snapshots + cleanup obrigatório.</Text>
+            <Text fw={600} mb="xs">
+              💾 Storage explosion
+            </Text>
+            <Text size="sm">
+              Cada clique vira evento. TB de dados rapidinho. Snapshots +
+              cleanup obrigatório.
+            </Text>
           </Alert>
           <Alert color="red" icon={<IconAlertTriangle size={16} />}>
-            <Text fw={600} mb="xs">🐌 Performance degradation</Text>
-            <Text size="sm">Replay de 10K eventos é lento. Snapshots a cada 100-1000 eventos.</Text>
+            <Text fw={600} mb="xs">
+              🐌 Performance degradation
+            </Text>
+            <Text size="sm">
+              Replay de 10K eventos é lento. Snapshots a cada 100-1000 eventos.
+            </Text>
           </Alert>
           <Alert color="red" icon={<IconAlertTriangle size={16} />}>
-            <Text fw={600} mb="xs">🔄 Eventual consistency</Text>
-            <Text size="sm">Events chegam fora de ordem. Conflict resolution é complexo.</Text>
+            <Text fw={600} mb="xs">
+              🔄 Eventual consistency
+            </Text>
+            <Text size="sm">
+              Events chegam fora de ordem. Conflict resolution é complexo.
+            </Text>
           </Alert>
           <Alert color="red" icon={<IconAlertTriangle size={16} />}>
-            <Text fw={600} mb="xs">🧠 Mental model</Text>
-            <Text size="sm">Team precisa pensar em eventos, não estado. Curva de aprendizado.</Text>
+            <Text fw={600} mb="xs">
+              🧠 Mental model
+            </Text>
+            <Text size="sm">
+              Team precisa pensar em eventos, não estado. Curva de aprendizado.
+            </Text>
           </Alert>
         </Stack>
       </Paper>
@@ -361,33 +449,63 @@ function useEventSourcing(aggregateId: string) {
           <ThemeIcon size="lg" radius="md" variant="light" color="violet">
             <IconRocket size={20} />
           </ThemeIcon>
-          <Title order={2} size="h2">🚀 Cases Reais</Title>
+          <Title order={2} size="h2">
+            🚀 Cases Reais
+          </Title>
         </Group>
         <Stack gap="md">
           <Card withBorder p="md">
-            <Text fw={600} c="blue" mb="sm">🎨 Figma</Text>
-            <Text size="sm" mb="xs">Design colaborativo. Cada ação é evento. Undo/redo perfeito, conflict resolution automático.</Text>
-            <Text size="sm" c="green">Time travel debugging, real-time collaboration, version history natural</Text>
+            <Text fw={600} c="blue" mb="sm">
+              🎨 Figma
+            </Text>
+            <Text size="sm" mb="xs">
+              Design colaborativo. Cada ação é evento. Undo/redo perfeito,
+              conflict resolution automático.
+            </Text>
+            <Text size="sm" c="green">
+              Time travel debugging, real-time collaboration, version history
+              natural
+            </Text>
           </Card>
           <Card withBorder p="md">
-            <Text fw={600} c="blue" mb="sm">📝 Linear</Text>
-            <Text size="sm" mb="xs">Issue tracking. Toda mudança de status, comment, assignment é evento.</Text>
-            <Text size="sm" c="green">Audit trail completo, activity feed automático, analytics detalhado</Text>
+            <Text fw={600} c="blue" mb="sm">
+              📝 Linear
+            </Text>
+            <Text size="sm" mb="xs">
+              Issue tracking. Toda mudança de status, comment, assignment é
+              evento.
+            </Text>
+            <Text size="sm" c="green">
+              Audit trail completo, activity feed automático, analytics
+              detalhado
+            </Text>
           </Card>
           <Card withBorder p="md">
-            <Text fw={600} c="blue" mb="sm">💰 Banking Apps</Text>
-            <Text size="sm" mb="xs">Transações como eventos. Compliance, auditoria, dispute resolution.</Text>
-            <Text size="sm" c="green">Regulamentação atendida, debug de fraudes, reconstituição de cenários</Text>
+            <Text fw={600} c="blue" mb="sm">
+              💰 Banking Apps
+            </Text>
+            <Text size="sm" mb="xs">
+              Transações como eventos. Compliance, auditoria, dispute
+              resolution.
+            </Text>
+            <Text size="sm" c="green">
+              Regulamentação atendida, debug de fraudes, reconstituição de
+              cenários
+            </Text>
           </Card>
         </Stack>
       </Paper>
 
       {/* Implementação */}
       <Paper withBorder p="xl" radius="md">
-        <Title order={2} size="h2" mb="md">🛠️ Stack Event Sourcing</Title>
+        <Title order={2} size="h2" mb="md">
+          🛠️ Stack Event Sourcing
+        </Title>
         <Group grow align="flex-start" gap="lg">
           <Card withBorder p="md">
-            <Badge variant="light" color="blue" mb="sm">Frontend</Badge>
+            <Badge variant="light" color="blue" mb="sm">
+              Frontend
+            </Badge>
             <List size="sm" spacing={4}>
               <List.Item>Redux + Redux Toolkit</List.Item>
               <List.Item>Zustand + immer</List.Item>
@@ -396,7 +514,9 @@ function useEventSourcing(aggregateId: string) {
             </List>
           </Card>
           <Card withBorder p="md">
-            <Badge variant="light" color="green" mb="sm">Backend</Badge>
+            <Badge variant="light" color="green" mb="sm">
+              Backend
+            </Badge>
             <List size="sm" spacing={4}>
               <List.Item>EventStore DB</List.Item>
               <List.Item>Apache Kafka</List.Item>
@@ -410,18 +530,35 @@ function useEventSourcing(aggregateId: string) {
       {/* Resumo */}
       <Paper withBorder p="xl" radius="md">
         <Alert color="grape" icon={<IconBulb size={16} />} radius="md">
-          <Text fw={600} size="lg" mb="md" style={{ fontStyle: 'italic' }}>
-            "Event Sourcing: cada ação conta uma história. E histórias não mentem."
+          <Text fw={600} size="lg" mb="md" style={{ fontStyle: "italic" }}>
+            "Event Sourcing: cada ação conta uma história. E histórias não
+            mentem."
           </Text>
           <List spacing="sm">
-            <List.Item icon={<IconCheck size={14} color="var(--mantine-color-green-6)" />}>
-              <Text>Auditoria completa: toda mudança tem contexto e timestamp</Text>
+            <List.Item
+              icon={
+                <IconCheck size={14} color="var(--mantine-color-green-6)" />
+              }
+            >
+              <Text>
+                Auditoria completa: toda mudança tem contexto e timestamp
+              </Text>
             </List.Item>
-            <List.Item icon={<IconCheck size={14} color="var(--mantine-color-green-6)" />}>
+            <List.Item
+              icon={
+                <IconCheck size={14} color="var(--mantine-color-green-6)" />
+              }
+            >
               <Text>Debug poderoso: replay exato de qualquer cenário</Text>
             </List.Item>
-            <List.Item icon={<IconCheck size={14} color="var(--mantine-color-green-6)" />}>
-              <Text>Trade-off: poder vs complexidade de storage/performance</Text>
+            <List.Item
+              icon={
+                <IconCheck size={14} color="var(--mantine-color-green-6)" />
+              }
+            >
+              <Text>
+                Trade-off: poder vs complexidade de storage/performance
+              </Text>
             </List.Item>
           </List>
         </Alert>
@@ -431,6 +568,7 @@ function useEventSourcing(aggregateId: string) {
 }
 
 EventSourcingArchitecture.metadata = {
-  title: 'Event Sourcing Frontend',
-  description: 'Arquitetura baseada em eventos para auditoria completa, time travel debugging e undo/redo natural.'
+  title: "Event Sourcing Frontend",
+  description:
+    "Arquitetura baseada em eventos para auditoria completa, time travel debugging e undo/redo natural.",
 };

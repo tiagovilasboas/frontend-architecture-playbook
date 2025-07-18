@@ -1,5 +1,23 @@
-import { Title, Text, Stack, Paper, Card, Group, ThemeIcon, Badge, Alert, List, Code } from '@mantine/core';
-import { IconCheck, IconAlertTriangle, IconBulb, IconRocket, IconGitFork } from '@tabler/icons-react';
+import {
+  Title,
+  Text,
+  Stack,
+  Paper,
+  Card,
+  Group,
+  ThemeIcon,
+  Badge,
+  Alert,
+  List,
+  Code,
+} from "@mantine/core";
+import {
+  IconCheck,
+  IconAlertTriangle,
+  IconBulb,
+  IconRocket,
+  IconGitFork,
+} from "@tabler/icons-react";
 
 export default function CQRSArchitecture() {
   return (
@@ -11,7 +29,9 @@ export default function CQRSArchitecture() {
             <IconGitFork size={28} />
           </ThemeIcon>
           <div>
-            <Title order={1} size="h1">🔀 CQRS Frontend</Title>
+            <Title order={1} size="h1">
+              🔀 CQRS Frontend
+            </Title>
             <Text size="xl" c="dimmed" mt="xs">
               Read diferente de write - performance e clareza
             </Text>
@@ -22,14 +42,19 @@ export default function CQRSArchitecture() {
       {/* O que é? */}
       <Paper withBorder p="xl" radius="md">
         <Text size="lg" mb="md">
-          <Text span fw={700} c="pink">Separar leitura de escrita</Text>. 
-          Commands (write) fazem mudanças. Queries (read) buscam dados. 
-          <Text span fw={700} c="blue">Dois modelos diferentes</Text>, otimizados pra cada caso. 
-          Performance e clareza de responsabilidades.
+          <Text span fw={700} c="pink">
+            Separar leitura de escrita
+          </Text>
+          . Commands (write) fazem mudanças. Queries (read) buscam dados.
+          <Text span fw={700} c="blue">
+            Dois modelos diferentes
+          </Text>
+          , otimizados pra cada caso. Performance e clareza de
+          responsabilidades.
         </Text>
 
         <Code block>
-{`// ❌ CRUD tradicional - mesmo modelo pra tudo
+          {`// ❌ CRUD tradicional - mesmo modelo pra tudo
 class UserController {
   async getUsers() {
     return User.findAll({ include: ['orders', 'profile', 'settings'] })
@@ -68,35 +93,56 @@ class UserCommands {
 
       {/* Quando usar? */}
       <Paper withBorder p="xl" radius="md">
-        <Title order={2} size="h2" mb="md">🎯 Quando usar?</Title>
+        <Title order={2} size="h2" mb="md">
+          🎯 Quando usar?
+        </Title>
         <Stack gap="md">
           <Card withBorder p="md">
-            <Text fw={600} c="pink" mb="sm">📊 Read/Write imbalance</Text>
-            <Text>1000 reads pra cada write. Otimizar cada um separadamente.</Text>
+            <Text fw={600} c="pink" mb="sm">
+              📊 Read/Write imbalance
+            </Text>
+            <Text>
+              1000 reads pra cada write. Otimizar cada um separadamente.
+            </Text>
           </Card>
           <Card withBorder p="md">
-            <Text fw={600} c="pink" mb="sm">🔄 Complex business logic</Text>
-            <Text>Writes têm regras complexas. Reads são simples. Misturar complica.</Text>
+            <Text fw={600} c="pink" mb="sm">
+              🔄 Complex business logic
+            </Text>
+            <Text>
+              Writes têm regras complexas. Reads são simples. Misturar complica.
+            </Text>
           </Card>
           <Card withBorder p="md">
-            <Text fw={600} c="pink" mb="sm">⚡ Performance crítica</Text>
-            <Text>Dashboards, analytics, real-time feeds. Read model específico pro caso.</Text>
+            <Text fw={600} c="pink" mb="sm">
+              ⚡ Performance crítica
+            </Text>
+            <Text>
+              Dashboards, analytics, real-time feeds. Read model específico pro
+              caso.
+            </Text>
           </Card>
         </Stack>
       </Paper>
 
       {/* Command vs Query */}
       <Paper withBorder p="xl" radius="md">
-        <Title order={2} size="h2" mb="md">⚖️ Commands vs Queries</Title>
+        <Title order={2} size="h2" mb="md">
+          ⚖️ Commands vs Queries
+        </Title>
         <Group grow align="flex-start" gap="lg">
           <Card withBorder p="md">
             <Group gap="sm" mb="sm">
-              <Badge variant="light" color="red" size="lg">Commands</Badge>
+              <Badge variant="light" color="red" size="lg">
+                Commands
+              </Badge>
               <Text fw={600}>Write Model</Text>
             </Group>
-            <Text size="sm" c="dimmed" mb="md">Faz mudanças no sistema</Text>
+            <Text size="sm" c="dimmed" mb="md">
+              Faz mudanças no sistema
+            </Text>
             <Code size="sm" mb="md">
-{`class CreateOrderCommand {
+              {`class CreateOrderCommand {
   constructor(
     public userId: string,
     public items: CartItem[],
@@ -135,12 +181,16 @@ class OrderCommandHandler {
 
           <Card withBorder p="md">
             <Group gap="sm" mb="sm">
-              <Badge variant="light" color="blue" size="lg">Queries</Badge>
+              <Badge variant="light" color="blue" size="lg">
+                Queries
+              </Badge>
               <Text fw={600}>Read Model</Text>
             </Group>
-            <Text size="sm" c="dimmed" mb="md">Busca dados do sistema</Text>
+            <Text size="sm" c="dimmed" mb="md">
+              Busca dados do sistema
+            </Text>
             <Code size="sm" mb="md">
-{`class GetOrdersQuery {
+              {`class GetOrdersQuery {
   constructor(
     public userId: string,
     public status?: OrderStatus,
@@ -185,33 +235,56 @@ class OrderQueryHandler {
           <ThemeIcon size="lg" radius="md" variant="light" color="green">
             <IconCheck size={20} />
           </ThemeIcon>
-          <Title order={2} size="h2">💚 Por que vale a pena?</Title>
+          <Title order={2} size="h2">
+            💚 Por que vale a pena?
+          </Title>
         </Group>
         <Stack gap="md">
           <Alert color="green" icon={<IconCheck size={16} />}>
-            <Text fw={600} mb="xs">⚡ Performance otimizada</Text>
-            <Text size="sm">Read model com cache, views, indexes. Write model com validações focadas.</Text>
+            <Text fw={600} mb="xs">
+              ⚡ Performance otimizada
+            </Text>
+            <Text size="sm">
+              Read model com cache, views, indexes. Write model com validações
+              focadas.
+            </Text>
           </Alert>
           <Alert color="green" icon={<IconCheck size={16} />}>
-            <Text fw={600} mb="xs">🧩 Separation of concerns</Text>
-            <Text size="sm">Lógica de escrita não mistura com lógica de leitura. Clareza total.</Text>
+            <Text fw={600} mb="xs">
+              🧩 Separation of concerns
+            </Text>
+            <Text size="sm">
+              Lógica de escrita não mistura com lógica de leitura. Clareza
+              total.
+            </Text>
           </Alert>
           <Alert color="green" icon={<IconCheck size={16} />}>
-            <Text fw={600} mb="xs">📈 Scalability independent</Text>
-            <Text size="sm">Scale read e write separadamente. Read replicas, write master.</Text>
+            <Text fw={600} mb="xs">
+              📈 Scalability independent
+            </Text>
+            <Text size="sm">
+              Scale read e write separadamente. Read replicas, write master.
+            </Text>
           </Alert>
           <Alert color="green" icon={<IconCheck size={16} />}>
-            <Text fw={600} mb="xs">👥 Team autonomy</Text>
-            <Text size="sm">Frontend team otimiza queries. Backend team foca em business logic.</Text>
+            <Text fw={600} mb="xs">
+              👥 Team autonomy
+            </Text>
+            <Text size="sm">
+              Frontend team otimiza queries. Backend team foca em business
+              logic.
+            </Text>
           </Alert>
         </Stack>
       </Paper>
 
       {/* Exemplo Prático */}
       <Paper withBorder p="xl" radius="md">
-        <Title order={2} size="h2" mb="md">💻 Exemplo: E-commerce Dashboard</Title>
+        <Title order={2} size="h2" mb="md">
+          💻 Exemplo: E-commerce Dashboard
+        </Title>
         <Code block mb="md">
-{`// 📊 Read Model - Dashboard Analytics
+          {`// 📊 Read Model - Dashboard Analytics
 class DashboardQueries {
   async getSalesMetrics(period: string) {
     // Cache primeiro (Redis)
@@ -371,24 +444,45 @@ function useOrderCQRS() {
           <ThemeIcon size="lg" radius="md" variant="light" color="red">
             <IconAlertTriangle size={20} />
           </ThemeIcon>
-          <Title order={2} size="h2">⚠️ Armadilhas</Title>
+          <Title order={2} size="h2">
+            ⚠️ Armadilhas
+          </Title>
         </Group>
         <Stack gap="md">
           <Alert color="red" icon={<IconAlertTriangle size={16} />}>
-            <Text fw={600} mb="xs">🔄 Eventual consistency</Text>
-            <Text size="sm">Write model atualiza, read model demora pra sincronizar. Users veem dados antigos.</Text>
+            <Text fw={600} mb="xs">
+              🔄 Eventual consistency
+            </Text>
+            <Text size="sm">
+              Write model atualiza, read model demora pra sincronizar. Users
+              veem dados antigos.
+            </Text>
           </Alert>
           <Alert color="red" icon={<IconAlertTriangle size={16} />}>
-            <Text fw={600} mb="xs">🏗️ Complexidade extra</Text>
-            <Text size="sm">Dois modelos, eventos, sync. Overhead pra casos simples.</Text>
+            <Text fw={600} mb="xs">
+              🏗️ Complexidade extra
+            </Text>
+            <Text size="sm">
+              Dois modelos, eventos, sync. Overhead pra casos simples.
+            </Text>
           </Alert>
           <Alert color="red" icon={<IconAlertTriangle size={16} />}>
-            <Text fw={600} mb="xs">🐛 Data inconsistency</Text>
-            <Text size="sm">Event handlers falham, read model fica out of sync. Monitoring obrigatório.</Text>
+            <Text fw={600} mb="xs">
+              🐛 Data inconsistency
+            </Text>
+            <Text size="sm">
+              Event handlers falham, read model fica out of sync. Monitoring
+              obrigatório.
+            </Text>
           </Alert>
           <Alert color="red" icon={<IconAlertTriangle size={16} />}>
-            <Text fw={600} mb="xs">📚 Learning curve</Text>
-            <Text size="sm">Team precisa entender commands, queries, events, eventual consistency.</Text>
+            <Text fw={600} mb="xs">
+              📚 Learning curve
+            </Text>
+            <Text size="sm">
+              Team precisa entender commands, queries, events, eventual
+              consistency.
+            </Text>
           </Alert>
         </Stack>
       </Paper>
@@ -399,33 +493,61 @@ function useOrderCQRS() {
           <ThemeIcon size="lg" radius="md" variant="light" color="violet">
             <IconRocket size={20} />
           </ThemeIcon>
-          <Title order={2} size="h2">🚀 Cases Reais</Title>
+          <Title order={2} size="h2">
+            🚀 Cases Reais
+          </Title>
         </Group>
         <Stack gap="md">
           <Card withBorder p="md">
-            <Text fw={600} c="blue" mb="sm">📊 Trading Platforms</Text>
-            <Text size="sm" mb="xs">Writes (trades) são críticos e complexos. Reads (charts, positions) são high-frequency.</Text>
-            <Text size="sm" c="green">Separação permite otimizar cada lado independente, performance crítica</Text>
+            <Text fw={600} c="blue" mb="sm">
+              📊 Trading Platforms
+            </Text>
+            <Text size="sm" mb="xs">
+              Writes (trades) são críticos e complexos. Reads (charts,
+              positions) são high-frequency.
+            </Text>
+            <Text size="sm" c="green">
+              Separação permite otimizar cada lado independente, performance
+              crítica
+            </Text>
           </Card>
           <Card withBorder p="md">
-            <Text fw={600} c="blue" mb="sm">🛒 E-commerce Giants</Text>
-            <Text size="sm" mb="xs">Commands (checkout) têm business rules. Queries (catalog, search) são pure performance.</Text>
-            <Text size="sm" c="green">Scale read replicas pra catalog, write master pra orders</Text>
+            <Text fw={600} c="blue" mb="sm">
+              🛒 E-commerce Giants
+            </Text>
+            <Text size="sm" mb="xs">
+              Commands (checkout) têm business rules. Queries (catalog, search)
+              são pure performance.
+            </Text>
+            <Text size="sm" c="green">
+              Scale read replicas pra catalog, write master pra orders
+            </Text>
           </Card>
           <Card withBorder p="md">
-            <Text fw={600} c="blue" mb="sm">📈 Analytics Dashboards</Text>
-            <Text size="sm" mb="xs">Writes (events) são simples. Reads (aggregations, reports) são complexos.</Text>
-            <Text size="sm" c="green">Read model otimizado com views, cache, pre-computed metrics</Text>
+            <Text fw={600} c="blue" mb="sm">
+              📈 Analytics Dashboards
+            </Text>
+            <Text size="sm" mb="xs">
+              Writes (events) são simples. Reads (aggregations, reports) são
+              complexos.
+            </Text>
+            <Text size="sm" c="green">
+              Read model otimizado com views, cache, pre-computed metrics
+            </Text>
           </Card>
         </Stack>
       </Paper>
 
       {/* Implementação */}
       <Paper withBorder p="xl" radius="md">
-        <Title order={2} size="h2" mb="md">🛠️ Stack CQRS</Title>
+        <Title order={2} size="h2" mb="md">
+          🛠️ Stack CQRS
+        </Title>
         <Group grow align="flex-start" gap="lg">
           <Card withBorder p="md">
-            <Badge variant="light" color="blue" mb="sm">Frontend</Badge>
+            <Badge variant="light" color="blue" mb="sm">
+              Frontend
+            </Badge>
             <List size="sm" spacing={4}>
               <List.Item>TanStack Query (reads)</List.Item>
               <List.Item>RTK Mutation (writes)</List.Item>
@@ -434,7 +556,9 @@ function useOrderCQRS() {
             </List>
           </Card>
           <Card withBorder p="md">
-            <Badge variant="light" color="green" mb="sm">Backend</Badge>
+            <Badge variant="light" color="green" mb="sm">
+              Backend
+            </Badge>
             <List size="sm" spacing={4}>
               <List.Item>MediatR (.NET)</List.Item>
               <List.Item>NestJS + CQRS</List.Item>
@@ -448,17 +572,32 @@ function useOrderCQRS() {
       {/* Resumo */}
       <Paper withBorder p="xl" radius="md">
         <Alert color="pink" icon={<IconBulb size={16} />} radius="md">
-          <Text fw={600} size="lg" mb="md" style={{ fontStyle: 'italic' }}>
+          <Text fw={600} size="lg" mb="md" style={{ fontStyle: "italic" }}>
             "CQRS: optimize reads for speed, optimize writes for correctness."
           </Text>
           <List spacing="sm">
-            <List.Item icon={<IconCheck size={14} color="var(--mantine-color-green-6)" />}>
-              <Text>Commands: business logic + validation. Queries: performance + cache</Text>
+            <List.Item
+              icon={
+                <IconCheck size={14} color="var(--mantine-color-green-6)" />
+              }
+            >
+              <Text>
+                Commands: business logic + validation. Queries: performance +
+                cache
+              </Text>
             </List.Item>
-            <List.Item icon={<IconCheck size={14} color="var(--mantine-color-green-6)" />}>
+            <List.Item
+              icon={
+                <IconCheck size={14} color="var(--mantine-color-green-6)" />
+              }
+            >
               <Text>Scale independente: read replicas vs write master</Text>
             </List.Item>
-            <List.Item icon={<IconCheck size={14} color="var(--mantine-color-green-6)" />}>
+            <List.Item
+              icon={
+                <IconCheck size={14} color="var(--mantine-color-green-6)" />
+              }
+            >
               <Text>Trade-off: performance vs eventual consistency</Text>
             </List.Item>
           </List>
@@ -469,6 +608,7 @@ function useOrderCQRS() {
 }
 
 CQRSArchitecture.metadata = {
-  title: 'CQRS Frontend',
-  description: 'Command Query Responsibility Segregation - separa leitura de escrita para performance e clareza de responsabilidades.'
+  title: "CQRS Frontend",
+  description:
+    "Command Query Responsibility Segregation - separa leitura de escrita para performance e clareza de responsabilidades.",
 };

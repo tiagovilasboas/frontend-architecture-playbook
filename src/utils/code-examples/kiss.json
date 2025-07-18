@@ -19,4 +19,4 @@
     "description": "Variáveis e funções que se explicam sozinhas",
     "code": "// ✅ BOM - Nomes descritivos\n\nconst maxRetryAttempts = 10;\nconst requestTimeout = 20000;\nconst totalTimeout = maxRetryAttempts + requestTimeout;\n\nconst calculateUserDiscount = (user: User, products: Product[]) => {\n  const activeProducts = products.filter(product => product.status === 'active');\n  const discountedProducts = activeProducts.map(product => ({\n    id: product.id,\n    name: product.name,\n    finalPrice: product.price * 0.9 // 10% discount\n  }));\n  return discountedProducts;\n};\n\nconst processActiveOrders = (orders: Order[]) => {\n  const activeOrders = orders.filter(order => order.status === 'active');\n  const processedOrders = activeOrders.map(order => ({\n    ...order,\n    processedAt: new Date()\n  }));\n  return processedOrders;\n};"
   }
-] 
+]
