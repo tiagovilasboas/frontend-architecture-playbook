@@ -1,5 +1,5 @@
 import { Title, Text, Stack, Paper, Card, Group, ThemeIcon, Badge, Alert, List, Code } from '@mantine/core';
-import { IconCode, IconCheck, IconAlertTriangle, IconBulb, IconRocket, IconStack3 } from '@tabler/icons-react';
+import { IconCheck, IconAlertTriangle, IconBulb, IconRocket, IconStack3 } from '@tabler/icons-react';
 
 export default function LayeredArchitecture() {
   return (
@@ -273,7 +273,7 @@ app.get('/api/orders', async (req, res) => {
         <Stack gap="md">
           <Card withBorder p="md">
             <Text fw={600} c="blue" mb="sm">🏢 Enterprise Apps</Text>
-            <Text size="sm" mb="xs">CRMs, ERPs, dashboards internos. Funcionalidade > flexibilidade.</Text>
+            <Text size="sm" mb="xs">CRMs, ERPs, dashboards internos. Funcionalidade &gt; flexibilidade.</Text>
             <Text size="sm" c="green">Desenvolvimento rápido, manutenção estável por anos</Text>
           </Card>
           <Card withBorder p="md">

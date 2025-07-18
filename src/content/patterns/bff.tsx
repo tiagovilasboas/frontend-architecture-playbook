@@ -426,8 +426,8 @@ function Dashboard() {
             <List size="sm" spacing={4}>
               <List.Item><Text span fw={600}>Node.js:</Text> Express, Fastify, Koa</List.Item>
               <List.Item><Text span fw={600}>Python:</Text> FastAPI, Flask</List.Item>
-              <List.Item><Text span fw={600}>Go:</Text> Gin, Echo, Fiber</Text>
-              <List.Item><Text span fw={600}>Rust:</Text> Axum, Warp</Text>
+              <List.Item><Text span fw={600}>Go:</Text> Gin, Echo, Fiber</List.Item>
+              <List.Item><Text span fw={600}>Rust:</Text> Axum, Warp</List.Item>
             </List>
           </Card>
 
@@ -436,8 +436,8 @@ function Dashboard() {
             <List size="sm" spacing={4}>
               <List.Item><Text span fw={600}>Redis:</Text> Cache distribuído</List.Item>
               <List.Item><Text span fw={600}>Memcached:</Text> Cache simples</List.Item>
-              <List.Item><Text span fw={600}>In-memory:</Text> Cache local</Text>
-              <List.Item><Text span fw={600}>CDN:</Text> Cache de borda</Text>
+              <List.Item><Text span fw={600}>In-memory:</Text> Cache local</List.Item>
+              <List.Item><Text span fw={600}>CDN:</Text> Cache de borda</List.Item>
             </List>
           </Card>
 
@@ -445,9 +445,9 @@ function Dashboard() {
             <Badge variant="light" color="orange" mb="sm">Ferramentas</Badge>
             <List size="sm" spacing={4}>
               <List.Item><Text span fw={600}>Docker:</Text> Deploy consistente</List.Item>
-              <List.Item><Text span fw={600}>K8s:</Text> Orquestração</Text>
-              <List.Item><Text span fw={600}>Istio:</Text> Service mesh</Text>
-              <List.Item><Text span fw={600}>Jaeger:</Text> Distributed tracing</Text>
+              <List.Item><Text span fw={600}>K8s:</Text> Orquestração</List.Item>
+              <List.Item><Text span fw={600}>Istio:</Text> Service mesh</List.Item>
+              <List.Item><Text span fw={600}>Jaeger:</Text> Distributed tracing</List.Item>
             </List>
           </Card>
         </Group>
