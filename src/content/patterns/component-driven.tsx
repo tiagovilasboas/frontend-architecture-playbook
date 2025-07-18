@@ -35,8 +35,8 @@ function ComponentDriven() {
           </Text>
           
           <Text>
-            Pensa assim: você tem peças pequenas (botões, inputs), junta elas em peças médias 
-            (formulários, cards), e depois monta telas inteiras. Cada peça funciona sozinha.
+            Pensa assim: você tem peças pequenas (botões, inputs), combina elas em peças médias 
+            (formulários, cards), e depois monta telas inteiras. Cada peça funciona sozinha e pode ser reutilizada.
           </Text>
           
           <Text>

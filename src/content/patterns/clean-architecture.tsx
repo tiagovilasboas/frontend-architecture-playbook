@@ -41,7 +41,7 @@ function CleanArchitecture() {
           
           <Text>
             A regra é simples: <em>dependências apontam para dentro</em>. 
-            UI depende do negócio, API depende do negócio, mas negócio não depende de porra nenhuma.
+            UI depende do negócio, API depende do negócio, mas negócio não depende de nada externo.
           </Text>
         </Stack>
       </Paper>
