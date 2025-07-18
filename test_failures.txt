@@ -1,0 +1,125 @@
+    expect(received).toContain(expected) // indexOf
+
+    Expected value: "bff"
+    Received array: ["clean-architecture", "hexagonal", "component-driven"]
+
+      62 |         hasIntegrations: true,
+      63 |       });
+    > 64 |       expect(result).toContain("bff");
+         |                      ^
+      65 |       expect(result).toContain("hexagonal");
+      66 |     });
+      67 |
+
+--
+    expect(received).toContain(expected) // indexOf
+
+    Expected value: "ssr-ssg"
+    Received array: ["clean-architecture", "hexagonal", "event-driven"]
+
+      128 |         hasIntegrations: false,
+      129 |       });
+    > 130 |       expect(result).toContain("ssr-ssg");
+          |                      ^
+      131 |     });
+      132 |
+      133 |     it("E-commerce sempre recomenda PWA para mobile", () => {
+
+--
+    expect(received).toContain(expected) // indexOf
+
+    Expected value: "pwa"
+    Received array: ["layered", "ssr-ssg", "clean-architecture"]
+
+      139 |         hasIntegrations: false,
+      140 |       });
+    > 141 |       expect(result).toContain("pwa");
+          |                      ^
+      142 |     });
+      143 |
+      144 |     it("E-commerce com integrações recomenda BFF e CQRS", () => {
+
+--
+    expect(received).toContain(expected) // indexOf
+
+    Expected value: "bff"
+    Received array: ["clean-architecture", "event-driven", "hexagonal"]
+
+      150 |         hasIntegrations: true,
+      151 |       });
+    > 152 |       expect(result).toContain("bff");
+          |                      ^
+      153 |       expect(result).toContain("cqrs");
+      154 |     });
+      155 |   });
+
+--
+    expect(received).toContain(expected) // indexOf
+
+    Expected value: "spa"
+    Received array: ["component-driven", "clean-architecture", "hexagonal"]
+
+      177 |       });
+      178 |       expect(result).toContain("component-driven");
+    > 179 |       expect(result).toContain("spa");
+          |                      ^
+      180 |       // atomic-design may not make it to top 3 due to scoring logic
+      181 |       expect(result.length).toBe(3);
+      182 |     });
+
+--
+    expect(received).toContain(expected) // indexOf
+
+    Expected value: "micro-frontends"
+    Received array: ["clean-architecture", "microservices-frontend", "hexagonal"]
+
+      195 |       // Micro-frontends gets: enterprise conditional (10) + scalability (4) = 14
+      196 |       expect(result[0]).toBe("clean-architecture");
+    > 197 |       expect(result).toContain("micro-frontends");
+          |                      ^
+      198 |       expect(result).toContain("monorepo");
+      199 |     });
+      200 |
+
+--
+    expect(received).toContain(expected) // indexOf
+
+    Expected value: "headless"
+    Received array: ["clean-architecture", "hexagonal", "bff"]
+
+      221 |       expect(result).toContain("hexagonal");
+      222 |       expect(result).toContain("bff");
+    > 223 |       expect(result).toContain("headless");
+          |                      ^
+      224 |     });
+      225 |
+      226 |     it("Enterprise com times grandes recomenda Microservices Frontend", () => {
+
+--
+    expect(received).toContain(expected) // indexOf
+
+    Expected value: "spa"
+    Received array: ["layered", "component-driven", "clean-architecture"]
+
+      296 |       });
+      297 |       // Should boost SPA score
+    > 298 |       expect(result).toContain("spa");
+          |                      ^
+      299 |     });
+      300 |
+      301 |     it("Time grande favorece modularização", () => {
+
+--
+    expect(received).toContain(expected) // indexOf
+
+    Expected value: "event-driven"
+    Received array: ["clean-architecture", "hexagonal", "component-driven"]
+
+      400 |       });
+      401 |       expect(result).toContain("clean-architecture");
+    > 402 |       expect(result).toContain("event-driven");
+          |                      ^
+      403 |     });
+      404 |   });
+      405 |
+

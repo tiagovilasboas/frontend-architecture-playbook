@@ -10,8 +10,9 @@ export default function DocPage() {
   if (!doc) return <p>Not found</p>;
 
   const Component = doc.component;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const components = { pre: (props: any) => <CodeHighlight {...props} /> };
+  const components = { 
+    pre: (props: React.ComponentProps<'pre'>) => <CodeHighlight {...props} /> 
+  };
   return (
     <Container size="lg">
       <TypographyStylesProvider>
