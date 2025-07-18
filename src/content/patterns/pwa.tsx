@@ -549,7 +549,7 @@ self.addEventListener('sync', (event) => {
             <Badge variant="light" color="blue" mb="sm">Frameworks</Badge>
             <List size="sm" spacing={4}>
               <List.Item><Text span fw={600}>Workbox:</Text> Service Worker toolkit (Google)</List.Item>
-              <List.Item><Text span fw={600}>PWA Builder:</Text> Microsoft's PWA tools</Text>
+              <List.Item><Text span fw={600}>PWA Builder:</Text> Microsoft's PWA tools</List.Item>
               <List.Item><Text span fw={600}>Next.js:</Text> Built-in PWA support</List.Item>
               <List.Item><Text span fw={600}>Vite PWA:</Text> Plugin pra Vite</List.Item>
             </List>
@@ -560,8 +560,8 @@ self.addEventListener('sync', (event) => {
             <List size="sm" spacing={4}>
               <List.Item><Text span fw={600}>Lighthouse:</Text> PWA audit score</List.Item>
               <List.Item><Text span fw={600}>PWA Builder:</Text> Validation tools</List.Item>
-              <List.Item><Text span fw={600}>Chrome DevTools:</Text> Service Worker debugging</Text.Item>
-              <List.Item><Text span fw={600}>Workbox:</Text> Cache debugging</Text>
+              <List.Item><Text span fw={600}>Chrome DevTools:</Text> Service Worker debugging</List.Item>
+              <List.Item><Text span fw={600}>Workbox:</Text> Cache debugging</List.Item>
             </List>
           </Card>
 
@@ -569,9 +569,9 @@ self.addEventListener('sync', (event) => {
             <Badge variant="light" color="orange" mb="sm">Deploy</Badge>
             <List size="sm" spacing={4}>
               <List.Item><Text span fw={600}>HTTPS:</Text> Obrigatório para Service Workers</List.Item>
-              <List.Item><Text span fw={600}>CDN:</Text> Cache global pra assets</Text.Item>
-              <List.Item><Text span fw={600}>HTTP/2:</Text> Push de recursos críticos</Text.Item>
-              <List.Item><Text span fw={600}>Compression:</Text> gzip/brotli pra bundles</Text>
+              <List.Item><Text span fw={600}>CDN:</Text> Cache global pra assets</List.Item>
+              <List.Item><Text span fw={600}>HTTP/2:</Text> Push de recursos críticos</List.Item>
+              <List.Item><Text span fw={600}>Compression:</Text> gzip/brotli pra bundles</List.Item>
             </List>
           </Card>
         </Group>
