@@ -44,6 +44,14 @@ export function getBonusPatterns({
     });
   }
 
+  if (projectType === 'mvp' || projectType === 'startup') {
+    bonus.push({ 
+      slug: 'security', 
+      title: 'Security Patterns',
+      description: 'Práticas essenciais de segurança desde o início'
+    });
+  }
+
   // Padrões baseados em integrações
   if (hasIntegrations) {
     bonus.push({ 

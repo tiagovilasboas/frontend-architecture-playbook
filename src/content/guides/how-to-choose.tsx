@@ -33,7 +33,7 @@ export default function HowToChoose() {
               <Stack align="center" ta="center" mb={isMobile ? 'sm' : 'md'}>
                 <Title order={2} mb={isMobile ? 'xs' : 'sm'} size={isMobile ? '1.2rem' : undefined}>
                   <IconRocket size={isMobile ? 20 : 32} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
-                  Decision Wizard
+                  Decision Wizard v3.0
                 </Title>
                 <Text 
                   size={isMobile ? 'xs' : 'lg'} 
@@ -42,7 +42,7 @@ export default function HowToChoose() {
                   mb={isMobile ? 0 : undefined}
                   lineClamp={isMobile ? 2 : undefined}
                 >
-                  Responde algumas perguntas e descobre qual arquitetura faz mais sentido para o seu projeto.
+                  6 perguntas para encontrar sua arquitetura ideal - agora com todas as 15 arquiteturas disponíveis.
                 </Text>
               </Stack>
               

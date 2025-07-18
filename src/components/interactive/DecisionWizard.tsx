@@ -326,34 +326,57 @@ export default function DecisionWizard() {
     if (priority === 'scalability') {
       if (teamSize === 'large') {
         scores['micro-frontends'] = { score: (scores['micro-frontends']?.score || 5) + 4, reason: scores['micro-frontends']?.reason || 'Máxima escalabilidade de times' };
+        scores['microservices-frontend'] = { score: (scores['microservices-frontend']?.score || 4) + 4, reason: scores['microservices-frontend']?.reason || 'Escalabilidade extrema com deploys independentes' };
       }
       scores['monorepo'] = { score: (scores['monorepo']?.score || 5) + 3, reason: scores['monorepo']?.reason || 'Facilita escalabilidade de código' };
       scores['clean-architecture'] = { score: (scores['clean-architecture']?.score || 6) + 2, reason: scores['clean-architecture']?.reason || 'Base sólida para crescer' };
+      scores['hexagonal'] = { score: (scores['hexagonal']?.score || 5) + 2, reason: scores['hexagonal']?.reason || 'Facilita adição de novas integrações' };
+      scores['pwa'] = { score: (scores['pwa']?.score || 5) + 2, reason: scores['pwa']?.reason || 'Escalabilidade de plataforma (web → mobile)' };
+      
+      // Headless facilita múltiplos canais
+      if (scores['headless']) {
+        scores['headless'].score += 3;
+        scores['headless'].reason += ' (múltiplos frontends)';
+      }
     }
 
     // Ajustes por integrações
     if (hasIntegrations) {
       scores['clean-architecture'] = { score: (scores['clean-architecture']?.score || 6) + 2, reason: scores['clean-architecture']?.reason || 'Isola integrações na camada externa' };
       scores['event-driven'] = { score: (scores['event-driven']?.score || 5) + 2, reason: scores['event-driven']?.reason || 'Facilita integrações via eventos' };
+      scores['bff'] = { score: (scores['bff']?.score || 5) + 3, reason: scores['bff']?.reason || 'Agregação e orquestração de APIs' };
+      scores['hexagonal'] = { score: (scores['hexagonal']?.score || 5) + 2, reason: scores['hexagonal']?.reason || 'Ports & Adapters isolam integrações' };
+      scores['headless'] = { score: (scores['headless']?.score || 5) + 2, reason: scores['headless']?.reason || 'Desacoplamento de backends' };
     }
 
     // Fallback para garantir sempre ter recomendações
     if (Object.keys(scores).length === 0) {
       scores['spa'] = { score: 7, reason: 'Opção segura e versátil' };
       scores['component-driven'] = { score: 6, reason: 'Boa organização de código' };
+      scores['layered'] = { score: 6, reason: 'Estrutura simples e clara' };
     }
 
     // Garante pelo menos 3 opções
     if (Object.keys(scores).length < 3) {
-      if (!scores['clean-architecture']) {
+      if (!scores['clean-architecture'] && !scores['layered'] && !scores['hexagonal']) {
         scores['clean-architecture'] = { score: 6, reason: 'Base sólida para qualquer projeto' };
       }
       if (!scores['component-driven']) {
         scores['component-driven'] = { score: 5, reason: 'Reutilização e organização' };
       }
-      if (!scores['spa']) {
+      if (!scores['spa'] && !scores['ssr-ssg'] && !scores['jamstack']) {
         scores['spa'] = { score: 5, reason: 'Flexibilidade e simplicidade' };
       }
+    }
+
+    // Garantir opção para SEO quando necessário
+    if ((projectType === 'ecommerce' || priority === 'performance') && !scores['ssr-ssg']) {
+      scores['ssr-ssg'] = { score: 5, reason: 'SEO e performance essenciais' };
+    }
+    
+    // Garantir opção mobile quando relevante  
+    if ((projectType === 'ecommerce' || projectType === 'startup') && !scores['pwa']) {
+      scores['pwa'] = { score: 4, reason: 'Experiência mobile importante' };
     }
 
     return Object.entries(scores)
