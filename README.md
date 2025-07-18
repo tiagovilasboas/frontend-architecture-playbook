@@ -24,9 +24,9 @@ Um **sistema de suporte à decisão** que resolve a pergunta que todo dev já te
 - **Bonus patterns:** Padrões complementares baseados no contexto
 - **Mobile-optimized:** UX responsiva e intuitiva
 
-### **💼 Casos Reais de Impacto (NEW!)**
-- **8 empresas:** Airbnb, Netflix, Google, Booking, Twitter, Walmart, Spotify, GOV.UK
-- **Métricas concretas:** "50% menos carregamento", "+98% conversões mobile"
+### **💼 Casos Reais de Impacto (UPDATED!)**
+- **16 empresas:** Pinterest, Tinder, Slack, Uber, WhatsApp, Zoom, Figma, Discord + originais
+- **Métricas concretas:** "+103% engagement", "-84% time to interactive", "99.9% sync accuracy"
 - **Business impact:** Como decisões técnicas viraram milhões em receita
 - **Links verificáveis:** Fontes originais dos casos
 - **Prova de ROI:** Justifique refactors e decisões técnicas
@@ -45,21 +45,31 @@ Um **sistema de suporte à decisão** que resolve a pergunta que todo dev já te
 - **Shareable content:** Cases e decisions linkáveis
 - **Long-tail keywords:** "frontend architecture decision", "micro frontends when to use"
 
-### **🏗️ Arquiteturas Cobertas**
+### **🏗️ Arquiteturas Cobertas (15 TOTAL!)**
+
+**🔥 TIER 1: Essenciais**
+- **SSR & SSG** - "Se você liga pra SEO, você usa SSR"
+- **Backend-for-Frontend (BFF)** - "Uma API sob medida pro seu front"
+- **Progressive Web Apps (PWA)** - "Web que se comporta como app nativo"
+
+**🚀 TIER 2: Importantes**
+- **Headless/API-First** - "Separação igreja-estado entre content e apresentação"
+- **Hexagonal Architecture** - "Clean Architecture mais flexível e menos dogmática"
+- **Layered Architecture** - "Clean Architecture sem a complexidade - direto ao ponto"
+
+**📚 TIER 3: Específicas**
+- **Event Sourcing Frontend** - "Toda ação é um evento - debug e auditoria que funciona"
+- **CQRS Frontend** - "Read diferente de write - performance e clareza"
+- **Microservices Frontend** - "Dividir pra conquistar - times, deploys, responsabilidades"
+
+**⚡ Clássicas**
 - **Clean Architecture** - Separação clara de responsabilidades
 - **Component-Driven Development** - Reutilização e composição
 - **Micro-frontends** - Escalabilidade de times
 - **Monorepo** - Compartilhamento de código
 - **Single Page Application** - Aplicações de página única
-- **SSR/SSG** - Performance e SEO
-- **PWA** - Experiência mobile
 - **Islands Architecture** - Performance híbrida
-- **State Machines** - Lógica complexa
-- **Event-Driven** - Desacoplamento
-- **Feature Flags** - Deploy seguro
-- **Atomic Design** - Design systems
 - **JAMstack** - Performance e simplicidade
-- **Security Patterns** - Padrões de segurança e autenticação
 
 ### **🎯 Padrões de Design**
 - **Repository Pattern** - Abstração de acesso a dados
@@ -140,6 +150,7 @@ Um **sistema de suporte à decisão** que resolve a pergunta que todo dev já te
 - **Coverage completo** - DecisionWizard + getBonusPatterns
 - **Cenários reais** - MVP, SaaS, E-commerce, Enterprise, Startup
 - **Context validation** - Time size, tech level, priorities testados
+- **15 arquiteturas** - Todas testadas e funcionais
 
 ## 🏃‍♂️ **Quick Start**
 

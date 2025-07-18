@@ -20,6 +20,15 @@ import SecurityPatterns from '../content/patterns/security.tsx';
 import CleanCode from '../content/patterns/clean-code.tsx';
 import SRP from '../content/patterns/srp.tsx';
 import SOC from '../content/patterns/soc.tsx';
+import SSRSSGArchitecture from '../content/patterns/ssr-ssg.tsx';
+import BFFArchitecture from '../content/patterns/bff.tsx';
+import PWAArchitecture from '../content/patterns/pwa.tsx';
+import HeadlessArchitecture from '../content/patterns/headless.tsx';
+import HexagonalArchitecture from '../content/patterns/hexagonal.tsx';
+import LayeredArchitecture from '../content/patterns/layered.tsx';
+import EventSourcingArchitecture from '../content/patterns/event-sourcing.tsx';
+import CQRSArchitecture from '../content/patterns/cqrs.tsx';
+import MicroservicesFrontendArchitecture from '../content/patterns/microservices-frontend.tsx';
 
 export type CollectionType = 'guides' | 'architectures' | 'patterns' | 'techniques' | 'best-practices';
 
@@ -52,6 +61,15 @@ export const guides: DocMeta[] = [
 
 // Arquiteturas reais - estrutura fundamental do sistema
 export const architectures: DocMeta[] = [
+  toMeta(SSRSSGArchitecture, 'ssr-ssg', 'architectures'),
+  toMeta(BFFArchitecture, 'bff', 'architectures'),
+  toMeta(PWAArchitecture, 'pwa', 'architectures'),
+  toMeta(HeadlessArchitecture, 'headless', 'architectures'),
+  toMeta(HexagonalArchitecture, 'hexagonal', 'architectures'),
+  toMeta(LayeredArchitecture, 'layered', 'architectures'),
+  toMeta(EventSourcingArchitecture, 'event-sourcing', 'architectures'),
+  toMeta(CQRSArchitecture, 'cqrs', 'architectures'),
+  toMeta(MicroservicesFrontendArchitecture, 'microservices-frontend', 'architectures'),
   toMeta(CleanArchitecture, 'clean-architecture', 'architectures'),
   toMeta(MicroFrontends, 'micro-frontends', 'architectures'),
   toMeta(Monorepo, 'monorepo', 'architectures'),
