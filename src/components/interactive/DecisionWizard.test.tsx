@@ -23,8 +23,20 @@ describe('DecisionWizard recommendations - Improved Version', () => {
         hasIntegrations: false,
       });
       expect(result[0]).toBe('islands-architecture');
+      expect(result).toContain('ssr-ssg');
       expect(result).toContain('spa');
-      expect(result).toContain('jamstack');
+    });
+
+    it('MVP com velocidade prioriza simplicidade incluindo Layered', () => {
+      const result = recommendationsForTest({
+        projectType: 'mvp',
+        teamSize: 'small',
+        techLevel: 'junior',
+        priority: 'speed',
+        hasIntegrations: false,
+      });
+      expect(result).toContain('layered');
+      expect(result).toContain('spa');
     });
   });
 
@@ -39,6 +51,29 @@ describe('DecisionWizard recommendations - Improved Version', () => {
       });
       expect(result[0]).toBe('clean-architecture');
       expect(result).toContain('component-driven');
+    });
+
+    it('SaaS com integrações recomenda BFF', () => {
+      const result = recommendationsForTest({
+        projectType: 'saas',
+        teamSize: 'medium',
+        techLevel: 'mid',
+        priority: 'maintainability',
+        hasIntegrations: true,
+      });
+      expect(result).toContain('bff');
+      expect(result).toContain('hexagonal');
+    });
+
+    it('SaaS com performance recomenda SSR/SSG', () => {
+      const result = recommendationsForTest({
+        projectType: 'saas',
+        teamSize: 'medium',
+        techLevel: 'mid',
+        priority: 'performance',
+        hasIntegrations: false,
+      });
+      expect(result).toContain('ssr-ssg');
     });
 
     it('SaaS com escalabilidade recomenda Monorepo', () => {
