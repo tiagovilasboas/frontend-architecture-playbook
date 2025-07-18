@@ -36,7 +36,7 @@ function Monorepo() {
           
           <Text>
             Pensa assim: ao invés de ter 10 repositórios separados, você tem tudo num só. 
-            Apps, libs, docs, tudo junto. Mas organizado, não bagunçado.
+            Apps, libs, docs, tudo junto. Mas bem organizado e estruturado.
           </Text>
           
           <Text>
@@ -565,7 +565,7 @@ function Monorepo() {
           
           <Text size="sm" c="dimmed">
             <strong>Lembre-se:</strong> Não é sobre colocar tudo num repositório. 
-            É sobre organizar e compartilhar quando faz sentido. E você não enlouquece.
+            É sobre organizar e compartilhar quando faz sentido. Mantenha a sanidade.
             <br />
             <strong>Dica:</strong> Comece pequeno, use ferramentas adequadas, 
             evolua conforme necessário.

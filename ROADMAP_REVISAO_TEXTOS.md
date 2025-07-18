@@ -41,13 +41,13 @@ Revisar todos os textos do projeto para garantir:
 - [x] ✅ **dry.tsx** - Verificado: concordância adequada
 - [x] ✅ **kiss.tsx** - Verificado: explicações claras
 - [x] ✅ **yagni.tsx** - Verificado: estrutura completa
-- [ ] 🔴 **soc.tsx** - Separação de Responsabilidades
-- [ ] 🔴 **srp.tsx** - Single Responsibility
+- [x] ✅ **soc.tsx** - Verificado: linguagem adequada
+- [x] ✅ **srp.tsx** - Verificado: estrutura completa
 
 #### 2.2 Arquiteturas Principais
 - [x] ✅ **component-driven.tsx** - Revisado: analogia melhorada
 - [x] ✅ **micro-frontends.tsx** - Revisado: concordância corrigida
-- [ ] 🔴 **monorepo.tsx** - Verificar completude
+- [x] ✅ **monorepo.tsx** - Revisado: linguagem profissionalizada
 
 ---
 
@@ -170,15 +170,16 @@ Revisar todos os textos do projeto para garantir:
 
 ## 🚀 **Plano de Execução**
 
-### **Sprint 1: Fundação (2 horas)**
-1. **dependency-rule.tsx** (30min)
-2. **clean-architecture.tsx** (30min)
-3. **micro-frontends.tsx** (30min)
-4. **how-to-choose.tsx** (30min)
+### **Sprint 1: Fundação (2 horas)** ✅
+1. ✅ **dependency-rule.tsx** (30min)
+2. ✅ **clean-architecture.tsx** (30min)
+3. ✅ **micro-frontends.tsx** (30min)
+4. ✅ **how-to-choose.tsx** (30min)
 
-### **Sprint 2: Princípios (1.5 horas)**
-5. **dry.tsx**, **kiss.tsx**, **yagni.tsx** (45min)
-6. **component-driven.tsx** (45min)
+### **Sprint 2: Princípios (1.5 horas)** ✅
+5. ✅ **dry.tsx**, **kiss.tsx**, **yagni.tsx** (45min)
+6. ✅ **component-driven.tsx** (45min)
+7. ✅ **soc.tsx**, **srp.tsx**, **monorepo.tsx** (30min)
 
 ### **Sprint 3: Arquiteturas (1 hora)**
 7. **monorepo.tsx**, **spa.tsx** (30min cada)
