@@ -33,7 +33,7 @@ export default function SecurityPatterns() {
         </Title>
         <Text>
           Security patterns são técnicas e práticas que protegem sua aplicação front-end contra vulnerabilidades comuns. 
-          Não é sobre virar um expert em criptografia, é sobre não deixar a porta aberta para o bandido.
+          Não é sobre virar um expert em criptografia, é sobre não deixar brechas de segurança abertas.
         </Text>
         
         <Alert icon={<IconAlertTriangle size={16} />} color="orange" mt="md">
