@@ -36,7 +36,7 @@ function MicroFrontends() {
           
           <Text>
             Pensa assim: você tem uma aplicação gigante com 50 desenvolvedores. 
-            Vira uma bagunça total. Micro-Frontends quebra em 5 aplicações menores, 
+            Torna-se difícil de gerenciar. Com Micro-Frontends, você quebra em 5 aplicações menores, 
             cada uma com seu time, sua tecnologia, seu deploy.
           </Text>
           

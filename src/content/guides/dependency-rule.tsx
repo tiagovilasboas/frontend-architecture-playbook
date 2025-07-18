@@ -30,8 +30,8 @@ export default function DependencyRuleGuide() {
             Dependency Rule
           </Title>
           <Text size="xl" c="dimmed" mb="lg" maw={800}>
-            A regra mais importante de qualquer arquitetura. Se você quebrar essa, 
-            <strong> nenhuma arquitetura salva seu projeto do caos.</strong>
+            A regra mais importante de qualquer arquitetura. Se você ignorar isso, 
+            <strong> nenhuma arquitetura consegue salvar seu projeto do caos.</strong>
           </Text>
         </Stack>
       </section>
@@ -135,7 +135,7 @@ export default function DependencyRuleGuide() {
               <Text size="md" fw={500}>
                 <strong>Sem Dependency Rule:</strong> Seu projeto vira uma bola de neve. 
                 Mude uma coisa, quebre tudo. Teste uma coisa, teste tudo. 
-                Refatore uma coisa, refatore tudo. <strong>O inferno.</strong>
+                Refatore uma coisa, refatore tudo. <strong>Isso vira um pesadelo de manutenção.</strong>
               </Text>
             </Alert>
           </Stack>
@@ -470,7 +470,7 @@ class UserService {
             
             <Text size="lg" c="dimmed" maw={800}>
               A <strong>Dependency Rule</strong> é a regra mais importante de qualquer arquitetura. 
-              Se você quebrar essa regra, nenhuma arquitetura salva seu projeto do caos.
+              Se você ignorar essa regra, nenhuma arquitetura consegue salvar seu projeto do caos.
             </Text>
 
             <SimpleGrid cols={{ base: 1, md: 2 }} spacing="lg" w="100%">
