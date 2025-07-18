@@ -21,7 +21,6 @@ import {
   IconBulb,
   IconTarget,
   IconTrendingUp,
-  IconUsers,
   IconBolt,
 } from '@tabler/icons-react';
 import { useMediaQuery } from '@mantine/hooks';
