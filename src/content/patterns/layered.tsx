@@ -10,14 +10,14 @@ import {
   Alert,
   List,
   Code,
-} from "@mantine/core";
+} from '@mantine/core';
 import {
   IconCheck,
   IconAlertTriangle,
   IconBulb,
   IconRocket,
   IconStack3,
-} from "@tabler/icons-react";
+} from '@tabler/icons-react';
 
 export default function LayeredArchitecture() {
   return (
@@ -430,7 +430,7 @@ app.get('/api/orders', async (req, res) => {
       {/* Resumo */}
       <Paper withBorder p="xl" radius="md">
         <Alert color="teal" icon={<IconBulb size={16} />} radius="md">
-          <Text fw={600} size="lg" mb="md" style={{ fontStyle: "italic" }}>
+          <Text fw={600} size="lg" mb="md" style={{ fontStyle: 'italic' }}>
             "Layered: o KISS principle aplicado à arquitetura. Simples,
             funciona, todo mundo entende."
           </Text>
@@ -464,7 +464,7 @@ app.get('/api/orders', async (req, res) => {
 }
 
 LayeredArchitecture.metadata = {
-  title: "Layered Architecture",
+  title: 'Layered Architecture',
   description:
-    "Arquitetura em 3 camadas clássica: Presentation, Business, Data. Simples, produtiva, funciona.",
+    'Arquitetura em 3 camadas clássica: Presentation, Business, Data. Simples, produtiva, funciona.',
 };

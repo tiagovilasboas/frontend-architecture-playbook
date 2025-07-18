@@ -5,6 +5,7 @@ Este diretório contém todas as decisões arquiteturais importantes do projeto 
 ## 🎯 **O que são ADRs?**
 
 Architecture Decision Records (ADRs) documentam decisões arquiteturais importantes, incluindo:
+
 - **Contexto** da decisão
 - **Problema** que estava sendo resolvido
 - **Alternativas** consideradas
@@ -13,8 +14,8 @@ Architecture Decision Records (ADRs) documentam decisões arquiteturais importan
 
 ## 📚 **Índice de ADRs**
 
-| ID | Status | Título | Data | Owner |
-|----|--------|--------|------|-------|
+| ID                                             | Status      | Título                                         | Data       | Owner         |
+| ---------------------------------------------- | ----------- | ---------------------------------------------- | ---------- | ------------- |
 | [001](./001-visualizations-and-comparisons.md) | 🎯 Proposto | Visualizações e Comparações no Decision Wizard | 2024-12-19 | Frontend Team |
 
 ## 📊 **Status Legend**
@@ -28,22 +29,26 @@ Architecture Decision Records (ADRs) documentam decisões arquiteturais importan
 ## 🔄 **Processo de ADR**
 
 ### **1. Criação**
+
 ```bash
 # Criar nova ADR
 cp docs/adr/template.md docs/adr/XXX-titulo-da-decisao.md
 ```
 
 ### **2. Review**
+
 - Discussão em PRs
 - Feedback da equipe
 - Validação técnica
 
 ### **3. Aprovação**
+
 - Merge do PR
 - Update do status
 - Comunicação para a equipe
 
 ### **4. Implementação**
+
 - Tracking via issues/PRs
 - Update de progresso
 - Lessons learned
@@ -51,6 +56,7 @@ cp docs/adr/template.md docs/adr/XXX-titulo-da-decisao.md
 ## 🎯 **Quando criar uma ADR?**
 
 ### **Criar ADR para:**
+
 - ✅ Escolhas de tecnologia major (React vs Vue)
 - ✅ Padrões arquiteturais (Clean Architecture, Micro-frontends)
 - ✅ Estrutura de pastas/organização
@@ -58,6 +64,7 @@ cp docs/adr/template.md docs/adr/XXX-titulo-da-decisao.md
 - ✅ Performance/UX trade-offs significativos
 
 ### **Não criar ADR para:**
+
 - ❌ Bugs fixes rotineiros
 - ❌ Pequenos refactors
 - ❌ Decisões facilmente reversíveis

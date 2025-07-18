@@ -96,8 +96,6 @@ jobs:
           pattern: '*.{ts,tsx,js,jsx,md}'
           locale: 'US'
 
-
-
   # Performance - Critical for SEO and UX
   bundle-size:
     name: Bundle Size Review

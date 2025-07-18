@@ -10,7 +10,7 @@ import {
   Group,
   Card,
   Badge,
-} from "@mantine/core";
+} from '@mantine/core';
 import {
   IconBulb,
   IconAlertTriangle,
@@ -18,9 +18,9 @@ import {
   IconCode,
   IconDeviceMobile,
   IconWifi,
-} from "@tabler/icons-react";
-import CodeExample from "../../components/CodeExample";
-import progressiveWebAppsExamples from "../../utils/code-examples/progressive-web-apps.json";
+} from '@tabler/icons-react';
+import CodeExample from '../../components/CodeExample';
+import progressiveWebAppsExamples from '../../utils/code-examples/progressive-web-apps.json';
 
 function ProgressiveWebApps() {
   return (
@@ -72,7 +72,7 @@ function ProgressiveWebApps() {
         <Title order={2} mb="lg">
           <IconWifi
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Os 3 Pilares
         </Title>
@@ -92,13 +92,13 @@ function ProgressiveWebApps() {
                 <CodeExample
                   title={
                     progressiveWebAppsExamples.find(
-                      (e) => e.id === "pwa-service-worker",
-                    )?.title || ""
+                      e => e.id === 'pwa-service-worker'
+                    )?.title || ''
                   }
                   code={
                     progressiveWebAppsExamples.find(
-                      (e) => e.id === "pwa-service-worker",
-                    )?.content || ""
+                      e => e.id === 'pwa-service-worker'
+                    )?.content || ''
                   }
                 />
               </div>
@@ -119,13 +119,13 @@ function ProgressiveWebApps() {
                 <CodeExample
                   title={
                     progressiveWebAppsExamples.find(
-                      (e) => e.id === "pwa-manifest",
-                    )?.title || ""
+                      e => e.id === 'pwa-manifest'
+                    )?.title || ''
                   }
                   code={
                     progressiveWebAppsExamples.find(
-                      (e) => e.id === "pwa-manifest",
-                    )?.content || ""
+                      e => e.id === 'pwa-manifest'
+                    )?.content || ''
                   }
                 />
               </div>
@@ -166,7 +166,7 @@ function ProgressiveWebApps() {
         <Title order={2} mb="lg">
           <IconCheck
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Por que vale a pena?
         </Title>
@@ -223,7 +223,7 @@ function ProgressiveWebApps() {
         <Title order={2} mb="lg">
           <IconAlertTriangle
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Quando usar?
         </Title>
@@ -255,7 +255,7 @@ function ProgressiveWebApps() {
         <Title order={2} mb="lg">
           <IconCode
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Exemplos Práticos no Front-End
         </Title>
@@ -280,13 +280,13 @@ function ProgressiveWebApps() {
               <CodeExample
                 title={
                   progressiveWebAppsExamples.find(
-                    (e) => e.id === "pwa-ecommerce-offline",
-                  )?.title || ""
+                    e => e.id === 'pwa-ecommerce-offline'
+                  )?.title || ''
                 }
                 code={
                   progressiveWebAppsExamples.find(
-                    (e) => e.id === "pwa-ecommerce-offline",
-                  )?.content || ""
+                    e => e.id === 'pwa-ecommerce-offline'
+                  )?.content || ''
                 }
               />
             </Stack>
@@ -311,13 +311,13 @@ function ProgressiveWebApps() {
               <CodeExample
                 title={
                   progressiveWebAppsExamples.find(
-                    (e) => e.id === "pwa-social-notifications",
-                  )?.title || ""
+                    e => e.id === 'pwa-social-notifications'
+                  )?.title || ''
                 }
                 code={
                   progressiveWebAppsExamples.find(
-                    (e) => e.id === "pwa-social-notifications",
-                  )?.content || ""
+                    e => e.id === 'pwa-social-notifications'
+                  )?.content || ''
                 }
               />
             </Stack>
@@ -341,13 +341,13 @@ function ProgressiveWebApps() {
               <CodeExample
                 title={
                   progressiveWebAppsExamples.find(
-                    (e) => e.id === "pwa-productivity-offline",
-                  )?.title || ""
+                    e => e.id === 'pwa-productivity-offline'
+                  )?.title || ''
                 }
                 code={
                   progressiveWebAppsExamples.find(
-                    (e) => e.id === "pwa-productivity-offline",
-                  )?.content || ""
+                    e => e.id === 'pwa-productivity-offline'
+                  )?.content || ''
                 }
               />
             </Stack>
@@ -360,7 +360,7 @@ function ProgressiveWebApps() {
         <Title order={2} mb="lg">
           <IconAlertTriangle
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Armadilhas & Como Evitar
         </Title>
@@ -386,13 +386,13 @@ function ProgressiveWebApps() {
               <CodeExample
                 title={
                   progressiveWebAppsExamples.find(
-                    (e) => e.id === "pwa-pitfall-cache-strategy",
-                  )?.title || ""
+                    e => e.id === 'pwa-pitfall-cache-strategy'
+                  )?.title || ''
                 }
                 code={
                   progressiveWebAppsExamples.find(
-                    (e) => e.id === "pwa-pitfall-cache-strategy",
-                  )?.content || ""
+                    e => e.id === 'pwa-pitfall-cache-strategy'
+                  )?.content || ''
                 }
               />
             </Stack>
@@ -417,13 +417,13 @@ function ProgressiveWebApps() {
               <CodeExample
                 title={
                   progressiveWebAppsExamples.find(
-                    (e) => e.id === "pwa-pitfall-storage-limits",
-                  )?.title || ""
+                    e => e.id === 'pwa-pitfall-storage-limits'
+                  )?.title || ''
                 }
                 code={
                   progressiveWebAppsExamples.find(
-                    (e) => e.id === "pwa-pitfall-storage-limits",
-                  )?.content || ""
+                    e => e.id === 'pwa-pitfall-storage-limits'
+                  )?.content || ''
                 }
               />
             </Stack>
@@ -448,13 +448,13 @@ function ProgressiveWebApps() {
               <CodeExample
                 title={
                   progressiveWebAppsExamples.find(
-                    (e) => e.id === "pwa-pitfall-offline-ux",
-                  )?.title || ""
+                    e => e.id === 'pwa-pitfall-offline-ux'
+                  )?.title || ''
                 }
                 code={
                   progressiveWebAppsExamples.find(
-                    (e) => e.id === "pwa-pitfall-offline-ux",
-                  )?.content || ""
+                    e => e.id === 'pwa-pitfall-offline-ux'
+                  )?.content || ''
                 }
               />
             </Stack>
@@ -479,13 +479,13 @@ function ProgressiveWebApps() {
               <CodeExample
                 title={
                   progressiveWebAppsExamples.find(
-                    (e) => e.id === "pwa-pitfall-push-notifications",
-                  )?.title || ""
+                    e => e.id === 'pwa-pitfall-push-notifications'
+                  )?.title || ''
                 }
                 code={
                   progressiveWebAppsExamples.find(
-                    (e) => e.id === "pwa-pitfall-push-notifications",
-                  )?.content || ""
+                    e => e.id === 'pwa-pitfall-push-notifications'
+                  )?.content || ''
                 }
               />
             </Stack>
@@ -510,13 +510,13 @@ function ProgressiveWebApps() {
               <CodeExample
                 title={
                   progressiveWebAppsExamples.find(
-                    (e) => e.id === "pwa-pitfall-performance",
-                  )?.title || ""
+                    e => e.id === 'pwa-pitfall-performance'
+                  )?.title || ''
                 }
                 code={
                   progressiveWebAppsExamples.find(
-                    (e) => e.id === "pwa-pitfall-performance",
-                  )?.content || ""
+                    e => e.id === 'pwa-pitfall-performance'
+                  )?.content || ''
                 }
               />
             </Stack>
@@ -529,7 +529,7 @@ function ProgressiveWebApps() {
         <Title order={2} mb="lg">
           <IconBulb
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Referências & Casos Reais
         </Title>
@@ -732,9 +732,9 @@ function ProgressiveWebApps() {
 }
 
 ProgressiveWebApps.metadata = {
-  title: "Progressive Web Apps (PWA)",
+  title: 'Progressive Web Apps (PWA)',
   description:
-    "Web apps que parecem nativas. Offline, push notifications, instalação.",
+    'Web apps que parecem nativas. Offline, push notifications, instalação.',
 };
 
 export default ProgressiveWebApps;

@@ -9,16 +9,16 @@ import {
   Group,
   Card,
   Badge,
-} from "@mantine/core";
+} from '@mantine/core';
 import {
   IconBulb,
   IconAlertTriangle,
   IconCheck,
   IconAtom,
   IconBolt,
-} from "@tabler/icons-react";
-import atomicExamples from "../../utils/code-examples/atomic-design.json";
-import CodeExample from "../../components/CodeExample";
+} from '@tabler/icons-react';
+import atomicExamples from '../../utils/code-examples/atomic-design.json';
+import CodeExample from '../../components/CodeExample';
 
 function AtomicDesign() {
   // atomicExamples já vem do JSON
@@ -51,7 +51,7 @@ function AtomicDesign() {
             </div>
           </Group>
           <Text>
-            Atomic Design é sobre uma coisa só:{" "}
+            Atomic Design é sobre uma coisa só:{' '}
             <strong>componentes organizados</strong>.
           </Text>
           <Text>
@@ -60,7 +60,7 @@ function AtomicDesign() {
             páginas. Cada nível é construído com os níveis anteriores.
           </Text>
           <Text>
-            A regra é simples:{" "}
+            A regra é simples:{' '}
             <em>
               componentes pequenos se combinam para formar componentes maiores
             </em>
@@ -74,7 +74,7 @@ function AtomicDesign() {
         <Title order={2} mb="lg">
           <IconBolt
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Os 5 Níveis
         </Title>
@@ -157,7 +157,7 @@ function AtomicDesign() {
         {atomicExamples.map((ex, idx) => (
           <CodeExample
             key={ex.title || idx}
-            title={ex.title || ""}
+            title={ex.title || ''}
             description={ex.description || undefined}
             code={{ content: ex.code }}
           />
@@ -179,7 +179,7 @@ function AtomicDesign() {
         <Title order={2} mb="lg">
           <IconCheck
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Por que vale a pena?
         </Title>
@@ -237,7 +237,7 @@ function AtomicDesign() {
         <Title order={2} mb="lg">
           <IconAlertTriangle
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Quando usar?
         </Title>
@@ -269,7 +269,7 @@ function AtomicDesign() {
         <Title order={2} mb="lg">
           <IconAlertTriangle
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Armadilhas & Como Evitar
         </Title>
@@ -372,7 +372,7 @@ function AtomicDesign() {
         <Title order={2} mb="lg">
           <IconBulb
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Referências & Casos Reais
         </Title>
@@ -441,7 +441,7 @@ function AtomicDesign() {
           </Group>
 
           <Text>
-            Atomic Design é sobre uma coisa só:{" "}
+            Atomic Design é sobre uma coisa só:{' '}
             <strong>componentes organizados</strong>. Átomos → moléculas →
             organismos → templates → páginas. Use quando design system e
             reutilização importam.
@@ -462,9 +462,9 @@ function AtomicDesign() {
 }
 
 AtomicDesign.metadata = {
-  title: "Atomic Design",
+  title: 'Atomic Design',
   description:
-    "Átomos, moléculas, organismos, templates, páginas. Design system estruturado.",
+    'Átomos, moléculas, organismos, templates, páginas. Design system estruturado.',
 };
 
 export default AtomicDesign;

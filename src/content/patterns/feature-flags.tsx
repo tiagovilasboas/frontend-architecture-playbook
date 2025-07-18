@@ -9,7 +9,7 @@ import {
   Group,
   Card,
   Badge,
-} from "@mantine/core";
+} from '@mantine/core';
 import {
   IconBulb,
   IconAlertTriangle,
@@ -17,9 +17,9 @@ import {
   IconCode,
   IconSettings2,
   IconSettings,
-} from "@tabler/icons-react";
-import CodeExample from "../../components/CodeExample";
-import featureFlagsExamples from "../../utils/code-examples/feature-flags.json";
+} from '@tabler/icons-react';
+import CodeExample from '../../components/CodeExample';
+import featureFlagsExamples from '../../utils/code-examples/feature-flags.json';
 
 function FeatureFlags() {
   return (
@@ -52,7 +52,7 @@ function FeatureFlags() {
           </Group>
 
           <Text>
-            Feature Flags é sobre uma coisa só:{" "}
+            Feature Flags é sobre uma coisa só:{' '}
             <strong>controlar funcionalidades sem fazer deploy</strong>.
           </Text>
 
@@ -64,7 +64,7 @@ function FeatureFlags() {
           </Text>
 
           <Text>
-            A regra é simples:{" "}
+            A regra é simples:{' '}
             <em>código sempre no ar, funcionalidade controlada por flag</em>.
             Deploy seguro, rollback instantâneo, testes em produção.
           </Text>
@@ -76,7 +76,7 @@ function FeatureFlags() {
         <Title order={2} mb="lg">
           <IconSettings
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Os 4 Conceitos Principais
         </Title>
@@ -94,19 +94,19 @@ function FeatureFlags() {
                   não.
                 </Text>
                 <Text size="xs" c="blue" mb="xs">
-                  Veja o exemplo real em{" "}
+                  Veja o exemplo real em{' '}
                   <b>/examples/feature-flags/use-feature-flag.ts</b>
                 </Text>
                 <CodeExample
                   title={
                     featureFlagsExamples.find(
-                      (e) => e.id === "feature-flags-use-flag",
-                    )?.title || ""
+                      e => e.id === 'feature-flags-use-flag'
+                    )?.title || ''
                   }
                   code={
                     featureFlagsExamples.find(
-                      (e) => e.id === "feature-flags-use-flag",
-                    )?.content || ""
+                      e => e.id === 'feature-flags-use-flag'
+                    )?.content || ''
                   }
                 />
               </div>
@@ -126,13 +126,13 @@ function FeatureFlags() {
                 <CodeExample
                   title={
                     featureFlagsExamples.find(
-                      (e) => e.id === "feature-flags-provider",
-                    )?.title || ""
+                      e => e.id === 'feature-flags-provider'
+                    )?.title || ''
                   }
                   code={
                     featureFlagsExamples.find(
-                      (e) => e.id === "feature-flags-provider",
-                    )?.content || ""
+                      e => e.id === 'feature-flags-provider'
+                    )?.content || ''
                   }
                 />
               </div>
@@ -153,13 +153,13 @@ function FeatureFlags() {
                 <CodeExample
                   title={
                     featureFlagsExamples.find(
-                      (e) => e.id === "feature-flags-targeting",
-                    )?.title || ""
+                      e => e.id === 'feature-flags-targeting'
+                    )?.title || ''
                   }
                   code={
                     featureFlagsExamples.find(
-                      (e) => e.id === "feature-flags-targeting",
-                    )?.content || ""
+                      e => e.id === 'feature-flags-targeting'
+                    )?.content || ''
                   }
                 />
               </div>
@@ -179,13 +179,13 @@ function FeatureFlags() {
                 <CodeExample
                   title={
                     featureFlagsExamples.find(
-                      (e) => e.id === "feature-flags-rollback",
-                    )?.title || ""
+                      e => e.id === 'feature-flags-rollback'
+                    )?.title || ''
                   }
                   code={
                     featureFlagsExamples.find(
-                      (e) => e.id === "feature-flags-rollback",
-                    )?.content || ""
+                      e => e.id === 'feature-flags-rollback'
+                    )?.content || ''
                   }
                 />
               </div>
@@ -199,7 +199,7 @@ function FeatureFlags() {
         <Title order={2} mb="lg">
           <IconCheck
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Por que vale a pena?
         </Title>
@@ -257,7 +257,7 @@ function FeatureFlags() {
         <Title order={2} mb="lg">
           <IconBulb
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Quando usar?
         </Title>
@@ -295,13 +295,13 @@ function FeatureFlags() {
         <Title order={2} mb="lg">
           <IconCode
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Exemplos Práticos no Front-End
         </Title>
 
         <Stack gap="xl">
-          {featureFlagsExamples.map((example) => (
+          {featureFlagsExamples.map(example => (
             <CodeExample
               key={example.id}
               title={example.title}
@@ -317,7 +317,7 @@ function FeatureFlags() {
         <Title order={2} mb="lg">
           <IconAlertTriangle
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Armadilhas e Como Evitar
         </Title>
@@ -344,18 +344,18 @@ function FeatureFlags() {
                 <CodeExample
                   title={
                     featureFlagsExamples.find(
-                      (e) => e.id === "feature-flags-pitfall-flag-hell",
-                    )?.title || ""
+                      e => e.id === 'feature-flags-pitfall-flag-hell'
+                    )?.title || ''
                   }
                   description={
                     featureFlagsExamples.find(
-                      (e) => e.id === "feature-flags-pitfall-flag-hell",
-                    )?.description || ""
+                      e => e.id === 'feature-flags-pitfall-flag-hell'
+                    )?.description || ''
                   }
                   code={
                     featureFlagsExamples.find(
-                      (e) => e.id === "feature-flags-pitfall-flag-hell",
-                    )?.content || ""
+                      e => e.id === 'feature-flags-pitfall-flag-hell'
+                    )?.content || ''
                   }
                 />
               </Card>
@@ -375,18 +375,18 @@ function FeatureFlags() {
                 <CodeExample
                   title={
                     featureFlagsExamples.find(
-                      (e) => e.id === "feature-flags-pitfall-dead-code",
-                    )?.title || ""
+                      e => e.id === 'feature-flags-pitfall-dead-code'
+                    )?.title || ''
                   }
                   description={
                     featureFlagsExamples.find(
-                      (e) => e.id === "feature-flags-pitfall-dead-code",
-                    )?.description || ""
+                      e => e.id === 'feature-flags-pitfall-dead-code'
+                    )?.description || ''
                   }
                   code={
                     featureFlagsExamples.find(
-                      (e) => e.id === "feature-flags-pitfall-dead-code",
-                    )?.content || ""
+                      e => e.id === 'feature-flags-pitfall-dead-code'
+                    )?.content || ''
                   }
                 />
               </Card>
@@ -406,18 +406,18 @@ function FeatureFlags() {
                 <CodeExample
                   title={
                     featureFlagsExamples.find(
-                      (e) => e.id === "feature-flags-pitfall-many-calls",
-                    )?.title || ""
+                      e => e.id === 'feature-flags-pitfall-many-calls'
+                    )?.title || ''
                   }
                   description={
                     featureFlagsExamples.find(
-                      (e) => e.id === "feature-flags-pitfall-many-calls",
-                    )?.description || ""
+                      e => e.id === 'feature-flags-pitfall-many-calls'
+                    )?.description || ''
                   }
                   code={
                     featureFlagsExamples.find(
-                      (e) => e.id === "feature-flags-pitfall-many-calls",
-                    )?.content || ""
+                      e => e.id === 'feature-flags-pitfall-many-calls'
+                    )?.content || ''
                   }
                 />
               </Card>
@@ -437,18 +437,18 @@ function FeatureFlags() {
                 <CodeExample
                   title={
                     featureFlagsExamples.find(
-                      (e) => e.id === "feature-flags-pitfall-complex-tests",
-                    )?.title || ""
+                      e => e.id === 'feature-flags-pitfall-complex-tests'
+                    )?.title || ''
                   }
                   description={
                     featureFlagsExamples.find(
-                      (e) => e.id === "feature-flags-pitfall-complex-tests",
-                    )?.description || ""
+                      e => e.id === 'feature-flags-pitfall-complex-tests'
+                    )?.description || ''
                   }
                   code={
                     featureFlagsExamples.find(
-                      (e) => e.id === "feature-flags-pitfall-complex-tests",
-                    )?.content || ""
+                      e => e.id === 'feature-flags-pitfall-complex-tests'
+                    )?.content || ''
                   }
                 />
               </Card>
@@ -462,7 +462,7 @@ function FeatureFlags() {
         <Title order={2} mb="lg">
           <IconBulb
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Referências & Casos Reais
         </Title>
@@ -567,9 +567,9 @@ function FeatureFlags() {
 }
 
 FeatureFlags.metadata = {
-  title: "Feature Flags",
+  title: 'Feature Flags',
   description:
-    "Controle dinâmico de funcionalidades. Deploy seguro, testes em produção, rollback instantâneo.",
+    'Controle dinâmico de funcionalidades. Deploy seguro, testes em produção, rollback instantâneo.',
 };
 
 export default FeatureFlags;

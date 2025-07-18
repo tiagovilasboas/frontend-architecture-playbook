@@ -9,7 +9,7 @@ import {
   Group,
   Card,
   Badge,
-} from "@mantine/core";
+} from '@mantine/core';
 import {
   IconBulb,
   IconAlertTriangle,
@@ -17,9 +17,9 @@ import {
   IconCode,
   IconBolt,
   IconCloud,
-} from "@tabler/icons-react";
-import CodeExample from "../../components/CodeExample";
-import jamstackExamples from "../../utils/code-examples/jamstack.json";
+} from '@tabler/icons-react';
+import CodeExample from '../../components/CodeExample';
+import jamstackExamples from '../../utils/code-examples/jamstack.json';
 
 function JAMstack() {
   return (
@@ -51,7 +51,7 @@ function JAMstack() {
           </Group>
 
           <Text>
-            JAMstack é sobre uma coisa só:{" "}
+            JAMstack é sobre uma coisa só:{' '}
             <strong>separar front-end de back-end</strong>.
           </Text>
 
@@ -62,7 +62,7 @@ function JAMstack() {
           </Text>
 
           <Text>
-            A regra é simples:{" "}
+            A regra é simples:{' '}
             <em>
               pre-renderiza tudo, serve estático, JavaScript adiciona
               interatividade
@@ -77,7 +77,7 @@ function JAMstack() {
         <Title order={2} mb="lg">
           <IconCloud
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Os 3 Pilares
         </Title>
@@ -97,13 +97,13 @@ function JAMstack() {
                 <CodeExample
                   title={
                     jamstackExamples.find(
-                      (e) => e.id === "jamstack-javascript-client",
-                    )?.title || ""
+                      e => e.id === 'jamstack-javascript-client'
+                    )?.title || ''
                   }
                   code={
                     jamstackExamples.find(
-                      (e) => e.id === "jamstack-javascript-client",
-                    )?.content || ""
+                      e => e.id === 'jamstack-javascript-client'
+                    )?.content || ''
                   }
                 />
               </div>
@@ -123,12 +123,12 @@ function JAMstack() {
                 </Text>
                 <CodeExample
                   title={
-                    jamstackExamples.find((e) => e.id === "jamstack-apis")
-                      ?.title || ""
+                    jamstackExamples.find(e => e.id === 'jamstack-apis')
+                      ?.title || ''
                   }
                   code={
-                    jamstackExamples.find((e) => e.id === "jamstack-apis")
-                      ?.content || ""
+                    jamstackExamples.find(e => e.id === 'jamstack-apis')
+                      ?.content || ''
                   }
                 />
               </div>
@@ -149,13 +149,13 @@ function JAMstack() {
                 <CodeExample
                   title={
                     jamstackExamples.find(
-                      (e) => e.id === "jamstack-html-prerendered",
-                    )?.title || ""
+                      e => e.id === 'jamstack-html-prerendered'
+                    )?.title || ''
                   }
                   code={
                     jamstackExamples.find(
-                      (e) => e.id === "jamstack-html-prerendered",
-                    )?.content || ""
+                      e => e.id === 'jamstack-html-prerendered'
+                    )?.content || ''
                   }
                 />
               </div>
@@ -179,7 +179,7 @@ function JAMstack() {
         <Title order={2} mb="lg">
           <IconCheck
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Por que vale a pena?
         </Title>
@@ -237,7 +237,7 @@ function JAMstack() {
         <Title order={2} mb="lg">
           <IconAlertTriangle
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Quando usar?
         </Title>
@@ -269,7 +269,7 @@ function JAMstack() {
         <Title order={2} mb="lg">
           <IconCode
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Exemplos Práticos no Front-End
         </Title>
@@ -278,22 +278,22 @@ function JAMstack() {
           {jamstackExamples.slice(8).map((ex, idx) => (
             <Paper withBorder p="xl" radius="md" key={ex.title}>
               <Title order={3} mb="md">
-                {["📝", "🛒", "🎨"][idx]} {ex.title.split(" - ")[1]}
+                {['📝', '🛒', '🎨'][idx]} {ex.title.split(' - ')[1]}
               </Title>
 
               <Stack gap="md">
                 <Text>
                   <strong>Cenário:</strong> {ex.description}
                   <br />
-                  <strong>Problema:</strong>{" "}
-                  {ex.description.includes("WordPress")
-                    ? "Servidor lento, SEO ruim, custo alto de hosting."
-                    : ex.description.includes("E-commerce")
-                      ? "Servidor lento, abandono de carrinho, SEO ruim."
-                      : "Complexidade desnecessária, custo alto, manutenção difícil."}
+                  <strong>Problema:</strong>{' '}
+                  {ex.description.includes('WordPress')
+                    ? 'Servidor lento, SEO ruim, custo alto de hosting.'
+                    : ex.description.includes('E-commerce')
+                      ? 'Servidor lento, abandono de carrinho, SEO ruim.'
+                      : 'Complexidade desnecessária, custo alto, manutenção difícil.'}
                 </Text>
 
-                <CodeExample title={ex.title} code={ex.code || ""} />
+                <CodeExample title={ex.title} code={ex.code || ''} />
               </Stack>
             </Paper>
           ))}
@@ -305,7 +305,7 @@ function JAMstack() {
         <Title order={2} mb="lg">
           <IconAlertTriangle
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Armadilhas & Como Evitar
         </Title>
@@ -330,13 +330,13 @@ function JAMstack() {
               <CodeExample
                 title={
                   jamstackExamples.find(
-                    (e) => e.id === "jamstack-pitfall-wrong-use",
-                  )?.title || ""
+                    e => e.id === 'jamstack-pitfall-wrong-use'
+                  )?.title || ''
                 }
                 code={
                   jamstackExamples.find(
-                    (e) => e.id === "jamstack-pitfall-wrong-use",
-                  )?.content || ""
+                    e => e.id === 'jamstack-pitfall-wrong-use'
+                  )?.content || ''
                 }
               />
             </Stack>
@@ -361,13 +361,13 @@ function JAMstack() {
               <CodeExample
                 title={
                   jamstackExamples.find(
-                    (e) => e.id === "jamstack-pitfall-slow-build",
-                  )?.title || ""
+                    e => e.id === 'jamstack-pitfall-slow-build'
+                  )?.title || ''
                 }
                 code={
                   jamstackExamples.find(
-                    (e) => e.id === "jamstack-pitfall-slow-build",
-                  )?.content || ""
+                    e => e.id === 'jamstack-pitfall-slow-build'
+                  )?.content || ''
                 }
               />
             </Stack>
@@ -392,13 +392,13 @@ function JAMstack() {
               <CodeExample
                 title={
                   jamstackExamples.find(
-                    (e) => e.id === "jamstack-pitfall-dynamic-content",
-                  )?.title || ""
+                    e => e.id === 'jamstack-pitfall-dynamic-content'
+                  )?.title || ''
                 }
                 code={
                   jamstackExamples.find(
-                    (e) => e.id === "jamstack-pitfall-dynamic-content",
-                  )?.content || ""
+                    e => e.id === 'jamstack-pitfall-dynamic-content'
+                  )?.content || ''
                 }
               />
             </Stack>
@@ -423,13 +423,13 @@ function JAMstack() {
               <CodeExample
                 title={
                   jamstackExamples.find(
-                    (e) => e.id === "jamstack-pitfall-seo-issues",
-                  )?.title || ""
+                    e => e.id === 'jamstack-pitfall-seo-issues'
+                  )?.title || ''
                 }
                 code={
                   jamstackExamples.find(
-                    (e) => e.id === "jamstack-pitfall-seo-issues",
-                  )?.content || ""
+                    e => e.id === 'jamstack-pitfall-seo-issues'
+                  )?.content || ''
                 }
               />
             </Stack>
@@ -454,13 +454,13 @@ function JAMstack() {
               <CodeExample
                 title={
                   jamstackExamples.find(
-                    (e) => e.id === "jamstack-pitfall-api-complexity",
-                  )?.title || ""
+                    e => e.id === 'jamstack-pitfall-api-complexity'
+                  )?.title || ''
                 }
                 code={
                   jamstackExamples.find(
-                    (e) => e.id === "jamstack-pitfall-api-complexity",
-                  )?.content || ""
+                    e => e.id === 'jamstack-pitfall-api-complexity'
+                  )?.content || ''
                 }
               />
             </Stack>
@@ -473,7 +473,7 @@ function JAMstack() {
         <Title order={2} mb="lg">
           <IconBulb
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Referências & Casos Reais
         </Title>
@@ -571,7 +571,7 @@ function JAMstack() {
           </Group>
 
           <Text>
-            JAMstack é sobre uma coisa só:{" "}
+            JAMstack é sobre uma coisa só:{' '}
             <strong>separar front-end de back-end</strong>. Sites estáticos,
             performance máxima, segurança de sobra. Use quando performance e
             simplicidade importam.
@@ -591,9 +591,9 @@ function JAMstack() {
 }
 
 JAMstack.metadata = {
-  title: "JAMstack",
+  title: 'JAMstack',
   description:
-    "JavaScript, APIs, Markup. Sites estáticos com performance máxima e segurança de sobra.",
+    'JavaScript, APIs, Markup. Sites estáticos com performance máxima e segurança de sobra.',
 };
 
 export default JAMstack;

@@ -9,16 +9,16 @@ import {
   Group,
   Card,
   Badge,
-} from "@mantine/core";
+} from '@mantine/core';
 import {
   IconBulb,
   IconAlertTriangle,
   IconCheck,
   IconCode,
   IconTarget,
-} from "@tabler/icons-react";
-import CodeExample from "../../components/CodeExample";
-import codeExamples from "../../utils/code-examples/srp.json";
+} from '@tabler/icons-react';
+import CodeExample from '../../components/CodeExample';
+import codeExamples from '../../utils/code-examples/srp.json';
 
 function SRP() {
   return (
@@ -51,7 +51,7 @@ function SRP() {
 
           <Text>
             SRP significa <strong>"Single Responsibility Principle"</strong>. É
-            sobre cada classe, função ou módulo ter apenas{" "}
+            sobre cada classe, função ou módulo ter apenas{' '}
             <em>uma responsabilidade</em>.
           </Text>
 
@@ -62,7 +62,7 @@ function SRP() {
           </Text>
 
           <Text>
-            A regra é clara:{" "}
+            A regra é clara:{' '}
             <em>uma classe deve ter apenas um motivo para mudar</em>. Se há
             múltiplos motivos, quebre em classes menores.
           </Text>
@@ -74,7 +74,7 @@ function SRP() {
         <Title order={2} mb="lg">
           <IconCode
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Exemplos Práticos
         </Title>
@@ -86,17 +86,17 @@ function SRP() {
               p="md"
               key={ex.title}
               w="100%"
-              style={{ minWidth: 0, width: "100%" }}
+              style={{ minWidth: 0, width: '100%' }}
             >
-              <Group w="100%" style={{ minWidth: 0, width: "100%" }}>
+              <Group w="100%" style={{ minWidth: 0, width: '100%' }}>
                 <Badge
                   size="lg"
                   variant="light"
-                  color={["red", "green"][idx] || "gray"}
+                  color={['red', 'green'][idx] || 'gray'}
                 >
-                  {idx === 0 ? "❌" : "✅"}
+                  {idx === 0 ? '❌' : '✅'}
                 </Badge>
-                <div style={{ flex: 1, width: "100%" }}>
+                <div style={{ flex: 1, width: '100%' }}>
                   <Title order={4}>{ex.title}</Title>
                   <Text size="sm" c="dimmed">
                     {ex.description}
@@ -114,7 +114,7 @@ function SRP() {
         <Title order={2} mb="lg">
           <IconCheck
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Por que vale a pena?
         </Title>
@@ -172,7 +172,7 @@ function SRP() {
         <Title order={2} mb="lg">
           <IconBulb
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Quando aplicar?
         </Title>
@@ -215,19 +215,19 @@ function SRP() {
         <Title order={2} mb="lg">
           <IconAlertTriangle
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Armadilhas Comuns
         </Title>
 
         <Stack gap="md">
-          {codeExamples.slice(2).map((ex) => (
+          {codeExamples.slice(2).map(ex => (
             <Card
               withBorder
               p="md"
               key={ex.title}
               w="100%"
-              style={{ minWidth: 0, width: "100%" }}
+              style={{ minWidth: 0, width: '100%' }}
             >
               <Title order={4} mb="sm">
                 {ex.title}
@@ -262,9 +262,9 @@ function SRP() {
 }
 
 SRP.metadata = {
-  title: "Single Responsibility Principle",
+  title: 'Single Responsibility Principle',
   description:
-    "Uma classe, uma responsabilidade. Cada módulo deve ter apenas um motivo para mudar.",
+    'Uma classe, uma responsabilidade. Cada módulo deve ter apenas um motivo para mudar.',
 };
 
 export default SRP;

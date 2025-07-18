@@ -10,14 +10,14 @@ import {
   Alert,
   List,
   Code,
-} from "@mantine/core";
+} from '@mantine/core';
 import {
   IconCheck,
   IconAlertTriangle,
   IconBulb,
   IconRocket,
   IconNetworkOff,
-} from "@tabler/icons-react";
+} from '@tabler/icons-react';
 
 export default function MicroservicesFrontendArchitecture() {
   return (
@@ -49,7 +49,7 @@ export default function MicroservicesFrontendArchitecture() {
           independentes, tecnologias diferentes.
           <Text span fw={700} c="blue">
             Conway's Law
-          </Text>{" "}
+          </Text>{' '}
           aplicado conscientemente.
         </Text>
 
@@ -603,7 +603,7 @@ eventBus.on('user:logged-out', () => {
       {/* Resumo */}
       <Paper withBorder p="xl" radius="md">
         <Alert color="yellow" icon={<IconBulb size={16} />} radius="md">
-          <Text fw={600} size="lg" mb="md" style={{ fontStyle: "italic" }}>
+          <Text fw={600} size="lg" mb="md" style={{ fontStyle: 'italic' }}>
             "Microservices Frontend: Conway's Law aplicado conscientemente.
             Organização define arquitetura."
           </Text>
@@ -642,7 +642,7 @@ eventBus.on('user:logged-out', () => {
 }
 
 MicroservicesFrontendArchitecture.metadata = {
-  title: "Microservices Frontend",
+  title: 'Microservices Frontend',
   description:
-    "Arquitetura distribuída onde cada domínio tem seu próprio frontend. Times autônomos, deploys independentes, tech diversity.",
+    'Arquitetura distribuída onde cada domínio tem seu próprio frontend. Times autônomos, deploys independentes, tech diversity.',
 };

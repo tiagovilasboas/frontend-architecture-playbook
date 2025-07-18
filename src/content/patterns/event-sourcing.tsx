@@ -10,14 +10,14 @@ import {
   Alert,
   List,
   Code,
-} from "@mantine/core";
+} from '@mantine/core';
 import {
   IconCheck,
   IconAlertTriangle,
   IconBulb,
   IconRocket,
   IconHistory,
-} from "@tabler/icons-react";
+} from '@tabler/icons-react';
 
 export default function EventSourcingArchitecture() {
   return (
@@ -42,19 +42,19 @@ export default function EventSourcingArchitecture() {
       {/* O que é? */}
       <Paper withBorder p="xl" radius="md">
         <Text size="lg" mb="md">
-          Em vez de salvar{" "}
+          Em vez de salvar{' '}
           <Text span fw={700} c="grape">
             estado atual
           </Text>
           , salva
           <Text span fw={700} c="blue">
-            {" "}
+            {' '}
             sequência de eventos
-          </Text>{" "}
-          que levaram até ele. Quer saber como chegou aqui? Replay dos eventos.{" "}
+          </Text>{' '}
+          que levaram até ele. Quer saber como chegou aqui? Replay dos eventos.{' '}
           <Text span fw={700} c="green">
             Time travel debugging
-          </Text>{" "}
+          </Text>{' '}
           de graça.
         </Text>
 
@@ -530,7 +530,7 @@ function useEventSourcing(aggregateId: string) {
       {/* Resumo */}
       <Paper withBorder p="xl" radius="md">
         <Alert color="grape" icon={<IconBulb size={16} />} radius="md">
-          <Text fw={600} size="lg" mb="md" style={{ fontStyle: "italic" }}>
+          <Text fw={600} size="lg" mb="md" style={{ fontStyle: 'italic' }}>
             "Event Sourcing: cada ação conta uma história. E histórias não
             mentem."
           </Text>
@@ -568,7 +568,7 @@ function useEventSourcing(aggregateId: string) {
 }
 
 EventSourcingArchitecture.metadata = {
-  title: "Event Sourcing Frontend",
+  title: 'Event Sourcing Frontend',
   description:
-    "Arquitetura baseada em eventos para auditoria completa, time travel debugging e undo/redo natural.",
+    'Arquitetura baseada em eventos para auditoria completa, time travel debugging e undo/redo natural.',
 };

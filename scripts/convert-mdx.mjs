@@ -11,9 +11,13 @@ const ROOT = path.resolve(__dirname, '..');
 const CONTENT_DIR = path.join(ROOT, 'src', 'content');
 
 function walk(dir) {
-  return fs.readdirSync(dir).flatMap((name) => {
+  return fs.readdirSync(dir).flatMap(name => {
     const file = path.join(dir, name);
-    return fs.statSync(file).isDirectory() ? walk(file) : file.endsWith('.mdx') ? [file] : [];
+    return fs.statSync(file).isDirectory()
+      ? walk(file)
+      : file.endsWith('.mdx')
+        ? [file]
+        : [];
   });
 }
 
@@ -56,4 +60,4 @@ export default function DocWrapper() {
   console.log('Converted', mdxFile, '->', tsxPath);
 }
 
-walk(CONTENT_DIR).forEach(convertFile); 
+walk(CONTENT_DIR).forEach(convertFile);

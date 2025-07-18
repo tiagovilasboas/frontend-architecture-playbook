@@ -11,7 +11,7 @@ import {
   Badge,
   Divider,
   SimpleGrid,
-} from "@mantine/core";
+} from '@mantine/core';
 import {
   IconBulb,
   IconAlertTriangle,
@@ -22,7 +22,7 @@ import {
   IconArrowUp,
   IconX,
   IconShield,
-} from "@tabler/icons-react";
+} from '@tabler/icons-react';
 
 export default function DependencyRuleGuide() {
   return (
@@ -41,10 +41,10 @@ export default function DependencyRuleGuide() {
             mb="md"
             style={{
               background:
-                "linear-gradient(135deg, var(--mantine-color-brand-6) 0%, var(--mantine-color-accent-6) 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
+                'linear-gradient(135deg, var(--mantine-color-brand-6) 0%, var(--mantine-color-accent-6) 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
             }}
           >
             Dependency Rule
@@ -53,7 +53,7 @@ export default function DependencyRuleGuide() {
             A regra mais importante de qualquer arquitetura. Se você ignorar
             isso,
             <strong>
-              {" "}
+              {' '}
               nenhuma arquitetura consegue salvar seu projeto do caos.
             </strong>
           </Text>
@@ -67,12 +67,12 @@ export default function DependencyRuleGuide() {
             <Title order={2} mb="sm">
               <IconBulb
                 size={32}
-                style={{ verticalAlign: "middle", marginRight: "8px" }}
+                style={{ verticalAlign: 'middle', marginRight: '8px' }}
               />
               O que é a Dependency Rule?
             </Title>
             <Text size="lg" c="dimmed">
-              A Dependency Rule é simples:{" "}
+              A Dependency Rule é simples:{' '}
               <strong>dependências só apontam para dentro</strong>. Camadas
               externas podem depender das internas, mas nunca o contrário.
             </Text>
@@ -140,7 +140,7 @@ export default function DependencyRuleGuide() {
             <Title order={2} mb="sm">
               <IconAlertTriangle
                 size={32}
-                style={{ verticalAlign: "middle", marginRight: "8px" }}
+                style={{ verticalAlign: 'middle', marginRight: '8px' }}
               />
               Por que a Dependency Rule é Crucial?
             </Title>
@@ -212,7 +212,7 @@ export default function DependencyRuleGuide() {
               <Text size="md" fw={500}>
                 <strong>Sem Dependency Rule:</strong> Seu projeto vira uma bola
                 de neve. Mude uma coisa, quebre tudo. Teste uma coisa, teste
-                tudo. Refatore uma coisa, refatore tudo.{" "}
+                tudo. Refatore uma coisa, refatore tudo.{' '}
                 <strong>Isso vira um pesadelo de manutenção.</strong>
               </Text>
             </Alert>
@@ -227,7 +227,7 @@ export default function DependencyRuleGuide() {
             <Title order={2} mb="sm">
               <IconCode
                 size={32}
-                style={{ verticalAlign: "middle", marginRight: "8px" }}
+                style={{ verticalAlign: 'middle', marginRight: '8px' }}
               />
               Exemplos Práticos
             </Title>
@@ -241,15 +241,15 @@ export default function DependencyRuleGuide() {
                   <Text size="sm" fw={500}>
                     UI Layer (React Components)
                   </Text>
-                  <IconArrowDown size={16} style={{ marginLeft: "8px" }} />
+                  <IconArrowDown size={16} style={{ marginLeft: '8px' }} />
                   <Text size="sm" fw={500}>
                     Service Layer (Business Logic)
                   </Text>
-                  <IconArrowDown size={16} style={{ marginLeft: "8px" }} />
+                  <IconArrowDown size={16} style={{ marginLeft: '8px' }} />
                   <Text size="sm" fw={500}>
                     Repository Layer (Data Access)
                   </Text>
-                  <IconArrowDown size={16} style={{ marginLeft: "8px" }} />
+                  <IconArrowDown size={16} style={{ marginLeft: '8px' }} />
                   <Text size="sm" fw={500}>
                     Domain Layer (Entities)
                   </Text>
@@ -272,15 +272,15 @@ export default function DependencyRuleGuide() {
                   <Text size="sm" fw={500}>
                     UI Layer (React Components)
                   </Text>
-                  <IconArrowDown size={16} style={{ marginLeft: "8px" }} />
+                  <IconArrowDown size={16} style={{ marginLeft: '8px' }} />
                   <Text size="sm" fw={500}>
                     Service Layer (Business Logic)
                   </Text>
-                  <IconArrowUp size={16} style={{ marginLeft: "8px" }} />
+                  <IconArrowUp size={16} style={{ marginLeft: '8px' }} />
                   <Text size="sm" fw={500}>
                     Repository Layer (Data Access)
                   </Text>
-                  <IconArrowUp size={16} style={{ marginLeft: "8px" }} />
+                  <IconArrowUp size={16} style={{ marginLeft: '8px' }} />
                   <Text size="sm" fw={500}>
                     Domain Layer (Entities)
                   </Text>
@@ -376,7 +376,7 @@ function UserRepository() {
             <Title order={2} mb="sm">
               <IconAlertTriangle
                 size={32}
-                style={{ verticalAlign: "middle", marginRight: "8px" }}
+                style={{ verticalAlign: 'middle', marginRight: '8px' }}
               />
               Armadilhas Comuns
             </Title>
@@ -502,7 +502,7 @@ class UserService {
             <Title order={2} mb="sm">
               <IconCheck
                 size={32}
-                style={{ verticalAlign: "middle", marginRight: "8px" }}
+                style={{ verticalAlign: 'middle', marginRight: '8px' }}
               />
               Como Aplicar a Dependency Rule
             </Title>
@@ -575,7 +575,7 @@ class UserService {
             <Title order={2} mb="sm">
               <IconShield
                 size={32}
-                style={{ verticalAlign: "middle", marginRight: "8px" }}
+                style={{ verticalAlign: 'middle', marginRight: '8px' }}
               />
               Benefícios de Seguir a Dependency Rule
             </Title>
@@ -657,7 +657,7 @@ class UserService {
             <Title order={2} mb="sm">
               <IconBulb
                 size={32}
-                style={{ verticalAlign: "middle", marginRight: "8px" }}
+                style={{ verticalAlign: 'middle', marginRight: '8px' }}
               />
               Resumo
             </Title>
@@ -716,8 +716,8 @@ class UserService {
 }
 
 DependencyRuleGuide.metadata = {
-  title: "Dependency Rule",
+  title: 'Dependency Rule',
   description:
-    "A regra mais importante de qualquer arquitetura. Se você quebrar essa, nenhuma arquitetura salva seu projeto do caos.",
-  category: "guides",
+    'A regra mais importante de qualquer arquitetura. Se você quebrar essa, nenhuma arquitetura salva seu projeto do caos.',
+  category: 'guides',
 };

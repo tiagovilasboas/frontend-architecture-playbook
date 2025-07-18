@@ -10,14 +10,14 @@ import {
   Alert,
   List,
   Code,
-} from "@mantine/core";
+} from '@mantine/core';
 import {
   IconCheck,
   IconAlertTriangle,
   IconBulb,
   IconRocket,
   IconHexagon,
-} from "@tabler/icons-react";
+} from '@tabler/icons-react';
 
 export default function HexagonalArchitecture() {
   return (
@@ -47,10 +47,10 @@ export default function HexagonalArchitecture() {
           </Text>
           , conectado ao mundo externo através de
           <Text span fw={700} c="blue">
-            {" "}
+            {' '}
             ports (interfaces)
-          </Text>{" "}
-          e{" "}
+          </Text>{' '}
+          e{' '}
           <Text span fw={700} c="green">
             adapters (implementações)
           </Text>
@@ -370,7 +370,7 @@ const orderService = new OrderService(orderRepo, paymentService, emailService)`}
       {/* Resumo */}
       <Paper withBorder p="xl" radius="md">
         <Alert color="indigo" icon={<IconBulb size={16} />} radius="md">
-          <Text fw={600} size="lg" mb="md" style={{ fontStyle: "italic" }}>
+          <Text fw={600} size="lg" mb="md" style={{ fontStyle: 'italic' }}>
             "Hexagonal: business logic no centro, resto é detalhe substituível."
           </Text>
           <List spacing="sm">
@@ -409,7 +409,7 @@ const orderService = new OrderService(orderRepo, paymentService, emailService)`}
 }
 
 HexagonalArchitecture.metadata = {
-  title: "Hexagonal Architecture",
+  title: 'Hexagonal Architecture',
   description:
-    "Ports & Adapters - isola business logic no centro, conecta ao mundo externo via interfaces. Clean Architecture mais flexível.",
+    'Ports & Adapters - isola business logic no centro, conecta ao mundo externo via interfaces. Clean Architecture mais flexível.',
 };

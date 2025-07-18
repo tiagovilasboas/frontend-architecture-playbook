@@ -1,5 +1,5 @@
-import { Card } from "@mantine/core";
-import type { CardProps } from "@mantine/core";
+import { Card } from '@mantine/core';
+import type { CardProps } from '@mantine/core';
 
 interface SectionCardProps extends CardProps {
   children: React.ReactNode;

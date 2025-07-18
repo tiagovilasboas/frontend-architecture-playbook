@@ -21,4 +21,4 @@ export function Button({ variant = 'primary', ...props }: ButtonProps) {
       {...props}
     />
   );
-} 
+}

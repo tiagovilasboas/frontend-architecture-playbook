@@ -1,6 +1,6 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import mdx from '@mdx-js/rollup'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import mdx from '@mdx-js/rollup';
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -11,9 +11,13 @@ export default defineConfig({
         manualChunks: {
           // Vendor chunks
           'vendor-react': ['react', 'react-dom', 'react-router-dom'],
-          'vendor-mantine': ['@mantine/core', '@mantine/hooks', '@mantine/spotlight'],
+          'vendor-mantine': [
+            '@mantine/core',
+            '@mantine/hooks',
+            '@mantine/spotlight',
+          ],
           'vendor-icons': ['@tabler/icons-react'],
-          
+
           // Feature chunks
           'content-patterns': [
             './src/content/patterns/clean-architecture.tsx',
@@ -28,26 +32,21 @@ export default defineConfig({
             './src/content/patterns/event-driven.tsx',
             './src/content/patterns/feature-flags.tsx',
             './src/content/patterns/progressive-web-apps.tsx',
-            './src/content/patterns/server-side-rendering.tsx'
+            './src/content/patterns/server-side-rendering.tsx',
           ],
-          'content-guides': [
-            './src/content/guides/how-to-choose.tsx'
-          ],
-          'components': [
+          'content-guides': ['./src/content/guides/how-to-choose.tsx'],
+          components: [
             './src/components/DocsShell.tsx',
             './src/components/HeaderBar.tsx',
             './src/components/NavMenu.tsx',
             './src/components/Footer.tsx',
-            './src/components/interactive/DecisionWizard.tsx'
+            './src/components/interactive/DecisionWizard.tsx',
           ],
-          'pages': [
-            './src/pages/Home.tsx',
-            './src/pages/DocPage.tsx'
-          ]
-        }
-      }
+          pages: ['./src/pages/Home.tsx', './src/pages/DocPage.tsx'],
+        },
+      },
     },
-    chunkSizeWarningLimit: 1000
+    chunkSizeWarningLimit: 1000,
   },
-  assetsInclude: ['**/*.png', '**/*.jpg', '**/*.jpeg', '**/*.gif', '**/*.svg']
-})
+  assetsInclude: ['**/*.png', '**/*.jpg', '**/*.jpeg', '**/*.gif', '**/*.svg'],
+});

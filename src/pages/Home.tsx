@@ -12,10 +12,10 @@ import {
   Badge,
   Card,
   ThemeIcon,
-} from "@mantine/core";
-import { Link } from "react-router-dom";
-import { HeroTitle, FeatureCard, StatsCard } from "../components/ui";
-import { motion } from "framer-motion";
+} from '@mantine/core';
+import { Link } from 'react-router-dom';
+import { HeroTitle, FeatureCard, StatsCard } from '../components/ui';
+import { motion } from 'framer-motion';
 import {
   IconRocket,
   IconBrandGithub,
@@ -36,8 +36,8 @@ import {
   IconTarget,
   IconTrendingUp,
   IconBolt,
-} from "@tabler/icons-react";
-import { useMediaQuery } from "@mantine/hooks";
+} from '@tabler/icons-react';
+import { useMediaQuery } from '@mantine/hooks';
 
 // Variantes de animação
 const containerVariants = {
@@ -56,13 +56,13 @@ const itemVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.4, ease: "easeOut" },
+    transition: { duration: 0.4, ease: 'easeOut' },
   },
 };
 
 export default function Home() {
-  const isMobile = useMediaQuery("(max-width: 768px)");
-  const isSmallMobile = useMediaQuery("(max-width: 400px)");
+  const isMobile = useMediaQuery('(max-width: 768px)');
+  const isSmallMobile = useMediaQuery('(max-width: 400px)');
 
   // Helper para desabilitar animações em mobile
   const mobileAnimationProps = isMobile
@@ -70,26 +70,26 @@ export default function Home() {
     : { whileHover: { scale: 1.05 }, whileTap: { scale: 0.95 } };
 
   return (
-    <Container size="lg" px={isMobile ? "xs" : "md"} mt={0}>
+    <Container size="lg" px={isMobile ? 'xs' : 'md'} mt={0}>
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
-        <Stack gap={isMobile ? "md" : "xl"}>
+        <Stack gap={isMobile ? 'md' : 'xl'}>
           {/* Hero Section - Mais direto */}
           <motion.section variants={itemVariants}>
             <Stack
               align="center"
               ta="center"
-              mb={isMobile ? "lg" : "xl"}
+              mb={isMobile ? 'lg' : 'xl'}
               mt={0}
             >
               <Badge
-                size={isMobile ? "sm" : "lg"}
+                size={isMobile ? 'sm' : 'lg'}
                 variant="light"
                 color="brand"
-                mb={isMobile ? "xs" : "md"}
+                mb={isMobile ? 'xs' : 'md'}
               >
                 <IconStar
                   size={isMobile ? 12 : 16}
@@ -99,24 +99,24 @@ export default function Home() {
               </Badge>
 
               <HeroTitle
-                size={isSmallMobile ? "1.8rem" : isMobile ? "2.2rem" : "3.5rem"}
-                mb={isMobile ? "sm" : "md"}
+                size={isSmallMobile ? '1.8rem' : isMobile ? '2.2rem' : '3.5rem'}
+                mb={isMobile ? 'sm' : 'md'}
                 style={{ lineHeight: isMobile ? 1.1 : 1.15 }}
               >
                 Front-End Architecture Playbook
               </HeroTitle>
 
               <Text
-                size={isMobile ? "md" : "xl"}
+                size={isMobile ? 'md' : 'xl'}
                 c="dimmed"
-                mb={isMobile ? "md" : "lg"}
+                mb={isMobile ? 'md' : 'lg'}
                 style={{
                   maxWidth: isMobile ? 340 : 600,
-                  margin: "0 auto",
+                  margin: '0 auto',
                   lineHeight: isMobile ? 1.4 : 1.6,
                 }}
               >
-                18 anos de front-end resumidos:{" "}
+                18 anos de front-end resumidos:{' '}
                 <strong>arquitetura não é luxo, é sobrevivência</strong>.
                 Escolha errada custa caro, escolha certa salva projeto.
               </Text>
@@ -186,15 +186,15 @@ export default function Home() {
                 mt="md"
                 maw={isMobile ? 340 : 600}
               >
-                <Text size={isMobile ? "sm" : "md"} fw={500}>
-                  <strong>O segredo:</strong> esquece hype, respeita a{" "}
+                <Text size={isMobile ? 'sm' : 'md'} fw={500}>
+                  <strong>O segredo:</strong> esquece hype, respeita a{' '}
                   <Text
                     component={Link}
                     to="/guides/dependency-rule"
                     style={{
-                      color: "var(--mantine-color-accent-6)",
+                      color: 'var(--mantine-color-accent-6)',
                       fontWeight: 600,
-                      textDecoration: "underline",
+                      textDecoration: 'underline',
                     }}
                     span
                   >
@@ -208,17 +208,17 @@ export default function Home() {
 
           {/* Analogia da Rodovia - Versão concisa */}
           <motion.section variants={itemVariants}>
-            <Paper withBorder p={isMobile ? "md" : "lg"} radius="lg">
+            <Paper withBorder p={isMobile ? 'md' : 'lg'} radius="lg">
               <Stack gap="md" align="center" ta="center">
-                <Group justify="center" gap={isMobile ? "xs" : "sm"}>
+                <Group justify="center" gap={isMobile ? 'xs' : 'sm'}>
                   <IconBuilding size={isMobile ? 20 : 28} />
-                  <Title order={2} size={isMobile ? "h4" : "h3"}>
+                  <Title order={2} size={isMobile ? 'h4' : 'h3'}>
                     Arquitetura é como Rodovia
                   </Title>
                 </Group>
 
                 <Text
-                  size={isMobile ? "md" : "lg"}
+                  size={isMobile ? 'md' : 'lg'}
                   c="dimmed"
                   lh={1.6}
                   maw={isMobile ? 340 : 600}
@@ -232,59 +232,59 @@ export default function Home() {
 
                 <SimpleGrid
                   cols={{ base: 1, sm: 3 }}
-                  spacing={isMobile ? "sm" : "md"}
+                  spacing={isMobile ? 'sm' : 'md'}
                   w="100%"
                   mt="sm"
                 >
-                  <Card withBorder p={isMobile ? "sm" : "md"} radius="md">
+                  <Card withBorder p={isMobile ? 'sm' : 'md'} radius="md">
                     <Stack gap="xs" align="center" ta="center">
                       <ThemeIcon
-                        size={isMobile ? "md" : "lg"}
+                        size={isMobile ? 'md' : 'lg'}
                         variant="light"
                         color="green"
                       >
                         <IconRocket size={isMobile ? 16 : 20} />
                       </ThemeIcon>
-                      <Text fw={600} size={isMobile ? "sm" : "md"}>
+                      <Text fw={600} size={isMobile ? 'sm' : 'md'}>
                         Pistas Largas
                       </Text>
-                      <Text size={isMobile ? "xs" : "sm"} c="dimmed">
+                      <Text size={isMobile ? 'xs' : 'sm'} c="dimmed">
                         = componentes desacoplados
                       </Text>
                     </Stack>
                   </Card>
 
-                  <Card withBorder p={isMobile ? "sm" : "md"} radius="md">
+                  <Card withBorder p={isMobile ? 'sm' : 'md'} radius="md">
                     <Stack gap="xs" align="center" ta="center">
                       <ThemeIcon
-                        size={isMobile ? "md" : "lg"}
+                        size={isMobile ? 'md' : 'lg'}
                         variant="light"
                         color="orange"
                       >
                         <IconShield size={isMobile ? 16 : 20} />
                       </ThemeIcon>
-                      <Text fw={600} size={isMobile ? "sm" : "md"}>
+                      <Text fw={600} size={isMobile ? 'sm' : 'md'}>
                         Radares
                       </Text>
-                      <Text size={isMobile ? "xs" : "sm"} c="dimmed">
+                      <Text size={isMobile ? 'xs' : 'sm'} c="dimmed">
                         = testes automatizados
                       </Text>
                     </Stack>
                   </Card>
 
-                  <Card withBorder p={isMobile ? "sm" : "md"} radius="md">
+                  <Card withBorder p={isMobile ? 'sm' : 'md'} radius="md">
                     <Stack gap="xs" align="center" ta="center">
                       <ThemeIcon
-                        size={isMobile ? "md" : "lg"}
+                        size={isMobile ? 'md' : 'lg'}
                         variant="light"
                         color="purple"
                       >
                         <IconPuzzle size={isMobile ? 16 : 20} />
                       </ThemeIcon>
-                      <Text fw={600} size={isMobile ? "sm" : "md"}>
+                      <Text fw={600} size={isMobile ? 'sm' : 'md'}>
                         Saídas
                       </Text>
-                      <Text size={isMobile ? "xs" : "sm"} c="dimmed">
+                      <Text size={isMobile ? 'xs' : 'sm'} c="dimmed">
                         = pontos de extensão
                       </Text>
                     </Stack>
@@ -297,7 +297,7 @@ export default function Home() {
                   radius="md"
                   mt="md"
                 >
-                  <Text size={isMobile ? "sm" : "md"}>
+                  <Text size={isMobile ? 'sm' : 'md'}>
                     <strong>Sem base sólida:</strong> bugs, deploy quebrado,
                     time estressado.
                     <strong> Com base sólida:</strong> features voam, usuário
@@ -313,30 +313,30 @@ export default function Home() {
             <Title order={2} mb="lg" ta="center">
               <IconTarget
                 size={isMobile ? 24 : 32}
-                style={{ verticalAlign: "middle", marginRight: "8px" }}
+                style={{ verticalAlign: 'middle', marginRight: '8px' }}
               />
               O que tem aqui
             </Title>
 
             <SimpleGrid
               cols={{ base: 1, sm: 2 }}
-              spacing={isMobile ? "md" : "lg"}
+              spacing={isMobile ? 'md' : 'lg'}
             >
-              <Card withBorder p={isMobile ? "md" : "lg"} radius="md">
+              <Card withBorder p={isMobile ? 'md' : 'lg'} radius="md">
                 <Stack gap="sm">
                   <Group gap="sm">
                     <ThemeIcon
-                      size={isMobile ? "lg" : "xl"}
+                      size={isMobile ? 'lg' : 'xl'}
                       variant="light"
                       color="brand"
                     >
                       <IconBook size={isMobile ? 18 : 24} />
                     </ThemeIcon>
-                    <Title order={3} size={isMobile ? "h5" : "h4"}>
+                    <Title order={3} size={isMobile ? 'h5' : 'h4'}>
                       Guias Práticos
                     </Title>
                   </Group>
-                  <Text size={isMobile ? "sm" : "md"} c="dimmed">
+                  <Text size={isMobile ? 'sm' : 'md'} c="dimmed">
                     Decision wizard + regra fundamental de arquitetura. Zero
                     teoria, só o que funciona.
                   </Text>
@@ -355,21 +355,21 @@ export default function Home() {
                 </Stack>
               </Card>
 
-              <Card withBorder p={isMobile ? "md" : "lg"} radius="md">
+              <Card withBorder p={isMobile ? 'md' : 'lg'} radius="md">
                 <Stack gap="sm">
                   <Group gap="sm">
                     <ThemeIcon
-                      size={isMobile ? "lg" : "xl"}
+                      size={isMobile ? 'lg' : 'xl'}
                       variant="light"
                       color="green"
                     >
                       <IconHeart size={isMobile ? 18 : 24} />
                     </ThemeIcon>
-                    <Title order={3} size={isMobile ? "h5" : "h4"}>
+                    <Title order={3} size={isMobile ? 'h5' : 'h4'}>
                       Boas Práticas
                     </Title>
                   </Group>
-                  <Text size={isMobile ? "sm" : "md"} c="dimmed">
+                  <Text size={isMobile ? 'sm' : 'md'} c="dimmed">
                     DRY, KISS, YAGNI, Clean Code. Os princípios que toda base
                     sólida precisa.
                   </Text>
@@ -388,21 +388,21 @@ export default function Home() {
                 </Stack>
               </Card>
 
-              <Card withBorder p={isMobile ? "md" : "lg"} radius="md">
+              <Card withBorder p={isMobile ? 'md' : 'lg'} radius="md">
                 <Stack gap="sm">
                   <Group gap="sm">
                     <ThemeIcon
-                      size={isMobile ? "lg" : "xl"}
+                      size={isMobile ? 'lg' : 'xl'}
                       variant="light"
                       color="blue"
                     >
                       <IconBuilding size={isMobile ? 18 : 24} />
                     </ThemeIcon>
-                    <Title order={3} size={isMobile ? "h5" : "h4"}>
+                    <Title order={3} size={isMobile ? 'h5' : 'h4'}>
                       Arquiteturas
                     </Title>
                   </Group>
-                  <Text size={isMobile ? "sm" : "md"} c="dimmed">
+                  <Text size={isMobile ? 'sm' : 'md'} c="dimmed">
                     13 padrões testados: Clean Architecture, Micro-frontends,
                     Monorepo, SSR/SSG e mais.
                   </Text>
@@ -421,21 +421,21 @@ export default function Home() {
                 </Stack>
               </Card>
 
-              <Card withBorder p={isMobile ? "md" : "lg"} radius="md">
+              <Card withBorder p={isMobile ? 'md' : 'lg'} radius="md">
                 <Stack gap="sm">
                   <Group gap="sm">
                     <ThemeIcon
-                      size={isMobile ? "lg" : "xl"}
+                      size={isMobile ? 'lg' : 'xl'}
                       variant="light"
                       color="purple"
                     >
                       <IconPuzzle size={isMobile ? 18 : 24} />
                     </ThemeIcon>
-                    <Title order={3} size={isMobile ? "h5" : "h4"}>
+                    <Title order={3} size={isMobile ? 'h5' : 'h4'}>
                       Padrões & Técnicas
                     </Title>
                   </Group>
-                  <Text size={isMobile ? "sm" : "md"} c="dimmed">
+                  <Text size={isMobile ? 'sm' : 'md'} c="dimmed">
                     Design patterns, otimizações e técnicas específicas de
                     front-end.
                   </Text>
@@ -458,19 +458,19 @@ export default function Home() {
 
           {/* Value Proposition - Mais conciso */}
           <motion.section variants={itemVariants}>
-            <Paper withBorder p={isMobile ? "md" : "lg"} radius="lg">
+            <Paper withBorder p={isMobile ? 'md' : 'lg'} radius="lg">
               <Stack gap="md" align="center" ta="center">
                 <Title order={2} mb="sm">
                   <IconAward
                     size={isMobile ? 24 : 32}
-                    style={{ verticalAlign: "middle", marginRight: "8px" }}
+                    style={{ verticalAlign: 'middle', marginRight: '8px' }}
                   />
                   Por que vale a pena?
                 </Title>
 
                 <SimpleGrid
                   cols={{ base: 1, sm: 3 }}
-                  spacing={isMobile ? "sm" : "md"}
+                  spacing={isMobile ? 'sm' : 'md'}
                   w="100%"
                 >
                   <FeatureCard
@@ -505,7 +505,7 @@ export default function Home() {
                   radius="md"
                   mt="md"
                 >
-                  <Text size={isMobile ? "sm" : "md"} fw={500}>
+                  <Text size={isMobile ? 'sm' : 'md'} fw={500}>
                     <strong>ROI Real:</strong> Time que escolhe arquitetura
                     certa economiza 3-6 meses de refatoração por ano.
                     <strong> Dívida técnica reduzida em 70%</strong>.
@@ -519,7 +519,7 @@ export default function Home() {
           <motion.section variants={itemVariants}>
             <SimpleGrid
               cols={{ base: 2, sm: 4 }}
-              spacing={isMobile ? "sm" : "md"}
+              spacing={isMobile ? 'sm' : 'md'}
             >
               <StatsCard
                 icon={IconCode}
@@ -556,7 +556,7 @@ export default function Home() {
           <motion.section variants={itemVariants}>
             <Paper
               withBorder
-              p={isMobile ? "md" : "lg"}
+              p={isMobile ? 'md' : 'lg'}
               radius="lg"
               ta="center"
             >
@@ -569,10 +569,10 @@ export default function Home() {
                 >
                   <IconTrendingUp size={isMobile ? 30 : 40} />
                 </ThemeIcon>
-                <Title order={2} size={isMobile ? "h3" : "h2"}>
+                <Title order={2} size={isMobile ? 'h3' : 'h2'}>
                   Não sabe por onde começar?
                 </Title>
-                <Text size={isMobile ? "md" : "lg"} c="dimmed" maw={500}>
+                <Text size={isMobile ? 'md' : 'lg'} c="dimmed" maw={500}>
                   Responde o wizard e descobre qual arquitetura faz sentido pro
                   seu projeto.
                 </Text>
@@ -595,11 +595,11 @@ export default function Home() {
 
           {/* Author - Mais simples */}
           <motion.section variants={itemVariants}>
-            <Paper withBorder p={isMobile ? "md" : "lg"} radius="lg">
+            <Paper withBorder p={isMobile ? 'md' : 'lg'} radius="lg">
               <Group
                 align="flex-start"
-                gap={isMobile ? "md" : "xl"}
-                style={{ flexDirection: isMobile ? "column" : "row" }}
+                gap={isMobile ? 'md' : 'xl'}
+                style={{ flexDirection: isMobile ? 'column' : 'row' }}
               >
                 <Avatar
                   src="https://avatars.githubusercontent.com/u/2006720?v=4"
@@ -608,14 +608,14 @@ export default function Home() {
                 />
                 <div style={{ flex: 1 }}>
                   <Group align="center" mb="sm" wrap="wrap">
-                    <Title order={3} size={isMobile ? "h4" : "h3"}>
+                    <Title order={3} size={isMobile ? 'h4' : 'h3'}>
                       Tiago Vilas Boas
                     </Title>
                     <Badge color="brand" variant="light">
                       Front-End Engineer
                     </Badge>
                   </Group>
-                  <Text size={isMobile ? "sm" : "md"} mb="md" lh={1.6}>
+                  <Text size={isMobile ? 'sm' : 'md'} mb="md" lh={1.6}>
                     18 anos transformando código em resultado. Turbinei
                     checkouts, simplifiquei KYC, salvei dashboards. Criador do
                     Ponto PJ e autor de "Código Bonito Não Paga Boleto".

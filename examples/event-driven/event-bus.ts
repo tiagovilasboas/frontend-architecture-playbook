@@ -11,6 +11,6 @@ export class EventBus {
 
   emit(event: string, data: unknown) {
     const callbacks = this.listeners.get(event) || [];
-    callbacks.forEach((cb) => cb(data));
+    callbacks.forEach(cb => cb(data));
   }
-} 
+}

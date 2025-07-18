@@ -20,86 +20,86 @@ export function getBonusPatterns({
   const bonus: BonusPattern[] = [];
 
   // Padrões baseados no tipo de projeto
-  if (projectType === "ecommerce") {
+  if (projectType === 'ecommerce') {
     bonus.push({
-      slug: "state-machines",
-      title: "State Machines",
-      description: "Para gerenciar estados complexos de pedidos e carrinho",
+      slug: 'state-machines',
+      title: 'State Machines',
+      description: 'Para gerenciar estados complexos de pedidos e carrinho',
     });
   }
 
-  if (projectType === "dashboard") {
+  if (projectType === 'dashboard') {
     bonus.push({
-      slug: "atomic-design",
-      title: "Atomic Design",
-      description: "Para criar design system de charts e widgets",
+      slug: 'atomic-design',
+      title: 'Atomic Design',
+      description: 'Para criar design system de charts e widgets',
     });
   }
 
-  if (projectType === "enterprise") {
+  if (projectType === 'enterprise') {
     bonus.push({
-      slug: "feature-flags",
-      title: "Feature Flags",
-      description: "Para controlar releases em ambiente corporativo",
+      slug: 'feature-flags',
+      title: 'Feature Flags',
+      description: 'Para controlar releases em ambiente corporativo',
     });
   }
 
-  if (projectType === "mvp" || projectType === "startup") {
+  if (projectType === 'mvp' || projectType === 'startup') {
     bonus.push({
-      slug: "security",
-      title: "Security Patterns",
-      description: "Práticas essenciais de segurança desde o início",
+      slug: 'security',
+      title: 'Security Patterns',
+      description: 'Práticas essenciais de segurança desde o início',
     });
   }
 
   // Padrões baseados em integrações
   if (hasIntegrations) {
     bonus.push({
-      slug: "repository-pattern",
-      title: "Repository Pattern",
-      description: "Para abstrair e organizar integrações externas",
+      slug: 'repository-pattern',
+      title: 'Repository Pattern',
+      description: 'Para abstrair e organizar integrações externas',
     });
 
     // Event-driven já deve estar nas recomendações principais para projetos com muitas integrações
     // Então adicionamos algo complementar
-    if (projectType !== "ecommerce") {
+    if (projectType !== 'ecommerce') {
       // Evita duplicar se já está nas principais
       bonus.push({
-        slug: "event-driven",
-        title: "Event-Driven Architecture",
-        description: "Para coordenar integrações via eventos",
+        slug: 'event-driven',
+        title: 'Event-Driven Architecture',
+        description: 'Para coordenar integrações via eventos',
       });
     }
   }
 
   // Padrões baseados no nível técnico
-  if (techLevel === "junior") {
+  if (techLevel === 'junior') {
     // Times júniores se beneficiam de princípios fundamentais
     bonus.push({
-      slug: "clean-code",
-      title: "Clean Code",
-      description: "Princípios fundamentais para código limpo",
+      slug: 'clean-code',
+      title: 'Clean Code',
+      description: 'Princípios fundamentais para código limpo',
     });
   }
 
-  if (techLevel === "senior") {
+  if (techLevel === 'senior') {
     // Times sêniores podem absorver padrões mais avançados
-    if (!bonus.some((b) => b.slug === "state-machines")) {
+    if (!bonus.some(b => b.slug === 'state-machines')) {
       bonus.push({
-        slug: "state-machines",
-        title: "State Machines",
-        description: "Padrão avançado para gestão de estados complexos",
+        slug: 'state-machines',
+        title: 'State Machines',
+        description: 'Padrão avançado para gestão de estados complexos',
       });
     }
   }
 
   // Padrões baseados no tamanho do time
-  if (teamSize === "large") {
-    if (!bonus.some((b) => b.slug === "feature-flags")) {
+  if (teamSize === 'large') {
+    if (!bonus.some(b => b.slug === 'feature-flags')) {
       bonus.push({
-        slug: "feature-flags",
-        title: "Feature Flags",
-        description: "Essencial para coordenar releases em times grandes",
+        slug: 'feature-flags',
+        title: 'Feature Flags',
+        description: 'Essencial para coordenar releases em times grandes',
       });
     }
   }
@@ -107,9 +107,9 @@ export function getBonusPatterns({
   // Sempre incluir DRY como base fundamental (mas só se não tiver muitos outros)
   if (bonus.length < 2) {
     bonus.push({
-      slug: "dry",
+      slug: 'dry',
       title: "DRY - Don't Repeat Yourself",
-      description: "Princípio fundamental para qualquer código",
+      description: 'Princípio fundamental para qualquer código',
     });
   }
 

@@ -1,4 +1,4 @@
-import type { DocMeta, CollectionType } from "../lib/content.ts";
+import type { DocMeta, CollectionType } from '../lib/content.ts';
 
 interface NavigationAction {
   id: string;
@@ -12,13 +12,13 @@ export function useNavigationActions(
   architectures: DocMeta[],
   patterns: DocMeta[],
   techniques: DocMeta[],
-  bestPractices: DocMeta[],
+  bestPractices: DocMeta[]
 ): NavigationAction[] {
   const createActions = (
     docs: DocMeta[],
-    collection: CollectionType,
+    collection: CollectionType
   ): NavigationAction[] =>
-    docs.map((doc) => ({
+    docs.map(doc => ({
       id: doc.slug,
       label: doc.title,
       description: getCollectionLabel(collection),
@@ -27,21 +27,21 @@ export function useNavigationActions(
     }));
 
   return [
-    ...createActions(guides, "guides"),
-    ...createActions(architectures, "architectures"),
-    ...createActions(patterns, "patterns"),
-    ...createActions(techniques, "techniques"),
-    ...createActions(bestPractices, "best-practices"),
+    ...createActions(guides, 'guides'),
+    ...createActions(architectures, 'architectures'),
+    ...createActions(patterns, 'patterns'),
+    ...createActions(techniques, 'techniques'),
+    ...createActions(bestPractices, 'best-practices'),
   ];
 }
 
 function getCollectionLabel(collection: CollectionType): string {
   const labels: Record<CollectionType, string> = {
-    guides: "Guide",
-    architectures: "Architecture",
-    patterns: "Pattern",
-    techniques: "Technique",
-    "best-practices": "Best Practice",
+    guides: 'Guide',
+    architectures: 'Architecture',
+    patterns: 'Pattern',
+    techniques: 'Technique',
+    'best-practices': 'Best Practice',
   };
   return labels[collection];
 }

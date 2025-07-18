@@ -9,7 +9,7 @@ import {
   Group,
   Card,
   Badge,
-} from "@mantine/core";
+} from '@mantine/core';
 import {
   IconBulb,
   IconAlertTriangle,
@@ -17,9 +17,9 @@ import {
   IconCode,
   IconPuzzle,
   IconLego,
-} from "@tabler/icons-react";
-import CodeExample from "../../components/CodeExample";
-import codeExamples from "../../utils/code-examples/component-driven.json";
+} from '@tabler/icons-react';
+import CodeExample from '../../components/CodeExample';
+import codeExamples from '../../utils/code-examples/component-driven.json';
 
 function ComponentDriven() {
   return (
@@ -52,7 +52,7 @@ function ComponentDriven() {
           </Group>
 
           <Text>
-            Component-Driven é sobre uma coisa só:{" "}
+            Component-Driven é sobre uma coisa só:{' '}
             <strong>construir interfaces como Lego</strong>.
           </Text>
 
@@ -63,7 +63,7 @@ function ComponentDriven() {
           </Text>
 
           <Text>
-            A regra é simples:{" "}
+            A regra é simples:{' '}
             <em>componentes são independentes e reutilizáveis</em>. Você pode
             testar cada um isoladamente, trocar um sem afetar os outros.
           </Text>
@@ -75,7 +75,7 @@ function ComponentDriven() {
         <Title order={2} mb="lg">
           <IconLego
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Os 3 Conceitos Principais
         </Title>
@@ -87,17 +87,17 @@ function ComponentDriven() {
               p="md"
               key={ex.title}
               w="100%"
-              style={{ minWidth: 0, width: "100%" }}
+              style={{ minWidth: 0, width: '100%' }}
             >
-              <Group w="100%" style={{ minWidth: 0, width: "100%" }}>
+              <Group w="100%" style={{ minWidth: 0, width: '100%' }}>
                 <Badge
                   size="lg"
                   variant="light"
-                  color={["green", "blue", "orange"][idx] || "gray"}
+                  color={['green', 'blue', 'orange'][idx] || 'gray'}
                 >
                   {idx + 1}
                 </Badge>
-                <div style={{ flex: 1, width: "100%" }}>
+                <div style={{ flex: 1, width: '100%' }}>
                   <Title order={4}>{ex.title}</Title>
                   <Text size="sm" c="dimmed">
                     {ex.description}
@@ -125,7 +125,7 @@ function ComponentDriven() {
         <Title order={2} mb="lg">
           <IconCheck
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Por que vale a pena?
         </Title>
@@ -182,7 +182,7 @@ function ComponentDriven() {
         <Title order={2} mb="lg">
           <IconAlertTriangle
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Quando usar?
         </Title>
@@ -214,7 +214,7 @@ function ComponentDriven() {
         <Title order={2} mb="lg">
           <IconCode
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Exemplos Práticos no Front-End
         </Title>
@@ -223,7 +223,7 @@ function ComponentDriven() {
           {codeExamples.slice(3, 6).map((ex, idx) => (
             <Paper withBorder p="xl" radius="md" key={ex.title}>
               <Title order={3} mb="md">
-                {["🛒", "📊", "📝"][idx]} {ex.title.split(" - ")[1]}
+                {['🛒', '📊', '📝'][idx]} {ex.title.split(' - ')[1]}
               </Title>
 
               <Stack gap="md">
@@ -246,7 +246,7 @@ function ComponentDriven() {
         <Title order={2} mb="lg">
           <IconAlertTriangle
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Armadilhas & Como Evitar
         </Title>
@@ -255,7 +255,7 @@ function ComponentDriven() {
           {codeExamples.slice(6).map((ex, idx) => (
             <Paper withBorder p="xl" radius="md" key={ex.title}>
               <Title order={3} mb="md">
-                {["🚫", "🔄", "🐋", "🎭", "🧪"][idx]} {ex.title}
+                {['🚫', '🔄', '🐋', '🎭', '🧪'][idx]} {ex.title}
               </Title>
               <Stack gap="md">
                 <Text>
@@ -263,16 +263,16 @@ function ComponentDriven() {
                 </Text>
 
                 <Text>
-                  <strong>Como evitar:</strong>{" "}
-                  {ex.description.includes("desnecessários")
-                    ? "Só crie componente quando vai reutilizar. Se só aparece uma vez, deixa inline mesmo."
-                    : ex.description.includes("Props Drilling")
-                      ? "Use Context, Redux, ou reorganize componentes. Não passe props desnecessárias."
-                      : ex.description.includes("Gigantes")
-                        ? "Quebre em componentes menores. Cada um com uma responsabilidade só."
-                        : ex.description.includes("Inconsistentes")
-                          ? "Padronize props. Use interfaces TypeScript. Documente o que cada prop faz."
-                          : "Teste cada componente isoladamente. Use Storybook pra documentar e testar visualmente."}
+                  <strong>Como evitar:</strong>{' '}
+                  {ex.description.includes('desnecessários')
+                    ? 'Só crie componente quando vai reutilizar. Se só aparece uma vez, deixa inline mesmo.'
+                    : ex.description.includes('Props Drilling')
+                      ? 'Use Context, Redux, ou reorganize componentes. Não passe props desnecessárias.'
+                      : ex.description.includes('Gigantes')
+                        ? 'Quebre em componentes menores. Cada um com uma responsabilidade só.'
+                        : ex.description.includes('Inconsistentes')
+                          ? 'Padronize props. Use interfaces TypeScript. Documente o que cada prop faz.'
+                          : 'Teste cada componente isoladamente. Use Storybook pra documentar e testar visualmente.'}
                 </Text>
 
                 <CodeExample title={`Armadilha: ${ex.title}`} code={ex.code} />
@@ -287,7 +287,7 @@ function ComponentDriven() {
         <Title order={2} mb="lg">
           <IconBulb
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Referências & Casos Reais
         </Title>
@@ -358,7 +358,7 @@ function ComponentDriven() {
           </Group>
 
           <Text>
-            Component-Driven é sobre uma coisa só:{" "}
+            Component-Driven é sobre uma coisa só:{' '}
             <strong>construir interfaces como Lego</strong>. Reutilize
             componentes, mantenha consistência, desenvolva mais rápido. Use
             quando tem interface complexa e quer menos código.
@@ -378,9 +378,9 @@ function ComponentDriven() {
 }
 
 ComponentDriven.metadata = {
-  title: "Component-Driven Development",
+  title: 'Component-Driven Development',
   description:
-    "Construa interfaces como Lego com componentes reutilizáveis e composição poderosa.",
+    'Construa interfaces como Lego com componentes reutilizáveis e composição poderosa.',
 };
 
 export default ComponentDriven;

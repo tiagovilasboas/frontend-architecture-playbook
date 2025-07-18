@@ -9,6 +9,7 @@ Depois de 18 anos vendo front-end evoluir, algumas arquiteturas se tornaram **es
 ## ✅ **TIER 1: Críticas (Usadas diariamente) - IMPLEMENTADAS**
 
 ### **1. Server-Side Rendering (SSR & SSG)** ✅ **CONCLUÍDO**
+
 **Menu:** `Arquiteturas → SSR/SSG`  
 **Tom:** "Se você liga pra SEO, você usa SSR"
 
@@ -19,6 +20,7 @@ Depois de 18 anos vendo front-end evoluir, algumas arquiteturas se tornaram **es
 - **Por que arquitetura:** Define como client/server se relacionam
 
 ### **2. Backend-for-Frontend (BFF)** ✅ **CONCLUÍDO**
+
 **Menu:** `Arquiteturas → BFF`  
 **Tom:** "Uma API sob medida pro seu front"
 
@@ -29,6 +31,7 @@ Depois de 18 anos vendo front-end evoluir, algumas arquiteturas se tornaram **es
 - **Por que arquitetura:** Define layer de integração específica
 
 ### **3. Progressive Web Apps (PWA)** ✅ **CONCLUÍDO**
+
 **Menu:** `Arquiteturas → PWA`  
 **Tom:** "Web que se comporta como app nativo"
 
@@ -43,6 +46,7 @@ Depois de 18 anos vendo front-end evoluir, algumas arquiteturas se tornaram **es
 ## 🚀 **TIER 2: Importantes (Crescendo rápido) - PRÓXIMAS**
 
 ### **4. Headless/API-First**
+
 **Menu:** `Arquiteturas → Headless`  
 **Tom:** "Separação igreja-estado entre content e apresentação"
 
@@ -53,6 +57,7 @@ Depois de 18 anos vendo front-end evoluir, algumas arquiteturas se tornaram **es
 - **Por que arquitetura:** Define separação fundamental content/presentation
 
 ### **5. Hexagonal Architecture**
+
 **Menu:** `Arquiteturas → Hexagonal (Ports & Adapters)`  
 **Tom:** "Clean Architecture mais flexível e menos dogmática"
 
@@ -63,6 +68,7 @@ Depois de 18 anos vendo front-end evoluir, algumas arquiteturas se tornaram **es
 - **Por que arquitetura:** Alternative approach ao Clean com mais flexibility
 
 ### **6. Layered Architecture**
+
 **Menu:** `Arquiteturas → Layered`  
 **Tom:** "Clean Architecture sem a complexidade - direto ao ponto"
 
@@ -77,6 +83,7 @@ Depois de 18 anos vendo front-end evoluir, algumas arquiteturas se tornaram **es
 ## 📚 **TIER 3: Úteis (Cenários específicos) - FUTURO**
 
 ### **7. Event Sourcing Frontend**
+
 **Menu:** `Arquiteturas → Event Sourcing`  
 **Tom:** "Toda ação é um evento - debug e auditoria que funciona"
 
@@ -87,6 +94,7 @@ Depois de 18 anos vendo front-end evoluir, algumas arquiteturas se tornaram **es
 - **Por que arquitetura:** Fundamental different approach ao state management
 
 ### **8. CQRS Frontend**
+
 **Menu:** `Arquiteturas → CQRS`  
 **Tom:** "Read diferente de write - performance e clareza"
 
@@ -97,6 +105,7 @@ Depois de 18 anos vendo front-end evoluir, algumas arquiteturas se tornaram **es
 - **Por que arquitetura:** Fundamental separation of read/write concerns
 
 ### **9. Micro-services Frontend (não Module Federation)**
+
 **Menu:** `Arquiteturas → Micro-services Frontend`  
 **Tom:** "Dividir pra conquistar - times, deploys, responsabilidades"
 
@@ -111,6 +120,7 @@ Depois de 18 anos vendo front-end evoluir, algumas arquiteturas se tornaram **es
 ## 📊 **Status do Projeto: 3/12 Arquiteturas Implementadas**
 
 ### **Progresso:**
+
 - ✅ **TIER 1:** 3/3 concluídas (SSR/SSG, BFF, PWA)
 - 🔄 **TIER 2:** 0/3 iniciadas (Headless, Hexagonal, Layered)
 - ⏸️ **TIER 3:** 0/3 planejadas (Event Sourcing, CQRS, Micro-services Frontend)
@@ -118,16 +128,19 @@ Depois de 18 anos vendo front-end evoluir, algumas arquiteturas se tornaram **es
 ### **Roadmap de Implementação:**
 
 #### **🎯 Sprint 4-6 (TIER 2 - 6 semanas)**
+
 1. **Headless Architecture** (2 semanas)
-2. **Hexagonal Architecture** (2 semanas) 
+2. **Hexagonal Architecture** (2 semanas)
 3. **Layered Architecture** (2 semanas)
 
 #### **📚 Sprint 7-9 (TIER 3 - 6 semanas)**
+
 1. **Event Sourcing Frontend** (2 semanas)
 2. **CQRS Frontend** (2 semanas)
 3. **Micro-services Frontend** (2 semanas)
 
 ### **Menu Final (15 Arquiteturas):**
+
 ```
 Arquiteturas
 ├── SSR & SSG ✅
@@ -152,6 +165,7 @@ Arquiteturas
 ## 🚫 **Removido do Roadmap:**
 
 ### **Module Federation** ❌
+
 **Razão da remoção:** Não é uma arquitetura, é uma **tecnologia de implementação** de micro-frontends. É uma feature específica do Webpack, não uma estrutura arquitetural fundamental.
 
 **Onde abordar:** Deveria ser mencionado como ferramenta/tecnologia dentro da arquitetura de Micro Frontends existente, não como arquitetura separada.
@@ -161,13 +175,15 @@ Arquiteturas
 ## 🎯 **Próximos Passos Imediatos:**
 
 ### **Sprint 4 (Próximas 2 semanas):**
+
 - [ ] Implementar **Headless Architecture**
 - [ ] Estrutura: Cases reais (Contentful, Strapi, Sanity)
 - [ ] Foco: CMS headless, API-first approach, multi-channel content
 
 ### **Quality Checklist para cada nova arquitetura:**
+
 - [ ] Dev-to-dev tone consistent
-- [ ] Practical and real examples  
+- [ ] Practical and real examples
 - [ ] Functional and testable code
 - [ ] Pitfalls and how to avoid them
 - [ ] References and real cases
@@ -181,6 +197,7 @@ Arquiteturas
 - [ ] Consistent visual structure
 
 ### **Impacto Esperado:**
+
 - **Cobertura completa** das arquiteturas front-end essenciais
 - **Referência definitiva** para decisões arquiteturais
 - **Competitive advantage** no mercado de conteúdo técnico

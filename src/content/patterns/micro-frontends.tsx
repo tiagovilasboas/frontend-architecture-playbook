@@ -9,16 +9,16 @@ import {
   Group,
   Card,
   Badge,
-} from "@mantine/core";
+} from '@mantine/core';
 import {
   IconBulb,
   IconAlertTriangle,
   IconCheck,
   IconCode,
   IconApps,
-} from "@tabler/icons-react";
-import CodeExample from "../../components/CodeExample";
-import microFrontendsExamples from "../../utils/code-examples/micro-frontends.json";
+} from '@tabler/icons-react';
+import CodeExample from '../../components/CodeExample';
+import microFrontendsExamples from '../../utils/code-examples/micro-frontends.json';
 
 function MicroFrontends() {
   return (
@@ -50,7 +50,7 @@ function MicroFrontends() {
           </Group>
 
           <Text>
-            Micro-Frontends é sobre uma coisa só:{" "}
+            Micro-Frontends é sobre uma coisa só:{' '}
             <strong>quebrar aplicações grandes em pedaços menores</strong>.
           </Text>
 
@@ -73,7 +73,7 @@ function MicroFrontends() {
         <Title order={2} mb="lg">
           <IconApps
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Os 4 Conceitos Principais
         </Title>
@@ -85,17 +85,17 @@ function MicroFrontends() {
               p="md"
               key={ex.title}
               w="100%"
-              style={{ minWidth: 0, width: "100%" }}
+              style={{ minWidth: 0, width: '100%' }}
             >
-              <Group w="100%" style={{ minWidth: 0, width: "100%" }}>
+              <Group w="100%" style={{ minWidth: 0, width: '100%' }}>
                 <Badge
                   size="lg"
                   variant="light"
-                  color={["green", "blue", "orange", "red"][idx] || "gray"}
+                  color={['green', 'blue', 'orange', 'red'][idx] || 'gray'}
                 >
                   {idx + 1}
                 </Badge>
-                <div style={{ flex: 1, width: "100%" }}>
+                <div style={{ flex: 1, width: '100%' }}>
                   <Title order={4}>{ex.title}</Title>
                   <Text size="sm" c="dimmed">
                     {ex.description}
@@ -123,7 +123,7 @@ function MicroFrontends() {
         <Title order={2} mb="lg">
           <IconCheck
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Por que vale a pena?
         </Title>
@@ -180,7 +180,7 @@ function MicroFrontends() {
         <Title order={2} mb="lg">
           <IconAlertTriangle
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Quando usar?
         </Title>
@@ -210,7 +210,7 @@ function MicroFrontends() {
         <Title order={2} mb="lg">
           <IconAlertTriangle
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Armadilhas & Como Evitar
         </Title>
@@ -270,7 +270,7 @@ function MicroFrontends() {
         <Title order={2} mb="lg">
           <IconBulb
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Referências & Casos Reais
         </Title>
@@ -354,9 +354,9 @@ function MicroFrontends() {
 }
 
 MicroFrontends.metadata = {
-  title: "Micro-frontends",
+  title: 'Micro-frontends',
   description:
-    "Quebre aplicações grandes em pedaços pequenos. Times independentes, tecnologias diferentes, deploy separado.",
+    'Quebre aplicações grandes em pedaços pequenos. Times independentes, tecnologias diferentes, deploy separado.',
 };
 
 export default MicroFrontends;

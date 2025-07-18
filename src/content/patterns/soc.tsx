@@ -9,16 +9,16 @@ import {
   Group,
   Card,
   Badge,
-} from "@mantine/core";
+} from '@mantine/core';
 import {
   IconBulb,
   IconAlertTriangle,
   IconCheck,
   IconCode,
   IconStack,
-} from "@tabler/icons-react";
-import CodeExample from "../../components/CodeExample";
-import codeExamples from "../../utils/code-examples/soc.json";
+} from '@tabler/icons-react';
+import CodeExample from '../../components/CodeExample';
+import codeExamples from '../../utils/code-examples/soc.json';
 
 function SOC() {
   return (
@@ -51,7 +51,7 @@ function SOC() {
           </Group>
 
           <Text>
-            SOC significa <strong>"Separation of Concerns"</strong>. É sobre{" "}
+            SOC significa <strong>"Separation of Concerns"</strong>. É sobre{' '}
             <em>organização mental</em>. Cada parte do seu código deve ter uma
             preocupação específica.
           </Text>
@@ -63,7 +63,7 @@ function SOC() {
           </Text>
 
           <Text>
-            A regra é clara:{" "}
+            A regra é clara:{' '}
             <em>
               cada módulo deve se preocupar com apenas um aspecto do sistema
             </em>
@@ -78,7 +78,7 @@ function SOC() {
         <Title order={2} mb="lg">
           <IconCode
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Exemplos Práticos
         </Title>
@@ -90,17 +90,17 @@ function SOC() {
               p="md"
               key={ex.title}
               w="100%"
-              style={{ minWidth: 0, width: "100%" }}
+              style={{ minWidth: 0, width: '100%' }}
             >
-              <Group w="100%" style={{ minWidth: 0, width: "100%" }}>
+              <Group w="100%" style={{ minWidth: 0, width: '100%' }}>
                 <Badge
                   size="lg"
                   variant="light"
-                  color={["red", "green"][idx] || "gray"}
+                  color={['red', 'green'][idx] || 'gray'}
                 >
-                  {idx === 0 ? "❌" : "✅"}
+                  {idx === 0 ? '❌' : '✅'}
                 </Badge>
-                <div style={{ flex: 1, width: "100%" }}>
+                <div style={{ flex: 1, width: '100%' }}>
                   <Title order={4}>{ex.title}</Title>
                   <Text size="sm" c="dimmed">
                     {ex.description}
@@ -118,7 +118,7 @@ function SOC() {
         <Title order={2} mb="lg">
           <IconCheck
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Por que vale a pena?
         </Title>
@@ -176,7 +176,7 @@ function SOC() {
         <Title order={2} mb="lg">
           <IconBulb
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Quando aplicar?
         </Title>
@@ -217,19 +217,19 @@ function SOC() {
         <Title order={2} mb="lg">
           <IconAlertTriangle
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Armadilhas Comuns
         </Title>
 
         <Stack gap="md">
-          {codeExamples.slice(2).map((ex) => (
+          {codeExamples.slice(2).map(ex => (
             <Card
               withBorder
               p="md"
               key={ex.title}
               w="100%"
-              style={{ minWidth: 0, width: "100%" }}
+              style={{ minWidth: 0, width: '100%' }}
             >
               <Title order={4} mb="sm">
                 {ex.title}
@@ -264,9 +264,9 @@ function SOC() {
 }
 
 SOC.metadata = {
-  title: "Separation of Concerns",
+  title: 'Separation of Concerns',
   description:
-    "Separe responsabilidades claramente. Cada parte do sistema deve ter uma preocupação específica.",
+    'Separe responsabilidades claramente. Cada parte do sistema deve ter uma preocupação específica.',
 };
 
 export default SOC;

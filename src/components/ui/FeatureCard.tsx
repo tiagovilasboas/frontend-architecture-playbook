@@ -1,7 +1,7 @@
-import { Card, ThemeIcon, Title, Text } from "@mantine/core";
-import type { CardProps } from "@mantine/core";
-import type { IconProps } from "@tabler/icons-react";
-import type { ReactNode } from "react";
+import { Card, ThemeIcon, Title, Text } from '@mantine/core';
+import type { CardProps } from '@mantine/core';
+import type { IconProps } from '@tabler/icons-react';
+import type { ReactNode } from 'react';
 
 interface FeatureCardProps extends CardProps {
   icon: React.ComponentType<IconProps>;
@@ -15,7 +15,7 @@ export function FeatureCard({
   icon: Icon,
   title,
   description,
-  color = "brand",
+  color = 'brand',
   iconSize = 50,
   ...props
 }: FeatureCardProps) {

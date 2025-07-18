@@ -10,7 +10,7 @@ import {
   Group,
   Card,
   Badge,
-} from "@mantine/core";
+} from '@mantine/core';
 import {
   IconBulb,
   IconAlertTriangle,
@@ -18,7 +18,7 @@ import {
   IconCode,
   IconServer,
   IconBolt,
-} from "@tabler/icons-react";
+} from '@tabler/icons-react';
 
 function ServerSideRendering() {
   return (
@@ -71,7 +71,7 @@ function ServerSideRendering() {
         <Title order={2} mb="lg">
           <IconBolt
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Como Funciona
         </Title>
@@ -240,7 +240,7 @@ function ProductPage({ product, reviews }) {
         <Title order={2} mb="lg">
           <IconCheck
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Por que vale a pena?
         </Title>
@@ -298,7 +298,7 @@ function ProductPage({ product, reviews }) {
         <Title order={2} mb="lg">
           <IconAlertTriangle
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Quando usar?
         </Title>
@@ -330,7 +330,7 @@ function ProductPage({ product, reviews }) {
         <Title order={2} mb="lg">
           <IconCode
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Exemplos Práticos no Front-End
         </Title>
@@ -555,7 +555,7 @@ export async function getServerSideProps({ req, query }) {
         <Title order={2} mb="lg">
           <IconAlertTriangle
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Armadilhas & Como Evitar
         </Title>
@@ -860,7 +860,7 @@ export async function getServerSideProps({ req }) {
         <Title order={2} mb="lg">
           <IconBulb
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Referências & Casos Reais
         </Title>
@@ -948,9 +948,9 @@ export async function getServerSideProps({ req }) {
 }
 
 ServerSideRendering.metadata = {
-  title: "Server-Side Rendering (SSR)",
+  title: 'Server-Side Rendering (SSR)',
   description:
-    "Renderiza no servidor, serve HTML pronto. SEO perfeito e performance inicial rápida.",
+    'Renderiza no servidor, serve HTML pronto. SEO perfeito e performance inicial rápida.',
 };
 
 export default ServerSideRendering;

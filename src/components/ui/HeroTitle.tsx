@@ -1,7 +1,7 @@
-import { Title } from "@mantine/core";
-import type { TitleProps } from "@mantine/core";
+import { Title } from '@mantine/core';
+import type { TitleProps } from '@mantine/core';
 
-interface HeroTitleProps extends Omit<TitleProps, "order"> {
+interface HeroTitleProps extends Omit<TitleProps, 'order'> {
   children: React.ReactNode;
 }
 

@@ -9,7 +9,7 @@ import {
   Group,
   Card,
   Badge,
-} from "@mantine/core";
+} from '@mantine/core';
 import {
   IconBulb,
   IconAlertTriangle,
@@ -17,9 +17,9 @@ import {
   IconCode,
   IconFolder,
   IconBrandGithub,
-} from "@tabler/icons-react";
-import CodeExample from "../../components/CodeExample";
-import monorepoExamples from "../../utils/code-examples/monorepo.json";
+} from '@tabler/icons-react';
+import CodeExample from '../../components/CodeExample';
+import monorepoExamples from '../../utils/code-examples/monorepo.json';
 
 function Monorepo() {
   return (
@@ -52,7 +52,7 @@ function Monorepo() {
           </Group>
 
           <Text>
-            Monorepo é sobre uma coisa só:{" "}
+            Monorepo é sobre uma coisa só:{' '}
             <strong>ter tudo num lugar só</strong>.
           </Text>
 
@@ -63,7 +63,7 @@ function Monorepo() {
           </Text>
 
           <Text>
-            A regra é simples:{" "}
+            A regra é simples:{' '}
             <em>compartilhamento fácil, tooling centralizado</em>. Você refatora
             uma vez, todo mundo ganha. Você muda uma lib, todos os projetos
             atualizam.
@@ -76,7 +76,7 @@ function Monorepo() {
         <Title order={2} mb="lg">
           <IconBrandGithub
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Os 4 Conceitos Principais
         </Title>
@@ -94,7 +94,7 @@ function Monorepo() {
                   ganha.
                 </Text>
                 <Stack gap="xl">
-                  {monorepoExamples.map((example) => (
+                  {monorepoExamples.map(example => (
                     <CodeExample
                       key={example.id}
                       title={example.title}
@@ -119,7 +119,7 @@ function Monorepo() {
                   funciona em todo lugar.
                 </Text>
                 <Stack gap="xl">
-                  {monorepoExamples.map((example) => (
+                  {monorepoExamples.map(example => (
                     <CodeExample
                       key={example.id}
                       title={example.title}
@@ -144,7 +144,7 @@ function Monorepo() {
                   nada.
                 </Text>
                 <Stack gap="xl">
-                  {monorepoExamples.map((example) => (
+                  {monorepoExamples.map(example => (
                     <CodeExample
                       key={example.id}
                       title={example.title}
@@ -169,7 +169,7 @@ function Monorepo() {
                   rastreabilidade total.
                 </Text>
                 <Stack gap="xl">
-                  {monorepoExamples.map((example) => (
+                  {monorepoExamples.map(example => (
                     <CodeExample
                       key={example.id}
                       title={example.title}
@@ -189,7 +189,7 @@ function Monorepo() {
         <Title order={2} mb="lg">
           <IconCheck
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Por que vale a pena?
         </Title>
@@ -246,7 +246,7 @@ function Monorepo() {
         <Title order={2} mb="lg">
           <IconAlertTriangle
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Quando usar?
         </Title>
@@ -278,7 +278,7 @@ function Monorepo() {
         <Title order={2} mb="lg">
           <IconCode
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Exemplos Práticos no Front-End
         </Title>
@@ -301,7 +301,7 @@ function Monorepo() {
               </Text>
 
               <Stack gap="xl">
-                {monorepoExamples.map((example) => (
+                {monorepoExamples.map(example => (
                   <CodeExample
                     key={example.id}
                     title={example.title}
@@ -329,7 +329,7 @@ function Monorepo() {
               </Text>
 
               <Stack gap="xl">
-                {monorepoExamples.map((example) => (
+                {monorepoExamples.map(example => (
                   <CodeExample
                     key={example.id}
                     title={example.title}
@@ -357,7 +357,7 @@ function Monorepo() {
               </Text>
 
               <Stack gap="xl">
-                {monorepoExamples.map((example) => (
+                {monorepoExamples.map(example => (
                   <CodeExample
                     key={example.id}
                     title={example.title}
@@ -376,7 +376,7 @@ function Monorepo() {
         <Title order={2} mb="lg">
           <IconAlertTriangle
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Armadilhas & Como Evitar
         </Title>
@@ -399,7 +399,7 @@ function Monorepo() {
               </Text>
 
               <Stack gap="xl">
-                {monorepoExamples.map((example) => (
+                {monorepoExamples.map(example => (
                   <CodeExample
                     key={example.id}
                     title={example.title}
@@ -428,7 +428,7 @@ function Monorepo() {
               </Text>
 
               <Stack gap="xl">
-                {monorepoExamples.map((example) => (
+                {monorepoExamples.map(example => (
                   <CodeExample
                     key={example.id}
                     title={example.title}
@@ -457,7 +457,7 @@ function Monorepo() {
               </Text>
 
               <Stack gap="xl">
-                {monorepoExamples.map((example) => (
+                {monorepoExamples.map(example => (
                   <CodeExample
                     key={example.id}
                     title={example.title}
@@ -486,7 +486,7 @@ function Monorepo() {
               </Text>
 
               <Stack gap="xl">
-                {monorepoExamples.map((example) => (
+                {monorepoExamples.map(example => (
                   <CodeExample
                     key={example.id}
                     title={example.title}
@@ -515,7 +515,7 @@ function Monorepo() {
               </Text>
 
               <Stack gap="xl">
-                {monorepoExamples.map((example) => (
+                {monorepoExamples.map(example => (
                   <CodeExample
                     key={example.id}
                     title={example.title}
@@ -534,7 +534,7 @@ function Monorepo() {
         <Title order={2} mb="lg">
           <IconBulb
             size={28}
-            style={{ verticalAlign: "middle", marginRight: "8px" }}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Referências & Casos Reais
         </Title>
@@ -631,7 +631,7 @@ function Monorepo() {
           </Group>
 
           <Text>
-            Monorepo é sobre uma coisa só:{" "}
+            Monorepo é sobre uma coisa só:{' '}
             <strong>ter tudo num lugar só</strong>. Compartilhamento de código,
             tooling centralizado, refatoração segura. Use quando tem múltiplos
             projetos relacionados e quer eficiência.
@@ -652,9 +652,9 @@ function Monorepo() {
 }
 
 Monorepo.metadata = {
-  title: "Monorepo",
+  title: 'Monorepo',
   description:
-    "Um repositório, múltiplos projetos. Compartilhamento de código e tooling centralizado.",
+    'Um repositório, múltiplos projetos. Compartilhamento de código e tooling centralizado.',
 };
 
 export default Monorepo;

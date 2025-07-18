@@ -8,35 +8,35 @@ import {
   Button,
   Group,
   SimpleGrid,
-} from "@mantine/core";
-import { IconBulb, IconRocket, IconCheck } from "@tabler/icons-react";
-import { Link } from "react-router-dom";
-import { lazy, Suspense } from "react";
-import { LoadingOverlay } from "@mantine/core";
-import { useMediaQuery } from "@mantine/hooks";
+} from '@mantine/core';
+import { IconBulb, IconRocket, IconCheck } from '@tabler/icons-react';
+import { Link } from 'react-router-dom';
+import { lazy, Suspense } from 'react';
+import { LoadingOverlay } from '@mantine/core';
+import { useMediaQuery } from '@mantine/hooks';
 
 // Lazy load the DecisionWizard component
 const DecisionWizard = lazy(
-  () => import("../../components/interactive/DecisionWizard.tsx"),
+  () => import('../../components/interactive/DecisionWizard.tsx')
 );
 
 export default function HowToChoose() {
-  const isMobile = useMediaQuery("(max-width: 600px)");
+  const isMobile = useMediaQuery('(max-width: 600px)');
   return (
-    <Container size="lg" px={isMobile ? "xs" : "md"}>
-      <Stack gap={isMobile ? "sm" : "xl"}>
+    <Container size="lg" px={isMobile ? 'xs' : 'md'}>
+      <Stack gap={isMobile ? 'sm' : 'xl'}>
         {/* Hero Section */}
         <section>
-          <Stack align="center" ta="center" mb={isMobile ? "md" : "xl"}>
+          <Stack align="center" ta="center" mb={isMobile ? 'md' : 'xl'}>
             <Title
               order={1}
               fw={700}
-              size={isMobile ? "1.7rem" : "2.5rem"}
-              mb={isMobile ? "sm" : "md"}
+              size={isMobile ? '1.7rem' : '2.5rem'}
+              mb={isMobile ? 'sm' : 'md'}
             >
               Como Escolher sua Arquitetura Front-End
             </Title>
-            <Text size={isMobile ? "md" : "lg"} c="dimmed" maw={800}>
+            <Text size={isMobile ? 'md' : 'lg'} c="dimmed" maw={800}>
               Não existe arquitetura perfeita. Existe a arquitetura certa para o
               seu contexto. Vamos descobrir qual faz sentido para o seu projeto.
             </Text>
@@ -45,24 +45,24 @@ export default function HowToChoose() {
 
         {/* Decision Wizard */}
         <section>
-          <Paper withBorder p={isMobile ? "xs" : "md"} radius="lg">
-            <Stack gap={isMobile ? "sm" : "lg"}>
-              <Stack align="center" ta="center" mb={isMobile ? "sm" : "md"}>
+          <Paper withBorder p={isMobile ? 'xs' : 'md'} radius="lg">
+            <Stack gap={isMobile ? 'sm' : 'lg'}>
+              <Stack align="center" ta="center" mb={isMobile ? 'sm' : 'md'}>
                 <Title
                   order={2}
-                  mb={isMobile ? "xs" : "sm"}
-                  size={isMobile ? "1.2rem" : undefined}
+                  mb={isMobile ? 'xs' : 'sm'}
+                  size={isMobile ? '1.2rem' : undefined}
                 >
                   <IconRocket
                     size={isMobile ? 20 : 32}
-                    style={{ verticalAlign: "middle", marginRight: "8px" }}
+                    style={{ verticalAlign: 'middle', marginRight: '8px' }}
                   />
                   Decision Wizard v3.0
                 </Title>
                 <Text
-                  size={isMobile ? "xs" : "lg"}
+                  size={isMobile ? 'xs' : 'lg'}
                   c="dimmed"
-                  maw={isMobile ? "90vw" : 600}
+                  maw={isMobile ? '90vw' : 600}
                   mb={isMobile ? 0 : undefined}
                   lineClamp={isMobile ? 2 : undefined}
                 >
@@ -80,17 +80,17 @@ export default function HowToChoose() {
 
         {/* Context Matters Section */}
         <section>
-          <Paper withBorder p={isMobile ? "md" : "xl"} radius="lg">
-            <Stack gap={isMobile ? "sm" : "lg"}>
-              <Stack align="center" ta="center" mb={isMobile ? "sm" : "md"}>
+          <Paper withBorder p={isMobile ? 'md' : 'xl'} radius="lg">
+            <Stack gap={isMobile ? 'sm' : 'lg'}>
+              <Stack align="center" ta="center" mb={isMobile ? 'sm' : 'md'}>
                 <Title
                   order={2}
-                  mb={isMobile ? "xs" : "sm"}
-                  size={isMobile ? "1.2rem" : undefined}
+                  mb={isMobile ? 'xs' : 'sm'}
+                  size={isMobile ? '1.2rem' : undefined}
                 >
                   <IconBulb
                     size={isMobile ? 20 : 32}
-                    style={{ verticalAlign: "middle", marginRight: "8px" }}
+                    style={{ verticalAlign: 'middle', marginRight: '8px' }}
                   />
                   Mas, ó: Contexto é Tudo
                 </Title>
@@ -102,13 +102,13 @@ export default function HowToChoose() {
                 radius="md"
               >
                 <Text
-                  size={isMobile ? "sm" : "md"}
+                  size={isMobile ? 'sm' : 'md'}
                   fw={600}
-                  mb={isMobile ? 2 : "sm"}
+                  mb={isMobile ? 2 : 'sm'}
                 >
                   Isso aqui não tá escrito em pedra
                 </Text>
-                <Text size={isMobile ? "xs" : "sm"} c="dimmed">
+                <Text size={isMobile ? 'xs' : 'sm'} c="dimmed">
                   Arquitetura não é receita de bolo. O que faz sentido pra um
                   MVP pode virar um inferno num SaaS gigante, e o que parece
                   overkill pra um projeto pequeno pode salvar sua pele quando o
@@ -117,7 +117,7 @@ export default function HowToChoose() {
               </Alert>
 
               <Text
-                size={isMobile ? "sm" : "md"}
+                size={isMobile ? 'sm' : 'md'}
                 c="dimmed"
                 ta="center"
                 maw={700}
@@ -128,43 +128,43 @@ export default function HowToChoose() {
 
               <SimpleGrid
                 cols={{ base: 1, md: 2 }}
-                spacing={isMobile ? "sm" : "md"}
+                spacing={isMobile ? 'sm' : 'md'}
               >
                 <Stack gap="xs">
-                  <Text size={isMobile ? "sm" : "md"} fw={600}>
+                  <Text size={isMobile ? 'sm' : 'md'} fw={600}>
                     📈 Pra onde esse projeto quer ir?
                   </Text>
-                  <Text size={isMobile ? "xs" : "sm"} c="dimmed">
+                  <Text size={isMobile ? 'xs' : 'sm'} c="dimmed">
                     Vai crescer rápido? Precisa escalar pra milhares de usuários
                     ou é mais nicho?
                   </Text>
                 </Stack>
 
                 <Stack gap="xs">
-                  <Text size={isMobile ? "sm" : "md"} fw={600}>
+                  <Text size={isMobile ? 'sm' : 'md'} fw={600}>
                     👥 O time é grande ou só você?
                   </Text>
-                  <Text size={isMobile ? "xs" : "sm"} c="dimmed">
+                  <Text size={isMobile ? 'xs' : 'sm'} c="dimmed">
                     Micro-frontends fazem sentido com 10+ devs, mas são overkill
                     pra 2 pessoas.
                   </Text>
                 </Stack>
 
                 <Stack gap="xs">
-                  <Text size={isMobile ? "sm" : "md"} fw={600}>
+                  <Text size={isMobile ? 'sm' : 'md'} fw={600}>
                     🔗 Precisa integrar com muita coisa?
                   </Text>
-                  <Text size={isMobile ? "xs" : "sm"} c="dimmed">
+                  <Text size={isMobile ? 'xs' : 'sm'} c="dimmed">
                     APIs externas, sistemas legados, múltiplos backends? Isso
                     muda tudo.
                   </Text>
                 </Stack>
 
                 <Stack gap="xs">
-                  <Text size={isMobile ? "sm" : "md"} fw={600}>
+                  <Text size={isMobile ? 'sm' : 'md'} fw={600}>
                     ⏰ Tem prazo apertado?
                   </Text>
-                  <Text size={isMobile ? "xs" : "sm"} c="dimmed">
+                  <Text size={isMobile ? 'xs' : 'sm'} c="dimmed">
                     Clean Architecture é ótima, mas se você tem 2 semanas, vai
                     com SPA mesmo.
                   </Text>
@@ -177,13 +177,13 @@ export default function HowToChoose() {
                 radius="md"
               >
                 <Text
-                  size={isMobile ? "sm" : "md"}
+                  size={isMobile ? 'sm' : 'md'}
                   fw={600}
-                  mb={isMobile ? 2 : "sm"}
+                  mb={isMobile ? 2 : 'sm'}
                 >
                   Essas perguntas são só um ponto de partida
                 </Text>
-                <Text size={isMobile ? "xs" : "sm"} c="dimmed">
+                <Text size={isMobile ? 'xs' : 'sm'} c="dimmed">
                   O segredo é ajustar a arquitetura conforme o projeto evolui.
                   Não existe bala de prata, existe contexto.
                 </Text>
@@ -196,19 +196,19 @@ export default function HowToChoose() {
         <section>
           <Title
             order={2}
-            mb={isMobile ? "md" : "lg"}
+            mb={isMobile ? 'md' : 'lg'}
             ta="center"
-            size={isMobile ? "1.2rem" : undefined}
+            size={isMobile ? '1.2rem' : undefined}
           >
             <IconBulb
               size={isMobile ? 20 : 32}
-              style={{ verticalAlign: "middle", marginRight: "8px" }}
+              style={{ verticalAlign: 'middle', marginRight: '8px' }}
             />
             Dicas Importantes
           </Title>
           <SimpleGrid
             cols={{ base: 1, md: 2 }}
-            spacing={isMobile ? "sm" : "lg"}
+            spacing={isMobile ? 'sm' : 'lg'}
           >
             <Alert
               color="blue"
@@ -216,13 +216,13 @@ export default function HowToChoose() {
               radius="md"
             >
               <Text
-                size={isMobile ? "sm" : "md"}
+                size={isMobile ? 'sm' : 'md'}
                 fw={600}
-                mb={isMobile ? 2 : "sm"}
+                mb={isMobile ? 2 : 'sm'}
               >
                 Comece Simples
               </Text>
-              <Text size={isMobile ? "xs" : "sm"} c="dimmed">
+              <Text size={isMobile ? 'xs' : 'sm'} c="dimmed">
                 Não over-engineer desde o início. Escolha a arquitetura que
                 resolve seu problema atual, não o problema que você acha que vai
                 ter no futuro.
@@ -235,13 +235,13 @@ export default function HowToChoose() {
               radius="md"
             >
               <Text
-                size={isMobile ? "sm" : "md"}
+                size={isMobile ? 'sm' : 'md'}
                 fw={600}
-                mb={isMobile ? 2 : "sm"}
+                mb={isMobile ? 2 : 'sm'}
               >
                 Considere o Time
               </Text>
-              <Text size={isMobile ? "xs" : "sm"} c="dimmed">
+              <Text size={isMobile ? 'xs' : 'sm'} c="dimmed">
                 A arquitetura tem que fazer sentido para o seu time. Se ninguém
                 entende, não vai dar certo, mesmo que seja tecnicamente
                 perfeita.
@@ -254,13 +254,13 @@ export default function HowToChoose() {
               radius="md"
             >
               <Text
-                size={isMobile ? "sm" : "md"}
+                size={isMobile ? 'sm' : 'md'}
                 fw={600}
-                mb={isMobile ? 2 : "sm"}
+                mb={isMobile ? 2 : 'sm'}
               >
                 Pense no Futuro
               </Text>
-              <Text size={isMobile ? "xs" : "sm"} c="dimmed">
+              <Text size={isMobile ? 'xs' : 'sm'} c="dimmed">
                 Mas não muito. Escolha algo que você consegue evoluir sem
                 refatorar tudo. Clean Architecture é ótima pra isso.
               </Text>
@@ -272,13 +272,13 @@ export default function HowToChoose() {
               radius="md"
             >
               <Text
-                size={isMobile ? "sm" : "md"}
+                size={isMobile ? 'sm' : 'md'}
                 fw={600}
-                mb={isMobile ? 2 : "sm"}
+                mb={isMobile ? 2 : 'sm'}
               >
                 Teste na Prática
               </Text>
-              <Text size={isMobile ? "xs" : "sm"} c="dimmed">
+              <Text size={isMobile ? 'xs' : 'sm'} c="dimmed">
                 Não acredite só no que lê. Teste a arquitetura em um projeto
                 pequeno primeiro. Só assim você vai saber se funciona pra você.
               </Text>
@@ -288,22 +288,22 @@ export default function HowToChoose() {
 
         {/* CTA Section */}
         <section>
-          <Paper withBorder p={isMobile ? "md" : "xl"} radius="lg" ta="center">
-            <Stack gap={isMobile ? "sm" : "md"} align="center">
-              <Title order={2} size={isMobile ? "1.2rem" : undefined}>
+          <Paper withBorder p={isMobile ? 'md' : 'xl'} radius="lg" ta="center">
+            <Stack gap={isMobile ? 'sm' : 'md'} align="center">
+              <Title order={2} size={isMobile ? '1.2rem' : undefined}>
                 Ainda com dúvidas?
               </Title>
-              <Text size={isMobile ? "sm" : "lg"} c="dimmed" maw={500}>
+              <Text size={isMobile ? 'sm' : 'lg'} c="dimmed" maw={500}>
                 Dá uma olhada nos exemplos práticos e casos de uso de cada
                 arquitetura.
               </Text>
-              <Group gap={isMobile ? "sm" : "md"}>
+              <Group gap={isMobile ? 'sm' : 'md'}>
                 <Button
                   component={Link}
                   to="/patterns/clean-architecture"
                   variant="filled"
                   leftSection={<IconRocket size={isMobile ? 12 : 16} />}
-                  size={isMobile ? "sm" : "md"}
+                  size={isMobile ? 'sm' : 'md'}
                 >
                   Ver Clean Architecture
                 </Button>
@@ -312,7 +312,7 @@ export default function HowToChoose() {
                   to="/patterns/component-driven"
                   variant="light"
                   leftSection={<IconRocket size={isMobile ? 12 : 16} />}
-                  size={isMobile ? "sm" : "md"}
+                  size={isMobile ? 'sm' : 'md'}
                 >
                   Ver Component-Driven
                 </Button>
@@ -326,7 +326,7 @@ export default function HowToChoose() {
 }
 
 HowToChoose.metadata = {
-  title: "Como Escolher sua Arquitetura Front-End",
+  title: 'Como Escolher sua Arquitetura Front-End',
   description:
-    "Perguntas práticas para encontrar a melhor arquitetura para o seu contexto.",
+    'Perguntas práticas para encontrar a melhor arquitetura para o seu contexto.',
 };
