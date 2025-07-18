@@ -1,0 +1,1 @@
+🏗️ Guia prático de arquiteturas front-end modernas. Clean Architecture, Micro-frontends, Component-Driven e mais. De dev para dev, sem enrolação - só o que realmente funciona em produção. Com exemplos reais, armadilhas comuns e casos de sucesso.
