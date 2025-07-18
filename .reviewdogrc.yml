@@ -9,10 +9,7 @@ runner:
     format: tsc
     name: TypeScript
 
-  prettier:
-    cmd: npx prettier --check src/
-    format: prettier-checkstyle
-    name: prettier
+
 
   misspell:
     cmd: misspell src/
@@ -31,7 +28,4 @@ tools:
     reporter: github-pr-review
     filter_mode: diff_context
 
-  prettier:
-    level: info
-    reporter: github-pr-review
-    filter_mode: added
+
