@@ -68,6 +68,9 @@ const MicroservicesFrontendArchitecture = lazy(
 
 // Lazy loading para techniques - carregamento sob demanda
 const Performance = lazy(() => import('../content/techniques/performance.tsx'));
+const VelocityImpact = lazy(
+  () => import('../content/techniques/velocity-impact.tsx')
+);
 
 export type CollectionType =
   | 'guides'
@@ -193,6 +196,11 @@ const STATIC_METADATA = {
     description:
       'Code splitting, lazy loading, chunks e métricas que fazem diferença real',
   },
+  'velocity-impact': {
+    title: 'Quando Velocidade Gera Impacto e Vira Dinheiro',
+    description:
+      'Por que velocidade de desenvolvimento não é só sobre entregar rápido, mas sobre capturar valor no mercado',
+  },
 
   // Best Practices
   dry: {
@@ -295,6 +303,7 @@ export const techniques: DocMeta[] = [
   toMeta(FeatureFlags, 'feature-flags', 'techniques', true),
   toMeta(StateMachines, 'state-machines', 'techniques', true),
   toMeta(Performance, 'performance', 'techniques', true),
+  toMeta(VelocityImpact, 'velocity-impact', 'techniques', true),
 ];
 
 // Boas práticas - princípios fundamentais de código limpo
