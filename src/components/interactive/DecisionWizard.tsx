@@ -2,12 +2,12 @@ import { useState } from 'react';
 import { Stack, Card, Title, Text, Button, Group, SimpleGrid, ThemeIcon, Alert } from '@mantine/core';
 import { Link } from 'react-router-dom';
 import { architectures, patterns } from '../../lib/content.ts';
-import { IconPuzzle, IconHierarchy, IconStack2, IconShare, IconGitBranch, IconDeviceDesktop, IconSettings, IconTopologyStar3, IconArrowRight, IconBroadcast, IconSettings2, IconBulb, IconAlertTriangle, IconInfoCircle } from '@tabler/icons-react';
+import { IconPuzzle, IconHierarchy, IconStack2, IconShare, IconGitBranch, IconDeviceDesktop, IconSettings, IconTopologyStar3, IconArrowRight, IconBroadcast, IconSettings2, IconBulb, IconAlertTriangle, IconInfoCircle, IconRocket, IconApi, IconDeviceMobile, IconCloud, IconHexagon, IconLayers, IconHistory, IconSeparator, IconBoxMultiple } from '@tabler/icons-react';
 import './DecisionWizard.css';
 import { useMediaQuery } from '@mantine/hooks';
 import { getBonusPatterns } from './getBonusPatterns';
 
-// Mapeamento de ícones por padrão
+// Mapeamento de ícones por padrão - WIZARD v3.0 com todas as 15 arquiteturas
 const patternIcons: Record<string, React.ReactNode> = {
   'atomic-design': <IconPuzzle size={28} />,
   'clean-architecture': <IconHierarchy size={28} />,
@@ -20,6 +20,18 @@ const patternIcons: Record<string, React.ReactNode> = {
   'monorepo': <IconTopologyStar3 size={28} />,
   'spa': <IconDeviceDesktop size={28} />,
   'state-machines': <IconSettings size={28} />,
+  // TIER 1 - Arquiteturas críticas adicionadas
+  'ssr-ssg': <IconRocket size={28} />,
+  'bff': <IconApi size={28} />,
+  'pwa': <IconDeviceMobile size={28} />,
+  // TIER 2 - Arquiteturas importantes adicionadas
+  'headless': <IconCloud size={28} />,
+  'hexagonal': <IconHexagon size={28} />,
+  'layered': <IconLayers size={28} />,
+  // TIER 3 - Arquiteturas específicas adicionadas
+  'event-sourcing': <IconHistory size={28} />,
+  'cqrs': <IconSeparator size={28} />,
+  'microservices-frontend': <IconBoxMultiple size={28} />,
 };
 
 // Tipos de projeto melhorados
@@ -61,7 +73,7 @@ export default function DecisionWizard() {
   const [priority, setPriority] = useState<string | null>(null);
   const [hasIntegrations, setHasIntegrations] = useState<boolean | null>(null);
 
-  // Lógica sofisticada de recomendações
+  // Lógica sofisticada de recomendações - WIZARD v3.0
   const recommendations = (): { pattern: string; score: number; reason: string }[] => {
     if (!projectType || !teamSize || !techLevel || !priority || hasIntegrations === null) return [];
     
@@ -73,6 +85,10 @@ export default function DecisionWizard() {
       scores['jamstack'] = { score: 7, reason: 'Deploy simples e performance' };
       if (priority === 'performance') {
         scores['islands-architecture'] = { score: 9, reason: 'Performance máxima para MVP' };
+        scores['ssr-ssg'] = { score: 8, reason: 'SEO + performance inicial críticos' };
+      }
+      if (priority === 'speed') {
+        scores['layered'] = { score: 7, reason: 'Mais simples que Clean para MVP rápido' };
       }
     }
 
@@ -82,13 +98,27 @@ export default function DecisionWizard() {
       if (priority === 'scalability') {
         scores['monorepo'] = { score: 7, reason: 'Facilita escalabilidade de código' };
       }
+      if (hasIntegrations) {
+        scores['bff'] = { score: 8, reason: 'Simplifica integrações múltiplas' };
+        scores['hexagonal'] = { score: 7, reason: 'Isolamento de dependências externas' };
+      }
+      if (priority === 'performance') {
+        scores['ssr-ssg'] = { score: 7, reason: 'SEO e performance para aquisição' };
+      }
     }
 
     if (projectType === 'ecommerce') {
       scores['event-driven'] = { score: 9, reason: 'Gerenciar fluxos complexos (carrinho, pagamento)' };
       scores['clean-architecture'] = { score: 8, reason: 'Lógica de negócio complexa' };
+      scores['ssr-ssg'] = { score: 9, reason: 'SEO crítico para descoberta de produtos' };
+      scores['pwa'] = { score: 8, reason: 'App-like experience aumenta conversão' };
       if (hasIntegrations) {
         scores['state-machines'] = { score: 7, reason: 'Estados complexos (pedidos, inventory)' };
+        scores['bff'] = { score: 7, reason: 'Agregação de APIs (pagamento, estoque, etc)' };
+        scores['cqrs'] = { score: 6, reason: 'Separar leitura (catálogo) de escrita (pedidos)' };
+      }
+      if (priority === 'maintainability') {
+        scores['hexagonal'] = { score: 7, reason: 'Isolar integrações de pagamento/estoque' };
       }
     }
 
@@ -98,24 +128,58 @@ export default function DecisionWizard() {
       if (techLevel === 'senior') {
         scores['atomic-design'] = { score: 7, reason: 'Design system estruturado' };
       }
+      if (hasIntegrations) {
+        scores['bff'] = { score: 8, reason: 'Agregação de dados de múltiplas APIs' };
+        scores['cqrs'] = { score: 7, reason: 'Otimizar queries de leitura para dashboards' };
+      }
+      if (priority === 'performance') {
+        scores['islands-architecture'] = { score: 7, reason: 'Hidratação seletiva de widgets' };
+      }
+      if (priority === 'maintainability') {
+        scores['layered'] = { score: 6, reason: 'Separação clara: UI → Logic → Data' };
+      }
     }
 
     if (projectType === 'enterprise') {
       scores['clean-architecture'] = { score: 9, reason: 'Complexidade empresarial' };
+      scores['hexagonal'] = { score: 8, reason: 'Isolamento de sistemas legados' };
       if (teamSize === 'large' && techLevel === 'senior') {
         scores['micro-frontends'] = { score: 10, reason: 'Times grandes independentes' };
+        scores['microservices-frontend'] = { score: 8, reason: 'Alinhamento com arquitetura backend' };
       }
       if (teamSize === 'large') {
         scores['monorepo'] = { score: 8, reason: 'Compartilhamento entre times' };
+      }
+      if (hasIntegrations) {
+        scores['bff'] = { score: 8, reason: 'Abstração de sistemas legados complexos' };
+        scores['headless'] = { score: 7, reason: 'Flexibilidade para múltiplos canais' };
+        scores['event-sourcing'] = { score: 6, reason: 'Auditoria e compliance empresarial' };
+      }
+      if (priority === 'maintainability') {
+        scores['layered'] = { score: 7, reason: 'Alternativa mais simples ao Clean' };
       }
     }
 
     if (projectType === 'startup') {
       scores['clean-architecture'] = { score: 9, reason: 'Base sólida para crescimento' };
       scores['component-driven'] = { score: 8, reason: 'Velocidade de desenvolvimento' };
+      // Para startups que precisam de SEO/performance
+      if (priority === 'performance') {
+        scores['ssr-ssg'] = { score: 8, reason: 'SEO crítico para aquisição' };
+        scores['islands-architecture'] = { score: 7, reason: 'Performance competitiva' };
+      }
+      // PWA para startups mobile-first
+      if (priority === 'performance' || priority === 'scalability') {
+        scores['pwa'] = { score: 7, reason: 'Reduz fricção de instalação vs app nativo' };
+      }
       // Micro-frontends só para startups grandes com times sêniores
       if (teamSize === 'large' && techLevel === 'senior' && priority === 'scalability') {
         scores['micro-frontends'] = { score: 7, reason: 'Escalabilidade extrema de times' };
+        scores['microservices-frontend'] = { score: 6, reason: 'Alinhamento com microservices backend' };
+      }
+      // Para times pequenos, opções mais simples
+      if (teamSize === 'small' && techLevel !== 'senior') {
+        scores['layered'] = { score: 7, reason: 'Mais simples que Clean para time pequeno' };
       }
     }
 
@@ -124,15 +188,28 @@ export default function DecisionWizard() {
       // Times pequenos preferem simplicidade
       scores['spa'] = { score: (scores['spa']?.score || 0) + 2, reason: scores['spa']?.reason || 'Simplicidade para time pequeno' };
       scores['jamstack'] = { score: (scores['jamstack']?.score || 0) + 2, reason: scores['jamstack']?.reason || 'Fácil para time pequeno' };
+      scores['layered'] = { score: (scores['layered']?.score || 5) + 2, reason: scores['layered']?.reason || 'Estrutura simples para time pequeno' };
       
       // Penaliza arquiteturas complexas
       if (scores['micro-frontends']) {
         scores['micro-frontends'].score -= 4;
         scores['micro-frontends'].reason += ' (complexo para time pequeno)';
       }
+      if (scores['microservices-frontend']) {
+        scores['microservices-frontend'].score -= 5;
+        scores['microservices-frontend'].reason += ' (muito complexo para time pequeno)';
+      }
       if (scores['monorepo']) {
         scores['monorepo'].score -= 2;
         scores['monorepo'].reason += ' (overhead para time pequeno)';
+      }
+      if (scores['event-sourcing']) {
+        scores['event-sourcing'].score -= 3;
+        scores['event-sourcing'].reason += ' (complexidade desnecessária)';
+      }
+      if (scores['cqrs']) {
+        scores['cqrs'].score -= 3;
+        scores['cqrs'].reason += ' (over-engineering para time pequeno)';
       }
     }
 
@@ -140,6 +217,8 @@ export default function DecisionWizard() {
       // Times grandes se beneficiam de modularização
       scores['monorepo'] = { score: (scores['monorepo']?.score || 5) + 3, reason: scores['monorepo']?.reason || 'Facilita colaboração em time grande' };
       scores['clean-architecture'] = { score: (scores['clean-architecture']?.score || 6) + 2, reason: scores['clean-architecture']?.reason || 'Organização para time grande' };
+      scores['hexagonal'] = { score: (scores['hexagonal']?.score || 5) + 2, reason: scores['hexagonal']?.reason || 'Facilita desenvolvimento paralelo' };
+      scores['microservices-frontend'] = { score: (scores['microservices-frontend']?.score || 4) + 3, reason: scores['microservices-frontend']?.reason || 'Times independentes com deploys autônomos' };
     }
 
     // Ajustes por nível técnico
@@ -147,15 +226,33 @@ export default function DecisionWizard() {
       // Times júniores preferem simplicidade
       scores['spa'] = { score: (scores['spa']?.score || 5) + 3, reason: scores['spa']?.reason || 'Mais simples para time júnior' };
       scores['component-driven'] = { score: (scores['component-driven']?.score || 5) + 2, reason: scores['component-driven']?.reason || 'Conceitos claros para júniors' };
+      scores['layered'] = { score: (scores['layered']?.score || 5) + 3, reason: scores['layered']?.reason || 'Estrutura fácil de entender' };
+      scores['jamstack'] = { score: (scores['jamstack']?.score || 5) + 2, reason: scores['jamstack']?.reason || 'Deploy simples para iniciantes' };
       
       // Penaliza arquiteturas avançadas
       if (scores['micro-frontends']) {
         scores['micro-frontends'].score -= 5;
         scores['micro-frontends'].reason += ' (muito complexo para júniors)';
       }
+      if (scores['microservices-frontend']) {
+        scores['microservices-frontend'].score -= 6;
+        scores['microservices-frontend'].reason += ' (extremamente complexo para júniors)';
+      }
       if (scores['event-driven']) {
         scores['event-driven'].score -= 2;
         scores['event-driven'].reason += ' (conceitos avançados)';
+      }
+      if (scores['hexagonal']) {
+        scores['hexagonal'].score -= 3;
+        scores['hexagonal'].reason += ' (abstração complexa para júniors)';
+      }
+      if (scores['event-sourcing']) {
+        scores['event-sourcing'].score -= 4;
+        scores['event-sourcing'].reason += ' (conceitos muito avançados)';
+      }
+      if (scores['cqrs']) {
+        scores['cqrs'].score -= 4;
+        scores['cqrs'].reason += ' (padrão avançado para júniors)';
       }
     }
 
@@ -163,34 +260,67 @@ export default function DecisionWizard() {
       // Times sêniores podem lidar com complexidade
       scores['clean-architecture'] = { score: (scores['clean-architecture']?.score || 6) + 2, reason: scores['clean-architecture']?.reason || 'Time pode implementar bem' };
       scores['event-driven'] = { score: (scores['event-driven']?.score || 5) + 2, reason: scores['event-driven']?.reason || 'Time experiente com eventos' };
+      scores['hexagonal'] = { score: (scores['hexagonal']?.score || 5) + 2, reason: scores['hexagonal']?.reason || 'Time domina abstrações complexas' };
+      scores['event-sourcing'] = { score: (scores['event-sourcing']?.score || 4) + 2, reason: scores['event-sourcing']?.reason || 'Time experiente com padrões avançados' };
+      scores['cqrs'] = { score: (scores['cqrs']?.score || 4) + 2, reason: scores['cqrs']?.reason || 'Time pode implementar separação read/write' };
+      scores['microservices-frontend'] = { score: (scores['microservices-frontend']?.score || 4) + 2, reason: scores['microservices-frontend']?.reason || 'Time experiente com arquiteturas distribuídas' };
     }
 
     // Ajustes por prioridade
     if (priority === 'speed') {
       scores['spa'] = { score: (scores['spa']?.score || 5) + 3, reason: scores['spa']?.reason || 'Desenvolvimento rápido' };
       scores['jamstack'] = { score: (scores['jamstack']?.score || 5) + 2, reason: scores['jamstack']?.reason || 'Deploy rápido' };
+      scores['layered'] = { score: (scores['layered']?.score || 5) + 2, reason: scores['layered']?.reason || 'Estrutura simples, desenvolvimento rápido' };
       
       // Penaliza arquiteturas que demandam setup
       if (scores['micro-frontends']) {
         scores['micro-frontends'].score -= 3;
         scores['micro-frontends'].reason += ' (setup inicial lento)';
       }
+      if (scores['microservices-frontend']) {
+        scores['microservices-frontend'].score -= 4;
+        scores['microservices-frontend'].reason += ' (infraestrutura complexa)';
+      }
+      if (scores['hexagonal']) {
+        scores['hexagonal'].score -= 2;
+        scores['hexagonal'].reason += ' (abstrações demoram para configurar)';
+      }
+      if (scores['event-sourcing']) {
+        scores['event-sourcing'].score -= 3;
+        scores['event-sourcing'].reason += ' (setup de stores complexo)';
+      }
     }
 
     if (priority === 'performance') {
       scores['islands-architecture'] = { score: (scores['islands-architecture']?.score || 5) + 4, reason: scores['islands-architecture']?.reason || 'Performance máxima' };
       scores['jamstack'] = { score: (scores['jamstack']?.score || 5) + 3, reason: scores['jamstack']?.reason || 'Performance de CDN' };
+      scores['ssr-ssg'] = { score: (scores['ssr-ssg']?.score || 5) + 4, reason: scores['ssr-ssg']?.reason || 'First paint otimizado' };
+      scores['pwa'] = { score: (scores['pwa']?.score || 5) + 3, reason: scores['pwa']?.reason || 'Cache offline e performance nativa' };
       
       // SPA pode ter problemas de performance
       if (scores['spa']) {
         scores['spa'].score -= 1;
         scores['spa'].reason += ' (cuidado com bundle size)';
       }
+      
+      // CQRS pode otimizar reads
+      if (scores['cqrs']) {
+        scores['cqrs'].score += 2;
+        scores['cqrs'].reason += ' (queries otimizadas para leitura)';
+      }
     }
 
     if (priority === 'maintainability') {
       scores['clean-architecture'] = { score: (scores['clean-architecture']?.score || 6) + 4, reason: scores['clean-architecture']?.reason || 'Máxima manutenibilidade' };
       scores['component-driven'] = { score: (scores['component-driven']?.score || 5) + 3, reason: scores['component-driven']?.reason || 'Componentes fáceis de manter' };
+      scores['hexagonal'] = { score: (scores['hexagonal']?.score || 5) + 3, reason: scores['hexagonal']?.reason || 'Isolamento facilita manutenção' };
+      scores['layered'] = { score: (scores['layered']?.score || 5) + 2, reason: scores['layered']?.reason || 'Separação clara de responsabilidades' };
+      
+      // Event sourcing facilita debug
+      if (scores['event-sourcing']) {
+        scores['event-sourcing'].score += 2;
+        scores['event-sourcing'].reason += ' (debug e auditoria completos)';
+      }
     }
 
     if (priority === 'scalability') {
