@@ -11,7 +11,7 @@ import {
   Alert,
 } from '@mantine/core';
 import { Link } from 'react-router-dom';
-import { architectures, patterns } from '../../lib/content.ts';
+import { architectures, patterns } from '../../lib/content.tsx';
 import {
   IconPuzzle,
   IconHierarchy,
