@@ -17,10 +17,14 @@ import {
   IconBulb,
   IconRocket,
   IconGitFork,
+  IconCode,
 } from '@tabler/icons-react';
+import MobileTabs from '../../components/MobileTabs';
+import { createArchitectureTabs } from '../../components/MobileTabsHelpers';
 
 export default function CQRSArchitecture() {
-  return (
+  // Overview Section
+  const OverviewSection = () => (
     <Stack gap="xl">
       {/* Hero Section */}
       <div>
@@ -90,7 +94,12 @@ class UserCommands {
 }`}
         </Code>
       </Paper>
+    </Stack>
+  );
 
+  // Implementation Section
+  const ImplementationSection = () => (
+    <Stack gap="xl">
       {/* Quando usar? */}
       <Paper withBorder p="xl" radius="md">
         <Title order={2} size="h2" mb="md">
@@ -141,7 +150,7 @@ class UserCommands {
             <Text size="sm" c="dimmed" mb="md">
               Faz mudanças no sistema
             </Text>
-            <Code size="sm" mb="md">
+            <Code mb="md">
               {`class CreateOrderCommand {
   constructor(
     public userId: string,
@@ -189,7 +198,7 @@ class OrderCommandHandler {
             <Text size="sm" c="dimmed" mb="md">
               Busca dados do sistema
             </Text>
-            <Code size="sm" mb="md">
+            <Code mb="md">
               {`class GetOrdersQuery {
   constructor(
     public userId: string,
@@ -200,411 +209,243 @@ class OrderCommandHandler {
 
 class OrderQueryHandler {
   async handle(query: GetOrdersQuery) {
-    // Otimizado pra leitura - views, cache, indexes
-    return await this.readModel.query(\`
-      SELECT 
-        o.id,
-        o.total,
-        o.status,
-        o.created_at,
-        COUNT(oi.id) as items_count
-      FROM orders_view o
-      LEFT JOIN order_items oi ON o.id = oi.order_id
-      WHERE o.user_id = ? 
-        AND (\${query.status ? 'o.status = ?' : '1=1'})
-      GROUP BY o.id
+    // Otimizado pra leitura
+    const sql = \`
+      SELECT o.id, o.total, o.status, o.created_at,
+             u.name as user_name
+      FROM orders o
+      JOIN users u ON o.user_id = u.id
+      WHERE o.user_id = ?
+      \${query.status ? 'AND o.status = ?' : ''}
       ORDER BY o.created_at DESC
       LIMIT ?
-    \`, [query.userId, query.status, query.limit])
+    \`
+    
+    const params = [query.userId]
+    if (query.status) params.push(query.status)
+    params.push(query.limit)
+    
+    return await this.db.query(sql, params)
   }
 }`}
             </Code>
             <List size="sm" spacing={4}>
               <List.Item>Foco em performance</List.Item>
-              <List.Item>Views otimizadas</List.Item>
-              <List.Item>Cache agressivo</List.Item>
-              <List.Item>Sempre retorna dados</List.Item>
+              <List.Item>Queries otimizadas</List.Item>
+              <List.Item>Cache quando possível</List.Item>
+              <List.Item>Retorna dados prontos</List.Item>
             </List>
           </Card>
         </Group>
-      </Paper>
-
-      {/* Por que vale a pena? */}
-      <Paper withBorder p="xl" radius="md">
-        <Group gap="sm" mb="md">
-          <ThemeIcon size="lg" radius="md" variant="light" color="green">
-            <IconCheck size={20} />
-          </ThemeIcon>
-          <Title order={2} size="h2">
-            💚 Por que vale a pena?
-          </Title>
-        </Group>
-        <Stack gap="md">
-          <Alert color="green" icon={<IconCheck size={16} />}>
-            <Text fw={600} mb="xs">
-              ⚡ Performance otimizada
-            </Text>
-            <Text size="sm">
-              Read model com cache, views, indexes. Write model com validações
-              focadas.
-            </Text>
-          </Alert>
-          <Alert color="green" icon={<IconCheck size={16} />}>
-            <Text fw={600} mb="xs">
-              🧩 Separation of concerns
-            </Text>
-            <Text size="sm">
-              Lógica de escrita não mistura com lógica de leitura. Clareza
-              total.
-            </Text>
-          </Alert>
-          <Alert color="green" icon={<IconCheck size={16} />}>
-            <Text fw={600} mb="xs">
-              📈 Scalability independent
-            </Text>
-            <Text size="sm">
-              Scale read e write separadamente. Read replicas, write master.
-            </Text>
-          </Alert>
-          <Alert color="green" icon={<IconCheck size={16} />}>
-            <Text fw={600} mb="xs">
-              👥 Team autonomy
-            </Text>
-            <Text size="sm">
-              Frontend team otimiza queries. Backend team foca em business
-              logic.
-            </Text>
-          </Alert>
-        </Stack>
-      </Paper>
-
-      {/* Exemplo Prático */}
-      <Paper withBorder p="xl" radius="md">
-        <Title order={2} size="h2" mb="md">
-          💻 Exemplo: E-commerce Dashboard
-        </Title>
-        <Code block mb="md">
-          {`// 📊 Read Model - Dashboard Analytics
-class DashboardQueries {
-  async getSalesMetrics(period: string) {
-    // Cache primeiro (Redis)
-    const cached = await this.cache.get(\`metrics:\${period}\`)
-    if (cached) return cached
-    
-    // Query otimizada com views pré-computadas
-    const metrics = await this.readDB.query(\`
-      SELECT 
-        DATE(created_at) as date,
-        SUM(total) as revenue,
-        COUNT(*) as orders,
-        AVG(total) as avg_order_value,
-        COUNT(DISTINCT user_id) as unique_customers
-      FROM orders_analytics_view 
-      WHERE created_at >= ?
-      GROUP BY DATE(created_at)
-      ORDER BY date DESC
-    \`, [this.getPeriodStart(period)])
-    
-    // Cache por 1 hora
-    await this.cache.set(\`metrics:\${period}\`, metrics, 3600)
-    return metrics
-  }
-  
-  async getTopProducts(limit: number = 10) {
-    return await this.readDB.query(\`
-      SELECT 
-        p.name,
-        p.category,
-        SUM(oi.quantity) as total_sold,
-        SUM(oi.quantity * oi.price) as revenue
-      FROM product_sales_view p
-      JOIN order_items oi ON p.id = oi.product_id
-      WHERE oi.created_at >= DATE_SUB(NOW(), INTERVAL 30 DAY)
-      GROUP BY p.id
-      ORDER BY total_sold DESC
-      LIMIT ?
-    \`, [limit])
-  }
-}
-
-// ✏️ Write Model - Order Processing
-class OrderCommands {
-  async createOrder(command: CreateOrderCommand) {
-    // Validation
-    await this.validateOrder(command)
-    
-    // Business logic
-    const order = new Order({
-      userId: command.userId,
-      items: command.items,
-      total: this.calculateTotal(command.items),
-      paymentMethod: command.paymentMethod
-    })
-    
-    // Apply business rules
-    await this.applyDiscounts(order)
-    await this.checkInventory(order)
-    await this.validateCreditLimit(order)
-    
-    // Persist
-    const savedOrder = await this.orderRepo.save(order)
-    
-    // Side effects
-    await this.inventoryService.reserveItems(order.items)
-    await this.paymentService.processPayment(order)
-    await this.emailService.sendOrderConfirmation(order)
-    
-    // Events para read model sync
-    await this.eventBus.publish(new OrderCreated(savedOrder))
-    
-    return savedOrder.id
-  }
-  
-  async updateOrderStatus(orderId: string, status: OrderStatus) {
-    const order = await this.orderRepo.findById(orderId)
-    
-    // Business rules for status transition
-    if (!this.isValidTransition(order.status, status)) {
-      throw new Error('Invalid status transition')
-    }
-    
-    order.updateStatus(status)
-    await this.orderRepo.save(order)
-    
-    // Publish event para sync read model
-    await this.eventBus.publish(new OrderStatusUpdated(order))
-  }
-}
-
-// 🔄 Event Handlers - Sync Read Model
-class OrderEventHandlers {
-  async onOrderCreated(event: OrderCreated) {
-    // Update analytics view
-    await this.analyticsRepo.updateSalesMetrics(event.order)
-    
-    // Update product sales view  
-    await this.productRepo.updateSalesData(event.order.items)
-    
-    // Invalidate related caches
-    await this.cache.deletePattern('metrics:*')
-    await this.cache.deletePattern(\`user:\${event.order.userId}:*\`)
-  }
-  
-  async onOrderStatusUpdated(event: OrderStatusUpdated) {
-    // Update order view
-    await this.orderViewRepo.updateStatus(event.order.id, event.order.status)
-    
-    // Update customer journey analytics
-    await this.analyticsRepo.trackStatusChange(event.order)
-  }
-}
-
-// React Hook para CQRS
-function useOrderCQRS() {
-  const [metrics, setMetrics] = useState(null)
-  const [isCreatingOrder, setIsCreatingOrder] = useState(false)
-  
-  // Query side
-  const fetchMetrics = async (period: string) => {
-    const data = await orderQueries.getSalesMetrics(period)
-    setMetrics(data)
-  }
-  
-  // Command side  
-  const createOrder = async (orderData: CreateOrderData) => {
-    setIsCreatingOrder(true)
-    try {
-      const orderId = await orderCommands.createOrder(orderData)
-      
-      // Optimistic update do read model (opcional)
-      await fetchMetrics('today')
-      
-      return orderId
-    } finally {
-      setIsCreatingOrder(false)
-    }
-  }
-  
-  return {
-    // Queries
-    metrics,
-    fetchMetrics,
-    
-    // Commands
-    createOrder,
-    isCreatingOrder
-  }
-}`}
-        </Code>
-      </Paper>
-
-      {/* Armadilhas */}
-      <Paper withBorder p="xl" radius="md">
-        <Group gap="sm" mb="md">
-          <ThemeIcon size="lg" radius="md" variant="light" color="red">
-            <IconAlertTriangle size={20} />
-          </ThemeIcon>
-          <Title order={2} size="h2">
-            ⚠️ Armadilhas
-          </Title>
-        </Group>
-        <Stack gap="md">
-          <Alert color="red" icon={<IconAlertTriangle size={16} />}>
-            <Text fw={600} mb="xs">
-              🔄 Eventual consistency
-            </Text>
-            <Text size="sm">
-              Write model atualiza, read model demora pra sincronizar. Users
-              veem dados antigos.
-            </Text>
-          </Alert>
-          <Alert color="red" icon={<IconAlertTriangle size={16} />}>
-            <Text fw={600} mb="xs">
-              🏗️ Complexidade extra
-            </Text>
-            <Text size="sm">
-              Dois modelos, eventos, sync. Overhead pra casos simples.
-            </Text>
-          </Alert>
-          <Alert color="red" icon={<IconAlertTriangle size={16} />}>
-            <Text fw={600} mb="xs">
-              🐛 Data inconsistency
-            </Text>
-            <Text size="sm">
-              Event handlers falham, read model fica out of sync. Monitoring
-              obrigatório.
-            </Text>
-          </Alert>
-          <Alert color="red" icon={<IconAlertTriangle size={16} />}>
-            <Text fw={600} mb="xs">
-              📚 Learning curve
-            </Text>
-            <Text size="sm">
-              Team precisa entender commands, queries, events, eventual
-              consistency.
-            </Text>
-          </Alert>
-        </Stack>
-      </Paper>
-
-      {/* Cases Reais */}
-      <Paper withBorder p="xl" radius="md">
-        <Group gap="sm" mb="md">
-          <ThemeIcon size="lg" radius="md" variant="light" color="violet">
-            <IconRocket size={20} />
-          </ThemeIcon>
-          <Title order={2} size="h2">
-            🚀 Cases Reais
-          </Title>
-        </Group>
-        <Stack gap="md">
-          <Card withBorder p="md">
-            <Text fw={600} c="blue" mb="sm">
-              📊 Trading Platforms
-            </Text>
-            <Text size="sm" mb="xs">
-              Writes (trades) são críticos e complexos. Reads (charts,
-              positions) são high-frequency.
-            </Text>
-            <Text size="sm" c="green">
-              Separação permite otimizar cada lado independente, performance
-              crítica
-            </Text>
-          </Card>
-          <Card withBorder p="md">
-            <Text fw={600} c="blue" mb="sm">
-              🛒 E-commerce Giants
-            </Text>
-            <Text size="sm" mb="xs">
-              Commands (checkout) têm business rules. Queries (catalog, search)
-              são pure performance.
-            </Text>
-            <Text size="sm" c="green">
-              Scale read replicas pra catalog, write master pra orders
-            </Text>
-          </Card>
-          <Card withBorder p="md">
-            <Text fw={600} c="blue" mb="sm">
-              📈 Analytics Dashboards
-            </Text>
-            <Text size="sm" mb="xs">
-              Writes (events) são simples. Reads (aggregations, reports) são
-              complexos.
-            </Text>
-            <Text size="sm" c="green">
-              Read model otimizado com views, cache, pre-computed metrics
-            </Text>
-          </Card>
-        </Stack>
-      </Paper>
-
-      {/* Implementação */}
-      <Paper withBorder p="xl" radius="md">
-        <Title order={2} size="h2" mb="md">
-          🛠️ Stack CQRS
-        </Title>
-        <Group grow align="flex-start" gap="lg">
-          <Card withBorder p="md">
-            <Badge variant="light" color="blue" mb="sm">
-              Frontend
-            </Badge>
-            <List size="sm" spacing={4}>
-              <List.Item>TanStack Query (reads)</List.Item>
-              <List.Item>RTK Mutation (writes)</List.Item>
-              <List.Item>SWR + Axios</List.Item>
-              <List.Item>Apollo GraphQL</List.Item>
-            </List>
-          </Card>
-          <Card withBorder p="md">
-            <Badge variant="light" color="green" mb="sm">
-              Backend
-            </Badge>
-            <List size="sm" spacing={4}>
-              <List.Item>MediatR (.NET)</List.Item>
-              <List.Item>NestJS + CQRS</List.Item>
-              <List.Item>EventStore + Projections</List.Item>
-              <List.Item>Kafka + Event Sourcing</List.Item>
-            </List>
-          </Card>
-        </Group>
-      </Paper>
-
-      {/* Resumo */}
-      <Paper withBorder p="xl" radius="md">
-        <Alert color="pink" icon={<IconBulb size={16} />} radius="md">
-          <Text fw={600} size="lg" mb="md" style={{ fontStyle: 'italic' }}>
-            "CQRS: optimize reads for speed, optimize writes for correctness."
-          </Text>
-          <List spacing="sm">
-            <List.Item
-              icon={
-                <IconCheck size={14} color="var(--mantine-color-green-6)" />
-              }
-            >
-              <Text>
-                Commands: business logic + validation. Queries: performance +
-                cache
-              </Text>
-            </List.Item>
-            <List.Item
-              icon={
-                <IconCheck size={14} color="var(--mantine-color-green-6)" />
-              }
-            >
-              <Text>Scale independente: read replicas vs write master</Text>
-            </List.Item>
-            <List.Item
-              icon={
-                <IconCheck size={14} color="var(--mantine-color-green-6)" />
-              }
-            >
-              <Text>Trade-off: performance vs eventual consistency</Text>
-            </List.Item>
-          </List>
-        </Alert>
       </Paper>
     </Stack>
   );
+
+  // Examples Section
+  const ExamplesSection = () => (
+    <Stack gap="xl">
+      <Paper withBorder p="xl" radius="md">
+        <Title order={3} mb="lg">
+          <IconBulb
+            size={24}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
+          />
+          Casos Reais
+        </Title>
+
+        <Stack gap="md">
+          <Card withBorder p="md">
+            <Group>
+              <ThemeIcon size={40} radius="md" variant="light" color="green">
+                <IconRocket size={20} />
+              </ThemeIcon>
+              <div>
+                <Title order={4}>E-commerce</Title>
+                <Text size="sm" c="dimmed" mb="sm">
+                  Separação de leitura e escrita
+                </Text>
+                <List size="sm" spacing="xs">
+                  <List.Item>
+                    Commands: Criar pedido, atualizar estoque
+                  </List.Item>
+                  <List.Item>
+                    Queries: Listar produtos, buscar pedidos
+                  </List.Item>
+                  <List.Item>Performance otimizada para cada caso</List.Item>
+                  <List.Item>Business rules isoladas</List.Item>
+                </List>
+              </div>
+            </Group>
+          </Card>
+
+          <Card withBorder p="md">
+            <Group>
+              <ThemeIcon size={40} radius="md" variant="light" color="blue">
+                <IconGitFork size={20} />
+              </ThemeIcon>
+              <div>
+                <Title order={4}>Dashboard Analytics</Title>
+                <Text size="sm" c="dimmed" mb="sm">
+                  Queries otimizadas para relatórios
+                </Text>
+                <List size="sm" spacing="xs">
+                  <List.Item>Commands: Atualizar métricas</List.Item>
+                  <List.Item>Queries: Relatórios complexos</List.Item>
+                  <List.Item>Cache para queries pesadas</List.Item>
+                  <List.Item>Performance crítica</List.Item>
+                </List>
+              </div>
+            </Group>
+          </Card>
+
+          <Card withBorder p="md">
+            <Group>
+              <ThemeIcon size={40} radius="md" variant="light" color="purple">
+                <IconBulb size={20} />
+              </ThemeIcon>
+              <div>
+                <Title order={4}>Social Media</Title>
+                <Text size="sm" c="dimmed" mb="sm">
+                  Feed otimizado para leitura
+                </Text>
+                <List size="sm" spacing="xs">
+                  <List.Item>Commands: Criar post, like</List.Item>
+                  <List.Item>Queries: Feed, timeline, busca</List.Item>
+                  <List.Item>Read model específico</List.Item>
+                  <List.Item>Cache agressivo</List.Item>
+                </List>
+              </div>
+            </Group>
+          </Card>
+        </Stack>
+      </Paper>
+    </Stack>
+  );
+
+  // Pitfalls Section
+  const PitfallsSection = () => (
+    <Stack gap="xl">
+      <Paper withBorder p="xl" radius="md">
+        <Title order={3} mb="lg">
+          <IconAlertTriangle
+            size={24}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
+          />
+          Armadilhas Comuns
+        </Title>
+
+        <Stack gap="md">
+          <Alert color="red" icon={<IconAlertTriangle size={16} />} mb="md">
+            <Text size="sm" fw={600} mb={4}>
+              ❌ Over-engineering
+            </Text>
+            <Text size="sm" c="dimmed">
+              CQRS para aplicações simples. Use apenas quando há complexidade
+              real.
+            </Text>
+          </Alert>
+
+          <Alert color="orange" icon={<IconAlertTriangle size={16} />} mb="md">
+            <Text size="sm" fw={600} mb={4}>
+              ❌ Eventual consistency
+            </Text>
+            <Text size="sm" c="dimmed">
+              Read e write models podem ficar desincronizados. Implemente sync.
+            </Text>
+          </Alert>
+
+          <Alert color="yellow" icon={<IconAlertTriangle size={16} />} mb="md">
+            <Text size="sm" fw={600} mb={4}>
+              ❌ Complexidade desnecessária
+            </Text>
+            <Text size="sm" c="dimmed">
+              Muitos handlers e models. Mantenha simples quando possível.
+            </Text>
+          </Alert>
+
+          <Alert color="green" icon={<IconCheck size={16} />} mb="md">
+            <Text size="sm" fw={600} mb={4}>
+              ✅ Como evitar
+            </Text>
+            <Text size="sm" c="dimmed">
+              <strong>Use quando necessário:</strong> Complexidade real apenas
+              <br />
+              <strong>Implemente sync:</strong> Eventual consistency
+              <br />
+              <strong>Mantenha simples:</strong> Não over-engineer
+            </Text>
+          </Alert>
+        </Stack>
+      </Paper>
+    </Stack>
+  );
+
+  // References Section
+  const ReferencesSection = () => (
+    <Stack gap="xl">
+      <Paper withBorder p="xl" radius="md">
+        <Title order={3} mb="lg">
+          <IconCode
+            size={24}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
+          />
+          Referências e Recursos
+        </Title>
+
+        <Stack gap="md">
+          <Card withBorder p="md">
+            <Title order={4} mb="sm">
+              Ferramentas
+            </Title>
+            <List size="sm" spacing="xs">
+              <List.Item>
+                <strong>MediatR:</strong> Command/Query separation
+              </List.Item>
+              <List.Item>
+                <strong>Axon Framework:</strong> CQRS implementation
+              </List.Item>
+              <List.Item>
+                <strong>EventStore:</strong> Event sourcing with CQRS
+              </List.Item>
+              <List.Item>
+                <strong>NestJS:</strong> Built-in CQRS support
+              </List.Item>
+            </List>
+          </Card>
+
+          <Card withBorder p="md">
+            <Title order={4} mb="sm">
+              Casos de Sucesso
+            </Title>
+            <List size="sm" spacing="xs">
+              <List.Item>
+                <strong>Netflix:</strong> Recommendation engine
+              </List.Item>
+              <List.Item>
+                <strong>Uber:</strong> Ride booking system
+              </List.Item>
+              <List.Item>
+                <strong>Airbnb:</strong> Search and booking
+              </List.Item>
+              <List.Item>
+                <strong>Spotify:</strong> Music recommendation
+              </List.Item>
+            </List>
+          </Card>
+        </Stack>
+      </Paper>
+    </Stack>
+  );
+
+  const tabs = createArchitectureTabs(
+    <OverviewSection />,
+    <ImplementationSection />,
+    <ExamplesSection />,
+    <PitfallsSection />,
+    <ReferencesSection />
+  );
+
+  return <MobileTabs items={tabs} defaultTab="overview" />;
 }
 
 CQRSArchitecture.metadata = {

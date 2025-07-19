@@ -6,7 +6,6 @@ import {
   Card,
   Group,
   ThemeIcon,
-  Badge,
   Alert,
   List,
   Code,
@@ -17,10 +16,14 @@ import {
   IconBulb,
   IconRocket,
   IconHistory,
+  IconCode,
 } from '@tabler/icons-react';
+import MobileTabs from '../../components/MobileTabs';
+import { createArchitectureTabs } from '../../components/MobileTabsHelpers';
 
 export default function EventSourcingArchitecture() {
-  return (
+  // Overview Section
+  const OverviewSection = () => (
     <Stack gap="xl">
       {/* Hero Section */}
       <div>
@@ -80,7 +83,12 @@ const events = [
 const currentState = events.reduce(applyEvent, initialState)`}
         </Code>
       </Paper>
+    </Stack>
+  );
 
+  // Implementation Section
+  const ImplementationSection = () => (
+    <Stack gap="xl">
       {/* Quando usar? */}
       <Paper withBorder p="xl" radius="md">
         <Title order={2} size="h2" mb="md">
@@ -200,371 +208,257 @@ function ShoppingCart() {
     })
   }
   
-  const timeTravel = (pointInTime: number) => {
-    const eventsUntil = events.filter(e => e.timestamp <= pointInTime)
-    const historicalState = eventStore.replay(eventsUntil, initialCartState)
-    setState(historicalState)
+  const removeItem = (itemId: string) => {
+    dispatch({
+      type: 'ITEM_REMOVED',
+      aggregateId: 'cart-123',
+      data: { itemId },
+      userId: currentUser.id
+    })
+  }
+  
+  // Time travel - voltar no tempo
+  const goBackInTime = (eventIndex: number) => {
+    const eventsUntilIndex = events.slice(0, eventIndex)
+    const newState = eventHandler.replay(eventsUntilIndex, initialCartState)
+    setState(newState)
   }
   
   return (
     <div>
-      <CartItems items={state.items} onRemove={removeItem} />
-      <CartTotal total={state.total} />
+      <h2>Cart Total: ${state.total}</h2>
+      <ul>
+        {state.items.map(item => (
+          <li key={item.id}>
+            {item.name} - ${item.price}
+            <button onClick={() => removeItem(item.id)}>Remove</button>
+          </li>
+        ))}
+      </ul>
       
-      {/* Debug: Event History */}
-      <EventHistory 
-        events={events} 
-        onTimeTravel={timeTravel}
-        currentState={state}
-      />
+      {/* Event Timeline */}
+      <div>
+        <h3>Event History</h3>
+        {events.map((event, index) => (
+          <div key={event.id}>
+            <button onClick={() => goBackInTime(index)}>
+              Go back to event {index}
+            </button>
+            <span>{event.type} - {JSON.stringify(event.data)}</span>
+          </div>
+        ))}
+      </div>
     </div>
   )
 }`}
         </Code>
       </Paper>
+    </Stack>
+  );
 
-      {/* Por que vale a pena? */}
+  // Examples Section
+  const ExamplesSection = () => (
+    <Stack gap="xl">
       <Paper withBorder p="xl" radius="md">
-        <Group gap="sm" mb="md">
-          <ThemeIcon size="lg" radius="md" variant="light" color="green">
-            <IconCheck size={20} />
-          </ThemeIcon>
-          <Title order={2} size="h2">
-            💚 Por que vale a pena?
-          </Title>
-        </Group>
-        <Stack gap="md">
-          <Alert color="green" icon={<IconCheck size={16} />}>
-            <Text fw={600} mb="xs">
-              🕰️ Time travel debugging
-            </Text>
-            <Text size="sm">
-              Bug aconteceu ontem? Replay exato da sequência. Debug paradise.
-            </Text>
-          </Alert>
-          <Alert color="green" icon={<IconCheck size={16} />}>
-            <Text fw={600} mb="xs">
-              📊 Analytics completo
-            </Text>
-            <Text size="sm">
-              User journey completo. Cada clique, cada decisão. BI team ama.
-            </Text>
-          </Alert>
-          <Alert color="green" icon={<IconCheck size={16} />}>
-            <Text fw={600} mb="xs">
-              🔄 Undo/Redo natural
-            </Text>
-            <Text size="sm">
-              Voltar no tempo é só replay até ponto anterior. Figma-level UX.
-            </Text>
-          </Alert>
-          <Alert color="green" icon={<IconCheck size={16} />}>
-            <Text fw={600} mb="xs">
-              🛡️ Auditoria built-in
-            </Text>
-            <Text size="sm">
-              Compliance de graça. Toda mudança tem timestamp + user + reason.
-            </Text>
-          </Alert>
-        </Stack>
-      </Paper>
-
-      {/* Exemplo Prático */}
-      <Paper withBorder p="xl" radius="md">
-        <Title order={2} size="h2" mb="md">
-          💻 Exemplo: Editor Colaborativo
+        <Title order={3} mb="lg">
+          <IconBulb
+            size={24}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
+          />
+          Casos Reais
         </Title>
-        <Code block mb="md">
-          {`// Document com Event Sourcing
-class DocumentEventSourcing {
-  constructor() {
-    this.events = []
-    this.subscribers = []
-    this.currentState = { content: "", cursors: {} }
-  }
-  
-  // Commands que geram eventos
-  insertText(position: number, text: string, userId: string) {
-    const event = {
-      type: 'TEXT_INSERTED',
-      timestamp: Date.now(),
-      userId,
-      data: { position, text, length: text.length }
-    }
-    
-    this.appendEvent(event)
-    return event
-  }
-  
-  deleteText(position: number, length: number, userId: string) {
-    const event = {
-      type: 'TEXT_DELETED', 
-      timestamp: Date.now(),
-      userId,
-      data: { position, length, deletedText: this.getTextAt(position, length) }
-    }
-    
-    this.appendEvent(event)
-    return event
-  }
-  
-  moveCursor(userId: string, position: number) {
-    const event = {
-      type: 'CURSOR_MOVED',
-      timestamp: Date.now(), 
-      userId,
-      data: { position }
-    }
-    
-    this.appendEvent(event)
-    return event
-  }
-  
-  // Event application
-  applyEvent(state: DocumentState, event: Event): DocumentState {
-    switch (event.type) {
-      case 'TEXT_INSERTED':
-        return {
-          ...state,
-          content: this.insertAt(state.content, event.data.position, event.data.text)
-        }
-      
-      case 'TEXT_DELETED':
-        return {
-          ...state,
-          content: this.deleteAt(state.content, event.data.position, event.data.length)
-        }
-      
-      case 'CURSOR_MOVED':
-        return {
-          ...state,
-          cursors: {
-            ...state.cursors,
-            [event.userId]: event.data.position
-          }
-        }
-        
-      default:
-        return state
-    }
-  }
-  
-  // Time travel para qualquer ponto
-  getStateAt(timestamp: number): DocumentState {
-    const eventsUntil = this.events.filter(e => e.timestamp <= timestamp)
-    return eventsUntil.reduce((state, event) => this.applyEvent(state, event), initialState)
-  }
-  
-  // Conflict resolution automática
-  resolveConflicts(events: Event[]): Event[] {
-    // Operational Transform baseado em eventos
-    return events.sort((a, b) => a.timestamp - b.timestamp)
-      .reduce((resolved, event) => {
-        const transformedEvent = this.transformEvent(event, resolved)
-        return [...resolved, transformedEvent]
-      }, [])
-  }
-}
 
-// React Hook para Event Sourcing
-function useEventSourcing(aggregateId: string) {
-  const [state, setState] = useState(initialState)
-  const [events, setEvents] = useState<Event[]>([])
-  
-  const dispatch = useCallback((command: Command) => {
-    const event = commandToEvent(command)
-    
-    // Optimistic update
-    setState(prev => applyEvent(prev, event))
-    setEvents(prev => [...prev, event])
-    
-    // Sync com servidor
-    eventStore.append(event).catch(error => {
-      // Rollback on error
-      setEvents(prev => prev.filter(e => e.id !== event.id))
-      setState(prev => replay(events.filter(e => e.id !== event.id)))
-    })
-  }, [events])
-  
-  const timeTravel = useCallback((timestamp: number) => {
-    const snapshot = getStateAt(timestamp)
-    setState(snapshot)
-  }, [events])
-  
-  return { state, dispatch, timeTravel, events }
-}`}
-        </Code>
-      </Paper>
-
-      {/* Armadilhas */}
-      <Paper withBorder p="xl" radius="md">
-        <Group gap="sm" mb="md">
-          <ThemeIcon size="lg" radius="md" variant="light" color="red">
-            <IconAlertTriangle size={20} />
-          </ThemeIcon>
-          <Title order={2} size="h2">
-            ⚠️ Armadilhas
-          </Title>
-        </Group>
-        <Stack gap="md">
-          <Alert color="red" icon={<IconAlertTriangle size={16} />}>
-            <Text fw={600} mb="xs">
-              💾 Storage explosion
-            </Text>
-            <Text size="sm">
-              Cada clique vira evento. TB de dados rapidinho. Snapshots +
-              cleanup obrigatório.
-            </Text>
-          </Alert>
-          <Alert color="red" icon={<IconAlertTriangle size={16} />}>
-            <Text fw={600} mb="xs">
-              🐌 Performance degradation
-            </Text>
-            <Text size="sm">
-              Replay de 10K eventos é lento. Snapshots a cada 100-1000 eventos.
-            </Text>
-          </Alert>
-          <Alert color="red" icon={<IconAlertTriangle size={16} />}>
-            <Text fw={600} mb="xs">
-              🔄 Eventual consistency
-            </Text>
-            <Text size="sm">
-              Events chegam fora de ordem. Conflict resolution é complexo.
-            </Text>
-          </Alert>
-          <Alert color="red" icon={<IconAlertTriangle size={16} />}>
-            <Text fw={600} mb="xs">
-              🧠 Mental model
-            </Text>
-            <Text size="sm">
-              Team precisa pensar em eventos, não estado. Curva de aprendizado.
-            </Text>
-          </Alert>
-        </Stack>
-      </Paper>
-
-      {/* Cases Reais */}
-      <Paper withBorder p="xl" radius="md">
-        <Group gap="sm" mb="md">
-          <ThemeIcon size="lg" radius="md" variant="light" color="violet">
-            <IconRocket size={20} />
-          </ThemeIcon>
-          <Title order={2} size="h2">
-            🚀 Cases Reais
-          </Title>
-        </Group>
         <Stack gap="md">
           <Card withBorder p="md">
-            <Text fw={600} c="blue" mb="sm">
-              🎨 Figma
-            </Text>
-            <Text size="sm" mb="xs">
-              Design colaborativo. Cada ação é evento. Undo/redo perfeito,
-              conflict resolution automático.
-            </Text>
-            <Text size="sm" c="green">
-              Time travel debugging, real-time collaboration, version history
-              natural
-            </Text>
+            <Group>
+              <ThemeIcon size={40} radius="md" variant="light" color="green">
+                <IconHistory size={20} />
+              </ThemeIcon>
+              <div>
+                <Title order={4}>Banking Systems</Title>
+                <Text size="sm" c="dimmed" mb="sm">
+                  Auditoria completa de transações
+                </Text>
+                <List size="sm" spacing="xs">
+                  <List.Item>Eventos: DEPOSIT, WITHDRAW, TRANSFER</List.Item>
+                  <List.Item>Auditoria completa de cada transação</List.Item>
+                  <List.Item>Compliance e regulamentações</List.Item>
+                  <List.Item>Debug de transações problemáticas</List.Item>
+                </List>
+              </div>
+            </Group>
           </Card>
+
           <Card withBorder p="md">
-            <Text fw={600} c="blue" mb="sm">
-              📝 Linear
-            </Text>
-            <Text size="sm" mb="xs">
-              Issue tracking. Toda mudança de status, comment, assignment é
-              evento.
-            </Text>
-            <Text size="sm" c="green">
-              Audit trail completo, activity feed automático, analytics
-              detalhado
-            </Text>
+            <Group>
+              <ThemeIcon size={40} radius="md" variant="light" color="blue">
+                <IconRocket size={20} />
+              </ThemeIcon>
+              <div>
+                <Title order={4}>Collaborative Editors</Title>
+                <Text size="sm" c="dimmed" mb="sm">
+                  Google Docs, Figma, Notion
+                </Text>
+                <List size="sm" spacing="xs">
+                  <List.Item>Eventos: INSERT, DELETE, FORMAT</List.Item>
+                  <List.Item>Undo/Redo perfeito</List.Item>
+                  <List.Item>Collaborative editing</List.Item>
+                  <List.Item>Conflict resolution</List.Item>
+                </List>
+              </div>
+            </Group>
           </Card>
+
           <Card withBorder p="md">
-            <Text fw={600} c="blue" mb="sm">
-              💰 Banking Apps
-            </Text>
-            <Text size="sm" mb="xs">
-              Transações como eventos. Compliance, auditoria, dispute
-              resolution.
-            </Text>
-            <Text size="sm" c="green">
-              Regulamentação atendida, debug de fraudes, reconstituição de
-              cenários
-            </Text>
+            <Group>
+              <ThemeIcon size={40} radius="md" variant="light" color="purple">
+                <IconBulb size={20} />
+              </ThemeIcon>
+              <div>
+                <Title order={4}>Gaming</Title>
+                <Text size="sm" c="dimmed" mb="sm">
+                  Replay de partidas
+                </Text>
+                <List size="sm" spacing="xs">
+                  <List.Item>Eventos: MOVE, ATTACK, ITEM_USE</List.Item>
+                  <List.Item>Replay de partidas completas</List.Item>
+                  <List.Item>Debug de bugs</List.Item>
+                  <List.Item>Anti-cheat systems</List.Item>
+                </List>
+              </div>
+            </Group>
           </Card>
         </Stack>
-      </Paper>
-
-      {/* Implementação */}
-      <Paper withBorder p="xl" radius="md">
-        <Title order={2} size="h2" mb="md">
-          🛠️ Stack Event Sourcing
-        </Title>
-        <Group grow align="flex-start" gap="lg">
-          <Card withBorder p="md">
-            <Badge variant="light" color="blue" mb="sm">
-              Frontend
-            </Badge>
-            <List size="sm" spacing={4}>
-              <List.Item>Redux + Redux Toolkit</List.Item>
-              <List.Item>Zustand + immer</List.Item>
-              <List.Item>Jotai + atoms</List.Item>
-              <List.Item>Custom Event Store</List.Item>
-            </List>
-          </Card>
-          <Card withBorder p="md">
-            <Badge variant="light" color="green" mb="sm">
-              Backend
-            </Badge>
-            <List size="sm" spacing={4}>
-              <List.Item>EventStore DB</List.Item>
-              <List.Item>Apache Kafka</List.Item>
-              <List.Item>AWS EventBridge</List.Item>
-              <List.Item>Custom with PostgreSQL</List.Item>
-            </List>
-          </Card>
-        </Group>
-      </Paper>
-
-      {/* Resumo */}
-      <Paper withBorder p="xl" radius="md">
-        <Alert color="grape" icon={<IconBulb size={16} />} radius="md">
-          <Text fw={600} size="lg" mb="md" style={{ fontStyle: 'italic' }}>
-            "Event Sourcing: cada ação conta uma história. E histórias não
-            mentem."
-          </Text>
-          <List spacing="sm">
-            <List.Item
-              icon={
-                <IconCheck size={14} color="var(--mantine-color-green-6)" />
-              }
-            >
-              <Text>
-                Auditoria completa: toda mudança tem contexto e timestamp
-              </Text>
-            </List.Item>
-            <List.Item
-              icon={
-                <IconCheck size={14} color="var(--mantine-color-green-6)" />
-              }
-            >
-              <Text>Debug poderoso: replay exato de qualquer cenário</Text>
-            </List.Item>
-            <List.Item
-              icon={
-                <IconCheck size={14} color="var(--mantine-color-green-6)" />
-              }
-            >
-              <Text>
-                Trade-off: poder vs complexidade de storage/performance
-              </Text>
-            </List.Item>
-          </List>
-        </Alert>
       </Paper>
     </Stack>
   );
+
+  // Pitfalls Section
+  const PitfallsSection = () => (
+    <Stack gap="xl">
+      <Paper withBorder p="xl" radius="md">
+        <Title order={3} mb="lg">
+          <IconAlertTriangle
+            size={24}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
+          />
+          Armadilhas Comuns
+        </Title>
+
+        <Stack gap="md">
+          <Alert color="red" icon={<IconAlertTriangle size={16} />} mb="md">
+            <Text size="sm" fw={600} mb={4}>
+              ❌ Performance issues
+            </Text>
+            <Text size="sm" c="dimmed">
+              Muitos eventos podem impactar performance. Use snapshots e
+              otimizações.
+            </Text>
+          </Alert>
+
+          <Alert color="orange" icon={<IconAlertTriangle size={16} />} mb="md">
+            <Text size="sm" fw={600} mb={4}>
+              ❌ Complexidade excessiva
+            </Text>
+            <Text size="sm" c="dimmed">
+              Event Sourcing para problemas simples. Use apenas quando
+              necessário.
+            </Text>
+          </Alert>
+
+          <Alert color="yellow" icon={<IconAlertTriangle size={16} />} mb="md">
+            <Text size="sm" fw={600} mb={4}>
+              ❌ Event schema evolution
+            </Text>
+            <Text size="sm" c="dimmed">
+              Mudanças no schema de eventos podem quebrar replay. Versioning é
+              crucial.
+            </Text>
+          </Alert>
+
+          <Alert color="green" icon={<IconCheck size={16} />} mb="md">
+            <Text size="sm" fw={600} mb={4}>
+              ✅ Como evitar
+            </Text>
+            <Text size="sm" c="dimmed">
+              <strong>Use snapshots:</strong> Para performance
+              <br />
+              <strong>Version events:</strong> Para evolução
+              <br />
+              <strong>Use quando necessário:</strong> Auditoria crítica apenas
+            </Text>
+          </Alert>
+        </Stack>
+      </Paper>
+    </Stack>
+  );
+
+  // References Section
+  const ReferencesSection = () => (
+    <Stack gap="xl">
+      <Paper withBorder p="xl" radius="md">
+        <Title order={3} mb="lg">
+          <IconCode
+            size={24}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
+          />
+          Referências e Recursos
+        </Title>
+
+        <Stack gap="md">
+          <Card withBorder p="md">
+            <Title order={4} mb="sm">
+              Ferramentas
+            </Title>
+            <List size="sm" spacing="xs">
+              <List.Item>
+                <strong>EventStore:</strong> Event sourcing database
+              </List.Item>
+              <List.Item>
+                <strong>Axon Framework:</strong> Event sourcing framework
+              </List.Item>
+              <List.Item>
+                <strong>Apache Kafka:</strong> Event streaming platform
+              </List.Item>
+              <List.Item>
+                <strong>Redux Toolkit:</strong> State management with events
+              </List.Item>
+            </List>
+          </Card>
+
+          <Card withBorder p="md">
+            <Title order={4} mb="sm">
+              Casos de Sucesso
+            </Title>
+            <List size="sm" spacing="xs">
+              <List.Item>
+                <strong>Netflix:</strong> Recommendation events
+              </List.Item>
+              <List.Item>
+                <strong>Uber:</strong> Ride tracking events
+              </List.Item>
+              <List.Item>
+                <strong>Airbnb:</strong> Booking events
+              </List.Item>
+              <List.Item>
+                <strong>Spotify:</strong> Playback events
+              </List.Item>
+            </List>
+          </Card>
+        </Stack>
+      </Paper>
+    </Stack>
+  );
+
+  const tabs = createArchitectureTabs(
+    <OverviewSection />,
+    <ImplementationSection />,
+    <ExamplesSection />,
+    <PitfallsSection />,
+    <ReferencesSection />
+  );
+
+  return <MobileTabs items={tabs} defaultTab="overview" />;
 }
 
 EventSourcingArchitecture.metadata = {
