@@ -1,6 +1,6 @@
 # 🚀 Front-End Architecture Playbook
 
-> **Decision wizard interativo + casos reais que provam ROI de arquitetura. Dev para dev, sem enrolação.**
+> **Decision wizard interativo + comparação visual de arquiteturas + casos reais que provam ROI. Dev para dev, sem enrolação.**
 
 Não é mais um guia teórico. É um **assistente de decisão** que considera seu contexto real (time, prazo, objetivo) e recomenda a arquitetura certa. Baseado em 18 anos de front-end e casos reais de Netflix, Spotify, Airbnb e outras.
 
@@ -8,7 +8,8 @@ Não é mais um guia teórico. É um **assistente de decisão** que considera se
 
 Um **sistema de suporte à decisão** que resolve a pergunta que todo dev já teve: "Qual arquitetura usar no meu projeto?". Combina:
 
-- **🧙‍♂️ Decision Wizard:** 5 perguntas contextuais → recomendação personalizada + justificativa
+- **🧙‍♂️ Decision Wizard:** 6 perguntas contextuais → recomendação personalizada + justificativa
+- **📊 Comparação Visual:** 9 arquiteturas comparadas com métricas práticas
 - **💼 Casos Reais:** Como Netflix, Spotify, Airbnb geraram milhões com decisões técnicas certas
 - **📚 Guias Práticos:** Implementação passo-a-passo de cada arquitetura
 - **⚡ Tom dev-to-dev:** Direto, sem academicismo. Foco em resultado.
@@ -26,6 +27,14 @@ Um **sistema de suporte à decisão** que resolve a pergunta que todo dev já te
 - **Bonus patterns:** Padrões complementares baseados no seu contexto completo
 - **Mobile-optimized:** UX responsiva e intuitiva com animações suaves
 
+### **📊 Comparação Visual de Arquiteturas (NEW!)**
+
+- **9 arquiteturas comparadas:** Clean Architecture, SSR & SSG, PWA, BFF, Event-Driven, JAMstack, Micro-frontends, Monorepo, Component-Driven
+- **Métricas práticas:** Performance, Manutenibilidade, Testabilidade, Escalabilidade, Complexidade
+- **Análise detalhada:** Pros/cons, casos de uso, quando evitar
+- **Matriz de decisão:** Guia visual para escolher baseado no contexto
+- **Categorização inteligente:** Fundamentais, Padrões de Design, Modularização
+
 ### **💼 Casos Reais de Impacto (UPDATED!)**
 
 - **16 empresas:** Pinterest, Tinder, Slack, Uber, WhatsApp, Zoom, Figma, Discord + originais
@@ -36,19 +45,19 @@ Um **sistema de suporte à decisão** que resolve a pergunta que todo dev já te
 
 ### **📚 Conteúdo Organizado por Contexto**
 
-- **📖 Guias** - Decision wizard, casos reais, dependency rule
-- **🏗️ Arquiteturas** - 13+ padrões arquiteturais testados
+- **📖 Guias** - Decision wizard, comparação visual, casos reais, dependency rule
+- **🏗️ Arquiteturas** - 15+ padrões arquiteturais testados
 - **🎯 Padrões** - Repository, Security, State Machines
 - **⚡ Técnicas** - Code splitting, lazy loading, performance
 - **✅ Boas Práticas** - DRY, KISS, YAGNI, Clean Code, SRP, SOC
 
 ### **🎯 SEO & Discoverability (UPDATED!)**
 
-- **Meta tags otimizadas:** Decision Wizard v3.0, 15 arquiteturas, Open Graph completo
+- **Meta tags otimizadas:** Decision Wizard v3.0, 9 arquiteturas comparadas, Open Graph completo
 - **Author attribution:** "By Tiago Vilas Boas" link no header e social media
 - **Sitemap.xml** + **robots.txt** para melhor indexação
 - **Shareable content:** Cases, decisions e architecture patterns linkáveis
-- **Long-tail keywords:** "decision wizard v3", "frontend architecture guide", "interactive wizard", "architectural patterns comparison"
+- **Long-tail keywords:** "decision wizard v3", "frontend architecture guide", "interactive wizard", "architectural patterns comparison", "visual comparison"
 
 ### **🏗️ Arquiteturas Cobertas (15 TOTAL!)**
 
@@ -104,12 +113,12 @@ Um **sistema de suporte à decisão** que resolve a pergunta que todo dev já te
 - **Single Responsibility Principle** - Uma classe, uma responsabilidade
 - **Separation of Concerns** - Separe responsabilidades claramente
 
-### **🎯 Decision Wizard v2.0**
+### **🎯 Decision Wizard v3.0**
 
 - **6 perguntas contextuais** - Tipo, time, nível técnico, prioridade, integrações + resumo
 - **Sistema de scoring sofisticado** - Multi-dimensional com ajustes dinâmicos
 - **Recomendações com justificativa** - "Por que Clean Architecture para seu contexto"
-- **37 testes automatizados** - Cobertura completa de cenários
+- **47+ testes automatizados** - Cobertura completa de cenários
 - **Bonus patterns inteligentes** - Padrões complementares baseados nas respostas
 - **UX responsiva** - Mobile-first com navegação intuitiva
 
@@ -159,7 +168,7 @@ Um **sistema de suporte à decisão** que resolve a pergunta que todo dev já te
 
 ## 🧪 **Testing**
 
-- **Jest** - 37 testes unitários do Decision Wizard v2.0
+- **Jest** - 47+ testes unitários do Decision Wizard v3.0
 - **Lógica de scoring** - Todos os cenários de recomendação testados
 - **Bonus patterns** - Validação de padrões complementares
 - **Coverage completo** - DecisionWizard + getBonusPatterns
@@ -198,100 +207,28 @@ npm run optimize:images
 ```
 src/
 ├── components/          # Componentes reutilizáveis
-│   ├── CodeExample.tsx # Renderização centralizada de código
-│   ├── DocsShell.tsx   # Layout principal
-│   ├── NavMenu.tsx     # Menu lateral
-│   ├── NavItem.tsx     # Item de menu
-│   ├── HeaderBar.tsx   # Header com Dependency Rule
-│   ├── Footer.tsx      # Footer
-│   ├── interactive/    # Componentes interativos
-│   │   └── DecisionWizard.tsx
+│   ├── interactive/    # Decision Wizard
 │   ├── ui/            # Componentes de UI
-│   └── diagrams/      # Diagramas arquiteturais
-├── content/            # Conteúdo organizado por contexto
-│   ├── guides/         # Guias práticos
-│   │   ├── cases.tsx   # NEW: Casos reais com ROI
-│   │   ├── how-to-choose.tsx
-│   │   └── dependency-rule.tsx
-│   ├── patterns/       # Padrões de design
-│   │   ├── dry.tsx
-│   │   ├── kiss.tsx
-│   │   ├── yagni.tsx
-│   │   └── repository-pattern.tsx
-│   ├── architectures/  # Arquiteturas principais
-│   │   ├── clean-architecture.tsx
-│   │   ├── component-driven.tsx
-│   │   ├── micro-frontends.tsx
-│   │   └── ...
-│   └── techniques/     # Técnicas específicas
-│       ├── dependency-injection.tsx
-│       ├── code-splitting.tsx
-│       └── ...
-├── utils/              # Utilitários e dados
-│   └── code-examples/  # Exemplos por arquitetura
-├── hooks/              # Custom hooks
-│   └── useNavigationActions.ts
-├── types/              # Tipos TypeScript
-│   └── index.ts
-├── pages/              # Páginas da aplicação
-└── examples/           # Exemplos de código real
+│   └── diagrams/      # Diagramas e visualizações
+├── content/           # Conteúdo do playbook
+│   ├── guides/        # Guias práticos
+│   ├── patterns/      # Padrões arquiteturais
+│   └── techniques/    # Técnicas avançadas
+├── lib/              # Utilitários e configurações
+├── pages/            # Páginas da aplicação
+└── utils/            # Funções utilitárias
 ```
-
-## 🎨 **Design System**
-
-- **Mantine** - Componentes consistentes
-- **Dark/Light mode** - Suporte completo
-- **Responsivo** - Mobile-first
-- **Acessibilidade** - WCAG compliant
-- **Performance** - Otimizado para velocidade
-- **Hover states** - Feedback visual suave
-- **Sticky header** - Navegação sempre acessível
-
-## 📈 **Code Splitting**
-
-O projeto usa code splitting inteligente:
-
-- **vendor-react** - React, React Router
-- **vendor-mantine** - UI components
-- **vendor-icons** - Tabler Icons
-- **content-patterns** - Arquiteturas
-- **content-guides** - Guias
-- **components** - Componentes reutilizáveis
-- **pages** - Páginas da aplicação
-
-## 🧪 **Qualidade do Código**
-
-- **Single Responsibility Principle** - Uma classe, uma responsabilidade
-- **Separation of Concerns** - Separe responsabilidades claramente
-- **Clean Code** - Legível e manutenível
-- **TypeScript** - Tipagem forte
-- **ESLint** - Padrões consistentes
-- **Husky** - Pre-commit hooks
-- **Lint-staged** - Validação automática
-- **Cypress E2E** - Testes completos automatizados
-- **Otimização de imagens** - Compressão pré-build automática
-- **Exemplos centralizados** - JSON único para todos os exemplos
-
-## 🎨 **Diretrizes de Tema**
-
-- **Dark/Light mode** - Suporte completo
-- **Sem cores fixas** - Use `withBorder` e `variant="light"`
-- **Adaptação automática** - Deixe o Mantine cuidar do tema
-- **Teste sempre** - Verifique ambos os temas antes de commitar
-- **Header/Footer** - Fundos mais escuros para destaque
-
-> 📋 Veja as regras em `.cursor/rules.md` para diretrizes detalhadas
 
 ## 🎯 **Para Quem é?**
 
-### **Júnior/Pleno**
+### **Desenvolvedores Front-End**
 
-- Aprenda a escolher arquitetura certa
-- Evite over-engineering
-- Entenda trade-offs reais
-- Aplique boas práticas desde o início
+- Escolher arquitetura para novos projetos
+- Refatorar código legado
+- Justificar decisões técnicas
+- Aprender padrões testados
 
-### **Sênior/Tech Lead**
+### **Tech Leads & Arquitetos**
 
 - Base para decisões arquiteturais
 - Justificativas técnicas sólidas
@@ -310,7 +247,8 @@ O projeto usa code splitting inteligente:
 ### **Guias**
 
 - **Cases** - Casos reais de impacto com métricas de ROI
-- **Como Escolher** - Decision wizard v2.0 interativo e inteligente
+- **Como Escolher** - Decision wizard v3.0 interativo e inteligente
+- **Comparação Visual** - 9 arquiteturas comparadas com métricas
 - **Dependency Rule** - Regra fundamental de qualquer arquitetura
 
 ### **Boas Práticas**
@@ -330,7 +268,7 @@ O projeto usa code splitting inteligente:
 - **Observer Pattern** - Desacoplamento
 - **Factory Pattern** - Criação de objetos
 
-### **Arquiteturas (13 padrões)**
+### **Arquiteturas (15 padrões)**
 
 - **Clean Architecture** - Separação de camadas
 - **Component-Driven** - Reutilização
@@ -345,6 +283,8 @@ O projeto usa code splitting inteligente:
 - **Feature Flags** - Deploy seguro
 - **Atomic Design** - Design systems
 - **JAMstack** - Performance e simplicidade
+- **BFF** - API otimizada
+- **Headless** - Separação UI/lógica
 
 ### **Técnicas**
 
@@ -357,44 +297,32 @@ O projeto usa code splitting inteligente:
 
 Veja onde estamos indo no [ROADMAP.md](./ROADMAP.md):
 
-- **Q1 2025:** Visualizações e comparações (radar charts, trade-offs matrix)
-- **Q2 2025:** Contexto rico (budget, stack analysis, team skills)
-- **Q3 2025:** Machine Learning e feedback loop
-- **Q4 2025:** Gamification e community features
-- **2026:** AI Architecture Assistant
-
-## 📋 **Architecture Decision Records**
-
-Documentamos decisões importantes em [docs/adr/](./docs/adr/):
-
-- **[ADR-001](./docs/adr/001-visualizations-and-comparisons.md):** Visualizações com Recharts
+- **Q1 2025:** Visualizações e comparações avançadas
+- **Q2 2025:** Contexto rico e personalização
+- **Q3 2025:** Feedback loop e ML
+- **Q4 2025:** Gamification e comunidade
 
 ## 🤝 **Contribuindo**
 
-Contribuições são bem-vindas! Se você tem:
-
-- Experiência real com alguma arquitetura
-- Casos de uso interessantes com métricas
-- Melhorias no Decision Wizard
-- Correções ou sugestões
-
-Abra uma issue ou pull request! Veja [CONTRIBUTING.md](./CONTRIBUTING.md) para guidelines.
+1. Fork o projeto
+2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
+3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
+4. Push para a branch (`git push origin feature/AmazingFeature`)
+5. Abra um Pull Request
 
 ## 📄 **Licença**
 
-MIT - Use livremente para seus projetos.
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
-## 👨‍💻 **Autor**
+## 🙏 **Agradecimentos**
 
-**Tiago Vilas Boas** - Front-end engineer há 18 anos
-
-Sou o dev que transforma código em resultado: turbinei checkouts, simplifiquei cadastros bancários, acelerei fluxos de KYC e salvei dashboards engasgados. Fora dos horários de entrega, lapido os open-sources Ponto PJ e DataForge Tools e escrevo "Código Bonito Não Paga Boleto", tudo focado na mesma pegada: impacto real primeiro.
-
-**Links:**
-
-- [GitHub](https://github.com/tiagovilasboas)
-- [LinkedIn](https://www.linkedin.com/in/tiagovilasboas)
+- Comunidade React/TypeScript
+- Casos reais das empresas mencionadas
+- Feedback da comunidade de desenvolvedores
+- Inspiração em arquiteturas testadas em produção
 
 ---
 
-**Lembre-se:** Arquitetura é trade-off atrás de trade-off. Não existe bala de prata. O que resolve pra um, pode ser dor de cabeça pra outro. O segredo? Saber o que você precisa agora — e não fechar portas pro futuro.
+**Feito com ❤️ por [Tiago Vilas Boas](https://github.com/tiagovilasboas)**
+
+_"Arquitetura é trade-off atrás de trade-off. O que resolve para um projeto pode ser dor de cabeça para outro."_

@@ -41,7 +41,7 @@ import './DecisionWizard.css';
 import { useMediaQuery } from '@mantine/hooks';
 import { getBonusPatterns } from './getBonusPatterns';
 
-// Mapeamento de ícones por padrão - WIZARD v3.0 com todas as 15 arquiteturas
+// Mapeamento de ícones por padrão - WIZARD v3.0 com 15 arquiteturas (9 na comparação visual)
 const patternIcons: Record<string, React.ReactNode> = {
   'atomic-design': <IconPuzzle size={28} />,
   'clean-architecture': <IconHierarchy size={28} />,
@@ -54,15 +54,15 @@ const patternIcons: Record<string, React.ReactNode> = {
   monorepo: <IconTopologyStar3 size={28} />,
   spa: <IconDeviceDesktop size={28} />,
   'state-machines': <IconSettings size={28} />,
-  // TIER 1 - Arquiteturas críticas adicionadas
+  // TIER 1 - Arquiteturas críticas (incluídas na comparação visual)
   'ssr-ssg': <IconRocket size={28} />,
   bff: <IconApi size={28} />,
   pwa: <IconDeviceMobile size={28} />,
-  // TIER 2 - Arquiteturas importantes adicionadas
+  // TIER 2 - Arquiteturas importantes (incluídas na comparação visual)
   headless: <IconCloud size={28} />,
   hexagonal: <IconHexagon size={28} />,
   layered: <IconStack size={28} />,
-  // TIER 3 - Arquiteturas específicas adicionadas
+  // TIER 3 - Arquiteturas específicas (incluídas na comparação visual)
   'event-sourcing': <IconHistory size={28} />,
   cqrs: <IconSeparator size={28} />,
   'microservices-frontend': <IconBoxMultiple size={28} />,
