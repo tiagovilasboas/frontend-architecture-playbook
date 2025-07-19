@@ -270,6 +270,326 @@ const architectureData = [
       'Deploy independente necessário',
     ],
   },
+  {
+    name: 'SSR & SSG',
+    description: 'Server-Side Rendering e Static Site Generation',
+    metrics: [
+      {
+        name: 'Performance',
+        value: 9,
+        description: 'Carregamento rápido, SEO otimizado',
+        icon: null,
+      },
+      {
+        name: 'Manutenibilidade',
+        value: 6,
+        description: 'Complexidade de hidratação',
+        icon: null,
+      },
+      {
+        name: 'Testabilidade',
+        value: 5,
+        description: 'Testes mais complexos com SSR',
+        icon: null,
+      },
+      {
+        name: 'Escalabilidade',
+        value: 8,
+        description: 'CDN e cache eficientes',
+        icon: null,
+      },
+      {
+        name: 'Complexidade',
+        value: 7,
+        description: 'Conceitos de hidratação e hydration',
+        icon: null,
+      },
+    ],
+    pros: [
+      'SEO otimizado',
+      'Carregamento rápido',
+      'Cache eficiente',
+      'Melhor Core Web Vitals',
+      'Funciona sem JavaScript',
+    ],
+    cons: [
+      'Complexidade de hidratação',
+      'Build time mais longo',
+      'Debugging mais complexo',
+      'Overhead de servidor',
+      'Curva de aprendizado',
+    ],
+    bestFor: [
+      'Sites com SEO importante',
+      'E-commerce',
+      'Blogs e conteúdo',
+      'Performance crítica',
+      'Acessibilidade',
+    ],
+    avoidWhen: [
+      'Aplicação muito dinâmica',
+      'Dashboard com dados em tempo real',
+      'Prototipagem rápida',
+      'Time sem experiência em SSR',
+      'Aplicação interna',
+    ],
+  },
+  {
+    name: 'PWA (Progressive Web App)',
+    description: 'Apps web com recursos nativos',
+    metrics: [
+      {
+        name: 'Performance',
+        value: 8,
+        description: 'Cache inteligente, carregamento offline',
+        icon: null,
+      },
+      {
+        name: 'Manutenibilidade',
+        value: 6,
+        description: 'Service workers complexos',
+        icon: null,
+      },
+      {
+        name: 'Testabilidade',
+        value: 6,
+        description: 'Testes de service workers',
+        icon: null,
+      },
+      {
+        name: 'Escalabilidade',
+        value: 8,
+        description: 'Funciona offline, sincronização',
+        icon: null,
+      },
+      {
+        name: 'Complexidade',
+        value: 7,
+        description: 'Service workers e cache strategies',
+        icon: null,
+      },
+    ],
+    pros: [
+      'Funciona offline',
+      'Instalação como app',
+      'Push notifications',
+      'Cache inteligente',
+      'Experiência nativa',
+    ],
+    cons: [
+      'Service workers complexos',
+      'Debugging offline difícil',
+      'Compatibilidade de browsers',
+      'Curva de aprendizado',
+      'Manutenção de cache',
+    ],
+    bestFor: [
+      'Apps mobile-first',
+      'Conteúdo offline',
+      'Engagement alto',
+      'Experiência nativa',
+      'Performance mobile',
+    ],
+    avoidWhen: [
+      'Aplicação desktop-only',
+      'Conteúdo sempre online',
+      'Time sem experiência mobile',
+      'Prototipagem rápida',
+      'Aplicação interna',
+    ],
+  },
+  {
+    name: 'BFF (Backend for Frontend)',
+    description: 'API específica para front-end',
+    metrics: [
+      {
+        name: 'Performance',
+        value: 7,
+        description: 'Queries otimizadas, menos requests',
+        icon: null,
+      },
+      {
+        name: 'Manutenibilidade',
+        value: 7,
+        description: 'API dedicada, mas duplicação',
+        icon: null,
+      },
+      {
+        name: 'Testabilidade',
+        value: 6,
+        description: 'Testes de API e integração',
+        icon: null,
+      },
+      {
+        name: 'Escalabilidade',
+        value: 6,
+        description: 'Escala com front-end',
+        icon: null,
+      },
+      {
+        name: 'Complexidade',
+        value: 6,
+        description: 'API adicional para manter',
+        icon: null,
+      },
+    ],
+    pros: [
+      'Queries otimizadas',
+      'Menos requests',
+      'API específica para UI',
+      'Performance otimizada',
+      'Flexibilidade de dados',
+    ],
+    cons: [
+      'Duplicação de APIs',
+      'Mais infraestrutura',
+      'Complexidade adicional',
+      'Debugging distribuído',
+      'Overhead de desenvolvimento',
+    ],
+    bestFor: [
+      'APIs complexas',
+      'Performance crítica',
+      'Múltiplos frontends',
+      'Otimização de queries',
+      'Flexibilidade de dados',
+    ],
+    avoidWhen: [
+      'API simples',
+      'Time pequeno',
+      'Prototipagem rápida',
+      'Overhead não justificado',
+      'Aplicação simples',
+    ],
+  },
+  {
+    name: 'Event-Driven',
+    description: 'Arquitetura baseada em eventos',
+    metrics: [
+      {
+        name: 'Performance',
+        value: 7,
+        description: 'Processamento assíncrono',
+        icon: null,
+      },
+      {
+        name: 'Manutenibilidade',
+        value: 6,
+        description: 'Fluxo complexo de eventos',
+        icon: null,
+      },
+      {
+        name: 'Testabilidade',
+        value: 5,
+        description: 'Testes de eventos assíncronos',
+        icon: null,
+      },
+      {
+        name: 'Escalabilidade',
+        value: 9,
+        description: 'Desacoplamento total',
+        icon: null,
+      },
+      {
+        name: 'Complexidade',
+        value: 8,
+        description: 'Padrões de eventos complexos',
+        icon: null,
+      },
+    ],
+    pros: [
+      'Desacoplamento total',
+      'Escalabilidade horizontal',
+      'Processamento assíncrono',
+      'Resiliência a falhas',
+      'Flexibilidade de fluxo',
+    ],
+    cons: [
+      'Complexidade de eventos',
+      'Debugging difícil',
+      'Ordem de eventos',
+      'Curva de aprendizado',
+      'Overhead de eventos',
+    ],
+    bestFor: [
+      'Sistemas complexos',
+      'Processamento assíncrono',
+      'Múltiplos consumidores',
+      'Resiliência importante',
+      'Escalabilidade horizontal',
+    ],
+    avoidWhen: [
+      'Aplicação simples',
+      'Fluxo síncrono',
+      'Time sem experiência',
+      'Performance crítica',
+      'Debugging frequente',
+    ],
+  },
+  {
+    name: 'JAMstack',
+    description: 'JavaScript, APIs, Markup',
+    metrics: [
+      {
+        name: 'Performance',
+        value: 9,
+        description: 'Sites estáticos, CDN global',
+        icon: null,
+      },
+      {
+        name: 'Manutenibilidade',
+        value: 8,
+        description: 'Separação clara, APIs independentes',
+        icon: null,
+      },
+      {
+        name: 'Testabilidade',
+        value: 7,
+        description: 'Testes de APIs e front-end',
+        icon: null,
+      },
+      {
+        name: 'Escalabilidade',
+        value: 9,
+        description: 'CDN global, APIs escaláveis',
+        icon: null,
+      },
+      {
+        name: 'Complexidade',
+        value: 5,
+        description: 'Conceitos simples e claros',
+        icon: null,
+      },
+    ],
+    pros: [
+      'Performance excepcional',
+      'Segurança melhorada',
+      'CDN global',
+      'Deploy simples',
+      'Custos baixos',
+    ],
+    cons: [
+      'Limitações de dinâmico',
+      'Build time',
+      'Complexidade de APIs',
+      'Debugging distribuído',
+      'Overhead de build',
+    ],
+    bestFor: [
+      'Sites de conteúdo',
+      'Marketing sites',
+      'Performance crítica',
+      'Custos baixos',
+      'SEO importante',
+    ],
+    avoidWhen: [
+      'Aplicação muito dinâmica',
+      'Dashboard complexo',
+      'Funcionalidades em tempo real',
+      'Integração complexa',
+      'Aplicação interna',
+    ],
+  },
 ];
 
 function ArchitectureComparisonPage() {
@@ -378,6 +698,54 @@ function ArchitectureComparisonPage() {
               entender
               <br />• <strong>Ignorar contexto:</strong> Copiar sem adaptar
               <br />• <strong>Foco em tecnologia:</strong> Esquecer do negócio
+            </Text>
+          </Alert>
+        </Stack>
+      </Paper>
+
+      {/* Architecture Categories */}
+      <Paper withBorder p="xl" radius="md">
+        <Title order={2} mb="lg">
+          🏗️ Categorias de Arquiteturas
+        </Title>
+
+        <Stack gap="md">
+          <Alert color="blue" icon={<IconBulb size={16} />} radius="md">
+            <Text size="sm" fw={600} mb={4}>
+              🚀 Fundamentais:
+            </Text>
+            <Text size="sm" c="dimmed">
+              <strong>SSR & SSG:</strong> Para SEO e performance
+              <br />
+              <strong>PWA:</strong> Para experiência mobile
+              <br />
+              <strong>JAMstack:</strong> Para sites estáticos
+              <br />
+              <strong>BFF:</strong> Para APIs otimizadas
+            </Text>
+          </Alert>
+
+          <Alert color="green" icon={<IconBulb size={16} />} radius="md">
+            <Text size="sm" fw={600} mb={4}>
+              🏗️ Padrões de Design:
+            </Text>
+            <Text size="sm" c="dimmed">
+              <strong>Clean Architecture:</strong> Para projetos complexos
+              <br />
+              <strong>Component-Driven:</strong> Para reutilização
+              <br />
+              <strong>Event-Driven:</strong> Para desacoplamento
+            </Text>
+          </Alert>
+
+          <Alert color="orange" icon={<IconBulb size={16} />} radius="md">
+            <Text size="sm" fw={600} mb={4}>
+              🧩 Modularização:
+            </Text>
+            <Text size="sm" c="dimmed">
+              <strong>Micro-frontends:</strong> Para times independentes
+              <br />
+              <strong>Monorepo:</strong> Para compartilhamento de código
             </Text>
           </Alert>
         </Stack>
