@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollArea, Title, Stack, Divider, Group, Text } from '@mantine/core';
+import { Title, Stack, Divider, Group, Text } from '@mantine/core';
 import {
   IconBook,
   IconPuzzle,
@@ -46,7 +46,13 @@ export default function NavMenu({
   };
 
   return (
-    <ScrollArea h="calc(100vh - 120px)" style={{ overflow: 'auto' }}>
+    <div
+      style={{
+        height: 'calc(100vh - 120px)',
+        overflowY: 'auto',
+        overflowX: 'hidden',
+      }}
+    >
       <Stack gap="md">
         {/* Guides Section */}
         <div>
@@ -257,6 +263,6 @@ export default function NavMenu({
           </Stack>
         </div>
       </Stack>
-    </ScrollArea>
+    </div>
   );
 }

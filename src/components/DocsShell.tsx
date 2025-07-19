@@ -56,6 +56,9 @@ export default function DocsShell({
         hiddenFrom="sm"
         title="Menu"
         zIndex={3000}
+        lockScroll={false}
+        closeOnClickOutside={true}
+        closeOnEscape={true}
       >
         <NavMenu
           guides={guides}
