@@ -47,9 +47,9 @@ export default function NavMenu({
 
   return (
     <div
+      className="nav-menu-container"
       style={{
         height: 'calc(100vh - 120px)',
-        overflowY: 'auto',
         overflowX: 'hidden',
       }}
     >

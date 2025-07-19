@@ -242,6 +242,18 @@ a:focus {
     overflow: auto !important;
   }
 
+  /* NavMenu container - scroll apenas no mobile */
+  .nav-menu-container {
+    overflow-y: auto !important;
+  }
+}
+
+/* Desktop - sem scroll no NavMenu */
+@media (min-width: 769px) {
+  .nav-menu-container {
+    overflow-y: visible !important;
+  }
+
   .mantine-Container-root {
     padding-left: var(--mantine-spacing-sm) !important;
     padding-right: var(--mantine-spacing-sm) !important;
