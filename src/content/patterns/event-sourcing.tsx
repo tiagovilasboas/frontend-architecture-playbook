@@ -259,11 +259,11 @@ function ShoppingCart() {
   
   return (
     <div>
-      <h2>Cart Total: ${state.total}</h2>
+      <h2>Cart Total: $\\{state.total}</h2>
       <ul>
         {state.items.map(item => (
           <li key={item.id}>
-            {item.name} - ${item.price}
+            {item.name} - $\\{item.price}
             <button onClick={() => removeItem(item.id)}>Remove</button>
           </li>
         ))}
