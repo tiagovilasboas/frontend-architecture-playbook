@@ -20,9 +20,12 @@ import {
 } from '@tabler/icons-react';
 import CodeExample from '../../components/CodeExample';
 import featureFlagsExamples from '../../utils/code-examples/feature-flags.json';
+import MobileTabs from '../../components/MobileTabs';
+import { createArchitectureTabs } from '../../components/MobileTabsHelpers';
 
 function FeatureFlags() {
-  return (
+  // Overview Section
+  const OverviewSection = () => (
     <Stack gap="xl">
       {/* Hero Section */}
       <div>
@@ -70,7 +73,12 @@ function FeatureFlags() {
           </Text>
         </Stack>
       </Paper>
+    </Stack>
+  );
 
+  // Implementation Section
+  const ImplementationSection = () => (
+    <Stack gap="xl">
       {/* Concepts */}
       <div>
         <Title order={2} mb="lg">
@@ -193,29 +201,40 @@ function FeatureFlags() {
           </Card>
         </Stack>
       </div>
+    </Stack>
+  );
 
-      {/* Benefits */}
-      <div>
-        <Title order={2} mb="lg">
-          <IconCheck
-            size={28}
+  // Examples Section
+  const ExamplesSection = () => (
+    <Stack gap="xl">
+      <Paper withBorder p="xl" radius="md">
+        <Title order={3} mb="lg">
+          <IconBulb
+            size={24}
             style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
-          Por que vale a pena?
+          Casos Reais
         </Title>
 
         <Stack gap="md">
           <Card withBorder p="md">
             <Group>
               <ThemeIcon size={40} radius="md" variant="light" color="green">
-                <IconCheck size={20} />
+                <IconCode size={20} />
               </ThemeIcon>
               <div>
-                <Title order={4}>Deploy Seguro</Title>
-                <Text size="sm">
-                  Código sempre no ar, funcionalidade controlada. Rollback
-                  instantâneo se der problema.
+                <Title order={4}>Netflix</Title>
+                <Text size="sm" c="dimmed" mb="sm">
+                  Feature flags para testes A/B
                 </Text>
+                <List size="sm" spacing="xs">
+                  <List.Item>Teste de algoritmos de recomendação</List.Item>
+                  <List.Item>
+                    Rollback instantâneo em caso de problemas
+                  </List.Item>
+                  <List.Item>Deploy contínuo sem risco</List.Item>
+                  <List.Item>Experimentos em produção</List.Item>
+                </List>
               </div>
             </Group>
           </Card>
@@ -223,14 +242,19 @@ function FeatureFlags() {
           <Card withBorder p="md">
             <Group>
               <ThemeIcon size={40} radius="md" variant="light" color="blue">
-                <IconCode size={20} />
+                <IconSettings2 size={20} />
               </ThemeIcon>
               <div>
-                <Title order={4}>Testes em Produção</Title>
-                <Text size="sm">
-                  Teste novas funcionalidades com usuários reais. A/B testing,
-                  gradual rollout.
+                <Title order={4}>Facebook</Title>
+                <Text size="sm" c="dimmed" mb="sm">
+                  Feature flags para funcionalidades
                 </Text>
+                <List size="sm" spacing="xs">
+                  <List.Item>Novos recursos gradualmente</List.Item>
+                  <List.Item>Teste com usuários específicos</List.Item>
+                  <List.Item>Rollback em segundos</List.Item>
+                  <List.Item>Experimentos em larga escala</List.Item>
+                </List>
               </div>
             </Group>
           </Card>
@@ -241,335 +265,150 @@ function FeatureFlags() {
                 <IconBulb size={20} />
               </ThemeIcon>
               <div>
-                <Title order={4}>Flexibilidade</Title>
-                <Text size="sm">
-                  Ative/desative funcionalidades sem deploy. Controle por
-                  usuário, região, horário.
+                <Title order={4}>E-commerce</Title>
+                <Text size="sm" c="dimmed" mb="sm">
+                  Feature flags para vendas
                 </Text>
+                <List size="sm" spacing="xs">
+                  <List.Item>Novos métodos de pagamento</List.Item>
+                  <List.Item>Teste de preços dinâmicos</List.Item>
+                  <List.Item>Funcionalidades sazonais</List.Item>
+                  <List.Item>Rollback rápido em caso de bugs</List.Item>
+                </List>
               </div>
             </Group>
           </Card>
         </Stack>
-      </div>
+      </Paper>
+    </Stack>
+  );
 
-      {/* When to use */}
-      <div>
-        <Title order={2} mb="lg">
-          <IconBulb
-            size={28}
-            style={{ verticalAlign: 'middle', marginRight: '8px' }}
-          />
-          Quando usar?
-        </Title>
-
-        <Stack gap="md">
-          <Card withBorder p="md">
-            <Title order={4} mb="sm">
-              ✅ Use quando:
-            </Title>
-            <List>
-              <List.Item>Quer fazer deploy seguro sem risco</List.Item>
-              <List.Item>Precisa testar funcionalidades em produção</List.Item>
-              <List.Item>Quer fazer gradual rollout de features</List.Item>
-              <List.Item>Precisa de rollback instantâneo</List.Item>
-              <List.Item>Quer controlar features por usuário/região</List.Item>
-            </List>
-          </Card>
-
-          <Card withBorder p="md">
-            <Title order={4} mb="sm">
-              ❌ Evite quando:
-            </Title>
-            <List>
-              <List.Item>Aplicação muito simples (overkill)</List.Item>
-              <List.Item>Time pequeno que prefere simplicidade</List.Item>
-              <List.Item>Funcionalidades nunca mudam</List.Item>
-              <List.Item>Performance crítica (flags têm overhead)</List.Item>
-            </List>
-          </Card>
-        </Stack>
-      </div>
-
-      {/* Examples */}
-      <div>
-        <Title order={2} mb="lg">
-          <IconCode
-            size={28}
-            style={{ verticalAlign: 'middle', marginRight: '8px' }}
-          />
-          Exemplos Práticos no Front-End
-        </Title>
-
-        <Stack gap="xl">
-          {featureFlagsExamples.map(example => (
-            <CodeExample
-              key={example.id}
-              title={example.title}
-              description={example.description}
-              code={example.content}
-            />
-          ))}
-        </Stack>
-      </div>
-
-      {/* Pitfalls & How to Avoid */}
-      <div>
-        <Title order={2} mb="lg">
-          <IconAlertTriangle
-            size={28}
-            style={{ verticalAlign: 'middle', marginRight: '8px' }}
-          />
-          Armadilhas e Como Evitar
-        </Title>
-
-        <Stack gap="xl">
-          <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">
-              🚨 Problemas Comuns
-            </Title>
-
-            <Stack gap="lg">
-              <Card withBorder p="md">
-                <Title order={4} mb="sm" c="red">
-                  1. Flag Hell
-                </Title>
-                <Text size="sm" mb="sm">
-                  <strong>Problema:</strong> Muitas flags, código difícil de
-                  entender, lógica espalhada por toda aplicação.
-                </Text>
-                <Text size="sm" mb="sm">
-                  <strong>Como evitar:</strong> Centralize lógica de flags, use
-                  padrões consistentes, documente flags.
-                </Text>
-                <CodeExample
-                  title={
-                    featureFlagsExamples.find(
-                      e => e.id === 'feature-flags-pitfall-flag-hell'
-                    )?.title || ''
-                  }
-                  description={
-                    featureFlagsExamples.find(
-                      e => e.id === 'feature-flags-pitfall-flag-hell'
-                    )?.description || ''
-                  }
-                  code={
-                    featureFlagsExamples.find(
-                      e => e.id === 'feature-flags-pitfall-flag-hell'
-                    )?.content || ''
-                  }
-                />
-              </Card>
-
-              <Card withBorder p="md">
-                <Title order={4} mb="sm" c="red">
-                  2. Dead Code
-                </Title>
-                <Text size="sm" mb="sm">
-                  <strong>Problema:</strong> Código de features antigas nunca
-                  removido, aplicação fica pesada e confusa.
-                </Text>
-                <Text size="sm" mb="sm">
-                  <strong>Como evitar:</strong> Limpe flags antigas, use
-                  timeouts, documente quando remover.
-                </Text>
-                <CodeExample
-                  title={
-                    featureFlagsExamples.find(
-                      e => e.id === 'feature-flags-pitfall-dead-code'
-                    )?.title || ''
-                  }
-                  description={
-                    featureFlagsExamples.find(
-                      e => e.id === 'feature-flags-pitfall-dead-code'
-                    )?.description || ''
-                  }
-                  code={
-                    featureFlagsExamples.find(
-                      e => e.id === 'feature-flags-pitfall-dead-code'
-                    )?.content || ''
-                  }
-                />
-              </Card>
-
-              <Card withBorder p="md">
-                <Title order={4} mb="sm" c="red">
-                  3. Performance Issues
-                </Title>
-                <Text size="sm" mb="sm">
-                  <strong>Problema:</strong> Muitas chamadas para API de flags,
-                  aplicação fica lenta.
-                </Text>
-                <Text size="sm" mb="sm">
-                  <strong>Como evitar:</strong> Cache flags, batch requests,
-                  carregue flags no início.
-                </Text>
-                <CodeExample
-                  title={
-                    featureFlagsExamples.find(
-                      e => e.id === 'feature-flags-pitfall-many-calls'
-                    )?.title || ''
-                  }
-                  description={
-                    featureFlagsExamples.find(
-                      e => e.id === 'feature-flags-pitfall-many-calls'
-                    )?.description || ''
-                  }
-                  code={
-                    featureFlagsExamples.find(
-                      e => e.id === 'feature-flags-pitfall-many-calls'
-                    )?.content || ''
-                  }
-                />
-              </Card>
-
-              <Card withBorder p="md">
-                <Title order={4} mb="sm" c="red">
-                  4. Testing Complexity
-                </Title>
-                <Text size="sm" mb="sm">
-                  <strong>Problema:</strong> Testes ficam complexos com
-                  múltiplas combinações de flags.
-                </Text>
-                <Text size="sm" mb="sm">
-                  <strong>Como evitar:</strong> Mock flags nos testes, teste
-                  cada variante isoladamente.
-                </Text>
-                <CodeExample
-                  title={
-                    featureFlagsExamples.find(
-                      e => e.id === 'feature-flags-pitfall-complex-tests'
-                    )?.title || ''
-                  }
-                  description={
-                    featureFlagsExamples.find(
-                      e => e.id === 'feature-flags-pitfall-complex-tests'
-                    )?.description || ''
-                  }
-                  code={
-                    featureFlagsExamples.find(
-                      e => e.id === 'feature-flags-pitfall-complex-tests'
-                    )?.content || ''
-                  }
-                />
-              </Card>
-            </Stack>
-          </Paper>
-        </Stack>
-      </div>
-
-      {/* References */}
-      <div>
-        <Title order={2} mb="lg">
-          <IconBulb
-            size={28}
-            style={{ verticalAlign: 'middle', marginRight: '8px' }}
-          />
-          Referências & Casos Reais
-        </Title>
-
-        <Stack gap="xl">
-          {/* References */}
-          <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">
-              📚 Referências
-            </Title>
-            <Stack gap="md">
-              <Text>
-                <strong>Livros:</strong>
-              </Text>
-              <List>
-                <List.Item>
-                  <strong>"Feature Toggles (aka Feature Flags)"</strong> -
-                  Martin Fowler
-                </List.Item>
-                <List.Item>
-                  <strong>"Continuous Delivery"</strong> - Jez Humble & David
-                  Farley
-                </List.Item>
-                <List.Item>
-                  <strong>"The Pragmatic Programmer"</strong> - Andrew Hunt &
-                  David Thomas
-                </List.Item>
-              </List>
-              <Text>
-                <strong>Artigos & Blogs:</strong>
-              </Text>
-              <List>
-                <List.Item>
-                  <a
-                    href="https://martinfowler.com/articles/feature-toggles.html"
-                    target="_blank"
-                  >
-                    Feature Toggles - Martin Fowler
-                  </a>
-                </List.Item>
-                <List.Item>
-                  <a href="https://launchdarkly.com/blog/" target="_blank">
-                    Feature Flag Best Practices - LaunchDarkly
-                  </a>
-                </List.Item>
-                <List.Item>
-                  <a href="https://www.split.io/blog/" target="_blank">
-                    Feature Flag Strategies - Split.io
-                  </a>
-                </List.Item>
-              </List>
-            </Stack>
-          </Paper>
-        </Stack>
-      </div>
-
-      {/* Summary */}
+  // Pitfalls Section
+  const PitfallsSection = () => (
+    <Stack gap="xl">
       <Paper withBorder p="xl" radius="md">
+        <Title order={3} mb="lg">
+          <IconAlertTriangle
+            size={24}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
+          />
+          Armadilhas Comuns
+        </Title>
+
         <Stack gap="md">
-          <Group>
-            <ThemeIcon size={50} radius="md" variant="light" color="green">
-              <IconCheck size={25} />
-            </ThemeIcon>
-            <div>
-              <Title order={3}>Resumo</Title>
-              <Text c="dimmed">Pontos-chave dos Feature Flags</Text>
-            </div>
-          </Group>
+          <Alert color="red" icon={<IconAlertTriangle size={16} />} mb="md">
+            <Text size="sm" fw={600} mb={4}>
+              ❌ Flag debt
+            </Text>
+            <Text size="sm" c="dimmed">
+              Flags antigas que nunca são removidas. Limpe flags desnecessárias
+              regularmente.
+            </Text>
+          </Alert>
 
-          <List>
-            <List.Item>
-              <strong>Deploy seguro:</strong> Código sempre no ar,
-              funcionalidade controlada
-            </List.Item>
-            <List.Item>
-              <strong>Testes em produção:</strong> Teste com usuários reais,
-              gradual rollout
-            </List.Item>
-            <List.Item>
-              <strong>Rollback instantâneo:</strong> Desative flags em segundos,
-              não em minutos
-            </List.Item>
-            <List.Item>
-              <strong>Use quando:</strong> Quer deploy seguro ou testes em
-              produção
-            </List.Item>
-            <List.Item>
-              <strong>Evite:</strong> Aplicações simples ou quando performance é
-              crítica
-            </List.Item>
-          </List>
+          <Alert color="orange" icon={<IconAlertTriangle size={16} />} mb="md">
+            <Text size="sm" fw={600} mb={4}>
+              ❌ Complexidade excessiva
+            </Text>
+            <Text size="sm" c="dimmed">
+              Muitas flags podem complicar o código. Use apenas quando
+              necessário.
+            </Text>
+          </Alert>
 
-          <Alert color="blue" title="💡 Dica">
-            Feature Flags são sobre controle. Use quando quiser mudar
-            comportamento sem fazer deploy. Mas não use para tudo - às vezes um
-            deploy simples é melhor que uma flag complexa.
+          <Alert color="yellow" icon={<IconAlertTriangle size={16} />} mb="md">
+            <Text size="sm" fw={600} mb={4}>
+              ❌ Performance impact
+            </Text>
+            <Text size="sm" c="dimmed">
+              Verificar flags pode impactar performance. Use cache e
+              otimizações.
+            </Text>
+          </Alert>
+
+          <Alert color="green" icon={<IconCheck size={16} />} mb="md">
+            <Text size="sm" fw={600} mb={4}>
+              ✅ Como evitar
+            </Text>
+            <Text size="sm" c="dimmed">
+              <strong>Limpe regularmente:</strong> Remova flags desnecessárias
+              <br />
+              <strong>Use com moderação:</strong> Só quando realmente necessário
+              <br />
+              <strong>Monitore performance:</strong> Cache e otimizações
+            </Text>
           </Alert>
         </Stack>
       </Paper>
     </Stack>
   );
-}
 
-FeatureFlags.metadata = {
-  title: 'Feature Flags',
-  description:
-    'Controle dinâmico de funcionalidades. Deploy seguro, testes em produção, rollback instantâneo.',
-};
+  // References Section
+  const ReferencesSection = () => (
+    <Stack gap="xl">
+      <Paper withBorder p="xl" radius="md">
+        <Title order={3} mb="lg">
+          <IconCode
+            size={24}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
+          />
+          Referências e Recursos
+        </Title>
+
+        <Stack gap="md">
+          <Card withBorder p="md">
+            <Title order={4} mb="sm">
+              Ferramentas
+            </Title>
+            <List size="sm" spacing="xs">
+              <List.Item>
+                <strong>LaunchDarkly:</strong> Feature flag management
+              </List.Item>
+              <List.Item>
+                <strong>Split.io:</strong> Feature flags and experimentation
+              </List.Item>
+              <List.Item>
+                <strong>Unleash:</strong> Open-source feature flags
+              </List.Item>
+              <List.Item>
+                <strong>Flagsmith:</strong> Feature flag platform
+              </List.Item>
+            </List>
+          </Card>
+
+          <Card withBorder p="md">
+            <Title order={4} mb="sm">
+              Casos de Sucesso
+            </Title>
+            <List size="sm" spacing="xs">
+              <List.Item>
+                <strong>Netflix:</strong> A/B testing and rollbacks
+              </List.Item>
+              <List.Item>
+                <strong>Facebook:</strong> Gradual feature releases
+              </List.Item>
+              <List.Item>
+                <strong>Amazon:</strong> Dynamic pricing and features
+              </List.Item>
+              <List.Item>
+                <strong>Uber:</strong> Regional feature rollouts
+              </List.Item>
+            </List>
+          </Card>
+        </Stack>
+      </Paper>
+    </Stack>
+  );
+
+  const tabs = createArchitectureTabs(
+    <OverviewSection />,
+    <ImplementationSection />,
+    <ExamplesSection />,
+    <PitfallsSection />,
+    <ReferencesSection />
+  );
+
+  return <MobileTabs items={tabs} defaultTab="overview" />;
+}
 
 export default FeatureFlags;
