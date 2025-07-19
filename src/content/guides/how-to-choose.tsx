@@ -27,12 +27,12 @@ export default function HowToChoose() {
       <Stack gap={isMobile ? 'sm' : 'xl'}>
         {/* Hero Section */}
         <section>
-          <Stack align="center" ta="center" mb={isMobile ? 'md' : 'xl'}>
+          <Stack align="center" ta="center" mb={isMobile ? 'sm' : 'md'}>
             <Title
               order={1}
               fw={700}
               size={isMobile ? '1.7rem' : '2.5rem'}
-              mb={isMobile ? 'sm' : 'md'}
+              mb={isMobile ? 'xs' : 'sm'}
             >
               Como Escolher sua Arquitetura Front-End
             </Title>

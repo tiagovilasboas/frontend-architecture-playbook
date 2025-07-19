@@ -28,11 +28,11 @@ export default function DependencyRuleGuide() {
     <Stack gap="xl">
       {/* Hero Section */}
       <section>
-        <Stack align="center" ta="center" mb="xl">
-          <Title order={1} fw={800} size="3.5rem" mb="md">
+        <Stack align="center" ta="center" mb="md">
+          <Title order={1} fw={800} size="3.5rem" mb="sm">
             Dependency Rule
           </Title>
-          <Text size="xl" c="dimmed" mb="lg" maw={800}>
+          <Text size="xl" c="dimmed" mb="md" maw={800}>
             A regra mais importante de qualquer arquitetura. Se você ignorar
             isso,
             <strong>
