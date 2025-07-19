@@ -438,33 +438,13 @@ export default function DependencyRuleGuide() {
   );
 
   // Create tabs
-  const tabs = createArchitectureTabs({
-    overview: {
-      label: 'Visão Geral',
-      icon: <IconBulb size={16} />,
-      content: <OverviewSection />,
-    },
-    why: {
-      label: 'Por que Importa',
-      icon: <IconAlertTriangle size={16} />,
-      content: <WhyItMattersSection />,
-    },
-    implementation: {
-      label: 'Implementação',
-      icon: <IconCode size={16} />,
-      content: <ImplementationSection />,
-    },
-    benefits: {
-      label: 'Benefícios',
-      icon: <IconCheck size={16} />,
-      content: <BenefitsSection />,
-    },
-    summary: {
-      label: 'Resumo',
-      icon: <IconShield size={16} />,
-      content: <SummarySection />,
-    },
-  });
+  const tabs = createArchitectureTabs(
+    <OverviewSection />,
+    <ImplementationSection />,
+    <WhyItMattersSection />,
+    <BenefitsSection />,
+    <SummarySection />
+  );
 
   return <MobileTabs items={tabs} defaultTab="overview" />;
 }
