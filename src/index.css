@@ -244,6 +244,7 @@ a:focus {
 
   /* NavMenu container - scroll apenas no mobile */
   .nav-menu-container {
+    height: calc(100vh - 120px) !important;
     overflow-y: auto !important;
   }
 }
@@ -251,6 +252,7 @@ a:focus {
 /* Desktop - sem scroll no NavMenu */
 @media (min-width: 769px) {
   .nav-menu-container {
+    height: auto !important;
     overflow-y: visible !important;
   }
 
