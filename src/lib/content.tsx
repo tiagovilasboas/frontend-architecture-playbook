@@ -257,17 +257,24 @@ export const guides: DocMeta[] = [
   toMeta(Cases, 'cases', 'guides', true),
 ];
 
-// Arquiteturas reais - estrutura fundamental do sistema
+// Arquiteturas organizadas por complexidade e popularidade
 export const architectures: DocMeta[] = [
+  // 🚀 FUNDAMENTAIS (mais usadas)
+  toMeta(Spa, 'spa', 'architectures', true),
   toMeta(SSRSSGArchitecture, 'ssr-ssg', 'architectures', true),
-  toMeta(BFFArchitecture, 'bff', 'architectures', true),
+  toMeta(Jamstack, 'jamstack', 'architectures', true),
   toMeta(PWAArchitecture, 'pwa', 'architectures', true),
-  toMeta(HeadlessArchitecture, 'headless', 'architectures', true),
-  toMeta(HexagonalArchitecture, 'hexagonal', 'architectures', true),
-  toMeta(LayeredArchitecture, 'layered', 'architectures', true),
-  toMeta(EventSourcingArchitecture, 'event-sourcing', 'architectures', true),
-  toMeta(CQRSArchitecture, 'cqrs', 'architectures', true),
+
+  // 🏗️ PADRÕES DE DESIGN (Clean Architecture)
   toMeta(CleanArchitecture, 'clean-architecture', 'architectures', true),
+  toMeta(LayeredArchitecture, 'layered', 'architectures', true),
+  toMeta(HexagonalArchitecture, 'hexagonal', 'architectures', true),
+
+  // 🔌 INTEGRAÇÃO E API
+  toMeta(BFFArchitecture, 'bff', 'architectures', true),
+  toMeta(HeadlessArchitecture, 'headless', 'architectures', true),
+
+  // 🧩 MODULARIZAÇÃO (Micro-frontends)
   toMeta(MicroFrontends, 'micro-frontends', 'architectures', true),
   toMeta(
     MicroservicesFrontendArchitecture,
@@ -276,8 +283,10 @@ export const architectures: DocMeta[] = [
     true
   ),
   toMeta(Monorepo, 'monorepo', 'architectures', true),
-  toMeta(Spa, 'spa', 'architectures', true),
-  toMeta(Jamstack, 'jamstack', 'architectures', true),
+
+  // ⚡ AVANÇADAS (Event-driven, Performance)
+  toMeta(EventSourcingArchitecture, 'event-sourcing', 'architectures', true),
+  toMeta(CQRSArchitecture, 'cqrs', 'architectures', true),
   toMeta(IslandsArchitecture, 'islands-architecture', 'architectures', true),
 ];
 

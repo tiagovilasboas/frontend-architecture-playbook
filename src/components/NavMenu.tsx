@@ -1,11 +1,16 @@
 import React from 'react';
-import { ScrollArea, Title, Stack, Divider, Group } from '@mantine/core';
+import { ScrollArea, Title, Stack, Divider, Group, Text } from '@mantine/core';
 import {
   IconBook,
   IconPuzzle,
   IconStack,
   IconTools,
   IconCheck,
+  IconRocket,
+  IconBuilding,
+  IconPlug,
+  IconPuzzle as IconPuzzlePiece,
+  IconBolt,
 } from '@tabler/icons-react';
 import { useLocation } from 'react-router-dom';
 import type { DocMeta } from '../lib/content.tsx';
@@ -30,6 +35,15 @@ export default function NavMenu({
 }: Props) {
   const location = useLocation();
   const current = location.pathname;
+
+  // Agrupar arquiteturas por complexidade
+  const groupedArchitectures = {
+    fundamental: architectures.slice(0, 4), // SPA, SSR/SSG, JAMstack, PWA
+    design: architectures.slice(4, 7), // Clean, Layered, Hexagonal
+    integration: architectures.slice(7, 9), // BFF, Headless
+    modular: architectures.slice(9, 12), // Micro-frontends, Microservices, Monorepo
+    advanced: architectures.slice(12, 15), // Event Sourcing, CQRS, Islands
+  };
 
   return (
     <ScrollArea h="100%" style={{ overflow: 'visible' }}>
@@ -90,8 +104,99 @@ export default function NavMenu({
               Architectures
             </Title>
           </Group>
-          <Stack gap={4}>
-            {architectures.map(a => (
+
+          {/* 🚀 FUNDAMENTAIS */}
+          <Stack gap={4} mb="md">
+            <Group gap="xs" mb="xs">
+              <IconRocket size={14} color="var(--mantine-color-blue-6)" />
+              <Text size="xs" c="dimmed" fw={500}>
+                Fundamentais
+              </Text>
+            </Group>
+            {groupedArchitectures.fundamental.map(a => (
+              <NavItem
+                key={a.slug}
+                href={`/architectures/${a.slug}`}
+                label={a.title}
+                icon={<IconStack size={16} />}
+                active={current === `/architectures/${a.slug}`}
+                onNavigate={onNavigate}
+              />
+            ))}
+          </Stack>
+
+          {/* 🏗️ PADRÕES DE DESIGN */}
+          <Stack gap={4} mb="md">
+            <Group gap="xs" mb="xs">
+              <IconBuilding size={14} color="var(--mantine-color-violet-6)" />
+              <Text size="xs" c="dimmed" fw={500}>
+                Padrões de Design
+              </Text>
+            </Group>
+            {groupedArchitectures.design.map(a => (
+              <NavItem
+                key={a.slug}
+                href={`/architectures/${a.slug}`}
+                label={a.title}
+                icon={<IconStack size={16} />}
+                active={current === `/architectures/${a.slug}`}
+                onNavigate={onNavigate}
+              />
+            ))}
+          </Stack>
+
+          {/* 🔌 INTEGRAÇÃO E API */}
+          <Stack gap={4} mb="md">
+            <Group gap="xs" mb="xs">
+              <IconPlug size={14} color="var(--mantine-color-cyan-6)" />
+              <Text size="xs" c="dimmed" fw={500}>
+                Integração & API
+              </Text>
+            </Group>
+            {groupedArchitectures.integration.map(a => (
+              <NavItem
+                key={a.slug}
+                href={`/architectures/${a.slug}`}
+                label={a.title}
+                icon={<IconStack size={16} />}
+                active={current === `/architectures/${a.slug}`}
+                onNavigate={onNavigate}
+              />
+            ))}
+          </Stack>
+
+          {/* 🧩 MODULARIZAÇÃO */}
+          <Stack gap={4} mb="md">
+            <Group gap="xs" mb="xs">
+              <IconPuzzlePiece
+                size={14}
+                color="var(--mantine-color-orange-6)"
+              />
+              <Text size="xs" c="dimmed" fw={500}>
+                Modularização
+              </Text>
+            </Group>
+            {groupedArchitectures.modular.map(a => (
+              <NavItem
+                key={a.slug}
+                href={`/architectures/${a.slug}`}
+                label={a.title}
+                icon={<IconStack size={16} />}
+                active={current === `/architectures/${a.slug}`}
+                onNavigate={onNavigate}
+              />
+            ))}
+          </Stack>
+
+          {/* ⚡ AVANÇADAS */}
+          <Stack gap={4} mb="md">
+            <Group gap="xs" mb="xs">
+              <IconBolt size={14} color="var(--mantine-color-red-6)" />
+              <Text size="xs" c="dimmed" fw={500}>
+                Avançadas
+              </Text>
+            </Group>
+            {groupedArchitectures.advanced.map(a => (
               <NavItem
                 key={a.slug}
                 href={`/architectures/${a.slug}`}
