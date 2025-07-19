@@ -20,9 +20,12 @@ import {
 } from '@tabler/icons-react';
 import CodeExample from '../../components/CodeExample';
 import codeExamples from '../../utils/code-examples/component-driven.json';
+import MobileTabs from '../../components/MobileTabs';
+import { createArchitectureTabs } from '../../components/MobileTabsHelpers';
 
 function ComponentDriven() {
-  return (
+  // Overview Section
+  const OverviewSection = () => (
     <Stack gap="xl">
       {/* Hero Section */}
       <div>
@@ -69,7 +72,12 @@ function ComponentDriven() {
           </Text>
         </Stack>
       </Paper>
+    </Stack>
+  );
 
+  // Implementation Section
+  const ImplementationSection = () => (
+    <Stack gap="xl">
       {/* Concepts */}
       <div>
         <Title order={2} mb="lg">
@@ -119,15 +127,19 @@ function ComponentDriven() {
           </Text>
         </Paper>
       </div>
+    </Stack>
+  );
 
-      {/* Benefits */}
-      <div>
-        <Title order={2} mb="lg">
-          <IconCheck
-            size={28}
+  // Examples Section
+  const ExamplesSection = () => (
+    <Stack gap="xl">
+      <Paper withBorder p="xl" radius="md">
+        <Title order={3} mb="lg">
+          <IconBulb
+            size={24}
             style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
-          Por que vale a pena?
+          Casos Reais
         </Title>
 
         <Stack gap="md">
@@ -137,11 +149,16 @@ function ComponentDriven() {
                 <IconCode size={20} />
               </ThemeIcon>
               <div>
-                <Title order={4}>Menos Código</Title>
-                <Text size="sm">
-                  Reutiliza componentes, não reescreve. Uma mudança, todo lugar
-                  atualiza.
+                <Title order={4}>Design Systems</Title>
+                <Text size="sm" c="dimmed" mb="sm">
+                  Componentes padronizados para toda a empresa
                 </Text>
+                <List size="sm" spacing="xs">
+                  <List.Item>Material-UI (Google)</List.Item>
+                  <List.Item>Ant Design (Alibaba)</List.Item>
+                  <List.Item>Chakra UI (Independente)</List.Item>
+                  <List.Item>Mantine (Independente)</List.Item>
+                </List>
               </div>
             </Group>
           </Card>
@@ -152,10 +169,16 @@ function ComponentDriven() {
                 <IconPuzzle size={20} />
               </ThemeIcon>
               <div>
-                <Title order={4}>Desenvolvimento Rápido</Title>
-                <Text size="sm">
-                  Monta telas como Lego. Componentes prontos, só juntar.
+                <Title order={4}>E-commerce</Title>
+                <Text size="sm" c="dimmed" mb="sm">
+                  Componentes reutilizáveis para produtos
                 </Text>
+                <List size="sm" spacing="xs">
+                  <List.Item>ProductCard reutilizável</List.Item>
+                  <List.Item>Button com variações</List.Item>
+                  <List.Item>Form components padronizados</List.Item>
+                  <List.Item>Modal e Drawer consistentes</List.Item>
+                </List>
               </div>
             </Group>
           </Card>
@@ -166,215 +189,146 @@ function ComponentDriven() {
                 <IconBulb size={20} />
               </ThemeIcon>
               <div>
-                <Title order={4}>Consistência Visual</Title>
-                <Text size="sm">
-                  Mesmos componentes = mesma aparência. Design system
-                  automático.
+                <Title order={4}>Dashboard</Title>
+                <Text size="sm" c="dimmed" mb="sm">
+                  Componentes para análise de dados
                 </Text>
+                <List size="sm" spacing="xs">
+                  <List.Item>Chart components reutilizáveis</List.Item>
+                  <List.Item>Table com sorting/filtering</List.Item>
+                  <List.Item>Metric cards padronizados</List.Item>
+                  <List.Item>Filter components consistentes</List.Item>
+                </List>
               </div>
             </Group>
           </Card>
         </Stack>
-      </div>
+      </Paper>
+    </Stack>
+  );
 
-      {/* When to use */}
-      <div>
-        <Title order={2} mb="lg">
-          <IconAlertTriangle
-            size={28}
-            style={{ verticalAlign: 'middle', marginRight: '8px' }}
-          />
-          Quando usar?
-        </Title>
-
-        <Stack gap="md">
-          <Alert variant="light" color="green" title="✅ Use quando:">
-            <List>
-              <List.Item>Interface complexa com muitas telas</List.Item>
-              <List.Item>Time grande trabalhando junto</List.Item>
-              <List.Item>Precisa de consistência visual</List.Item>
-              <List.Item>Vai reutilizar componentes</List.Item>
-              <List.Item>Design system é importante</List.Item>
-            </List>
-          </Alert>
-
-          <Alert variant="light" color="red" title="❌ Evite quando:">
-            <List>
-              <List.Item>Projeto pequeno (over-engineering)</List.Item>
-              <List.Item>Só uma tela simples</List.Item>
-              <List.Item>Protótipo rápido</List.Item>
-              <List.Item>Time muito pequeno</List.Item>
-            </List>
-          </Alert>
-        </Stack>
-      </div>
-
-      {/* Real Examples */}
-      <div>
-        <Title order={2} mb="lg">
-          <IconCode
-            size={28}
-            style={{ verticalAlign: 'middle', marginRight: '8px' }}
-          />
-          Exemplos Práticos no Front-End
-        </Title>
-
-        <Stack gap="xl">
-          {codeExamples.slice(3, 6).map((ex, idx) => (
-            <Paper withBorder p="xl" radius="md" key={ex.title}>
-              <Title order={3} mb="md">
-                {['🛒', '📊', '📝'][idx]} {ex.title.split(' - ')[1]}
-              </Title>
-
-              <Stack gap="md">
-                <Text>
-                  <strong>Cenário:</strong> {ex.description}
-                  <br />
-                  <strong>Problema:</strong> Código duplicado, inconsistência
-                  visual, impossível de manter.
-                </Text>
-
-                <CodeExample title={ex.title} code={ex.code} />
-              </Stack>
-            </Paper>
-          ))}
-        </Stack>
-      </div>
-
-      {/* Pitfalls & How to Avoid */}
-      <div>
-        <Title order={2} mb="lg">
-          <IconAlertTriangle
-            size={28}
-            style={{ verticalAlign: 'middle', marginRight: '8px' }}
-          />
-          Armadilhas & Como Evitar
-        </Title>
-
-        <Stack gap="xl">
-          {codeExamples.slice(6).map((ex, idx) => (
-            <Paper withBorder p="xl" radius="md" key={ex.title}>
-              <Title order={3} mb="md">
-                {['🚫', '🔄', '🐋', '🎭', '🧪'][idx]} {ex.title}
-              </Title>
-              <Stack gap="md">
-                <Text>
-                  <strong>Problema:</strong> {ex.description}
-                </Text>
-
-                <Text>
-                  <strong>Como evitar:</strong>{' '}
-                  {ex.description.includes('desnecessários')
-                    ? 'Só crie componente quando vai reutilizar. Se só aparece uma vez, deixa inline mesmo.'
-                    : ex.description.includes('Props Drilling')
-                      ? 'Use Context, Redux, ou reorganize componentes. Não passe props desnecessárias.'
-                      : ex.description.includes('Gigantes')
-                        ? 'Quebre em componentes menores. Cada um com uma responsabilidade só.'
-                        : ex.description.includes('Inconsistentes')
-                          ? 'Padronize props. Use interfaces TypeScript. Documente o que cada prop faz.'
-                          : 'Teste cada componente isoladamente. Use Storybook pra documentar e testar visualmente.'}
-                </Text>
-
-                <CodeExample title={`Armadilha: ${ex.title}`} code={ex.code} />
-              </Stack>
-            </Paper>
-          ))}
-        </Stack>
-      </div>
-
-      {/* References & Real Cases */}
-      <div>
-        <Title order={2} mb="lg">
-          <IconBulb
-            size={28}
-            style={{ verticalAlign: 'middle', marginRight: '8px' }}
-          />
-          Referências & Casos Reais
-        </Title>
-
-        <Stack gap="xl">
-          {/* References */}
-          <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">
-              📚 Referências
-            </Title>
-            <Stack gap="md">
-              <Text>
-                <strong>Livros:</strong>
-              </Text>
-              <List>
-                <List.Item>
-                  <strong>"Atomic Design"</strong> - Brad Frost
-                </List.Item>
-                <List.Item>
-                  <strong>"Design Systems"</strong> - Alla Kholmatova
-                </List.Item>
-                <List.Item>
-                  <strong>"Component Design"</strong> - Nathan Curtis
-                </List.Item>
-              </List>
-              <Text>
-                <strong>Artigos & Blogs:</strong>
-              </Text>
-              <List>
-                <List.Item>
-                  <a
-                    href="https://bradfrost.com/blog/post/atomic-web-design/"
-                    target="_blank"
-                  >
-                    Atomic Design - Brad Frost
-                  </a>
-                </List.Item>
-                <List.Item>
-                  <a href="https://storybook.js.org/" target="_blank">
-                    Storybook - Documentação de Componentes
-                  </a>
-                </List.Item>
-                <List.Item>
-                  <a
-                    href="https://www.uxpin.com/studio/blog/design-systems-vs-component-libraries/"
-                    target="_blank"
-                  >
-                    Design Systems vs Component Libraries
-                  </a>
-                </List.Item>
-              </List>
-            </Stack>
-          </Paper>
-        </Stack>
-      </div>
-
-      {/* Summary */}
+  // Pitfalls Section
+  const PitfallsSection = () => (
+    <Stack gap="xl">
       <Paper withBorder p="xl" radius="md">
+        <Title order={3} mb="lg">
+          <IconAlertTriangle
+            size={24}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
+          />
+          Armadilhas Comuns
+        </Title>
+
         <Stack gap="md">
-          <Group>
-            <ThemeIcon size={50} radius="md" variant="light" color="blue">
-              <IconBulb size={25} />
-            </ThemeIcon>
-            <div>
-              <Title order={3}>Resumo</Title>
-              <Text c="dimmed">Component-Driven na prática</Text>
-            </div>
-          </Group>
+          <Alert color="red" icon={<IconAlertTriangle size={16} />} mb="md">
+            <Text size="sm" fw={600} mb={4}>
+              ❌ Over-abstraction
+            </Text>
+            <Text size="sm" c="dimmed">
+              Criar componentes muito genéricos que não resolvem problemas
+              específicos. Use YAGNI como guia.
+            </Text>
+          </Alert>
 
-          <Text>
-            Component-Driven é sobre uma coisa só:{' '}
-            <strong>construir interfaces como Lego</strong>. Reutilize
-            componentes, mantenha consistência, desenvolva mais rápido. Use
-            quando tem interface complexa e quer menos código.
-          </Text>
+          <Alert color="orange" icon={<IconAlertTriangle size={16} />} mb="md">
+            <Text size="sm" fw={600} mb={4}>
+              ❌ Props explosion
+            </Text>
+            <Text size="sm" c="dimmed">
+              Componentes com muitas props se tornam difíceis de usar. Use
+              composition over configuration.
+            </Text>
+          </Alert>
 
-          <Text size="sm" c="dimmed">
-            <strong>Lembre-se:</strong> Não é sobre criar componentes pra tudo.
-            É sobre reutilizar o que realmente se repete. E você não enlouquece.
-            <br />
-            <strong>Dica:</strong> Comece com componentes pequenos, evolua
-            conforme necessário. Teste cada componente isoladamente.
-          </Text>
+          <Alert color="yellow" icon={<IconAlertTriangle size={16} />} mb="md">
+            <Text size="sm" fw={600} mb={4}>
+              ❌ Inconsistência
+            </Text>
+            <Text size="sm" c="dimmed">
+              Componentes sem padrões claros criam inconsistência visual.
+              Documente e padronize.
+            </Text>
+          </Alert>
+
+          <Alert color="green" icon={<IconCheck size={16} />} mb="md">
+            <Text size="sm" fw={600} mb={4}>
+              ✅ Como evitar
+            </Text>
+            <Text size="sm" c="dimmed">
+              <strong>Comece simples:</strong> Componentes específicos antes de
+              genéricos
+              <br />
+              <strong>Use composition:</strong> Children props em vez de muitas
+              props
+              <br />
+              <strong>Documente padrões:</strong> Storybook e documentação clara
+            </Text>
+          </Alert>
         </Stack>
       </Paper>
     </Stack>
   );
+
+  // References Section
+  const ReferencesSection = () => (
+    <Stack gap="xl">
+      <Paper withBorder p="xl" radius="md">
+        <Title order={3} mb="lg">
+          <IconCode
+            size={24}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
+          />
+          Referências e Recursos
+        </Title>
+
+        <Stack gap="md">
+          <Card withBorder p="md">
+            <Title order={4} mb="sm">
+              Ferramentas
+            </Title>
+            <List size="sm" spacing="xs">
+              <List.Item>
+                <strong>Storybook:</strong> Documentação de componentes
+              </List.Item>
+              <List.Item>
+                <strong>Chromatic:</strong> Visual testing
+              </List.Item>
+              <List.Item>
+                <strong>Figma:</strong> Design system integration
+              </List.Item>
+            </List>
+          </Card>
+
+          <Card withBorder p="md">
+            <Title order={4} mb="sm">
+              Casos de Sucesso
+            </Title>
+            <List size="sm" spacing="xs">
+              <List.Item>
+                <strong>Airbnb:</strong> Design system com componentes
+              </List.Item>
+              <List.Item>
+                <strong>Spotify:</strong> Component library interna
+              </List.Item>
+              <List.Item>
+                <strong>Netflix:</strong> Micro-components reutilizáveis
+              </List.Item>
+            </List>
+          </Card>
+        </Stack>
+      </Paper>
+    </Stack>
+  );
+
+  const tabs = createArchitectureTabs(
+    <OverviewSection />,
+    <ImplementationSection />,
+    <ExamplesSection />,
+    <PitfallsSection />,
+    <ReferencesSection />
+  );
+
+  return <MobileTabs items={tabs} defaultTab="overview" />;
 }
 
 ComponentDriven.metadata = {
