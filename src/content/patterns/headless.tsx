@@ -6,7 +6,6 @@ import {
   Card,
   Group,
   ThemeIcon,
-  Badge,
   Alert,
   List,
   Code,
@@ -17,10 +16,14 @@ import {
   IconBulb,
   IconRocket,
   IconDatabase,
+  IconCode,
 } from '@tabler/icons-react';
+import MobileTabs from '../../components/MobileTabs';
+import { createArchitectureTabs } from '../../components/MobileTabsHelpers';
 
 export default function HeadlessArchitecture() {
-  return (
+  // Overview Section
+  const OverviewSection = () => (
     <Stack gap="xl">
       {/* Hero Section */}
       <div>
@@ -66,7 +69,12 @@ Backend: { "title": "iPhone 15", "price": 4999 }
 Frontend: fetch('/api/products') → React/Vue/Angular/qualquer coisa`}
         </Code>
       </Paper>
+    </Stack>
+  );
 
+  // Implementation Section
+  const ImplementationSection = () => (
+    <Stack gap="xl">
       {/* Quando usar? */}
       <Paper withBorder p="xl" radius="md">
         <Title order={2} size="h2" mb="md">
@@ -140,192 +148,214 @@ Frontend: fetch('/api/products') → React/Vue/Angular/qualquer coisa`}
           </Alert>
         </Stack>
       </Paper>
+    </Stack>
+  );
 
-      {/* Exemplo Prático */}
+  // Examples Section
+  const ExamplesSection = () => (
+    <Stack gap="xl">
       <Paper withBorder p="xl" radius="md">
-        <Title order={2} size="h2" mb="md">
-          💻 Exemplo: E-commerce Headless
+        <Title order={3} mb="lg">
+          <IconBulb
+            size={24}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
+          />
+          Casos Reais
         </Title>
-        <Code block mb="md">
-          {`// Strapi CMS - Backend que só serve dados
-// Content-Type: Product
-{
-  "id": 1,
-  "name": "iPhone 15",
-  "price": 4999,
-  "images": ["iphone1.jpg", "iphone2.jpg"],
-  "description": "...",
-  "category": { "name": "Smartphones" },
-  "in_stock": true
-}
 
-// Next.js Frontend - Busca e renderiza
-export async function getStaticProps() {
-  const products = await fetch('${process.env.CMS_URL}/api/products')
-    .then(res => res.json())
-  
-  return { props: { products } }
-}
-
-export default function ProductPage({ products }) {
-  return (
-    <div>
-      {products.map(product => (
-        <ProductCard 
-          key={product.id}
-          name={product.name}
-          price={product.price}
-          image={product.images[0]}
-          inStock={product.in_stock}
-        />
-      ))}
-    </div>
-  )
-}`}
-        </Code>
-      </Paper>
-
-      {/* Armadilhas */}
-      <Paper withBorder p="xl" radius="md">
-        <Group gap="sm" mb="md">
-          <ThemeIcon size="lg" radius="md" variant="light" color="red">
-            <IconAlertTriangle size={20} />
-          </ThemeIcon>
-          <Title order={2} size="h2">
-            ⚠️ Armadilhas
-          </Title>
-        </Group>
-        <Stack gap="md">
-          <Alert color="red" icon={<IconAlertTriangle size={16} />}>
-            <Text fw={600} mb="xs">
-              🔗 API dependency
-            </Text>
-            <Text size="sm">
-              CMS cai = site para. Precisa de fallbacks e cache robusto.
-            </Text>
-          </Alert>
-          <Alert color="red" icon={<IconAlertTriangle size={16} />}>
-            <Text fw={600} mb="xs">
-              👁️ Preview complexo
-            </Text>
-            <Text size="sm">
-              Content team não vê como vai ficar. Precisa build preview
-              environment.
-            </Text>
-          </Alert>
-          <Alert color="red" icon={<IconAlertTriangle size={16} />}>
-            <Text fw={600} mb="xs">
-              🏗️ Mais infra
-            </Text>
-            <Text size="sm">
-              2 sistemas pra manter em vez de 1. Deploy, monitoring, backup
-              separados.
-            </Text>
-          </Alert>
-        </Stack>
-      </Paper>
-
-      {/* Cases Reais */}
-      <Paper withBorder p="xl" radius="md">
-        <Group gap="sm" mb="md">
-          <ThemeIcon size="lg" radius="md" variant="light" color="violet">
-            <IconRocket size={20} />
-          </ThemeIcon>
-          <Title order={2} size="h2">
-            🚀 Cases Reais
-          </Title>
-        </Group>
         <Stack gap="md">
           <Card withBorder p="md">
-            <Text fw={600} c="blue" mb="sm">
-              👟 Nike
-            </Text>
-            <Text size="sm" mb="xs">
-              Website + app + kiosks físicos. Contentful CMS + React frontends.
-            </Text>
-            <Text size="sm" c="green">
-              +150% performance, content team 3x mais produtiva
-            </Text>
+            <Group>
+              <ThemeIcon size={40} radius="md" variant="light" color="green">
+                <IconCode size={20} />
+              </ThemeIcon>
+              <div>
+                <Title order={4}>Netflix</Title>
+                <Text size="sm" c="dimmed" mb="sm">
+                  Headless CMS para múltiplas plataformas
+                </Text>
+                <List size="sm" spacing="xs">
+                  <List.Item>Website: React + Next.js</List.Item>
+                  <List.Item>Mobile: React Native</List.Item>
+                  <List.Item>TV: Custom framework</List.Item>
+                  <List.Item>Mesmo conteúdo, interfaces diferentes</List.Item>
+                </List>
+              </div>
+            </Group>
           </Card>
+
           <Card withBorder p="md">
-            <Text fw={600} c="blue" mb="sm">
-              🥤 Red Bull
-            </Text>
-            <Text size="sm" mb="xs">
-              40+ sites globais, mesmo CMS. Drupal headless + Gatsby.
-            </Text>
-            <Text size="sm" c="green">
-              90% redução de tempo de deploy, sites carregam em 1s
-            </Text>
+            <Group>
+              <ThemeIcon size={40} radius="md" variant="light" color="blue">
+                <IconRocket size={20} />
+              </ThemeIcon>
+              <div>
+                <Title order={4}>Spotify</Title>
+                <Text size="sm" c="dimmed" mb="sm">
+                  Headless para conteúdo de música
+                </Text>
+                <List size="sm" spacing="xs">
+                  <List.Item>Web: React</List.Item>
+                  <List.Item>Mobile: Native apps</List.Item>
+                  <List.Item>Desktop: Electron</List.Item>
+                  <List.Item>API-first para todos os clientes</List.Item>
+                </List>
+              </div>
+            </Group>
+          </Card>
+
+          <Card withBorder p="md">
+            <Group>
+              <ThemeIcon size={40} radius="md" variant="light" color="purple">
+                <IconBulb size={20} />
+              </ThemeIcon>
+              <div>
+                <Title order={4}>E-commerce</Title>
+                <Text size="sm" c="dimmed" mb="sm">
+                  Headless para lojas online
+                </Text>
+                <List size="sm" spacing="xs">
+                  <List.Item>Website: Next.js</List.Item>
+                  <List.Item>Mobile app: React Native</List.Item>
+                  <List.Item>Admin: Vue.js</List.Item>
+                  <List.Item>Performance otimizada</List.Item>
+                </List>
+              </div>
+            </Group>
           </Card>
         </Stack>
-      </Paper>
-
-      {/* Stack */}
-      <Paper withBorder p="xl" radius="md">
-        <Title order={2} size="h2" mb="md">
-          🛠️ Stack
-        </Title>
-        <Group grow align="flex-start" gap="lg">
-          <Card withBorder p="md">
-            <Badge variant="light" color="blue" mb="sm">
-              CMS Headless
-            </Badge>
-            <List size="sm" spacing={4}>
-              <List.Item>Strapi (open source)</List.Item>
-              <List.Item>Contentful (SaaS)</List.Item>
-              <List.Item>Sanity (real-time)</List.Item>
-              <List.Item>Directus (SQL-based)</List.Item>
-            </List>
-          </Card>
-          <Card withBorder p="md">
-            <Badge variant="light" color="green" mb="sm">
-              Frontend
-            </Badge>
-            <List size="sm" spacing={4}>
-              <List.Item>Next.js (React SSG)</List.Item>
-              <List.Item>Nuxt.js (Vue SSG)</List.Item>
-              <List.Item>Gatsby (GraphQL)</List.Item>
-              <List.Item>SvelteKit (Svelte)</List.Item>
-            </List>
-          </Card>
-        </Group>
-      </Paper>
-
-      {/* Resumo */}
-      <Paper withBorder p="xl" radius="md">
-        <Alert color="orange" icon={<IconBulb size={16} />} radius="md">
-          <Text fw={600} size="lg" mb="md" style={{ fontStyle: 'italic' }}>
-            "Headless é liberdade: CMS cuida do conteúdo, frontend cuida da
-            experiência."
-          </Text>
-          <List spacing="sm">
-            <List.Item
-              icon={
-                <IconCheck size={14} color="var(--mantine-color-green-6)" />
-              }
-            >
-              <Text>Multi-channel: uma API, múltiplas interfaces</Text>
-            </List.Item>
-            <List.Item
-              icon={
-                <IconCheck size={14} color="var(--mantine-color-green-6)" />
-              }
-            >
-              <Text>Performance: frontend otimizado sem bloat</Text>
-            </List.Item>
-            <List.Item
-              icon={
-                <IconCheck size={14} color="var(--mantine-color-green-6)" />
-              }
-            >
-              <Text>Trade-off: flexibilidade vs complexidade de infra</Text>
-            </List.Item>
-          </List>
-        </Alert>
       </Paper>
     </Stack>
   );
+
+  // Pitfalls Section
+  const PitfallsSection = () => (
+    <Stack gap="xl">
+      <Paper withBorder p="xl" radius="md">
+        <Title order={3} mb="lg">
+          <IconAlertTriangle
+            size={24}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
+          />
+          Armadilhas Comuns
+        </Title>
+
+        <Stack gap="md">
+          <Alert color="red" icon={<IconAlertTriangle size={16} />} mb="md">
+            <Text size="sm" fw={600} mb={4}>
+              ❌ Complexidade de setup
+            </Text>
+            <Text size="sm" c="dimmed">
+              Headless CMS requer mais configuração inicial. Use ferramentas
+              como Strapi ou Contentful.
+            </Text>
+          </Alert>
+
+          <Alert color="orange" icon={<IconAlertTriangle size={16} />} mb="md">
+            <Text size="sm" fw={600} mb={4}>
+              ❌ Dependência de APIs
+            </Text>
+            <Text size="sm" c="dimmed">
+              Frontend depende de APIs externas. Implemente cache e fallbacks
+              robustos.
+            </Text>
+          </Alert>
+
+          <Alert color="yellow" icon={<IconAlertTriangle size={16} />} mb="md">
+            <Text size="sm" fw={600} mb={4}>
+              ❌ Over-engineering
+            </Text>
+            <Text size="sm" c="dimmed">
+              Headless para sites simples é overkill. Use apenas quando há
+              múltiplas plataformas.
+            </Text>
+          </Alert>
+
+          <Alert color="green" icon={<IconCheck size={16} />} mb="md">
+            <Text size="sm" fw={600} mb={4}>
+              ✅ Como evitar
+            </Text>
+            <Text size="sm" c="dimmed">
+              <strong>Comece simples:</strong> CMS tradicional para sites
+              básicos
+              <br />
+              <strong>Use ferramentas prontas:</strong> Strapi, Contentful,
+              Sanity
+              <br />
+              <strong>Implemente cache:</strong> CDN e cache agressivo
+            </Text>
+          </Alert>
+        </Stack>
+      </Paper>
+    </Stack>
+  );
+
+  // References Section
+  const ReferencesSection = () => (
+    <Stack gap="xl">
+      <Paper withBorder p="xl" radius="md">
+        <Title order={3} mb="lg">
+          <IconCode
+            size={24}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
+          />
+          Referências e Recursos
+        </Title>
+
+        <Stack gap="md">
+          <Card withBorder p="md">
+            <Title order={4} mb="sm">
+              Ferramentas
+            </Title>
+            <List size="sm" spacing="xs">
+              <List.Item>
+                <strong>Strapi:</strong> Open-source headless CMS
+              </List.Item>
+              <List.Item>
+                <strong>Contentful:</strong> Cloud-based headless CMS
+              </List.Item>
+              <List.Item>
+                <strong>Sanity:</strong> Real-time headless CMS
+              </List.Item>
+              <List.Item>
+                <strong>Prismic:</strong> API-first CMS
+              </List.Item>
+            </List>
+          </Card>
+
+          <Card withBorder p="md">
+            <Title order={4} mb="sm">
+              Casos de Sucesso
+            </Title>
+            <List size="sm" spacing="xs">
+              <List.Item>
+                <strong>Netflix:</strong> Multi-platform content
+              </List.Item>
+              <List.Item>
+                <strong>Spotify:</strong> Music content API
+              </List.Item>
+              <List.Item>
+                <strong>Shopify:</strong> E-commerce headless
+              </List.Item>
+              <List.Item>
+                <strong>Airbnb:</strong> Property content API
+              </List.Item>
+            </List>
+          </Card>
+        </Stack>
+      </Paper>
+    </Stack>
+  );
+
+  const tabs = createArchitectureTabs(
+    <OverviewSection />,
+    <ImplementationSection />,
+    <ExamplesSection />,
+    <PitfallsSection />,
+    <ReferencesSection />
+  );
+
+  return <MobileTabs items={tabs} defaultTab="overview" />;
 }
 
 HeadlessArchitecture.metadata = {
