@@ -40,7 +40,12 @@ const MobileTabs: React.FC<MobileTabsProps> = ({
       </Tabs.List>
 
       {items.map(item => (
-        <Tabs.Panel key={item.value} value={item.value} pt="md">
+        <Tabs.Panel
+          key={item.value}
+          value={item.value}
+          pt="md"
+          style={{ maxHeight: 'calc(100vh - 120px)', overflowY: 'auto' }}
+        >
           {item.content}
         </Tabs.Panel>
       ))}
