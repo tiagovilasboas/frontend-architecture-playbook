@@ -19,9 +19,12 @@ import {
 } from '@tabler/icons-react';
 import CodeExample from '../../components/CodeExample';
 import eventDrivenExamples from '../../utils/code-examples/event-driven.json';
+import MobileTabs from '../../components/MobileTabs';
+import { createArchitectureTabs } from '../../components/MobileTabsHelpers';
 
 function EventDriven() {
-  return (
+  // Overview Section
+  const OverviewSection = () => (
     <Stack gap="xl">
       {/* Hero Section */}
       <div>
@@ -65,7 +68,12 @@ function EventDriven() {
           </Text>
         </Stack>
       </Paper>
+    </Stack>
+  );
 
+  // Implementation Section
+  const ImplementationSection = () => (
+    <Stack gap="xl">
       {/* Concepts */}
       <div>
         <Title order={2} mb="lg">
@@ -154,28 +162,38 @@ function EventDriven() {
           </Card>
         </Stack>
       </div>
+    </Stack>
+  );
 
-      {/* Benefits */}
-      <div>
-        <Title order={2} mb="lg">
-          <IconCheck
-            size={28}
+  // Examples Section
+  const ExamplesSection = () => (
+    <Stack gap="xl">
+      <Paper withBorder p="xl" radius="md">
+        <Title order={3} mb="lg">
+          <IconBulb
+            size={24}
             style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
-          Por que vale a pena?
+          Casos Reais
         </Title>
 
         <Stack gap="md">
           <Card withBorder p="md">
             <Group>
               <ThemeIcon size={40} radius="md" variant="light" color="green">
-                <IconBolt size={20} />
+                <IconCode size={20} />
               </ThemeIcon>
               <div>
-                <Title order={4}>Desacoplamento Total</Title>
-                <Text size="sm">
-                  Componentes não se conhecem, comunicação via eventos.
+                <Title order={4}>E-commerce</Title>
+                <Text size="sm" c="dimmed" mb="sm">
+                  Eventos para diferentes ações do usuário
                 </Text>
+                <List size="sm" spacing="xs">
+                  <List.Item>user:added_to_cart</List.Item>
+                  <List.Item>user:completed_purchase</List.Item>
+                  <List.Item>user:viewed_product</List.Item>
+                  <List.Item>user:searched_products</List.Item>
+                </List>
               </div>
             </Group>
           </Card>
@@ -183,13 +201,19 @@ function EventDriven() {
           <Card withBorder p="md">
             <Group>
               <ThemeIcon size={40} radius="md" variant="light" color="blue">
-                <IconBulb size={20} />
+                <IconBolt size={20} />
               </ThemeIcon>
               <div>
-                <Title order={4}>Extensibilidade</Title>
-                <Text size="sm">
-                  Adicione novos listeners sem modificar componentes existentes.
+                <Title order={4}>Dashboard</Title>
+                <Text size="sm" c="dimmed" mb="sm">
+                  Eventos para atualizações em tempo real
                 </Text>
+                <List size="sm" spacing="xs">
+                  <List.Item>data:updated</List.Item>
+                  <List.Item>user:logged_in</List.Item>
+                  <List.Item>system:error_occurred</List.Item>
+                  <List.Item>notification:received</List.Item>
+                </List>
               </div>
             </Group>
           </Card>
@@ -197,202 +221,105 @@ function EventDriven() {
           <Card withBorder p="md">
             <Group>
               <ThemeIcon size={40} radius="md" variant="light" color="purple">
-                <IconCode size={20} />
+                <IconBulb size={20} />
               </ThemeIcon>
               <div>
-                <Title order={4}>Manutenção Simplificada</Title>
-                <Text size="sm">
-                  Cada componente tem uma responsabilidade, fácil de testar e
-                  debugar.
+                <Title order={4}>Formulários</Title>
+                <Text size="sm" c="dimmed" mb="sm">
+                  Eventos para validação e feedback
                 </Text>
+                <List size="sm" spacing="xs">
+                  <List.Item>form:field_changed</List.Item>
+                  <List.Item>form:validation_failed</List.Item>
+                  <List.Item>form:submitted</List.Item>
+                  <List.Item>form:reset</List.Item>
+                </List>
               </div>
             </Group>
           </Card>
         </Stack>
-      </div>
+      </Paper>
+    </Stack>
+  );
 
-      {/* When to use */}
-      <div>
-        <Title order={2} mb="lg">
+  // Pitfalls Section
+  const PitfallsSection = () => (
+    <Stack gap="xl">
+      <Paper withBorder p="xl" radius="md">
+        <Title order={3} mb="lg">
           <IconAlertTriangle
-            size={28}
-            style={{ verticalAlign: 'middle', marginRight: '8px' }}
-          />
-          Quando usar?
-        </Title>
-
-        <Stack gap="md">
-          <Alert variant="light" color="green" title="✅ Use quando:">
-            <List>
-              <List.Item>Sistemas com muitos componentes</List.Item>
-              <List.Item>Comunicação complexa entre partes</List.Item>
-              <List.Item>Extensibilidade é importante</List.Item>
-              <List.Item>Testabilidade é prioridade</List.Item>
-              <List.Item>Desacoplamento é necessário</List.Item>
-            </List>
-          </Alert>
-
-          <Alert variant="light" color="red" title="❌ Evite quando:">
-            <List>
-              <List.Item>Aplicações simples e pequenas</List.Item>
-              <List.Item>Comunicação direta é suficiente</List.Item>
-              <List.Item>Performance é crítica</List.Item>
-              <List.Item>Debugging complexo é problema</List.Item>
-            </List>
-          </Alert>
-        </Stack>
-      </div>
-
-      {/* Real Examples */}
-      <div>
-        <Title order={2} mb="lg">
-          <IconCode
-            size={28}
-            style={{ verticalAlign: 'middle', marginRight: '8px' }}
-          />
-          Exemplos Práticos no Front-End
-        </Title>
-
-        <Stack gap="xl">
-          {/* Example 1: E-commerce */}
-          <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">
-              🛒 E-commerce - Carrinho e Notificações
-            </Title>
-
-            <Stack gap="md">
-              <Text>
-                <strong>Cenário:</strong> E-commerce com carrinho, notificações,
-                analytics, estoque. Quando produto é adicionado, múltiplos
-                sistemas precisam reagir.
-                <br />
-                <strong>Problema:</strong> Cada componente precisa conhecer
-                todos os outros.
-              </Text>
-
-              <CodeExample
-                title={
-                  eventDrivenExamples.find(
-                    e => e.id === 'event-driven-ecommerce'
-                  )?.title || ''
-                }
-                code={
-                  eventDrivenExamples.find(
-                    e => e.id === 'event-driven-ecommerce'
-                  )?.content || ''
-                }
-              />
-            </Stack>
-          </Paper>
-
-          {/* Example 2: Dashboard */}
-          <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">
-              📊 Dashboard - Atualizações em Tempo Real
-            </Title>
-
-            <Stack gap="md">
-              <Text>
-                <strong>Cenário:</strong> Dashboard com múltiplos widgets.
-                Quando dados mudam, vários widgets precisam atualizar: gráficos,
-                métricas, alertas, logs.
-                <br />
-                <strong>Problema:</strong> Cada widget precisa conhecer todos os
-                outros.
-              </Text>
-
-              <CodeExample
-                title={
-                  eventDrivenExamples.find(
-                    e => e.id === 'event-driven-dashboard'
-                  )?.title || ''
-                }
-                code={
-                  eventDrivenExamples.find(
-                    e => e.id === 'event-driven-dashboard'
-                  )?.content || ''
-                }
-              />
-            </Stack>
-          </Paper>
-        </Stack>
-      </div>
-
-      {/* Pitfalls */}
-      <div>
-        <Title order={2} mb="lg">
-          <IconAlertTriangle
-            size={28}
+            size={24}
             style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Armadilhas Comuns
         </Title>
 
         <Stack gap="md">
-          <Alert variant="light" color="red" title="🚨 Event Hell">
-            <Text>
-              <strong>Problema:</strong> Eventos disparando outros eventos,
-              criando loops infinitos.
+          <Alert color="red" icon={<IconAlertTriangle size={16} />} mb="md">
+            <Text size="sm" fw={600} mb={4}>
+              ❌ Debugging difícil
             </Text>
-            <Text>
-              <strong>Solução:</strong> Documente o fluxo de eventos, use
-              prefixos claros, evite eventos em cascata.
-            </Text>
-          </Alert>
-
-          <Alert variant="light" color="red" title="🚨 Memory Leaks">
-            <Text>
-              <strong>Problema:</strong> Event listeners não removidos causam
-              vazamentos de memória.
-            </Text>
-            <Text>
-              <strong>Solução:</strong> Sempre remova listeners no cleanup, use
-              AbortController.
+            <Text size="sm" c="dimmed">
+              Eventos assíncronos são difíceis de debugar. Use logging e
+              ferramentas de tracing.
             </Text>
           </Alert>
 
-          <Alert variant="light" color="red" title="🚨 Debugging Difícil">
-            <Text>
-              <strong>Problema:</strong> Fluxo de eventos difícil de rastrear e
-              debugar.
+          <Alert color="orange" icon={<IconAlertTriangle size={16} />} mb="md">
+            <Text size="sm" fw={600} mb={4}>
+              ❌ Memory leaks
             </Text>
-            <Text>
-              <strong>Solução:</strong> Use ferramentas de debugging, logs
-              estruturados, documentação clara.
+            <Text size="sm" c="dimmed">
+              Listeners não removidos causam memory leaks. Sempre remova
+              listeners quando componente desmonta.
+            </Text>
+          </Alert>
+
+          <Alert color="yellow" icon={<IconAlertTriangle size={16} />} mb="md">
+            <Text size="sm" fw={600} mb={4}>
+              ❌ Ordem de execução
+            </Text>
+            <Text size="sm" c="dimmed">
+              Eventos podem executar em ordem imprevisível. Use prioridades ou
+              sequenciamento quando necessário.
+            </Text>
+          </Alert>
+
+          <Alert color="green" icon={<IconCheck size={16} />} mb="md">
+            <Text size="sm" fw={600} mb={4}>
+              ✅ Como evitar
+            </Text>
+            <Text size="sm" c="dimmed">
+              <strong>Use logging:</strong> Trace todos os eventos
+              <br />
+              <strong>Cleanup listeners:</strong> Remove no unmount
+              <br />
+              <strong>Teste isoladamente:</strong> Unit tests para eventos
             </Text>
           </Alert>
         </Stack>
-      </div>
+      </Paper>
+    </Stack>
+  );
 
-      {/* References */}
-      <div>
-        <Title order={2} mb="lg">
-          <IconBulb
-            size={28}
+  // References Section
+  const ReferencesSection = () => (
+    <Stack gap="xl">
+      <Paper withBorder p="xl" radius="md">
+        <Title order={3} mb="lg">
+          <IconCode
+            size={24}
             style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
-          Referências e Casos Reais
+          Referências e Recursos
         </Title>
 
         <Stack gap="md">
           <Card withBorder p="md">
-            <Title order={4}>📚 Livros</Title>
-            <List>
-              <List.Item>
-                "Event-Driven Architecture" - Various Authors
-              </List.Item>
-              <List.Item>
-                "Designing Event-Driven Systems" - Ben Stopford
-              </List.Item>
-              <List.Item>
-                "Building Event-Driven Microservices" - Adam Bellemare
-              </List.Item>
-            </List>
-          </Card>
-
-          <Card withBorder p="md">
-            <Title order={4}>🛠️ Ferramentas</Title>
-            <List>
+            <Title order={4} mb="sm">
+              Ferramentas
+            </Title>
+            <List size="sm" spacing="xs">
               <List.Item>
                 <strong>EventEmitter:</strong> Node.js built-in
               </List.Item>
@@ -403,52 +330,44 @@ function EventDriven() {
                 <strong>Redux:</strong> State management com eventos
               </List.Item>
               <List.Item>
-                <strong>Socket.io:</strong> Real-time events
+                <strong>Zustand:</strong> Lightweight state management
+              </List.Item>
+            </List>
+          </Card>
+
+          <Card withBorder p="md">
+            <Title order={4} mb="sm">
+              Casos de Sucesso
+            </Title>
+            <List size="sm" spacing="xs">
+              <List.Item>
+                <strong>Netflix:</strong> Event-driven microservices
+              </List.Item>
+              <List.Item>
+                <strong>Uber:</strong> Real-time event processing
+              </List.Item>
+              <List.Item>
+                <strong>Airbnb:</strong> Booking event system
+              </List.Item>
+              <List.Item>
+                <strong>Spotify:</strong> Music recommendation events
               </List.Item>
             </List>
           </Card>
         </Stack>
-      </div>
-
-      {/* Summary */}
-      <Paper withBorder p="xl" radius="md">
-        <Title order={2} mb="md">
-          <IconCheck
-            size={28}
-            style={{ verticalAlign: 'middle', marginRight: '8px' }}
-          />
-          Resumo - Event-Driven
-        </Title>
-
-        <Stack gap="md">
-          <Text>
-            <strong>Event-Driven é sobre:</strong> Componentes se comunicam via
-            eventos, desacoplamento total, extensibilidade máxima.
-          </Text>
-
-          <Text>
-            <strong>Use quando:</strong> Sistemas complexos, comunicação entre
-            muitos componentes, extensibilidade é importante.
-          </Text>
-
-          <Text>
-            <strong>Evite quando:</strong> Aplicações simples, comunicação
-            direta é suficiente, performance é crítica.
-          </Text>
-
-          <Text>
-            <strong>Principais benefícios:</strong> Desacoplamento total,
-            extensibilidade, manutenção simplificada, testabilidade.
-          </Text>
-
-          <Text>
-            <strong>Principais desafios:</strong> Event hell, memory leaks,
-            debugging complexo, overhead de eventos.
-          </Text>
-        </Stack>
       </Paper>
     </Stack>
   );
+
+  const tabs = createArchitectureTabs(
+    <OverviewSection />,
+    <ImplementationSection />,
+    <ExamplesSection />,
+    <PitfallsSection />,
+    <ReferencesSection />
+  );
+
+  return <MobileTabs items={tabs} defaultTab="overview" />;
 }
 
 export default EventDriven;

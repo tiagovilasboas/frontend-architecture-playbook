@@ -6,7 +6,6 @@ import {
   Card,
   Group,
   ThemeIcon,
-  Badge,
   Alert,
   List,
   Code,
@@ -20,9 +19,12 @@ import {
   IconStack,
   IconCode,
 } from '@tabler/icons-react';
+import MobileTabs from '../../components/MobileTabs';
+import { createArchitectureTabs } from '../../components/MobileTabsHelpers';
 
 export default function BFFArchitecture() {
-  return (
+  // Overview Section
+  const OverviewSection = () => (
     <Stack gap="xl">
       {/* Hero Section */}
       <div>
@@ -101,6 +103,55 @@ useEffect(() => {
 }, [])`}
         </Code>
       </Paper>
+    </Stack>
+  );
+
+  // Implementation Section
+  const ImplementationSection = () => (
+    <Stack gap="xl">
+      {/* Arquitetura Visual */}
+      <Paper withBorder p="xl" radius="md">
+        <Title order={2} size="h2" mb="md">
+          🏗️ Como funciona na prática?
+        </Title>
+
+        <Code block mb="md">
+          {`┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│   React App     │    │   Vue Mobile    │    │   Next.js Web   │
+│                 │    │                 │    │                 │
+└─────────┬───────┘    └─────────┬───────┘    └─────────┬───────┘
+          │                      │                      │
+          │              ┌───────┴──────────────────────┘
+          │              │
+          ▼              ▼
+  ┌─────────────────────────────────────────────────────────────┐
+  │                    BFF Layer                                │
+  │  ┌─────────────┐  ┌─────────────┐  ┌─────────────────────┐ │
+  │  │  Mobile BFF │  │ Desktop BFF │  │   Admin Panel BFF   │ │
+  │  │             │  │             │  │                     │ │
+  │  │ • Lean data │  │ • Full data │  │ • Analytics data    │ │
+  │  │ • Optimized │  │ • Rich UI   │  │ • Bulk operations   │ │
+  │  └─────────────┘  └─────────────┘  └─────────────────────┘ │
+  └─────────────────────┬───────────────────────────────────────┘
+                        │
+          ┌─────────────┼─────────────────────────────┐
+          ▼             ▼             ▼               ▼
+  ┌─────────────┐ ┌─────────────┐ ┌─────────────┐ ┌─────────────┐
+  │ User Service│ │Order Service│ │Payment API  │ │Shipping API │
+  │             │ │             │ │             │ │             │
+  └─────────────┘ └─────────────┘ └─────────────┘ └─────────────┘`}
+        </Code>
+
+        <Alert color="blue" icon={<IconBulb size={16} />}>
+          <Text fw={600}>💡 A mágica do BFF:</Text>
+          <List size="sm" mt="xs">
+            <List.Item>Cada frontend tem sua API otimizada</List.Item>
+            <List.Item>BFF faz agregação, cache e transformação</List.Item>
+            <List.Item>Microservices continuam independentes</List.Item>
+            <List.Item>Frontend não conhece complexidade interna</List.Item>
+          </List>
+        </Alert>
+      </Paper>
 
       {/* Quando usar? */}
       <Paper withBorder p="xl" radius="md">
@@ -155,583 +206,212 @@ useEffect(() => {
           </Card>
         </Stack>
       </Paper>
+    </Stack>
+  );
 
-      {/* Arquitetura Visual */}
+  // Examples Section
+  const ExamplesSection = () => (
+    <Stack gap="xl">
       <Paper withBorder p="xl" radius="md">
-        <Title order={2} size="h2" mb="md">
-          🏗️ Como funciona na prática?
+        <Title order={3} mb="lg">
+          <IconBulb
+            size={24}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
+          />
+          Casos Reais
         </Title>
-
-        <Code block mb="md">
-          {`┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│   React App     │    │   Vue Mobile    │    │   Next.js Web   │
-│                 │    │                 │    │                 │
-└─────────┬───────┘    └─────────┬───────┘    └─────────┬───────┘
-          │                      │                      │
-          │              ┌───────┴──────────────────────┘
-          │              │
-          ▼              ▼
-  ┌─────────────────────────────────────────────────────────────┐
-  │                    BFF Layer                                │
-  │  ┌─────────────┐  ┌─────────────┐  ┌─────────────────────┐ │
-  │  │  Mobile BFF │  │ Desktop BFF │  │   Admin Panel BFF   │ │
-  │  │             │  │             │  │                     │ │
-  │  │ • Lean data │  │ • Full data │  │ • Analytics data    │ │
-  │  │ • Optimized │  │ • Rich UI   │  │ • Bulk operations   │ │
-  │  └─────────────┘  └─────────────┘  └─────────────────────┘ │
-  └─────────────────────┬───────────────────────────────────────┘
-                        │
-          ┌─────────────┼─────────────────────────────┐
-          ▼             ▼             ▼               ▼
-  ┌─────────────┐ ┌─────────────┐ ┌─────────────┐ ┌─────────────┐
-  │ User Service│ │Order Service│ │Payment API  │ │Shipping API │
-  │             │ │             │ │             │ │             │
-  └─────────────┘ └─────────────┘ └─────────────┘ └─────────────┘`}
-        </Code>
-
-        <Alert color="blue" icon={<IconBulb size={16} />}>
-          <Text fw={600}>💡 A mágica do BFF:</Text>
-          <List size="sm" mt="xs">
-            <List.Item>Cada frontend tem sua API otimizada</List.Item>
-            <List.Item>BFF faz agregação, cache e transformação</List.Item>
-            <List.Item>Microservices continuam independentes</List.Item>
-            <List.Item>Frontend não conhece complexidade interna</List.Item>
-          </List>
-        </Alert>
-      </Paper>
-
-      {/* Por que vale a pena? */}
-      <Paper withBorder p="xl" radius="md">
-        <Group gap="sm" mb="md">
-          <ThemeIcon size="lg" radius="md" variant="light" color="green">
-            <IconCheck size={20} />
-          </ThemeIcon>
-          <Title order={2} size="h2">
-            💚 Por que vale a pena?
-          </Title>
-        </Group>
-
-        <Stack gap="md">
-          <Alert color="green" icon={<IconCheck size={16} />}>
-            <Text fw={600} mb="xs">
-              🚀 Performance brutal
-            </Text>
-            <Text size="sm">
-              1 request em vez de 7. Menos latência, menos waterfalls, menos
-              loading states.
-            </Text>
-          </Alert>
-
-          <Alert color="green" icon={<IconCheck size={16} />}>
-            <Text fw={600} mb="xs">
-              🎯 Dados sob medida
-            </Text>
-            <Text size="sm">
-              Mobile recebe 10KB. Desktop recebe 100KB. Cada um o que precisa.
-            </Text>
-          </Alert>
-
-          <Alert color="green" icon={<IconCheck size={16} />}>
-            <Text fw={600} mb="xs">
-              🔒 Security por design
-            </Text>
-            <Text size="sm">
-              Frontend nunca fala direto com APIs críticas. BFF filtra e
-              controla acesso.
-            </Text>
-          </Alert>
-
-          <Alert color="green" icon={<IconCheck size={16} />}>
-            <Text fw={600} mb="xs">
-              🛠️ Frontend mais limpo
-            </Text>
-            <Text size="sm">
-              Menos lógica de integração. Mais foco na UX e menos em transformar
-              dados.
-            </Text>
-          </Alert>
-        </Stack>
-      </Paper>
-
-      {/* Exemplo Prático */}
-      <Paper withBorder p="xl" radius="md">
-        <Group gap="sm" mb="md">
-          <ThemeIcon size="lg" radius="md" variant="light" color="orange">
-            <IconCode size={20} />
-          </ThemeIcon>
-          <Title order={2} size="h2">
-            💻 Exemplo Prático: Dashboard E-commerce
-          </Title>
-        </Group>
-
-        <Text mb="md">
-          Cenário: Dashboard que mostra{' '}
-          <Text span fw={700}>
-            vendas + inventário + reviews
-          </Text>{' '}
-          de 3 microservices diferentes.
-        </Text>
-
-        <Code block mb="md">
-          {`// bff/routes/dashboard.ts (Node.js + Express)
-app.get('/bff/dashboard/:userId', async (req, res) => {
-  const { userId } = req.params
-  
-  try {
-    // 🔥 BFF orquestra chamadas paralelas
-    const [sales, inventory, reviews] = await Promise.all([
-      salesService.getMetrics(userId, { period: '30d' }),
-      inventoryService.getLowStock(userId),
-      reviewsService.getRecent(userId, { limit: 5 })
-    ])
-    
-    // 🎯 BFF agrega e transforma dados
-    const dashboard = {
-      summary: {
-        totalSales: sales.reduce((sum, s) => sum + s.amount, 0),
-        ordersCount: sales.length,
-        avgRating: reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length,
-        lowStockItems: inventory.filter(item => item.quantity < 10).length
-      },
-      recentSales: sales.slice(0, 10).map(sale => ({
-        id: sale.id,
-        customerName: sale.customer.name,
-        amount: sale.amount,
-        date: sale.createdAt,
-        status: mapSaleStatus(sale.status) // BFF faz transformação
-      })),
-      alerts: [
-        ...inventory
-          .filter(item => item.quantity < 5)
-          .map(item => ({
-            type: 'stock',
-            message: \`\${item.name} está acabando (\${item.quantity} restantes)\`,
-            priority: 'high'
-          })),
-        ...reviews
-          .filter(review => review.rating <= 2)
-          .map(review => ({
-            type: 'review',
-            message: \`Review negativa: \${review.comment}\`,
-            priority: 'medium'
-          }))
-      ]
-    }
-    
-    res.json(dashboard)
-  } catch (error) {
-    // BFF lida com falhas de microservices
-    res.status(500).json({ 
-      error: 'Dashboard temporariamente indisponível' 
-    })
-  }
-})
-
-// Frontend super limpo
-function Dashboard() {
-  const [dashboard, setDashboard] = useState(null)
-  
-  useEffect(() => {
-    // ✅ Um request resolve tudo
-    fetch(\`/bff/dashboard/\${userId}\`)
-      .then(res => res.json())
-      .then(setDashboard)
-  }, [userId])
-  
-  if (!dashboard) return <Loading />
-  
-  return (
-    <div>
-      <MetricsCards data={dashboard.summary} />
-      <SalesTable sales={dashboard.recentSales} />
-      <AlertsPanel alerts={dashboard.alerts} />
-    </div>
-  )
-}`}
-        </Code>
-
-        <Alert color="blue" icon={<IconBulb size={16} />}>
-          <Text fw={600}>💡 O que o BFF fez:</Text>
-          <List size="sm" mt="xs">
-            <List.Item>Agregou dados de 3 services diferentes</List.Item>
-            <List.Item>Transformou formatos inconsistentes</List.Item>
-            <List.Item>Gerou insights (alertas, métricas)</List.Item>
-            <List.Item>Tratou erros de forma transparente</List.Item>
-            <List.Item>Entregou dados prontos pro UI</List.Item>
-          </List>
-        </Alert>
-      </Paper>
-
-      {/* BFF vs Alternativas */}
-      <Paper withBorder p="xl" radius="md">
-        <Title order={2} size="h2" mb="md">
-          ⚖️ BFF vs Alternativas
-        </Title>
-
-        <Group grow align="flex-start" gap="lg">
-          <Card withBorder p="md">
-            <Badge variant="light" color="red" mb="sm">
-              ❌ Direto nas APIs
-            </Badge>
-            <List size="sm" spacing={4}>
-              <List.Item>7+ requests por tela</List.Item>
-              <List.Item>Frontend vira spaghetti</List.Item>
-              <List.Item>Lógica de negócio no client</List.Item>
-              <List.Item>Security nightmare</List.Item>
-            </List>
-          </Card>
-
-          <Card withBorder p="md">
-            <Badge variant="light" color="orange" mb="sm">
-              ⚠️ GraphQL
-            </Badge>
-            <List size="sm" spacing={4}>
-              <List.Item>Complexidade alta</List.Item>
-              <List.Item>N+1 queries problem</List.Item>
-              <List.Item>Overhead para casos simples</List.Item>
-              <List.Item>Curva de aprendizado</List.Item>
-            </List>
-          </Card>
-
-          <Card withBorder p="md">
-            <Badge variant="light" color="green" mb="sm">
-              ✅ BFF
-            </Badge>
-            <List size="sm" spacing={4}>
-              <List.Item>Controle total da API</List.Item>
-              <List.Item>Otimizado por frontend</List.Item>
-              <List.Item>Flexibilidade máxima</List.Item>
-              <List.Item>Fácil de implementar</List.Item>
-            </List>
-          </Card>
-        </Group>
-      </Paper>
-
-      {/* Armadilhas */}
-      <Paper withBorder p="xl" radius="md">
-        <Group gap="sm" mb="md">
-          <ThemeIcon size="lg" radius="md" variant="light" color="red">
-            <IconAlertTriangle size={20} />
-          </ThemeIcon>
-          <Title order={2} size="h2">
-            ⚠️ Armadilhas
-          </Title>
-        </Group>
-
-        <Stack gap="md">
-          <Alert color="red" icon={<IconAlertTriangle size={16} />}>
-            <Text fw={600} mb="xs">
-              🏗️ Mais infraestrutura
-            </Text>
-            <Text size="sm" mb="xs">
-              BFF é outro service pra manter. Deploy, monitoring, scaling, logs.
-            </Text>
-            <Text size="sm" c="dimmed">
-              <Text span fw={600}>
-                Solução:
-              </Text>{' '}
-              Comece simples (Express + Redis) e evolua conforme necessário.
-            </Text>
-          </Alert>
-
-          <Alert color="red" icon={<IconAlertTriangle size={16} />}>
-            <Text fw={600} mb="xs">
-              🔄 Duplicação de lógica
-            </Text>
-            <Text size="sm" mb="xs">
-              Regras de negócio podem vazar pro BFF e duplicar com
-              microservices.
-            </Text>
-            <Text size="sm" c="dimmed">
-              <Text span fw={600}>
-                Solução:
-              </Text>{' '}
-              BFF só agrega e transforma. Lógica fica nos services.
-            </Text>
-          </Alert>
-
-          <Alert color="red" icon={<IconAlertTriangle size={16} />}>
-            <Text fw={600} mb="xs">
-              📊 Single point of failure
-            </Text>
-            <Text size="sm" mb="xs">
-              BFF cai = frontend para. Ironicamente, pode reduzir
-              disponibilidade.
-            </Text>
-            <Text size="sm" c="dimmed">
-              <Text span fw={600}>
-                Solução:
-              </Text>{' '}
-              Circuit breakers, fallbacks, cache resiliente.
-            </Text>
-          </Alert>
-
-          <Alert color="red" icon={<IconAlertTriangle size={16} />}>
-            <Text fw={600} mb="xs">
-              ⏱️ Latência extra
-            </Text>
-            <Text size="sm" mb="xs">
-              Mais um hop na rede. Frontend → BFF → Services.
-            </Text>
-            <Text size="sm" c="dimmed">
-              <Text span fw={600}>
-                Solução:
-              </Text>{' '}
-              Cache agressivo, conexões keep-alive, deploy próximo.
-            </Text>
-          </Alert>
-        </Stack>
-      </Paper>
-
-      {/* Cases Reais */}
-      <Paper withBorder p="xl" radius="md">
-        <Group gap="sm" mb="md">
-          <ThemeIcon size="lg" radius="md" variant="light" color="violet">
-            <IconRocket size={20} />
-          </ThemeIcon>
-          <Title order={2} size="h2">
-            🚀 Cases Reais
-          </Title>
-        </Group>
 
         <Stack gap="md">
           <Card withBorder p="md">
-            <Text fw={600} c="blue" mb="sm">
-              📺 Netflix
-            </Text>
-            <Text size="sm" mb="xs">
-              <Text span fw={600}>
-                Problema:
-              </Text>{' '}
-              700+ microservices, cada device precisava de dados diferentes
-            </Text>
-            <Text size="sm" mb="xs">
-              <Text span fw={600}>
-                Solução:
-              </Text>{' '}
-              BFF específico para TV, mobile, web - cada um otimizado
-            </Text>
-            <Text size="sm" c="green">
-              <Text span fw={600}>
-                Resultado:
-              </Text>{' '}
-              -60% requests, +40% performance, UX específica por device
-            </Text>
+            <Group>
+              <ThemeIcon size={40} radius="md" variant="light" color="green">
+                <IconCode size={20} />
+              </ThemeIcon>
+              <div>
+                <Title order={4}>Netflix</Title>
+                <Text size="sm" c="dimmed" mb="sm">
+                  BFF para diferentes dispositivos
+                </Text>
+                <List size="sm" spacing="xs">
+                  <List.Item>TV BFF: dados otimizados para TV</List.Item>
+                  <List.Item>Mobile BFF: dados para app</List.Item>
+                  <List.Item>Web BFF: dados para browser</List.Item>
+                  <List.Item>Agregação de múltiplos serviços</List.Item>
+                </List>
+              </div>
+            </Group>
           </Card>
 
           <Card withBorder p="md">
-            <Text fw={600} c="blue" mb="sm">
-              🎵 Spotify
-            </Text>
-            <Text size="sm" mb="xs">
-              <Text span fw={600}>
-                Problema:
-              </Text>{' '}
-              Apps mobile faziam 20+ requests pra montar playlist
-            </Text>
-            <Text size="sm" mb="xs">
-              <Text span fw={600}>
-                Solução:
-              </Text>{' '}
-              BFF que agrega músicas + metadata + recommendations
-            </Text>
-            <Text size="sm" c="green">
-              <Text span fw={600}>
-                Resultado:
-              </Text>{' '}
-              Tempo de carregamento de playlist: 3s → 500ms
-            </Text>
+            <Group>
+              <ThemeIcon size={40} radius="md" variant="light" color="blue">
+                <IconRocket size={20} />
+              </ThemeIcon>
+              <div>
+                <Title order={4}>Spotify</Title>
+                <Text size="sm" c="dimmed" mb="sm">
+                  BFF para diferentes contextos
+                </Text>
+                <List size="sm" spacing="xs">
+                  <List.Item>Player BFF: dados para player</List.Item>
+                  <List.Item>Discovery BFF: dados para descoberta</List.Item>
+                  <List.Item>Library BFF: dados para biblioteca</List.Item>
+                  <List.Item>Normalização de APIs externas</List.Item>
+                </List>
+              </div>
+            </Group>
           </Card>
 
           <Card withBorder p="md">
-            <Text fw={600} c="blue" mb="sm">
-              🚗 Uber
-            </Text>
-            <Text size="sm" mb="xs">
-              <Text span fw={600}>
-                Problema:
-              </Text>{' '}
-              Driver app e rider app precisavam de dados similares mas
-              formatados diferente
-            </Text>
-            <Text size="sm" mb="xs">
-              <Text span fw={600}>
-                Solução:
-              </Text>{' '}
-              BFF dedicado pra cada app com lógica específica de agregação
-            </Text>
-            <Text size="sm" c="green">
-              <Text span fw={600}>
-                Resultado:
-              </Text>{' '}
-              Times independentes, deploy sem conflito, UX otimizada
-            </Text>
+            <Group>
+              <ThemeIcon size={40} radius="md" variant="light" color="purple">
+                <IconBulb size={20} />
+              </ThemeIcon>
+              <div>
+                <Title order={4}>E-commerce</Title>
+                <Text size="sm" c="dimmed" mb="sm">
+                  BFF para diferentes funcionalidades
+                </Text>
+                <List size="sm" spacing="xs">
+                  <List.Item>Catalog BFF: dados de produtos</List.Item>
+                  <List.Item>Checkout BFF: dados de pagamento</List.Item>
+                  <List.Item>User BFF: dados de usuário</List.Item>
+                  <List.Item>Integração com APIs de pagamento</List.Item>
+                </List>
+              </div>
+            </Group>
           </Card>
         </Stack>
-      </Paper>
-
-      {/* Implementação */}
-      <Paper withBorder p="xl" radius="md">
-        <Title order={2} size="h2" mb="md">
-          🛠️ Stack Recomendado
-        </Title>
-
-        <Group grow align="flex-start" gap="lg">
-          <Card withBorder p="md">
-            <Badge variant="light" color="blue" mb="sm">
-              Runtime
-            </Badge>
-            <List size="sm" spacing={4}>
-              <List.Item>
-                <Text span fw={600}>
-                  Node.js:
-                </Text>{' '}
-                Express, Fastify, Koa
-              </List.Item>
-              <List.Item>
-                <Text span fw={600}>
-                  Python:
-                </Text>{' '}
-                FastAPI, Flask
-              </List.Item>
-              <List.Item>
-                <Text span fw={600}>
-                  Go:
-                </Text>{' '}
-                Gin, Echo, Fiber
-              </List.Item>
-              <List.Item>
-                <Text span fw={600}>
-                  Rust:
-                </Text>{' '}
-                Axum, Warp
-              </List.Item>
-            </List>
-          </Card>
-
-          <Card withBorder p="md">
-            <Badge variant="light" color="green" mb="sm">
-              Cache
-            </Badge>
-            <List size="sm" spacing={4}>
-              <List.Item>
-                <Text span fw={600}>
-                  Redis:
-                </Text>{' '}
-                Cache distribuído
-              </List.Item>
-              <List.Item>
-                <Text span fw={600}>
-                  Memcached:
-                </Text>{' '}
-                Cache simples
-              </List.Item>
-              <List.Item>
-                <Text span fw={600}>
-                  In-memory:
-                </Text>{' '}
-                Cache local
-              </List.Item>
-              <List.Item>
-                <Text span fw={600}>
-                  CDN:
-                </Text>{' '}
-                Cache de borda
-              </List.Item>
-            </List>
-          </Card>
-
-          <Card withBorder p="md">
-            <Badge variant="light" color="orange" mb="sm">
-              Ferramentas
-            </Badge>
-            <List size="sm" spacing={4}>
-              <List.Item>
-                <Text span fw={600}>
-                  Docker:
-                </Text>{' '}
-                Deploy consistente
-              </List.Item>
-              <List.Item>
-                <Text span fw={600}>
-                  K8s:
-                </Text>{' '}
-                Orquestração
-              </List.Item>
-              <List.Item>
-                <Text span fw={600}>
-                  Istio:
-                </Text>{' '}
-                Service mesh
-              </List.Item>
-              <List.Item>
-                <Text span fw={600}>
-                  Jaeger:
-                </Text>{' '}
-                Distributed tracing
-              </List.Item>
-            </List>
-          </Card>
-        </Group>
-      </Paper>
-
-      {/* Resumo */}
-      <Paper withBorder p="xl" radius="md">
-        <Group gap="sm" mb="md">
-          <ThemeIcon size="lg" radius="md" variant="light" color="green">
-            <IconCheck size={20} />
-          </ThemeIcon>
-          <Title order={2} size="h2">
-            📝 Resumo
-          </Title>
-        </Group>
-
-        <Alert color="violet" icon={<IconBulb size={16} />} radius="md">
-          <Text fw={600} size="lg" mb="md" style={{ fontStyle: 'italic' }}>
-            "BFF é o garçom que traduz o que você quer pro chef da cozinha - e
-            traz tudo numa bandeja só."
-          </Text>
-
-          <List spacing="sm">
-            <List.Item
-              icon={
-                <IconCheck size={14} color="var(--mantine-color-green-6)" />
-              }
-            >
-              <Text>Use quando tem múltiplas APIs que não "conversam" bem</Text>
-            </List.Item>
-            <List.Item
-              icon={
-                <IconCheck size={14} color="var(--mantine-color-green-6)" />
-              }
-            >
-              <Text>
-                Otimiza requests: 7 viram 1, dados sob medida por frontend
-              </Text>
-            </List.Item>
-            <List.Item
-              icon={
-                <IconCheck size={14} color="var(--mantine-color-green-6)" />
-              }
-            >
-              <Text>
-                Trade-off: performance vs complexidade de infraestrutura
-              </Text>
-            </List.Item>
-            <List.Item
-              icon={
-                <IconCheck size={14} color="var(--mantine-color-green-6)" />
-              }
-            >
-              <Text>
-                Netflix, Spotify, Uber usam - e você deveria considerar
-              </Text>
-            </List.Item>
-          </List>
-        </Alert>
       </Paper>
     </Stack>
   );
+
+  // Pitfalls Section
+  const PitfallsSection = () => (
+    <Stack gap="xl">
+      <Paper withBorder p="xl" radius="md">
+        <Title order={3} mb="lg">
+          <IconAlertTriangle
+            size={24}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
+          />
+          Armadilhas Comuns
+        </Title>
+
+        <Stack gap="md">
+          <Alert color="red" icon={<IconAlertTriangle size={16} />} mb="md">
+            <Text size="sm" fw={600} mb={4}>
+              ❌ Duplicação de lógica
+            </Text>
+            <Text size="sm" c="dimmed">
+              BFFs podem duplicar lógica de negócio. Use shared libraries ou
+              microservices bem definidos.
+            </Text>
+          </Alert>
+
+          <Alert color="orange" icon={<IconAlertTriangle size={16} />} mb="md">
+            <Text size="sm" fw={600} mb={4}>
+              ❌ Complexidade de deploy
+            </Text>
+            <Text size="sm" c="dimmed">
+              Múltiplos BFFs = múltiplos deploys. Use CI/CD automatizado e
+              versionamento consistente.
+            </Text>
+          </Alert>
+
+          <Alert color="yellow" icon={<IconAlertTriangle size={16} />} mb="md">
+            <Text size="sm" fw={600} mb={4}>
+              ❌ Over-engineering
+            </Text>
+            <Text size="sm" c="dimmed">
+              BFF para projetos simples é overkill. Use apenas quando há
+              múltiplas APIs ou frontends.
+            </Text>
+          </Alert>
+
+          <Alert color="green" icon={<IconCheck size={16} />} mb="md">
+            <Text size="sm" fw={600} mb={4}>
+              ✅ Como evitar
+            </Text>
+            <Text size="sm" c="dimmed">
+              <strong>Comece simples:</strong> Uma API antes de múltiplas
+              <br />
+              <strong>Compartilhe código:</strong> Libraries entre BFFs
+              <br />
+              <strong>Automatize deploy:</strong> CI/CD para todos os BFFs
+            </Text>
+          </Alert>
+        </Stack>
+      </Paper>
+    </Stack>
+  );
+
+  // References Section
+  const ReferencesSection = () => (
+    <Stack gap="xl">
+      <Paper withBorder p="xl" radius="md">
+        <Title order={3} mb="lg">
+          <IconCode
+            size={24}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
+          />
+          Referências e Recursos
+        </Title>
+
+        <Stack gap="md">
+          <Card withBorder p="md">
+            <Title order={4} mb="sm">
+              Ferramentas
+            </Title>
+            <List size="sm" spacing="xs">
+              <List.Item>
+                <strong>Apollo Server:</strong> GraphQL BFF
+              </List.Item>
+              <List.Item>
+                <strong>Express.js:</strong> REST BFF simples
+              </List.Item>
+              <List.Item>
+                <strong>Fastify:</strong> BFF de alta performance
+              </List.Item>
+              <List.Item>
+                <strong>NestJS:</strong> BFF com TypeScript
+              </List.Item>
+            </List>
+          </Card>
+
+          <Card withBorder p="md">
+            <Title order={4} mb="sm">
+              Casos de Sucesso
+            </Title>
+            <List size="sm" spacing="xs">
+              <List.Item>
+                <strong>Netflix:</strong> BFF para múltiplos dispositivos
+              </List.Item>
+              <List.Item>
+                <strong>Spotify:</strong> BFF para diferentes contextos
+              </List.Item>
+              <List.Item>
+                <strong>Uber:</strong> BFF para mobile vs web
+              </List.Item>
+              <List.Item>
+                <strong>Airbnb:</strong> BFF para diferentes mercados
+              </List.Item>
+            </List>
+          </Card>
+        </Stack>
+      </Paper>
+    </Stack>
+  );
+
+  const tabs = createArchitectureTabs(
+    <OverviewSection />,
+    <ImplementationSection />,
+    <ExamplesSection />,
+    <PitfallsSection />,
+    <ReferencesSection />
+  );
+
+  return <MobileTabs items={tabs} defaultTab="overview" />;
 }
 
 BFFArchitecture.metadata = {
