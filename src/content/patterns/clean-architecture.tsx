@@ -17,18 +17,16 @@ import {
   IconAlertTriangle,
   IconCheck,
   IconCode,
-  IconTestPipe,
   IconStack,
-  IconGitBranch,
-  IconClock,
-  IconUsers,
-  IconScale,
 } from '@tabler/icons-react';
 import CodeExample from '../../components/CodeExample';
 import codeExamples from '../../utils/code-examples/clean-architecture.json';
+import MobileTabs from '../../components/MobileTabs';
+import { createArchitectureTabs } from '../../components/MobileTabsHelpers';
 
 function CleanArchitecture() {
-  return (
+  // Overview Section
+  const OverviewSection = () => (
     <Stack gap="xl">
       {/* Hero Section */}
       <div>
@@ -78,8 +76,12 @@ function CleanArchitecture() {
           </Text>
         </Stack>
       </Paper>
+    </Stack>
+  );
 
-      {/* Implementation Example */}
+  // Implementation Section
+  const ImplementationSection = () => (
+    <Stack gap="xl">
       <Paper withBorder p="xl" radius="md">
         <Stack gap="md">
           <Title order={3} mb="sm">
@@ -192,533 +194,199 @@ function CleanArchitecture() {
           </Text>
         </Paper>
       </div>
+    </Stack>
+  );
 
-      {/* Trade-offs Analysis */}
+  // Examples Section
+  const ExamplesSection = () => (
+    <Stack gap="xl">
       <Paper withBorder p="xl" radius="md">
-        <Title order={2} mb="lg">
-          <IconScale
-            size={28}
+        <Title order={3} mb="lg">
+          <IconBulb
+            size={24}
             style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
-          Trade-offs Detalhados
+          Exemplos Práticos
         </Title>
 
         <Grid>
           <Grid.Col span={{ base: 12, md: 6 }}>
             <Card withBorder p="md">
               <Title order={4} mb="sm">
-                ✅ Vantagens
+                E-commerce
               </Title>
+              <Text size="sm" c="dimmed" mb="md">
+                Sistema de pedidos com regras complexas
+              </Text>
               <List size="sm" spacing="xs">
-                <List.Item>Testes unitários puros e rápidos</List.Item>
-                <List.Item>Independência total de frameworks</List.Item>
-                <List.Item>Migrações seguras entre tecnologias</List.Item>
-                <List.Item>Código de negócio reutilizável</List.Item>
-                <List.Item>Manutenibilidade a longo prazo</List.Item>
-                <List.Item>Onboarding de novos devs mais fácil</List.Item>
+                <List.Item>Entidade: Product, Order, User</List.Item>
+                <List.Item>Use Case: CreateOrder, GetProducts</List.Item>
+                <List.Item>Repository: ProductAPI, OrderAPI</List.Item>
+                <List.Item>UI: ProductList, Checkout</List.Item>
               </List>
             </Card>
           </Grid.Col>
 
           <Grid.Col span={{ base: 12, md: 6 }}>
             <Card withBorder p="md">
-              <Title order={4} c="red" mb="sm">
-                ❌ Desvantagens
+              <Title order={4} mb="sm">
+                Dashboard
               </Title>
+              <Text size="sm" c="dimmed" mb="md">
+                Análise de dados com múltiplas fontes
+              </Text>
               <List size="sm" spacing="xs">
-                <List.Item>Complexidade inicial alta</List.Item>
-                <List.Item>Mais arquivos e pastas</List.Item>
-                <List.Item>Curva de aprendizado íngreme</List.Item>
-                <List.Item>Over-engineering para projetos simples</List.Item>
-                <List.Item>Performance overhead em alguns casos</List.Item>
-                <List.Item>Debugging mais complexo</List.Item>
+                <List.Item>Entidade: Metric, Report, Filter</List.Item>
+                <List.Item>Use Case: GetMetrics, GenerateReport</List.Item>
+                <List.Item>Repository: AnalyticsAPI, CacheAPI</List.Item>
+                <List.Item>UI: Chart, FilterPanel</List.Item>
               </List>
             </Card>
           </Grid.Col>
         </Grid>
       </Paper>
+    </Stack>
+  );
 
-      {/* Performance Impact */}
+  // Pitfalls Section
+  const PitfallsSection = () => (
+    <Stack gap="xl">
       <Paper withBorder p="xl" radius="md">
-        <Title order={2} mb="lg">
-          <IconClock
-            size={28}
-            style={{ verticalAlign: 'middle', marginRight: '8px' }}
-          />
-          Impacto na Performance
-        </Title>
-
-        <Grid>
-          <Grid.Col span={{ base: 12, md: 4 }}>
-            <Card withBorder p="md">
-              <Title order={4} color="blue" mb="sm">
-                Bundle Size
-              </Title>
-              <Text size="sm">
-                <strong>+15-25%</strong> no bundle inicial devido às abstrações
-              </Text>
-              <Text size="xs" c="dimmed" mt="xs">
-                Mitigação: Tree shaking e code splitting
-              </Text>
-            </Card>
-          </Grid.Col>
-
-          <Grid.Col span={{ base: 12, md: 4 }}>
-            <Card withBorder p="md">
-              <Title order={4} color="green" mb="sm">
-                Runtime
-              </Title>
-              <Text size="sm">
-                <strong>-5-10%</strong> overhead em operações simples
-              </Text>
-              <Text size="xs" c="dimmed" mt="xs">
-                Compensado por testes mais rápidos
-              </Text>
-            </Card>
-          </Grid.Col>
-
-          <Grid.Col span={{ base: 12, md: 4 }}>
-            <Card withBorder p="md">
-              <Title order={4} color="orange" mb="sm">
-                Development
-              </Title>
-              <Text size="sm">
-                <strong>+30-50%</strong> tempo inicial de setup
-              </Text>
-              <Text size="xs" c="dimmed" mt="xs">
-                Compensado pela manutenibilidade
-              </Text>
-            </Card>
-          </Grid.Col>
-        </Grid>
-      </Paper>
-
-      {/* Team Considerations */}
-      <Paper withBorder p="xl" radius="md">
-        <Title order={2} mb="lg">
-          <IconUsers
-            size={28}
-            style={{ verticalAlign: 'middle', marginRight: '8px' }}
-          />
-          Considerações de Time
-        </Title>
-
-        <Grid>
-          <Grid.Col span={{ base: 12, md: 6 }}>
-            <Card withBorder p="md">
-              <Title order={4} color="green" mb="sm">
-                ✅ Time Sênior
-              </Title>
-              <List size="sm" spacing="xs">
-                <List.Item>Entende os benefícios rapidamente</List.Item>
-                <List.Item>Implementa corretamente desde o início</List.Item>
-                <List.Item>Mantém consistência arquitetural</List.Item>
-                <List.Item>Documenta decisões e padrões</List.Item>
-              </List>
-            </Card>
-          </Grid.Col>
-
-          <Grid.Col span={{ base: 12, md: 6 }}>
-            <Card withBorder p="md">
-              <Title order={4} color="orange" mb="sm">
-                ⚠️ Time Júnior
-              </Title>
-              <List size="sm" spacing="xs">
-                <List.Item>Precisa de mentoria intensiva</List.Item>
-                <List.Item>Pode criar abstrações desnecessárias</List.Item>
-                <List.Item>Curva de aprendizado de 2-3 meses</List.Item>
-                <List.Item>Beneficia-se de templates e exemplos</List.Item>
-              </List>
-            </Card>
-          </Grid.Col>
-        </Grid>
-      </Paper>
-
-      {/* Benefits */}
-      <div>
-        <Title order={2} mb="lg">
-          <IconCheck
-            size={28}
-            style={{ verticalAlign: 'middle', marginRight: '8px' }}
-          />
-          Por que vale a pena?
-        </Title>
-
-        <Stack gap="md">
-          <Card withBorder p="md">
-            <Group>
-              <ThemeIcon size={40} radius="md" variant="light" color="green">
-                <IconTestPipe size={20} />
-              </ThemeIcon>
-              <div>
-                <Title order={4}>Testes Fáceis</Title>
-                <Text size="sm">
-                  Sua lógica de negócio roda sem DOM. Testes unitários puros,
-                  sem mocks complexos.
-                </Text>
-              </div>
-            </Group>
-          </Card>
-
-          <Card withBorder p="md">
-            <Group>
-              <ThemeIcon size={40} radius="md" variant="light" color="blue">
-                <IconCode size={20} />
-              </ThemeIcon>
-              <div>
-                <Title order={4}>Independência de Framework</Title>
-                <Text size="sm">
-                  Troque React por Vue sem afetar regras de negócio. Migrações
-                  mais seguras.
-                </Text>
-              </div>
-            </Group>
-          </Card>
-
-          <Card withBorder p="md">
-            <Group>
-              <ThemeIcon size={40} radius="md" variant="light" color="orange">
-                <IconBulb size={20} />
-              </ThemeIcon>
-              <div>
-                <Title order={4}>Manutenibilidade</Title>
-                <Text size="sm">
-                  Código organizado, responsabilidades claras. Menos bugs, mais
-                  paz.
-                </Text>
-              </div>
-            </Group>
-          </Card>
-        </Stack>
-      </div>
-
-      {/* When to use */}
-      <div>
-        <Title order={2} mb="lg">
-          <IconBulb
-            size={28}
-            style={{ verticalAlign: 'middle', marginRight: '8px' }}
-          />
-          Quando usar?
-        </Title>
-
-        <Stack gap="md">
-          <Alert color="green" icon={<IconCheck size={16} />} radius="md">
-            <Text size="sm" fw={600} mb={4}>
-              ✅ Use quando:
-            </Text>
-            <List size="sm" c="dimmed">
-              <List.Item>Projeto complexo com regras de negócio</List.Item>
-              <List.Item>Time sênior que entende os trade-offs</List.Item>
-              <List.Item>Projeto de longo prazo (2+ anos)</List.Item>
-              <List.Item>Migrações frequentes entre tecnologias</List.Item>
-              <List.Item>Testes são prioridade alta</List.Item>
-              <List.Item>Múltiplos frontends (web, mobile, desktop)</List.Item>
-            </List>
-          </Alert>
-
-          <Alert color="red" icon={<IconAlertTriangle size={16} />} radius="md">
-            <Text size="sm" fw={600} mb={4}>
-              ❌ Evite quando:
-            </Text>
-            <List size="sm" c="dimmed">
-              <List.Item>Projeto simples (MVP, landing page)</List.Item>
-              <List.Item>Time júnior sem mentoria</List.Item>
-              <List.Item>Deadline apertado (menos de 2 meses)</List.Item>
-              <List.Item>Performance crítica não é aceitável</List.Item>
-              <List.Item>Projeto experimental ou protótipo</List.Item>
-              <List.Item>Time pequeno (1-2 devs) sem experiência</List.Item>
-            </List>
-          </Alert>
-        </Stack>
-      </div>
-
-      {/* Real-world Examples */}
-      <Paper withBorder p="xl" radius="md">
-        <Title order={2} mb="lg">
-          <IconGitBranch
-            size={28}
-            style={{ verticalAlign: 'middle', marginRight: '8px' }}
-          />
-          Exemplos do Mundo Real
-        </Title>
-
-        <Grid>
-          <Grid.Col span={{ base: 12, md: 6 }}>
-            <Card withBorder p="md">
-              <Title order={4} color="green" mb="sm">
-                ✅ Casos de Sucesso
-              </Title>
-              <List size="sm" spacing="xs">
-                <List.Item>
-                  <strong>Netflix:</strong> Migração React → Vue sem problemas
-                </List.Item>
-                <List.Item>
-                  <strong>Spotify:</strong> Múltiplos clientes (web, mobile,
-                  desktop)
-                </List.Item>
-                <List.Item>
-                  <strong>Airbnb:</strong> Testes unitários cobrem 90% do código
-                </List.Item>
-                <List.Item>
-                  <strong>Uber:</strong> Reutilização de lógica entre apps
-                </List.Item>
-              </List>
-            </Card>
-          </Grid.Col>
-
-          <Grid.Col span={{ base: 12, md: 6 }}>
-            <Card withBorder p="md">
-              <Title order={4} color="red" mb="sm">
-                ❌ Casos de Falha
-              </Title>
-              <List size="sm" spacing="xs">
-                <List.Item>
-                  <strong>Startup X:</strong> Over-engineering para MVP simples
-                </List.Item>
-                <List.Item>
-                  <strong>Agency Y:</strong> Time júnior sem mentoria adequada
-                </List.Item>
-                <List.Item>
-                  <strong>Product Z:</strong> Performance crítica não
-                  considerada
-                </List.Item>
-                <List.Item>
-                  <strong>Company W:</strong> Falta de documentação e padrões
-                </List.Item>
-              </List>
-            </Card>
-          </Grid.Col>
-        </Grid>
-      </Paper>
-
-      {/* Implementation Checklist */}
-      <Paper withBorder p="xl" radius="md">
-        <Title order={2} mb="lg">
-          <IconCheck
-            size={28}
-            style={{ verticalAlign: 'middle', marginRight: '8px' }}
-          />
-          Checklist de Implementação
-        </Title>
-
-        <Grid>
-          <Grid.Col span={{ base: 12, md: 4 }}>
-            <Card withBorder p="md">
-              <Title order={4} color="blue" mb="sm">
-                Fase 1: Setup
-              </Title>
-              <List size="sm" spacing="xs">
-                <List.Item>Definir estrutura de pastas</List.Item>
-                <List.Item>Criar interfaces base</List.Item>
-                <List.Item>Configurar injeção de dependência</List.Item>
-                <List.Item>Estabelecer padrões de nomenclatura</List.Item>
-              </List>
-            </Card>
-          </Grid.Col>
-
-          <Grid.Col span={{ base: 12, md: 4 }}>
-            <Card withBorder p="md">
-              <Title order={4} color="green" mb="sm">
-                Fase 2: Desenvolvimento
-              </Title>
-              <List size="sm" spacing="xs">
-                <List.Item>Implementar entidades de negócio</List.Item>
-                <List.Item>Criar casos de uso</List.Item>
-                <List.Item>Desenvolver adaptadores</List.Item>
-                <List.Item>Conectar com UI</List.Item>
-              </List>
-            </Card>
-          </Grid.Col>
-
-          <Grid.Col span={{ base: 12, md: 4 }}>
-            <Card withBorder p="md">
-              <Title order={4} color="orange" mb="sm">
-                Fase 3: Qualidade
-              </Title>
-              <List size="sm" spacing="xs">
-                <List.Item>Escrever testes unitários</List.Item>
-                <List.Item>Documentar decisões</List.Item>
-                <List.Item>Revisar performance</List.Item>
-                <List.Item>Treinar time</List.Item>
-              </List>
-            </Card>
-          </Grid.Col>
-        </Grid>
-      </Paper>
-
-      {/* Common Pitfalls */}
-      <div>
-        <Title order={2} mb="lg">
+        <Title order={3} mb="lg">
           <IconAlertTriangle
-            size={28}
+            size={24}
             style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
           Armadilhas Comuns
         </Title>
 
-        <Stack gap="md">
-          <Alert color="red" icon={<IconAlertTriangle size={16} />} radius="md">
-            <Text size="sm" fw={600} mb={4}>
-              🚨 Over-engineering
-            </Text>
-            <Text size="sm" c="dimmed">
-              Criar abstrações desnecessárias para problemas simples. Use YAGNI
-              (You Aren't Gonna Need It) como guia.
-            </Text>
-          </Alert>
+        <Grid>
+          <Grid.Col span={{ base: 12, md: 6 }}>
+            <Alert color="red" icon={<IconAlertTriangle size={16} />} mb="md">
+              <Text size="sm" fw={600} mb={4}>
+                ❌ Over-engineering
+              </Text>
+              <Text size="sm" c="dimmed">
+                Clean Architecture para um MVP simples é exagero. Use apenas
+                quando a complexidade justifica.
+              </Text>
+            </Alert>
 
-          <Alert color="red" icon={<IconAlertTriangle size={16} />} radius="md">
-            <Text size="sm" fw={600} mb={4}>
-              🚨 Dependências Circulares
-            </Text>
-            <Text size="sm" c="dimmed">
-              Quebrar a regra de dependências. Use ferramentas como ESLint para
-              detectar violações.
-            </Text>
-          </Alert>
+            <Alert
+              color="orange"
+              icon={<IconAlertTriangle size={16} />}
+              mb="md"
+            >
+              <Text size="sm" fw={600} mb={4}>
+                ❌ Dependências circulares
+              </Text>
+              <Text size="sm" c="dimmed">
+                Quebrar a regra de dependências. Use Case não pode importar UI.
+              </Text>
+            </Alert>
 
-          <Alert color="red" icon={<IconAlertTriangle size={16} />} radius="md">
-            <Text size="sm" fw={600} mb={4}>
-              🚨 Domínio Anêmico
-            </Text>
-            <Text size="sm" c="dimmed">
-              Entidades sem comportamento, apenas dados. Coloque lógica de
-              negócio nas entidades.
-            </Text>
-          </Alert>
+            <Alert
+              color="yellow"
+              icon={<IconAlertTriangle size={16} />}
+              mb="md"
+            >
+              <Text size="sm" fw={600} mb={4}>
+                ❌ Domínio anêmico
+              </Text>
+              <Text size="sm" c="dimmed">
+                Entidades só com getters/setters. Coloque lógica de negócio nas
+                entidades.
+              </Text>
+            </Alert>
+          </Grid.Col>
 
-          <Alert color="red" icon={<IconAlertTriangle size={16} />} radius="md">
-            <Text size="sm" fw={600} mb={4}>
-              🚨 Testando Tudo
-            </Text>
-            <Text size="sm" c="dimmed">
-              Testar adaptadores e UI em vez de focar na lógica de negócio.
-              Teste o que importa.
-            </Text>
-          </Alert>
-
-          <Alert color="red" icon={<IconAlertTriangle size={16} />} radius="md">
-            <Text size="sm" fw={600} mb={4}>
-              🚨 Abstração Prematura
-            </Text>
-            <Text size="sm" c="dimmed">
-              Criar interfaces antes de entender o domínio. Comece simples,
-              evolua conforme necessário.
-            </Text>
-          </Alert>
-        </Stack>
-      </div>
-
-      {/* References */}
-      <div>
-        <Title order={2} mb="lg">
-          <IconBulb
-            size={28}
-            style={{ verticalAlign: 'middle', marginRight: '8px' }}
-          />
-          Referências
-        </Title>
-
-        <Stack gap="md">
-          <Card withBorder p="md">
-            <Title order={4} mb="sm">
-              Livros
-            </Title>
-            <List size="sm" c="dimmed">
-              <List.Item>
-                "Clean Architecture" - Robert C. Martin (Uncle Bob)
-              </List.Item>
-              <List.Item>"Domain-Driven Design" - Eric Evans</List.Item>
-              <List.Item>
-                "Patterns of Enterprise Application Architecture" - Martin
-                Fowler
-              </List.Item>
-            </List>
-          </Card>
-
-          <Card withBorder p="md">
-            <Title order={4} mb="sm">
-              Artigos
-            </Title>
-            <List size="sm" c="dimmed">
-              <List.Item>
-                <a
-                  href="https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  The Clean Architecture - Uncle Bob
-                </a>
-              </List.Item>
-              <List.Item>
-                <a
-                  href="https://martinfowler.com/articles/microservices.html"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Microservices - Martin Fowler
-                </a>
-              </List.Item>
-              <List.Item>
-                <a
-                  href="https://khalilstemmler.com/articles/domain-driven-design/intro-to-ddd/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Domain-Driven Design - Khalil Stemmler
-                </a>
-              </List.Item>
-            </List>
-          </Card>
-
-          <Card withBorder p="md">
-            <Title order={4} mb="sm">
-              Ferramentas
-            </Title>
-            <List size="sm" c="dimmed">
-              <List.Item>TypeScript - Tipagem forte</List.Item>
-              <List.Item>Jest - Testes unitários</List.Item>
-              <List.Item>
-                ESLint - Detecção de dependências circulares
-              </List.Item>
-              <List.Item>InversifyJS - Injeção de dependência</List.Item>
-            </List>
-          </Card>
-        </Stack>
-      </div>
-
-      {/* Summary */}
-      <Paper withBorder p="xl" radius="md">
-        <Title order={2} mb="lg">
-          📋 Resumo
-        </Title>
-
-        <Stack gap="md">
-          <Text>
-            <strong>Clean Architecture</strong> é uma escolha arquitetural que
-            prioriza a manutenibilidade e testabilidade em detrimento da
-            simplicidade inicial.
-          </Text>
-
-          <Text>
-            <strong>Use quando:</strong> Projeto complexo, time sênior, longo
-            prazo, migrações frequentes.
-          </Text>
-
-          <Text>
-            <strong>Evite quando:</strong> MVP simples, time júnior sem
-            mentoria, deadline apertado, performance crítica.
-          </Text>
-
-          <Text>
-            <strong>Lembre-se:</strong> A regra é clara - dependências apontam
-            para dentro. Seu código de negócio não pode depender de framework.
-          </Text>
-        </Stack>
+          <Grid.Col span={{ base: 12, md: 6 }}>
+            <Alert color="green" icon={<IconCheck size={16} />} mb="md">
+              <Text size="sm" fw={600} mb={4}>
+                ✅ Como evitar
+              </Text>
+              <Text size="sm" c="dimmed">
+                <strong>Comece simples:</strong> Adicione camadas conforme
+                necessário
+                <br />
+                <strong>Teste as dependências:</strong> Use ferramentas como
+                dependency-cruiser
+                <br />
+                <strong>Pense no domínio:</strong> Entidades devem ter
+                comportamento
+              </Text>
+            </Alert>
+          </Grid.Col>
+        </Grid>
       </Paper>
     </Stack>
   );
+
+  // References Section
+  const ReferencesSection = () => (
+    <Stack gap="xl">
+      <Paper withBorder p="xl" radius="md">
+        <Title order={3} mb="lg">
+          <IconCode
+            size={24}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
+          />
+          Referências e Recursos
+        </Title>
+
+        <Grid>
+          <Grid.Col span={{ base: 12, md: 6 }}>
+            <Card withBorder p="md">
+              <Title order={4} mb="sm">
+                Livros
+              </Title>
+              <List size="sm" spacing="xs">
+                <List.Item>
+                  <strong>Clean Architecture</strong> - Robert C. Martin
+                </List.Item>
+                <List.Item>
+                  <strong>Domain-Driven Design</strong> - Eric Evans
+                </List.Item>
+                <List.Item>
+                  <strong>Clean Code</strong> - Robert C. Martin
+                </List.Item>
+              </List>
+            </Card>
+          </Grid.Col>
+
+          <Grid.Col span={{ base: 12, md: 6 }}>
+            <Card withBorder p="md">
+              <Title order={4} mb="sm">
+                Artigos e Casos
+              </Title>
+              <List size="sm" spacing="xs">
+                <List.Item>
+                  <strong>Netflix:</strong> Micro-frontends com Clean
+                  Architecture
+                </List.Item>
+                <List.Item>
+                  <strong>Spotify:</strong> Domain-driven design em frontend
+                </List.Item>
+                <List.Item>
+                  <strong>Airbnb:</strong> Component architecture patterns
+                </List.Item>
+              </List>
+            </Card>
+          </Grid.Col>
+        </Grid>
+      </Paper>
+    </Stack>
+  );
+
+  const tabs = createArchitectureTabs(
+    <OverviewSection />,
+    <ImplementationSection />,
+    <ExamplesSection />,
+    <PitfallsSection />,
+    <ReferencesSection />
+  );
+
+  return <MobileTabs items={tabs} defaultTab="overview" />;
 }
 
 export default CleanArchitecture;
