@@ -17,6 +17,8 @@ import {
   IconBulb,
   IconRocket,
   IconApi,
+  IconStack,
+  IconCode,
 } from '@tabler/icons-react';
 
 export default function BFFArchitecture() {
