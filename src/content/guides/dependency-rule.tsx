@@ -7,7 +7,6 @@ import {
   List,
   ThemeIcon,
   Card,
-  Badge,
   SimpleGrid,
 } from '@mantine/core';
 import {
@@ -30,10 +29,6 @@ export default function DependencyRuleGuide() {
       {/* Hero Section */}
       <section>
         <Stack align="center" ta="center" mb="xl">
-          <Badge size="lg" variant="light" color="brand" mb="md">
-            <IconShield size={16} style={{ marginRight: 8 }} />
-            Regra Fundamental
-          </Badge>
           <Title
             order={1}
             fw={800}
