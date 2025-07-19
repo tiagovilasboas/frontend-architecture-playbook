@@ -267,14 +267,14 @@ export const architectures: DocMeta[] = [
   toMeta(LayeredArchitecture, 'layered', 'architectures', true),
   toMeta(EventSourcingArchitecture, 'event-sourcing', 'architectures', true),
   toMeta(CQRSArchitecture, 'cqrs', 'architectures', true),
+  toMeta(CleanArchitecture, 'clean-architecture', 'architectures', true),
+  toMeta(MicroFrontends, 'micro-frontends', 'architectures', true),
   toMeta(
     MicroservicesFrontendArchitecture,
     'microservices-frontend',
     'architectures',
     true
   ),
-  toMeta(CleanArchitecture, 'clean-architecture', 'architectures', true),
-  toMeta(MicroFrontends, 'micro-frontends', 'architectures', true),
   toMeta(Monorepo, 'monorepo', 'architectures', true),
   toMeta(Spa, 'spa', 'architectures', true),
   toMeta(Jamstack, 'jamstack', 'architectures', true),
