@@ -107,7 +107,14 @@ export default function DocsShell({
           )}
 
           {/* Content */}
-          <Box style={{ flex: 1, padding: '1rem' }}>{children}</Box>
+          <Box
+            style={{
+              flex: 1,
+              padding: isMobile ? '1rem 0' : '1rem',
+            }}
+          >
+            {children}
+          </Box>
         </Box>
 
         {/* Footer */}
