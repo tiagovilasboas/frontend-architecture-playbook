@@ -130,7 +130,35 @@ const currentState = events.reduce(applyEvent, initialState)`}
           ⚙️ Como funciona na prática?
         </Title>
         <Code block mb="md">
-          {`// Event Store - onde eventos vivem
+          {`// Types e interfaces
+interface CartItem {
+  id: string
+  name: string
+  price: number
+}
+
+interface CartState {
+  items: CartItem[]
+  total: number
+  discount?: number
+}
+
+interface Event {
+  id: string
+  type: string
+  aggregateId: string
+  data: any
+  timestamp: number
+  userId: string
+}
+
+// Estado inicial
+const initialCartState: CartState = {
+  items: [],
+  total: 0
+}
+
+// Event Store - onde eventos vivem
 class EventStore {
   private events: Event[] = []
   
@@ -184,6 +212,11 @@ class ShoppingCartEventHandler {
     }
   }
 }
+
+// Instâncias
+const eventStore = new EventStore()
+const eventHandler = new ShoppingCartEventHandler()
+const currentUser = { id: 'user-123' }
 
 // Component que usa Event Sourcing
 function ShoppingCart() {
