@@ -89,7 +89,7 @@ export default function DocsShell({
             <Box
               className="sidebar-nav"
               style={{
-                width: 260,
+                width: 300,
                 padding: 12,
                 paddingRight: 20,
                 overflow: 'visible',
