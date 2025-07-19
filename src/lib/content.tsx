@@ -135,16 +135,16 @@ const STATIC_METADATA = {
     description: 'Command Query Responsibility Segregation',
   },
   'microservices-frontend': {
-    title: 'Micro-frontends',
-    description: 'Microserviços no front-end',
+    title: 'Microservices Frontend',
+    description: 'Frontend espelhando microservices backend',
   },
   'clean-architecture': {
     title: 'Clean Architecture no Front-End',
     description: 'Separação clara de responsabilidades',
   },
   'micro-frontends': {
-    title: 'Micro-frontends',
-    description: 'Front-end modular',
+    title: 'Micro-Frontends (Conceitos)',
+    description: 'Introdução aos conceitos de micro-frontends',
   },
   monorepo: {
     title: 'Monorepo',
