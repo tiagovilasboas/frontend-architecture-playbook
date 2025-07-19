@@ -20,9 +20,12 @@ import {
 } from '@tabler/icons-react';
 import CodeExample from '../../components/CodeExample';
 import jamstackExamples from '../../utils/code-examples/jamstack.json';
+import MobileTabs from '../../components/MobileTabs';
+import { createArchitectureTabs } from '../../components/MobileTabsHelpers';
 
 function JAMstack() {
-  return (
+  // Overview Section
+  const OverviewSection = () => (
     <Stack gap="xl">
       {/* Hero Section */}
       <div>
@@ -71,7 +74,12 @@ function JAMstack() {
           </Text>
         </Stack>
       </Paper>
+    </Stack>
+  );
 
+  // Implementation Section
+  const ImplementationSection = () => (
+    <Stack gap="xl">
       {/* Concepts */}
       <div>
         <Title order={2} mb="lg">
@@ -173,29 +181,38 @@ function JAMstack() {
           </Text>
         </Paper>
       </div>
+    </Stack>
+  );
 
-      {/* Benefits */}
-      <div>
-        <Title order={2} mb="lg">
-          <IconCheck
-            size={28}
+  // Examples Section
+  const ExamplesSection = () => (
+    <Stack gap="xl">
+      <Paper withBorder p="xl" radius="md">
+        <Title order={3} mb="lg">
+          <IconBulb
+            size={24}
             style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
-          Por que vale a pena?
+          Casos Reais
         </Title>
 
         <Stack gap="md">
           <Card withBorder p="md">
             <Group>
               <ThemeIcon size={40} radius="md" variant="light" color="green">
-                <IconBolt size={20} />
+                <IconCode size={20} />
               </ThemeIcon>
               <div>
-                <Title order={4}>Performance Máxima</Title>
-                <Text size="sm">
-                  Sites estáticos servidos por CDN. Carregamento instantâneo,
-                  sem servidor para processar.
+                <Title order={4}>Netlify</Title>
+                <Text size="sm" c="dimmed" mb="sm">
+                  Plataforma JAMstack por excelência
                 </Text>
+                <List size="sm" spacing="xs">
+                  <List.Item>Deploy automático via Git</List.Item>
+                  <List.Item>CDN global para performance</List.Item>
+                  <List.Item>Serverless functions</List.Item>
+                  <List.Item>Form handling sem backend</List.Item>
+                </List>
               </div>
             </Group>
           </Card>
@@ -203,14 +220,19 @@ function JAMstack() {
           <Card withBorder p="md">
             <Group>
               <ThemeIcon size={40} radius="md" variant="light" color="blue">
-                <IconCloud size={20} />
+                <IconBolt size={20} />
               </ThemeIcon>
               <div>
-                <Title order={4}>Segurança de Soba</Title>
-                <Text size="sm">
-                  Sem servidor = sem superfície de ataque. APIs isoladas, menos
-                  vulnerabilidades.
+                <Title order={4}>Smashing Magazine</Title>
+                <Text size="sm" c="dimmed" mb="sm">
+                  Blog migrado para JAMstack
                 </Text>
+                <List size="sm" spacing="xs">
+                  <List.Item>Performance 10x melhor</List.Item>
+                  <List.Item>SEO otimizado</List.Item>
+                  <List.Item>Deploy em segundos</List.Item>
+                  <List.Item>Menor custo de infraestrutura</List.Item>
+                </List>
               </div>
             </Group>
           </Card>
@@ -221,379 +243,150 @@ function JAMstack() {
                 <IconBulb size={20} />
               </ThemeIcon>
               <div>
-                <Title order={4}>Escalabilidade Automática</Title>
-                <Text size="sm">
-                  CDN escala automaticamente. Milhões de usuários, sem
-                  configurar servidores.
+                <Title order={4}>E-commerce</Title>
+                <Text size="sm" c="dimmed" mb="sm">
+                  Lojas online com JAMstack
                 </Text>
+                <List size="sm" spacing="xs">
+                  <List.Item>Catálogo estático pré-renderizado</List.Item>
+                  <List.Item>Checkout via APIs</List.Item>
+                  <List.Item>Performance para SEO</List.Item>
+                  <List.Item>Escalabilidade automática</List.Item>
+                </List>
               </div>
             </Group>
           </Card>
         </Stack>
-      </div>
+      </Paper>
+    </Stack>
+  );
 
-      {/* When to use */}
-      <div>
-        <Title order={2} mb="lg">
-          <IconAlertTriangle
-            size={28}
-            style={{ verticalAlign: 'middle', marginRight: '8px' }}
-          />
-          Quando usar?
-        </Title>
-
-        <Stack gap="md">
-          <Alert variant="light" color="green" title="✅ Use quando:">
-            <List>
-              <List.Item>Sites de conteúdo (blog, marketing)</List.Item>
-              <List.Item>Performance é crítica</List.Item>
-              <List.Item>SEO é importante</List.Item>
-              <List.Item>Orçamento limitado (hosting barato)</List.Item>
-              <List.Item>Segurança é prioridade</List.Item>
-            </List>
-          </Alert>
-
-          <Alert variant="light" color="red" title="❌ Evite quando:">
-            <List>
-              <List.Item>Aplicações com muita lógica de negócio</List.Item>
-              <List.Item>Dados em tempo real</List.Item>
-              <List.Item>Autenticação complexa</List.Item>
-              <List.Item>Integrações com sistemas legados</List.Item>
-            </List>
-          </Alert>
-        </Stack>
-      </div>
-
-      {/* Real Examples */}
-      <div>
-        <Title order={2} mb="lg">
-          <IconCode
-            size={28}
-            style={{ verticalAlign: 'middle', marginRight: '8px' }}
-          />
-          Exemplos Práticos no Front-End
-        </Title>
-
-        <Stack gap="xl">
-          {jamstackExamples.slice(8).map((ex, idx) => (
-            <Paper withBorder p="xl" radius="md" key={ex.title}>
-              <Title order={3} mb="md">
-                {['📝', '🛒', '🎨'][idx]} {ex.title.split(' - ')[1]}
-              </Title>
-
-              <Stack gap="md">
-                <Text>
-                  <strong>Cenário:</strong> {ex.description}
-                  <br />
-                  <strong>Problema:</strong>{' '}
-                  {ex.description.includes('WordPress')
-                    ? 'Servidor lento, SEO ruim, custo alto de hosting.'
-                    : ex.description.includes('E-commerce')
-                      ? 'Servidor lento, abandono de carrinho, SEO ruim.'
-                      : 'Complexidade desnecessária, custo alto, manutenção difícil.'}
-                </Text>
-
-                <CodeExample title={ex.title} code={ex.code || ''} />
-              </Stack>
-            </Paper>
-          ))}
-        </Stack>
-      </div>
-
-      {/* Pitfalls & How to Avoid */}
-      <div>
-        <Title order={2} mb="lg">
-          <IconAlertTriangle
-            size={28}
-            style={{ verticalAlign: 'middle', marginRight: '8px' }}
-          />
-          Armadilhas & Como Evitar
-        </Title>
-
-        <Stack gap="xl">
-          {/* Over-engineering */}
-          <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">
-              🚫 Over-engineering
-            </Title>
-            <Stack gap="md">
-              <Text>
-                <strong>Problema:</strong> Você usa JAMstack pra tudo, até pra
-                aplicações que precisam de servidor. Vira uma bagunça.
-              </Text>
-
-              <Text>
-                <strong>Como evitar:</strong> Use JAMstack quando faz sentido.
-                Sites de conteúdo, marketing, portfolios. Não pra tudo.
-              </Text>
-
-              <CodeExample
-                title={
-                  jamstackExamples.find(
-                    e => e.id === 'jamstack-pitfall-wrong-use'
-                  )?.title || ''
-                }
-                code={
-                  jamstackExamples.find(
-                    e => e.id === 'jamstack-pitfall-wrong-use'
-                  )?.content || ''
-                }
-              />
-            </Stack>
-          </Paper>
-
-          {/* Build Time */}
-          <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">
-              ⏱️ Build Time Excessivo
-            </Title>
-            <Stack gap="md">
-              <Text>
-                <strong>Problema:</strong> Build demora horas, deploy lento,
-                desenvolvimento travado.
-              </Text>
-
-              <Text>
-                <strong>Como evitar:</strong> Otimize build, use incremental
-                builds, considere ISR (Incremental Static Regeneration).
-              </Text>
-
-              <CodeExample
-                title={
-                  jamstackExamples.find(
-                    e => e.id === 'jamstack-pitfall-slow-build'
-                  )?.title || ''
-                }
-                code={
-                  jamstackExamples.find(
-                    e => e.id === 'jamstack-pitfall-slow-build'
-                  )?.content || ''
-                }
-              />
-            </Stack>
-          </Paper>
-
-          {/* Dynamic Content */}
-          <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">
-              🔄 Conteúdo Dinâmico
-            </Title>
-            <Stack gap="md">
-              <Text>
-                <strong>Problema:</strong> Conteúdo que muda frequentemente.
-                Build a cada mudança, deploy constante.
-              </Text>
-
-              <Text>
-                <strong>Como evitar:</strong> Use ISR, client-side fetching, ou
-                considere SSR para conteúdo muito dinâmico.
-              </Text>
-
-              <CodeExample
-                title={
-                  jamstackExamples.find(
-                    e => e.id === 'jamstack-pitfall-dynamic-content'
-                  )?.title || ''
-                }
-                code={
-                  jamstackExamples.find(
-                    e => e.id === 'jamstack-pitfall-dynamic-content'
-                  )?.content || ''
-                }
-              />
-            </Stack>
-          </Paper>
-
-          {/* SEO Issues */}
-          <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">
-              🔍 Problemas de SEO
-            </Title>
-            <Stack gap="md">
-              <Text>
-                <strong>Problema:</strong> JavaScript renderiza conteúdo.
-                Crawlers não veem nada, SEO ruim.
-              </Text>
-
-              <Text>
-                <strong>Como evitar:</strong> Pre-renderiza conteúdo importante,
-                use SSR para páginas críticas de SEO.
-              </Text>
-
-              <CodeExample
-                title={
-                  jamstackExamples.find(
-                    e => e.id === 'jamstack-pitfall-seo-issues'
-                  )?.title || ''
-                }
-                code={
-                  jamstackExamples.find(
-                    e => e.id === 'jamstack-pitfall-seo-issues'
-                  )?.content || ''
-                }
-              />
-            </Stack>
-          </Paper>
-
-          {/* API Complexity */}
-          <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">
-              🔗 Complexidade de APIs
-            </Title>
-            <Stack gap="md">
-              <Text>
-                <strong>Problema:</strong> Muitas APIs, complexidade de
-                integração, difícil de manter e debugar.
-              </Text>
-
-              <Text>
-                <strong>Como evitar:</strong> Simplifique APIs, use GraphQL,
-                considere BFF (Backend for Frontend).
-              </Text>
-
-              <CodeExample
-                title={
-                  jamstackExamples.find(
-                    e => e.id === 'jamstack-pitfall-api-complexity'
-                  )?.title || ''
-                }
-                code={
-                  jamstackExamples.find(
-                    e => e.id === 'jamstack-pitfall-api-complexity'
-                  )?.content || ''
-                }
-              />
-            </Stack>
-          </Paper>
-        </Stack>
-      </div>
-
-      {/* References & Real Cases */}
-      <div>
-        <Title order={2} mb="lg">
-          <IconBulb
-            size={28}
-            style={{ verticalAlign: 'middle', marginRight: '8px' }}
-          />
-          Referências & Casos Reais
-        </Title>
-
-        <Stack gap="xl">
-          {/* References */}
-          <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">
-              📚 Referências
-            </Title>
-            <Stack gap="md">
-              <Text>
-                <strong>Livros:</strong>
-              </Text>
-              <List>
-                <List.Item>
-                  <strong>"JAMstack: The Definitive Guide"</strong> - Mathias
-                  Biilmann
-                </List.Item>
-                <List.Item>
-                  <strong>"Modern Web Development"</strong> - Various Authors
-                </List.Item>
-                <List.Item>
-                  <strong>"Static Site Generators"</strong> - Various Authors
-                </List.Item>
-              </List>
-              <Text>
-                <strong>Artigos & Blogs:</strong>
-              </Text>
-              <List>
-                <List.Item>
-                  <a href="https://jamstack.org/" target="_blank">
-                    JAMstack - Site oficial
-                  </a>
-                </List.Item>
-                <List.Item>
-                  <a href="https://www.gatsbyjs.com/" target="_blank">
-                    Gatsby - Static site generator
-                  </a>
-                </List.Item>
-                <List.Item>
-                  <a href="https://nextjs.org/" target="_blank">
-                    Next.js - React framework
-                  </a>
-                </List.Item>
-              </List>
-            </Stack>
-          </Paper>
-
-          {/* Tools & Libraries */}
-          <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">
-              🛠️ Ferramentas & Bibliotecas
-            </Title>
-            <Stack gap="md">
-              <Text>
-                <strong>Ferramentas que facilitam JAMstack:</strong>
-              </Text>
-              <List>
-                <List.Item>
-                  <strong>Gatsby</strong> - Static site generator para React
-                </List.Item>
-                <List.Item>
-                  <strong>Next.js</strong> - React framework com SSR/SSG
-                </List.Item>
-                <List.Item>
-                  <strong>Nuxt.js</strong> - Vue framework com SSR/SSG
-                </List.Item>
-                <List.Item>
-                  <strong>Astro</strong> - Framework para conteúdo
-                </List.Item>
-                <List.Item>
-                  <strong>Netlify</strong> - Deploy e hosting
-                </List.Item>
-                <List.Item>
-                  <strong>Vercel</strong> - Deploy e hosting
-                </List.Item>
-              </List>
-            </Stack>
-          </Paper>
-        </Stack>
-      </div>
-
-      {/* Summary */}
+  // Pitfalls Section
+  const PitfallsSection = () => (
+    <Stack gap="xl">
       <Paper withBorder p="xl" radius="md">
+        <Title order={3} mb="lg">
+          <IconAlertTriangle
+            size={24}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
+          />
+          Armadilhas Comuns
+        </Title>
+
         <Stack gap="md">
-          <Group>
-            <ThemeIcon size={50} radius="md" variant="light" color="blue">
-              <IconBulb size={25} />
-            </ThemeIcon>
-            <div>
-              <Title order={3}>Resumo</Title>
-              <Text c="dimmed">JAMstack na prática</Text>
-            </div>
-          </Group>
+          <Alert color="red" icon={<IconAlertTriangle size={16} />} mb="md">
+            <Text size="sm" fw={600} mb={4}>
+              ❌ Build times longos
+            </Text>
+            <Text size="sm" c="dimmed">
+              Sites grandes podem ter build times de 10+ minutos. Use
+              incremental builds e cache.
+            </Text>
+          </Alert>
 
-          <Text>
-            JAMstack é sobre uma coisa só:{' '}
-            <strong>separar front-end de back-end</strong>. Sites estáticos,
-            performance máxima, segurança de sobra. Use quando performance e
-            simplicidade importam.
-          </Text>
+          <Alert color="orange" icon={<IconAlertTriangle size={16} />} mb="md">
+            <Text size="sm" fw={600} mb={4}>
+              ❌ Dados dinâmicos
+            </Text>
+            <Text size="sm" c="dimmed">
+              Conteúdo que muda constantemente precisa de rebuilds frequentes.
+              Use ISR ou client-side fetching.
+            </Text>
+          </Alert>
 
-          <Text size="sm" c="dimmed">
-            <strong>Lembre-se:</strong> Não é sobre usar JAMstack pra tudo. É
-            sobre usar quando faz sentido. E você não enlouquece.
-            <br />
-            <strong>Dica:</strong> Comece com sites simples, evolua conforme
-            necessário. Foque em performance e simplicidade.
-          </Text>
+          <Alert color="yellow" icon={<IconAlertTriangle size={16} />} mb="md">
+            <Text size="sm" fw={600} mb={4}>
+              ❌ Complexidade de deploy
+            </Text>
+            <Text size="sm" c="dimmed">
+              Múltiplas APIs e serviços podem complicar o deploy. Use
+              ferramentas como Netlify ou Vercel.
+            </Text>
+          </Alert>
+
+          <Alert color="green" icon={<IconCheck size={16} />} mb="md">
+            <Text size="sm" fw={600} mb={4}>
+              ✅ Como evitar
+            </Text>
+            <Text size="sm" c="dimmed">
+              <strong>Comece simples:</strong> Site estático antes de APIs
+              <br />
+              <strong>Otimize builds:</strong> Incremental builds e cache
+              <br />
+              <strong>Use ISR:</strong> Incremental Static Regeneration
+            </Text>
+          </Alert>
         </Stack>
       </Paper>
     </Stack>
   );
-}
 
-JAMstack.metadata = {
-  title: 'JAMstack',
-  description:
-    'JavaScript, APIs, Markup. Sites estáticos com performance máxima e segurança de sobra.',
-};
+  // References Section
+  const ReferencesSection = () => (
+    <Stack gap="xl">
+      <Paper withBorder p="xl" radius="md">
+        <Title order={3} mb="lg">
+          <IconCode
+            size={24}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
+          />
+          Referências e Recursos
+        </Title>
+
+        <Stack gap="md">
+          <Card withBorder p="md">
+            <Title order={4} mb="sm">
+              Ferramentas
+            </Title>
+            <List size="sm" spacing="xs">
+              <List.Item>
+                <strong>Netlify:</strong> Deploy e hosting JAMstack
+              </List.Item>
+              <List.Item>
+                <strong>Vercel:</strong> Deploy automático
+              </List.Item>
+              <List.Item>
+                <strong>Gatsby:</strong> Static site generator
+              </List.Item>
+              <List.Item>
+                <strong>Next.js:</strong> React com SSG
+              </List.Item>
+            </List>
+          </Card>
+
+          <Card withBorder p="md">
+            <Title order={4} mb="sm">
+              Casos de Sucesso
+            </Title>
+            <List size="sm" spacing="xs">
+              <List.Item>
+                <strong>Smashing Magazine:</strong> Blog migrado para JAMstack
+              </List.Item>
+              <List.Item>
+                <strong>Netlify:</strong> Plataforma JAMstack
+              </List.Item>
+              <List.Item>
+                <strong>Gatsby:</strong> Framework JAMstack
+              </List.Item>
+              <List.Item>
+                <strong>Vercel:</strong> Deploy automático
+              </List.Item>
+            </List>
+          </Card>
+        </Stack>
+      </Paper>
+    </Stack>
+  );
+
+  const tabs = createArchitectureTabs(
+    <OverviewSection />,
+    <ImplementationSection />,
+    <ExamplesSection />,
+    <PitfallsSection />,
+    <ReferencesSection />
+  );
+
+  return <MobileTabs items={tabs} defaultTab="overview" />;
+}
 
 export default JAMstack;

@@ -20,9 +20,12 @@ import {
 } from '@tabler/icons-react';
 import CodeExample from '../../components/CodeExample';
 import monorepoExamples from '../../utils/code-examples/monorepo.json';
+import MobileTabs from '../../components/MobileTabs';
+import { createArchitectureTabs } from '../../components/MobileTabsHelpers';
 
 function Monorepo() {
-  return (
+  // Overview Section
+  const OverviewSection = () => (
     <Stack gap="xl">
       {/* Hero Section */}
       <div>
@@ -70,7 +73,12 @@ function Monorepo() {
           </Text>
         </Stack>
       </Paper>
+    </Stack>
+  );
 
+  // Implementation Section
+  const ImplementationSection = () => (
+    <Stack gap="xl">
       {/* Concepts */}
       <div>
         <Title order={2} mb="lg">
@@ -183,15 +191,19 @@ function Monorepo() {
           </Card>
         </Stack>
       </div>
+    </Stack>
+  );
 
-      {/* Benefits */}
-      <div>
-        <Title order={2} mb="lg">
-          <IconCheck
-            size={28}
+  // Examples Section
+  const ExamplesSection = () => (
+    <Stack gap="xl">
+      <Paper withBorder p="xl" radius="md">
+        <Title order={3} mb="lg">
+          <IconBulb
+            size={24}
             style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
-          Por que vale a pena?
+          Casos Reais
         </Title>
 
         <Stack gap="md">
@@ -201,10 +213,16 @@ function Monorepo() {
                 <IconCode size={20} />
               </ThemeIcon>
               <div>
-                <Title order={4}>Menos Duplicação</Title>
-                <Text size="sm">
-                  Compartilha código entre projetos. Não reescreve, reutiliza.
+                <Title order={4}>Google</Title>
+                <Text size="sm" c="dimmed" mb="sm">
+                  Monorepo gigante com bilhões de linhas
                 </Text>
+                <List size="sm" spacing="xs">
+                  <List.Item>Um repositório para todo código</List.Item>
+                  <List.Item>Compartilhamento de bibliotecas</List.Item>
+                  <List.Item>Refatoração segura em larga escala</List.Item>
+                  <List.Item>Tooling centralizado</List.Item>
+                </List>
               </div>
             </Group>
           </Card>
@@ -212,14 +230,19 @@ function Monorepo() {
           <Card withBorder p="md">
             <Group>
               <ThemeIcon size={40} radius="md" variant="light" color="blue">
-                <IconFolder size={20} />
+                <IconBrandGithub size={20} />
               </ThemeIcon>
               <div>
-                <Title order={4}>Tooling Centralizado</Title>
-                <Text size="sm">
-                  Configura ESLint, Prettier, TypeScript uma vez. Funciona em
-                  todo lugar.
+                <Title order={4}>Facebook/Meta</Title>
+                <Text size="sm" c="dimmed" mb="sm">
+                  Monorepo para produtos sociais
                 </Text>
+                <List size="sm" spacing="xs">
+                  <List.Item>React, React Native, Instagram</List.Item>
+                  <List.Item>Compartilhamento de componentes</List.Item>
+                  <List.Item>Deploy unificado</List.Item>
+                  <List.Item>Versionamento coordenado</List.Item>
+                </List>
               </div>
             </Group>
           </Card>
@@ -230,431 +253,151 @@ function Monorepo() {
                 <IconBulb size={20} />
               </ThemeIcon>
               <div>
-                <Title order={4}>Refatoração Segura</Title>
-                <Text size="sm">
-                  Muda uma lib, vê o impacto em todos os projetos. Sem quebrar
-                  nada.
+                <Title order={4}>Netflix</Title>
+                <Text size="sm" c="dimmed" mb="sm">
+                  Monorepo para streaming
                 </Text>
+                <List size="sm" spacing="xs">
+                  <List.Item>Múltiplas plataformas (TV, mobile, web)</List.Item>
+                  <List.Item>Compartilhamento de lógica de negócio</List.Item>
+                  <List.Item>Deploy independente</List.Item>
+                  <List.Item>Testes centralizados</List.Item>
+                </List>
               </div>
             </Group>
           </Card>
         </Stack>
-      </div>
+      </Paper>
+    </Stack>
+  );
 
-      {/* When to use */}
-      <div>
-        <Title order={2} mb="lg">
-          <IconAlertTriangle
-            size={28}
-            style={{ verticalAlign: 'middle', marginRight: '8px' }}
-          />
-          Quando usar?
-        </Title>
-
-        <Stack gap="md">
-          <Alert variant="light" color="green" title="✅ Use quando:">
-            <List>
-              <List.Item>Múltiplos projetos relacionados</List.Item>
-              <List.Item>Precisa compartilhar código</List.Item>
-              <List.Item>Tooling centralizado é importante</List.Item>
-              <List.Item>Refatoração frequente</List.Item>
-              <List.Item>Time grande trabalhando junto</List.Item>
-            </List>
-          </Alert>
-
-          <Alert variant="light" color="red" title="❌ Evite quando:">
-            <List>
-              <List.Item>Projetos completamente independentes</List.Item>
-              <List.Item>Time pequeno (complexidade desnecessária)</List.Item>
-              <List.Item>Projetos com tecnologias muito diferentes</List.Item>
-              <List.Item>Deploy independente é crítico</List.Item>
-            </List>
-          </Alert>
-        </Stack>
-      </div>
-
-      {/* Real Examples */}
-      <div>
-        <Title order={2} mb="lg">
-          <IconCode
-            size={28}
-            style={{ verticalAlign: 'middle', marginRight: '8px' }}
-          />
-          Exemplos Práticos no Front-End
-        </Title>
-
-        <Stack gap="xl">
-          {/* Example 1: Design System */}
-          <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">
-              🎨 Design System - Componentes Compartilhados
-            </Title>
-
-            <Stack gap="md">
-              <Text>
-                <strong>Cenário:</strong> Design system com componentes
-                reutilizáveis. Web app, mobile app, admin panel usando os mesmos
-                componentes.
-                <br />
-                <strong>Problema:</strong> Código duplicado, inconsistência
-                visual, difícil de manter.
-              </Text>
-
-              <Stack gap="xl">
-                {monorepoExamples.map(example => (
-                  <CodeExample
-                    key={example.id}
-                    title={example.title}
-                    description={example.description}
-                    code={example.content}
-                  />
-                ))}
-              </Stack>
-            </Stack>
-          </Paper>
-
-          {/* Example 2: Full-Stack App */}
-          <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">
-              🚀 Full-Stack - Front-end + Back-end
-            </Title>
-
-            <Stack gap="md">
-              <Text>
-                <strong>Cenário:</strong> Aplicação full-stack com front-end
-                React, back-end Node.js, mobile React Native.
-                <br />
-                <strong>Problema:</strong> Tipos duplicados, validações
-                diferentes, difícil de sincronizar.
-              </Text>
-
-              <Stack gap="xl">
-                {monorepoExamples.map(example => (
-                  <CodeExample
-                    key={example.id}
-                    title={example.title}
-                    description={example.description}
-                    code={example.content}
-                  />
-                ))}
-              </Stack>
-            </Stack>
-          </Paper>
-
-          {/* Example 3: Micro-frontends */}
-          <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">
-              🧩 Micro-frontends - Múltiplas Apps
-            </Title>
-
-            <Stack gap="md">
-              <Text>
-                <strong>Cenário:</strong> Micro-frontends com múltiplas
-                aplicações. Shell, catalog, cart, checkout, profile.
-                <br />
-                <strong>Problema:</strong> Configurações duplicadas, tooling
-                diferente, difícil de manter.
-              </Text>
-
-              <Stack gap="xl">
-                {monorepoExamples.map(example => (
-                  <CodeExample
-                    key={example.id}
-                    title={example.title}
-                    description={example.description}
-                    code={example.content}
-                  />
-                ))}
-              </Stack>
-            </Stack>
-          </Paper>
-        </Stack>
-      </div>
-
-      {/* Pitfalls & How to Avoid */}
-      <div>
-        <Title order={2} mb="lg">
-          <IconAlertTriangle
-            size={28}
-            style={{ verticalAlign: 'middle', marginRight: '8px' }}
-          />
-          Armadilhas & Como Evitar
-        </Title>
-
-        <Stack gap="xl">
-          {/* Giant Monorepo */}
-          <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">
-              🐋 Monorepo Gigante
-            </Title>
-            <Stack gap="md">
-              <Text>
-                <strong>Problema:</strong> Você coloca tudo num repositório,
-                vira uma bagunça gigante. Impossível de navegar.
-              </Text>
-
-              <Text>
-                <strong>Como evitar:</strong> Organize por domínio. Use
-                ferramentas como Nx, Lerna, Turborepo.
-              </Text>
-
-              <Stack gap="xl">
-                {monorepoExamples.map(example => (
-                  <CodeExample
-                    key={example.id}
-                    title={example.title}
-                    description={example.description}
-                    code={example.content}
-                  />
-                ))}
-              </Stack>
-            </Stack>
-          </Paper>
-
-          {/* Circular Dependencies */}
-          <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">
-              🔄 Dependências Circulares
-            </Title>
-            <Stack gap="md">
-              <Text>
-                <strong>Problema:</strong> Pacotes dependendo uns dos outros.
-                Build quebra, deploy falha.
-              </Text>
-
-              <Text>
-                <strong>Como evitar:</strong> Estrutura hierárquica clara. Use
-                ferramentas que detectam dependências circulares.
-              </Text>
-
-              <Stack gap="xl">
-                {monorepoExamples.map(example => (
-                  <CodeExample
-                    key={example.id}
-                    title={example.title}
-                    description={example.description}
-                    code={example.content}
-                  />
-                ))}
-              </Stack>
-            </Stack>
-          </Paper>
-
-          {/* Build Performance */}
-          <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">
-              🐌 Performance de Build
-            </Title>
-            <Stack gap="md">
-              <Text>
-                <strong>Problema:</strong> Build lento, cache ineficiente,
-                rebuild desnecessário.
-              </Text>
-
-              <Text>
-                <strong>Como evitar:</strong> Use Turborepo, Nx, ou Lerna.
-                Configure cache e build incremental.
-              </Text>
-
-              <Stack gap="xl">
-                {monorepoExamples.map(example => (
-                  <CodeExample
-                    key={example.id}
-                    title={example.title}
-                    description={example.description}
-                    code={example.content}
-                  />
-                ))}
-              </Stack>
-            </Stack>
-          </Paper>
-
-          {/* Version Management */}
-          <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">
-              📦 Gestão de Versões
-            </Title>
-            <Stack gap="md">
-              <Text>
-                <strong>Problema:</strong> Versões descoordenadas, dependências
-                quebradas, deploy inconsistente.
-              </Text>
-
-              <Text>
-                <strong>Como evitar:</strong> Use ferramentas de versionamento.
-                Lerna, Changesets, ou versionamento manual coordenado.
-              </Text>
-
-              <Stack gap="xl">
-                {monorepoExamples.map(example => (
-                  <CodeExample
-                    key={example.id}
-                    title={example.title}
-                    description={example.description}
-                    code={example.content}
-                  />
-                ))}
-              </Stack>
-            </Stack>
-          </Paper>
-
-          {/* Team Coordination */}
-          <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">
-              👥 Coordenação de Times
-            </Title>
-            <Stack gap="md">
-              <Text>
-                <strong>Problema:</strong> Times sem coordenação. Conflitos de
-                merge, mudanças que quebram outros projetos.
-              </Text>
-
-              <Text>
-                <strong>Como evitar:</strong> CI/CD robusto, testes em todos os
-                projetos, code review obrigatório.
-              </Text>
-
-              <Stack gap="xl">
-                {monorepoExamples.map(example => (
-                  <CodeExample
-                    key={example.id}
-                    title={example.title}
-                    description={example.description}
-                    code={example.content}
-                  />
-                ))}
-              </Stack>
-            </Stack>
-          </Paper>
-        </Stack>
-      </div>
-
-      {/* References & Real Cases */}
-      <div>
-        <Title order={2} mb="lg">
-          <IconBulb
-            size={28}
-            style={{ verticalAlign: 'middle', marginRight: '8px' }}
-          />
-          Referências & Casos Reais
-        </Title>
-
-        <Stack gap="xl">
-          {/* References */}
-          <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">
-              📚 Referências
-            </Title>
-            <Stack gap="md">
-              <Text>
-                <strong>Livros:</strong>
-              </Text>
-              <List>
-                <List.Item>
-                  <strong>"Monorepo Tools"</strong> - Various Authors
-                </List.Item>
-                <List.Item>
-                  <strong>"Large Scale JavaScript"</strong> - Various Authors
-                </List.Item>
-                <List.Item>
-                  <strong>"Monorepo Patterns"</strong> - Various Authors
-                </List.Item>
-              </List>
-              <Text>
-                <strong>Artigos & Blogs:</strong>
-              </Text>
-              <List>
-                <List.Item>
-                  <a href="https://monorepo.tools/" target="_blank">
-                    Monorepo Tools - Site oficial
-                  </a>
-                </List.Item>
-                <List.Item>
-                  <a href="https://nx.dev/" target="_blank">
-                    Nx - Monorepo build system
-                  </a>
-                </List.Item>
-                <List.Item>
-                  <a href="https://turborepo.com/" target="_blank">
-                    Turborepo - High-performance build system
-                  </a>
-                </List.Item>
-              </List>
-            </Stack>
-          </Paper>
-
-          {/* Tools & Libraries */}
-          <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">
-              🛠️ Ferramentas & Bibliotecas
-            </Title>
-            <Stack gap="md">
-              <Text>
-                <strong>Ferramentas que facilitam Monorepo:</strong>
-              </Text>
-              <List>
-                <List.Item>
-                  <strong>Nx</strong> - Build system para monorepos
-                </List.Item>
-                <List.Item>
-                  <strong>Turborepo</strong> - High-performance build system
-                </List.Item>
-                <List.Item>
-                  <strong>Lerna</strong> - Tooling para monorepos
-                </List.Item>
-                <List.Item>
-                  <strong>Rush</strong> - Microsoft's monorepo solution
-                </List.Item>
-                <List.Item>
-                  <strong>Bazel</strong> - Google's build system
-                </List.Item>
-                <List.Item>
-                  <strong>Yarn Workspaces</strong> - Package manager workspaces
-                </List.Item>
-              </List>
-            </Stack>
-          </Paper>
-        </Stack>
-      </div>
-
-      {/* Summary */}
+  // Pitfalls Section
+  const PitfallsSection = () => (
+    <Stack gap="xl">
       <Paper withBorder p="xl" radius="md">
+        <Title order={3} mb="lg">
+          <IconAlertTriangle
+            size={24}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
+          />
+          Armadilhas Comuns
+        </Title>
+
         <Stack gap="md">
-          <Group>
-            <ThemeIcon size={50} radius="md" variant="light" color="blue">
-              <IconBulb size={25} />
-            </ThemeIcon>
-            <div>
-              <Title order={3}>Resumo</Title>
-              <Text c="dimmed">Monorepo na prática</Text>
-            </div>
-          </Group>
+          <Alert color="red" icon={<IconAlertTriangle size={16} />} mb="md">
+            <Text size="sm" fw={600} mb={4}>
+              ❌ Build times longos
+            </Text>
+            <Text size="sm" c="dimmed">
+              Monorepos grandes podem ter builds muito lentos. Use build
+              incremental e cache.
+            </Text>
+          </Alert>
 
-          <Text>
-            Monorepo é sobre uma coisa só:{' '}
-            <strong>ter tudo num lugar só</strong>. Compartilhamento de código,
-            tooling centralizado, refatoração segura. Use quando tem múltiplos
-            projetos relacionados e quer eficiência.
-          </Text>
+          <Alert color="orange" icon={<IconAlertTriangle size={16} />} mb="md">
+            <Text size="sm" fw={600} mb={4}>
+              ❌ Complexidade de permissões
+            </Text>
+            <Text size="sm" c="dimmed">
+              Múltiplos times podem conflitar. Use CODEOWNERS e branch
+              protection.
+            </Text>
+          </Alert>
 
-          <Text size="sm" c="dimmed">
-            <strong>Lembre-se:</strong> Não é sobre colocar tudo num
-            repositório. É sobre organizar e compartilhar quando faz sentido.
-            Mantenha a sanidade.
-            <br />
-            <strong>Dica:</strong> Comece pequeno, use ferramentas adequadas,
-            evolua conforme necessário.
-          </Text>
+          <Alert color="yellow" icon={<IconAlertTriangle size={16} />} mb="md">
+            <Text size="sm" fw={600} mb={4}>
+              ❌ Dependências circulares
+            </Text>
+            <Text size="sm" c="dimmed">
+              Projetos podem criar dependências circulares. Use ferramentas como
+              nx ou lerna.
+            </Text>
+          </Alert>
+
+          <Alert color="green" icon={<IconCheck size={16} />} mb="md">
+            <Text size="sm" fw={600} mb={4}>
+              ✅ Como evitar
+            </Text>
+            <Text size="sm" c="dimmed">
+              <strong>Comece pequeno:</strong> Monorepo simples antes de
+              complexo
+              <br />
+              <strong>Use ferramentas:</strong> Nx, Lerna, Turborepo
+              <br />
+              <strong>Organize bem:</strong> Estrutura clara e documentada
+            </Text>
+          </Alert>
         </Stack>
       </Paper>
     </Stack>
   );
-}
 
-Monorepo.metadata = {
-  title: 'Monorepo',
-  description:
-    'Um repositório, múltiplos projetos. Compartilhamento de código e tooling centralizado.',
-};
+  // References Section
+  const ReferencesSection = () => (
+    <Stack gap="xl">
+      <Paper withBorder p="xl" radius="md">
+        <Title order={3} mb="lg">
+          <IconCode
+            size={24}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
+          />
+          Referências e Recursos
+        </Title>
+
+        <Stack gap="md">
+          <Card withBorder p="md">
+            <Title order={4} mb="sm">
+              Ferramentas
+            </Title>
+            <List size="sm" spacing="xs">
+              <List.Item>
+                <strong>Nx:</strong> Build system para monorepos
+              </List.Item>
+              <List.Item>
+                <strong>Lerna:</strong> Gerenciamento de pacotes
+              </List.Item>
+              <List.Item>
+                <strong>Turborepo:</strong> Build system rápido
+              </List.Item>
+              <List.Item>
+                <strong>Yarn Workspaces:</strong> Workspaces nativos
+              </List.Item>
+            </List>
+          </Card>
+
+          <Card withBorder p="md">
+            <Title order={4} mb="sm">
+              Casos de Sucesso
+            </Title>
+            <List size="sm" spacing="xs">
+              <List.Item>
+                <strong>Google:</strong> Monorepo gigante
+              </List.Item>
+              <List.Item>
+                <strong>Facebook/Meta:</strong> Produtos sociais
+              </List.Item>
+              <List.Item>
+                <strong>Netflix:</strong> Streaming multiplataforma
+              </List.Item>
+              <List.Item>
+                <strong>Uber:</strong> Apps de mobilidade
+              </List.Item>
+            </List>
+          </Card>
+        </Stack>
+      </Paper>
+    </Stack>
+  );
+
+  const tabs = createArchitectureTabs(
+    <OverviewSection />,
+    <ImplementationSection />,
+    <ExamplesSection />,
+    <PitfallsSection />,
+    <ReferencesSection />
+  );
+
+  return <MobileTabs items={tabs} defaultTab="overview" />;
+}
 
 export default Monorepo;
