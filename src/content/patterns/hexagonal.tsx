@@ -17,10 +17,14 @@ import {
   IconBulb,
   IconRocket,
   IconHexagon,
+  IconCode,
 } from '@tabler/icons-react';
+import MobileTabs from '../../components/MobileTabs';
+import { createArchitectureTabs } from '../../components/MobileTabsHelpers';
 
 export default function HexagonalArchitecture() {
-  return (
+  // Overview Section
+  const OverviewSection = () => (
     <Stack gap="xl">
       {/* Hero Section */}
       <div>
@@ -84,7 +88,12 @@ class UserService {
 }`}
         </Code>
       </Paper>
+    </Stack>
+  );
 
+  // Implementation Section
+  const ImplementationSection = () => (
+    <Stack gap="xl">
       {/* Quando usar? */}
       <Paper withBorder p="xl" radius="md">
         <Title order={2} size="h2" mb="md">
@@ -134,7 +143,7 @@ class UserService {
             <Text size="sm" mb="md">
               Contratos que o core define
             </Text>
-            <Code size="sm" mb="md">
+            <Code mb="md">
               {`interface UserRepository {
   save(user: User): Promise<User>
   findById(id: string): Promise<User>
@@ -157,7 +166,7 @@ interface EmailService {
             <Text size="sm" mb="md">
               Como conectar com mundo real
             </Text>
-            <Code size="sm" mb="md">
+            <Code mb="md">
               {`class MongoUserRepository implements UserRepository {
   async save(user: User) {
     return await UserModel.create(user)
@@ -176,236 +185,212 @@ class SMTPEmailService implements EmailService {
           </Card>
         </Group>
       </Paper>
+    </Stack>
+  );
 
-      {/* Por que vale a pena? */}
+  // Examples Section
+  const ExamplesSection = () => (
+    <Stack gap="xl">
       <Paper withBorder p="xl" radius="md">
-        <Group gap="sm" mb="md">
-          <ThemeIcon size="lg" radius="md" variant="light" color="green">
-            <IconCheck size={20} />
-          </ThemeIcon>
-          <Title order={2} size="h2">
-            💚 Por que vale a pena?
-          </Title>
-        </Group>
-        <Stack gap="md">
-          <Alert color="green" icon={<IconCheck size={16} />}>
-            <Text fw={600} mb="xs">
-              🔄 Flexibilidade total
-            </Text>
-            <Text size="sm">
-              Trocar React por Vue? Express por Fastify? MongoDB por PostgreSQL?
-              Core não muda.
-            </Text>
-          </Alert>
-          <Alert color="green" icon={<IconCheck size={16} />}>
-            <Text fw={600} mb="xs">
-              🧪 Testing Paradise
-            </Text>
-            <Text size="sm">
-              Mock qualquer coisa. Unit tests rodam em 10ms. Integration tests
-              isolados.
-            </Text>
-          </Alert>
-          <Alert color="green" icon={<IconCheck size={16} />}>
-            <Text fw={600} mb="xs">
-              👥 Teams independentes
-            </Text>
-            <Text size="sm">
-              Backend team muda infra. Frontend team muda UI. Core team foca em
-              business.
-            </Text>
-          </Alert>
-        </Stack>
-      </Paper>
-
-      {/* Exemplo Prático */}
-      <Paper withBorder p="xl" radius="md">
-        <Title order={2} size="h2" mb="md">
-          💻 Exemplo: E-commerce Order System
+        <Title order={3} mb="lg">
+          <IconBulb
+            size={24}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
+          />
+          Casos Reais
         </Title>
-        <Code block mb="md">
-          {`// 🎯 Core - Business Logic (não sabe de nada externo)
-class OrderService {
-  constructor(
-    private orderRepo: OrderRepository,    // Port
-    private paymentService: PaymentService, // Port  
-    private emailService: EmailService     // Port
-  ) {}
-  
-  async processOrder(orderData: CreateOrderDTO) {
-    // Pure business logic
-    const order = new Order(orderData)
-    
-    if (!order.isValid()) {
-      throw new Error('Invalid order')
-    }
-    
-    // Usa ports - não sabe implementação
-    const savedOrder = await this.orderRepo.save(order)
-    const payment = await this.paymentService.charge(order.total, order.paymentMethod)
-    
-    if (payment.success) {
-      order.markAsPaid()
-      await this.orderRepo.update(order)
-      await this.emailService.sendOrderConfirmation(order.customerEmail, order)
-    }
-    
-    return order
-  }
-}
 
-// 🔌 Ports - Interfaces que core define
-interface OrderRepository {
-  save(order: Order): Promise<Order>
-  update(order: Order): Promise<Order>
-  findById(id: string): Promise<Order>
-}
-
-interface PaymentService {
-  charge(amount: number, method: PaymentMethod): Promise<PaymentResult>
-}
-
-// 🔧 Adapters - Implementações específicas
-class PostgreSQLOrderRepository implements OrderRepository {
-  async save(order: Order) {
-    return await this.db.query('INSERT INTO orders...', order)
-  }
-}
-
-class StripePaymentAdapter implements PaymentService {
-  async charge(amount: number, method: PaymentMethod) {
-    return await stripe.charges.create({
-      amount: amount * 100,
-      currency: 'brl',
-      source: method.token
-    })
-  }
-}
-
-// 🏗️ Dependency Injection - Conecta tudo
-const orderRepo = new PostgreSQLOrderRepository(db)
-const paymentService = new StripePaymentAdapter(stripeClient)
-const emailService = new SMTPEmailAdapter(nodemailer)
-
-const orderService = new OrderService(orderRepo, paymentService, emailService)`}
-        </Code>
-      </Paper>
-
-      {/* Armadilhas */}
-      <Paper withBorder p="xl" radius="md">
-        <Group gap="sm" mb="md">
-          <ThemeIcon size="lg" radius="md" variant="light" color="red">
-            <IconAlertTriangle size={20} />
-          </ThemeIcon>
-          <Title order={2} size="h2">
-            ⚠️ Armadilhas
-          </Title>
-        </Group>
-        <Stack gap="md">
-          <Alert color="red" icon={<IconAlertTriangle size={16} />}>
-            <Text fw={600} mb="xs">
-              🏗️ Over-engineering
-            </Text>
-            <Text size="sm">
-              CRUD simples não precisa disso. Use só quando complexidade
-              justifica.
-            </Text>
-          </Alert>
-          <Alert color="red" icon={<IconAlertTriangle size={16} />}>
-            <Text fw={600} mb="xs">
-              📚 Learning curve
-            </Text>
-            <Text size="sm">
-              Team precisa entender DI, interfaces, abstrações. Não é trivial.
-            </Text>
-          </Alert>
-          <Alert color="red" icon={<IconAlertTriangle size={16} />}>
-            <Text fw={600} mb="xs">
-              🐌 Performance overhead
-            </Text>
-            <Text size="sm">
-              Layers de abstração custam. Benchmarking é obrigatório.
-            </Text>
-          </Alert>
-        </Stack>
-      </Paper>
-
-      {/* Cases Reais */}
-      <Paper withBorder p="xl" radius="md">
-        <Group gap="sm" mb="md">
-          <ThemeIcon size="lg" radius="md" variant="light" color="violet">
-            <IconRocket size={20} />
-          </ThemeIcon>
-          <Title order={2} size="h2">
-            🚀 Cases Reais
-          </Title>
-        </Group>
         <Stack gap="md">
           <Card withBorder p="md">
-            <Text fw={600} c="blue" mb="sm">
-              🏦 Banking Systems
-            </Text>
-            <Text size="sm" mb="xs">
-              Core bancário isolado. Adapters para mainframe, APIs REST, mobile.
-            </Text>
-            <Text size="sm" c="green">
-              15 anos sem reescrever business logic, só adapters
-            </Text>
+            <Group>
+              <ThemeIcon size={40} radius="md" variant="light" color="green">
+                <IconHexagon size={20} />
+              </ThemeIcon>
+              <div>
+                <Title order={4}>E-commerce Platform</Title>
+                <Text size="sm" c="dimmed" mb="sm">
+                  Migração de tecnologias
+                </Text>
+                <List size="sm" spacing="xs">
+                  <List.Item>Core: Business logic isolado</List.Item>
+                  <List.Item>Ports: Payment, Inventory, Shipping</List.Item>
+                  <List.Item>Adapters: Stripe, PayPal, AWS S3</List.Item>
+                  <List.Item>Migração sem afetar core</List.Item>
+                </List>
+              </div>
+            </Group>
           </Card>
+
           <Card withBorder p="md">
-            <Text fw={600} c="blue" mb="sm">
-              🛒 E-commerce Platforms
-            </Text>
-            <Text size="sm" mb="xs">
-              Same core. Adapters para PostgreSQL, MongoDB, Redis, Stripe,
-              PayPal.
-            </Text>
-            <Text size="sm" c="green">
-              Migração de infra sem downtime, zero bugs de business
-            </Text>
+            <Group>
+              <ThemeIcon size={40} radius="md" variant="light" color="blue">
+                <IconRocket size={20} />
+              </ThemeIcon>
+              <div>
+                <Title order={4}>Banking System</Title>
+                <Text size="sm" c="dimmed" mb="sm">
+                  Testabilidade crítica
+                </Text>
+                <List size="sm" spacing="xs">
+                  <List.Item>Core: Transaction logic</List.Item>
+                  <List.Item>
+                    Ports: Account, Transaction, Notification
+                  </List.Item>
+                  <List.Item>Adapters: Database, SMS, Email</List.Item>
+                  <List.Item>Unit tests sem dependências</List.Item>
+                </List>
+              </div>
+            </Group>
+          </Card>
+
+          <Card withBorder p="md">
+            <Group>
+              <ThemeIcon size={40} radius="md" variant="light" color="purple">
+                <IconBulb size={20} />
+              </ThemeIcon>
+              <div>
+                <Title order={4}>SaaS Platform</Title>
+                <Text size="sm" c="dimmed" mb="sm">
+                  Projeto de longo prazo
+                </Text>
+                <List size="sm" spacing="xs">
+                  <List.Item>Core: Subscription logic</List.Item>
+                  <List.Item>Ports: User, Billing, Analytics</List.Item>
+                  <List.Item>Adapters: Multiple providers</List.Item>
+                  <List.Item>Evolução sem quebrar core</List.Item>
+                </List>
+              </div>
+            </Group>
           </Card>
         </Stack>
-      </Paper>
-
-      {/* Resumo */}
-      <Paper withBorder p="xl" radius="md">
-        <Alert color="indigo" icon={<IconBulb size={16} />} radius="md">
-          <Text fw={600} size="lg" mb="md" style={{ fontStyle: 'italic' }}>
-            "Hexagonal: business logic no centro, resto é detalhe substituível."
-          </Text>
-          <List spacing="sm">
-            <List.Item
-              icon={
-                <IconCheck size={14} color="var(--mantine-color-green-6)" />
-              }
-            >
-              <Text>
-                Flexibilidade máxima: troca qualquer tecnologia externa
-              </Text>
-            </List.Item>
-            <List.Item
-              icon={
-                <IconCheck size={14} color="var(--mantine-color-green-6)" />
-              }
-            >
-              <Text>
-                Testing easier: mock tudo, test business logic isolado
-              </Text>
-            </List.Item>
-            <List.Item
-              icon={
-                <IconCheck size={14} color="var(--mantine-color-green-6)" />
-              }
-            >
-              <Text>
-                Trade-off: complexidade inicial vs flexibilidade futuro
-              </Text>
-            </List.Item>
-          </List>
-        </Alert>
       </Paper>
     </Stack>
   );
+
+  // Pitfalls Section
+  const PitfallsSection = () => (
+    <Stack gap="xl">
+      <Paper withBorder p="xl" radius="md">
+        <Title order={3} mb="lg">
+          <IconAlertTriangle
+            size={24}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
+          />
+          Armadilhas Comuns
+        </Title>
+
+        <Stack gap="md">
+          <Alert color="red" icon={<IconAlertTriangle size={16} />} mb="md">
+            <Text size="sm" fw={600} mb={4}>
+              ❌ Over-engineering
+            </Text>
+            <Text size="sm" c="dimmed">
+              Hexagonal para projetos simples. Use apenas quando há complexidade
+              real.
+            </Text>
+          </Alert>
+
+          <Alert color="orange" icon={<IconAlertTriangle size={16} />} mb="md">
+            <Text size="sm" fw={600} mb={4}>
+              ❌ Interface explosion
+            </Text>
+            <Text size="sm" c="dimmed">
+              Muitas interfaces podem complicar. Mantenha foco no essencial.
+            </Text>
+          </Alert>
+
+          <Alert color="yellow" icon={<IconAlertTriangle size={16} />} mb="md">
+            <Text size="sm" fw={600} mb={4}>
+              ❌ Performance overhead
+            </Text>
+            <Text size="sm" c="dimmed">
+              Muitas abstrações podem impactar performance. Use com moderação.
+            </Text>
+          </Alert>
+
+          <Alert color="green" icon={<IconCheck size={16} />} mb="md">
+            <Text size="sm" fw={600} mb={4}>
+              ✅ Como evitar
+            </Text>
+            <Text size="sm" c="dimmed">
+              <strong>Use quando necessário:</strong> Complexidade real apenas
+              <br />
+              <strong>Mantenha simples:</strong> Interfaces essenciais
+              <br />
+              <strong>Monitore performance:</strong> Abstrações com moderação
+            </Text>
+          </Alert>
+        </Stack>
+      </Paper>
+    </Stack>
+  );
+
+  // References Section
+  const ReferencesSection = () => (
+    <Stack gap="xl">
+      <Paper withBorder p="xl" radius="md">
+        <Title order={3} mb="lg">
+          <IconCode
+            size={24}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
+          />
+          Referências e Recursos
+        </Title>
+
+        <Stack gap="md">
+          <Card withBorder p="md">
+            <Title order={4} mb="sm">
+              Ferramentas
+            </Title>
+            <List size="sm" spacing="xs">
+              <List.Item>
+                <strong>Dependency Injection:</strong> Inversify, Awilix
+              </List.Item>
+              <List.Item>
+                <strong>Testing:</strong> Jest, Mockito, TestContainers
+              </List.Item>
+              <List.Item>
+                <strong>Architecture:</strong> Clean Architecture, DDD
+              </List.Item>
+              <List.Item>
+                <strong>Frameworks:</strong> NestJS, Spring Boot
+              </List.Item>
+            </List>
+          </Card>
+
+          <Card withBorder p="md">
+            <Title order={4} mb="sm">
+              Casos de Sucesso
+            </Title>
+            <List size="sm" spacing="xs">
+              <List.Item>
+                <strong>Netflix:</strong> Microservices architecture
+              </List.Item>
+              <List.Item>
+                <strong>Spotify:</strong> Domain-driven design
+              </List.Item>
+              <List.Item>
+                <strong>Uber:</strong> Service-oriented architecture
+              </List.Item>
+              <List.Item>
+                <strong>Airbnb:</strong> Clean architecture
+              </List.Item>
+            </List>
+          </Card>
+        </Stack>
+      </Paper>
+    </Stack>
+  );
+
+  const tabs = createArchitectureTabs(
+    <OverviewSection />,
+    <ImplementationSection />,
+    <ExamplesSection />,
+    <PitfallsSection />,
+    <ReferencesSection />
+  );
+
+  return <MobileTabs items={tabs} defaultTab="overview" />;
 }
 
 HexagonalArchitecture.metadata = {

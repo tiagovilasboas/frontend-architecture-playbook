@@ -17,10 +17,14 @@ import {
   IconBulb,
   IconRocket,
   IconStack3,
+  IconCode,
 } from '@tabler/icons-react';
+import MobileTabs from '../../components/MobileTabs';
+import { createArchitectureTabs } from '../../components/MobileTabsHelpers';
 
 export default function LayeredArchitecture() {
-  return (
+  // Overview Section
+  const OverviewSection = () => (
     <Stack gap="xl">
       {/* Hero Section */}
       <div>
@@ -82,7 +86,12 @@ class ProductRepository {
 }`}
         </Code>
       </Paper>
+    </Stack>
+  );
 
+  // Implementation Section
+  const ImplementationSection = () => (
+    <Stack gap="xl">
       {/* Quando usar? */}
       <Paper withBorder p="xl" radius="md">
         <Title order={2} size="h2" mb="md">
@@ -134,7 +143,7 @@ class ProductRepository {
             <Text size="sm" c="dimmed" mb="md">
               Recebe requests, formata responses
             </Text>
-            <Code size="sm" mb="md">
+            <Code mb="md">
               {`// Express.js controller
 app.get('/api/orders', async (req, res) => {
   const orders = await orderService.getOrdersByUser(req.user.id)
@@ -164,7 +173,7 @@ app.get('/api/orders', async (req, res) => {
             <Text size="sm" c="dimmed" mb="md">
               Regras de negócio, validações, orquestração
             </Text>
-            <Code size="sm" mb="md">
+            <Code mb="md">
               {`class OrderService {
   async createOrder(userId: string, items: CartItem[]) {
     // Business rules
@@ -198,269 +207,243 @@ app.get('/api/orders', async (req, res) => {
               <Badge variant="light" color="orange" size="lg">
                 Data
               </Badge>
-              <Text fw={600}>Repositories, DAOs, External APIs</Text>
+              <Text fw={600}>Repositories, DAOs, Database</Text>
             </Group>
             <Text size="sm" c="dimmed" mb="md">
-              Acesso a dados, persistência, integrações
+              Persistência, queries, acesso a dados
             </Text>
-            <Code size="sm" mb="md">
+            <Code mb="md">
               {`class OrderRepository {
   async save(order: Order) {
-    return await this.db.transaction(async (tx) => {
-      const savedOrder = await tx.orders.create(order)
-      
-      for (const item of order.items) {
-        await tx.orderItems.create({
-          orderId: savedOrder.id,
-          productId: item.productId,
-          quantity: item.quantity,
-          price: item.price
-        })
-      }
-      
-      return savedOrder
-    })
+    return await db.collection('orders').insertOne(order)
   }
   
-  async findByUserId(userId: string) {
-    return await this.db.orders.findMany({
-      where: { userId },
-      include: { items: true }
-    })
+  async findByUser(userId: string) {
+    return await db.collection('orders')
+      .find({ userId })
+      .sort({ createdAt: -1 })
+      .toArray()
   }
 }`}
             </Code>
             <List size="sm" spacing={4}>
               <List.Item>Database operations</List.Item>
-              <List.Item>External API calls</List.Item>
+              <List.Item>External APIs</List.Item>
               <List.Item>File system access</List.Item>
               <List.Item>Cache management</List.Item>
             </List>
           </Card>
         </Stack>
       </Paper>
+    </Stack>
+  );
 
-      {/* Por que vale a pena? */}
+  // Examples Section
+  const ExamplesSection = () => (
+    <Stack gap="xl">
       <Paper withBorder p="xl" radius="md">
-        <Group gap="sm" mb="md">
-          <ThemeIcon size="lg" radius="md" variant="light" color="green">
-            <IconCheck size={20} />
-          </ThemeIcon>
-          <Title order={2} size="h2">
-            💚 Por que vale a pena?
-          </Title>
-        </Group>
-        <Stack gap="md">
-          <Alert color="green" icon={<IconCheck size={16} />}>
-            <Text fw={600} mb="xs">
-              📖 Simplicidade
-            </Text>
-            <Text size="sm">
-              Todo mundo entende. Apresentação, negócio, dados. Linear, óbvio.
-            </Text>
-          </Alert>
-          <Alert color="green" icon={<IconCheck size={16} />}>
-            <Text fw={600} mb="xs">
-              🚀 Produtividade alta
-            </Text>
-            <Text size="sm">
-              Menos ceremony que Clean. Mais estrutura que bagunça. Sweet spot.
-            </Text>
-          </Alert>
-          <Alert color="green" icon={<IconCheck size={16} />}>
-            <Text fw={600} mb="xs">
-              👥 Onboarding fácil
-            </Text>
-            <Text size="sm">
-              Dev novo entende em 1 dia. Padrão familiar, conceitos claros.
-            </Text>
-          </Alert>
-        </Stack>
-      </Paper>
-
-      {/* Layered vs Clean */}
-      <Paper withBorder p="xl" radius="md">
-        <Title order={2} size="h2" mb="md">
-          ⚖️ Layered vs Clean Architecture
+        <Title order={3} mb="lg">
+          <IconBulb
+            size={24}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
+          />
+          Casos Reais
         </Title>
-        <Group grow align="flex-start" gap="lg">
-          <Card withBorder p="md">
-            <Badge variant="light" color="teal" mb="sm">
-              Layered
-            </Badge>
-            <List size="sm" spacing={4} mb="md">
-              <List.Item>3 camadas simples</List.Item>
-              <List.Item>Dependência top-down</List.Item>
-              <List.Item>Fácil de entender</List.Item>
-              <List.Item>Rápido de implementar</List.Item>
-              <List.Item>Menos flexível</List.Item>
-            </List>
-            <Text size="xs" c="dimmed">
-              Melhor para: projetos médios, teams mistos, deadlines apertados
-            </Text>
-          </Card>
 
-          <Card withBorder p="md">
-            <Badge variant="light" color="blue" mb="sm">
-              Clean
-            </Badge>
-            <List size="sm" spacing={4} mb="md">
-              <List.Item>4+ camadas complexas</List.Item>
-              <List.Item>Dependency Inversion</List.Item>
-              <List.Item>Curva de aprendizado</List.Item>
-              <List.Item>Setup inicial pesado</List.Item>
-              <List.Item>Flexibilidade máxima</List.Item>
-            </List>
-            <Text size="xs" c="dimmed">
-              Melhor para: projetos grandes, teams sêniores, long-term
-              maintenance
-            </Text>
-          </Card>
-        </Group>
-      </Paper>
-
-      {/* Armadilhas */}
-      <Paper withBorder p="xl" radius="md">
-        <Group gap="sm" mb="md">
-          <ThemeIcon size="lg" radius="md" variant="light" color="red">
-            <IconAlertTriangle size={20} />
-          </ThemeIcon>
-          <Title order={2} size="h2">
-            ⚠️ Armadilhas
-          </Title>
-        </Group>
-        <Stack gap="md">
-          <Alert color="red" icon={<IconAlertTriangle size={16} />}>
-            <Text fw={600} mb="xs">
-              🔗 Tight coupling
-            </Text>
-            <Text size="sm">
-              Camadas ficam muito dependentes. Mudança em uma quebra outras.
-            </Text>
-          </Alert>
-          <Alert color="red" icon={<IconAlertTriangle size={16} />}>
-            <Text fw={600} mb="xs">
-              💧 Business logic leak
-            </Text>
-            <Text size="sm">
-              Regras de negócio vazam pra presentation ou data. Fica bagunçado.
-            </Text>
-          </Alert>
-          <Alert color="red" icon={<IconAlertTriangle size={16} />}>
-            <Text fw={600} mb="xs">
-              🧪 Testing difícil
-            </Text>
-            <Text size="sm">
-              Sem dependency inversion, mock é mais complicado. Integration
-              tests pesados.
-            </Text>
-          </Alert>
-        </Stack>
-      </Paper>
-
-      {/* Cases Reais */}
-      <Paper withBorder p="xl" radius="md">
-        <Group gap="sm" mb="md">
-          <ThemeIcon size="lg" radius="md" variant="light" color="violet">
-            <IconRocket size={20} />
-          </ThemeIcon>
-          <Title order={2} size="h2">
-            🚀 Cases Reais
-          </Title>
-        </Group>
         <Stack gap="md">
           <Card withBorder p="md">
-            <Text fw={600} c="blue" mb="sm">
-              🏢 Enterprise Apps
-            </Text>
-            <Text size="sm" mb="xs">
-              CRMs, ERPs, dashboards internos. Funcionalidade &gt;
-              flexibilidade.
-            </Text>
-            <Text size="sm" c="green">
-              Desenvolvimento rápido, manutenção estável por anos
-            </Text>
+            <Group>
+              <ThemeIcon size={40} radius="md" variant="light" color="green">
+                <IconStack3 size={20} />
+              </ThemeIcon>
+              <div>
+                <Title order={4}>E-commerce Platform</Title>
+                <Text size="sm" c="dimmed" mb="sm">
+                  Separação clara de responsabilidades
+                </Text>
+                <List size="sm" spacing="xs">
+                  <List.Item>Presentation: REST APIs, admin panel</List.Item>
+                  <List.Item>Business: Order processing, inventory</List.Item>
+                  <List.Item>Data: Product catalog, user management</List.Item>
+                  <List.Item>Escalabilidade e manutenibilidade</List.Item>
+                </List>
+              </div>
+            </Group>
           </Card>
+
           <Card withBorder p="md">
-            <Text fw={600} c="blue" mb="sm">
-              📊 Business Applications
-            </Text>
-            <Text size="sm" mb="xs">
-              Sistemas de gestão, relatórios, workflows. Regras claras e
-              estáveis.
-            </Text>
-            <Text size="sm" c="green">
-              Produtividade alta, onboarding de devs em dias
-            </Text>
+            <Group>
+              <ThemeIcon size={40} radius="md" variant="light" color="blue">
+                <IconRocket size={20} />
+              </ThemeIcon>
+              <div>
+                <Title order={4}>Content Management</Title>
+                <Text size="sm" c="dimmed" mb="sm">
+                  WordPress-like system
+                </Text>
+                <List size="sm" spacing="xs">
+                  <List.Item>Presentation: Admin UI, public site</List.Item>
+                  <List.Item>Business: Content workflow, permissions</List.Item>
+                  <List.Item>Data: Articles, media, users</List.Item>
+                  <List.Item>
+                    Flexibilidade para diferentes tipos de conteúdo
+                  </List.Item>
+                </List>
+              </div>
+            </Group>
+          </Card>
+
+          <Card withBorder p="md">
+            <Group>
+              <ThemeIcon size={40} radius="md" variant="light" color="purple">
+                <IconBulb size={20} />
+              </ThemeIcon>
+              <div>
+                <Title order={4}>SaaS Dashboard</Title>
+                <Text size="sm" c="dimmed" mb="sm">
+                  Analytics e métricas
+                </Text>
+                <List size="sm" spacing="xs">
+                  <List.Item>Presentation: Charts, tables, filters</List.Item>
+                  <List.Item>
+                    Business: Data aggregation, calculations
+                  </List.Item>
+                  <List.Item>Data: Metrics, events, user data</List.Item>
+                  <List.Item>Performance otimizada</List.Item>
+                </List>
+              </div>
+            </Group>
           </Card>
         </Stack>
-      </Paper>
-
-      {/* Stack */}
-      <Paper withBorder p="xl" radius="md">
-        <Title order={2} size="h2" mb="md">
-          🛠️ Stack Típico
-        </Title>
-        <Group grow align="flex-start" gap="lg">
-          <Card withBorder p="md">
-            <Badge variant="light" color="blue" mb="sm">
-              Backend
-            </Badge>
-            <List size="sm" spacing={4}>
-              <List.Item>Express.js + TypeScript</List.Item>
-              <List.Item>Spring Boot + Java</List.Item>
-              <List.Item>ASP.NET Core + C#</List.Item>
-              <List.Item>Django + Python</List.Item>
-            </List>
-          </Card>
-          <Card withBorder p="md">
-            <Badge variant="light" color="green" mb="sm">
-              Database
-            </Badge>
-            <List size="sm" spacing={4}>
-              <List.Item>PostgreSQL + Prisma</List.Item>
-              <List.Item>MySQL + Sequelize</List.Item>
-              <List.Item>MongoDB + Mongoose</List.Item>
-              <List.Item>SQL Server + Entity Framework</List.Item>
-            </List>
-          </Card>
-        </Group>
-      </Paper>
-
-      {/* Resumo */}
-      <Paper withBorder p="xl" radius="md">
-        <Alert color="teal" icon={<IconBulb size={16} />} radius="md">
-          <Text fw={600} size="lg" mb="md" style={{ fontStyle: 'italic' }}>
-            "Layered: o KISS principle aplicado à arquitetura. Simples,
-            funciona, todo mundo entende."
-          </Text>
-          <List spacing="sm">
-            <List.Item
-              icon={
-                <IconCheck size={14} color="var(--mantine-color-green-6)" />
-              }
-            >
-              <Text>3 camadas: Presentation → Business → Data</Text>
-            </List.Item>
-            <List.Item
-              icon={
-                <IconCheck size={14} color="var(--mantine-color-green-6)" />
-              }
-            >
-              <Text>Simplicidade vs flexibilidade: chose simplicity</Text>
-            </List.Item>
-            <List.Item
-              icon={
-                <IconCheck size={14} color="var(--mantine-color-green-6)" />
-              }
-            >
-              <Text>Sweet spot para projetos médios e teams mistos</Text>
-            </List.Item>
-          </List>
-        </Alert>
       </Paper>
     </Stack>
   );
+
+  // Pitfalls Section
+  const PitfallsSection = () => (
+    <Stack gap="xl">
+      <Paper withBorder p="xl" radius="md">
+        <Title order={3} mb="lg">
+          <IconAlertTriangle
+            size={24}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
+          />
+          Armadilhas Comuns
+        </Title>
+
+        <Stack gap="md">
+          <Alert color="red" icon={<IconAlertTriangle size={16} />} mb="md">
+            <Text size="sm" fw={600} mb={4}>
+              ❌ Anemic domain model
+            </Text>
+            <Text size="sm" c="dimmed">
+              Business logic vaza para services. Mantenha lógica no domínio.
+            </Text>
+          </Alert>
+
+          <Alert color="orange" icon={<IconAlertTriangle size={16} />} mb="md">
+            <Text size="sm" fw={600} mb={4}>
+              ❌ Fat controllers
+            </Text>
+            <Text size="sm" c="dimmed">
+              Controllers fazem muito. Delegue para services.
+            </Text>
+          </Alert>
+
+          <Alert color="yellow" icon={<IconAlertTriangle size={16} />} mb="md">
+            <Text size="sm" fw={600} mb={4}>
+              ❌ Circular dependencies
+            </Text>
+            <Text size="sm" c="dimmed">
+              Camadas dependem umas das outras. Mantenha dependência
+              unidirecional.
+            </Text>
+          </Alert>
+
+          <Alert color="green" icon={<IconCheck size={16} />} mb="md">
+            <Text size="sm" fw={600} mb={4}>
+              ✅ Como evitar
+            </Text>
+            <Text size="sm" c="dimmed">
+              <strong>Mantenha lógica no domínio:</strong> Rich domain model
+              <br />
+              <strong>Controllers magros:</strong> Só routing e formatação
+              <br />
+              <strong>Dependência unidirecional:</strong> Presentation →
+              Business → Data
+            </Text>
+          </Alert>
+        </Stack>
+      </Paper>
+    </Stack>
+  );
+
+  // References Section
+  const ReferencesSection = () => (
+    <Stack gap="xl">
+      <Paper withBorder p="xl" radius="md">
+        <Title order={3} mb="lg">
+          <IconCode
+            size={24}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
+          />
+          Referências e Recursos
+        </Title>
+
+        <Stack gap="md">
+          <Card withBorder p="md">
+            <Title order={4} mb="sm">
+              Ferramentas
+            </Title>
+            <List size="sm" spacing="xs">
+              <List.Item>
+                <strong>Frameworks:</strong> Express.js, Fastify, Koa
+              </List.Item>
+              <List.Item>
+                <strong>Testing:</strong> Jest, Mocha, Supertest
+              </List.Item>
+              <List.Item>
+                <strong>Architecture:</strong> Clean Architecture, DDD
+              </List.Item>
+              <List.Item>
+                <strong>Patterns:</strong> Repository, Service Layer
+              </List.Item>
+            </List>
+          </Card>
+
+          <Card withBorder p="md">
+            <Title order={4} mb="sm">
+              Casos de Sucesso
+            </Title>
+            <List size="sm" spacing="xs">
+              <List.Item>
+                <strong>GitHub:</strong> API design
+              </List.Item>
+              <List.Item>
+                <strong>Stripe:</strong> Payment processing
+              </List.Item>
+              <List.Item>
+                <strong>Shopify:</strong> E-commerce platform
+              </List.Item>
+              <List.Item>
+                <strong>Discord:</strong> Real-time communication
+              </List.Item>
+            </List>
+          </Card>
+        </Stack>
+      </Paper>
+    </Stack>
+  );
+
+  const tabs = createArchitectureTabs(
+    <OverviewSection />,
+    <ImplementationSection />,
+    <ExamplesSection />,
+    <PitfallsSection />,
+    <ReferencesSection />
+  );
+
+  return <MobileTabs items={tabs} defaultTab="overview" />;
 }
 
 LayeredArchitecture.metadata = {
