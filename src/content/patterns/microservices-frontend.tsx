@@ -17,10 +17,14 @@ import {
   IconBulb,
   IconRocket,
   IconNetworkOff,
+  IconCode,
 } from '@tabler/icons-react';
+import MobileTabs from '../../components/MobileTabs';
+import { createArchitectureTabs } from '../../components/MobileTabsHelpers';
 
 export default function MicroservicesFrontendArchitecture() {
-  return (
+  // Overview Section
+  const OverviewSection = () => (
     <Stack gap="xl">
       {/* Hero Section */}
       <div>
@@ -90,7 +94,12 @@ shell-app/
 └── deploy: main-app.vercel.app`}
         </Code>
       </Paper>
+    </Stack>
+  );
 
+  // Implementation Section
+  const ImplementationSection = () => (
+    <Stack gap="xl">
       {/* Quando usar? */}
       <Paper withBorder p="xl" radius="md">
         <Title order={2} size="h2" mb="md">
@@ -150,7 +159,7 @@ shell-app/
             <Text size="sm" c="dimmed" mb="md">
               Micro-frontends como bibliotecas
             </Text>
-            <Code size="sm" mb="md">
+            <Code mb="md">
               {`// Shell app - instala micro-frontends
 {
   "dependencies": {
@@ -189,7 +198,7 @@ function Dashboard() {
             <Text size="sm" c="dimmed" mb="md">
               Carregar micro-frontends dinamicamente
             </Text>
-            <Code size="sm" mb="md">
+            <Code mb="md">
               {`// webpack.config.js - Module Federation
 new ModuleFederationPlugin({
   name: 'shell',
@@ -199,446 +208,224 @@ new ModuleFederationPlugin({
   }
 })
 
-// Shell carrega dinamicamente  
-const UserProfile = React.lazy(() => import('userApp/UserProfile'))
-const OrderHistory = React.lazy(() => import('orderApp/OrderHistory'))
-
-function Dashboard() {
-  return (
-    <Suspense fallback={<Loading />}>
-      <UserProfile userId={currentUser.id} />
-      <OrderHistory userId={currentUser.id} />
-    </Suspense>
-  )
-}`}
+// Shell carrega dinamicamente
+const UserApp = React.lazy(() => import('userApp/UserProfile'))
+const OrderApp = React.lazy(() => import('orderApp/OrderHistory'))`}
             </Code>
             <List size="sm" spacing={4}>
-              <List.Item>✅ Deploy independente, tech diversity</List.Item>
-              <List.Item>❌ Runtime complexity, network dependency</List.Item>
+              <List.Item>✅ Deploy independente, runtime loading</List.Item>
+              <List.Item>❌ Complexidade, performance overhead</List.Item>
+            </List>
+          </Card>
+        </Stack>
+      </Paper>
+    </Stack>
+  );
+
+  // Examples Section
+  const ExamplesSection = () => (
+    <Stack gap="xl">
+      <Paper withBorder p="xl" radius="md">
+        <Title order={3} mb="lg">
+          <IconBulb
+            size={24}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
+          />
+          Casos Reais
+        </Title>
+
+        <Stack gap="md">
+          <Card withBorder p="md">
+            <Group>
+              <ThemeIcon size={40} radius="md" variant="light" color="green">
+                <IconCode size={20} />
+              </ThemeIcon>
+              <div>
+                <Title order={4}>Spotify</Title>
+                <Text size="sm" c="dimmed" mb="sm">
+                  Micro-frontends para diferentes funcionalidades
+                </Text>
+                <List size="sm" spacing="xs">
+                  <List.Item>Player: React</List.Item>
+                  <List.Item>Discovery: Angular</List.Item>
+                  <List.Item>Library: Vue</List.Item>
+                  <List.Item>Deploy independente por feature</List.Item>
+                </List>
+              </div>
+            </Group>
+          </Card>
+
+          <Card withBorder p="md">
+            <Group>
+              <ThemeIcon size={40} radius="md" variant="light" color="blue">
+                <IconRocket size={20} />
+              </ThemeIcon>
+              <div>
+                <Title order={4}>IKEA</Title>
+                <Text size="sm" c="dimmed" mb="sm">
+                  E-commerce com micro-frontends
+                </Text>
+                <List size="sm" spacing="xs">
+                  <List.Item>Catalog: React</List.Item>
+                  <List.Item>Checkout: Angular</List.Item>
+                  <List.Item>Account: Vue</List.Item>
+                  <List.Item>Times independentes por domínio</List.Item>
+                </List>
+              </div>
+            </Group>
+          </Card>
+
+          <Card withBorder p="md">
+            <Group>
+              <ThemeIcon size={40} radius="md" variant="light" color="purple">
+                <IconBulb size={20} />
+              </ThemeIcon>
+              <div>
+                <Title order={4}>Netflix</Title>
+                <Text size="sm" c="dimmed" mb="sm">
+                  Streaming com micro-frontends
+                </Text>
+                <List size="sm" spacing="xs">
+                  <List.Item>Browse: React</List.Item>
+                  <List.Item>Player: Custom</List.Item>
+                  <List.Item>Account: Angular</List.Item>
+                  <List.Item>Deploy por dispositivo</List.Item>
+                </List>
+              </div>
+            </Group>
+          </Card>
+        </Stack>
+      </Paper>
+    </Stack>
+  );
+
+  // Pitfalls Section
+  const PitfallsSection = () => (
+    <Stack gap="xl">
+      <Paper withBorder p="xl" radius="md">
+        <Title order={3} mb="lg">
+          <IconAlertTriangle
+            size={24}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
+          />
+          Armadilhas Comuns
+        </Title>
+
+        <Stack gap="md">
+          <Alert color="red" icon={<IconAlertTriangle size={16} />} mb="md">
+            <Text size="sm" fw={600} mb={4}>
+              ❌ Complexidade excessiva
+            </Text>
+            <Text size="sm" c="dimmed">
+              Micro-frontends para times pequenos é overkill. Use apenas quando
+              há múltiplos times independentes.
+            </Text>
+          </Alert>
+
+          <Alert color="orange" icon={<IconAlertTriangle size={16} />} mb="md">
+            <Text size="sm" fw={600} mb={4}>
+              ❌ Performance degradada
+            </Text>
+            <Text size="sm" c="dimmed">
+              Múltiplos bundles, carregamento lento. Use code splitting e lazy
+              loading.
+            </Text>
+          </Alert>
+
+          <Alert color="yellow" icon={<IconAlertTriangle size={16} />} mb="md">
+            <Text size="sm" fw={600} mb={4}>
+              ❌ Inconsistência de UX
+            </Text>
+            <Text size="sm" c="dimmed">
+              Diferentes tecnologias podem criar UX inconsistente. Use design
+              system compartilhado.
+            </Text>
+          </Alert>
+
+          <Alert color="green" icon={<IconCheck size={16} />} mb="md">
+            <Text size="sm" fw={600} mb={4}>
+              ✅ Como evitar
+            </Text>
+            <Text size="sm" c="dimmed">
+              <strong>Comece simples:</strong> Monolito antes de micro-frontends
+              <br />
+              <strong>Use design system:</strong> Consistência visual
+              <br />
+              <strong>Otimize performance:</strong> Code splitting e lazy
+              loading
+            </Text>
+          </Alert>
+        </Stack>
+      </Paper>
+    </Stack>
+  );
+
+  // References Section
+  const ReferencesSection = () => (
+    <Stack gap="xl">
+      <Paper withBorder p="xl" radius="md">
+        <Title order={3} mb="lg">
+          <IconCode
+            size={24}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
+          />
+          Referências e Recursos
+        </Title>
+
+        <Stack gap="md">
+          <Card withBorder p="md">
+            <Title order={4} mb="sm">
+              Ferramentas
+            </Title>
+            <List size="sm" spacing="xs">
+              <List.Item>
+                <strong>Module Federation:</strong> Webpack 5
+              </List.Item>
+              <List.Item>
+                <strong>Single-SPA:</strong> Framework micro-frontends
+              </List.Item>
+              <List.Item>
+                <strong>Nx:</strong> Monorepo com micro-frontends
+              </List.Item>
+              <List.Item>
+                <strong>Bit:</strong> Component-driven development
+              </List.Item>
             </List>
           </Card>
 
           <Card withBorder p="md">
-            <Group gap="sm" mb="sm">
-              <Badge variant="light" color="orange" size="lg">
-                Iframe
-              </Badge>
-              <Text fw={600}>Isolamento total</Text>
-            </Group>
-            <Text size="sm" c="dimmed" mb="md">
-              Cada micro-frontend como iframe
-            </Text>
-            <Code size="sm" mb="md">
-              {`// Shell com iframes
-function Dashboard() {
-  return (
-    <Layout>
-      <iframe 
-        src="https://user-frontend.company.com/profile" 
-        width="100%" 
-        height="400px"
-        title="User Profile"
-      />
-      <iframe 
-        src="https://order-frontend.company.com/history"
-        width="100%" 
-        height="600px"
-        title="Order History" 
-      />
-    </Layout>
-  )
-}`}
-            </Code>
-            <List size="sm" spacing={4}>
-              <List.Item>✅ Isolamento perfeito, zero coupling</List.Item>
+            <Title order={4} mb="sm">
+              Casos de Sucesso
+            </Title>
+            <List size="sm" spacing="xs">
               <List.Item>
-                ❌ UX ruim, SEO problem, performance overhead
+                <strong>Spotify:</strong> Múltiplas tecnologias
+              </List.Item>
+              <List.Item>
+                <strong>IKEA:</strong> E-commerce escalável
+              </List.Item>
+              <List.Item>
+                <strong>Netflix:</strong> Streaming multiplataforma
+              </List.Item>
+              <List.Item>
+                <strong>Amazon:</strong> E-commerce gigante
               </List.Item>
             </List>
           </Card>
         </Stack>
       </Paper>
-
-      {/* Por que vale a pena? */}
-      <Paper withBorder p="xl" radius="md">
-        <Group gap="sm" mb="md">
-          <ThemeIcon size="lg" radius="md" variant="light" color="green">
-            <IconCheck size={20} />
-          </ThemeIcon>
-          <Title order={2} size="h2">
-            💚 Por que vale a pena?
-          </Title>
-        </Group>
-        <Stack gap="md">
-          <Alert color="green" icon={<IconCheck size={16} />}>
-            <Text fw={600} mb="xs">
-              👥 Team autonomy
-            </Text>
-            <Text size="sm">
-              Cada time domina seu pedaço. Deploy, stack, roadmap independentes.
-            </Text>
-          </Alert>
-          <Alert color="green" icon={<IconCheck size={16} />}>
-            <Text fw={600} mb="xs">
-              🚀 Deploy velocity
-            </Text>
-            <Text size="sm">
-              Payment team não espera User team. Features chegam mais rápido.
-            </Text>
-          </Alert>
-          <Alert color="green" icon={<IconCheck size={16} />}>
-            <Text fw={600} mb="xs">
-              🔧 Technology diversity
-            </Text>
-            <Text size="sm">
-              React experts fazem React. Vue experts fazem Vue. Best tool for
-              job.
-            </Text>
-          </Alert>
-          <Alert color="green" icon={<IconCheck size={16} />}>
-            <Text fw={600} mb="xs">
-              📈 Scaling organization
-            </Text>
-            <Text size="sm">
-              30 devs num repo = merge hell. 5 times com 6 devs = produtividade.
-            </Text>
-          </Alert>
-        </Stack>
-      </Paper>
-
-      {/* Exemplo Prático */}
-      <Paper withBorder p="xl" radius="md">
-        <Title order={2} size="h2" mb="md">
-          💻 Exemplo: E-commerce Multi-team
-        </Title>
-        <Code block mb="md">
-          {`// 🏗️ Shell App - orquestra micro-frontends
-// apps/shell/src/App.tsx
-import { Suspense } from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { ModuleRegistry } from './moduleRegistry'
-
-// Lazy load micro-frontends
-const UserApp = React.lazy(() => import('userApp/App'))
-const CatalogApp = React.lazy(() => import('catalogApp/App')) 
-const CartApp = React.lazy(() => import('cartApp/App'))
-const OrderApp = React.lazy(() => import('orderApp/App'))
-
-function App() {
-  const [user, setUser] = useState(null)
-  const [cart, setCart] = useState([])
-  
-  // Global state management via context
-  const globalState = {
-    user,
-    cart,
-    updateUser: setUser,
-    updateCart: setCart
-  }
-  
-  return (
-    <GlobalStateProvider value={globalState}>
-      <BrowserRouter>
-        <Layout>
-          <Header />
-          <Suspense fallback={<PageLoader />}>
-            <Routes>
-              <Route path="/profile/*" element={<UserApp />} />
-              <Route path="/products/*" element={<CatalogApp />} />
-              <Route path="/cart" element={<CartApp />} />
-              <Route path="/orders/*" element={<OrderApp />} />
-            </Routes>
-          </Suspense>
-          <Footer />
-        </Layout>
-      </BrowserRouter>
-    </GlobalStateProvider>
-  )
-}
-
-// 👤 User Micro-frontend (React + TypeScript)
-// apps/user/src/App.tsx
-export default function UserApp() {
-  const { user, updateUser } = useGlobalState()
-  
-  return (
-    <Routes>
-      <Route path="/profile" element={<UserProfile user={user} />} />
-      <Route path="/settings" element={<UserSettings user={user} onUpdate={updateUser} />} />
-      <Route path="/addresses" element={<AddressBook user={user} />} />
-    </Routes>
-  )
-}
-
-// 🛒 Cart Micro-frontend (Vue 3 + Composition API) 
-// apps/cart/src/App.vue
-<template>
-  <div>
-    <CartItems :items="cart.items" @update="updateCartItems" />
-    <CartSummary :total="cart.total" />
-    <CheckoutButton @click="startCheckout" />
-  </div>
-</template>
-
-<script setup>
-import { inject } from 'vue'
-
-const globalState = inject('globalState')
-const { cart, updateCart } = globalState
-
-const updateCartItems = (newItems) => {
-  updateCart({ ...cart, items: newItems })
-}
-
-const startCheckout = () => {
-  // Cross-app navigation
-  window.location.href = '/orders/checkout'
-}
-</script>
-
-// 📦 Order Micro-frontend (Svelte + SvelteKit)
-// apps/order/src/App.svelte
-<script>
-  import { onMount } from 'svelte'
-  import { globalState } from './stores/global.js'
-  
-  let orders = []
-  
-  onMount(async () => {
-    orders = await fetchUserOrders($globalState.user.id)
-  })
-</script>
-
-<main>
-  <OrderHistory {orders} />
-  <OrderTracking />
-</main>
-
-// 🔧 Module Federation Config
-// apps/shell/webpack.config.js
-const ModuleFederationPlugin = require('@module-federation/webpack')
-
-module.exports = {
-  plugins: [
-    new ModuleFederationPlugin({
-      name: 'shell',
-      remotes: {
-        userApp: process.env.NODE_ENV === 'production' 
-          ? 'userApp@https://user.company.com/remoteEntry.js'
-          : 'userApp@http://localhost:3001/remoteEntry.js',
-        catalogApp: process.env.NODE_ENV === 'production'
-          ? 'catalogApp@https://catalog.company.com/remoteEntry.js' 
-          : 'catalogApp@http://localhost:3002/remoteEntry.js',
-        cartApp: 'cartApp@http://localhost:3003/remoteEntry.js',
-        orderApp: 'orderApp@http://localhost:3004/remoteEntry.js'
-      },
-      shared: {
-        react: { singleton: true },
-        'react-dom': { singleton: true },
-        '@company/design-system': { singleton: true }
-      }
-    })
-  ]
-}
-
-// 📡 Cross-app Communication
-// libs/event-bus/src/index.ts
-class MicroFrontendEventBus {
-  private events = new Map<string, Function[]>()
-  
-  emit(event: string, data: any) {
-    const handlers = this.events.get(event) || []
-    handlers.forEach(handler => handler(data))
-  }
-  
-  on(event: string, handler: Function) {
-    const handlers = this.events.get(event) || []
-    this.events.set(event, [...handlers, handler])
-  }
-  
-  off(event: string, handler: Function) {
-    const handlers = this.events.get(event) || []
-    this.events.set(event, handlers.filter(h => h !== handler))
-  }
-}
-
-export const eventBus = new MicroFrontendEventBus()
-
-// Usage across micro-frontends
-eventBus.emit('cart:item-added', { productId: '123', quantity: 2 })
-eventBus.on('user:logged-out', () => {
-  // Clear cart, redirect to login, etc
-})`}
-        </Code>
-      </Paper>
-
-      {/* Armadilhas */}
-      <Paper withBorder p="xl" radius="md">
-        <Group gap="sm" mb="md">
-          <ThemeIcon size="lg" radius="md" variant="light" color="red">
-            <IconAlertTriangle size={20} />
-          </ThemeIcon>
-          <Title order={2} size="h2">
-            ⚠️ Armadilhas
-          </Title>
-        </Group>
-        <Stack gap="md">
-          <Alert color="red" icon={<IconAlertTriangle size={16} />}>
-            <Text fw={600} mb="xs">
-              🕸️ Integration complexity
-            </Text>
-            <Text size="sm">
-              Cross-app communication, shared state, routing. Complexity
-              explode.
-            </Text>
-          </Alert>
-          <Alert color="red" icon={<IconAlertTriangle size={16} />}>
-            <Text fw={600} mb="xs">
-              📦 Bundle duplication
-            </Text>
-            <Text size="sm">
-              Cada app carrega React, libs comuns. Network overhead
-              significativo.
-            </Text>
-          </Alert>
-          <Alert color="red" icon={<IconAlertTriangle size={16} />}>
-            <Text fw={600} mb="xs">
-              🔧 DevEx overhead
-            </Text>
-            <Text size="sm">
-              Local development = 5 apps rodando. Build, test, debug mais
-              complexo.
-            </Text>
-          </Alert>
-          <Alert color="red" icon={<IconAlertTriangle size={16} />}>
-            <Text fw={600} mb="xs">
-              🎨 UX inconsistency
-            </Text>
-            <Text size="sm">
-              Design system não garantido. User experience fragmentada.
-            </Text>
-          </Alert>
-        </Stack>
-      </Paper>
-
-      {/* Cases Reais */}
-      <Paper withBorder p="xl" radius="md">
-        <Group gap="sm" mb="md">
-          <ThemeIcon size="lg" radius="md" variant="light" color="violet">
-            <IconRocket size={20} />
-          </ThemeIcon>
-          <Title order={2} size="h2">
-            🚀 Cases Reais
-          </Title>
-        </Group>
-        <Stack gap="md">
-          <Card withBorder p="md">
-            <Text fw={600} c="blue" mb="sm">
-              🛒 Amazon
-            </Text>
-            <Text size="sm" mb="xs">
-              Times autônomos por categoria: Books, Electronics, Fashion. Deploy
-              independente.
-            </Text>
-            <Text size="sm" c="green">
-              Teams escalaram de 10 → 1000+ devs sem perder velocidade
-            </Text>
-          </Card>
-          <Card withBorder p="md">
-            <Text fw={600} c="blue" mb="sm">
-              💰 Klarna
-            </Text>
-            <Text size="sm" mb="xs">
-              Banking app: cada feature financeira é micro-frontend separado.
-            </Text>
-            <Text size="sm" c="green">
-              Deploy 100+ times/day, zero downtime, regulation compliance
-            </Text>
-          </Card>
-          <Card withBorder p="md">
-            <Text fw={600} c="blue" mb="sm">
-              🏢 Microsoft Office
-            </Text>
-            <Text size="sm" mb="xs">
-              Word, Excel, PowerPoint como micro-frontends no Office 365.
-            </Text>
-            <Text size="sm" c="green">
-              Teams independentes, tech stacks diferentes, shared shell
-            </Text>
-          </Card>
-        </Stack>
-      </Paper>
-
-      {/* Patterns de Sucesso */}
-      <Paper withBorder p="xl" radius="md">
-        <Title order={2} size="h2" mb="md">
-          🎯 Patterns de Sucesso
-        </Title>
-        <Group grow align="flex-start" gap="lg">
-          <Card withBorder p="md">
-            <Badge variant="light" color="blue" mb="sm">
-              Communication
-            </Badge>
-            <List size="sm" spacing={4}>
-              <List.Item>Event bus global</List.Item>
-              <List.Item>Shared context/state</List.Item>
-              <List.Item>URL-based navigation</List.Item>
-              <List.Item>PostMessage API</List.Item>
-            </List>
-          </Card>
-          <Card withBorder p="md">
-            <Badge variant="light" color="green" mb="sm">
-              Governance
-            </Badge>
-            <List size="sm" spacing={4}>
-              <List.Item>Design system mandatório</List.Item>
-              <List.Item>API contracts bem definidos</List.Item>
-              <List.Item>Shared libraries versioned</List.Item>
-              <List.Item>E2E testing strategy</List.Item>
-            </List>
-          </Card>
-        </Group>
-      </Paper>
-
-      {/* Resumo */}
-      <Paper withBorder p="xl" radius="md">
-        <Alert color="yellow" icon={<IconBulb size={16} />} radius="md">
-          <Text fw={600} size="lg" mb="md" style={{ fontStyle: 'italic' }}>
-            "Microservices Frontend: Conway's Law aplicado conscientemente.
-            Organização define arquitetura."
-          </Text>
-          <List spacing="sm">
-            <List.Item
-              icon={
-                <IconCheck size={14} color="var(--mantine-color-green-6)" />
-              }
-            >
-              <Text>
-                Use quando: 30+ devs, domínios separados, deploy independente
-              </Text>
-            </List.Item>
-            <List.Item
-              icon={
-                <IconCheck size={14} color="var(--mantine-color-green-6)" />
-              }
-            >
-              <Text>Team autonomy vs integration complexity</Text>
-            </List.Item>
-            <List.Item
-              icon={
-                <IconCheck size={14} color="var(--mantine-color-green-6)" />
-              }
-            >
-              <Text>
-                Governance forte é obrigatório: design system, contracts,
-                testing
-              </Text>
-            </List.Item>
-          </List>
-        </Alert>
-      </Paper>
     </Stack>
   );
+
+  const tabs = createArchitectureTabs(
+    <OverviewSection />,
+    <ImplementationSection />,
+    <ExamplesSection />,
+    <PitfallsSection />,
+    <ReferencesSection />
+  );
+
+  return <MobileTabs items={tabs} defaultTab="overview" />;
 }
 
 MicroservicesFrontendArchitecture.metadata = {

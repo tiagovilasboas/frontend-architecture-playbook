@@ -20,9 +20,12 @@ import {
 } from '@tabler/icons-react';
 import CodeExample from '../../components/CodeExample';
 import islandsExamples from '../../utils/code-examples/islands-architecture.json';
+import MobileTabs from '../../components/MobileTabs';
+import { createArchitectureTabs } from '../../components/MobileTabsHelpers';
 
 function IslandsArchitecture() {
-  return (
+  // Overview Section
+  const OverviewSection = () => (
     <Stack gap="xl">
       {/* Hero Section */}
       <div>
@@ -71,7 +74,12 @@ function IslandsArchitecture() {
           </Text>
         </Stack>
       </Paper>
+    </Stack>
+  );
 
+  // Implementation Section
+  const ImplementationSection = () => (
+    <Stack gap="xl">
       {/* Concepts */}
       <div>
         <Title order={2} mb="lg">
@@ -159,29 +167,38 @@ function IslandsArchitecture() {
           </Card>
         </Stack>
       </div>
+    </Stack>
+  );
 
-      {/* Benefits */}
-      <div>
-        <Title order={2} mb="lg">
-          <IconCheck
-            size={28}
+  // Examples Section
+  const ExamplesSection = () => (
+    <Stack gap="xl">
+      <Paper withBorder p="xl" radius="md">
+        <Title order={3} mb="lg">
+          <IconBulb
+            size={24}
             style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
-          Por que vale a pena?
+          Casos Reais
         </Title>
 
         <Stack gap="md">
           <Card withBorder p="md">
             <Group>
               <ThemeIcon size={40} radius="md" variant="light" color="green">
-                <IconBolt size={20} />
+                <IconCode size={20} />
               </ThemeIcon>
               <div>
-                <Title order={4}>Performance Máxima</Title>
-                <Text size="sm">
-                  HTML estático carrega instantaneamente. JavaScript só onde
-                  precisa.
+                <Title order={4}>E-commerce</Title>
+                <Text size="sm" c="dimmed" mb="sm">
+                  Catálogo estático com ilhas interativas
                 </Text>
+                <List size="sm" spacing="xs">
+                  <List.Item>Catálogo: HTML estático</List.Item>
+                  <List.Item>Carrinho: Ilha interativa</List.Item>
+                  <List.Item>Busca: Ilha interativa</List.Item>
+                  <List.Item>Filtros: Ilha interativa</List.Item>
+                </List>
               </div>
             </Group>
           </Card>
@@ -192,11 +209,16 @@ function IslandsArchitecture() {
                 <IconDeviceMobile size={20} />
               </ThemeIcon>
               <div>
-                <Title order={4}>SEO Perfeito</Title>
-                <Text size="sm">
-                  HTML estático é indexável por padrão. Crawlers veem todo o
-                  conteúdo.
+                <Title order={4}>Blog/News</Title>
+                <Text size="sm" c="dimmed" mb="sm">
+                  Conteúdo estático com comentários interativos
                 </Text>
+                <List size="sm" spacing="xs">
+                  <List.Item>Artigos: HTML estático</List.Item>
+                  <List.Item>Comentários: Ilha interativa</List.Item>
+                  <List.Item>Newsletter: Ilha interativa</List.Item>
+                  <List.Item>Social sharing: Ilha interativa</List.Item>
+                </List>
               </div>
             </Group>
           </Card>
@@ -207,573 +229,150 @@ function IslandsArchitecture() {
                 <IconBulb size={20} />
               </ThemeIcon>
               <div>
-                <Title order={4}>JavaScript Mínimo</Title>
-                <Text size="sm">
-                  Bundle pequeno, carregamento rápido, menos bugs de JavaScript.
+                <Title order={4}>Dashboard</Title>
+                <Text size="sm" c="dimmed" mb="sm">
+                  Layout estático com widgets interativos
                 </Text>
+                <List size="sm" spacing="xs">
+                  <List.Item>Layout: HTML estático</List.Item>
+                  <List.Item>Gráficos: Ilhas interativas</List.Item>
+                  <List.Item>Filtros: Ilha interativa</List.Item>
+                  <List.Item>Notificações: Ilha interativa</List.Item>
+                </List>
               </div>
             </Group>
           </Card>
         </Stack>
-      </div>
-
-      {/* When to use */}
-      <div>
-        <Title order={2} mb="lg">
-          <IconAlertTriangle
-            size={28}
-            style={{ verticalAlign: 'middle', marginRight: '8px' }}
-          />
-          Quando usar?
-        </Title>
-
-        <Stack gap="md">
-          <Alert variant="light" color="green" title="✅ Use quando:">
-            <List>
-              <List.Item>Sites com muito conteúdo estático</List.Item>
-              <List.Item>SEO é crítico</List.Item>
-              <List.Item>Performance é prioridade</List.Item>
-              <List.Item>Poucos componentes interativos</List.Item>
-              <List.Item>Conteúdo que não muda frequentemente</List.Item>
-            </List>
-          </Alert>
-
-          <Alert variant="light" color="red" title="❌ Evite quando:">
-            <List>
-              <List.Item>Aplicações com muita interatividade</List.Item>
-              <List.Item>Dashboards complexos</List.Item>
-              <List.Item>Apps com estado global complexo</List.Item>
-              <List.Item>Muitos componentes dinâmicos</List.Item>
-            </List>
-          </Alert>
-        </Stack>
-      </div>
-
-      {/* Real Examples */}
-      <div>
-        <Title order={2} mb="lg">
-          <IconCode
-            size={28}
-            style={{ verticalAlign: 'middle', marginRight: '8px' }}
-          />
-          Exemplos Práticos no Front-End
-        </Title>
-
-        <Stack gap="xl">
-          {/* Example 1: Blog */}
-          <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">
-              📝 Blog - Conteúdo + Comentários
-            </Title>
-
-            <Stack gap="md">
-              <Text>
-                <strong>Cenário:</strong> Blog com artigos estáticos e sistema
-                de comentários. Conteúdo não muda, comentários são interativos.
-                <br />
-                <strong>Problema:</strong> SPA lento para conteúdo, SSR
-                desnecessário para comentários.
-              </Text>
-
-              <CodeExample
-                title={
-                  islandsExamples.find(e => e.id === 'islands-blog-example')
-                    ?.title || ''
-                }
-                code={
-                  islandsExamples.find(e => e.id === 'islands-blog-example')
-                    ?.content || ''
-                }
-              />
-            </Stack>
-          </Paper>
-
-          {/* Example 2: E-commerce */}
-          <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">
-              🛒 E-commerce - Produtos + Carrinho
-            </Title>
-
-            <Stack gap="md">
-              <Text>
-                <strong>Cenário:</strong> E-commerce com páginas de produtos
-                estáticas e carrinho interativo. Produtos não mudam, carrinho é
-                dinâmico.
-                <br />
-                <strong>Problema:</strong> SPA lento para produtos, SSR
-                desnecessário para carrinho.
-              </Text>
-
-              <CodeExample
-                title={
-                  islandsExamples.find(
-                    e => e.id === 'islands-ecommerce-example'
-                  )?.title || ''
-                }
-                code={
-                  islandsExamples.find(
-                    e => e.id === 'islands-ecommerce-example'
-                  )?.content || ''
-                }
-              />
-            </Stack>
-          </Paper>
-
-          {/* Example 3: Documentation */}
-          <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">
-              📚 Documentação - Conteúdo + Busca
-            </Title>
-
-            <Stack gap="md">
-              <Text>
-                <strong>Cenário:</strong> Documentação técnica com conteúdo
-                estático e busca interativa. Conteúdo não muda, busca é
-                dinâmica.
-                <br />
-                <strong>Problema:</strong> SPA lento para documentação, SSR
-                desnecessário para busca.
-              </Text>
-
-              <CodeExample
-                code={{
-                  content: `// ✅ BOM - Islands Architecture
-// pages/docs/getting-started.html
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Getting Started - Documentação</title>
-  <meta name="description" content="Guia de início rápido...">
-</head>
-<body>
-  <header>
-    <nav>
-      <a href="/docs">Documentação</a>
-      <a href="/api">API</a>
-      <a href="/examples">Exemplos</a>
-    </nav>
-  </header>
-  
-  <main>
-    <aside class="sidebar">
-      <nav>
-        <ul>
-          <li><a href="/docs/installation">Instalação</a></li>
-          <li><a href="/docs/getting-started">Getting Started</a></li>
-          <li><a href="/docs/components">Componentes</a></li>
-          <li><a href="/docs/advanced">Avançado</a></li>
-        </ul>
-      </nav>
-    </aside>
-    
-    <article class="content">
-      <h1>Getting Started</h1>
-      
-      <p>Bem-vindo à documentação da nossa biblioteca...</p>
-      
-      <h2>Instalação</h2>
-      <p>Para começar, instale a biblioteca:</p>
-      
-      <pre><code>npm install minha-lib</code></pre>
-      
-      <h2>Uso Básico</h2>
-      <p>Importe e use a biblioteca:</p>
-      
-      <pre><code>
-import { Component } from 'minha-lib';
-
-function App() {
-  return <Component />;
-}
-      </code></pre>
-      
-      <h2>Configuração</h2>
-      <p>Configure a biblioteca no seu projeto...</p>
-    </article>
-    
-    <!-- Ilha de busca -->
-    <div id="busca-docs">
-      <input type="search" placeholder="Buscar na documentação...">
-      <div id="resultados-busca"></div>
-    </div>
-  </main>
-</body>
-</html>
-
-// components/BuscaDocs.jsx
-function BuscaDocs() {
-  const [termo, setTermo] = useState('');
-  const [resultados, setResultados] = useState([]);
-  const [buscando, setBuscando] = useState(false);
-  
-  const buscar = async (termo) => {
-    if (termo.length < 2) {
-      setResultados([]);
-      return;
-    }
-    
-    setBuscando(true);
-    
-    try {
-      const response = await fetch(\`/api/docs/busca?q=\${encodeURIComponent(termo)}\`);
-      const data = await response.json();
-      setResultados(data);
-    } catch (error) {
-      console.error('Erro na busca:', error);
-    } finally {
-      setBuscando(false);
-    }
-  };
-  
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      buscar(termo);
-    }, 300);
-    
-    return () => clearTimeout(timeout);
-  }, [termo]);
-  
-  return (
-    <div>
-      <input
-        type="search"
-        value={termo}
-        onChange={(e) => setTermo(e.target.value)}
-        placeholder="Buscar na documentação..."
-      />
-      
-      {buscando && <div>Buscando...</div>}
-      
-      {resultados.length > 0 && (
-        <div>
-          {resultados.map(resultado => (
-            <div key={resultado.id}>
-              <h4>{resultado.titulo}</h4>
-              <p>{resultado.excerpt}</p>
-              <a href={resultado.url}>Ler mais</a>
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
+      </Paper>
+    </Stack>
   );
-}
 
-// app.js
-import { hydrateRoot } from 'react-dom/client';
-import BuscaDocs from './components/BuscaDocs';
-
-// Hidrata apenas a busca
-const buscaContainer = document.getElementById('busca-docs');
-if (buscaContainer) {
-  hydrateRoot(buscaContainer, <BuscaDocs />);
-}
-
-// Resultado:
-// - HTML estático: 98% da página
-// - JavaScript: apenas busca
-// - Performance: máxima
-// - SEO: perfeito`,
-                }}
-              />
-            </Stack>
-          </Paper>
-        </Stack>
-      </div>
-
-      {/* Pitfalls & How to Avoid */}
-      <div>
-        <Title order={2} mb="lg">
-          <IconAlertTriangle
-            size={28}
-            style={{ verticalAlign: 'middle', marginRight: '8px' }}
-          />
-          Armadilhas & Como Evitar
-        </Title>
-
-        <Stack gap="xl">
-          {/* Over-engineering */}
-          <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">
-              🚫 Over-engineering
-            </Title>
-            <Stack gap="md">
-              <Text>
-                <strong>Problema:</strong> Você transforma tudo em ilhas. HTML
-                simples vira JavaScript desnecessário.
-              </Text>
-
-              <Text>
-                <strong>Como evitar:</strong> Use ilhas só onde interatividade
-                importa. HTML estático para o resto.
-              </Text>
-
-              <CodeExample
-                title={
-                  islandsExamples.find(
-                    e => e.id === 'islands-pitfall-everything-island'
-                  )?.title || ''
-                }
-                code={
-                  islandsExamples.find(
-                    e => e.id === 'islands-pitfall-everything-island'
-                  )?.content || ''
-                }
-              />
-            </Stack>
-          </Paper>
-
-          {/* State Management */}
-          <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">
-              🔄 Gestão de Estado
-            </Title>
-            <Stack gap="md">
-              <Text>
-                <strong>Problema:</strong> Estado compartilhado entre ilhas.
-                Carrinho em uma ilha, contador em outra.
-              </Text>
-
-              <Text>
-                <strong>Como evitar:</strong> Use eventos customizados,
-                localStorage, ou considere uma ilha maior.
-              </Text>
-
-              <CodeExample
-                title={
-                  islandsExamples.find(
-                    e => e.id === 'islands-pitfall-shared-state'
-                  )?.title || ''
-                }
-                code={
-                  islandsExamples.find(
-                    e => e.id === 'islands-pitfall-shared-state'
-                  )?.content || ''
-                }
-              />
-            </Stack>
-          </Paper>
-
-          {/* Build Complexity */}
-          <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">
-              🔧 Complexidade de Build
-            </Title>
-            <Stack gap="md">
-              <Text>
-                <strong>Problema:</strong> Build complexo, múltiplos bundles,
-                configuração complicada.
-              </Text>
-
-              <Text>
-                <strong>Como evitar:</strong> Use ferramentas como Astro, ou
-                configure build simples.
-              </Text>
-
-              <CodeExample
-                title={
-                  islandsExamples.find(
-                    e => e.id === 'islands-pitfall-complex-build'
-                  )?.title || ''
-                }
-                code={
-                  islandsExamples.find(
-                    e => e.id === 'islands-pitfall-complex-build'
-                  )?.content || ''
-                }
-              />
-            </Stack>
-          </Paper>
-
-          {/* SEO Issues */}
-          <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">
-              �� Problemas de SEO
-            </Title>
-            <Stack gap="md">
-              <Text>
-                <strong>Problema:</strong> Conteúdo dinâmico nas ilhas. Crawlers
-                não veem conteúdo gerado por JavaScript.
-              </Text>
-
-              <Text>
-                <strong>Como evitar:</strong> Mantenha conteúdo importante no
-                HTML estático. Use ilhas só para interatividade.
-              </Text>
-
-              <CodeExample
-                title={
-                  islandsExamples.find(
-                    e => e.id === 'islands-pitfall-dynamic-content'
-                  )?.title || ''
-                }
-                code={
-                  islandsExamples.find(
-                    e => e.id === 'islands-pitfall-dynamic-content'
-                  )?.content || ''
-                }
-              />
-            </Stack>
-          </Paper>
-
-          {/* Performance */}
-          <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">
-              ⚡ Performance
-            </Title>
-            <Stack gap="md">
-              <Text>
-                <strong>Problema:</strong> Muitas ilhas pequenas. Múltiplos
-                bundles, hidratação lenta.
-              </Text>
-
-              <Text>
-                <strong>Como evitar:</strong> Agrupe ilhas relacionadas, use
-                lazy loading, otimize bundles.
-              </Text>
-
-              <CodeExample
-                title={
-                  islandsExamples.find(
-                    e => e.id === 'islands-pitfall-many-small-islands'
-                  )?.title || ''
-                }
-                code={
-                  islandsExamples.find(
-                    e => e.id === 'islands-pitfall-many-small-islands'
-                  )?.content || ''
-                }
-              />
-            </Stack>
-          </Paper>
-        </Stack>
-      </div>
-
-      {/* References & Real Cases */}
-      <div>
-        <Title order={2} mb="lg">
-          <IconBulb
-            size={28}
-            style={{ verticalAlign: 'middle', marginRight: '8px' }}
-          />
-          Referências & Casos Reais
-        </Title>
-
-        <Stack gap="xl">
-          {/* References */}
-          <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">
-              📚 Referências
-            </Title>
-            <Stack gap="md">
-              <Text>
-                <strong>Livros:</strong>
-              </Text>
-              <List>
-                <List.Item>
-                  <strong>"Islands Architecture"</strong> - Jason Miller
-                </List.Item>
-                <List.Item>
-                  <strong>"Modern Web Development"</strong> - Various Authors
-                </List.Item>
-                <List.Item>
-                  <strong>"Performance Web"</strong> - Various Authors
-                </List.Item>
-              </List>
-              <Text>
-                <strong>Artigos & Blogs:</strong>
-              </Text>
-              <List>
-                <List.Item>
-                  <a href="https://islands.speculation.wiki/" target="_blank">
-                    Islands Architecture - Speculation Wiki
-                  </a>
-                </List.Item>
-                <List.Item>
-                  <a href="https://astro.build/" target="_blank">
-                    Astro - Framework para Islands
-                  </a>
-                </List.Item>
-                <List.Item>
-                  <a href="https://fresh.deno.dev/" target="_blank">
-                    Fresh - Deno framework com Islands
-                  </a>
-                </List.Item>
-              </List>
-            </Stack>
-          </Paper>
-
-          {/* Tools & Libraries */}
-          <Paper withBorder p="xl" radius="md">
-            <Title order={3} mb="md">
-              🛠️ Ferramentas & Bibliotecas
-            </Title>
-            <Stack gap="md">
-              <Text>
-                <strong>Ferramentas que facilitam Islands Architecture:</strong>
-              </Text>
-              <List>
-                <List.Item>
-                  <strong>Astro</strong> - Framework especializado em Islands
-                </List.Item>
-                <List.Item>
-                  <strong>Fresh</strong> - Deno framework com Islands
-                </List.Item>
-                <List.Item>
-                  <strong>Next.js</strong> - Suporte parcial a Islands
-                </List.Item>
-                <List.Item>
-                  <strong>Nuxt.js</strong> - Vue com Islands
-                </List.Item>
-                <List.Item>
-                  <strong>Marko</strong> - Framework com Islands
-                </List.Item>
-                <List.Item>
-                  <strong>Qwik</strong> - Framework com resumability
-                </List.Item>
-              </List>
-            </Stack>
-          </Paper>
-        </Stack>
-      </div>
-
-      {/* Summary */}
+  // Pitfalls Section
+  const PitfallsSection = () => (
+    <Stack gap="xl">
       <Paper withBorder p="xl" radius="md">
+        <Title order={3} mb="lg">
+          <IconAlertTriangle
+            size={24}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
+          />
+          Armadilhas Comuns
+        </Title>
+
         <Stack gap="md">
-          <Group>
-            <ThemeIcon size={50} radius="md" variant="light" color="blue">
-              <IconBulb size={25} />
-            </ThemeIcon>
-            <div>
-              <Title order={3}>Resumo</Title>
-              <Text c="dimmed">Islands Architecture na prática</Text>
-            </div>
-          </Group>
+          <Alert color="red" icon={<IconAlertTriangle size={16} />} mb="md">
+            <Text size="sm" fw={600} mb={4}>
+              ❌ Complexidade de hidratação
+            </Text>
+            <Text size="sm" c="dimmed">
+              Hidratar ilhas pode ser complexo. Use frameworks como Astro ou
+              Fresh que facilitam isso.
+            </Text>
+          </Alert>
 
-          <Text>
-            Islands Architecture é sobre uma coisa só:{' '}
-            <strong>JavaScript só onde precisa</strong>. HTML estático por
-            padrão, ilhas de interatividade. Use quando performance e SEO
-            importam.
-          </Text>
+          <Alert color="orange" icon={<IconAlertTriangle size={16} />} mb="md">
+            <Text size="sm" fw={600} mb={4}>
+              ❌ Estado compartilhado
+            </Text>
+            <Text size="sm" c="dimmed">
+              Compartilhar estado entre ilhas pode ser difícil. Use URL params
+              ou localStorage.
+            </Text>
+          </Alert>
 
-          <Text size="sm" c="dimmed">
-            <strong>Lembre-se:</strong> Não é sobre transformar tudo em ilhas. É
-            sobre usar HTML estático por padrão. E você não enlouquece.
-            <br />
-            <strong>Dica:</strong> Comece com HTML estático, adicione ilhas
-            conforme necessário. Foque em performance e simplicidade.
-          </Text>
+          <Alert color="yellow" icon={<IconAlertTriangle size={16} />} mb="md">
+            <Text size="sm" fw={600} mb={4}>
+              ❌ Over-engineering
+            </Text>
+            <Text size="sm" c="dimmed">
+              Islands para sites simples é overkill. Use apenas quando há
+              componentes realmente interativos.
+            </Text>
+          </Alert>
+
+          <Alert color="green" icon={<IconCheck size={16} />} mb="md">
+            <Text size="sm" fw={600} mb={4}>
+              ✅ Como evitar
+            </Text>
+            <Text size="sm" c="dimmed">
+              <strong>Use frameworks:</strong> Astro, Fresh, Marko
+              <br />
+              <strong>Identifique ilhas:</strong> Apenas componentes interativos
+              <br />
+              <strong>Mantenha simples:</strong> HTML estático por padrão
+            </Text>
+          </Alert>
         </Stack>
       </Paper>
     </Stack>
   );
-}
 
-IslandsArchitecture.metadata = {
-  title: 'Islands Architecture',
-  description:
-    'HTML estático com ilhas de interatividade. Performance máxima e SEO perfeito.',
-};
+  // References Section
+  const ReferencesSection = () => (
+    <Stack gap="xl">
+      <Paper withBorder p="xl" radius="md">
+        <Title order={3} mb="lg">
+          <IconCode
+            size={24}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
+          />
+          Referências e Recursos
+        </Title>
+
+        <Stack gap="md">
+          <Card withBorder p="md">
+            <Title order={4} mb="sm">
+              Ferramentas
+            </Title>
+            <List size="sm" spacing="xs">
+              <List.Item>
+                <strong>Astro:</strong> Framework Islands por excelência
+              </List.Item>
+              <List.Item>
+                <strong>Fresh:</strong> Islands para Deno
+              </List.Item>
+              <List.Item>
+                <strong>Marko:</strong> Islands para Node.js
+              </List.Item>
+              <List.Item>
+                <strong>Qwik:</strong> Resumability e Islands
+              </List.Item>
+            </List>
+          </Card>
+
+          <Card withBorder p="md">
+            <Title order={4} mb="sm">
+              Casos de Sucesso
+            </Title>
+            <List size="sm" spacing="xs">
+              <List.Item>
+                <strong>Netflix:</strong> Performance em dispositivos
+              </List.Item>
+              <List.Item>
+                <strong>Shopify:</strong> E-commerce com Islands
+              </List.Item>
+              <List.Item>
+                <strong>Medium:</strong> Blog com comentários interativos
+              </List.Item>
+              <List.Item>
+                <strong>GitHub:</strong> Documentação com exemplos interativos
+              </List.Item>
+            </List>
+          </Card>
+        </Stack>
+      </Paper>
+    </Stack>
+  );
+
+  const tabs = createArchitectureTabs(
+    <OverviewSection />,
+    <ImplementationSection />,
+    <ExamplesSection />,
+    <PitfallsSection />,
+    <ReferencesSection />
+  );
+
+  return <MobileTabs items={tabs} defaultTab="overview" />;
+}
 
 export default IslandsArchitecture;
