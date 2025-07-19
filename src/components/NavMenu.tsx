@@ -105,12 +105,12 @@ export default function NavMenu({
             </Title>
           </Group>
 
-          {/* 🚀 FUNDAMENTAIS */}
+          {/* 🚀 FUNDAMENTALS */}
           <Stack gap={4} mb="md">
             <Group gap="xs" mb="xs">
               <IconRocket size={14} color="var(--mantine-color-blue-6)" />
               <Text size="xs" c="dimmed" fw={500}>
-                Fundamentais
+                Fundamentals
               </Text>
             </Group>
             {groupedArchitectures.fundamental.map(a => (
@@ -125,12 +125,12 @@ export default function NavMenu({
             ))}
           </Stack>
 
-          {/* 🏗️ PADRÕES DE DESIGN */}
+          {/* 🏗️ DESIGN PATTERNS */}
           <Stack gap={4} mb="md">
             <Group gap="xs" mb="xs">
               <IconBuilding size={14} color="var(--mantine-color-violet-6)" />
               <Text size="xs" c="dimmed" fw={500}>
-                Padrões de Design
+                Design Patterns
               </Text>
             </Group>
             {groupedArchitectures.design.map(a => (
@@ -145,12 +145,12 @@ export default function NavMenu({
             ))}
           </Stack>
 
-          {/* 🔌 INTEGRAÇÃO E API */}
+          {/* 🔌 INTEGRATION & API */}
           <Stack gap={4} mb="md">
             <Group gap="xs" mb="xs">
               <IconPlug size={14} color="var(--mantine-color-cyan-6)" />
               <Text size="xs" c="dimmed" fw={500}>
-                Integração & API
+                Integration & API
               </Text>
             </Group>
             {groupedArchitectures.integration.map(a => (
@@ -165,7 +165,7 @@ export default function NavMenu({
             ))}
           </Stack>
 
-          {/* 🧩 MODULARIZAÇÃO */}
+          {/* 🧩 MODULARIZATION */}
           <Stack gap={4} mb="md">
             <Group gap="xs" mb="xs">
               <IconPuzzlePiece
@@ -173,7 +173,7 @@ export default function NavMenu({
                 color="var(--mantine-color-orange-6)"
               />
               <Text size="xs" c="dimmed" fw={500}>
-                Modularização
+                Modularization
               </Text>
             </Group>
             {groupedArchitectures.modular.map(a => (
@@ -188,12 +188,12 @@ export default function NavMenu({
             ))}
           </Stack>
 
-          {/* ⚡ AVANÇADAS */}
+          {/* ⚡ ADVANCED */}
           <Stack gap={4} mb="md">
             <Group gap="xs" mb="xs">
               <IconBolt size={14} color="var(--mantine-color-red-6)" />
               <Text size="xs" c="dimmed" fw={500}>
-                Avançadas
+                Advanced
               </Text>
             </Group>
             {groupedArchitectures.advanced.map(a => (
