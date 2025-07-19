@@ -47,6 +47,7 @@ export default function NavItem({
       rightSection={active ? <IconChevronRight size={12} /> : null}
       variant={active ? 'filled' : 'subtle'}
       className="navmenu-link"
+      style={{ width: '95%' }}
     />
   );
 }
