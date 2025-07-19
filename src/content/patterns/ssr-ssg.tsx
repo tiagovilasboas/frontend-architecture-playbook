@@ -20,9 +20,12 @@ import {
   IconRocket,
   IconStack,
 } from '@tabler/icons-react';
+import MobileTabs from '../../components/MobileTabs';
+import { createArchitectureTabs } from '../../components/MobileTabsHelpers';
 
 export default function SSRSSGArchitecture() {
-  return (
+  // Overview Section
+  const OverviewSection = () => (
     <Stack gap="xl">
       {/* Hero Section */}
       <div>
@@ -93,61 +96,12 @@ export default function SSRSSGArchitecture() {
 // User vê conteúdo IMEDIATAMENTE`}
         </Code>
       </Paper>
+    </Stack>
+  );
 
-      {/* Quando usar? */}
-      <Paper withBorder p="xl" radius="md">
-        <Group gap="sm" mb="md">
-          <ThemeIcon size="lg" radius="md" variant="light" color="orange">
-            <IconBulb size={20} />
-          </ThemeIcon>
-          <Title order={2} size="h2">
-            🎯 Quando usar?
-          </Title>
-        </Group>
-
-        <Stack gap="md">
-          <Card withBorder p="md">
-            <Text fw={600} c="orange" mb="sm">
-              🛒 E-commerce
-            </Text>
-            <Text>
-              SEO é crítico. Cada segundo a mais = conversão a menos. Google
-              precisa indexar produtos.
-            </Text>
-          </Card>
-
-          <Card withBorder p="md">
-            <Text fw={600} c="orange" mb="sm">
-              📰 Blogs/Content Sites
-            </Text>
-            <Text>
-              Core Web Vitals impactam ranking. Conteúdo precisa ser descobrível
-              por crawlers.
-            </Text>
-          </Card>
-
-          <Card withBorder p="md">
-            <Text fw={600} c="orange" mb="sm">
-              🏢 Landing Pages
-            </Text>
-            <Text>
-              Primeira impressão decide tudo. Zero tolerância pra tela branca ou
-              loading.
-            </Text>
-          </Card>
-
-          <Card withBorder p="md">
-            <Text fw={600} c="orange" mb="sm">
-              📱 Mobile-first
-            </Text>
-            <Text>
-              Redes lentas, devices limitados. HTML pronto é sempre mais rápido
-              que JS + render.
-            </Text>
-          </Card>
-        </Stack>
-      </Paper>
-
+  // Implementation Section
+  const ImplementationSection = () => (
+    <Stack gap="xl">
       {/* SSR vs SSG */}
       <Paper withBorder p="xl" radius="md">
         <Title order={2} size="h2" mb="md">
@@ -203,454 +157,280 @@ export default function SSRSSGArchitecture() {
               ✅ Use quando:
             </Text>
             <List size="sm" spacing={4} mb="md">
-              <List.Item>Conteúdo muda pouco</List.Item>
+              <List.Item>Conteúdo é estático</List.Item>
+              <List.Item>Blog, documentação</List.Item>
+              <List.Item>Landing pages</List.Item>
               <List.Item>Performance é crítica</List.Item>
-              <List.Item>Escala alta com CDN</List.Item>
-              <List.Item>Blog, docs, marketing</List.Item>
             </List>
 
             <Text fw={600} size="sm" mb="xs">
               ❌ Evite quando:
             </Text>
             <List size="sm" spacing={4}>
-              <List.Item>Conteúdo personalizado</List.Item>
-              <List.Item>Dados em tempo real</List.Item>
-              <List.Item>Build time fica longo demais</List.Item>
+              <List.Item>Conteúdo muda constantemente</List.Item>
+              <List.Item>Dados personalizados</List.Item>
+              <List.Item>Real-time features</List.Item>
             </List>
           </Card>
         </Group>
       </Paper>
 
-      {/* Por que vale a pena? */}
-      <Paper withBorder p="xl" radius="md">
-        <Group gap="sm" mb="md">
-          <ThemeIcon size="lg" radius="md" variant="light" color="green">
-            <IconCheck size={20} />
-          </ThemeIcon>
-          <Title order={2} size="h2">
-            💚 Por que vale a pena?
-          </Title>
-        </Group>
-
-        <Stack gap="md">
-          <Alert color="green" icon={<IconCheck size={16} />}>
-            <Text fw={600} mb="xs">
-              🏃‍♂️ Performance inicial brutal
-            </Text>
-            <Text size="sm">
-              First Contentful Paint em 300ms vs 3s. User vê conteúdo AGORA.
-            </Text>
-          </Alert>
-
-          <Alert color="green" icon={<IconCheck size={16} />}>
-            <Text fw={600} mb="xs">
-              🔍 SEO que funciona de verdade
-            </Text>
-            <Text size="sm">
-              Google indexa tudo na primeira passada. Não fica esperando
-              JavaScript executar.
-            </Text>
-          </Alert>
-
-          <Alert color="green" icon={<IconCheck size={16} />}>
-            <Text fw={600} mb="xs">
-              📱 Mobile que não trava
-            </Text>
-            <Text size="sm">
-              HTML é sempre mais leve que JS bundle. Funciona até em celular de
-              2015.
-            </Text>
-          </Alert>
-
-          <Alert color="green" icon={<IconCheck size={16} />}>
-            <Text fw={600} mb="xs">
-              💰 Core Web Vitals = mais conversão
-            </Text>
-            <Text size="sm">
-              Google favorece sites rápidos. Site rápido = mais traffic = mais
-              vendas.
-            </Text>
-          </Alert>
-        </Stack>
-      </Paper>
-
-      {/* Exemplo Prático */}
+      {/* Quando usar? */}
       <Paper withBorder p="xl" radius="md">
         <Group gap="sm" mb="md">
           <ThemeIcon size="lg" radius="md" variant="light" color="orange">
-            <IconCode size={20} />
+            <IconBulb size={20} />
           </ThemeIcon>
           <Title order={2} size="h2">
-            💻 Exemplo Prático: E-commerce
-          </Title>
-        </Group>
-
-        <Text mb="md">
-          Cenário: página de produto que precisa ser{' '}
-          <Text span fw={700}>
-            rápida
-          </Text>{' '}
-          e{' '}
-          <Text span fw={700}>
-            indexável
-          </Text>
-          .
-        </Text>
-
-        <Code block mb="md">
-          {`// pages/produtos/[slug].tsx (Next.js)
-import { GetServerSideProps } from 'next'
-
-interface Produto {
-  id: string
-  nome: string
-  preco: number
-  imagens: string[]
-  estoque: number
-}
-
-interface Props {
-  produto: Produto
-}
-
-export default function PaginaProduto({ produto }: Props) {
-  return (
-    <div>
-      <h1>{produto.nome}</h1>
-      <img src={produto.imagens[0]} alt={produto.nome} />
-      <p>R$ {produto.preco}</p>
-      
-      {/* JavaScript vai fazer hydration depois */}
-      <button 
-  onClick={() => adicionarCarrinho(produto.id)}
-  aria-label="Adicionar produto ao carrinho"
->
-        Comprar ({produto.estoque} disponíveis)
-      </button>
-    </div>
-  )
-}
-
-// 🔥 Executa NO SERVIDOR a cada request
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-  // Busca dados fresh do banco
-  const produto = await buscarProduto(params?.slug as string)
-  
-  if (!produto) {
-    return { notFound: true }
-  }
-  
-  return {
-    props: { produto }
-  }
-}
-
-function adicionarCarrinho(produtoId: string) {
-  // Código que roda só no cliente após hydration
-  fetch('/api/carrinho', {
-    method: 'POST',
-    body: JSON.stringify({ produtoId })
-  })
-}`}
-        </Code>
-
-        <Alert color="blue" icon={<IconBulb size={16} />}>
-          <Text fw={600}>💡 O que acontece:</Text>
-          <List size="sm" mt="xs">
-            <List.Item>User acessa /produtos/iphone-15</List.Item>
-            <List.Item>Servidor busca dados do produto</List.Item>
-            <List.Item>Servidor renderiza HTML completo</List.Item>
-            <List.Item>Browser recebe HTML pronto</List.Item>
-            <List.Item>User vê produto IMEDIATAMENTE</List.Item>
-            <List.Item>JavaScript hidrata pra interatividade</List.Item>
-          </List>
-        </Alert>
-      </Paper>
-
-      {/* Armadilhas */}
-      <Paper withBorder p="xl" radius="md">
-        <Group gap="sm" mb="md">
-          <ThemeIcon size="lg" radius="md" variant="light" color="red">
-            <IconAlertTriangle size={20} />
-          </ThemeIcon>
-          <Title order={2} size="h2">
-            ⚠️ Armadilhas
-          </Title>
-        </Group>
-
-        <Stack gap="md">
-          <Alert color="red" icon={<IconAlertTriangle size={16} />}>
-            <Text fw={600} mb="xs">
-              🔥 Hydration Mismatch
-            </Text>
-            <Text size="sm" mb="xs">
-              Servidor renderiza uma coisa, cliente renderiza outra. React fica
-              louco.
-            </Text>
-            <Code size="sm">
-              {`// ❌ Problemático - Date() muda entre server e client
-<p>Agora são {new Date().toLocaleString()}</p>
-
-// ✅ Solução - useEffect para conteúdo dinâmico
-const [agora, setAgora] = useState<Date>()
-useEffect(() => setAgora(new Date()), [])`}
-            </Code>
-          </Alert>
-
-          <Alert color="red" icon={<IconAlertTriangle size={16} />}>
-            <Text fw={600} mb="xs">
-              💸 Server Costs
-            </Text>
-            <Text size="sm">
-              SSR custa mais que SSG. Cada request = CPU + RAM. Escala vertical
-              é cara.
-            </Text>
-          </Alert>
-
-          <Alert color="red" icon={<IconAlertTriangle size={16} />}>
-            <Text fw={600} mb="xs">
-              🐌 TTFB vs FCP Trade-off
-            </Text>
-            <Text size="sm">
-              Time to First Byte fica maior (servidor renderizando). Mas First
-              Contentful Paint fica menor.
-            </Text>
-          </Alert>
-
-          <Alert color="red" icon={<IconAlertTriangle size={16} />}>
-            <Text fw={600} mb="xs">
-              🔄 Complexidade de Estado
-            </Text>
-            <Text size="sm">
-              Estado inicial do servidor precisa bater com o cliente. Dados de
-              sessão, auth, etc.
-            </Text>
-          </Alert>
-        </Stack>
-      </Paper>
-
-      {/* Cases Reais */}
-      <Paper withBorder p="xl" radius="md">
-        <Group gap="sm" mb="md">
-          <ThemeIcon size="lg" radius="md" variant="light" color="violet">
-            <IconRocket size={20} />
-          </ThemeIcon>
-          <Title order={2} size="h2">
-            🚀 Cases Reais
+            🎯 Quando usar?
           </Title>
         </Group>
 
         <Stack gap="md">
           <Card withBorder p="md">
-            <Text fw={600} c="blue" mb="sm">
-              🛒 Shopify Plus
+            <Text fw={600} c="orange" mb="sm">
+              🛒 E-commerce
             </Text>
-            <Text size="sm" mb="xs">
-              <Text span fw={600}>
-                Problema:
-              </Text>{' '}
-              Lojas grandes com catálogos imensos tinham SEO ruim
-            </Text>
-            <Text size="sm" mb="xs">
-              <Text span fw={600}>
-                Solução:
-              </Text>{' '}
-              SSG para produtos + SSR para carrinho/checkout
-            </Text>
-            <Text size="sm" c="green">
-              <Text span fw={600}>
-                Resultado:
-              </Text>{' '}
-              +40% organic traffic, -50% bounce rate
+            <Text>
+              SEO é crítico. Cada segundo a mais = conversão a menos. Google
+              precisa indexar produtos.
             </Text>
           </Card>
 
           <Card withBorder p="md">
-            <Text fw={600} c="blue" mb="sm">
-              📰 The Guardian
+            <Text fw={600} c="orange" mb="sm">
+              📰 Blogs/Content Sites
             </Text>
-            <Text size="sm" mb="xs">
-              <Text span fw={600}>
-                Problema:
-              </Text>{' '}
-              Notícias competindo no Google, mobile lento
-            </Text>
-            <Text size="sm" mb="xs">
-              <Text span fw={600}>
-                Solução:
-              </Text>{' '}
-              SSR para artigos + cache agressivo
-            </Text>
-            <Text size="sm" c="green">
-              <Text span fw={600}>
-                Resultado:
-              </Text>{' '}
-              Core Web Vitals no verde, +30% page views
+            <Text>
+              Core Web Vitals impactam ranking. Conteúdo precisa ser descobrível
+              por crawlers.
             </Text>
           </Card>
 
           <Card withBorder p="md">
-            <Text fw={600} c="blue" mb="sm">
-              🏢 Vercel (próprio site)
+            <Text fw={600} c="orange" mb="sm">
+              🏢 Landing Pages
             </Text>
-            <Text size="sm" mb="xs">
-              <Text span fw={600}>
-                Problema:
-              </Text>{' '}
-              Landing pages competindo por "deploy frontend"
+            <Text>
+              Primeira impressão decide tudo. Zero tolerância pra tela branca ou
+              loading.
             </Text>
-            <Text size="sm" mb="xs">
-              <Text span fw={600}>
-                Solução:
-              </Text>{' '}
-              SSG + Edge Functions para personalização
+          </Card>
+
+          <Card withBorder p="md">
+            <Text fw={600} c="orange" mb="sm">
+              📱 Mobile-first
             </Text>
-            <Text size="sm" c="green">
-              <Text span fw={600}>
-                Resultado:
-              </Text>{' '}
-              Lighthouse 100, +200% conversion de landing
+            <Text>
+              Redes lentas, devices limitados. HTML pronto é sempre mais rápido
+              que JS + render.
             </Text>
           </Card>
         </Stack>
-      </Paper>
-
-      {/* Ferramentas */}
-      <Paper withBorder p="xl" radius="md">
-        <Title order={2} size="h2" mb="md">
-          🛠️ Ferramentas que Funcionam
-        </Title>
-
-        <Group grow align="flex-start" gap="lg">
-          <Card withBorder p="md">
-            <Badge variant="light" color="blue" mb="sm">
-              SSR
-            </Badge>
-            <List size="sm" spacing={4}>
-              <List.Item>
-                <Text span fw={600}>
-                  Next.js:
-                </Text>{' '}
-                getServerSideProps
-              </List.Item>
-              <List.Item>
-                <Text span fw={600}>
-                  Nuxt.js:
-                </Text>{' '}
-                server-side rendering
-              </List.Item>
-              <List.Item>
-                <Text span fw={600}>
-                  SvelteKit:
-                </Text>{' '}
-                server routes
-              </List.Item>
-              <List.Item>
-                <Text span fw={600}>
-                  Remix:
-                </Text>{' '}
-                loader functions
-              </List.Item>
-            </List>
-          </Card>
-
-          <Card withBorder p="md">
-            <Badge variant="light" color="green" mb="sm">
-              SSG
-            </Badge>
-            <List size="sm" spacing={4}>
-              <List.Item>
-                <Text span fw={600}>
-                  Next.js:
-                </Text>{' '}
-                getStaticProps
-              </List.Item>
-              <List.Item>
-                <Text span fw={600}>
-                  Gatsby:
-                </Text>{' '}
-                GraphQL + build
-              </List.Item>
-              <List.Item>
-                <Text span fw={600}>
-                  11ty:
-                </Text>{' '}
-                templating + data
-              </List.Item>
-              <List.Item>
-                <Text span fw={600}>
-                  Astro:
-                </Text>{' '}
-                islands architecture
-              </List.Item>
-            </List>
-          </Card>
-        </Group>
-      </Paper>
-
-      {/* Resumo */}
-      <Paper withBorder p="xl" radius="md">
-        <Group gap="sm" mb="md">
-          <ThemeIcon size="lg" radius="md" variant="light" color="green">
-            <IconCheck size={20} />
-          </ThemeIcon>
-          <Title order={2} size="h2">
-            📝 Resumo
-          </Title>
-        </Group>
-
-        <Alert color="blue" icon={<IconBulb size={16} />} radius="md">
-          <Text fw={600} size="lg" mb="md" style={{ fontStyle: 'italic' }}>
-            "Se você compete no Google ou liga pra Core Web Vitals, SSR/SSG não
-            é opcional - é obrigatório."
-          </Text>
-
-          <List spacing="sm">
-            <List.Item
-              icon={
-                <IconCheck size={14} color="var(--mantine-color-green-6)" />
-              }
-            >
-              <Text>
-                <Text span fw={600}>
-                  SSR:
-                </Text>{' '}
-                conteúdo dinâmico, dados personalizados
-              </Text>
-            </List.Item>
-            <List.Item
-              icon={
-                <IconCheck size={14} color="var(--mantine-color-green-6)" />
-              }
-            >
-              <Text>
-                <Text span fw={600}>
-                  SSG:
-                </Text>{' '}
-                conteúdo estático, performance máxima
-              </Text>
-            </List.Item>
-            <List.Item
-              icon={
-                <IconCheck size={14} color="var(--mantine-color-green-6)" />
-              }
-            >
-              <Text>
-                Performance inicial brutal vs complexidade de hydration
-              </Text>
-            </List.Item>
-            <List.Item
-              icon={
-                <IconCheck size={14} color="var(--mantine-color-green-6)" />
-              }
-            >
-              <Text>SEO e Core Web Vitals resolvidos de vez</Text>
-            </List.Item>
-          </List>
-        </Alert>
       </Paper>
     </Stack>
   );
+
+  // Examples Section
+  const ExamplesSection = () => (
+    <Stack gap="xl">
+      <Paper withBorder p="xl" radius="md">
+        <Title order={3} mb="lg">
+          <IconBulb
+            size={24}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
+          />
+          Casos Reais
+        </Title>
+
+        <Stack gap="md">
+          <Card withBorder p="md">
+            <Group>
+              <ThemeIcon size={40} radius="md" variant="light" color="green">
+                <IconCode size={20} />
+              </ThemeIcon>
+              <div>
+                <Title order={4}>Netflix</Title>
+                <Text size="sm" c="dimmed" mb="sm">
+                  Streaming com SSR para performance
+                </Text>
+                <List size="sm" spacing="xs">
+                  <List.Item>SSR para páginas de filme</List.Item>
+                  <List.Item>SEO para descoberta de conteúdo</List.Item>
+                  <List.Item>Performance em redes lentas</List.Item>
+                  <List.Item>Core Web Vitals otimizados</List.Item>
+                </List>
+              </div>
+            </Group>
+          </Card>
+
+          <Card withBorder p="md">
+            <Group>
+              <ThemeIcon size={40} radius="md" variant="light" color="blue">
+                <IconRocket size={20} />
+              </ThemeIcon>
+              <div>
+                <Title order={4}>Vercel</Title>
+                <Text size="sm" c="dimmed" mb="sm">
+                  Plataforma com SSG por padrão
+                </Text>
+                <List size="sm" spacing="xs">
+                  <List.Item>Next.js com SSG automático</List.Item>
+                  <List.Item>Deploy estático global</List.Item>
+                  <List.Item>Performance máxima</List.Item>
+                  <List.Item>CDN distribuído</List.Item>
+                </List>
+              </div>
+            </Group>
+          </Card>
+
+          <Card withBorder p="md">
+            <Group>
+              <ThemeIcon size={40} radius="md" variant="light" color="purple">
+                <IconBulb size={20} />
+              </ThemeIcon>
+              <div>
+                <Title order={4}>E-commerce</Title>
+                <Text size="sm" c="dimmed" mb="sm">
+                  SEO crítico para conversão
+                </Text>
+                <List size="sm" spacing="xs">
+                  <List.Item>SSR para páginas de produto</List.Item>
+                  <List.Item>SSG para categorias</List.Item>
+                  <List.Item>SEO para Google Shopping</List.Item>
+                  <List.Item>Performance para mobile</List.Item>
+                </List>
+              </div>
+            </Group>
+          </Card>
+        </Stack>
+      </Paper>
+    </Stack>
+  );
+
+  // Pitfalls Section
+  const PitfallsSection = () => (
+    <Stack gap="xl">
+      <Paper withBorder p="xl" radius="md">
+        <Title order={3} mb="lg">
+          <IconAlertTriangle
+            size={24}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
+          />
+          Armadilhas Comuns
+        </Title>
+
+        <Stack gap="md">
+          <Alert color="red" icon={<IconAlertTriangle size={16} />} mb="md">
+            <Text size="sm" fw={600} mb={4}>
+              ❌ Complexidade desnecessária
+            </Text>
+            <Text size="sm" c="dimmed">
+              SSR/SSG para apps internos ou dashboards simples é
+              over-engineering. Use apenas quando SEO/performance são críticos.
+            </Text>
+          </Alert>
+
+          <Alert color="orange" icon={<IconAlertTriangle size={16} />} mb="md">
+            <Text size="sm" fw={600} mb={4}>
+              ❌ Server costs
+            </Text>
+            <Text size="sm" c="dimmed">
+              SSR aumenta custos de servidor. SSG pode ter build times longos.
+              Calcule ROI antes de implementar.
+            </Text>
+          </Alert>
+
+          <Alert color="yellow" icon={<IconAlertTriangle size={16} />} mb="md">
+            <Text size="sm" fw={600} mb={4}>
+              ❌ Hydration issues
+            </Text>
+            <Text size="sm" c="dimmed">
+              Diferenças entre server e client podem causar erros. Teste
+              thoroughly e use proper hydration.
+            </Text>
+          </Alert>
+
+          <Alert color="green" icon={<IconCheck size={16} />} mb="md">
+            <Text size="sm" fw={600} mb={4}>
+              ✅ Como evitar
+            </Text>
+            <Text size="sm" c="dimmed">
+              <strong>Comece simples:</strong> SPA antes de SSR/SSG
+              <br />
+              <strong>Meça performance:</strong> Core Web Vitals
+              <br />
+              <strong>Teste hydration:</strong> Server/client consistency
+            </Text>
+          </Alert>
+        </Stack>
+      </Paper>
+    </Stack>
+  );
+
+  // References Section
+  const ReferencesSection = () => (
+    <Stack gap="xl">
+      <Paper withBorder p="xl" radius="md">
+        <Title order={3} mb="lg">
+          <IconCode
+            size={24}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
+          />
+          Referências e Recursos
+        </Title>
+
+        <Stack gap="md">
+          <Card withBorder p="md">
+            <Title order={4} mb="sm">
+              Frameworks
+            </Title>
+            <List size="sm" spacing="xs">
+              <List.Item>
+                <strong>Next.js:</strong> SSR e SSG automático
+              </List.Item>
+              <List.Item>
+                <strong>Nuxt.js:</strong> Vue com SSR/SSG
+              </List.Item>
+              <List.Item>
+                <strong>Gatsby:</strong> SSG para React
+              </List.Item>
+              <List.Item>
+                <strong>Astro:</strong> Islands architecture
+              </List.Item>
+            </List>
+          </Card>
+
+          <Card withBorder p="md">
+            <Title order={4} mb="sm">
+              Ferramentas
+            </Title>
+            <List size="sm" spacing="xs">
+              <List.Item>
+                <strong>Lighthouse:</strong> Performance testing
+              </List.Item>
+              <List.Item>
+                <strong>WebPageTest:</strong> Real user testing
+              </List.Item>
+              <List.Item>
+                <strong>Core Web Vitals:</strong> Google metrics
+              </List.Item>
+            </List>
+          </Card>
+        </Stack>
+      </Paper>
+    </Stack>
+  );
+
+  const tabs = createArchitectureTabs(
+    <OverviewSection />,
+    <ImplementationSection />,
+    <ExamplesSection />,
+    <PitfallsSection />,
+    <ReferencesSection />
+  );
+
+  return <MobileTabs items={tabs} defaultTab="overview" />;
 }
 
 SSRSSGArchitecture.metadata = {
