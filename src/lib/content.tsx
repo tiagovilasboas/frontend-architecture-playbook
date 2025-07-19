@@ -7,6 +7,9 @@ const DependencyRule = lazy(
   () => import('../content/guides/dependency-rule.tsx')
 );
 const Cases = lazy(() => import('../content/guides/cases.tsx'));
+const ArchitectureComparison = lazy(
+  () => import('../content/guides/architecture-comparison.tsx')
+);
 
 // Lazy loading para patterns - carregamento sob demanda
 const AtomicDesign = lazy(
@@ -99,6 +102,10 @@ const STATIC_METADATA = {
   cases: {
     title: 'Casos de Uso Reais',
     description: 'Exemplos práticos de arquiteturas front-end',
+  },
+  'architecture-comparison': {
+    title: 'Comparação de Arquiteturas',
+    description: 'Compare arquiteturas baseado em métricas práticas',
   },
 
   // Architectures
@@ -255,6 +262,7 @@ export const guides: DocMeta[] = [
   toMeta(HowToChoose, 'how-to-choose', 'guides', true),
   toMeta(DependencyRule, 'dependency-rule', 'guides', true),
   toMeta(Cases, 'cases', 'guides', true),
+  toMeta(ArchitectureComparison, 'architecture-comparison', 'guides', true),
 ];
 
 // Arquiteturas organizadas por complexidade e popularidade
