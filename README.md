@@ -398,3 +398,5 @@ Sou o dev que transforma código em resultado: turbinei checkouts, simplifiquei 
 ---
 
 **Lembre-se:** Arquitetura é trade-off atrás de trade-off. Não existe bala de prata. O que resolve pra um, pode ser dor de cabeça pra outro. O segredo? Saber o que você precisa agora — e não fechar portas pro futuro.
+
+# Contributors Update
