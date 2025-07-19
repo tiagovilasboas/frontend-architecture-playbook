@@ -29,19 +29,7 @@ export default function DependencyRuleGuide() {
       {/* Hero Section */}
       <section>
         <Stack align="center" ta="center" mb="xl">
-          <Title
-            order={1}
-            fw={800}
-            size="3.5rem"
-            mb="md"
-            style={{
-              background:
-                'linear-gradient(135deg, var(--mantine-color-brand-6) 0%, var(--mantine-color-accent-6) 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-            }}
-          >
+          <Title order={1} fw={800} size="3.5rem" mb="md">
             Dependency Rule
           </Title>
           <Text size="xl" c="dimmed" mb="lg" maw={800}>
