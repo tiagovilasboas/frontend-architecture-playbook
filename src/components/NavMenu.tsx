@@ -46,7 +46,7 @@ export default function NavMenu({
   };
 
   return (
-    <ScrollArea h="100%" style={{ overflow: 'visible' }}>
+    <ScrollArea h="calc(100vh - 120px)" style={{ overflow: 'auto' }}>
       <Stack gap="md">
         {/* Guides Section */}
         <div>
