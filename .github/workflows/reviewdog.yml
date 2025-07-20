@@ -54,8 +54,6 @@ jobs:
           reporter: github-pr-review
           fail_on_error: false
 
-
-
   # Content quality - CRITICAL for documentation
   spelling:
     name: Spelling Review
