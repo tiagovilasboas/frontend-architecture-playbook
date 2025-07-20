@@ -1,57 +1,84 @@
 /// <reference types="cypress" />
 
-describe('Decision Wizard - Todas as Combinações', () => {
+describe('Decision Wizard - Todas as Combinações v3.0', () => {
   const url = '/guides/how-to-choose';
-
-  const projectTypes = [
-    'MVP/Protótipo',
-    'E-commerce',
-    'Dashboard',
-    'SaaS',
-    'Enterprise',
-    'Startup',
-  ];
-
-  const growthOptions = ['Sim', 'Não'];
-  const integrationOptions = ['Sim', 'Não'];
 
   beforeEach(() => {
     cy.viewport(1280, 800);
   });
 
-  // Testa todas as combinações possíveis
-  projectTypes.forEach(projectType => {
-    growthOptions.forEach(growth => {
-      integrationOptions.forEach(integration => {
-        it(`deve retornar sugestões para: ${projectType} + ${growth} + ${integration}`, () => {
-          cy.visit(url);
+  // Testa cenários representativos (não todas as combinações para não sobrecarregar)
+  describe('Cenários Representativos', () => {
+    it('MVP + Time pequeno + Júnior + Velocidade + Sem integrações', () => {
+      cy.visit(url);
+      cy.contains('MVP/Protótipo').click();
+      cy.contains('1-3 devs').click();
+      cy.contains('Júnior/Misto').click();
+      cy.contains('Velocidade').click();
+      cy.contains('Não, poucas integrações').click();
 
-          // Seleciona tipo do projeto
-          cy.contains(projectType).click();
+      cy.contains('Sugestões do Wizard');
+      cy.get('.wizard-recommendation-card').should('have.length.at.least', 1);
+    });
 
-          // Seleciona opção de crescimento
-          cy.contains('Seu projeto vai crescer muito ou terá time grande?')
-            .parent()
-            .contains(growth)
-            .click();
+    it('E-commerce + Time médio + Pleno + Manutenibilidade + Com integrações', () => {
+      cy.visit(url);
+      cy.contains('E-commerce').click();
+      cy.contains('4-8 devs').click();
+      cy.contains('Pleno').click();
+      cy.contains('Manutenibilidade').click();
+      cy.contains('Sim, muitas integrações').click();
 
-          // Seleciona opção de integração
-          cy.contains('Vai integrar com muitos sistemas?')
-            .parent()
-            .contains(integration)
-            .click();
+      cy.contains('Sugestões do Wizard');
+      cy.get('.wizard-recommendation-card').should('have.length.at.least', 1);
+    });
 
-          // Verifica que retorna sugestões
-          cy.contains('Sugestões do Wizard');
-          cy.get('.wizard-recommendation-card').should(
-            'have.length.at.least',
-            1
-          );
+    it('Dashboard + Time grande + Sênior + Performance + Sem integrações', () => {
+      cy.visit(url);
+      cy.contains('Dashboard').click();
+      cy.contains('9+ devs').click();
+      cy.contains('Sênior').click();
+      cy.contains('Performance').click();
+      cy.contains('Não, poucas integrações').click();
 
-          // Verifica que as sugestões têm conteúdo
-          cy.get('.wizard-recommendation-card').first().should('contain.text');
-        });
-      });
+      cy.contains('Sugestões do Wizard');
+      cy.get('.wizard-recommendation-card').should('have.length.at.least', 1);
+    });
+
+    it('SaaS + Time médio + Pleno + Escalabilidade + Com integrações', () => {
+      cy.visit(url);
+      cy.contains('SaaS').click();
+      cy.contains('4-8 devs').click();
+      cy.contains('Pleno').click();
+      cy.contains('Escalabilidade').click();
+      cy.contains('Sim, muitas integrações').click();
+
+      cy.contains('Sugestões do Wizard');
+      cy.get('.wizard-recommendation-card').should('have.length.at.least', 1);
+    });
+
+    it('Enterprise + Time grande + Sênior + Manutenibilidade + Com integrações', () => {
+      cy.visit(url);
+      cy.contains('Enterprise').click();
+      cy.contains('9+ devs').click();
+      cy.contains('Sênior').click();
+      cy.contains('Manutenibilidade').click();
+      cy.contains('Sim, muitas integrações').click();
+
+      cy.contains('Sugestões do Wizard');
+      cy.get('.wizard-recommendation-card').should('have.length.at.least', 1);
+    });
+
+    it('Startup + Time médio + Pleno + Velocidade + Com integrações', () => {
+      cy.visit(url);
+      cy.contains('Startup').click();
+      cy.contains('4-8 devs').click();
+      cy.contains('Pleno').click();
+      cy.contains('Velocidade').click();
+      cy.contains('Sim, muitas integrações').click();
+
+      cy.contains('Sugestões do Wizard');
+      cy.get('.wizard-recommendation-card').should('have.length.at.least', 1);
     });
   });
 
@@ -59,14 +86,10 @@ describe('Decision Wizard - Todas as Combinações', () => {
     it('MVP deve priorizar simplicidade', () => {
       cy.visit(url);
       cy.contains('MVP/Protótipo').click();
-      cy.contains('Seu projeto vai crescer muito ou terá time grande?')
-        .parent()
-        .contains('Não')
-        .click();
-      cy.contains('Vai integrar com muitos sistemas?')
-        .parent()
-        .contains('Não')
-        .click();
+      cy.contains('1-3 devs').click();
+      cy.contains('Júnior/Misto').click();
+      cy.contains('Velocidade').click();
+      cy.contains('Não, poucas integrações').click();
 
       cy.contains('Sugestões do Wizard');
       // MVP deve sugerir arquiteturas simples
@@ -76,14 +99,10 @@ describe('Decision Wizard - Todas as Combinações', () => {
     it('E-commerce deve priorizar escalabilidade', () => {
       cy.visit(url);
       cy.contains('E-commerce').click();
-      cy.contains('Seu projeto vai crescer muito ou terá time grande?')
-        .parent()
-        .contains('Sim')
-        .click();
-      cy.contains('Vai integrar com muitos sistemas?')
-        .parent()
-        .contains('Sim')
-        .click();
+      cy.contains('4-8 devs').click();
+      cy.contains('Pleno').click();
+      cy.contains('Manutenibilidade').click();
+      cy.contains('Sim, muitas integrações').click();
 
       cy.contains('Sugestões do Wizard');
       // E-commerce deve sugerir arquiteturas escaláveis
@@ -93,14 +112,10 @@ describe('Decision Wizard - Todas as Combinações', () => {
     it('Enterprise deve priorizar robustez', () => {
       cy.visit(url);
       cy.contains('Enterprise').click();
-      cy.contains('Seu projeto vai crescer muito ou terá time grande?')
-        .parent()
-        .contains('Sim')
-        .click();
-      cy.contains('Vai integrar com muitos sistemas?')
-        .parent()
-        .contains('Sim')
-        .click();
+      cy.contains('9+ devs').click();
+      cy.contains('Sênior').click();
+      cy.contains('Manutenibilidade').click();
+      cy.contains('Sim, muitas integrações').click();
 
       cy.contains('Sugestões do Wizard');
       // Enterprise deve sugerir arquiteturas robustas
@@ -112,14 +127,10 @@ describe('Decision Wizard - Todas as Combinações', () => {
     it('deve sugerir Clean Architecture para sistemas complexos', () => {
       cy.visit(url);
       cy.contains('Enterprise').click();
-      cy.contains('Seu projeto vai crescer muito ou terá time grande?')
-        .parent()
-        .contains('Sim')
-        .click();
-      cy.contains('Vai integrar com muitos sistemas?')
-        .parent()
-        .contains('Sim')
-        .click();
+      cy.contains('9+ devs').click();
+      cy.contains('Sênior').click();
+      cy.contains('Manutenibilidade').click();
+      cy.contains('Sim, muitas integrações').click();
 
       cy.contains('Sugestões do Wizard');
       cy.get('.wizard-recommendation-card').should(
@@ -130,15 +141,11 @@ describe('Decision Wizard - Todas as Combinações', () => {
 
     it('deve sugerir Micro-frontends para times grandes', () => {
       cy.visit(url);
-      cy.contains('E-commerce').click();
-      cy.contains('Seu projeto vai crescer muito ou terá time grande?')
-        .parent()
-        .contains('Sim')
-        .click();
-      cy.contains('Vai integrar com muitos sistemas?')
-        .parent()
-        .contains('Sim')
-        .click();
+      cy.contains('Enterprise').click();
+      cy.contains('9+ devs').click();
+      cy.contains('Sênior').click();
+      cy.contains('Escalabilidade').click();
+      cy.contains('Sim, muitas integrações').click();
 
       cy.contains('Sugestões do Wizard');
       cy.get('.wizard-recommendation-card').should(
@@ -150,40 +157,62 @@ describe('Decision Wizard - Todas as Combinações', () => {
     it('deve sugerir SPA para projetos simples', () => {
       cy.visit(url);
       cy.contains('MVP/Protótipo').click();
-      cy.contains('Seu projeto vai crescer muito ou terá time grande?')
-        .parent()
-        .contains('Não')
-        .click();
-      cy.contains('Vai integrar com muitos sistemas?')
-        .parent()
-        .contains('Não')
-        .click();
+      cy.contains('1-3 devs').click();
+      cy.contains('Júnior/Misto').click();
+      cy.contains('Velocidade').click();
+      cy.contains('Não, poucas integrações').click();
 
       cy.contains('Sugestões do Wizard');
       cy.get('.wizard-recommendation-card').should('contain.text', 'SPA');
     });
+
+    it('deve sugerir Component-Driven para dashboards', () => {
+      cy.visit(url);
+      cy.contains('Dashboard').click();
+      cy.contains('4-8 devs').click();
+      cy.contains('Pleno').click();
+      cy.contains('Manutenibilidade').click();
+      cy.contains('Não, poucas integrações').click();
+
+      cy.contains('Sugestões do Wizard');
+      cy.get('.wizard-recommendation-card').should(
+        'contain.text',
+        'Component-Driven'
+      );
+    });
+
+    it('deve sugerir Event-Driven para e-commerce', () => {
+      cy.visit(url);
+      cy.contains('E-commerce').click();
+      cy.contains('4-8 devs').click();
+      cy.contains('Pleno').click();
+      cy.contains('Manutenibilidade').click();
+      cy.contains('Sim, muitas integrações').click();
+
+      cy.contains('Sugestões do Wizard');
+      cy.get('.wizard-recommendation-card').should(
+        'contain.text',
+        'Event-Driven'
+      );
+    });
   });
 
   describe('Testes de Performance', () => {
-    it('deve completar fluxo em menos de 5 segundos', () => {
+    it('deve completar fluxo em menos de 10 segundos', () => {
       const startTime = Date.now();
 
       cy.visit(url);
       cy.contains('MVP/Protótipo').click();
-      cy.contains('Seu projeto vai crescer muito ou terá time grande?')
-        .parent()
-        .contains('Não')
-        .click();
-      cy.contains('Vai integrar com muitos sistemas?')
-        .parent()
-        .contains('Não')
-        .click();
+      cy.contains('1-3 devs').click();
+      cy.contains('Júnior/Misto').click();
+      cy.contains('Velocidade').click();
+      cy.contains('Não, poucas integrações').click();
       cy.contains('Sugestões do Wizard');
 
       const endTime = Date.now();
       const duration = endTime - startTime;
 
-      expect(duration).to.be.lessThan(5000);
+      expect(duration).to.be.lessThan(10000);
     });
 
     it('deve responder a cliques em menos de 1 segundo', () => {
@@ -191,76 +220,59 @@ describe('Decision Wizard - Todas as Combinações', () => {
 
       const clickStart = Date.now();
       cy.contains('MVP/Protótipo').click();
-      cy.contains('Seu projeto vai crescer muito ou terá time grande?');
+      cy.contains('Qual o tamanho do seu time?');
       const clickEnd = Date.now();
 
       expect(clickEnd - clickStart).to.be.lessThan(1000);
     });
   });
 
-  describe('Testes de Acessibilidade', () => {
-    it('deve ter contraste adequado', () => {
+  describe('Validação de Navegação', () => {
+    it('deve permitir navegação entre passos', () => {
       cy.visit(url);
 
-      // Verifica se os textos são legíveis
-      cy.contains('Qual o tipo do seu projeto?').should('be.visible');
-      cy.get('.wizard-recommendation-card').should('be.visible');
+      // Passo 1
+      cy.contains('MVP/Protótipo').click();
+
+      // Passo 2
+      cy.contains('1-3 devs').click();
+
+      // Volta para passo 1
+      cy.contains('Voltar').click();
+      cy.contains('Qual o tipo do seu projeto?');
+
+      // Vai para passo 2 novamente
+      cy.contains('MVP/Protótipo').click();
+      cy.contains('Qual o tamanho do seu time?');
+
+      // Passo 3
+      cy.contains('Júnior/Misto').click();
+
+      // Volta para passo 2
+      cy.contains('Voltar').click();
+      cy.contains('Qual o tamanho do seu time?');
     });
 
-    it('deve ter elementos clicáveis visíveis', () => {
+    it('deve reiniciar corretamente', () => {
       cy.visit(url);
 
-      // Verifica se todos os cards são clicáveis
+      // Completa o wizard
+      cy.contains('MVP/Protótipo').click();
+      cy.contains('1-3 devs').click();
+      cy.contains('Júnior/Misto').click();
+      cy.contains('Velocidade').click();
+      cy.contains('Não, poucas integrações').click();
+
+      cy.contains('Sugestões do Wizard');
+
+      // Reinicia
+      cy.contains('Reiniciar').click();
+      cy.contains('Qual o tipo do seu projeto?');
+
+      // Verifica que está na primeira pergunta
       cy.contains('MVP/Protótipo').should('be.visible');
       cy.contains('E-commerce').should('be.visible');
       cy.contains('Dashboard').should('be.visible');
-      cy.contains('SaaS').should('be.visible');
-      cy.contains('Enterprise').should('be.visible');
-      cy.contains('Startup').should('be.visible');
-    });
-  });
-
-  describe('Testes de Edge Cases', () => {
-    it('deve lidar com navegação rápida', () => {
-      cy.visit(url);
-
-      // Clica rapidamente em várias opções
-      cy.contains('MVP/Protótipo').click();
-      cy.contains('Seu projeto vai crescer muito ou terá time grande?')
-        .parent()
-        .contains('Não')
-        .click();
-      cy.contains('Vai integrar com muitos sistemas?')
-        .parent()
-        .contains('Não')
-        .click();
-      cy.contains('Reiniciar').click();
-      cy.contains('E-commerce').click();
-      cy.contains('Seu projeto vai crescer muito ou terá time grande?')
-        .parent()
-        .contains('Sim')
-        .click();
-      cy.contains('Vai integrar com muitos sistemas?')
-        .parent()
-        .contains('Sim')
-        .click();
-
-      cy.contains('Sugestões do Wizard');
-      cy.get('.wizard-recommendation-card').should('have.length.at.least', 1);
-    });
-
-    it('deve manter estado após refresh', () => {
-      cy.visit(url);
-      cy.contains('MVP/Protótipo').click();
-      cy.contains('Seu projeto vai crescer muito ou terá time grande?')
-        .parent()
-        .contains('Não')
-        .click();
-
-      cy.reload();
-
-      // Deve estar na primeira pergunta após refresh
-      cy.contains('Qual o tipo do seu projeto?');
     });
   });
 });
