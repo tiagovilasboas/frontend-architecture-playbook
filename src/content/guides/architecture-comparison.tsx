@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import {
   Title,
   Text,
@@ -760,8 +761,14 @@ function ArchitectureComparisonPage() {
         <Stack gap="md">
           <Text>
             Depois de escolher uma arquitetura, use o{' '}
-            <strong>Decision Wizard</strong> para obter recomendações
-            personalizadas baseadas no seu contexto específico.
+            <Link
+              to="/guides/how-to-choose"
+              style={{ color: 'inherit', textDecoration: 'none' }}
+            >
+              <strong>Decision Wizard</strong>
+            </Link>{' '}
+            para obter recomendações personalizadas baseadas no seu contexto
+            específico.
           </Text>
 
           <Text>

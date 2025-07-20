@@ -337,8 +337,14 @@ export default function Home() {
                     </Title>
                   </Group>
                   <Text size={isMobile ? 'sm' : 'md'} c="dimmed">
-                    Decision wizard + regra fundamental de arquitetura. Zero
-                    teoria, só o que funciona.
+                    <Link
+                      to="/guides/how-to-choose"
+                      style={{ color: 'inherit', textDecoration: 'none' }}
+                    >
+                      Decision wizard
+                    </Link>{' '}
+                    + regra fundamental de arquitetura. Zero teoria, só o que
+                    funciona.
                   </Text>
                   <motion.div {...mobileAnimationProps}>
                     <Button
