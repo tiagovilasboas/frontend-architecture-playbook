@@ -9,8 +9,6 @@ runner:
     format: tsc
     name: TypeScript
 
-
-
   misspell:
     cmd: misspell src/
     format: misspell
@@ -27,5 +25,3 @@ tools:
     level: warning
     reporter: github-pr-review
     filter_mode: diff_context
-
-
