@@ -80,7 +80,7 @@ Um **sistema de suporte à decisão** que resolve a pergunta que todo dev já te
 - **Mantine** - Design system completo
 - **React Router** - Navegação SPA
 - **Tabler Icons** - Ícones consistentes
-- **Cypress** - Testes E2E completos
+- **Jest** - Testes unitários completos
 - **Husky** - Git hooks para qualidade
 - **Lint-staged** - Validação automática
 
