@@ -25,7 +25,7 @@ import { createArchitectureTabs } from '../../components/MobileTabsHelpers';
 export default function DependencyRuleGuide() {
   // Overview Section
   const OverviewSection = () => (
-    <Stack gap="xl">
+    <Stack gap="md">
       {/* Hero Section */}
       <section>
         <Stack align="center" ta="center" mb="md">
@@ -118,7 +118,7 @@ export default function DependencyRuleGuide() {
 
   // Why it matters Section
   const WhyItMattersSection = () => (
-    <Stack gap="xl">
+    <Stack gap="md">
       <Paper withBorder p="xl" radius="lg">
         <Stack gap="lg">
           <Title order={2} mb="sm">
@@ -194,7 +194,7 @@ export default function DependencyRuleGuide() {
 
   // Implementation Section
   const ImplementationSection = () => (
-    <Stack gap="xl">
+    <Stack gap="md">
       <Paper withBorder p="xl" radius="lg">
         <Stack gap="lg">
           <Title order={2} mb="sm">
@@ -274,7 +274,7 @@ export default function DependencyRuleGuide() {
 
   // Benefits Section
   const BenefitsSection = () => (
-    <Stack gap="xl">
+    <Stack gap="md">
       <Paper withBorder p="xl" radius="lg">
         <Stack gap="lg">
           <Title order={2} mb="sm">
@@ -358,7 +358,7 @@ export default function DependencyRuleGuide() {
 
   // Summary Section
   const SummarySection = () => (
-    <Stack gap="xl">
+    <Stack gap="md">
       <Paper withBorder p="xl" radius="lg">
         <Stack gap="lg">
           <Title order={2} mb="sm">

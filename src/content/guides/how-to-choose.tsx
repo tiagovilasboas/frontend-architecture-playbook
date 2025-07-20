@@ -24,7 +24,7 @@ export default function HowToChoose() {
   const isMobile = useMediaQuery('(max-width: 600px)');
   return (
     <Container size="lg" px={isMobile ? 'xs' : 'md'}>
-      <Stack gap={isMobile ? 'sm' : 'xl'}>
+      <Stack gap={isMobile ? 'sm' : 'md'}>
         {/* Hero Section */}
         <section>
           <Stack align="center" ta="center" mb={isMobile ? 'sm' : 'md'}>
