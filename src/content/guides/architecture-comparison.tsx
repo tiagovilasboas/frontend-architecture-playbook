@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import {
   Title,
   Text,
@@ -892,103 +891,6 @@ function ArchitectureComparisonPage() {
             comunidade
           </Text>
         </Alert>
-      </Paper>
-
-      {/* Next Steps - Compacta */}
-      <Paper withBorder p="xl" radius="md">
-        <Group justify="space-between" mb="lg">
-          <div>
-            <Title order={2} mb="xs">
-              🚀 Próximos Passos
-            </Title>
-            <Text c="dimmed" size="sm">
-              Escolha sua arquitetura e continue sua jornada
-            </Text>
-          </div>
-          <Badge variant="light" color="green">
-            3 ações
-          </Badge>
-        </Group>
-
-        <Grid>
-          <Grid.Col span={{ base: 12, md: 4 }}>
-            <Card withBorder p="md">
-              <Group mb="sm">
-                <ThemeIcon size={32} radius="md" variant="light" color="blue">
-                  🧙‍♂️
-                </ThemeIcon>
-                <div>
-                  <Text fw={600} size="sm">
-                    Decision Wizard
-                  </Text>
-                  <Text size="xs" c="dimmed">
-                    Recomendações personalizadas
-                  </Text>
-                </div>
-              </Group>
-              <Text size="xs" c="dimmed" mb="sm">
-                Use o wizard para obter recomendações baseadas no seu contexto
-              </Text>
-              <Link
-                to="/guides/how-to-choose"
-                style={{ color: 'inherit', textDecoration: 'none' }}
-              >
-                <Badge variant="light" color="blue" size="sm">
-                  Acessar Wizard →
-                </Badge>
-              </Link>
-            </Card>
-          </Grid.Col>
-
-          <Grid.Col span={{ base: 12, md: 4 }}>
-            <Card withBorder p="md">
-              <Group mb="sm">
-                <ThemeIcon size={32} radius="md" variant="light" color="green">
-                  📚
-                </ThemeIcon>
-                <div>
-                  <Text fw={600} size="sm">
-                    Guias Detalhados
-                  </Text>
-                  <Text size="xs" c="dimmed">
-                    Implementação passo-a-passo
-                  </Text>
-                </div>
-              </Group>
-              <Text size="xs" c="dimmed" mb="sm">
-                Cada arquitetura tem sua própria página com exemplos de código
-              </Text>
-              <Badge variant="light" color="green" size="sm">
-                Ver Guias →
-              </Badge>
-            </Card>
-          </Grid.Col>
-
-          <Grid.Col span={{ base: 12, md: 4 }}>
-            <Card withBorder p="md">
-              <Group mb="sm">
-                <ThemeIcon size={32} radius="md" variant="light" color="orange">
-                  ⚖️
-                </ThemeIcon>
-                <div>
-                  <Text fw={600} size="sm">
-                    Trade-offs
-                  </Text>
-                  <Text size="xs" c="dimmed">
-                    Arquitetura é escolha
-                  </Text>
-                </div>
-              </Group>
-              <Text size="xs" c="dimmed" mb="sm">
-                Lembre-se: o que resolve para um projeto pode ser dor de cabeça
-                para outro
-              </Text>
-              <Badge variant="light" color="orange" size="sm">
-                Entender Trade-offs →
-              </Badge>
-            </Card>
-          </Grid.Col>
-        </Grid>
       </Paper>
 
       {/* Navigation */}

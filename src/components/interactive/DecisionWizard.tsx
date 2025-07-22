@@ -1147,27 +1147,6 @@ export default function DecisionWizard() {
               </Text>
             </Alert>
 
-            <Alert
-              color="green"
-              icon={<IconBulb size={16} />}
-              radius="md"
-              mt="md"
-            >
-              <Text size="sm" fw={600} mb={4}>
-                💡 Próximos passos:
-              </Text>
-              <Text size="sm" c="dimmed">
-                • Leia sobre cada arquitetura sugerida
-                <br />
-                • Considere os trade-offs e complexidade
-                <br />
-                • Teste em um projeto pequeno/piloto primeiro
-                <br />
-                • Ajuste conforme o projeto e time evoluem
-                <br />• Lembre-se: você pode combinar múltiplas abordagens
-              </Text>
-            </Alert>
-
             <Group mt="lg" gap={isMobile ? 8 : 'sm'}>
               <Button
                 variant="subtle"
