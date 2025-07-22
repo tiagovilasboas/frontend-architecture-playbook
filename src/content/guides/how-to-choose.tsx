@@ -14,6 +14,8 @@ import { Link } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import { LoadingOverlay } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
+import GuideNavigation from '../../components/GuideNavigation';
+import GuideCTA from '../../components/GuideCTA';
 
 // Lazy load the DecisionWizard component
 const DecisionWizard = lazy(
@@ -320,6 +322,10 @@ export default function HowToChoose() {
             </Stack>
           </Paper>
         </section>
+
+        {/* Navigation */}
+        <GuideNavigation currentGuide="how-to-choose" />
+        <GuideCTA currentGuide="how-to-choose" />
       </Stack>
     </Container>
   );

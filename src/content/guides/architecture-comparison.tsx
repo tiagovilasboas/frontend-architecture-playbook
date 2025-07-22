@@ -14,6 +14,8 @@ import {
 } from '@mantine/core';
 import { IconScale, IconBulb, IconAlertTriangle } from '@tabler/icons-react';
 import ArchitectureComparison from '../../components/ArchitectureComparison';
+import GuideNavigation from '../../components/GuideNavigation';
+import GuideCTA from '../../components/GuideCTA';
 
 // Métricas baseadas em análise de casos reais e experiência prática
 // Cada métrica (0-10) é avaliada considerando:
@@ -988,6 +990,10 @@ function ArchitectureComparisonPage() {
           </Grid.Col>
         </Grid>
       </Paper>
+
+      {/* Navigation */}
+      <GuideNavigation currentGuide="architecture-comparison" />
+      <GuideCTA currentGuide="architecture-comparison" />
     </Stack>
   );
 }

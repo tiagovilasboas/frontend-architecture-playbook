@@ -21,6 +21,8 @@ import {
 } from '@tabler/icons-react';
 import MobileTabs from '../../components/MobileTabs';
 import { createArchitectureTabs } from '../../components/MobileTabsHelpers';
+import GuideNavigation from '../../components/GuideNavigation';
+import GuideCTA from '../../components/GuideCTA';
 
 export default function DependencyRuleGuide() {
   // Overview Section
@@ -429,7 +431,13 @@ export default function DependencyRuleGuide() {
     <SummarySection />
   );
 
-  return <MobileTabs items={tabs} defaultTab="overview" />;
+  return (
+    <Stack gap="xl">
+      <MobileTabs items={tabs} defaultTab="overview" />
+      <GuideNavigation currentGuide="dependency-rule" />
+      <GuideCTA currentGuide="dependency-rule" />
+    </Stack>
+  );
 }
 
 DependencyRuleGuide.metadata = {
