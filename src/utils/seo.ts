@@ -14,30 +14,28 @@ export const getPageMeta = (pathname: string): PageMeta => {
   switch (pathname) {
     case '/':
       return {
-        title:
-          'Front-End Architecture Playbook – Guia prático de arquiteturas para devs',
+        title: 'Arquitetura Front-End: Guia Completo + Decision Wizard v3.0',
         description:
-          'Decision Wizard v3.0 + 9 arquiteturas comparadas visualmente. Casos reais de Netflix, Spotify, Airbnb, Pinterest, Tinder, Slack, Uber, WhatsApp, Zoom, Figma, Discord. SSR/SSG, BFF, PWA, Clean Architecture, Micro-frontends, Event-Driven, JAMstack.',
+          'Arquitetura Front-End: Guia completo com Decision Wizard v3.0 + 9 arquiteturas comparadas. Clean Architecture, Micro-frontends, SSR/SSG, BFF, PWA. Casos reais Netflix, Spotify, Airbnb.',
         keywords:
-          'frontend architecture, react architecture, clean architecture, micro frontends, javascript patterns, web development, typescript, decision wizard v3, architecture patterns, frontend best practices',
-        ogTitle:
-          'Front-End Architecture Playbook - Decision Wizard v3.0 & Visual Comparison',
+          'arquitetura front-end, arquitetura frontend, front-end architecture, frontend architecture, clean architecture, micro frontends, javascript patterns, web development, typescript, decision wizard v3, architecture patterns, frontend best practices',
+        ogTitle: 'Arquitetura Front-End: Guia Completo + Decision Wizard v3.0',
         ogDescription:
-          'Interactive Decision Wizard v3.0 with 9 architectures compared visually. Real cases from Netflix, Spotify, Airbnb, Pinterest, Tinder with performance metrics and ROI data.',
+          'Guia completo de arquitetura front-end com Decision Wizard v3.0 e 9 arquiteturas comparadas. Casos reais Netflix, Spotify, Airbnb.',
         ogImage: `${baseUrl}/og-image.png`,
         canonical: baseUrl,
       };
 
     case '/guides/dependency-rule':
       return {
-        title: 'Dependency Rule - Regra Fundamental de Arquitetura Front-End',
+        title: 'Dependency Rule - Regra Fundamental da Arquitetura Front-End',
         description:
           'Aprenda a regra mais importante de qualquer arquitetura front-end. Dependency Rule explicada com exemplos práticos, implementação e benefícios. Se você quebrar essa regra, nenhuma arquitetura salva seu projeto.',
         keywords:
-          'dependency rule, clean architecture, frontend architecture, dependency injection, architecture principles, software design, separation of concerns',
-        ogTitle: 'Dependency Rule - Regra Fundamental de Arquitetura',
+          'dependency rule, arquitetura front-end, clean architecture, frontend architecture, dependency injection, architecture principles, software design, separation of concerns',
+        ogTitle: 'Dependency Rule - Regra Fundamental da Arquitetura Front-End',
         ogDescription:
-          'A regra mais importante de qualquer arquitetura. Se você ignorar isso, nenhuma arquitetura consegue salvar seu projeto do caos.',
+          'A regra mais importante de qualquer arquitetura front-end. Se você ignorar isso, nenhuma arquitetura consegue salvar seu projeto do caos.',
         canonical: `${baseUrl}/guides/dependency-rule`,
       };
 
@@ -60,10 +58,10 @@ export const getPageMeta = (pathname: string): PageMeta => {
         description:
           'Comparação visual detalhada de 9 arquiteturas front-end com métricas de performance, manutenibilidade, testabilidade e escalabilidade. Análise de trade-offs e casos de uso.',
         keywords:
-          'architecture comparison, frontend patterns comparison, clean architecture vs micro frontends, architecture metrics, performance comparison, scalability analysis',
+          'arquitetura front-end, architecture comparison, frontend patterns comparison, clean architecture vs micro frontends, architecture metrics, performance comparison, scalability analysis',
         ogTitle: 'Comparação Visual de Arquiteturas Front-End',
         ogDescription:
-          '9 arquiteturas comparadas visualmente com métricas de performance, manutenibilidade e escalabilidade.',
+          '9 arquiteturas front-end comparadas visualmente com métricas de performance, manutenibilidade e escalabilidade.',
         canonical: `${baseUrl}/guides/architecture-comparison`,
       };
 
