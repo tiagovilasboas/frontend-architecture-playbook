@@ -239,6 +239,7 @@ export default function Home() {
                         to="/guides/dependency-rule"
                         size="sm"
                         variant="light"
+                        color="blue"
                       >
                         Ler
                       </Button>
@@ -260,6 +261,7 @@ export default function Home() {
                         to="/guides/how-to-choose"
                         size="sm"
                         variant="light"
+                        color="green"
                       >
                         Começar
                       </Button>
@@ -281,6 +283,7 @@ export default function Home() {
                         to="/guides/architecture-comparison"
                         size="sm"
                         variant="light"
+                        color="orange"
                       >
                         Comparar
                       </Button>
@@ -302,6 +305,7 @@ export default function Home() {
                         to="/guides/cases"
                         size="sm"
                         variant="light"
+                        color="purple"
                       >
                         Ver Casos
                       </Button>
@@ -360,6 +364,7 @@ export default function Home() {
                         to="/guides/how-to-choose"
                         size="md"
                         variant="filled"
+                        color="brand"
                       >
                         Começar Wizard
                       </Button>
@@ -388,6 +393,7 @@ export default function Home() {
                         to="/guides/architecture-comparison"
                         size="md"
                         variant="filled"
+                        color="green"
                       >
                         Ver Comparação
                       </Button>
@@ -732,6 +738,7 @@ export default function Home() {
                         to="/guides/cases"
                         size="sm"
                         variant="light"
+                        color="green"
                       >
                         Ver Casos
                       </Button>
