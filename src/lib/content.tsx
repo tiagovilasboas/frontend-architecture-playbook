@@ -258,11 +258,12 @@ function toMeta(
 }
 
 // Organização por categorias com comentários explicativos
+// Fluxo sequencial: Fundamento → Escolha → Análise → Validação
 export const guides: DocMeta[] = [
-  toMeta(HowToChoose, 'how-to-choose', 'guides', true),
-  toMeta(DependencyRule, 'dependency-rule', 'guides', true),
-  toMeta(Cases, 'cases', 'guides', true),
-  toMeta(ArchitectureComparison, 'architecture-comparison', 'guides', true),
+  toMeta(DependencyRule, 'dependency-rule', 'guides', true), // 1. Fundamento
+  toMeta(HowToChoose, 'how-to-choose', 'guides', true), // 2. Escolha
+  toMeta(ArchitectureComparison, 'architecture-comparison', 'guides', true), // 3. Análise
+  toMeta(Cases, 'cases', 'guides', true), // 4. Validação
 ];
 
 // Arquiteturas organizadas por complexidade e popularidade
