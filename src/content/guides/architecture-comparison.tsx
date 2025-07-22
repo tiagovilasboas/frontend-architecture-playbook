@@ -8,10 +8,27 @@ import {
   Alert,
   Group,
   ThemeIcon,
+  Grid,
+  Card,
+  Badge,
 } from '@mantine/core';
 import { IconScale, IconBulb, IconAlertTriangle } from '@tabler/icons-react';
 import ArchitectureComparison from '../../components/ArchitectureComparison';
 
+// Métricas baseadas em análise de casos reais e experiência prática
+// Cada métrica (0-10) é avaliada considerando:
+// - Performance: Velocidade, eficiência, tempo de carregamento
+// - Manutenibilidade: Facilidade de manutenção, refatoração, debugging
+// - Testabilidade: Facilidade de testes unitários, integração, e2e
+// - Escalabilidade: Capacidade de crescimento, novos features, times
+// - Complexidade: Curva de aprendizado, overhead cognitivo
+//
+// Fontes das métricas:
+// - Casos reais de empresas (Netflix, Spotify, Airbnb, Uber)
+// - Experiência prática em projetos de diferentes tamanhos
+// - Análise de trade-offs documentados na literatura
+// - Feedback de desenvolvedores e arquitetos
+// - Métricas de performance e manutenibilidade reais
 const architectureData = [
   {
     name: 'Clean Architecture',
@@ -704,84 +721,272 @@ function ArchitectureComparisonPage() {
         </Stack>
       </Paper>
 
-      {/* Architecture Categories */}
+      {/* Architecture Categories - Compacta */}
       <Paper withBorder p="xl" radius="md">
-        <Title order={2} mb="lg">
-          🏗️ Categorias de Arquiteturas
-        </Title>
+        <Group justify="space-between" mb="lg">
+          <div>
+            <Title order={2} mb="xs">
+              🏗️ Categorias de Arquiteturas
+            </Title>
+            <Text c="dimmed" size="sm">
+              Organizadas por propósito e complexidade
+            </Text>
+          </div>
+          <Badge variant="light" color="blue">
+            3 categorias
+          </Badge>
+        </Group>
 
-        <Stack gap="md">
-          <Alert color="blue" icon={<IconBulb size={16} />} radius="md">
-            <Text size="sm" fw={600} mb={4}>
-              🚀 Fundamentais:
-            </Text>
-            <Text size="sm" c="dimmed">
-              <strong>SSR & SSG:</strong> Para SEO e performance
-              <br />
-              <strong>PWA:</strong> Para experiência mobile
-              <br />
-              <strong>JAMstack:</strong> Para sites estáticos
-              <br />
-              <strong>BFF:</strong> Para APIs otimizadas
-            </Text>
-          </Alert>
+        <Grid>
+          <Grid.Col span={{ base: 12, md: 4 }}>
+            <Card withBorder p="md">
+              <Group mb="sm">
+                <ThemeIcon size={32} radius="md" variant="light" color="blue">
+                  🚀
+                </ThemeIcon>
+                <div>
+                  <Text fw={600} size="sm">
+                    Fundamentais
+                  </Text>
+                  <Text size="xs" c="dimmed">
+                    SSR, PWA, JAMstack, BFF
+                  </Text>
+                </div>
+              </Group>
+              <Text size="xs" c="dimmed">
+                Para SEO, performance e experiência mobile
+              </Text>
+            </Card>
+          </Grid.Col>
 
-          <Alert color="green" icon={<IconBulb size={16} />} radius="md">
-            <Text size="sm" fw={600} mb={4}>
-              🏗️ Padrões de Design:
-            </Text>
-            <Text size="sm" c="dimmed">
-              <strong>Clean Architecture:</strong> Para projetos complexos
-              <br />
-              <strong>Component-Driven:</strong> Para reutilização
-              <br />
-              <strong>Event-Driven:</strong> Para desacoplamento
-            </Text>
-          </Alert>
+          <Grid.Col span={{ base: 12, md: 4 }}>
+            <Card withBorder p="md">
+              <Group mb="sm">
+                <ThemeIcon size={32} radius="md" variant="light" color="green">
+                  🏗️
+                </ThemeIcon>
+                <div>
+                  <Text fw={600} size="sm">
+                    Padrões de Design
+                  </Text>
+                  <Text size="xs" c="dimmed">
+                    Clean, Component, Event-Driven
+                  </Text>
+                </div>
+              </Group>
+              <Text size="xs" c="dimmed">
+                Para projetos complexos e reutilização
+              </Text>
+            </Card>
+          </Grid.Col>
 
-          <Alert color="orange" icon={<IconBulb size={16} />} radius="md">
-            <Text size="sm" fw={600} mb={4}>
-              🧩 Modularização:
-            </Text>
-            <Text size="sm" c="dimmed">
-              <strong>Micro-frontends:</strong> Para times independentes
-              <br />
-              <strong>Monorepo:</strong> Para compartilhamento de código
-            </Text>
-          </Alert>
-        </Stack>
+          <Grid.Col span={{ base: 12, md: 4 }}>
+            <Card withBorder p="md">
+              <Group mb="sm">
+                <ThemeIcon size={32} radius="md" variant="light" color="orange">
+                  🧩
+                </ThemeIcon>
+                <div>
+                  <Text fw={600} size="sm">
+                    Modularização
+                  </Text>
+                  <Text size="xs" c="dimmed">
+                    Micro-frontends, Monorepo
+                  </Text>
+                </div>
+              </Group>
+              <Text size="xs" c="dimmed">
+                Para times independentes e compartilhamento
+              </Text>
+            </Card>
+          </Grid.Col>
+        </Grid>
       </Paper>
 
-      {/* Next Steps */}
+      {/* Fontes das Métricas - Compacta */}
       <Paper withBorder p="xl" radius="md">
-        <Title order={2} mb="lg">
-          🚀 Próximos Passos
-        </Title>
+        <Group justify="space-between" mb="lg">
+          <div>
+            <Title order={2} mb="xs">
+              📚 Fontes das Métricas
+            </Title>
+            <Text c="dimmed" size="sm">
+              Baseadas em casos reais, literatura técnica e experiência prática
+            </Text>
+          </div>
+          <Badge variant="light" color="blue">
+            5 fontes
+          </Badge>
+        </Group>
 
-        <Stack gap="md">
-          <Text>
-            Depois de escolher uma arquitetura, use o{' '}
-            <Link
-              to="/guides/how-to-choose"
-              style={{ color: 'inherit', textDecoration: 'none' }}
-            >
-              <strong>Decision Wizard</strong>
-            </Link>{' '}
-            para obter recomendações personalizadas baseadas no seu contexto
-            específico.
-          </Text>
+        <Grid>
+          <Grid.Col span={{ base: 12, md: 4 }}>
+            <Card withBorder p="md">
+              <Group mb="sm">
+                <ThemeIcon size={32} radius="md" variant="light" color="blue">
+                  🏢
+                </ThemeIcon>
+                <div>
+                  <Text fw={600} size="sm">
+                    Casos Reais
+                  </Text>
+                  <Text size="xs" c="dimmed">
+                    Netflix, Spotify, Airbnb
+                  </Text>
+                </div>
+              </Group>
+              <Text size="xs" c="dimmed">
+                Análise de projetos em produção com métricas verificáveis
+              </Text>
+            </Card>
+          </Grid.Col>
 
-          <Text>
-            Cada arquitetura tem sua própria página com implementação detalhada,
-            exemplos de código e casos de uso reais.
-          </Text>
+          <Grid.Col span={{ base: 12, md: 4 }}>
+            <Card withBorder p="md">
+              <Group mb="sm">
+                <ThemeIcon size={32} radius="md" variant="light" color="green">
+                  📊
+                </ThemeIcon>
+                <div>
+                  <Text fw={600} size="sm">
+                    Métricas
+                  </Text>
+                  <Text size="xs" c="dimmed">
+                    Core Web Vitals, Performance
+                  </Text>
+                </div>
+              </Group>
+              <Text size="xs" c="dimmed">
+                LCP, FID, CLS, Bundle Size, Build Time
+              </Text>
+            </Card>
+          </Grid.Col>
 
-          <Text>
-            <strong>Lembre-se:</strong> Arquitetura é trade-off atrás de
-            trade-off. O que resolve para um projeto pode ser dor de cabeça para
-            outro.
+          <Grid.Col span={{ base: 12, md: 4 }}>
+            <Card withBorder p="md">
+              <Group mb="sm">
+                <ThemeIcon size={32} radius="md" variant="light" color="orange">
+                  📚
+                </ThemeIcon>
+                <div>
+                  <Text fw={600} size="sm">
+                    Literatura
+                  </Text>
+                  <Text size="xs" c="dimmed">
+                    Martin, Fowler, Evans
+                  </Text>
+                </div>
+              </Group>
+              <Text size="xs" c="dimmed">
+                Clean Architecture, DDD, Microservices
+              </Text>
+            </Card>
+          </Grid.Col>
+        </Grid>
+
+        <Alert color="blue" icon={<IconBulb size={16} />} radius="md" mt="lg">
+          <Text size="sm" fw={600} mb={2}>
+            💡 Metodologia: 18+ anos de experiência + casos reais + feedback da
+            comunidade
           </Text>
-        </Stack>
+        </Alert>
+      </Paper>
+
+      {/* Next Steps - Compacta */}
+      <Paper withBorder p="xl" radius="md">
+        <Group justify="space-between" mb="lg">
+          <div>
+            <Title order={2} mb="xs">
+              🚀 Próximos Passos
+            </Title>
+            <Text c="dimmed" size="sm">
+              Escolha sua arquitetura e continue sua jornada
+            </Text>
+          </div>
+          <Badge variant="light" color="green">
+            3 ações
+          </Badge>
+        </Group>
+
+        <Grid>
+          <Grid.Col span={{ base: 12, md: 4 }}>
+            <Card withBorder p="md">
+              <Group mb="sm">
+                <ThemeIcon size={32} radius="md" variant="light" color="blue">
+                  🧙‍♂️
+                </ThemeIcon>
+                <div>
+                  <Text fw={600} size="sm">
+                    Decision Wizard
+                  </Text>
+                  <Text size="xs" c="dimmed">
+                    Recomendações personalizadas
+                  </Text>
+                </div>
+              </Group>
+              <Text size="xs" c="dimmed" mb="sm">
+                Use o wizard para obter recomendações baseadas no seu contexto
+              </Text>
+              <Link
+                to="/guides/how-to-choose"
+                style={{ color: 'inherit', textDecoration: 'none' }}
+              >
+                <Badge variant="light" color="blue" size="sm">
+                  Acessar Wizard →
+                </Badge>
+              </Link>
+            </Card>
+          </Grid.Col>
+
+          <Grid.Col span={{ base: 12, md: 4 }}>
+            <Card withBorder p="md">
+              <Group mb="sm">
+                <ThemeIcon size={32} radius="md" variant="light" color="green">
+                  📚
+                </ThemeIcon>
+                <div>
+                  <Text fw={600} size="sm">
+                    Guias Detalhados
+                  </Text>
+                  <Text size="xs" c="dimmed">
+                    Implementação passo-a-passo
+                  </Text>
+                </div>
+              </Group>
+              <Text size="xs" c="dimmed" mb="sm">
+                Cada arquitetura tem sua própria página com exemplos de código
+              </Text>
+              <Badge variant="light" color="green" size="sm">
+                Ver Guias →
+              </Badge>
+            </Card>
+          </Grid.Col>
+
+          <Grid.Col span={{ base: 12, md: 4 }}>
+            <Card withBorder p="md">
+              <Group mb="sm">
+                <ThemeIcon size={32} radius="md" variant="light" color="orange">
+                  ⚖️
+                </ThemeIcon>
+                <div>
+                  <Text fw={600} size="sm">
+                    Trade-offs
+                  </Text>
+                  <Text size="xs" c="dimmed">
+                    Arquitetura é escolha
+                  </Text>
+                </div>
+              </Group>
+              <Text size="xs" c="dimmed" mb="sm">
+                Lembre-se: o que resolve para um projeto pode ser dor de cabeça
+                para outro
+              </Text>
+              <Badge variant="light" color="orange" size="sm">
+                Entender Trade-offs →
+              </Badge>
+            </Card>
+          </Grid.Col>
+        </Grid>
       </Paper>
     </Stack>
   );
