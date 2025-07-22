@@ -36,6 +36,7 @@ import {
   IconTarget,
   IconTrendingUp,
   IconBolt,
+  IconScale,
 } from '@tabler/icons-react';
 import { useMediaQuery } from '@mantine/hooks';
 
@@ -56,7 +57,7 @@ const itemVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.4, ease: 'easeOut' },
+    transition: { duration: 0.4 },
   },
 };
 
@@ -204,6 +205,197 @@ export default function Home() {
                 </Text>
               </Alert>
             </Stack>
+          </motion.section>
+
+          {/* Quick Start Section */}
+          <motion.section variants={itemVariants}>
+            <Paper withBorder p={isMobile ? 'md' : 'lg'} radius="lg">
+              <Stack gap="md" align="center" ta="center">
+                <Title order={2} mb="sm">
+                  <IconRocket
+                    size={isMobile ? 24 : 32}
+                    style={{ verticalAlign: 'middle', marginRight: '8px' }}
+                  />
+                  Comece Aqui
+                </Title>
+
+                <SimpleGrid
+                  cols={{ base: 1, md: 4 }}
+                  spacing={isMobile ? 'sm' : 'md'}
+                  w="100%"
+                >
+                  <Card withBorder p={isMobile ? 'sm' : 'md'} radius="md">
+                    <Stack gap="sm" align="center" ta="center">
+                      <Badge color="blue" variant="light">
+                        1
+                      </Badge>
+                      <IconBulb size={isMobile ? 20 : 24} />
+                      <Text fw={600}>Dependency Rule</Text>
+                      <Text size="sm" c="dimmed">
+                        Regra fundamental
+                      </Text>
+                      <Button
+                        component={Link}
+                        to="/guides/dependency-rule"
+                        size="sm"
+                        variant="light"
+                      >
+                        Ler
+                      </Button>
+                    </Stack>
+                  </Card>
+
+                  <Card withBorder p={isMobile ? 'sm' : 'md'} radius="md">
+                    <Stack gap="sm" align="center" ta="center">
+                      <Badge color="green" variant="light">
+                        2
+                      </Badge>
+                      <IconTarget size={isMobile ? 20 : 24} />
+                      <Text fw={600}>Decision Wizard</Text>
+                      <Text size="sm" c="dimmed">
+                        Escolha sua arquitetura
+                      </Text>
+                      <Button
+                        component={Link}
+                        to="/guides/how-to-choose"
+                        size="sm"
+                        variant="light"
+                      >
+                        Começar
+                      </Button>
+                    </Stack>
+                  </Card>
+
+                  <Card withBorder p={isMobile ? 'sm' : 'md'} radius="md">
+                    <Stack gap="sm" align="center" ta="center">
+                      <Badge color="orange" variant="light">
+                        3
+                      </Badge>
+                      <IconScale size={isMobile ? 20 : 24} />
+                      <Text fw={600}>Comparação</Text>
+                      <Text size="sm" c="dimmed">
+                        Analise métricas
+                      </Text>
+                      <Button
+                        component={Link}
+                        to="/guides/architecture-comparison"
+                        size="sm"
+                        variant="light"
+                      >
+                        Comparar
+                      </Button>
+                    </Stack>
+                  </Card>
+
+                  <Card withBorder p={isMobile ? 'sm' : 'md'} radius="md">
+                    <Stack gap="sm" align="center" ta="center">
+                      <Badge color="purple" variant="light">
+                        4
+                      </Badge>
+                      <IconTrendingUp size={isMobile ? 20 : 24} />
+                      <Text fw={600}>Casos Reais</Text>
+                      <Text size="sm" c="dimmed">
+                        Prova de ROI
+                      </Text>
+                      <Button
+                        component={Link}
+                        to="/guides/cases"
+                        size="sm"
+                        variant="light"
+                      >
+                        Ver Casos
+                      </Button>
+                    </Stack>
+                  </Card>
+                </SimpleGrid>
+              </Stack>
+            </Paper>
+          </motion.section>
+
+          {/* Interactive Tools Section */}
+          <motion.section variants={itemVariants}>
+            <Paper withBorder p={isMobile ? 'md' : 'lg'} radius="lg">
+              <Stack gap="md" align="center" ta="center">
+                <Title order={2} mb="sm">
+                  <IconTools
+                    size={isMobile ? 24 : 32}
+                    style={{ verticalAlign: 'middle', marginRight: '8px' }}
+                  />
+                  Ferramentas Interativas
+                </Title>
+
+                <Text
+                  size={isMobile ? 'md' : 'lg'}
+                  c="dimmed"
+                  maw={isMobile ? 340 : 600}
+                >
+                  Não é só teoria. Use as ferramentas para tomar decisões
+                  práticas.
+                </Text>
+
+                <SimpleGrid
+                  cols={{ base: 1, md: 2 }}
+                  spacing={isMobile ? 'md' : 'lg'}
+                  w="100%"
+                >
+                  <Card withBorder p={isMobile ? 'md' : 'lg'} radius="md">
+                    <Stack gap="sm" align="center" ta="center">
+                      <ThemeIcon
+                        size={isMobile ? 50 : 60}
+                        radius="xl"
+                        variant="light"
+                        color="brand"
+                      >
+                        <IconTarget size={isMobile ? 25 : 30} />
+                      </ThemeIcon>
+                      <Title order={3} size={isMobile ? 'h5' : 'h4'}>
+                        Decision Wizard v3.0
+                      </Title>
+                      <Text size="sm" c="dimmed" ta="center">
+                        6 perguntas para encontrar sua arquitetura ideal.
+                        Recomendações baseadas em contexto real.
+                      </Text>
+                      <Button
+                        component={Link}
+                        to="/guides/how-to-choose"
+                        size="md"
+                        variant="filled"
+                      >
+                        Começar Wizard
+                      </Button>
+                    </Stack>
+                  </Card>
+
+                  <Card withBorder p={isMobile ? 'md' : 'lg'} radius="md">
+                    <Stack gap="sm" align="center" ta="center">
+                      <ThemeIcon
+                        size={isMobile ? 50 : 60}
+                        radius="xl"
+                        variant="light"
+                        color="green"
+                      >
+                        <IconScale size={isMobile ? 25 : 30} />
+                      </ThemeIcon>
+                      <Title order={3} size={isMobile ? 'h5' : 'h4'}>
+                        Comparação Visual
+                      </Title>
+                      <Text size="sm" c="dimmed" ta="center">
+                        Compare 9 arquiteturas com métricas visuais. Análise
+                        detalhada de trade-offs e casos de uso.
+                      </Text>
+                      <Button
+                        component={Link}
+                        to="/guides/architecture-comparison"
+                        size="md"
+                        variant="filled"
+                      >
+                        Ver Comparação
+                      </Button>
+                    </Stack>
+                  </Card>
+                </SimpleGrid>
+              </Stack>
+            </Paper>
           </motion.section>
 
           {/* Analogia da Rodovia - Versão concisa */}
@@ -460,6 +652,94 @@ export default function Home() {
                 </Stack>
               </Card>
             </SimpleGrid>
+          </motion.section>
+
+          {/* Featured Content Section */}
+          <motion.section variants={itemVariants}>
+            <Paper withBorder p={isMobile ? 'md' : 'lg'} radius="lg">
+              <Stack gap="md">
+                <Title order={2} ta="center" mb="lg">
+                  <IconStar
+                    size={isMobile ? 24 : 32}
+                    style={{ verticalAlign: 'middle', marginRight: '8px' }}
+                  />
+                  Conteúdo em Destaque
+                </Title>
+
+                <SimpleGrid cols={{ base: 1, md: 2 }} spacing="lg">
+                  <Card withBorder p={isMobile ? 'md' : 'lg'} radius="md">
+                    <Stack gap="sm">
+                      <Group>
+                        <ThemeIcon
+                          size={isMobile ? 35 : 40}
+                          radius="md"
+                          variant="light"
+                          color="blue"
+                        >
+                          <IconScale size={isMobile ? 18 : 20} />
+                        </ThemeIcon>
+                        <div>
+                          <Text fw={600} size={isMobile ? 'md' : 'lg'}>
+                            Comparação Visual
+                          </Text>
+                          <Text size="sm" c="dimmed">
+                            9 arquiteturas comparadas
+                          </Text>
+                        </div>
+                      </Group>
+                      <Text size="sm" c="dimmed">
+                        Métricas de performance, manutenibilidade, testabilidade
+                        e escalabilidade. Análise visual com trade-offs
+                        detalhados.
+                      </Text>
+                      <Button
+                        component={Link}
+                        to="/guides/architecture-comparison"
+                        size="sm"
+                        variant="light"
+                      >
+                        Ver Comparação
+                      </Button>
+                    </Stack>
+                  </Card>
+
+                  <Card withBorder p={isMobile ? 'md' : 'lg'} radius="md">
+                    <Stack gap="sm">
+                      <Group>
+                        <ThemeIcon
+                          size={isMobile ? 35 : 40}
+                          radius="md"
+                          variant="light"
+                          color="green"
+                        >
+                          <IconTrendingUp size={isMobile ? 18 : 20} />
+                        </ThemeIcon>
+                        <div>
+                          <Text fw={600} size={isMobile ? 'md' : 'lg'}>
+                            Casos Reais
+                          </Text>
+                          <Text size="sm" c="dimmed">
+                            16 empresas, resultados reais
+                          </Text>
+                        </div>
+                      </Group>
+                      <Text size="sm" c="dimmed">
+                        Netflix, Spotify, Airbnb, Pinterest, Tinder. Como eles
+                        resolveram problemas reais com arquitetura front-end.
+                      </Text>
+                      <Button
+                        component={Link}
+                        to="/guides/cases"
+                        size="sm"
+                        variant="light"
+                      >
+                        Ver Casos
+                      </Button>
+                    </Stack>
+                  </Card>
+                </SimpleGrid>
+              </Stack>
+            </Paper>
           </motion.section>
 
           {/* Value Proposition - Mais conciso */}
