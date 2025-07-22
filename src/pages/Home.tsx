@@ -348,7 +348,7 @@ export default function Home() {
                         size={isMobile ? 50 : 60}
                         radius="xl"
                         variant="light"
-                        color="brand"
+                        color="blue"
                       >
                         <IconTarget size={isMobile ? 25 : 30} />
                       </ThemeIcon>
@@ -364,7 +364,7 @@ export default function Home() {
                         to="/guides/how-to-choose"
                         size="md"
                         variant="filled"
-                        color="brand"
+                        color="blue"
                       >
                         Começar Wizard
                       </Button>
