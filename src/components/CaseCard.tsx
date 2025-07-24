@@ -41,7 +41,14 @@ export function CaseCard({ case_, index }: CaseCardProps) {
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <Card withBorder shadow="sm" padding="lg" radius="md">
+    <Card
+      withBorder
+      shadow="sm"
+      padding="lg"
+      radius="md"
+      style={{ cursor: 'pointer' }}
+      onClick={() => setExpanded(!expanded)}
+    >
       <Stack gap="md">
         {/* Header */}
         <Group gap="sm" align="flex-start">
@@ -71,7 +78,10 @@ export function CaseCard({ case_, index }: CaseCardProps) {
           <ActionIcon
             variant="light"
             size="sm"
-            onClick={() => setExpanded(!expanded)}
+            onClick={e => {
+              e.stopPropagation(); // Previne que o click do card seja acionado
+              setExpanded(!expanded);
+            }}
             style={{ marginTop: 4 }}
           >
             {expanded ? (
@@ -154,6 +164,7 @@ export function CaseCard({ case_, index }: CaseCardProps) {
                 rel="noopener noreferrer"
                 c={case_.color}
                 size="sm"
+                onClick={e => e.stopPropagation()} // Previne que o click do card seja acionado
               >
                 <Group gap={4}>
                   <IconExternalLink size={14} />
