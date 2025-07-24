@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Title,
   Text,
@@ -6,15 +6,21 @@ import {
   Paper,
   Alert,
   Group,
-  ThemeIcon,
   Grid,
   Card,
   Badge,
+  Select,
+  Button,
+  List,
+  ThemeIcon,
 } from '@mantine/core';
-import { IconScale, IconBulb, IconAlertTriangle } from '@tabler/icons-react';
-import ArchitectureComparison from '../../components/ArchitectureComparison';
+import {
+  IconBulb,
+  IconAlertTriangle,
+  IconTarget,
+  IconInfoCircle,
+} from '@tabler/icons-react';
 import GuideNavigation from '../../components/GuideNavigation';
-import GuideCTA from '../../components/GuideCTA';
 
 // Métricas baseadas em análise de casos reais e experiência prática
 // Cada métrica (0-10) é avaliada considerando:
@@ -612,6 +618,51 @@ const architectureData = [
 ];
 
 function ArchitectureComparisonPage() {
+  const [selectedArchitectures, setSelectedArchitectures] = useState<string[]>(
+    []
+  );
+  const [comparisonType, setComparisonType] = useState<
+    'pros' | 'cons' | 'bestFor' | 'avoidWhen'
+  >('pros');
+
+  const handleComparisonTypeChange = (
+    value: 'pros' | 'cons' | 'bestFor' | 'avoidWhen'
+  ) => {
+    setComparisonType(value);
+  };
+
+  const getComparisonData = () => {
+    if (selectedArchitectures.length === 0) {
+      return null;
+    }
+
+    const selectedArch = architectureData.find(
+      arch => arch.name === selectedArchitectures[0]
+    );
+    if (!selectedArch) {
+      return null;
+    }
+
+    const comparison = {
+      [comparisonType]:
+        selectedArch[comparisonType as keyof typeof selectedArch],
+    };
+
+    if (selectedArchitectures.length > 1) {
+      const secondArch = architectureData.find(
+        arch => arch.name === selectedArchitectures[1]
+      );
+      if (secondArch) {
+        comparison[`${comparisonType}2`] =
+          secondArch[comparisonType as keyof typeof secondArch];
+      }
+    }
+
+    return comparison;
+  };
+
+  const comparison = getComparisonData();
+
   return (
     <Stack gap="xl">
       {/* Hero Section */}
@@ -620,282 +671,379 @@ function ArchitectureComparisonPage() {
           Comparação de Arquiteturas Front-End
         </Title>
         <Text size="lg" c="dimmed">
-          Compare diferentes arquiteturas baseado em métricas práticas e
-          contexto real. Encontre a arquitetura certa para o seu projeto.
+          Compare arquiteturas de forma direta e prática. Encontre a certa para
+          seu projeto.
         </Text>
       </div>
 
-      {/* Introduction */}
+      {/* Metrics Source */}
       <Paper withBorder p="xl" radius="md">
-        <Stack gap="md">
-          <Group>
-            <ThemeIcon size={50} radius="md" variant="light" color="blue">
-              <IconScale size={25} />
-            </ThemeIcon>
-            <div>
-              <Title order={3}>Como usar esta comparação</Title>
-              <Text c="dimmed">
-                Baseie suas decisões em dados, não em opiniões
+        <Title order={2} mb="lg">
+          <IconInfoCircle
+            size={24}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
+          />
+          Origem das Métricas
+        </Title>
+
+        <Text c="dimmed" mb="lg">
+          Estas métricas são específicas para <strong>front-end</strong> e
+          baseadas em casos reais.
+        </Text>
+
+        <Grid>
+          <Grid.Col span={{ base: 12, md: 6 }}>
+            <Alert color="blue" icon={<IconTarget size={16} />} radius="md">
+              <Text size="sm" fw={600} mb={4}>
+                📊 Fontes das Métricas:
               </Text>
-            </div>
-          </Group>
+              <Text size="sm" c="dimmed">
+                • <strong>Casos reais:</strong> Netflix, Spotify, Airbnb, Uber
+                <br />• <strong>Core Web Vitals:</strong> LCP, FID, CLS
+                <br />• <strong>Performance:</strong> Bundle size, build time
+                <br />• <strong>Experiência prática:</strong> 18+ anos de
+                front-end
+                <br />• <strong>Feedback da comunidade:</strong> Devs e
+                arquitetos
+              </Text>
+            </Alert>
+          </Grid.Col>
 
-          <Text>
-            Cada arquitetura tem seus trade-offs. Não existe "melhor"
-            arquitetura - existe a arquitetura certa para o seu contexto
-            específico.
-          </Text>
-
-          <Text>
-            Use as métricas abaixo para comparar arquiteturas baseado em:
-          </Text>
-
-          <Alert color="blue" icon={<IconBulb size={16} />} radius="md">
-            <Text size="sm" fw={600} mb={4}>
-              📊 Métricas Avaliadas:
-            </Text>
-            <Text size="sm" c="dimmed">
-              <strong>Performance:</strong> Velocidade e eficiência
-              <br />
-              <strong>Manutenibilidade:</strong> Facilidade de manutenção
-              <br />
-              <strong>Testabilidade:</strong> Facilidade de testes
-              <br />
-              <strong>Escalabilidade:</strong> Capacidade de crescimento
-              <br />
-              <strong>Complexidade:</strong> Curva de aprendizado
-            </Text>
-          </Alert>
-        </Stack>
+          <Grid.Col span={{ base: 12, md: 6 }}>
+            <Alert color="green" icon={<IconBulb size={16} />} radius="md">
+              <Text size="sm" fw={600} mb={4}>
+                🎯 Foco Front-End:
+              </Text>
+              <Text size="sm" c="dimmed">
+                • <strong>Performance:</strong> Tempo de carregamento,
+                renderização
+                <br />• <strong>Manutenibilidade:</strong> Facilidade de
+                refatorar código
+                <br />• <strong>Testabilidade:</strong> Testes unitários e e2e
+                <br />• <strong>Escalabilidade:</strong> Crescimento do time e
+                features
+                <br />• <strong>Complexidade:</strong> Curva de aprendizado
+                front-end
+              </Text>
+            </Alert>
+          </Grid.Col>
+        </Grid>
       </Paper>
 
-      {/* Comparison Component */}
-      <ArchitectureComparison architectures={architectureData} />
+      {/* Interactive Comparator */}
+      <Paper withBorder p="xl" radius="md">
+        <Title order={2} mb="lg">
+          <IconTarget
+            size={24}
+            style={{ verticalAlign: 'middle', marginRight: '8px' }}
+          />
+          Comparador Interativo
+        </Title>
 
-      {/* Decision Guide */}
+        <Text c="dimmed" mb="lg">
+          Selecione até 2 arquiteturas para comparar detalhadamente.
+        </Text>
+
+        {/* Architecture Selection */}
+        <Group gap="md" mb="lg">
+          <Select
+            label="Primeira arquitetura"
+            placeholder="Escolha uma arquitetura"
+            data={architectureData.map(arch => ({
+              value: arch.name,
+              label: arch.name,
+            }))}
+            value={selectedArchitectures[0] || null}
+            onChange={value => {
+              if (value) {
+                setSelectedArchitectures(prev =>
+                  [value, ...prev.filter(name => name !== value)].slice(0, 2)
+                );
+              }
+            }}
+            style={{ flex: 1 }}
+          />
+          <Select
+            label="Segunda arquitetura (opcional)"
+            placeholder="Escolha uma arquitetura"
+            data={architectureData.map(arch => ({
+              value: arch.name,
+              label: arch.name,
+            }))}
+            value={selectedArchitectures[1] || null}
+            onChange={value => {
+              if (value) {
+                setSelectedArchitectures(prev =>
+                  [...prev.filter(name => name !== value), value].slice(0, 2)
+                );
+              }
+            }}
+            style={{ flex: 1 }}
+          />
+        </Group>
+
+        {/* Comparison Type Selector */}
+        {selectedArchitectures.length > 0 && (
+          <Group gap="xs" mb="lg">
+            <Text size="sm" fw={600}>
+              Comparar por:
+            </Text>
+            <Button
+              variant={comparisonType === 'pros' ? 'filled' : 'light'}
+              color="green"
+              size="sm"
+              leftSection={<span>✅</span>}
+              onClick={() => handleComparisonTypeChange('pros')}
+            >
+              Vantagens
+            </Button>
+            <Button
+              variant={comparisonType === 'cons' ? 'filled' : 'light'}
+              color="red"
+              size="sm"
+              leftSection={<span>❌</span>}
+              onClick={() => handleComparisonTypeChange('cons')}
+            >
+              Desvantagens
+            </Button>
+            <Button
+              variant={comparisonType === 'bestFor' ? 'filled' : 'light'}
+              color="blue"
+              size="sm"
+              leftSection={<span>🎯</span>}
+              onClick={() => handleComparisonTypeChange('bestFor')}
+            >
+              Melhor para
+            </Button>
+            <Button
+              variant={comparisonType === 'avoidWhen' ? 'filled' : 'light'}
+              color="orange"
+              size="sm"
+              leftSection={<span>⚠️</span>}
+              onClick={() => handleComparisonTypeChange('avoidWhen')}
+            >
+              Evite quando
+            </Button>
+          </Group>
+        )}
+
+        {/* Comparison Results */}
+        {comparison && (
+          <Grid>
+            {selectedArchitectures.map(archName => {
+              const arch = architectureData.find(a => a.name === archName);
+              if (!arch) return null;
+
+              const comparisonData = arch[
+                comparisonType as keyof typeof arch
+              ] as string[];
+              const avgScore =
+                arch.metrics.reduce((sum, m) => sum + m.value, 0) /
+                arch.metrics.length;
+
+              // Define colors based on comparison type
+              const getComparisonColor = () => {
+                switch (comparisonType) {
+                  case 'pros':
+                    return 'green';
+                  case 'cons':
+                    return 'red';
+                  case 'bestFor':
+                    return 'blue';
+                  case 'avoidWhen':
+                    return 'orange';
+                  default:
+                    return 'gray';
+                }
+              };
+
+              const getComparisonIcon = () => {
+                switch (comparisonType) {
+                  case 'pros':
+                    return '✅';
+                  case 'cons':
+                    return '❌';
+                  case 'bestFor':
+                    return '🎯';
+                  case 'avoidWhen':
+                    return '⚠️';
+                  default:
+                    return '•';
+                }
+              };
+
+              return (
+                <Grid.Col
+                  key={archName}
+                  span={{
+                    base: 12,
+                    md: selectedArchitectures.length === 1 ? 12 : 6,
+                  }}
+                >
+                  <Card withBorder p="lg" style={{ height: '100%' }}>
+                    {/* Header with metrics */}
+                    <Group justify="space-between" mb="md">
+                      <Title order={4} c={getComparisonColor()}>
+                        {archName}
+                      </Title>
+                      <Badge
+                        variant="filled"
+                        color={
+                          avgScore >= 7
+                            ? 'green'
+                            : avgScore >= 5
+                              ? 'blue'
+                              : 'red'
+                        }
+                        size="lg"
+                      >
+                        {avgScore.toFixed(1)}/10
+                      </Badge>
+                    </Group>
+
+                    {/* Quick metrics overview */}
+                    <Group gap="xs" mb="lg" wrap="wrap">
+                      {arch.metrics.map(metric => (
+                        <Badge
+                          key={metric.name}
+                          variant="light"
+                          color={
+                            metric.value >= 7
+                              ? 'green'
+                              : metric.value >= 5
+                                ? 'yellow'
+                                : 'red'
+                          }
+                          size="sm"
+                        >
+                          {metric.name}: {metric.value}/10
+                        </Badge>
+                      ))}
+                    </Group>
+
+                    {/* Comparison type indicator */}
+                    <Alert
+                      color={getComparisonColor()}
+                      icon={<IconInfoCircle size={16} />}
+                      radius="md"
+                      mb="md"
+                    >
+                      <Text size="sm" fw={600}>
+                        {comparisonType === 'pros' &&
+                          'Vantagens desta arquitetura'}
+                        {comparisonType === 'cons' &&
+                          'Desvantagens desta arquitetura'}
+                        {comparisonType === 'bestFor' &&
+                          'Melhor para estes cenários'}
+                        {comparisonType === 'avoidWhen' && 'Evite nestes casos'}
+                      </Text>
+                    </Alert>
+
+                    {/* Comparison items */}
+                    <List size="sm" spacing="xs">
+                      {comparisonData.map((item, idx) => (
+                        <List.Item
+                          key={idx}
+                          icon={
+                            <ThemeIcon
+                              variant="light"
+                              color={getComparisonColor()}
+                              size="sm"
+                            >
+                              {getComparisonIcon()}
+                            </ThemeIcon>
+                          }
+                        >
+                          <Text size="sm" fw={500}>
+                            {item}
+                          </Text>
+                        </List.Item>
+                      ))}
+                    </List>
+
+                    {/* Quick summary */}
+                    <Alert color="gray" variant="light" radius="md" mt="md">
+                      <Text size="xs" c="dimmed">
+                        <strong>Resumo:</strong> {comparisonData.length} pontos
+                        de{' '}
+                        {comparisonType === 'pros'
+                          ? 'vantagem'
+                          : comparisonType === 'cons'
+                            ? 'desvantagem'
+                            : comparisonType === 'bestFor'
+                              ? 'aplicação ideal'
+                              : 'evitar'}{' '}
+                        identificados.
+                      </Text>
+                    </Alert>
+                  </Card>
+                </Grid.Col>
+              );
+            })}
+          </Grid>
+        )}
+
+        {selectedArchitectures.length === 0 && (
+          <Alert color="blue" icon={<IconInfoCircle size={16} />} radius="md">
+            <Text size="sm">
+              Selecione pelo menos uma arquitetura para ver a comparação
+              detalhada.
+            </Text>
+          </Alert>
+        )}
+      </Paper>
+
+      {/* Simple Decision Guide */}
       <Paper withBorder p="xl" radius="md">
         <Title order={2} mb="lg">
           <IconBulb
-            size={28}
+            size={24}
             style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
-          Guia de Decisão
+          Como Escolher
         </Title>
 
-        <Stack gap="md">
-          <Alert color="green" icon={<IconBulb size={16} />} radius="md">
-            <Text size="sm" fw={600} mb={4}>
-              ✅ Passos para escolher:
-            </Text>
-            <Text size="sm" c="dimmed">
-              1. <strong>Defina seu contexto:</strong> Time, prazo, complexidade
-              <br />
-              2. <strong>Priorize métricas:</strong> O que é mais importante?
-              <br />
-              3. <strong>Compare trade-offs:</strong> Vantagens vs desvantagens
-              <br />
-              4. <strong>Considere o futuro:</strong> Como o projeto vai
-              crescer?
-              <br />
-              5. <strong>Teste a decisão:</strong> Protótipo ou POC
-            </Text>
-          </Alert>
-
-          <Alert
-            color="orange"
-            icon={<IconAlertTriangle size={16} />}
-            radius="md"
-          >
-            <Text size="sm" fw={600} mb={4}>
-              ⚠️ Armadilhas comuns:
-            </Text>
-            <Text size="sm" c="dimmed">
-              • <strong>Over-engineering:</strong> Complexidade desnecessária
-              <br />• <strong>Under-engineering:</strong> Simplicidade que não
-              escala
-              <br />• <strong>Decisão prematura:</strong> Escolher antes de
-              entender
-              <br />• <strong>Ignorar contexto:</strong> Copiar sem adaptar
-              <br />• <strong>Foco em tecnologia:</strong> Esquecer do negócio
-            </Text>
-          </Alert>
-        </Stack>
-      </Paper>
-
-      {/* Architecture Categories - Compacta */}
-      <Paper withBorder p="xl" radius="md">
-        <Group justify="space-between" mb="lg">
-          <div>
-            <Title order={2} mb="xs">
-              🏗️ Categorias de Arquiteturas
-            </Title>
-            <Text c="dimmed" size="sm">
-              Organizadas por propósito e complexidade
-            </Text>
-          </div>
-          <Badge variant="light" color="blue">
-            3 categorias
-          </Badge>
-        </Group>
-
         <Grid>
-          <Grid.Col span={{ base: 12, md: 4 }}>
-            <Card withBorder p="md">
-              <Group mb="sm">
-                <ThemeIcon size={32} radius="md" variant="light" color="blue">
-                  🚀
-                </ThemeIcon>
-                <div>
-                  <Text fw={600} size="sm">
-                    Fundamentais
-                  </Text>
-                  <Text size="xs" c="dimmed">
-                    SSR, PWA, JAMstack, BFF
-                  </Text>
-                </div>
-              </Group>
-              <Text size="xs" c="dimmed">
-                Para SEO, performance e experiência mobile
+          <Grid.Col span={{ base: 12, md: 6 }}>
+            <Alert color="green" icon={<IconBulb size={16} />} radius="md">
+              <Text size="sm" fw={600} mb={4}>
+                ✅ Escolha por:
               </Text>
-            </Card>
+              <Text size="sm" c="dimmed">
+                • <strong>Performance:</strong> Se velocidade é crítica
+                <br />• <strong>Manutenibilidade:</strong> Se vai crescer muito
+                <br />• <strong>Testabilidade:</strong> Se qualidade é
+                prioridade
+                <br />• <strong>Escalabilidade:</strong> Se o time vai aumentar
+                <br />• <strong>Complexidade:</strong> Se o time é júnior
+              </Text>
+            </Alert>
           </Grid.Col>
 
-          <Grid.Col span={{ base: 12, md: 4 }}>
-            <Card withBorder p="md">
-              <Group mb="sm">
-                <ThemeIcon size={32} radius="md" variant="light" color="green">
-                  🏗️
-                </ThemeIcon>
-                <div>
-                  <Text fw={600} size="sm">
-                    Padrões de Design
-                  </Text>
-                  <Text size="xs" c="dimmed">
-                    Clean, Component, Event-Driven
-                  </Text>
-                </div>
-              </Group>
-              <Text size="xs" c="dimmed">
-                Para projetos complexos e reutilização
+          <Grid.Col span={{ base: 12, md: 6 }}>
+            <Alert
+              color="orange"
+              icon={<IconAlertTriangle size={16} />}
+              radius="md"
+            >
+              <Text size="sm" fw={600} mb="4">
+                ⚠️ Cuidado com:
               </Text>
-            </Card>
-          </Grid.Col>
-
-          <Grid.Col span={{ base: 12, md: 4 }}>
-            <Card withBorder p="md">
-              <Group mb="sm">
-                <ThemeIcon size={32} radius="md" variant="light" color="orange">
-                  🧩
-                </ThemeIcon>
-                <div>
-                  <Text fw={600} size="sm">
-                    Modularização
-                  </Text>
-                  <Text size="xs" c="dimmed">
-                    Micro-frontends, Monorepo
-                  </Text>
-                </div>
-              </Group>
-              <Text size="xs" c="dimmed">
-                Para times independentes e compartilhamento
+              <Text size="sm" c="dimmed">
+                • <strong>Over-engineering:</strong> Complexidade desnecessária
+                <br />• <strong>Under-engineering:</strong> Simplicidade que não
+                escala
+                <br />• <strong>Decisão prematura:</strong> Escolher antes de
+                entender
+                <br />• <strong>Ignorar contexto:</strong> Copiar sem adaptar
               </Text>
-            </Card>
+            </Alert>
           </Grid.Col>
         </Grid>
-      </Paper>
-
-      {/* Fontes das Métricas - Compacta */}
-      <Paper withBorder p="xl" radius="md">
-        <Group justify="space-between" mb="lg">
-          <div>
-            <Title order={2} mb="xs">
-              📚 Fontes das Métricas
-            </Title>
-            <Text c="dimmed" size="sm">
-              Baseadas em casos reais, literatura técnica e experiência prática
-            </Text>
-          </div>
-          <Badge variant="light" color="blue">
-            5 fontes
-          </Badge>
-        </Group>
-
-        <Grid>
-          <Grid.Col span={{ base: 12, md: 4 }}>
-            <Card withBorder p="md">
-              <Group mb="sm">
-                <ThemeIcon size={32} radius="md" variant="light" color="blue">
-                  🏢
-                </ThemeIcon>
-                <div>
-                  <Text fw={600} size="sm">
-                    Casos Reais
-                  </Text>
-                  <Text size="xs" c="dimmed">
-                    Netflix, Spotify, Airbnb
-                  </Text>
-                </div>
-              </Group>
-              <Text size="xs" c="dimmed">
-                Análise de projetos em produção com métricas verificáveis
-              </Text>
-            </Card>
-          </Grid.Col>
-
-          <Grid.Col span={{ base: 12, md: 4 }}>
-            <Card withBorder p="md">
-              <Group mb="sm">
-                <ThemeIcon size={32} radius="md" variant="light" color="green">
-                  📊
-                </ThemeIcon>
-                <div>
-                  <Text fw={600} size="sm">
-                    Métricas
-                  </Text>
-                  <Text size="xs" c="dimmed">
-                    Core Web Vitals, Performance
-                  </Text>
-                </div>
-              </Group>
-              <Text size="xs" c="dimmed">
-                LCP, FID, CLS, Bundle Size, Build Time
-              </Text>
-            </Card>
-          </Grid.Col>
-
-          <Grid.Col span={{ base: 12, md: 4 }}>
-            <Card withBorder p="md">
-              <Group mb="sm">
-                <ThemeIcon size={32} radius="md" variant="light" color="orange">
-                  📚
-                </ThemeIcon>
-                <div>
-                  <Text fw={600} size="sm">
-                    Literatura
-                  </Text>
-                  <Text size="xs" c="dimmed">
-                    Martin, Fowler, Evans
-                  </Text>
-                </div>
-              </Group>
-              <Text size="xs" c="dimmed">
-                Clean Architecture, DDD, Microservices
-              </Text>
-            </Card>
-          </Grid.Col>
-        </Grid>
-
-        <Alert color="blue" icon={<IconBulb size={16} />} radius="md" mt="lg">
-          <Text size="sm" fw={600} mb={2}>
-            💡 Metodologia: 18+ anos de experiência + casos reais + feedback da
-            comunidade
-          </Text>
-        </Alert>
       </Paper>
 
       {/* Navigation */}
       <GuideNavigation currentGuide="architecture-comparison" />
-      <GuideCTA currentGuide="architecture-comparison" />
     </Stack>
   );
 }
