@@ -8,36 +8,35 @@ import {
   Card,
   Badge,
   Group,
-  Progress,
-  List,
   Tabs,
-  Select,
   TextInput,
-  RingProgress,
-  Tooltip,
-  Divider,
+  Select,
   ActionIcon,
+  Tooltip,
   Collapse,
+  Divider,
+  List,
   ThemeIcon,
+  Progress,
 } from '@mantine/core';
-import { useMediaQuery } from '@mantine/hooks';
 import {
+  IconSearch,
+  IconChartBar,
+  IconTarget,
+  IconList,
+  IconTable,
+  IconChevronDown,
+  IconChevronUp,
   IconCheck,
   IconX,
-  IconAlertTriangle,
+  IconBolt,
   IconCode,
   IconTestPipe,
   IconScale,
-  IconChartBar,
-  IconList,
-  IconTable,
-  IconSearch,
-  IconChevronDown,
-  IconChevronUp,
-  IconTarget,
   IconBrain,
-  IconBolt,
+  IconAlertTriangle,
 } from '@tabler/icons-react';
+import { useMediaQuery } from '@mantine/hooks';
 
 interface ArchitectureMetric {
   name: string;
@@ -288,38 +287,64 @@ const ArchitectureComparison: React.FC<ArchitectureComparisonProps> = ({
                 {/* Quick Metrics */}
                 <Group gap="xs" mb="md">
                   {arch.metrics.slice(0, 3).map(metric => {
-                    const category = metricCategories.find(
-                      cat => cat.name === metric.name
-                    );
+                    const getScoreColor = (value: number) => {
+                      if (value >= 8) return 'green';
+                      if (value >= 6) return 'blue';
+                      if (value >= 4) return 'yellow';
+                      return 'red';
+                    };
+
                     return (
                       <Tooltip
                         key={metric.name}
                         label={`${metric.name}: ${metric.value}/10`}
+                        withArrow
+                        position="top"
+                        multiline
+                        w={200}
                       >
-                        <RingProgress
-                          size={40}
-                          thickness={4}
-                          sections={[
-                            {
-                              value: metric.value * 10,
-                              color: category?.color as
-                                | 'blue'
-                                | 'green'
-                                | 'purple'
-                                | 'orange'
-                                | 'red',
-                            },
-                          ]}
-                          label={
-                            <Text size="xs" ta="center" fw={500}>
-                              {metric.value}
-                            </Text>
-                          }
-                        />
+                        <Badge
+                          variant="filled"
+                          color={getScoreColor(metric.value)}
+                          size={isMobile ? 'md' : 'sm'}
+                          style={{
+                            minWidth: isMobile ? '60px' : '50px',
+                            textAlign: 'center',
+                            fontWeight: 700,
+                            fontSize: isMobile ? '14px' : '12px',
+                          }}
+                        >
+                          {metric.value}/10
+                        </Badge>
                       </Tooltip>
                     );
                   })}
                 </Group>
+
+                {/* Metrics Legend - Mobile Friendly */}
+                <Text size="xs" c="dimmed" ta="center" mb="sm">
+                  {isMobile ? (
+                    <>
+                      <strong>Métricas:</strong>{' '}
+                      {arch.metrics.slice(0, 3).map((metric, index) => (
+                        <span key={metric.name}>
+                          {index > 0 ? ', ' : ' '}
+                          <strong>{metric.name}</strong> ({metric.value}/10)
+                        </span>
+                      ))}
+                    </>
+                  ) : (
+                    <>
+                      <strong>Métricas principais:</strong>{' '}
+                      {arch.metrics.slice(0, 3).map((metric, index) => (
+                        <span key={metric.name}>
+                          {index > 0 ? ', ' : ' '}
+                          <strong>{metric.name}</strong> ({metric.value}/10)
+                        </span>
+                      ))}
+                    </>
+                  )}
+                </Text>
 
                 {/* Expanded Details */}
                 <Collapse in={isExpanded}>
