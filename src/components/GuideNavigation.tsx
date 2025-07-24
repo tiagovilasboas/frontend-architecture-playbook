@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { Group, Button, Text, Badge, Stack, Paper } from '@mantine/core';
 import {
   IconArrowLeft,
-  IconArrowRight,
   IconBulb,
   IconTarget,
   IconScale,
@@ -50,8 +49,8 @@ export const GuideNavigation: React.FC<GuideNavigationProps> = ({
 }) => {
   const currentIndex = guides.findIndex(guide => guide.id === currentGuide);
   const currentGuideData = guides[currentIndex];
-  const nextGuide = guides[currentIndex + 1];
   const prevGuide = guides[currentIndex - 1];
+  const nextGuide = guides[currentIndex + 1];
 
   return (
     <Paper withBorder p="md" radius="md">
@@ -76,7 +75,7 @@ export const GuideNavigation: React.FC<GuideNavigationProps> = ({
               leftSection={<IconArrowLeft size={16} />}
               size="sm"
             >
-              {prevGuide.title}
+              ← {prevGuide.title}
             </Button>
           ) : (
             <div />
@@ -87,30 +86,27 @@ export const GuideNavigation: React.FC<GuideNavigationProps> = ({
               component={Link}
               to={nextGuide.path}
               variant="filled"
-              rightSection={<IconArrowRight size={16} />}
+              rightSection={
+                <IconArrowLeft
+                  size={16}
+                  style={{ transform: 'rotate(180deg)' }}
+                />
+              }
               size="sm"
             >
-              {nextGuide.title}
+              {nextGuide.title} →
             </Button>
           ) : (
-            <Button
-              component={Link}
-              to="/"
-              variant="light"
-              rightSection={<IconArrowRight size={16} />}
-              size="sm"
-            >
-              Voltar ao Início
-            </Button>
+            <div />
           )}
         </Group>
 
-        {/* Related Guides */}
+        {/* All Guides */}
         <div>
           <Text size="sm" fw={600} mb="xs">
-            Outros Guias:
+            Todos os Guias:
           </Text>
-          <Group gap="xs">
+          <Group gap="xs" wrap="wrap">
             {guides.map(guide => (
               <Button
                 key={guide.id}
@@ -119,6 +115,10 @@ export const GuideNavigation: React.FC<GuideNavigationProps> = ({
                 variant={guide.id === currentGuide ? 'filled' : 'light'}
                 size="xs"
                 leftSection={guide.icon}
+                style={{
+                  opacity: guide.id === currentGuide ? 1 : 0.7,
+                  fontWeight: guide.id === currentGuide ? 600 : 400,
+                }}
               >
                 {guide.title}
               </Button>
