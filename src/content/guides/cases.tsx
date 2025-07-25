@@ -22,7 +22,6 @@ import {
 import { CaseCard, type Case } from '../../components/CaseCard';
 import casesData from '../../data/cases.json';
 import GuideNavigation from '../../components/GuideNavigation';
-import GuideCTA from '../../components/GuideCTA';
 
 export default function Cases() {
   const cases: Case[] = casesData;
@@ -256,7 +255,6 @@ export default function Cases() {
 
       {/* Navigation */}
       <GuideNavigation currentGuide="cases" />
-      <GuideCTA currentGuide="cases" />
     </Stack>
   );
 }
