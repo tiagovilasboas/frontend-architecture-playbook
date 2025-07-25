@@ -57,6 +57,40 @@ interface ArchitectureComparisonProps {
   }[];
 }
 
+// Fora do componente, sem export
+const metricCategories = [
+  {
+    name: 'Performance',
+    icon: <IconBolt size={16} />,
+    description: 'Velocidade e eficiência',
+    color: 'blue',
+  },
+  {
+    name: 'Manutenibilidade',
+    icon: <IconCode size={16} />,
+    description: 'Facilidade de manutenção',
+    color: 'green',
+  },
+  {
+    name: 'Testabilidade',
+    icon: <IconTestPipe size={16} />,
+    description: 'Facilidade de testes',
+    color: 'purple',
+  },
+  {
+    name: 'Escalabilidade',
+    icon: <IconScale size={16} />,
+    description: 'Capacidade de crescimento',
+    color: 'orange',
+  },
+  {
+    name: 'Complexidade',
+    icon: <IconBrain size={16} />,
+    description: 'Curva de aprendizado',
+    color: 'red',
+  },
+];
+
 const ArchitectureComparison: React.FC<ArchitectureComparisonProps> = ({
   architectures,
 }) => {
@@ -67,39 +101,6 @@ const ArchitectureComparison: React.FC<ArchitectureComparisonProps> = ({
   const [expandedArchitecture, setExpandedArchitecture] = useState<
     string | null
   >(null);
-
-  const metricCategories = [
-    {
-      name: 'Performance',
-      icon: <IconBolt size={16} />,
-      description: 'Velocidade e eficiência',
-      color: 'blue',
-    },
-    {
-      name: 'Manutenibilidade',
-      icon: <IconCode size={16} />,
-      description: 'Facilidade de manutenção',
-      color: 'green',
-    },
-    {
-      name: 'Testabilidade',
-      icon: <IconTestPipe size={16} />,
-      description: 'Facilidade de testes',
-      color: 'purple',
-    },
-    {
-      name: 'Escalabilidade',
-      icon: <IconScale size={16} />,
-      description: 'Capacidade de crescimento',
-      color: 'orange',
-    },
-    {
-      name: 'Complexidade',
-      icon: <IconBrain size={16} />,
-      description: 'Curva de aprendizado',
-      color: 'red',
-    },
-  ];
 
   // Filter architectures based on search
   const filteredArchitectures = useMemo(() => {
