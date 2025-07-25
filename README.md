@@ -31,6 +31,10 @@ Um **sistema de suporte à decisão** que resolve a pergunta que todo dev já te
 
 - **9 arquiteturas comparadas:** Clean Architecture, SSR & SSG, PWA, BFF, Event-Driven, JAMstack, Micro-frontends, Monorepo, Component-Driven
 - **Métricas práticas:** Performance, Manutenibilidade, Testabilidade, Escalabilidade, Complexidade
+- **Comparador interativo:** Selecione até 2 arquiteturas e compare vantagens, desvantagens, casos de uso e quando evitar
+- **Cores temáticas:** Verde para vantagens, vermelho para desvantagens, azul para casos ideais, laranja para quando evitar
+- **Notas visuais:** Badges coloridos com scores de 1-10 e legendas claras
+- **Origem das métricas:** Explicação detalhada de onde vêm as métricas (foco em front-end)
 - **Análise detalhada:** Pros/cons, casos de uso, quando evitar
 - **Matriz de decisão:** Guia visual para escolher baseado no contexto
 - **Categorização inteligente:** Fundamentais, Padrões de Design, Modularização
@@ -93,6 +97,9 @@ Um **sistema de suporte à decisão** que resolve a pergunta que todo dev já te
 - **Dark mode** - Suporte completo
 - **Responsivo** - Funciona em qualquer tela
 - **Mobile-first** - UX otimizada para dispositivos móveis
+- **Navegação intuitiva** - Guias com progresso visual e alinhamento vertical
+- **Cards interativos** - Casos reais com expansão/colapso otimizada
+- **Comparador visual** - Interface rica com cores temáticas e notas claras
 - **Jest** - 47+ testes unitários do Decision Wizard v3.0
 - **ESLint** - Padrões consistentes
 - **Husky** - Pre-commit hooks
