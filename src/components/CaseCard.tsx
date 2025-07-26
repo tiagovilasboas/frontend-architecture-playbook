@@ -31,6 +31,7 @@ export interface Case {
   results: string[];
   link: string;
   color: string;
+  disclaimer?: string;
 }
 
 interface CaseCardProps {
@@ -186,6 +187,20 @@ export function CaseCard({ case_, index }: CaseCardProps) {
                 </Group>
               </Anchor>
             </div>
+
+            {/* Disclaimer */}
+            {case_.disclaimer && (
+              <Alert
+                color="yellow"
+                variant="light"
+                icon={<IconTrendingUp size={16} />}
+                radius="sm"
+              >
+                <Text size="xs" c="dimmed">
+                  <strong>ℹ️ Nota:</strong> {case_.disclaimer}
+                </Text>
+              </Alert>
+            )}
           </Stack>
         </Collapse>
       </Stack>
