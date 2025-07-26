@@ -18,6 +18,7 @@ import {
   IconCheckbox,
   IconChevronDown,
   IconChevronUp,
+  IconUsers,
 } from '@tabler/icons-react';
 
 export interface Case {
@@ -39,6 +40,10 @@ interface CaseCardProps {
 
 export function CaseCard({ case_, index }: CaseCardProps) {
   const [expanded, setExpanded] = useState(false);
+
+  // Extrair métricas de escala do título
+  const scaleMatch = case_.title.match(/- (\d+[MBK]+\+?) usuários?/);
+  const scale = scaleMatch ? scaleMatch[1] : null;
 
   return (
     <Card
@@ -70,9 +75,18 @@ export function CaseCard({ case_, index }: CaseCardProps) {
               <Badge variant="light" color={case_.color}>
                 Case #{index + 1}
               </Badge>
+              {scale && (
+                <Badge
+                  variant="light"
+                  color="blue"
+                  leftSection={<IconUsers size={12} />}
+                >
+                  {scale}
+                </Badge>
+              )}
             </Group>
             <Text fw={600} size="lg" c={`${case_.color}.6`}>
-              {case_.title}
+              {case_.title.replace(/- \d+[MBK]+\+? usuários?/, '')}
             </Text>
           </div>
           <ActionIcon
@@ -134,7 +148,7 @@ export function CaseCard({ case_, index }: CaseCardProps) {
               radius="md"
             >
               <Text fw={600} size="sm" mb="xs">
-                📈 Impacto:
+                📈 Impacto Real:
               </Text>
               <List spacing={4} size="sm">
                 {case_.results.map((result, idx) => (

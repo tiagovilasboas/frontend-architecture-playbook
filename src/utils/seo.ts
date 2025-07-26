@@ -70,7 +70,7 @@ export const getPageMeta = (pathname: string): PageMeta => {
         title:
           'Casos Reais de Arquitetura Front-End - Netflix, Spotify, Airbnb',
         description:
-          '16 casos reais de empresas que aplicaram boas práticas com resultado. Netflix, Spotify, Airbnb, Pinterest, Tinder, Slack, Uber, WhatsApp, Zoom, Figma, Discord.',
+          '16 casos reais de empresas que aplicaram boas práticas com resultado. Netflix, Spotify, Airbnb, Pinterest, Tinder, Slack, Uber, WhatsApp, Zoom, Figma, Discord, Google, Booking.com, Twitter, Walmart, GOV.UK.',
         keywords:
           'frontend case studies, netflix architecture, spotify frontend, airbnb tech, real world examples, performance optimization, architecture success stories',
         ogTitle: 'Casos Reais: Quando Front-End Vira Dinheiro',

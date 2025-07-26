@@ -1,251 +1,172 @@
-# 🚀 Front-End Architecture Playbook
+# 🚀 Cursor Rules para Front-End
 
-> **Decision wizard interativo + comparação visual de arquiteturas + casos reais que provam ROI. Dev para dev, sem enrolação.**
+> **Guia prático de Cursor Rules para desenvolvimento front-end - porque produtividade não é só sobre código, é sobre contexto.**
 
-Não é mais um guia teórico. É um **assistente de decisão** que considera seu contexto real (time, prazo, objetivo) e recomenda a arquitetura certa. Baseado em 18 anos de front-end e casos reais de Netflix, Spotify, Airbnb e outras.
+## 🎯 O que é isso?
 
-## 🎯 **O que é?**
+Cursor Rules são configurações que transformam o Cursor em um assistente especializado para seu projeto. Em vez de ter um "AI genérico", você tem um parceiro que entende suas convenções, padrões e necessidades específicas.
 
-Um **sistema de suporte à decisão** que resolve a pergunta que todo dev já teve: "Qual arquitetura usar no meu projeto?". Combina:
+## 🎨 Por que Front-End?
 
-- **🧙‍♂️ Decision Wizard:** 6 perguntas contextuais → recomendação personalizada + justificativa
-- **📊 Comparação Visual:** 9 arquiteturas comparadas com métricas práticas
-- **💼 Casos Reais:** Como Netflix, Spotify, Airbnb geraram milhões com decisões técnicas certas
-- **📚 Guias Práticos:** Implementação passo-a-passo de cada arquitetura
-- **⚡ Tom dev-to-dev:** Direto, sem academicismo. Foco em resultado.
+Front-end tem particularidades únicas:
 
-**A base de tudo:** **Dependency Rule**. Camadas externas dependem das internas. Negócio nunca depende de framework. Respeite isso e qualquer arquitetura funciona. Ignore e nenhuma salva.
+- **Componentização** - Estruturas específicas
+- **Estados complexos** - Gerenciamento de UI
+- **Performance** - Otimizações específicas
+- **Design Systems** - Padrões visuais
+- **Frameworks** - React, Vue, Angular, Svelte
+- **Build tools** - Vite, Webpack, Rollup
+- **CSS-in-JS** - Styled Components, Emotion, etc.
 
-## 🚀 **Features**
+## 📁 Estrutura do Projeto
 
-### **🧙‍♂️ Decision Wizard v3.0 (LATEST!)**
+```
+cursor-rules-frontend/
+├── rules/
+│   ├── react/
+│   ├── vue/
+│   ├── angular/
+│   ├── svelte/
+│   ├── performance/
+│   ├── testing/
+│   └── design-systems/
+├── examples/
+│   ├── components/
+│   ├── hooks/
+│   └── patterns/
+├── templates/
+│   ├── .cursorrules
+│   └── .cursorrules.template
+└── docs/
+    ├── getting-started.md
+    └── best-practices.md
+```
 
-- **6 steps contextuais:** Tipo projeto, tamanho time, nível técnico, prioridade, integrações + resumo
-- **15 arquiteturas cobertas:** Todas as arquiteturas do playbook incluídas no wizard
-- **Lógica sofisticada:** Sistema de scoring multi-dimensional com 47+ testes
-- **Recomendações inteligentes:** Cada sugestão vem com justificativa contextual específica
-- **Bonus patterns:** Padrões complementares baseados no seu contexto completo
-- **Mobile-optimized:** UX responsiva e intuitiva com animações suaves
+## 🚀 Como usar
 
-### **📊 Comparação Visual de Arquiteturas (NEW!)**
-
-- **9 arquiteturas comparadas:** Clean Architecture, SSR & SSG, PWA, BFF, Event-Driven, JAMstack, Micro-frontends, Monorepo, Component-Driven
-- **Métricas práticas:** Performance, Manutenibilidade, Testabilidade, Escalabilidade, Complexidade
-- **Comparador interativo:** Selecione até 2 arquiteturas e compare vantagens, desvantagens, casos de uso e quando evitar
-- **Cores temáticas:** Verde para vantagens, vermelho para desvantagens, azul para casos ideais, laranja para quando evitar
-- **Notas visuais:** Badges coloridos com scores de 1-10 e legendas claras
-- **Origem das métricas:** Explicação detalhada de onde vêm as métricas (foco em front-end)
-- **Análise detalhada:** Pros/cons, casos de uso, quando evitar
-- **Matriz de decisão:** Guia visual para escolher baseado no contexto
-- **Categorização inteligente:** Fundamentais, Padrões de Design, Modularização
-
-### **💼 Casos Reais de Impacto (UPDATED!)**
-
-- **16 empresas:** Pinterest, Tinder, Slack, Uber, WhatsApp, Zoom, Figma, Discord + originais
-- **Métricas concretas:** "+103% engagement", "-84% time to interactive", "99.9% sync accuracy"
-- **Business impact:** Como decisões técnicas viraram milhões em receita
-- **Links verificáveis:** Fontes originais dos casos
-- **Prova de ROI:** Justifique refactors e decisões técnicas
-
-### **🏗️ Arquiteturas Cobertas (15 TOTAL!)**
-
-**🔥 TIER 1: Essenciais**
-
-- **SSR & SSG** - "Se você liga pra SEO, você usa SSR"
-- **Backend-for-Frontend (BFF)** - "Uma API sob medida pro seu front"
-- **Progressive Web Apps (PWA)** - "Web que se comporta como app nativo"
-
-**🚀 TIER 2: Importantes**
-
-- **Headless/API-First** - "Separação igreja-estado entre content e apresentação"
-- **Hexagonal Architecture** - "Clean Architecture mais flexível e menos dogmática"
-- **Layered Architecture** - "Clean Architecture sem a complexidade - direto ao ponto"
-
-**📚 TIER 3: Específicas**
-
-- **Event Sourcing Frontend** - "Toda ação é um evento - debug e auditoria que funciona"
-- **CQRS Frontend** - "Read diferente de write - performance e clareza"
-- **Microservices Frontend** - "Dividir pra conquistar - times, deploys, responsabilidades"
-
-**⚡ Clássicas**
-
-- **Clean Architecture** - Separação clara de responsabilidades
-- **Component-Driven Development** - Reutilização e composição
-- **Micro-frontends** - Escalabilidade de times
-- **Monorepo** - Compartilhamento de código
-- **Single Page Application** - Aplicações de página única
-- **Islands Architecture** - Performance híbrida
-- **JAMstack** - Performance e simplicidade
-
-## 🛠️ **Tecnologias**
-
-- **React 19** + **TypeScript** - Base moderna
-- **Vite** - Build otimizado com code splitting
-- **Mantine** - Design system completo
-- **React Router** - Navegação SPA
-- **Tabler Icons** - Ícones consistentes
-- **Jest** - Testes unitários completos
-- **Husky** - Git hooks para qualidade
-- **Lint-staged** - Validação automática
-
-## 📊 **Performance & Qualidade**
-
-- **Code splitting** - Chunks otimizados por funcionalidade
-- **Lazy loading** - Páginas carregam sob demanda
-- **Bundle otimizado** - 11 chunks separados
-- **Imagens otimizadas** - PNGs comprimidos pré-build (60% redução)
-- **Dark mode** - Suporte completo
-- **Responsivo** - Funciona em qualquer tela
-- **Mobile-first** - UX otimizada para dispositivos móveis
-- **Navegação intuitiva** - Guias com progresso visual e alinhamento vertical
-- **Cards interativos** - Casos reais com expansão/colapso otimizada
-- **Comparador visual** - Interface rica com cores temáticas e notas claras
-- **Jest** - 47+ testes unitários do Decision Wizard v3.0
-- **ESLint** - Padrões consistentes
-- **Husky** - Pre-commit hooks
-
-## 🏃‍♂️ **Quick Start**
+1. **Clone o repo:**
 
 ```bash
-# Clone
-git clone https://github.com/tiagovilasboas/frontend-architecture-playbook.git
-cd frontend-architecture-playbook
-
-# Instale
-npm install
-
-# Dev (com kill-port automático)
-npm run dev
-
-# Build
-npm run build
-
-# Lint
-npm run lint
-
-# Testes
-npm test
-
-# Otimizar imagens
-npm run optimize:images
+git clone https://github.com/seu-usuario/cursor-rules-frontend.git
 ```
 
-## 🏗️ **Estrutura do Projeto**
+2. **Escolha suas regras:**
 
-```
-src/
-├── components/          # Componentes reutilizáveis
-│   ├── interactive/    # Decision Wizard
-│   ├── ui/            # Componentes de UI
-│   └── diagrams/      # Diagramas e visualizações
-├── content/           # Conteúdo do playbook
-│   ├── guides/        # Guias práticos
-│   ├── patterns/      # Padrões arquiteturais
-│   └── techniques/    # Técnicas avançadas
-├── lib/              # Utilitários e configurações
-├── pages/            # Páginas da aplicação
-└── utils/            # Funções utilitárias
+```bash
+cp templates/.cursorrules.template .cursorrules
 ```
 
-## 🎯 **Para Quem é?**
+3. **Personalize para seu projeto:**
 
-### **Desenvolvedores Front-End**
+- Ajuste as regras para seu framework
+- Adicione suas convenções
+- Configure seu design system
 
-- Escolher arquitetura para novos projetos
-- Refatorar código legado
-- Justificar decisões técnicas
-- Aprender padrões testados
+## 🎯 Cenários Cobertos
 
-### **Tech Leads & Arquitetos**
+### 🟢 **React**
 
-- Base para decisões arquiteturais
-- Justificativas técnicas sólidas
-- Padrões testados em produção
-- Guia para refatoração
+- Componentes funcionais vs classes
+- Hooks personalizados
+- Context API
+- Performance com React.memo
+- TypeScript + React
 
-### **CTO/Arquitetos**
+### 🔵 **Vue**
 
-- ROI das decisões técnicas
-- Escalabilidade de longo prazo
-- Redução de dívida técnica
-- Padrões para times
+- Composition API
+- Options API
+- Pinia para estado
+- Nuxt.js patterns
 
-## 📚 **Conteúdo**
+### 🟡 **Angular**
 
-### **Guias**
+- Services
+- RxJS patterns
+- NgRx
+- Angular Material
 
-- **Cases** - Casos reais de impacto com métricas de ROI
-- **Como Escolher** - Decision wizard v3.0 interativo e inteligente
-- **Comparação Visual** - 9 arquiteturas comparadas com métricas
-- **Dependency Rule** - Regra fundamental de qualquer arquitetura
+### 🟠 **Svelte**
 
-### **Arquiteturas (15 padrões)**
+- Stores
+- Actions
+- Transitions
+- SvelteKit
 
-- **Clean Architecture** - Separação de camadas
-- **Component-Driven** - Reutilização
-- **Micro-frontends** - Escalabilidade
-- **Monorepo** - Compartilhamento
-- **Single Page Application** - Aplicações modernas
-- **SSR/SSG** - Performance
-- **PWA** - Mobile
-- **Islands** - Híbrido
-- **State Machines** - Lógica complexa
-- **Event-Driven** - Desacoplamento
-- **Feature Flags** - Deploy seguro
-- **Atomic Design** - Design systems
-- **JAMstack** - Performance e simplicidade
-- **BFF** - API otimizada
-- **Headless** - Separação UI/lógica
+### ⚡ **Performance**
 
-### **Padrões & Técnicas**
+- Code splitting
+- Lazy loading
+- Bundle optimization
+- Core Web Vitals
 
-- **Repository Pattern** - Abstração de acesso a dados
-- **Security Patterns** - Padrões de segurança e autenticação
-- **Dependency Injection** - Inversão de controle
-- **Code Splitting** - Otimização de performance
-- **Lazy Loading** - Carregamento sob demanda
-- **Error Boundaries** - Tratamento de erros
-- **Performance Monitoring** - Métricas reais
+### 🧪 **Testing**
 
-### **Boas Práticas**
+- Jest + React Testing Library
+- Vitest
+- Cypress
+- Playwright
 
-- **DRY** - Don't Repeat Yourself (lógica de negócio)
-- **KISS** - Keep It Simple, Stupid
-- **YAGNI** - You Aren't Gonna Need It
-- **Clean Code** - Código legível e manutenível
-- **Single Responsibility Principle** - Uma classe, uma responsabilidade
-- **Separation of Concerns** - Separe responsabilidades claramente
+### 🎨 **Design Systems**
 
-## 🗺️ **Roadmap**
+- Storybook
+- Component documentation
+- Theme management
+- Accessibility
 
-Veja onde estamos indo no [ROADMAP.md](./ROADMAP.md):
+## 💡 Exemplos Práticos
 
-- **Q1 2025:** Visualizações e comparações avançadas
-- **Q2 2025:** Contexto rico e personalização
-- **Q3 2025:** Feedback loop e ML
-- **Q4 2025:** Gamification e comunidade
+### React Component Rule
 
-## 🤝 **Contribuindo**
+```json
+{
+  "name": "React Component",
+  "description": "Cria componentes React seguindo padrões específicos",
+  "rules": [
+    "Use functional components",
+    "Implemente PropTypes ou TypeScript",
+    "Siga naming convention PascalCase",
+    "Separe lógica de apresentação"
+  ]
+}
+```
+
+### Performance Rule
+
+```json
+{
+  "name": "Performance First",
+  "description": "Otimizações automáticas para performance",
+  "rules": [
+    "Use React.memo para componentes pesados",
+    "Implemente lazy loading",
+    "Otimize re-renders",
+    "Considere bundle size"
+  ]
+}
+```
+
+## 🤝 Contribuindo
 
 1. Fork o projeto
-2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
-3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
-4. Push para a branch (`git push origin feature/AmazingFeature`)
+2. Crie uma branch: `git checkout -b feature/nova-regra`
+3. Commit: `git commit -m '[feat] Adiciona regra para X'`
+4. Push: `git push origin feature/nova-regra`
 5. Abra um Pull Request
 
-## 📄 **Licença**
+## 📚 Recursos
 
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+- [Cursor Documentation](https://cursor.sh/docs)
+- [Cursor Rules Guide](https://cursor.sh/docs/rules)
+- [Front-End Performance](https://web.dev/performance/)
+- [React Best Practices](https://react.dev/learn)
 
-## 🙏 **Agradecimentos**
+## 📄 Licença
 
-- Comunidade React/TypeScript
-- Casos reais das empresas mencionadas
-- Feedback da comunidade de desenvolvedores
-- Inspiração em arquiteturas testadas em produção
+MIT License - veja [LICENSE](LICENSE) para detalhes.
 
 ---
 
-**Feito com ❤️ por [Tiago Vilas Boas](https://github.com/tiagovilasboas)**
+**Feito com ❤️ para a comunidade front-end**
 
-_"Arquitetura é trade-off atrás de trade-off. O que resolve para um projeto pode ser dor de cabeça para outro."_
+_Quer contribuir? Abra uma issue ou PR!_

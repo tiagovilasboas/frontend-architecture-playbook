@@ -10,6 +10,9 @@ const Cases = lazy(() => import('../content/guides/cases.tsx'));
 const ArchitectureComparison = lazy(
   () => import('../content/guides/architecture-comparison.tsx')
 );
+const ImplementationRoadmap = lazy(
+  () => import('../content/guides/implementation-roadmap.tsx')
+);
 
 // Lazy loading para patterns - carregamento sob demanda
 const AtomicDesign = lazy(
@@ -102,6 +105,11 @@ const STATIC_METADATA = {
   cases: {
     title: 'Casos de Uso Reais',
     description: 'Exemplos práticos de arquiteturas front-end',
+  },
+  'implementation-roadmap': {
+    title: 'Roadmap de Implementação',
+    description:
+      'Roadmap prático baseado em cases reais de Netflix, Spotify, Pinterest, Tinder, Slack, Uber e outros. Como implementar arquitetura front-end que escala com métricas reais e resultados comprovados.',
   },
   'architecture-comparison': {
     title: 'Comparação de Arquiteturas',
@@ -264,6 +272,7 @@ export const guides: DocMeta[] = [
   toMeta(HowToChoose, 'how-to-choose', 'guides', true), // 2. Escolha
   toMeta(ArchitectureComparison, 'architecture-comparison', 'guides', true), // 3. Análise
   toMeta(Cases, 'cases', 'guides', true), // 4. Validação
+  toMeta(ImplementationRoadmap, 'implementation-roadmap', 'guides', true), // 5. Implementação
 ];
 
 // Arquiteturas organizadas por complexidade e popularidade

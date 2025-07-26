@@ -13,7 +13,6 @@ import {
   IconTarget,
   IconRocket,
   IconBulb,
-  IconCheckbox,
   IconTrendingUp,
   IconCode,
   IconBolt,
@@ -93,63 +92,49 @@ export default function Cases() {
       </div>
 
       {/* Key Insights */}
-      <div>
-        <Title order={2} mb="lg">
-          <IconBulb
-            size={28}
-            style={{ verticalAlign: 'middle', marginRight: '8px' }}
-          />
-          Principais Insights
-        </Title>
-
+      <Paper withBorder p="xl" radius="md">
         <Stack gap="md">
-          <Card withBorder p="md">
-            <Group>
-              <ThemeIcon size={40} radius="md" variant="light" color="green">
-                <IconCheckbox size={20} />
-              </ThemeIcon>
-              <div>
-                <Title order={4}>Problema Real, Solução Real</Title>
-                <Text size="sm">
-                  Não é sobre "qual framework usar", é sobre resolver o problema
-                  que está matando o negócio.
-                </Text>
-              </div>
-            </Group>
-          </Card>
+          <Group>
+            <ThemeIcon size={50} radius="md" variant="light" color="blue">
+              <IconBulb size={25} />
+            </ThemeIcon>
+            <div>
+              <Title order={3}>Insights Principais</Title>
+              <Text c="dimmed">O que aprendemos com esses 16 casos reais</Text>
+            </div>
+          </Group>
 
-          <Card withBorder p="md">
-            <Group>
-              <ThemeIcon size={40} radius="md" variant="light" color="blue">
-                <IconCode size={20} />
-              </ThemeIcon>
-              <div>
-                <Title order={4}>Arquitetura {'>'} Framework</Title>
-                <Text size="sm">
-                  Boas práticas são ferramentas, não religião. Use o que
-                  resolve, não o que está na moda.
-                </Text>
-              </div>
-            </Group>
-          </Card>
+          <Text>
+            <strong>Performance é dinheiro.</strong> Pinterest aumentou 44% na
+            receita por usuário. Tinder reduziu crashes em 25%. Slack economizou
+            50% de memória. Cada segundo conta.
+          </Text>
 
-          <Card withBorder p="md">
-            <Group>
-              <ThemeIcon size={40} radius="md" variant="light" color="orange">
-                <IconTrendingUp size={20} />
-              </ThemeIcon>
-              <div>
-                <Title order={4}>Métricas {'>'} Opiniões</Title>
-                <Text size="sm">
-                  Dados não mentem. Se não está medindo, está chutando.
-                </Text>
-              </div>
-            </Group>
-          </Card>
+          <Text>
+            <strong>Escala importa.</strong> WhatsApp suporta 2 bilhões de
+            usuários. Netflix roda em 200 milhões de dispositivos. Spotify
+            atende 500 milhões simultâneos. Arquitetura certa escala.
+          </Text>
+
+          <Text>
+            <strong>UX é conversão.</strong> Google testou 41 tons de azul e
+            ganhou milhões. Booking.com otimiza cada pixel. Walmart aumentou 98%
+            conversões no mobile. Detalhes fazem diferença.
+          </Text>
+
+          <Alert color="yellow" icon={<IconBolt size={16} />} radius="md">
+            <Text fw={600} size="sm" mb="xs">
+              💡 Dica Técnica:
+            </Text>
+            <Text size="sm">
+              <strong>Performance não é opcional</strong> quando você tem
+              milhões de usuários. Cada segundo de delay custa dinheiro real.
+            </Text>
+          </Alert>
         </Stack>
-      </div>
+      </Paper>
 
-      {/* Technical Deep Dive */}
+      {/* Deep Dive Técnico */}
       <div>
         <Title order={2} mb="lg">
           <IconBolt
@@ -233,9 +218,10 @@ export default function Cases() {
 
           <Text>
             Esses <strong>16 casos reais</strong> mostram que{' '}
-            <strong>performance vira dinheiro</strong>. Pinterest, Tinder,
-            Slack, Uber, WhatsApp, Zoom, Figma e Discord - todos resolveram
-            problemas reais.
+            <strong>performance vira dinheiro</strong>. Netflix, Spotify,
+            Airbnb, Pinterest, Tinder, Slack, Uber, WhatsApp, Zoom, Figma,
+            Discord, Google, Booking.com, Twitter, Walmart e GOV.UK - todos
+            resolveram problemas reais.
           </Text>
 
           <Text>
@@ -262,5 +248,5 @@ export default function Cases() {
 Cases.metadata = {
   title: 'Casos Reais de Impacto',
   description:
-    '16 exemplos reais de empresas como Pinterest, Tinder, Slack, Uber, WhatsApp, Zoom, Figma e Discord mostrando como boas práticas e arquitetura front-end geram resultados concretos em performance, conversão e experiência do usuário.',
+    '16 exemplos reais de empresas como Netflix, Spotify, Airbnb, Pinterest, Tinder, Slack, Uber, WhatsApp, Zoom, Figma, Discord, Google, Booking.com, Twitter, Walmart e GOV.UK mostrando como boas práticas e arquitetura front-end geram resultados concretos em performance, conversão e experiência do usuário.',
 };

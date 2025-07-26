@@ -293,7 +293,7 @@ export default function Home() {
                   <Card withBorder p={isMobile ? 'sm' : 'md'} radius="md">
                     <Stack gap="sm" align="center" ta="center">
                       <Badge color="purple" variant="light">
-                        4
+                        16
                       </Badge>
                       <IconTrendingUp size={isMobile ? 20 : 24} />
                       <Text fw={600}>Casos Reais</Text>
@@ -730,7 +730,9 @@ export default function Home() {
                         </div>
                       </Group>
                       <Text size="sm" c="dimmed">
-                        Netflix, Spotify, Airbnb, Pinterest, Tinder. Como eles
+                        Netflix, Spotify, Airbnb, Pinterest, Tinder, Slack,
+                        Uber, WhatsApp, Zoom, Figma, Discord, Google,
+                        Booking.com, Twitter, Walmart, GOV.UK. Como eles
                         resolveram problemas reais com arquitetura front-end.
                       </Text>
                       <Button
