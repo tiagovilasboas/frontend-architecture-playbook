@@ -305,4 +305,4 @@ src/data/visualizations/
 - [Recharts Documentation](https://recharts.org/)
 - [Mantine Charts](https://mantine.dev/charts/getting-started/)
 - [Decision Wizard Current Implementation](../src/components/interactive/DecisionWizard.tsx)
-- [Roadmap 2025](./ROADMAP.md)
+- [Roadmap 2025](../ROADMAP.md)

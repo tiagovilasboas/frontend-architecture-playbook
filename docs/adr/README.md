@@ -76,6 +76,6 @@ Para criar uma nova ADR, use o [template padrão](./template.md).
 
 ## 🔗 **Links Relacionados**
 
-- [Roadmap do Projeto](../../ROADMAP.md)
+- [Roadmap do Projeto](../ROADMAP.md)
 - [Documentação Técnica](../README.md)
-- [Contributing Guidelines](../../CONTRIBUTING.md)
+- [Contributing Guidelines](../../.github/CONTRIBUTING.md)
