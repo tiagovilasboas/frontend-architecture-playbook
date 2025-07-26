@@ -239,6 +239,53 @@ export default function Cases() {
         </Stack>
       </Paper>
 
+      {/* References */}
+      <Paper withBorder p="xl" radius="md">
+        <Stack gap="md">
+          <Group>
+            <ThemeIcon size={50} radius="md" variant="light" color="gray">
+              <IconCode size={25} />
+            </ThemeIcon>
+            <div>
+              <Title order={3}>Referências</Title>
+              <Text c="dimmed">Fontes dos casos e estudos técnicos</Text>
+            </div>
+          </Group>
+
+          <Text>
+            Todos os casos apresentados são baseados em dados reais e estudos
+            técnicos publicados pelas próprias empresas. Os links de cada caso
+            direcionam para seções específicas do repositório{' '}
+            <strong>Frontend Case Studies</strong>.
+          </Text>
+
+          <Alert color="blue" icon={<IconCode size={16} />} radius="md">
+            <Text fw={600} size="sm" mb="xs">
+              📚 Fonte Principal:
+            </Text>
+            <Text size="sm">
+              <strong>Frontend Case Studies</strong> - Repositório com mais de
+              200 estudos de caso de empresas reais:{' '}
+              <a
+                href="https://github.com/andrew--r/frontend-case-studies"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: 'var(--mantine-color-blue-6)' }}
+              >
+                github.com/andrew--r/frontend-case-studies
+              </a>
+            </Text>
+          </Alert>
+
+          <Text size="sm" c="dimmed">
+            Este repositório é uma coleção curada de estudos de caso técnicos,
+            artigos de engenharia e métricas reais de performance de empresas
+            como Netflix, Spotify, Airbnb e outras. Cada caso foi validado e
+            documentado com dados concretos de impacto.
+          </Text>
+        </Stack>
+      </Paper>
+
       {/* Navigation */}
       <GuideNavigation currentGuide="cases" />
     </Stack>
