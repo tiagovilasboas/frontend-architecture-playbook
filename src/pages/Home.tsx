@@ -803,7 +803,8 @@ export default function Home() {
                   <Text size={isMobile ? 'sm' : 'md'} fw={500}>
                     <strong>ROI Real:</strong> Time que escolhe arquitetura
                     certa economiza 3-6 meses de refatoração por ano.
-                    <strong> Dívida técnica reduzida em 70%</strong>.
+                    <strong> Dívida técnica reduzida significativamente</strong>
+                    .
                   </Text>
                 </Alert>
               </Stack>

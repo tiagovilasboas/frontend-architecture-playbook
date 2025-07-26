@@ -145,9 +145,9 @@ export default function ImplementationRoadmap() {
               🎯 Resultado Esperado:
             </Text>
             <Text size="sm">
-              <strong>Performance 20-30% melhor</strong>, métricas claras, base
-              sólida para próximas fases. Como Pinterest: 40% redução tempo de
-              carregamento.
+              <strong>Performance 20-35% melhor</strong>, métricas claras, base
+              sólida para próximas fases. Como Sentry: 35% redução bundle,
+              carregamento muito mais rápido.
             </Text>
           </Alert>
         </Stack>
@@ -220,8 +220,9 @@ export default function ImplementationRoadmap() {
               🎯 Resultado Esperado:
             </Text>
             <Text size="sm">
-              <strong>Bundle 50-70% menor</strong>, carregamento 40-60% mais
-              rápido. Como Spotify: tempo até primeiro play -40%.
+              <strong>Bundle 20-35% menor</strong>, carregamento 50-60% mais
+              rápido. Como Sentry: 35% redução bundle, carregamento muito mais
+              rápido.
             </Text>
           </Alert>
         </Stack>
@@ -297,8 +298,8 @@ export default function ImplementationRoadmap() {
             </Text>
             <Text size="sm">
               <strong>Arquitetura escalável</strong>, times autônomos,
-              performance otimizada. Como Slack: 50% menos memória, Uber: 70%
-              redução renderização.
+              performance otimizada. Como Sentry: 35% menos bundle, Shopify: 50%
+              melhoria carregamento.
             </Text>
           </Alert>
         </Stack>
@@ -326,10 +327,11 @@ export default function ImplementationRoadmap() {
                 Como Netflix fez: escala global
               </Text>
               <List size="sm" spacing="xs">
-                <List.Item>CDN global (Netflix: 200M+ dispositivos)</List.Item>
-                <List.Item>Edge computing</List.Item>
-                <List.Item>Regional optimization</List.Item>
-                <List.Item>Load balancing</List.Item>
+                <List.Item>CDN global (Facebook: -60% requests)</List.Item>
+                <List.Item>Edge caching (Shopify: -50% carregamento)</List.Item>
+                <List.Item>Load balancing (Sentry: -35% bundle)</List.Item>
+                <List.Item>Auto-scaling (1Password: -90% build time)</List.Item>
+                <List.Item>Monitoring (Goibibo: +60% conversões)</List.Item>
               </List>
             </Timeline.Item>
 

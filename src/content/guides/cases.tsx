@@ -105,8 +105,8 @@ export default function Cases() {
           </Group>
 
           <Text>
-            <strong>Performance é dinheiro.</strong> Pinterest aumentou 44% na
-            receita por usuário. Tinder reduziu crashes em 25%. Slack economizou
+            <strong>Performance é dinheiro.</strong> Sentry reduziu 35% no
+            bundle size. Shopify melhorou 50% no carregamento. Slack economizou
             50% de memória. Cada segundo conta.
           </Text>
 
@@ -118,8 +118,8 @@ export default function Cases() {
 
           <Text>
             <strong>UX é conversão.</strong> Google testou 41 tons de azul e
-            ganhou milhões. Booking.com otimiza cada pixel. Walmart aumentou 98%
-            conversões no mobile. Detalhes fazem diferença.
+            ganhou milhões. Facebook otimizou 60% dos requests. Goibibo melhorou
+            60% em conversões.
           </Text>
 
           <Alert color="yellow" icon={<IconBolt size={16} />} radius="md">
