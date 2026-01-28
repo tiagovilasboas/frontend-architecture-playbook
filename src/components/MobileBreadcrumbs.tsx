@@ -17,8 +17,8 @@ export default function MobileBreadcrumbs() {
     if (segment === 'guides') return 'Guides';
     if (segment === 'architectures') return 'Architectures';
     if (segment === 'patterns') return 'Patterns';
-    if (segment === 'techniques') return 'Techniques';
-    if (segment === 'best-practices') return 'Best Practices';
+    if (segment === 'techniques') return 'Técnicas';
+    if (segment === 'best-practices') return 'Boas Práticas';
 
     // Para slugs, capitaliza e substitui hífens
     return segment

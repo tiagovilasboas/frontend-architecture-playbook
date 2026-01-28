@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Paper, Stack, Text, Anchor, Group, ScrollArea } from '@mantine/core';
-import { IconList } from '@tabler/icons-react';
+import { Paper, Stack, Anchor, ScrollArea } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 
 interface Heading {
@@ -79,16 +78,11 @@ export function TableOfContents() {
         position: 'sticky',
         top: 80,
         maxHeight: 'calc(100vh - 100px)',
+        width: 240,
+        flexShrink: 0,
       }}
     >
-      <Group gap="xs" mb="sm">
-        <IconList size={16} />
-        <Text fw={600} size="sm">
-          Índice
-        </Text>
-      </Group>
-
-      <ScrollArea style={{ maxHeight: 'calc(100vh - 180px)' }}>
+      <ScrollArea style={{ maxHeight: 'calc(100vh - 120px)' }}>
         <Stack gap={4}>
           {headings.map(heading => {
             const isActive = activeId === heading.id;

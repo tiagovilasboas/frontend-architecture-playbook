@@ -108,7 +108,7 @@ export default function MobileNavMenu({
               <Group gap="sm">
                 <IconBook size={20} color="var(--mantine-color-blue-6)" />
                 <Text fw={500} size="md">
-                  Guides
+                  Guias
                 </Text>
                 {filteredGuides.length > 0 && (
                   <Text size="xs" c="dimmed">
@@ -145,7 +145,7 @@ export default function MobileNavMenu({
               <Group gap="sm">
                 <IconCheck size={20} color="var(--mantine-color-teal-6)" />
                 <Text fw={500} size="md">
-                  Best Practices
+                  Boas Práticas
                 </Text>
                 {filteredBestPractices.length > 0 && (
                   <Text size="xs" c="dimmed">
@@ -182,7 +182,7 @@ export default function MobileNavMenu({
               <Group gap="sm">
                 <IconStack size={20} color="var(--mantine-color-green-6)" />
                 <Text fw={500} size="md">
-                  Architectures
+                  Arquiteturas
                 </Text>
                 <Text size="xs" c="dimmed">
                   ({architectures.length})
@@ -221,7 +221,7 @@ export default function MobileNavMenu({
                       color="var(--mantine-color-violet-6)"
                     />
                     <Text size="sm" c="dimmed" fw={500}>
-                      Design Patterns
+                      Padrões de Design
                     </Text>
                   </Group>
                   <Stack gap={6}>
@@ -316,7 +316,7 @@ export default function MobileNavMenu({
               <Group gap="sm">
                 <IconPuzzle size={20} color="var(--mantine-color-purple-6)" />
                 <Text fw={500} size="md">
-                  Patterns
+                  Padrões
                 </Text>
                 {filteredPatterns.length > 0 && (
                   <Text size="xs" c="dimmed">
@@ -353,7 +353,7 @@ export default function MobileNavMenu({
               <Group gap="sm">
                 <IconTools size={20} color="var(--mantine-color-orange-6)" />
                 <Text fw={500} size="md">
-                  Techniques
+                  Técnicas
                 </Text>
                 {filteredTechniques.length > 0 && (
                   <Text size="xs" c="dimmed">

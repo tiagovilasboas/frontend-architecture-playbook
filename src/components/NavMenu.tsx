@@ -64,7 +64,7 @@ export default function NavMenu({
             <Group gap="xs">
               <IconBook size={16} color="var(--mantine-color-blue-6)" />
               <Title order={6} c="dimmed" style={{ margin: 0 }}>
-                Guides
+                Guias
               </Title>
             </Group>
           </Accordion.Control>
@@ -90,7 +90,7 @@ export default function NavMenu({
             <Group gap="xs">
               <IconCheck size={16} color="var(--mantine-color-teal-6)" />
               <Title order={6} c="dimmed" style={{ margin: 0 }}>
-                Best Practices
+                Boas Práticas
               </Title>
             </Group>
           </Accordion.Control>
@@ -116,7 +116,7 @@ export default function NavMenu({
             <Group gap="xs">
               <IconStack size={16} color="var(--mantine-color-green-6)" />
               <Title order={6} c="dimmed" style={{ margin: 0 }}>
-                Architectures
+                Arquiteturas
               </Title>
             </Group>
           </Accordion.Control>
@@ -152,7 +152,7 @@ export default function NavMenu({
                     color="var(--mantine-color-violet-6)"
                   />
                   <Text size="xs" c="dimmed" fw={500}>
-                    Design Patterns
+                    Padrões de Design
                   </Text>
                 </Group>
                 <Stack gap={4}>
@@ -247,7 +247,7 @@ export default function NavMenu({
             <Group gap="xs">
               <IconPuzzle size={16} color="var(--mantine-color-purple-6)" />
               <Title order={6} c="dimmed" style={{ margin: 0 }}>
-                Patterns
+                Padrões
               </Title>
             </Group>
           </Accordion.Control>
@@ -273,7 +273,7 @@ export default function NavMenu({
             <Group gap="xs">
               <IconTools size={16} color="var(--mantine-color-orange-6)" />
               <Title order={6} c="dimmed" style={{ margin: 0 }}>
-                Techniques
+                Técnicas
               </Title>
             </Group>
           </Accordion.Control>
