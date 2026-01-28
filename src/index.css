@@ -2,6 +2,31 @@
   /* Mantine já fornece resets e variáveis de tema */
 }
 
+/* Tom azul bem escuro – dark mode */
+[data-mantine-color-scheme='dark'] {
+  --mantine-color-body: #060b14 !important;
+}
+
+[data-mantine-color-scheme='dark'] body {
+  background-color: #060b14 !important;
+}
+
+/* Containers e cards mais escuros no dark */
+[data-mantine-color-scheme='dark'] .mantine-Paper-root,
+[data-mantine-color-scheme='dark'] .mantine-Card-root {
+  background-color: #0a0f1a !important;
+  border-color: #121b2a !important;
+}
+
+/* Light mode – azul claro (brand-0) */
+[data-mantine-color-scheme='light'] {
+  --mantine-color-body: #e8eef4 !important;
+}
+
+[data-mantine-color-scheme='light'] body {
+  background-color: #e8eef4 !important;
+}
+
 /* Conteúdo principal removido: uso de Container Mantine */
 
 /* Vertical rhythm: aplica espaçamento padrão entre blocos dentro de article/section */
@@ -30,21 +55,21 @@ section {
   margin-bottom: var(--mantine-spacing-xl);
 }
 
-/* Estilos para links HTML */
+/* Estilos para links HTML – azul do tema (accent) */
 a {
-  color: var(--mantine-color-blue-6);
+  color: var(--mantine-color-accent-5);
   text-decoration: none;
   font-weight: 500;
   transition: color 0.2s ease;
 }
 
 a:hover {
-  color: var(--mantine-color-blue-5);
+  color: var(--mantine-color-accent-4);
   text-decoration: none;
 }
 
 a:focus {
-  outline: 2px solid var(--mantine-color-blue-4);
+  outline: 2px solid var(--mantine-color-accent-4);
   outline-offset: 2px;
   border-radius: 4px;
 }
@@ -91,32 +116,26 @@ a:focus {
   overflow: visible !important;
 }
 
-/* Header e Footer com fundo adaptável ao tema */
+/* Header e Footer – bordas no tom azul escuro (brand) */
 .header-bar {
-  background: var(--mantine-color-body) !important;
-  border-bottom: 1px solid var(--mantine-color-dark-3) !important;
+  border-bottom: 1px solid var(--mantine-color-brand-7) !important;
 }
 
 .footer-bar {
-  background: var(--mantine-color-body) !important;
-  border-top: 1px solid var(--mantine-color-dark-3) !important;
+  border-top: 1px solid var(--mantine-color-brand-7) !important;
 }
 
-/* Dark mode específico */
 [data-mantine-color-scheme='dark'] .header-bar,
 [data-mantine-color-scheme='dark'] .footer-bar {
-  background: var(--mantine-color-dark-7) !important;
-  border-color: var(--mantine-color-dark-5) !important;
+  border-color: var(--mantine-color-brand-6) !important;
 }
 
-/* Light mode específico */
 [data-mantine-color-scheme='light'] .header-bar,
 [data-mantine-color-scheme='light'] .footer-bar {
-  background: var(--mantine-color-gray-0) !important;
-  border-color: var(--mantine-color-gray-3) !important;
+  border-color: var(--mantine-color-brand-3) !important;
 }
 
-/* NavMenu link hover effect - SOLUÇÃO DEFINITIVA */
+/* NavMenu – contraste melhor em hover e ativo */
 .navmenu-link {
   transition: all 0.15s ease !important;
   padding-left: 6px !important;
@@ -127,15 +146,15 @@ a:focus {
   border-radius: 6px !important;
 }
 
-/* Tema Light - Melhor visibilidade dos links */
+/* Tema Light – links legíveis */
 [data-mantine-color-scheme='light'] .navmenu-link {
-  color: var(--mantine-color-gray-7) !important;
+  color: var(--mantine-color-brand-7) !important;
 }
 
 [data-mantine-color-scheme='light'] .navmenu-link:hover,
 [data-mantine-color-scheme='light'] .navmenu-link[data-active='true'] {
-  background: var(--mantine-color-blue-1) !important;
-  color: var(--mantine-color-blue-7) !important;
+  background: var(--mantine-color-brand-2) !important;
+  color: var(--mantine-color-brand-8) !important;
   transform: translateX(1px) !important;
 }
 
@@ -147,42 +166,59 @@ a:focus {
   left: -2px !important;
   right: -2px !important;
   bottom: 0 !important;
-  background: var(--mantine-color-blue-6) !important;
+  background: var(--mantine-color-accent-5) !important;
   border-radius: 6px !important;
   z-index: -1 !important;
-  opacity: 0.15 !important;
+  opacity: 0.2 !important;
 }
 
-/* Tema Dark - Mantém o comportamento atual */
-.navmenu-link:hover,
-.navmenu-link[data-active='true'] {
-  background: var(--mantine-color-blue-0) !important;
+/* Tema Dark – contraste forte: texto claro, hover/ativo bem visíveis */
+[data-mantine-color-scheme='dark'] .navmenu-link {
+  color: var(--mantine-color-brand-2) !important;
+}
+
+[data-mantine-color-scheme='dark'] .navmenu-link:hover,
+[data-mantine-color-scheme='dark'] .navmenu-link[data-active='true'] {
+  background: rgba(96, 165, 250, 0.18) !important;
+  color: var(--mantine-color-accent-3) !important;
   transform: translateX(1px) !important;
 }
 
-.navmenu-link:hover::before,
-.navmenu-link[data-active='true']::before {
+[data-mantine-color-scheme='dark'] .navmenu-link:hover::before,
+[data-mantine-color-scheme='dark'] .navmenu-link[data-active='true']::before {
   content: '' !important;
   position: absolute !important;
   top: 0 !important;
   left: -2px !important;
   right: -2px !important;
   bottom: 0 !important;
-  background: var(--mantine-color-blue-6) !important;
+  background: var(--mantine-color-accent-4) !important;
   border-radius: 6px !important;
   z-index: -1 !important;
-  opacity: 0.1 !important;
+  opacity: 0.25 !important;
 }
 
-[data-mantine-color-scheme='dark'] .navmenu-link:hover,
 [data-mantine-color-scheme='dark'] .navmenu-link[data-active='true'] {
-  background: var(--mantine-color-dark-6) !important;
+  background: rgba(96, 165, 250, 0.22) !important;
+  color: var(--mantine-color-accent-2) !important;
 }
 
-[data-mantine-color-scheme='dark'] .navmenu-link:hover::before,
 [data-mantine-color-scheme='dark'] .navmenu-link[data-active='true']::before {
-  background: var(--mantine-color-blue-6) !important;
-  opacity: 0.2 !important;
+  opacity: 0.35 !important;
+}
+
+/* Cabeçalhos das seções do menu (Guias, Boas Práticas, etc.) – contraste no dark */
+[data-mantine-color-scheme='dark'] .nav-menu-container .mantine-Accordion-control {
+  color: var(--mantine-color-brand-2) !important;
+}
+
+[data-mantine-color-scheme='dark'] .nav-menu-container .mantine-Accordion-control:hover {
+  background: rgba(96, 165, 250, 0.08) !important;
+  color: var(--mantine-color-brand-1) !important;
+}
+
+[data-mantine-color-scheme='dark'] .nav-menu-container .mantine-Accordion-item {
+  border-color: var(--mantine-color-brand-7) !important;
 }
 
 /* Project card hover effect */
@@ -282,5 +318,34 @@ a:focus {
     overflow-x: auto !important;
     white-space: pre-wrap !important;
     word-break: break-all !important;
+  }
+}
+
+/* Mobile Bottom Navigation Styles */
+@media (max-width: 768px) {
+  /* Garantir que o footer tenha espaço acima do bottom nav */
+  footer {
+    margin-bottom: 70px !important;
+  }
+
+  /* Bottom nav – tom azul escuro */
+  [data-mantine-color-scheme='dark'] .mantine-Paper-root[style*='position: fixed'][style*='bottom: 0'] {
+    background: var(--mantine-color-brand-9) !important;
+    border-top-color: var(--mantine-color-brand-7) !important;
+  }
+
+  [data-mantine-color-scheme='light'] .mantine-Paper-root[style*='position: fixed'][style*='bottom: 0'] {
+    background: var(--mantine-color-brand-0) !important;
+    border-top-color: var(--mantine-color-brand-3) !important;
+  }
+
+  /* Breadcrumbs mobile */
+  .mantine-Breadcrumbs-root {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .mantine-Breadcrumbs-root::-webkit-scrollbar {
+    display: none;
   }
 }
