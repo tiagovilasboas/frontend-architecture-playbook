@@ -12,6 +12,7 @@ import {
   Badge,
   Card,
   ThemeIcon,
+  Accordion,
 } from '@mantine/core';
 import { Link } from 'react-router-dom';
 import { HeroTitle, FeatureCard, StatsCard } from '../components/ui';
@@ -27,7 +28,6 @@ import {
   IconCheck,
   IconCode,
   IconBook,
-  IconHeart,
   IconBuilding,
   IconPuzzle,
   IconTools,
@@ -78,132 +78,283 @@ export default function Home() {
         animate="visible"
       >
         <Stack gap={isMobile ? 'md' : 'xl'}>
-          {/* Hero Section - Mais direto */}
+          {/* Hero Section - Estilo Moltbot */}
           <motion.section variants={itemVariants}>
             <Stack
               align="center"
               ta="center"
-              mb={isMobile ? 'lg' : 'xl'}
+              mb={isMobile ? 'xl' : '2xl'}
               mt={0}
+              gap={isMobile ? 'md' : 'lg'}
             >
-              <Badge
-                size={isMobile ? 'sm' : 'lg'}
-                variant="light"
-                color="brand"
-                mb={isMobile ? 'xs' : 'md'}
-              >
-                <IconStar
-                  size={isMobile ? 12 : 16}
-                  style={{ marginRight: 8 }}
-                />
-                Guia Prático para Devs
-              </Badge>
-
               <HeroTitle
-                size={isSmallMobile ? '1.8rem' : isMobile ? '2.2rem' : '3.5rem'}
-                mb={isMobile ? 'sm' : 'md'}
-                style={{ lineHeight: isMobile ? 1.1 : 1.15 }}
+                size={isSmallMobile ? '2rem' : isMobile ? '2.5rem' : '4rem'}
+                mb={0}
+                style={{ lineHeight: 1.1, fontWeight: 800 }}
               >
                 Front-End Architecture Playbook
               </HeroTitle>
 
               <Text
-                size={isMobile ? 'md' : 'xl'}
+                size={isMobile ? 'lg' : 'xl'}
                 c="dimmed"
-                mb={isMobile ? 'md' : 'lg'}
+                mb={0}
                 style={{
-                  maxWidth: isMobile ? 340 : 600,
+                  maxWidth: isMobile ? '100%' : 800,
                   margin: '0 auto',
-                  lineHeight: isMobile ? 1.4 : 1.6,
+                  lineHeight: 1.6,
+                  fontSize: isMobile ? '1.1rem' : '1.25rem',
                 }}
               >
-                18 anos de front-end resumidos:{' '}
-                <strong>arquitetura não é luxo, é sobrevivência</strong>.
-                Escolha errada custa caro, escolha certa salva projeto.
+                20 anos de front-end resumidos:{' '}
+                <strong style={{ color: 'var(--mantine-color-text)' }}>
+                  arquitetura não é luxo, é sobrevivência
+                </strong>
+                . Escolha errada custa caro, escolha certa salva projeto.
               </Text>
 
-              {isMobile ? (
-                <Stack gap="sm" w="100%">
-                  <motion.div {...mobileAnimationProps}>
-                    <Button
-                      component={Link}
-                      to="/guides/how-to-choose"
-                      size="md"
-                      variant="filled"
-                      leftSection={<IconRocket size={16} />}
-                      rightSection={<IconArrowRight size={12} />}
-                      fullWidth
-                    >
-                      Encontre sua Arquitetura
-                    </Button>
-                  </motion.div>
-
-                  <motion.div {...mobileAnimationProps}>
-                    <Button
-                      component={Link}
-                      to="/guides/dependency-rule"
-                      size="md"
-                      variant="light"
-                      leftSection={<IconShield size={16} />}
-                      fullWidth
-                    >
-                      Dependency Rule
-                    </Button>
-                  </motion.div>
-                </Stack>
-              ) : (
-                <Group gap="lg" mt={0}>
-                  <motion.div {...mobileAnimationProps}>
-                    <Button
-                      component={Link}
-                      to="/guides/how-to-choose"
-                      size="lg"
-                      variant="filled"
-                      leftSection={<IconRocket size={20} />}
-                      rightSection={<IconArrowRight size={16} />}
-                    >
-                      Encontre sua Arquitetura
-                    </Button>
-                  </motion.div>
-
-                  <motion.div {...mobileAnimationProps}>
-                    <Button
-                      component={Link}
-                      to="/guides/dependency-rule"
-                      size="lg"
-                      variant="light"
-                      leftSection={<IconShield size={20} />}
-                    >
-                      Dependency Rule
-                    </Button>
-                  </motion.div>
-                </Group>
-              )}
-
-              <Alert
-                color="brand"
-                icon={<IconBulb size={isMobile ? 16 : 20} />}
-                radius="md"
-                mt="md"
-                maw={isMobile ? 340 : 600}
-              >
-                <Text size={isMobile ? 'sm' : 'md'} fw={500}>
-                  <strong>O segredo:</strong> esquece hype, respeita a{' '}
-                  <Text
+              <Group gap="md" mt="md">
+                <motion.div {...mobileAnimationProps}>
+                  <Button
+                    component={Link}
+                    to="/guides/how-to-choose"
+                    size={isMobile ? 'md' : 'lg'}
+                    variant="filled"
+                    leftSection={<IconRocket size={isMobile ? 18 : 20} />}
+                    rightSection={<IconArrowRight size={isMobile ? 14 : 16} />}
+                  >
+                    Encontre sua Arquitetura
+                  </Button>
+                </motion.div>
+                <motion.div {...mobileAnimationProps}>
+                  <Button
                     component={Link}
                     to="/guides/dependency-rule"
-                    style={{
-                      color: 'var(--mantine-color-accent-6)',
-                      fontWeight: 600,
-                      textDecoration: 'underline',
-                    }}
-                    span
+                    size={isMobile ? 'md' : 'lg'}
+                    variant="light"
+                    leftSection={<IconShield size={isMobile ? 18 : 20} />}
                   >
                     Dependency Rule
+                  </Button>
+                </motion.div>
+              </Group>
+
+              {/* Stats inline - estilo moltbot */}
+              <SimpleGrid
+                cols={{ base: 2, sm: 4 }}
+                spacing={isMobile ? 'md' : 'xl'}
+                mt={isMobile ? 'xl' : '2xl'}
+                w="100%"
+                style={{ maxWidth: 800 }}
+              >
+                <Stack gap={4} align="center">
+                  <Text size={isMobile ? 'xl' : '2xl'} fw={700} c="brand">
+                    13+
                   </Text>
-                  . Negócio nunca depende de framework.
-                </Text>
-              </Alert>
+                  <Text size="sm" c="dimmed" ta="center">
+                    Arquiteturas
+                  </Text>
+                </Stack>
+                <Stack gap={4} align="center">
+                  <Text size={isMobile ? 'xl' : '2xl'} fw={700} c="green">
+                    20
+                  </Text>
+                  <Text size="sm" c="dimmed" ta="center">
+                    Anos Dev
+                  </Text>
+                </Stack>
+                <Stack gap={4} align="center">
+                  <Text size={isMobile ? 'xl' : '2xl'} fw={700} c="orange">
+                    50+
+                  </Text>
+                  <Text size="sm" c="dimmed" ta="center">
+                    Projetos
+                  </Text>
+                </Stack>
+                <Stack gap={4} align="center">
+                  <Text size={isMobile ? 'xl' : '2xl'} fw={700} c="purple">
+                    16
+                  </Text>
+                  <Text size="sm" c="dimmed" ta="center">
+                    Casos Reais
+                  </Text>
+                </Stack>
+              </SimpleGrid>
+            </Stack>
+          </motion.section>
+
+          {/* Why Choose Section - Estilo Moltbot */}
+          <motion.section variants={itemVariants}>
+            <Stack gap={isMobile ? 'lg' : 'xl'} align="center" ta="center">
+              <Title order={2} size={isMobile ? 'h3' : 'h2'} mb={0}>
+                Por que escolher este Playbook?
+              </Title>
+              <Text
+                size={isMobile ? 'md' : 'lg'}
+                c="dimmed"
+                maw={isMobile ? '100%' : 700}
+                mb="xl"
+              >
+                Um guia prático de arquitetura front-end construído com base em
+                experiência real e casos de uso comprovados.
+              </Text>
+
+              <SimpleGrid
+                cols={{ base: 1, sm: 2, md: 3 }}
+                spacing={isMobile ? 'md' : 'lg'}
+                w="100%"
+              >
+                <Card
+                  withBorder
+                  p={isMobile ? 'md' : 'lg'}
+                  radius="md"
+                  h="100%"
+                >
+                  <Stack gap="md" align="center" ta="center">
+                    <ThemeIcon
+                      size={isMobile ? 50 : 60}
+                      radius="xl"
+                      variant="light"
+                      color="blue"
+                    >
+                      <IconShield size={isMobile ? 28 : 32} />
+                    </ThemeIcon>
+                    <Title order={3} size={isMobile ? 'h5' : 'h4'}>
+                      Evita Refatoração
+                    </Title>
+                    <Text size="sm" c="dimmed">
+                      Escolha certa desde o início. Economize meses de dívida
+                      técnica e evite refatorações custosas.
+                    </Text>
+                  </Stack>
+                </Card>
+
+                <Card
+                  withBorder
+                  p={isMobile ? 'md' : 'lg'}
+                  radius="md"
+                  h="100%"
+                >
+                  <Stack gap="md" align="center" ta="center">
+                    <ThemeIcon
+                      size={isMobile ? 50 : 60}
+                      radius="xl"
+                      variant="light"
+                      color="green"
+                    >
+                      <IconRocket size={isMobile ? 28 : 32} />
+                    </ThemeIcon>
+                    <Title order={3} size={isMobile ? 'h5' : 'h4'}>
+                      Decisões Sólidas
+                    </Title>
+                    <Text size="sm" c="dimmed">
+                      Base para justificar escolhas. Não mais 'achismo' técnico,
+                      mas decisões fundamentadas em métricas reais.
+                    </Text>
+                  </Stack>
+                </Card>
+
+                <Card
+                  withBorder
+                  p={isMobile ? 'md' : 'lg'}
+                  radius="md"
+                  h="100%"
+                >
+                  <Stack gap="md" align="center" ta="center">
+                    <ThemeIcon
+                      size={isMobile ? 50 : 60}
+                      radius="xl"
+                      variant="light"
+                      color="orange"
+                    >
+                      <IconBolt size={isMobile ? 28 : 32} />
+                    </ThemeIcon>
+                    <Title order={3} size={isMobile ? 'h5' : 'h4'}>
+                      Experiência Real
+                    </Title>
+                    <Text size="sm" c="dimmed">
+                      20 anos convertidos em decisões práticas. Não é teoria,
+                      são casos reais de empresas como Netflix, Spotify e
+                      Airbnb.
+                    </Text>
+                  </Stack>
+                </Card>
+
+                <Card
+                  withBorder
+                  p={isMobile ? 'md' : 'lg'}
+                  radius="md"
+                  h="100%"
+                >
+                  <Stack gap="md" align="center" ta="center">
+                    <ThemeIcon
+                      size={isMobile ? 50 : 60}
+                      radius="xl"
+                      variant="light"
+                      color="purple"
+                    >
+                      <IconTarget size={isMobile ? 28 : 32} />
+                    </ThemeIcon>
+                    <Title order={3} size={isMobile ? 'h5' : 'h4'}>
+                      Decision Wizard
+                    </Title>
+                    <Text size="sm" c="dimmed">
+                      Ferramenta interativa que ajuda a escolher a arquitetura
+                      ideal baseada no seu contexto específico.
+                    </Text>
+                  </Stack>
+                </Card>
+
+                <Card
+                  withBorder
+                  p={isMobile ? 'md' : 'lg'}
+                  radius="md"
+                  h="100%"
+                >
+                  <Stack gap="md" align="center" ta="center">
+                    <ThemeIcon
+                      size={isMobile ? 50 : 60}
+                      radius="xl"
+                      variant="light"
+                      color="teal"
+                    >
+                      <IconScale size={isMobile ? 28 : 32} />
+                    </ThemeIcon>
+                    <Title order={3} size={isMobile ? 'h5' : 'h4'}>
+                      Comparação Visual
+                    </Title>
+                    <Text size="sm" c="dimmed">
+                      Compare 9 arquiteturas com métricas visuais. Análise
+                      detalhada de trade-offs e casos de uso.
+                    </Text>
+                  </Stack>
+                </Card>
+
+                <Card
+                  withBorder
+                  p={isMobile ? 'md' : 'lg'}
+                  radius="md"
+                  h="100%"
+                >
+                  <Stack gap="md" align="center" ta="center">
+                    <ThemeIcon
+                      size={isMobile ? 50 : 60}
+                      radius="xl"
+                      variant="light"
+                      color="red"
+                    >
+                      <IconTrendingUp size={isMobile ? 28 : 32} />
+                    </ThemeIcon>
+                    <Title order={3} size={isMobile ? 'h5' : 'h4'}>
+                      Casos Reais
+                    </Title>
+                    <Text size="sm" c="dimmed">
+                      16 empresas, resultados reais. Veja como Netflix, Spotify,
+                      Airbnb e outros resolveram problemas reais.
+                    </Text>
+                  </Stack>
+                </Card>
+              </SimpleGrid>
             </Stack>
           </motion.section>
 
@@ -506,158 +657,343 @@ export default function Home() {
             </Paper>
           </motion.section>
 
-          {/* Content Grid - Mais direto */}
+          {/* What Can You Learn Section - Estilo Moltbot */}
           <motion.section variants={itemVariants}>
-            <Title order={2} mb="lg" ta="center">
-              <IconTarget
-                size={isMobile ? 24 : 32}
-                style={{ verticalAlign: 'middle', marginRight: '8px' }}
-              />
-              O que tem aqui
-            </Title>
+            <Stack gap={isMobile ? 'lg' : 'xl'} align="center" ta="center">
+              <Title order={2} size={isMobile ? 'h3' : 'h2'} mb={0}>
+                O que você pode aprender
+              </Title>
+              <Text
+                size={isMobile ? 'md' : 'lg'}
+                c="dimmed"
+                maw={isMobile ? '100%' : 700}
+                mb="xl"
+              >
+                Conteúdo prático para arquitetura front-end, desde fundamentos
+                até padrões avançados.
+              </Text>
 
-            <SimpleGrid
-              cols={{ base: 1, sm: 2 }}
-              spacing={isMobile ? 'md' : 'lg'}
-            >
-              <Card withBorder p={isMobile ? 'md' : 'lg'} radius="md">
-                <Stack gap="sm">
-                  <Group gap="sm">
+              <SimpleGrid
+                cols={{ base: 1, sm: 2, md: 4 }}
+                spacing={isMobile ? 'md' : 'lg'}
+                w="100%"
+              >
+                <Card
+                  withBorder
+                  p={isMobile ? 'md' : 'lg'}
+                  radius="md"
+                  h="100%"
+                >
+                  <Stack gap="md" align="center" ta="center">
                     <ThemeIcon
-                      size={isMobile ? 'lg' : 'xl'}
+                      size={isMobile ? 50 : 60}
+                      radius="xl"
                       variant="light"
-                      color="brand"
+                      color="blue"
                     >
-                      <IconBook size={isMobile ? 18 : 24} />
+                      <IconBook size={isMobile ? 28 : 32} />
                     </ThemeIcon>
                     <Title order={3} size={isMobile ? 'h5' : 'h4'}>
                       Guias Práticos
                     </Title>
-                  </Group>
-                  <Text size={isMobile ? 'sm' : 'md'} c="dimmed">
-                    <Link
-                      to="/guides/how-to-choose"
-                      style={{ color: 'inherit', textDecoration: 'none' }}
-                    >
-                      Decision wizard
-                    </Link>{' '}
-                    + regra fundamental de arquitetura. Zero teoria, só o que
-                    funciona.
-                  </Text>
-                  <motion.div {...mobileAnimationProps}>
-                    <Button
-                      component={Link}
-                      to="/guides/how-to-choose"
-                      size="sm"
-                      variant="light"
-                      leftSection={<IconRocket size={16} />}
-                      fullWidth={isMobile}
-                    >
-                      Decision Wizard
-                    </Button>
-                  </motion.div>
-                </Stack>
-              </Card>
+                    <Text size="sm" c="dimmed">
+                      Decision wizard + regra fundamental de arquitetura. Zero
+                      teoria, só o que funciona.
+                    </Text>
+                  </Stack>
+                </Card>
 
-              <Card withBorder p={isMobile ? 'md' : 'lg'} radius="md">
-                <Stack gap="sm">
-                  <Group gap="sm">
+                <Card
+                  withBorder
+                  p={isMobile ? 'md' : 'lg'}
+                  radius="md"
+                  h="100%"
+                >
+                  <Stack gap="md" align="center" ta="center">
                     <ThemeIcon
-                      size={isMobile ? 'lg' : 'xl'}
+                      size={isMobile ? 50 : 60}
+                      radius="xl"
                       variant="light"
                       color="green"
                     >
-                      <IconHeart size={isMobile ? 18 : 24} />
+                      <IconCheck size={isMobile ? 28 : 32} />
                     </ThemeIcon>
                     <Title order={3} size={isMobile ? 'h5' : 'h4'}>
                       Boas Práticas
                     </Title>
-                  </Group>
-                  <Text size={isMobile ? 'sm' : 'md'} c="dimmed">
-                    DRY, KISS, YAGNI, Clean Code. Os princípios que toda base
-                    sólida precisa.
-                  </Text>
-                  <motion.div {...mobileAnimationProps}>
-                    <Button
-                      component={Link}
-                      to="/best-practices/dry"
-                      size="sm"
-                      variant="light"
-                      leftSection={<IconCheck size={16} />}
-                      fullWidth={isMobile}
-                    >
-                      Ver Princípios
-                    </Button>
-                  </motion.div>
-                </Stack>
-              </Card>
+                    <Text size="sm" c="dimmed">
+                      DRY, KISS, YAGNI, Clean Code. Os princípios que toda base
+                      sólida precisa.
+                    </Text>
+                  </Stack>
+                </Card>
 
-              <Card withBorder p={isMobile ? 'md' : 'lg'} radius="md">
-                <Stack gap="sm">
-                  <Group gap="sm">
+                <Card
+                  withBorder
+                  p={isMobile ? 'md' : 'lg'}
+                  radius="md"
+                  h="100%"
+                >
+                  <Stack gap="md" align="center" ta="center">
                     <ThemeIcon
-                      size={isMobile ? 'lg' : 'xl'}
+                      size={isMobile ? 50 : 60}
+                      radius="xl"
                       variant="light"
-                      color="blue"
+                      color="orange"
                     >
-                      <IconBuilding size={isMobile ? 18 : 24} />
+                      <IconStack size={isMobile ? 28 : 32} />
                     </ThemeIcon>
                     <Title order={3} size={isMobile ? 'h5' : 'h4'}>
                       Arquiteturas
                     </Title>
-                  </Group>
-                  <Text size={isMobile ? 'sm' : 'md'} c="dimmed">
-                    13 padrões testados: Clean Architecture, Micro-frontends,
-                    Monorepo, SSR/SSG e mais.
-                  </Text>
-                  <motion.div {...mobileAnimationProps}>
-                    <Button
-                      component={Link}
-                      to="/architectures/clean-architecture"
-                      size="sm"
-                      variant="light"
-                      leftSection={<IconStack size={16} />}
-                      fullWidth={isMobile}
-                    >
-                      Ver Arquiteturas
-                    </Button>
-                  </motion.div>
-                </Stack>
-              </Card>
+                    <Text size="sm" c="dimmed">
+                      13 padrões testados: Clean Architecture, Micro-frontends,
+                      Monorepo, SSR/SSG e mais.
+                    </Text>
+                  </Stack>
+                </Card>
 
-              <Card withBorder p={isMobile ? 'md' : 'lg'} radius="md">
-                <Stack gap="sm">
-                  <Group gap="sm">
+                <Card
+                  withBorder
+                  p={isMobile ? 'md' : 'lg'}
+                  radius="md"
+                  h="100%"
+                >
+                  <Stack gap="md" align="center" ta="center">
                     <ThemeIcon
-                      size={isMobile ? 'lg' : 'xl'}
+                      size={isMobile ? 50 : 60}
+                      radius="xl"
                       variant="light"
                       color="purple"
                     >
-                      <IconPuzzle size={isMobile ? 18 : 24} />
+                      <IconPuzzle size={isMobile ? 28 : 32} />
                     </ThemeIcon>
                     <Title order={3} size={isMobile ? 'h5' : 'h4'}>
                       Padrões & Técnicas
                     </Title>
-                  </Group>
-                  <Text size={isMobile ? 'sm' : 'md'} c="dimmed">
-                    Design patterns, otimizações e técnicas específicas de
-                    front-end.
-                  </Text>
-                  <motion.div {...mobileAnimationProps}>
-                    <Button
-                      component={Link}
-                      to="/patterns/component-driven"
-                      size="sm"
+                    <Text size="sm" c="dimmed">
+                      Design patterns, otimizações e técnicas específicas de
+                      front-end.
+                    </Text>
+                  </Stack>
+                </Card>
+              </SimpleGrid>
+            </Stack>
+          </motion.section>
+
+          {/* Built for Developers Section - Estilo Moltbot */}
+          <motion.section variants={itemVariants}>
+            <Paper withBorder p={isMobile ? 'md' : 'xl'} radius="lg">
+              <Stack gap={isMobile ? 'lg' : 'xl'}>
+                <Title
+                  order={2}
+                  size={isMobile ? 'h3' : 'h2'}
+                  ta="center"
+                  mb={0}
+                >
+                  Construído para Desenvolvedores
+                </Title>
+                <Text
+                  size={isMobile ? 'md' : 'lg'}
+                  c="dimmed"
+                  ta="center"
+                  maw={700}
+                  mx="auto"
+                  mb="xl"
+                >
+                  Uma base técnica robusta para automação séria de arquitetura
+                  front-end.
+                </Text>
+
+                <SimpleGrid
+                  cols={{ base: 1, md: 2 }}
+                  spacing={isMobile ? 'md' : 'xl'}
+                >
+                  <Stack gap="md">
+                    <Title order={3} size={isMobile ? 'h5' : 'h4'}>
+                      Arquitetura Core
+                    </Title>
+                    <Stack gap="xs">
+                      <Group gap="sm">
+                        <IconCode
+                          size={20}
+                          color="var(--mantine-color-blue-6)"
+                        />
+                        <Text size="sm">TypeScript-first</Text>
+                      </Group>
+                      <Group gap="sm">
+                        <IconCode
+                          size={20}
+                          color="var(--mantine-color-green-6)"
+                        />
+                        <Text size="sm">Pure functions & types</Text>
+                      </Group>
+                      <Group gap="sm">
+                        <IconCode
+                          size={20}
+                          color="var(--mantine-color-orange-6)"
+                        />
+                        <Text size="sm">Dependency Rule enforcement</Text>
+                      </Group>
+                      <Group gap="sm">
+                        <IconCode
+                          size={20}
+                          color="var(--mantine-color-purple-6)"
+                        />
+                        <Text size="sm">Layered architecture patterns</Text>
+                      </Group>
+                    </Stack>
+                  </Stack>
+
+                  <Stack gap="md">
+                    <Title order={3} size={isMobile ? 'h5' : 'h4'}>
+                      Stack Tecnológico
+                    </Title>
+                    <Stack gap="xs">
+                      <Group gap="sm">
+                        <IconCode
+                          size={20}
+                          color="var(--mantine-color-blue-6)"
+                        />
+                        <Text size="sm">React + TypeScript</Text>
+                      </Group>
+                      <Group gap="sm">
+                        <IconCode
+                          size={20}
+                          color="var(--mantine-color-green-6)"
+                        />
+                        <Text size="sm">Mantine UI</Text>
+                      </Group>
+                      <Group gap="sm">
+                        <IconCode
+                          size={20}
+                          color="var(--mantine-color-orange-6)"
+                        />
+                        <Text size="sm">Vite build system</Text>
+                      </Group>
+                      <Group gap="sm">
+                        <IconCode
+                          size={20}
+                          color="var(--mantine-color-purple-6)"
+                        />
+                        <Text size="sm">React Router</Text>
+                      </Group>
+                    </Stack>
+                  </Stack>
+                </SimpleGrid>
+              </Stack>
+            </Paper>
+          </motion.section>
+
+          {/* How It Works Section - Estilo Moltbot */}
+          <motion.section variants={itemVariants}>
+            <Stack gap={isMobile ? 'lg' : 'xl'} align="center" ta="center">
+              <Title order={2} size={isMobile ? 'h3' : 'h2'} mb={0}>
+                Como Funciona
+              </Title>
+              <Text
+                size={isMobile ? 'md' : 'lg'}
+                c="dimmed"
+                maw={isMobile ? '100%' : 700}
+                mb="xl"
+              >
+                Uma arquitetura poderosa que conecta você às melhores práticas
+                de front-end.
+              </Text>
+
+              <Paper
+                withBorder
+                p={isMobile ? 'md' : 'xl'}
+                radius="lg"
+                style={{ width: '100%', maxWidth: 800 }}
+              >
+                <SimpleGrid
+                  cols={{ base: 1, sm: 4 }}
+                  spacing={isMobile ? 'md' : 'lg'}
+                  verticalSpacing={isMobile ? 'md' : 'lg'}
+                >
+                  <Stack gap="sm" align="center" ta="center">
+                    <ThemeIcon
+                      size={isMobile ? 50 : 60}
+                      radius="xl"
                       variant="light"
-                      leftSection={<IconTools size={16} />}
-                      fullWidth={isMobile}
+                      color="blue"
                     >
-                      Ver Padrões
-                    </Button>
-                  </motion.div>
-                </Stack>
-              </Card>
-            </SimpleGrid>
+                      <IconCode size={isMobile ? 28 : 32} />
+                    </ThemeIcon>
+                    <Text fw={600} size={isMobile ? 'sm' : 'md'}>
+                      Você
+                    </Text>
+                    <Text size="xs" c="dimmed">
+                      Desenvolvedor
+                    </Text>
+                  </Stack>
+
+                  <Stack gap="sm" align="center" ta="center">
+                    <ThemeIcon
+                      size={isMobile ? 50 : 60}
+                      radius="xl"
+                      variant="light"
+                      color="green"
+                    >
+                      <IconTarget size={isMobile ? 28 : 32} />
+                    </ThemeIcon>
+                    <Text fw={600} size={isMobile ? 'sm' : 'md'}>
+                      Decision Wizard
+                    </Text>
+                    <Text size="xs" c="dimmed">
+                      Escolha sua arquitetura
+                    </Text>
+                  </Stack>
+
+                  <Stack gap="sm" align="center" ta="center">
+                    <ThemeIcon
+                      size={isMobile ? 50 : 60}
+                      radius="xl"
+                      variant="light"
+                      color="orange"
+                    >
+                      <IconBook size={isMobile ? 28 : 32} />
+                    </ThemeIcon>
+                    <Text fw={600} size={isMobile ? 'sm' : 'md'}>
+                      Playbook
+                    </Text>
+                    <Text size="xs" c="dimmed">
+                      Guias práticos
+                    </Text>
+                  </Stack>
+
+                  <Stack gap="sm" align="center" ta="center">
+                    <ThemeIcon
+                      size={isMobile ? 50 : 60}
+                      radius="xl"
+                      variant="light"
+                      color="purple"
+                    >
+                      <IconRocket size={isMobile ? 28 : 32} />
+                    </ThemeIcon>
+                    <Text fw={600} size={isMobile ? 'sm' : 'md'}>
+                      Resultado
+                    </Text>
+                    <Text size="xs" c="dimmed">
+                      Arquitetura sólida
+                    </Text>
+                  </Stack>
+                </SimpleGrid>
+
+                <Group justify="center" mt="xl" gap="xs">
+                  <Text size="sm" c="dimmed">
+                    🔒 Baseada em experiência real
+                  </Text>
+                  <Text size="sm" c="dimmed">
+                    ⚡ Decisões fundamentadas
+                  </Text>
+                  <Text size="sm" c="dimmed">
+                    🛠️ Ferramentas práticas
+                  </Text>
+                </Group>
+              </Paper>
+            </Stack>
           </motion.section>
 
           {/* Featured Content Section */}
@@ -787,7 +1123,7 @@ export default function Home() {
                   <FeatureCard
                     icon={IconBolt}
                     title="Experiência Real"
-                    description="18 anos convertidos em decisões práticas. Não é teoria."
+                    description="20 anos convertidos em decisões práticas. Não é teoria."
                     color="orange"
                     style={{ padding: isMobile ? 12 : 20 }}
                     iconSize={isMobile ? 28 : 40}
@@ -889,67 +1225,215 @@ export default function Home() {
             </Paper>
           </motion.section>
 
-          {/* Author - Mais simples */}
+          {/* FAQ Section - Estilo Moltbot */}
           <motion.section variants={itemVariants}>
-            <Paper withBorder p={isMobile ? 'md' : 'lg'} radius="lg">
-              <Group
-                align="flex-start"
-                gap={isMobile ? 'md' : 'xl'}
-                style={{ flexDirection: isMobile ? 'column' : 'row' }}
+            <Stack gap={isMobile ? 'lg' : 'xl'} align="center">
+              <Title order={2} size={isMobile ? 'h3' : 'h2'} ta="center" mb={0}>
+                Perguntas Frequentes
+              </Title>
+              <Text
+                size={isMobile ? 'md' : 'lg'}
+                c="dimmed"
+                ta="center"
+                maw={isMobile ? '100%' : 700}
+                mb="xl"
               >
-                <Avatar
-                  src="https://avatars.githubusercontent.com/u/2006720?v=4"
-                  size={isMobile ? 80 : 120}
-                  radius="xl"
-                />
-                <div style={{ flex: 1 }}>
-                  <Group align="center" mb="sm" wrap="wrap">
-                    <Title order={3} size={isMobile ? 'h4' : 'h3'}>
-                      Tiago Vilas Boas
-                    </Title>
-                    <Badge color="brand" variant="light">
-                      Front-End Engineer
-                    </Badge>
-                  </Group>
-                  <Text size={isMobile ? 'sm' : 'md'} mb="md" lh={1.6}>
-                    18 anos transformando código em resultado. Turbinei
-                    checkouts, simplifiquei KYC, salvei dashboards. Criador do
-                    Ponto PJ e autor de "Código Bonito Não Paga Boleto".
-                  </Text>
-                  {isMobile ? (
-                    <Stack gap="sm" w="100%">
-                      <Button
-                        component="a"
-                        href="https://github.com/tiagovilasboas"
-                        target="_blank"
-                        size="sm"
-                        variant="light"
-                        leftSection={<IconBrandGithub size={16} />}
-                        fullWidth
-                      >
-                        GitHub
-                      </Button>
-                      <Button
-                        component="a"
-                        href="https://www.linkedin.com/in/tiagovilasboas"
-                        target="_blank"
-                        size="sm"
-                        variant="light"
-                        leftSection={<IconBrandLinkedin size={16} />}
-                        fullWidth
-                      >
-                        LinkedIn
-                      </Button>
-                    </Stack>
-                  ) : (
+                Tudo que você precisa saber sobre o Front-End Architecture
+                Playbook
+              </Text>
+
+              <Paper
+                withBorder
+                p={isMobile ? 'md' : 'lg'}
+                radius="lg"
+                style={{ width: '100%', maxWidth: 800 }}
+              >
+                <Accordion variant="separated" radius="md">
+                  <Accordion.Item value="what-is">
+                    <Accordion.Control>
+                      <Text fw={600}>
+                        O que é o Front-End Architecture Playbook?
+                      </Text>
+                    </Accordion.Control>
+                    <Accordion.Panel>
+                      <Text size="sm" c="dimmed">
+                        É um guia prático de arquitetura front-end construído
+                        com base em 20 anos de experiência real. Inclui
+                        ferramentas interativas como o Decision Wizard,
+                        comparações visuais de arquiteturas, e casos reais de
+                        empresas como Netflix, Spotify e Airbnb.
+                      </Text>
+                    </Accordion.Panel>
+                  </Accordion.Item>
+
+                  <Accordion.Item value="free">
+                    <Accordion.Control>
+                      <Text fw={600}>O playbook é gratuito?</Text>
+                    </Accordion.Control>
+                    <Accordion.Panel>
+                      <Text size="sm" c="dimmed">
+                        Sim, o playbook é completamente gratuito e open-source.
+                        Todo o conteúdo está disponível sem custos, incluindo o
+                        Decision Wizard e todas as comparações de arquiteturas.
+                      </Text>
+                    </Accordion.Panel>
+                  </Accordion.Item>
+
+                  <Accordion.Item value="start">
+                    <Accordion.Control>
+                      <Text fw={600}>Por onde começar?</Text>
+                    </Accordion.Control>
+                    <Accordion.Panel>
+                      <Text size="sm" c="dimmed" mb="sm">
+                        Recomendamos começar pela{' '}
+                        <Text
+                          component={Link}
+                          to="/guides/dependency-rule"
+                          c="brand"
+                          fw={600}
+                          span
+                        >
+                          Dependency Rule
+                        </Text>
+                        , a regra fundamental de arquitetura. Depois, use o{' '}
+                        <Text
+                          component={Link}
+                          to="/guides/how-to-choose"
+                          c="brand"
+                          fw={600}
+                          span
+                        >
+                          Decision Wizard
+                        </Text>{' '}
+                        para encontrar a arquitetura ideal para seu projeto.
+                      </Text>
+                    </Accordion.Panel>
+                  </Accordion.Item>
+
+                  <Accordion.Item value="architectures">
+                    <Accordion.Control>
+                      <Text fw={600}>
+                        Quantas arquiteturas estão documentadas?
+                      </Text>
+                    </Accordion.Control>
+                    <Accordion.Panel>
+                      <Text size="sm" c="dimmed">
+                        O playbook documenta 13+ arquiteturas testadas,
+                        incluindo Clean Architecture, Micro-frontends, Monorepo,
+                        SSR/SSG, PWA, BFF, Hexagonal Architecture, e mais. Cada
+                        uma com análise detalhada de trade-offs e casos de uso.
+                      </Text>
+                    </Accordion.Panel>
+                  </Accordion.Item>
+
+                  <Accordion.Item value="cases">
+                    <Accordion.Control>
+                      <Text fw={600}>
+                        Quais empresas estão nos casos reais?
+                      </Text>
+                    </Accordion.Control>
+                    <Accordion.Panel>
+                      <Text size="sm" c="dimmed">
+                        Documentamos 16 empresas incluindo Netflix, Spotify,
+                        Airbnb, Pinterest, Tinder, Slack, Uber, WhatsApp, Zoom,
+                        Figma, Discord, Google, Booking.com, Twitter, Walmart e
+                        GOV.UK. Cada caso mostra como resolveram problemas reais
+                        com arquitetura front-end.
+                      </Text>
+                    </Accordion.Panel>
+                  </Accordion.Item>
+
+                  <Accordion.Item value="contribute">
+                    <Accordion.Control>
+                      <Text fw={600}>Posso contribuir com o projeto?</Text>
+                    </Accordion.Control>
+                    <Accordion.Panel>
+                      <Text size="sm" c="dimmed">
+                        Sim! O projeto é open-source e aceita contribuições.
+                        Visite nosso{' '}
+                        <Text
+                          component="a"
+                          href="https://github.com/tiagovilasboas/frontend-architecture-playbook"
+                          target="_blank"
+                          c="brand"
+                          fw={600}
+                          span
+                        >
+                          GitHub
+                        </Text>{' '}
+                        para ver como contribuir.
+                      </Text>
+                    </Accordion.Panel>
+                  </Accordion.Item>
+                </Accordion>
+              </Paper>
+            </Stack>
+          </motion.section>
+
+          {/* Author - Estilo Moltbot */}
+          <motion.section variants={itemVariants}>
+            <Stack gap={isMobile ? 'lg' : 'xl'} align="center" ta="center">
+              <Title order={2} size={isMobile ? 'h3' : 'h2'} mb={0}>
+                Construído por Engenheiros Comprovados
+              </Title>
+              <Text
+                size={isMobile ? 'md' : 'lg'}
+                c="dimmed"
+                maw={isMobile ? '100%' : 700}
+                mb="xl"
+              >
+                Software open-source apoiado por uma equipe experiente e
+                comunidade ativa
+              </Text>
+
+              <Paper
+                withBorder
+                p={isMobile ? 'md' : 'xl'}
+                radius="lg"
+                style={{ width: '100%', maxWidth: 800 }}
+              >
+                <Group
+                  align="flex-start"
+                  gap={isMobile ? 'md' : 'xl'}
+                  style={{ flexDirection: isMobile ? 'column' : 'row' }}
+                >
+                  <Avatar
+                    src="https://avatars.githubusercontent.com/u/2006720?v=4"
+                    size={isMobile ? 100 : 140}
+                    radius="xl"
+                  />
+                  <div style={{ flex: 1 }}>
+                    <Group align="center" mb="sm" wrap="wrap">
+                      <Title order={3} size={isMobile ? 'h4' : 'h3'}>
+                        Tiago Vilas Boas
+                      </Title>
+                      <Badge color="brand" variant="light" size="lg">
+                        Front-End Engineer
+                      </Badge>
+                    </Group>
+                    <Text size={isMobile ? 'sm' : 'md'} mb="md" lh={1.6}>
+                      <strong>
+                        20 anos transformando código em resultado.
+                      </strong>{' '}
+                      Turbinei checkouts, simplifiquei KYC, salvei dashboards.
+                      Criador do Ponto PJ e autor de "Código Bonito Não Paga
+                      Boleto".
+                    </Text>
+                    <Text size="sm" c="dimmed" mb="md">
+                      O Playbook representa a visão de arquitetura front-end
+                      baseada em experiência real—combinando décadas de
+                      experiência com as melhores práticas da indústria.
+                    </Text>
                     <Group gap="sm">
                       <Button
                         component="a"
                         href="https://github.com/tiagovilasboas"
                         target="_blank"
-                        size="sm"
+                        size={isMobile ? 'sm' : 'md'}
                         variant="light"
-                        leftSection={<IconBrandGithub size={16} />}
+                        leftSection={
+                          <IconBrandGithub size={isMobile ? 16 : 18} />
+                        }
                       >
                         GitHub
                       </Button>
@@ -957,17 +1441,19 @@ export default function Home() {
                         component="a"
                         href="https://www.linkedin.com/in/tiagovilasboas"
                         target="_blank"
-                        size="sm"
+                        size={isMobile ? 'sm' : 'md'}
                         variant="light"
-                        leftSection={<IconBrandLinkedin size={16} />}
+                        leftSection={
+                          <IconBrandLinkedin size={isMobile ? 16 : 18} />
+                        }
                       >
                         LinkedIn
                       </Button>
                     </Group>
-                  )}
-                </div>
-              </Group>
-            </Paper>
+                  </div>
+                </Group>
+              </Paper>
+            </Stack>
           </motion.section>
         </Stack>
       </motion.div>
