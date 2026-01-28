@@ -1,7 +1,8 @@
 import { useParams } from 'react-router-dom';
 import { getDoc } from '../lib/content.tsx';
-import { TypographyStylesProvider, Container } from '@mantine/core';
+import { TypographyStylesProvider, Container, Group } from '@mantine/core';
 import { CodeHighlight } from '@mantine/code-highlight';
+import { ReadingTime } from '../components/ReadingTime.tsx';
 
 export default function DocPage() {
   const { collection, slug } = useParams();
@@ -15,6 +16,9 @@ export default function DocPage() {
   };
   return (
     <Container size="lg">
+      <Group mb="md" justify="flex-end">
+        <ReadingTime />
+      </Group>
       <TypographyStylesProvider>
         <Component components={components} />
       </TypographyStylesProvider>
