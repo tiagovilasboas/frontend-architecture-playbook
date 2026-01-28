@@ -3,6 +3,7 @@ import { getDoc } from '../lib/content.tsx';
 import { TypographyStylesProvider, Container, Group } from '@mantine/core';
 import { CodeHighlight } from '@mantine/code-highlight';
 import { ReadingTime } from '../components/ReadingTime.tsx';
+import { RelatedContent } from '../components/RelatedContent.tsx';
 
 export default function DocPage() {
   const { collection, slug } = useParams();
@@ -22,6 +23,7 @@ export default function DocPage() {
       <TypographyStylesProvider>
         <Component components={components} />
       </TypographyStylesProvider>
+      <RelatedContent />
     </Container>
   );
 }
