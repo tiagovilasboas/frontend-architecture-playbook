@@ -1,5 +1,5 @@
 import React from 'react';
-import { Title, Stack, Divider, Group, Text } from '@mantine/core';
+import { Title, Stack, Group, Text, Accordion } from '@mantine/core';
 import {
   IconBook,
   IconPuzzle,
@@ -52,216 +52,247 @@ export default function NavMenu({
         overflowX: 'hidden',
       }}
     >
-      <Stack gap="md">
+      <Accordion
+        defaultValue={['guides', 'architectures']}
+        multiple
+        variant="separated"
+        radius="md"
+      >
         {/* Guides Section */}
-        <div>
-          <Group gap="xs" mb="sm">
-            <IconBook size={16} color="var(--mantine-color-blue-6)" />
-            <Title order={6} c="dimmed">
-              Guides
-            </Title>
-          </Group>
-          <Stack gap={4}>
-            {guides.map(g => (
-              <NavItem
-                key={g.slug}
-                href={`/guides/${g.slug}`}
-                label={g.title}
-                icon={<IconBook size={16} />}
-                active={current === `/guides/${g.slug}`}
-                onNavigate={onNavigate}
-              />
-            ))}
-          </Stack>
-        </div>
-
-        <Divider />
+        <Accordion.Item value="guides">
+          <Accordion.Control>
+            <Group gap="xs">
+              <IconBook size={16} color="var(--mantine-color-blue-6)" />
+              <Title order={6} c="dimmed" style={{ margin: 0 }}>
+                Guides
+              </Title>
+            </Group>
+          </Accordion.Control>
+          <Accordion.Panel>
+            <Stack gap={4}>
+              {guides.map(g => (
+                <NavItem
+                  key={g.slug}
+                  href={`/guides/${g.slug}`}
+                  label={g.title}
+                  icon={<IconBook size={16} />}
+                  active={current === `/guides/${g.slug}`}
+                  onNavigate={onNavigate}
+                />
+              ))}
+            </Stack>
+          </Accordion.Panel>
+        </Accordion.Item>
 
         {/* Best Practices Section */}
-        <div>
-          <Group gap="xs" mb="sm">
-            <IconCheck size={16} color="var(--mantine-color-teal-6)" />
-            <Title order={6} c="dimmed">
-              Best Practices
-            </Title>
-          </Group>
-          <Stack gap={4}>
-            {bestPractices.map(b => (
-              <NavItem
-                key={b.slug}
-                href={`/best-practices/${b.slug}`}
-                label={b.title}
-                icon={<IconCheck size={16} />}
-                active={current === `/best-practices/${b.slug}`}
-                onNavigate={onNavigate}
-              />
-            ))}
-          </Stack>
-        </div>
-
-        <Divider />
+        <Accordion.Item value="best-practices">
+          <Accordion.Control>
+            <Group gap="xs">
+              <IconCheck size={16} color="var(--mantine-color-teal-6)" />
+              <Title order={6} c="dimmed" style={{ margin: 0 }}>
+                Best Practices
+              </Title>
+            </Group>
+          </Accordion.Control>
+          <Accordion.Panel>
+            <Stack gap={4}>
+              {bestPractices.map(b => (
+                <NavItem
+                  key={b.slug}
+                  href={`/best-practices/${b.slug}`}
+                  label={b.title}
+                  icon={<IconCheck size={16} />}
+                  active={current === `/best-practices/${b.slug}`}
+                  onNavigate={onNavigate}
+                />
+              ))}
+            </Stack>
+          </Accordion.Panel>
+        </Accordion.Item>
 
         {/* Architectures Section */}
-        <div>
-          <Group gap="xs" mb="sm">
-            <IconStack size={16} color="var(--mantine-color-green-6)" />
-            <Title order={6} c="dimmed">
-              Architectures
-            </Title>
-          </Group>
-
-          {/* 🚀 FUNDAMENTALS */}
-          <Stack gap={4} mb="md">
-            <Group gap="xs" mb="xs">
-              <IconRocket size={14} color="var(--mantine-color-blue-6)" />
-              <Text size="xs" c="dimmed" fw={500}>
-                Fundamentals
-              </Text>
+        <Accordion.Item value="architectures">
+          <Accordion.Control>
+            <Group gap="xs">
+              <IconStack size={16} color="var(--mantine-color-green-6)" />
+              <Title order={6} c="dimmed" style={{ margin: 0 }}>
+                Architectures
+              </Title>
             </Group>
-            {groupedArchitectures.fundamental.map(a => (
-              <NavItem
-                key={a.slug}
-                href={`/architectures/${a.slug}`}
-                label={a.title}
-                icon={<IconStack size={16} />}
-                active={current === `/architectures/${a.slug}`}
-                onNavigate={onNavigate}
-              />
-            ))}
-          </Stack>
+          </Accordion.Control>
+          <Accordion.Panel>
+            <Stack gap="md">
+              {/* 🚀 FUNDAMENTALS */}
+              <div>
+                <Group gap="xs" mb="xs">
+                  <IconRocket size={14} color="var(--mantine-color-blue-6)" />
+                  <Text size="xs" c="dimmed" fw={500}>
+                    Fundamentals
+                  </Text>
+                </Group>
+                <Stack gap={4}>
+                  {groupedArchitectures.fundamental.map(a => (
+                    <NavItem
+                      key={a.slug}
+                      href={`/architectures/${a.slug}`}
+                      label={a.title}
+                      icon={<IconStack size={16} />}
+                      active={current === `/architectures/${a.slug}`}
+                      onNavigate={onNavigate}
+                    />
+                  ))}
+                </Stack>
+              </div>
 
-          {/* 🏗️ DESIGN PATTERNS */}
-          <Stack gap={4} mb="md">
-            <Group gap="xs" mb="xs">
-              <IconBuilding size={14} color="var(--mantine-color-violet-6)" />
-              <Text size="xs" c="dimmed" fw={500}>
-                Design Patterns
-              </Text>
-            </Group>
-            {groupedArchitectures.design.map(a => (
-              <NavItem
-                key={a.slug}
-                href={`/architectures/${a.slug}`}
-                label={a.title}
-                icon={<IconStack size={16} />}
-                active={current === `/architectures/${a.slug}`}
-                onNavigate={onNavigate}
-              />
-            ))}
-          </Stack>
+              {/* 🏗️ DESIGN PATTERNS */}
+              <div>
+                <Group gap="xs" mb="xs">
+                  <IconBuilding
+                    size={14}
+                    color="var(--mantine-color-violet-6)"
+                  />
+                  <Text size="xs" c="dimmed" fw={500}>
+                    Design Patterns
+                  </Text>
+                </Group>
+                <Stack gap={4}>
+                  {groupedArchitectures.design.map(a => (
+                    <NavItem
+                      key={a.slug}
+                      href={`/architectures/${a.slug}`}
+                      label={a.title}
+                      icon={<IconStack size={16} />}
+                      active={current === `/architectures/${a.slug}`}
+                      onNavigate={onNavigate}
+                    />
+                  ))}
+                </Stack>
+              </div>
 
-          {/* 🔌 INTEGRATION & API */}
-          <Stack gap={4} mb="md">
-            <Group gap="xs" mb="xs">
-              <IconPlug size={14} color="var(--mantine-color-cyan-6)" />
-              <Text size="xs" c="dimmed" fw={500}>
-                Integration & API
-              </Text>
-            </Group>
-            {groupedArchitectures.integration.map(a => (
-              <NavItem
-                key={a.slug}
-                href={`/architectures/${a.slug}`}
-                label={a.title}
-                icon={<IconStack size={16} />}
-                active={current === `/architectures/${a.slug}`}
-                onNavigate={onNavigate}
-              />
-            ))}
-          </Stack>
+              {/* 🔌 INTEGRATION & API */}
+              <div>
+                <Group gap="xs" mb="xs">
+                  <IconPlug size={14} color="var(--mantine-color-cyan-6)" />
+                  <Text size="xs" c="dimmed" fw={500}>
+                    Integration & API
+                  </Text>
+                </Group>
+                <Stack gap={4}>
+                  {groupedArchitectures.integration.map(a => (
+                    <NavItem
+                      key={a.slug}
+                      href={`/architectures/${a.slug}`}
+                      label={a.title}
+                      icon={<IconStack size={16} />}
+                      active={current === `/architectures/${a.slug}`}
+                      onNavigate={onNavigate}
+                    />
+                  ))}
+                </Stack>
+              </div>
 
-          {/* 🧩 MODULARIZATION */}
-          <Stack gap={4} mb="md">
-            <Group gap="xs" mb="xs">
-              <IconPuzzlePiece
-                size={14}
-                color="var(--mantine-color-orange-6)"
-              />
-              <Text size="xs" c="dimmed" fw={500}>
-                Modularization
-              </Text>
-            </Group>
-            {groupedArchitectures.modular.map(a => (
-              <NavItem
-                key={a.slug}
-                href={`/architectures/${a.slug}`}
-                label={a.title}
-                icon={<IconStack size={16} />}
-                active={current === `/architectures/${a.slug}`}
-                onNavigate={onNavigate}
-              />
-            ))}
-          </Stack>
+              {/* 🧩 MODULARIZATION */}
+              <div>
+                <Group gap="xs" mb="xs">
+                  <IconPuzzlePiece
+                    size={14}
+                    color="var(--mantine-color-orange-6)"
+                  />
+                  <Text size="xs" c="dimmed" fw={500}>
+                    Modularization
+                  </Text>
+                </Group>
+                <Stack gap={4}>
+                  {groupedArchitectures.modular.map(a => (
+                    <NavItem
+                      key={a.slug}
+                      href={`/architectures/${a.slug}`}
+                      label={a.title}
+                      icon={<IconStack size={16} />}
+                      active={current === `/architectures/${a.slug}`}
+                      onNavigate={onNavigate}
+                    />
+                  ))}
+                </Stack>
+              </div>
 
-          {/* ⚡ ADVANCED */}
-          <Stack gap={4} mb="md">
-            <Group gap="xs" mb="xs">
-              <IconBolt size={14} color="var(--mantine-color-red-6)" />
-              <Text size="xs" c="dimmed" fw={500}>
-                Advanced
-              </Text>
-            </Group>
-            {groupedArchitectures.advanced.map(a => (
-              <NavItem
-                key={a.slug}
-                href={`/architectures/${a.slug}`}
-                label={a.title}
-                icon={<IconStack size={16} />}
-                active={current === `/architectures/${a.slug}`}
-                onNavigate={onNavigate}
-              />
-            ))}
-          </Stack>
-        </div>
-
-        <Divider />
+              {/* ⚡ ADVANCED */}
+              <div>
+                <Group gap="xs" mb="xs">
+                  <IconBolt size={14} color="var(--mantine-color-red-6)" />
+                  <Text size="xs" c="dimmed" fw={500}>
+                    Advanced
+                  </Text>
+                </Group>
+                <Stack gap={4}>
+                  {groupedArchitectures.advanced.map(a => (
+                    <NavItem
+                      key={a.slug}
+                      href={`/architectures/${a.slug}`}
+                      label={a.title}
+                      icon={<IconStack size={16} />}
+                      active={current === `/architectures/${a.slug}`}
+                      onNavigate={onNavigate}
+                    />
+                  ))}
+                </Stack>
+              </div>
+            </Stack>
+          </Accordion.Panel>
+        </Accordion.Item>
 
         {/* Patterns Section */}
-        <div>
-          <Group gap="xs" mb="sm">
-            <IconPuzzle size={16} color="var(--mantine-color-purple-6)" />
-            <Title order={6} c="dimmed">
-              Patterns
-            </Title>
-          </Group>
-          <Stack gap={4}>
-            {patterns.map(p => (
-              <NavItem
-                key={p.slug}
-                href={`/patterns/${p.slug}`}
-                label={p.title}
-                icon={<IconPuzzle size={16} />}
-                active={current === `/patterns/${p.slug}`}
-                onNavigate={onNavigate}
-              />
-            ))}
-          </Stack>
-        </div>
-
-        <Divider />
+        <Accordion.Item value="patterns">
+          <Accordion.Control>
+            <Group gap="xs">
+              <IconPuzzle size={16} color="var(--mantine-color-purple-6)" />
+              <Title order={6} c="dimmed" style={{ margin: 0 }}>
+                Patterns
+              </Title>
+            </Group>
+          </Accordion.Control>
+          <Accordion.Panel>
+            <Stack gap={4}>
+              {patterns.map(p => (
+                <NavItem
+                  key={p.slug}
+                  href={`/patterns/${p.slug}`}
+                  label={p.title}
+                  icon={<IconPuzzle size={16} />}
+                  active={current === `/patterns/${p.slug}`}
+                  onNavigate={onNavigate}
+                />
+              ))}
+            </Stack>
+          </Accordion.Panel>
+        </Accordion.Item>
 
         {/* Techniques Section */}
-        <div>
-          <Group gap="xs" mb="sm">
-            <IconTools size={16} color="var(--mantine-color-orange-6)" />
-            <Title order={6} c="dimmed">
-              Techniques
-            </Title>
-          </Group>
-          <Stack gap={4}>
-            {techniques.map(t => (
-              <NavItem
-                key={t.slug}
-                href={`/techniques/${t.slug}`}
-                label={t.title}
-                icon={<IconTools size={16} />}
-                active={current === `/techniques/${t.slug}`}
-                onNavigate={onNavigate}
-              />
-            ))}
-          </Stack>
-        </div>
-      </Stack>
+        <Accordion.Item value="techniques">
+          <Accordion.Control>
+            <Group gap="xs">
+              <IconTools size={16} color="var(--mantine-color-orange-6)" />
+              <Title order={6} c="dimmed" style={{ margin: 0 }}>
+                Techniques
+              </Title>
+            </Group>
+          </Accordion.Control>
+          <Accordion.Panel>
+            <Stack gap={4}>
+              {techniques.map(t => (
+                <NavItem
+                  key={t.slug}
+                  href={`/techniques/${t.slug}`}
+                  label={t.title}
+                  icon={<IconTools size={16} />}
+                  active={current === `/techniques/${t.slug}`}
+                  onNavigate={onNavigate}
+                />
+              ))}
+            </Stack>
+          </Accordion.Panel>
+        </Accordion.Item>
+      </Accordion>
     </div>
   );
 }
