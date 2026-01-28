@@ -15,6 +15,7 @@ import {
   IconSun,
   IconMoon,
   IconBrandGithub,
+  IconSearch,
 } from '@tabler/icons-react';
 import { useMantineColorScheme } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
@@ -28,7 +29,7 @@ interface Props {
   patterns: DocMeta[];
 }
 
-export default function HeaderBar({ opened, onBurger }: Props) {
+export default function HeaderBar({ opened, onBurger, onSearch }: Props) {
   const isMobile = useMediaQuery('(max-width: 768px)');
   const isSmallMobile = useMediaQuery('(max-width: 480px)');
   const isDesktop = useMediaQuery('(min-width: 1024px)');
@@ -56,7 +57,12 @@ export default function HeaderBar({ opened, onBurger }: Props) {
         zIndex: 1000,
       }}
     >
-      <Group h={56} px="md" justify="space-between" wrap="nowrap">
+      <Group
+        h={isMobile ? 64 : 56}
+        px={isMobile ? 'lg' : 'md'}
+        justify="space-between"
+        wrap="nowrap"
+      >
         <Group gap="xs" wrap="nowrap" style={{ minWidth: 0, flex: 1 }}>
           {isMobile && <Burger opened={opened} onClick={onBurger} size="sm" />}
           <UnstyledButton
@@ -70,7 +76,10 @@ export default function HeaderBar({ opened, onBurger }: Props) {
             }}
           >
             <Group gap="xs" wrap="nowrap" style={{ minWidth: 0 }}>
-              <IconCode size={24} color="var(--mantine-color-brand-6)" />
+              <IconCode
+                size={isMobile ? 28 : 24}
+                color="var(--mantine-color-brand-6)"
+              />
               <Title
                 size="h4"
                 style={{
@@ -103,16 +112,28 @@ export default function HeaderBar({ opened, onBurger }: Props) {
             </Anchor>
           )}
 
+          {/* Botão de busca no mobile */}
+          {isMobile && (
+            <ActionIcon
+              onClick={onSearch}
+              variant="light"
+              size="xl"
+              aria-label="Buscar"
+            >
+              <IconSearch size={24} />
+            </ActionIcon>
+          )}
+
           <ActionIcon
             onClick={() => toggleColorScheme()}
             variant="light"
-            size="lg"
+            size={isMobile ? 'xl' : 'lg'}
             aria-label="Toggle color scheme"
           >
             {colorScheme === 'dark' ? (
-              <IconSun size={18} />
+              <IconSun size={isMobile ? 24 : 18} />
             ) : (
-              <IconMoon size={18} />
+              <IconMoon size={isMobile ? 24 : 18} />
             )}
           </ActionIcon>
         </Group>
