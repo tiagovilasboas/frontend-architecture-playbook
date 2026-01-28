@@ -8,6 +8,10 @@ import {
   ThemeIcon,
   Card,
   SimpleGrid,
+  Code,
+  Group,
+  Badge,
+  Box,
 } from '@mantine/core';
 import {
   IconBulb,
@@ -23,6 +27,7 @@ import MobileTabs from '../../components/MobileTabs';
 import { createArchitectureTabs } from '../../components/MobileTabsHelpers';
 import GuideNavigation from '../../components/GuideNavigation';
 import GuideCTA from '../../components/GuideCTA';
+import DependencyRuleDiagram from '../../components/diagrams/DependencyRuleDiagram';
 
 export default function DependencyRuleGuide() {
   // Overview Section
@@ -70,6 +75,21 @@ export default function DependencyRuleGuide() {
             </Text>
           </Alert>
 
+          <Alert
+            color="blue"
+            variant="light"
+            icon={<IconStack size={18} />}
+            radius="md"
+          >
+            <Text size="sm" fw={500}>
+              <strong>Dependency Rule = camadas de arquitetura.</strong> Trata
+              de <strong>quem pode importar quem</strong> (direção das
+              dependências). Não confunda com fluxograma de uma requisição —
+              aqui o foco é a <strong>estrutura das camadas</strong> e os
+              imports entre elas.
+            </Text>
+          </Alert>
+
           <SimpleGrid cols={{ base: 1, md: 2 }} spacing="lg">
             <Card withBorder p="md" radius="md">
               <Stack gap="md">
@@ -113,6 +133,86 @@ export default function DependencyRuleGuide() {
               </Stack>
             </Card>
           </SimpleGrid>
+
+          {/* Diagrama Visual das Camadas - Canvas */}
+          <Paper withBorder p="xl" radius="md" mt="lg">
+            <Stack gap="xs" mb="md">
+              <Title order={3} ta="center">
+                Camadas de arquitetura: direção das dependências
+              </Title>
+              <Text size="sm" c="dimmed" ta="center">
+                As setas indicam <strong>quem pode depender de quem</strong>{' '}
+                (imports), não o fluxo de execução de uma requisição.
+              </Text>
+            </Stack>
+
+            <Stack gap="xl">
+              {/* Diagrama Correto - Canvas (full width) */}
+              <div>
+                <Group mb="sm" justify="space-between" align="center">
+                  <Badge size="lg" color="green" variant="light">
+                    ✅ CORRETO
+                  </Badge>
+                  <Text size="sm" c="dimmed" fw={500}>
+                    Dependências apontam para dentro (camadas internas)
+                  </Text>
+                </Group>
+                <Box
+                  style={{
+                    marginLeft: 'calc(-1 * var(--mantine-spacing-xl))',
+                    marginRight: 'calc(-1 * var(--mantine-spacing-xl))',
+                    width: 'calc(100% + 2 * var(--mantine-spacing-xl))',
+                  }}
+                >
+                  <DependencyRuleDiagram variant="correct" height={400} />
+                </Box>
+              </div>
+
+              {/* Diagrama Incorreto - Canvas (full width) */}
+              <div>
+                <Group mb="sm" justify="space-between" align="center">
+                  <Badge size="lg" color="red" variant="light">
+                    ❌ INCORRETO
+                  </Badge>
+                  <Text size="sm" c="dimmed" fw={500}>
+                    Dependências circulares ou invertidas = CAOS
+                  </Text>
+                </Group>
+                <Box
+                  style={{
+                    marginLeft: 'calc(-1 * var(--mantine-spacing-xl))',
+                    marginRight: 'calc(-1 * var(--mantine-spacing-xl))',
+                    width: 'calc(100% + 2 * var(--mantine-spacing-xl))',
+                  }}
+                >
+                  <DependencyRuleDiagram variant="incorrect" height={400} />
+                </Box>
+              </div>
+            </Stack>
+
+            <Alert color="blue" icon={<IconBulb size={16} />} mt="lg">
+              <Text size="sm" fw={600} mb={4}>
+                💡 Como identificar se está correto?
+              </Text>
+              <List size="sm">
+                <List.Item>
+                  <strong>Domain</strong> não tem imports de UI, Services ou
+                  Repositories
+                </List.Item>
+                <List.Item>
+                  <strong>Repository</strong> só importa Domain
+                </List.Item>
+                <List.Item>
+                  <strong>Service</strong> pode importar Repository e Domain,
+                  mas nunca UI
+                </List.Item>
+                <List.Item>
+                  <strong>UI</strong> pode importar qualquer coisa, mas nunca
+                  Database diretamente
+                </List.Item>
+              </List>
+            </Alert>
+          </Paper>
         </Stack>
       </Paper>
     </Stack>
@@ -208,16 +308,30 @@ export default function DependencyRuleGuide() {
           </Title>
 
           <Text size="lg" c="dimmed">
-            A Dependency Rule não é teoria, é prática. Vamos ver como aplicar no
-            seu projeto.
+            A Dependency Rule aparece na prática na{' '}
+            <strong>estrutura de pastas</strong> e nos <strong>imports</strong>{' '}
+            entre camadas. Abaixo: como organizar e como validar.
           </Text>
 
-          <SimpleGrid cols={{ base: 1, md: 2 }} spacing="lg">
+          <SimpleGrid cols={{ base: 1, md: 2 }} spacing="lg" mt="lg">
             <Card withBorder p="md" radius="md">
               <Title order={4} size="h5" mb="md">
                 1. Estrutura de Pastas
               </Title>
-              <List size="sm" spacing="xs">
+              <Code block style={{ fontSize: '11px' }} mb="sm">
+                {`src/
+├── domain/          ← Mais interno (não depende de nada)
+│   ├── entities/
+│   └── rules/
+├── repositories/    ← Depende de domain
+│   └── user.repository.ts
+├── services/        ← Depende de domain + repositories
+│   └── user.service.ts
+└── ui/              ← Mais externo (pode usar tudo)
+    ├── components/
+    └── pages/`}
+              </Code>
+              <List size="sm" spacing="xs" mt="sm">
                 <List.Item>Domain (mais interno)</List.Item>
                 <List.Item>Services (usa Domain)</List.Item>
                 <List.Item>Repositories (usa Domain)</List.Item>
@@ -241,7 +355,32 @@ export default function DependencyRuleGuide() {
               <Title order={4} size="h5" mb="md">
                 3. Valide Imports
               </Title>
-              <List size="sm" spacing="xs">
+              <Code block style={{ fontSize: '11px' }} mb="sm">
+                {`✅ CORRETO:
+// domain/user.ts
+export type User = { id: string; name: string };  // Sem imports externos!
+export function createUser(data: any): User { ... }
+export function getDisplayName(user: User): string { ... }
+
+// repository/user.repository.ts
+import { User, createUser } from '../domain/user';  // ✅ OK
+
+// service/user.service.ts
+import { User } from '../domain/user';
+import { findUserById } from '../repository/...';  // ✅ OK
+
+// ui/components/UserProfile.tsx
+import { useUserService } from '../service/...';  // ✅ OK
+
+❌ INCORRETO:
+// domain/user.ts
+import { Button } from '../ui/components';  // ❌ QUEBRADO!
+import { getUserById } from '../service/...';  // ❌ QUEBRADO!
+
+// repository/user.repository.ts
+import { getUserById } from '../service/...';  // ❌ QUEBRADO!`}
+              </Code>
+              <List size="sm" spacing="xs" mt="sm">
                 <List.Item>Verifique imports em cada arquivo</List.Item>
                 <List.Item>Domain não importa UI</List.Item>
                 <List.Item>Repository não importa Service</List.Item>
