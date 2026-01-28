@@ -6,7 +6,6 @@ import {
   Title,
   ActionIcon,
   Paper,
-  Text,
   Anchor,
 } from '@mantine/core';
 import { Link } from 'react-router-dom';
@@ -15,21 +14,31 @@ import {
   IconSun,
   IconMoon,
   IconBrandGithub,
-  IconSearch,
 } from '@tabler/icons-react';
 import { useMantineColorScheme } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import type { DocMeta } from '../lib/content.tsx';
+import HeaderNavMenu from './HeaderNavMenu.tsx';
 
 interface Props {
   opened: boolean;
   onBurger: () => void;
-  onSearch: () => void;
   guides: DocMeta[];
+  architectures: DocMeta[];
   patterns: DocMeta[];
+  techniques: DocMeta[];
+  bestPractices: DocMeta[];
 }
 
-export default function HeaderBar({ opened, onBurger, onSearch }: Props) {
+export default function HeaderBar({
+  opened,
+  onBurger,
+  guides,
+  architectures,
+  patterns,
+  techniques,
+  bestPractices,
+}: Props) {
   const isMobile = useMediaQuery('(max-width: 768px)');
   const isSmallMobile = useMediaQuery('(max-width: 480px)');
   const isDesktop = useMediaQuery('(min-width: 1024px)');
@@ -37,12 +46,12 @@ export default function HeaderBar({ opened, onBurger, onSearch }: Props) {
 
   const getTitle = () => {
     if (isSmallMobile) {
-      return 'Front-end Arch. Playbook';
+      return 'Front Arch. Playbook';
     }
     if (isMobile) {
-      return 'Front-End Arch Playbook';
+      return 'Front Arch. Playbook';
     }
-    return 'Front-End Architecture Playbook';
+    return 'Front Arch. Playbook';
   };
 
   return (
@@ -55,15 +64,16 @@ export default function HeaderBar({ opened, onBurger, onSearch }: Props) {
         position: 'sticky',
         top: 0,
         zIndex: 1000,
+        backgroundColor: 'var(--mantine-color-body)',
       }}
     >
       <Group
         h={isMobile ? 64 : 56}
-        px={isMobile ? 'lg' : 'md'}
+        px={isMobile ? 'lg' : 'xl'}
         justify="space-between"
         wrap="nowrap"
       >
-        <Group gap="xs" wrap="nowrap" style={{ minWidth: 0, flex: 1 }}>
+        <Group gap="lg" wrap="nowrap" style={{ minWidth: 0, flex: 1 }}>
           {isMobile && <Burger opened={opened} onClick={onBurger} size="sm" />}
           <UnstyledButton
             component={Link}
@@ -72,7 +82,7 @@ export default function HeaderBar({ opened, onBurger, onSearch }: Props) {
               textDecoration: 'none',
               color: 'inherit',
               minWidth: 0,
-              flex: 1,
+              flexShrink: 0,
             }}
           >
             <Group gap="xs" wrap="nowrap" style={{ minWidth: 0 }}>
@@ -93,37 +103,20 @@ export default function HeaderBar({ opened, onBurger, onSearch }: Props) {
               </Title>
             </Group>
           </UnstyledButton>
+
+          {/* Menu horizontal - apenas no desktop */}
+          {!isMobile && (
+            <HeaderNavMenu
+              guides={guides}
+              architectures={architectures}
+              patterns={patterns}
+              techniques={techniques}
+              bestPractices={bestPractices}
+            />
+          )}
         </Group>
 
         <Group gap="md" wrap="nowrap" style={{ flexShrink: 0 }}>
-          {isDesktop && (
-            <Anchor
-              href="https://github.com/tiagovilasboas"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ textDecoration: 'none' }}
-            >
-              <Group gap={4} align="center">
-                <IconBrandGithub size={16} />
-                <Text size="sm" c="dimmed">
-                  By Tiago Vilas Boas
-                </Text>
-              </Group>
-            </Anchor>
-          )}
-
-          {/* Botão de busca no mobile */}
-          {isMobile && (
-            <ActionIcon
-              onClick={onSearch}
-              variant="light"
-              size="xl"
-              aria-label="Buscar"
-            >
-              <IconSearch size={24} />
-            </ActionIcon>
-          )}
-
           <ActionIcon
             onClick={() => toggleColorScheme()}
             variant="light"
@@ -136,6 +129,19 @@ export default function HeaderBar({ opened, onBurger, onSearch }: Props) {
               <IconMoon size={isMobile ? 24 : 18} />
             )}
           </ActionIcon>
+
+          {isDesktop && (
+            <Anchor
+              href="https://github.com/tiagovilasboas/frontend-architecture-playbook"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ textDecoration: 'none' }}
+            >
+              <ActionIcon variant="light" size="lg" aria-label="GitHub">
+                <IconBrandGithub size={18} />
+              </ActionIcon>
+            </Anchor>
+          )}
         </Group>
       </Group>
     </Paper>

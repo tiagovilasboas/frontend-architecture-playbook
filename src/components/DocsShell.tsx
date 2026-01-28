@@ -3,13 +3,12 @@ import { Drawer, Box, Text } from '@mantine/core';
 import { Spotlight } from '@mantine/spotlight';
 import { useMediaQuery } from '@mantine/hooks';
 import HeaderBar from './HeaderBar.tsx';
-import NavMenu from './NavMenu.tsx';
 import MobileNavMenu from './MobileNavMenu.tsx';
 import MobileBottomNav from './MobileBottomNav.tsx';
 import MobileBreadcrumbs from './MobileBreadcrumbs.tsx';
-import { TableOfContents } from './TableOfContents.tsx';
 import { ReadingProgress } from './ReadingProgress.tsx';
 import Footer from './Footer.tsx';
+import NeuralNetworkCanvas from './NeuralNetworkCanvas.tsx';
 import { useNavigationActions } from '../hooks/useNavigationActions.ts';
 import type { DocMeta } from '../lib/content.tsx';
 
@@ -47,12 +46,23 @@ export default function DocsShell({
     setOpened(false);
   };
 
-  const handleSearchClick = () => Spotlight.open();
-
   return (
     <>
+      {/* Neural Network Background - Global em todas as páginas */}
+      <NeuralNetworkCanvas nodeCount={isMobile ? 60 : 100} fullScreen={true} />
+
       <ReadingProgress />
-      <Spotlight shortcut="mod + k" actions={actions} />
+      <Spotlight
+        shortcut="mod + k"
+        actions={actions}
+        searchProps={{
+          placeholder: 'Buscar no playbook...',
+          size: 'lg',
+        }}
+        nothingFoundMessage="Nada encontrado. Tente outra busca."
+        highlightQuery
+        limit={10}
+      />
 
       {/* Drawer do menu mobile - apenas visível em telas pequenas */}
       <Drawer
@@ -82,60 +92,38 @@ export default function DocsShell({
       </Drawer>
 
       <Box
-        style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}
+        style={{
+          minHeight: '100vh',
+          display: 'flex',
+          flexDirection: 'column',
+          position: 'relative',
+          zIndex: 1,
+        }}
       >
         {/* Header */}
         <HeaderBar
           opened={opened}
           onBurger={handleBurgerClick}
-          onSearch={handleSearchClick}
           guides={guides}
+          architectures={architectures}
           patterns={patterns}
+          techniques={techniques}
+          bestPractices={bestPractices}
         />
 
         {/* Breadcrumbs - apenas no mobile */}
         <MobileBreadcrumbs />
 
         {/* Main Content */}
-        <Box style={{ flex: 1, display: 'flex' }}>
-          {/* Sidebar - apenas no desktop */}
-          {!isMobile && (
-            <Box
-              className="sidebar-nav"
-              style={{
-                width: 280,
-                padding: 12,
-                paddingRight: 20,
-                overflow: 'visible',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '1rem',
-              }}
-            >
-              <NavMenu
-                guides={guides}
-                architectures={architectures}
-                patterns={patterns}
-                techniques={techniques}
-                bestPractices={bestPractices}
-                // No desktop não precisa fechar nada, então não passa onNavigate
-              />
-
-              {/* Table of Contents - dinâmico baseado na página */}
-              <TableOfContents />
-            </Box>
-          )}
-
-          {/* Content */}
-          <Box
-            style={{
-              flex: 1,
-              padding: isMobile ? '1rem 0' : '1rem',
-              paddingBottom: isMobile ? '80px' : '1rem', // Espaço para bottom nav
-            }}
-          >
-            {children}
-          </Box>
+        <Box
+          style={{
+            flex: 1,
+            width: '100%',
+            padding: isMobile ? '1rem' : '2rem',
+            paddingBottom: isMobile ? '80px' : '2rem', // Espaço para bottom nav
+          }}
+        >
+          {children}
         </Box>
 
         {/* Footer */}
