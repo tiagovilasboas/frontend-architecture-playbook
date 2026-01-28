@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
-import { Drawer, Box } from '@mantine/core';
+import { Drawer, Box, Text } from '@mantine/core';
 import { Spotlight } from '@mantine/spotlight';
 import { useMediaQuery } from '@mantine/hooks';
 import HeaderBar from './HeaderBar.tsx';
 import NavMenu from './NavMenu.tsx';
+import MobileNavMenu from './MobileNavMenu.tsx';
+import MobileBottomNav from './MobileBottomNav.tsx';
+import MobileBreadcrumbs from './MobileBreadcrumbs.tsx';
+import { TableOfContents } from './TableOfContents.tsx';
 import Footer from './Footer.tsx';
 import { useNavigationActions } from '../hooks/useNavigationActions.ts';
 import type { DocMeta } from '../lib/content.tsx';
@@ -52,15 +56,20 @@ export default function DocsShell({
       <Drawer
         opened={opened}
         onClose={handleDrawerClose}
-        padding="xs"
+        padding="md"
         hiddenFrom="sm"
-        title="Menu"
+        title={
+          <Text fw={600} size="lg">
+            Menu
+          </Text>
+        }
         zIndex={3000}
         lockScroll={false}
         closeOnClickOutside={true}
         closeOnEscape={true}
+        size="85%"
       >
-        <NavMenu
+        <MobileNavMenu
           guides={guides}
           architectures={architectures}
           patterns={patterns}
@@ -82,6 +91,9 @@ export default function DocsShell({
           patterns={patterns}
         />
 
+        {/* Breadcrumbs - apenas no mobile */}
+        <MobileBreadcrumbs />
+
         {/* Main Content */}
         <Box style={{ flex: 1, display: 'flex' }}>
           {/* Sidebar - apenas no desktop */}
@@ -93,6 +105,9 @@ export default function DocsShell({
                 padding: 12,
                 paddingRight: 20,
                 overflow: 'visible',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '1rem',
               }}
             >
               <NavMenu
@@ -103,6 +118,9 @@ export default function DocsShell({
                 bestPractices={bestPractices}
                 // No desktop não precisa fechar nada, então não passa onNavigate
               />
+
+              {/* Table of Contents - dinâmico baseado na página */}
+              <TableOfContents />
             </Box>
           )}
 
@@ -111,6 +129,7 @@ export default function DocsShell({
             style={{
               flex: 1,
               padding: isMobile ? '1rem 0' : '1rem',
+              paddingBottom: isMobile ? '80px' : '1rem', // Espaço para bottom nav
             }}
           >
             {children}
@@ -119,6 +138,9 @@ export default function DocsShell({
 
         {/* Footer */}
         <Footer />
+
+        {/* Bottom Navigation - apenas no mobile */}
+        <MobileBottomNav />
       </Box>
     </>
   );
