@@ -8,6 +8,7 @@ import MobileNavMenu from './MobileNavMenu.tsx';
 import MobileBottomNav from './MobileBottomNav.tsx';
 import MobileBreadcrumbs from './MobileBreadcrumbs.tsx';
 import { TableOfContents } from './TableOfContents.tsx';
+import { ReadingProgress } from './ReadingProgress.tsx';
 import Footer from './Footer.tsx';
 import { useNavigationActions } from '../hooks/useNavigationActions.ts';
 import type { DocMeta } from '../lib/content.tsx';
@@ -50,6 +51,7 @@ export default function DocsShell({
 
   return (
     <>
+      <ReadingProgress />
       <Spotlight shortcut="mod + k" actions={actions} />
 
       {/* Drawer do menu mobile - apenas visível em telas pequenas */}
