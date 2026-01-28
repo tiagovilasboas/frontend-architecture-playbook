@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { getDoc } from '../lib/content.tsx';
-import { TypographyStylesProvider, Container, Group } from '@mantine/core';
+import { TypographyStylesProvider, Group } from '@mantine/core';
 import { CodeHighlight } from '@mantine/code-highlight';
 import { ReadingTime } from '../components/ReadingTime.tsx';
 import { RelatedContent } from '../components/RelatedContent.tsx';
@@ -8,7 +8,15 @@ import { RelatedContent } from '../components/RelatedContent.tsx';
 export default function DocPage() {
   const { collection, slug } = useParams();
   if (!collection || !slug) return <p>Invalid route</p>;
-  const doc = getDoc(collection as 'guides' | 'patterns', slug);
+  const doc = getDoc(
+    collection as
+      | 'guides'
+      | 'architectures'
+      | 'patterns'
+      | 'techniques'
+      | 'best-practices',
+    slug
+  );
   if (!doc) return <p>Not found</p>;
 
   const Component = doc.component;
@@ -16,7 +24,7 @@ export default function DocPage() {
     pre: (props: React.ComponentProps<'pre'>) => <CodeHighlight {...props} />,
   };
   return (
-    <Container size="lg">
+    <>
       <Group mb="md" justify="flex-end">
         <ReadingTime />
       </Group>
@@ -24,6 +32,6 @@ export default function DocPage() {
         <Component components={components} />
       </TypographyStylesProvider>
       <RelatedContent />
-    </Container>
+    </>
   );
 }

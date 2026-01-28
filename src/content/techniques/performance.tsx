@@ -364,8 +364,8 @@ const performanceBudget = {
   'cumulative-layout-shift': {
     'max': '0.1',
   },
-  'first-input-delay': {
-    'max': '100ms',
+  'interaction-to-next-paint': {
+    'max': '200ms',
   },
 };
 
@@ -407,7 +407,7 @@ module.exports = {
             </Text>
             <List>
               <List.Item>LCP (Largest Contentful Paint) {'<'} 2.5s</List.Item>
-              <List.Item>FID (First Input Delay) {'<'} 100ms</List.Item>
+              <List.Item>INP (Interaction to Next Paint) {'<'} 200ms</List.Item>
               <List.Item>CLS (Cumulative Layout Shift) {'<'} 0.1</List.Item>
             </List>
           </Card>

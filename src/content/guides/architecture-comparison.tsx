@@ -699,9 +699,9 @@ function ArchitectureComparisonPage() {
               </Text>
               <Text size="sm" c="dimmed">
                 • <strong>Casos reais:</strong> Netflix, Spotify, Airbnb, Uber
-                <br />• <strong>Core Web Vitals:</strong> LCP, FID, CLS
+                <br />• <strong>Core Web Vitals:</strong> LCP, INP, CLS
                 <br />• <strong>Performance:</strong> Bundle size, build time
-                <br />• <strong>Experiência prática:</strong> 18+ anos de
+                <br />• <strong>Experiência prática:</strong> 20+ anos de
                 front-end
                 <br />• <strong>Feedback da comunidade:</strong> Devs e
                 arquitetos
