@@ -1,5 +1,8 @@
 #!/usr/bin/env sh
 
+# Garantir que eslint/prettier do projeto sejam usados
+export PATH="$(pwd)/node_modules/.bin:$PATH"
+
 # Run lint-staged for formatting and linting staged files
 npx lint-staged
 
