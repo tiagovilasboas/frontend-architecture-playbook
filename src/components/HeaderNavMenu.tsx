@@ -1,5 +1,5 @@
 import React from 'react';
-import { Menu, UnstyledButton, Text, Group, Box } from '@mantine/core';
+import { Menu, UnstyledButton, Text, Group } from '@mantine/core';
 import { Link, useLocation } from 'react-router-dom';
 import {
   IconChevronDown,
@@ -18,7 +18,11 @@ const ARCH_GROUPS: {
   icon: React.ReactNode;
 }[] = [
   { label: 'Fundamentais', slice: [0, 4], icon: <IconRocket size={14} /> },
-  { label: 'Padrões de Design', slice: [4, 7], icon: <IconBuilding size={14} /> },
+  {
+    label: 'Padrões de Design',
+    slice: [4, 7],
+    icon: <IconBuilding size={14} />,
+  },
   { label: 'Integração e API', slice: [7, 9], icon: <IconPlug size={14} /> },
   { label: 'Modularização', slice: [9, 12], icon: <IconPuzzle size={14} /> },
   { label: 'Avançadas', slice: [12, 15], icon: <IconBolt size={14} /> },
@@ -115,7 +119,10 @@ export default function HeaderNavMenu({
             <IconChevronDown size={14} />
           </UnstyledButton>
         </Menu.Target>
-        <Menu.Dropdown className="header-nav-dropdown" style={{ minWidth: 200 }}>
+        <Menu.Dropdown
+          className="header-nav-dropdown"
+          style={{ minWidth: 200 }}
+        >
           {ARCH_GROUPS.map(({ label, slice: [start, end], icon }) => (
             <Menu
               key={label}

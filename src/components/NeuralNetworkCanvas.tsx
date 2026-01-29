@@ -33,11 +33,51 @@ const SLOWDOWN = 0.4;
 
 /** Perfis de animação – cada página sorteia um (seed); valores já calmos */
 const ANIMATION_PROFILES = [
-  { name: 'default', speed: 0.6, maxDist: 150, damping: 0.997, trailAlpha: 0.35, lineWidth: 1.2, accel: 0.02 },
-  { name: 'calm', speed: 0.35, maxDist: 220, damping: 0.9985, trailAlpha: 0.28, lineWidth: 1, accel: 0.01 },
-  { name: 'flow', speed: 0.5, maxDist: 190, damping: 0.998, trailAlpha: 0.32, lineWidth: 1.2, accel: 0.015 },
-  { name: 'soft', speed: 0.45, maxDist: 180, damping: 0.998, trailAlpha: 0.3, lineWidth: 1.1, accel: 0.012 },
-  { name: 'gentle', speed: 0.4, maxDist: 200, damping: 0.9982, trailAlpha: 0.28, lineWidth: 1, accel: 0.01 },
+  {
+    name: 'default',
+    speed: 0.6,
+    maxDist: 150,
+    damping: 0.997,
+    trailAlpha: 0.35,
+    lineWidth: 1.2,
+    accel: 0.02,
+  },
+  {
+    name: 'calm',
+    speed: 0.35,
+    maxDist: 220,
+    damping: 0.9985,
+    trailAlpha: 0.28,
+    lineWidth: 1,
+    accel: 0.01,
+  },
+  {
+    name: 'flow',
+    speed: 0.5,
+    maxDist: 190,
+    damping: 0.998,
+    trailAlpha: 0.32,
+    lineWidth: 1.2,
+    accel: 0.015,
+  },
+  {
+    name: 'soft',
+    speed: 0.45,
+    maxDist: 180,
+    damping: 0.998,
+    trailAlpha: 0.3,
+    lineWidth: 1.1,
+    accel: 0.012,
+  },
+  {
+    name: 'gentle',
+    speed: 0.4,
+    maxDist: 200,
+    damping: 0.9982,
+    trailAlpha: 0.28,
+    lineWidth: 1,
+    accel: 0.01,
+  },
 ] as const;
 
 interface Node {
@@ -100,12 +140,20 @@ export default function NeuralNetworkCanvas({
     updateCanvasSize();
     window.addEventListener('resize', updateCanvasSize);
 
-    const lineColor = isDark ? semantic.canvasLineDark : semantic.canvasLineLight;
-    const nodeColor = isDark ? semantic.canvasNodeDark : semantic.canvasNodeLight;
-    const glowColor = isDark ? semantic.canvasGlowDark : semantic.canvasGlowLight;
+    const lineColor = isDark
+      ? semantic.canvasLineDark
+      : semantic.canvasLineLight;
+    const nodeColor = isDark
+      ? semantic.canvasNodeDark
+      : semantic.canvasNodeLight;
+    const glowColor = isDark
+      ? semantic.canvasGlowDark
+      : semantic.canvasGlowLight;
 
     // Animação única por página: seed escolhe perfil + posições/velocidades
-    const seedNum = pageSeed ? hashString(pageSeed) : Math.floor(Math.random() * 0xffffffff);
+    const seedNum = pageSeed
+      ? hashString(pageSeed)
+      : Math.floor(Math.random() * 0xffffffff);
     const rng = createSeededRandom(seedNum);
     const profileIndex = Math.floor(rng() * ANIMATION_PROFILES.length);
     const profile = ANIMATION_PROFILES[profileIndex];
@@ -161,8 +209,8 @@ export default function NeuralNetworkCanvas({
 
         // Pequena repulsão pelo mouse (só dentro do raio de influência)
         if (mouseActive) {
-          let dx = node.x - mx;
-          let dy = node.y - my;
+          const dx = node.x - mx;
+          const dy = node.y - my;
           const dist = Math.sqrt(dx * dx + dy * dy) || 1;
           if (dist < MOUSE_RADIUS && dist > 2) {
             const t = 1 - dist / MOUSE_RADIUS;

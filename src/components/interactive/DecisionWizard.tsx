@@ -999,7 +999,7 @@ export default function DecisionWizard() {
           </div>
         );
 
-      case 6:
+      case 6: {
         const resultLabels = [
           'Melhor match para seu perfil',
           'Alternativa sólida',
@@ -1018,16 +1018,20 @@ export default function DecisionWizard() {
               mb="md"
             >
               <Text size="sm" mb={4}>
-                Com base nas suas respostas, estas opções costumam fazer sentido.
-                Use como <strong>ponto de partida</strong> para pesquisa e
-                discussão com o time.
+                Com base nas suas respostas, estas opções costumam fazer
+                sentido. Use como <strong>ponto de partida</strong> para
+                pesquisa e discussão com o time.
               </Text>
               <Text size="sm" c="dimmed">
-                Contexto: {projectTypes.find(p => p.value === projectType)?.label},{' '}
-                time {teamSizes.find(t => t.value === teamSize)?.label}, nível{' '}
+                Contexto:{' '}
+                {projectTypes.find(p => p.value === projectType)?.label}, time{' '}
+                {teamSizes.find(t => t.value === teamSize)?.label}, nível{' '}
                 {techLevels.find(t => t.value === techLevel)?.label},
                 priorizando{' '}
-                {priorities.find(p => p.value === priority)?.label.toLowerCase()}.
+                {priorities
+                  .find(p => p.value === priority)
+                  ?.label.toLowerCase()}
+                .
               </Text>
             </Alert>
 
@@ -1150,12 +1154,14 @@ export default function DecisionWizard() {
               mt="lg"
             >
               <Text size="sm" fw={600} mb={4}>
-                Use o resultado para conversar com sua equipe, não como decisão automática.
+                Use o resultado para conversar com sua equipe, não como decisão
+                automática.
               </Text>
               <Text size="sm" c="dimmed">
-                Estas sugestões são baseadas em padrões comuns e no contexto que você informou.
-                Seu projeto pode justificar escolhas diferentes. Sempre valide com o time e
-                considere restrições específicas do negócio antes de decidir.
+                Estas sugestões são baseadas em padrões comuns e no contexto que
+                você informou. Seu projeto pode justificar escolhas diferentes.
+                Sempre valide com o time e considere restrições específicas do
+                negócio antes de decidir.
               </Text>
             </Alert>
 
@@ -1185,6 +1191,7 @@ export default function DecisionWizard() {
             </Group>
           </div>
         );
+      }
     }
   };
 
