@@ -50,7 +50,7 @@ export default function Footer() {
             size={14}
             style={{
               verticalAlign: 'middle',
-              color: 'var(--mantine-color-red-6)',
+              color: 'var(--mantine-color-brand-6)',
             }}
           />{' '}
           por Tiago Vilas Boas

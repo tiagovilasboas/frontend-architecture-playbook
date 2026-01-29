@@ -106,7 +106,7 @@ export default function MobileNavMenu({
           <Accordion.Item value="guides">
             <Accordion.Control>
               <Group gap="sm">
-                <IconBook size={20} color="var(--mantine-color-blue-6)" />
+                <IconBook size={20} color="var(--mantine-color-brand-6)" />
                 <Text fw={500} size="md">
                   Guias
                 </Text>
@@ -143,7 +143,7 @@ export default function MobileNavMenu({
           <Accordion.Item value="best-practices">
             <Accordion.Control>
               <Group gap="sm">
-                <IconCheck size={20} color="var(--mantine-color-teal-6)" />
+                <IconCheck size={20} color="var(--mantine-color-brand-6)" />
                 <Text fw={500} size="md">
                   Boas Práticas
                 </Text>
@@ -180,7 +180,7 @@ export default function MobileNavMenu({
           <Accordion.Item value="architectures">
             <Accordion.Control>
               <Group gap="sm">
-                <IconStack size={20} color="var(--mantine-color-green-6)" />
+                <IconStack size={20} color="var(--mantine-color-brand-6)" />
                 <Text fw={500} size="md">
                   Arquiteturas
                 </Text>
@@ -194,7 +194,7 @@ export default function MobileNavMenu({
                 {/* 🚀 FUNDAMENTALS */}
                 <div>
                   <Group gap="sm" mb="sm">
-                    <IconRocket size={18} color="var(--mantine-color-blue-6)" />
+                    <IconRocket size={18} color="var(--mantine-color-brand-6)" />
                     <Text size="sm" c="dimmed" fw={500}>
                       Fundamentals
                     </Text>
@@ -218,7 +218,7 @@ export default function MobileNavMenu({
                   <Group gap="sm" mb="sm">
                     <IconBuilding
                       size={18}
-                      color="var(--mantine-color-violet-6)"
+                      color="var(--mantine-color-brand-6)"
                     />
                     <Text size="sm" c="dimmed" fw={500}>
                       Padrões de Design
@@ -241,7 +241,7 @@ export default function MobileNavMenu({
                 {/* 🔌 INTEGRATION & API */}
                 <div>
                   <Group gap="sm" mb="sm">
-                    <IconPlug size={18} color="var(--mantine-color-cyan-6)" />
+                    <IconPlug size={18} color="var(--mantine-color-brand-6)" />
                     <Text size="sm" c="dimmed" fw={500}>
                       Integration & API
                     </Text>
@@ -265,7 +265,7 @@ export default function MobileNavMenu({
                   <Group gap="sm" mb="sm">
                     <IconPuzzlePiece
                       size={18}
-                      color="var(--mantine-color-orange-6)"
+                      color="var(--mantine-color-brand-6)"
                     />
                     <Text size="sm" c="dimmed" fw={500}>
                       Modularization
@@ -288,7 +288,7 @@ export default function MobileNavMenu({
                 {/* ⚡ ADVANCED */}
                 <div>
                   <Group gap="sm" mb="sm">
-                    <IconBolt size={18} color="var(--mantine-color-red-6)" />
+                    <IconBolt size={18} color="var(--mantine-color-brand-6)" />
                     <Text size="sm" c="dimmed" fw={500}>
                       Advanced
                     </Text>
@@ -314,7 +314,7 @@ export default function MobileNavMenu({
           <Accordion.Item value="patterns">
             <Accordion.Control>
               <Group gap="sm">
-                <IconPuzzle size={20} color="var(--mantine-color-purple-6)" />
+                <IconPuzzle size={20} color="var(--mantine-color-brand-6)" />
                 <Text fw={500} size="md">
                   Padrões
                 </Text>
@@ -351,7 +351,7 @@ export default function MobileNavMenu({
           <Accordion.Item value="techniques">
             <Accordion.Control>
               <Group gap="sm">
-                <IconTools size={20} color="var(--mantine-color-orange-6)" />
+                <IconTools size={20} color="var(--mantine-color-brand-6)" />
                 <Text fw={500} size="md">
                   Técnicas
                 </Text>

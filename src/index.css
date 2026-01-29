@@ -2,29 +2,33 @@
   /* Mantine já fornece resets e variáveis de tema */
 }
 
-/* Tom azul bem escuro – dark mode */
+/* Theme from single source (src/theme/colors.ts) */
 [data-mantine-color-scheme='dark'] {
-  --mantine-color-body: #060b14 !important;
+  --mantine-color-body: var(--app-body-dark) !important;
 }
 
 [data-mantine-color-scheme='dark'] body {
-  background-color: #060b14 !important;
+  background-color: var(--app-body-dark) !important;
 }
 
-/* Containers e cards mais escuros no dark */
 [data-mantine-color-scheme='dark'] .mantine-Paper-root,
 [data-mantine-color-scheme='dark'] .mantine-Card-root {
-  background-color: #0a0f1a !important;
-  border-color: #121b2a !important;
+  background-color: var(--app-container-dark) !important;
+  border-color: var(--app-border-dark) !important;
 }
 
-/* Light mode – azul claro (brand-0) */
 [data-mantine-color-scheme='light'] {
-  --mantine-color-body: #e8eef4 !important;
+  --mantine-color-body: var(--app-body-light) !important;
 }
 
 [data-mantine-color-scheme='light'] body {
-  background-color: #e8eef4 !important;
+  background-color: var(--app-body-light) !important;
+}
+
+[data-mantine-color-scheme='light'] .mantine-Paper-root,
+[data-mantine-color-scheme='light'] .mantine-Card-root {
+  background-color: var(--app-container-light) !important;
+  border-color: var(--app-border-light) !important;
 }
 
 /* Conteúdo principal removido: uso de Container Mantine */
@@ -55,23 +59,34 @@ section {
   margin-bottom: var(--mantine-spacing-xl);
 }
 
-/* Estilos para links HTML – azul do tema (accent) */
+/* Links – paleta neutral (dark: claro, light: escuro) */
 a {
-  color: var(--mantine-color-accent-5);
+  color: var(--mantine-color-brand-6);
   text-decoration: none;
   font-weight: 500;
   transition: color 0.2s ease;
 }
 
+[data-mantine-color-scheme='dark'] a {
+  color: var(--mantine-color-brand-3);
+}
+
+[data-mantine-color-scheme='dark'] a:hover {
+  color: var(--mantine-color-brand-2);
+}
+
 a:hover {
-  color: var(--mantine-color-accent-4);
-  text-decoration: none;
+  color: var(--mantine-color-brand-7);
 }
 
 a:focus {
-  outline: 2px solid var(--mantine-color-accent-4);
+  outline: 2px solid var(--mantine-color-brand-5);
   outline-offset: 2px;
   border-radius: 4px;
+}
+
+[data-mantine-color-scheme='dark'] a:focus {
+  outline-color: var(--mantine-color-brand-4);
 }
 
 /* Links dentro de cards - estilo mais sutil */
@@ -116,9 +131,15 @@ a:focus {
   overflow: visible !important;
 }
 
-/* Header e Footer – bordas no tom azul escuro (brand) */
+/* Header e Footer – bordas na paleta neutral */
 .header-bar {
   border-bottom: 1px solid var(--mantine-color-brand-7) !important;
+}
+
+/* Logo "Front Arch. Playbook" – sem outline azul ao clicar/focar */
+.header-logo-link:focus,
+.header-logo-link:focus-visible {
+  outline: none !important;
 }
 
 .footer-bar {
@@ -127,12 +148,73 @@ a:focus {
 
 [data-mantine-color-scheme='dark'] .header-bar,
 [data-mantine-color-scheme='dark'] .footer-bar {
-  border-color: var(--mantine-color-brand-6) !important;
+  border-color: var(--app-border-dark) !important;
 }
 
 [data-mantine-color-scheme='light'] .header-bar,
 [data-mantine-color-scheme='light'] .footer-bar {
+  border-color: var(--app-border-light) !important;
+}
+
+/* Header desktop – botões do menu (Guias, Arquiteturas, etc.) – mesmas cores do sidebar */
+.header-nav-btn {
+  color: inherit;
+  font-weight: 400;
+}
+
+[data-mantine-color-scheme='light'] .header-nav-btn {
+  color: var(--mantine-color-brand-7) !important;
+}
+
+[data-mantine-color-scheme='light'] .header-nav-btn:hover,
+[data-mantine-color-scheme='light'] .header-nav-btn[data-active='true'] {
+  background: var(--app-nav-hover-bg-light) !important;
+  color: var(--mantine-color-brand-9) !important;
+  font-weight: 600;
+}
+
+[data-mantine-color-scheme='light'] .header-nav-btn[data-active='true'] {
+  background: var(--app-nav-active-bg-light) !important;
+}
+
+[data-mantine-color-scheme='dark'] .header-nav-btn {
+  color: var(--mantine-color-brand-2) !important;
+}
+
+[data-mantine-color-scheme='dark'] .header-nav-btn:hover,
+[data-mantine-color-scheme='dark'] .header-nav-btn[data-active='true'] {
+  background: var(--app-nav-hover-bg-dark) !important;
+  color: var(--mantine-color-brand-2) !important;
+  font-weight: 600;
+}
+
+[data-mantine-color-scheme='dark'] .header-nav-btn[data-active='true'] {
+  background: var(--app-nav-active-bg-dark) !important;
+  color: var(--mantine-color-brand-1) !important;
+}
+
+/* Dropdown do menu desktop – fundo e borda do tema */
+.header-nav-dropdown {
+  background-color: var(--mantine-color-body) !important;
+  border-color: var(--mantine-color-brand-7) !important;
+}
+
+[data-mantine-color-scheme='light'] .header-nav-dropdown {
   border-color: var(--mantine-color-brand-3) !important;
+}
+
+.header-nav-dropdown .mantine-Menu-item {
+  color: var(--mantine-color-text);
+}
+
+.header-nav-dropdown .mantine-Menu-item:hover {
+  background: var(--app-nav-hover-bg-light) !important;
+  color: var(--mantine-color-brand-8) !important;
+}
+
+[data-mantine-color-scheme='dark'] .header-nav-dropdown .mantine-Menu-item:hover {
+  background: var(--app-nav-hover-bg-dark) !important;
+  color: var(--mantine-color-brand-2) !important;
 }
 
 /* NavMenu – contraste melhor em hover e ativo */
@@ -153,9 +235,13 @@ a:focus {
 
 [data-mantine-color-scheme='light'] .navmenu-link:hover,
 [data-mantine-color-scheme='light'] .navmenu-link[data-active='true'] {
-  background: var(--mantine-color-brand-2) !important;
-  color: var(--mantine-color-brand-8) !important;
+  background: var(--app-nav-hover-bg-light) !important;
+  color: var(--mantine-color-brand-9) !important;
   transform: translateX(1px) !important;
+}
+
+[data-mantine-color-scheme='light'] .navmenu-link[data-active='true'] {
+  background: var(--app-nav-active-bg-light) !important;
 }
 
 [data-mantine-color-scheme='light'] .navmenu-link:hover::before,
@@ -166,10 +252,10 @@ a:focus {
   left: -2px !important;
   right: -2px !important;
   bottom: 0 !important;
-  background: var(--mantine-color-accent-5) !important;
+  background: var(--mantine-color-brand-6) !important;
   border-radius: 6px !important;
   z-index: -1 !important;
-  opacity: 0.2 !important;
+  opacity: 0.15 !important;
 }
 
 /* Tema Dark – contraste forte: texto claro, hover/ativo bem visíveis */
@@ -179,8 +265,8 @@ a:focus {
 
 [data-mantine-color-scheme='dark'] .navmenu-link:hover,
 [data-mantine-color-scheme='dark'] .navmenu-link[data-active='true'] {
-  background: rgba(96, 165, 250, 0.18) !important;
-  color: var(--mantine-color-accent-3) !important;
+  background: var(--app-nav-hover-bg-dark) !important;
+  color: var(--mantine-color-brand-2) !important;
   transform: translateX(1px) !important;
 }
 
@@ -192,15 +278,15 @@ a:focus {
   left: -2px !important;
   right: -2px !important;
   bottom: 0 !important;
-  background: var(--mantine-color-accent-4) !important;
+  background: var(--mantine-color-brand-2) !important;
   border-radius: 6px !important;
   z-index: -1 !important;
-  opacity: 0.25 !important;
+  opacity: 0.2 !important;
 }
 
 [data-mantine-color-scheme='dark'] .navmenu-link[data-active='true'] {
-  background: rgba(96, 165, 250, 0.22) !important;
-  color: var(--mantine-color-accent-2) !important;
+  background: var(--app-nav-active-bg-dark) !important;
+  color: var(--mantine-color-brand-1) !important;
 }
 
 [data-mantine-color-scheme='dark'] .navmenu-link[data-active='true']::before {
@@ -213,8 +299,13 @@ a:focus {
 }
 
 [data-mantine-color-scheme='dark'] .nav-menu-container .mantine-Accordion-control:hover {
-  background: rgba(96, 165, 250, 0.08) !important;
-  color: var(--mantine-color-brand-1) !important;
+  background: var(--app-accordion-hover-bg-dark) !important;
+  color: var(--mantine-color-brand-0) !important;
+}
+
+[data-mantine-color-scheme='light'] .nav-menu-container .mantine-Accordion-control:hover {
+  background: var(--app-accordion-hover-bg-light) !important;
+  color: var(--mantine-color-brand-9) !important;
 }
 
 [data-mantine-color-scheme='dark'] .nav-menu-container .mantine-Accordion-item {
@@ -229,6 +320,26 @@ a:focus {
 
 [data-mantine-color-scheme='dark'] .project-card:hover {
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Comece Aqui – cards com hover sutil */
+.comece-aqui-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+[data-mantine-color-scheme='dark'] .comece-aqui-card:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Conteúdo em Destaque – cards com hover sutil */
+.destaque-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+[data-mantine-color-scheme='dark'] .destaque-card:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
 }
 
 @media (min-width: 768px) {
@@ -328,15 +439,15 @@ a:focus {
     margin-bottom: 70px !important;
   }
 
-  /* Bottom nav – tom azul escuro */
+  /* Bottom nav – paleta neutral */
   [data-mantine-color-scheme='dark'] .mantine-Paper-root[style*='position: fixed'][style*='bottom: 0'] {
-    background: var(--mantine-color-brand-9) !important;
-    border-top-color: var(--mantine-color-brand-7) !important;
+    background: var(--app-container-dark) !important;
+    border-top-color: var(--app-border-dark) !important;
   }
 
   [data-mantine-color-scheme='light'] .mantine-Paper-root[style*='position: fixed'][style*='bottom: 0'] {
-    background: var(--mantine-color-brand-0) !important;
-    border-top-color: var(--mantine-color-brand-3) !important;
+    background: var(--app-container-light) !important;
+    border-top-color: var(--app-border-light) !important;
   }
 
   /* Breadcrumbs mobile */

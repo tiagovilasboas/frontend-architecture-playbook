@@ -68,8 +68,8 @@ export default function HowToChoose() {
                   mb={isMobile ? 0 : undefined}
                   lineClamp={isMobile ? 2 : undefined}
                 >
-                  6 perguntas para encontrar sua arquitetura ideal - agora com
-                  todas as 15 arquiteturas disponíveis.
+                  6 perguntas para obter sugestões de arquitetura. O resultado é
+                  um ponto de partida para discutir com o time, não uma decisão final.
                 </Text>
               </Stack>
 

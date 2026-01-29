@@ -40,12 +40,10 @@ export default function HeaderNavMenu({
       >
         <Menu.Target>
           <UnstyledButton
+            className="header-nav-btn"
+            data-active={isActive('/guides') || undefined}
             style={{
               textDecoration: 'none',
-              color: isActive('/guides')
-                ? 'var(--mantine-color-brand-6)'
-                : 'var(--mantine-color-text)',
-              fontWeight: isActive('/guides') ? 600 : 400,
               padding: '8px 12px',
               borderRadius: 6,
               transition: 'all 0.2s ease',
@@ -58,7 +56,7 @@ export default function HeaderNavMenu({
             <IconChevronDown size={14} />
           </UnstyledButton>
         </Menu.Target>
-        <Menu.Dropdown>
+        <Menu.Dropdown className="header-nav-dropdown">
           {guides.map(guide => (
             <Menu.Item
               key={guide.slug}
@@ -81,12 +79,10 @@ export default function HeaderNavMenu({
       >
         <Menu.Target>
           <UnstyledButton
+            className="header-nav-btn"
+            data-active={isActive('/architectures') || undefined}
             style={{
               textDecoration: 'none',
-              color: isActive('/architectures')
-                ? 'var(--mantine-color-brand-6)'
-                : 'var(--mantine-color-text)',
-              fontWeight: isActive('/architectures') ? 600 : 400,
               padding: '8px 12px',
               borderRadius: 6,
               transition: 'all 0.2s ease',
@@ -99,7 +95,7 @@ export default function HeaderNavMenu({
             <IconChevronDown size={14} />
           </UnstyledButton>
         </Menu.Target>
-        <Menu.Dropdown>
+        <Menu.Dropdown className="header-nav-dropdown">
           {architectures.map(arch => (
             <Menu.Item
               key={arch.slug}
@@ -122,12 +118,10 @@ export default function HeaderNavMenu({
       >
         <Menu.Target>
           <UnstyledButton
+            className="header-nav-btn"
+            data-active={isActive('/patterns') || undefined}
             style={{
               textDecoration: 'none',
-              color: isActive('/patterns')
-                ? 'var(--mantine-color-brand-6)'
-                : 'var(--mantine-color-text)',
-              fontWeight: isActive('/patterns') ? 600 : 400,
               padding: '8px 12px',
               borderRadius: 6,
               transition: 'all 0.2s ease',
@@ -140,7 +134,7 @@ export default function HeaderNavMenu({
             <IconChevronDown size={14} />
           </UnstyledButton>
         </Menu.Target>
-        <Menu.Dropdown>
+        <Menu.Dropdown className="header-nav-dropdown">
           {patterns.map(pattern => (
             <Menu.Item
               key={pattern.slug}
@@ -163,12 +157,10 @@ export default function HeaderNavMenu({
       >
         <Menu.Target>
           <UnstyledButton
+            className="header-nav-btn"
+            data-active={isActive('/techniques') || undefined}
             style={{
               textDecoration: 'none',
-              color: isActive('/techniques')
-                ? 'var(--mantine-color-brand-6)'
-                : 'var(--mantine-color-text)',
-              fontWeight: isActive('/techniques') ? 600 : 400,
               padding: '8px 12px',
               borderRadius: 6,
               transition: 'all 0.2s ease',
@@ -181,7 +173,7 @@ export default function HeaderNavMenu({
             <IconChevronDown size={14} />
           </UnstyledButton>
         </Menu.Target>
-        <Menu.Dropdown>
+        <Menu.Dropdown className="header-nav-dropdown">
           {techniques.map(technique => (
             <Menu.Item
               key={technique.slug}
@@ -204,12 +196,10 @@ export default function HeaderNavMenu({
       >
         <Menu.Target>
           <UnstyledButton
+            className="header-nav-btn"
+            data-active={isActive('/best-practices') || undefined}
             style={{
               textDecoration: 'none',
-              color: isActive('/best-practices')
-                ? 'var(--mantine-color-brand-6)'
-                : 'var(--mantine-color-text)',
-              fontWeight: isActive('/best-practices') ? 600 : 400,
               padding: '8px 12px',
               borderRadius: 6,
               transition: 'all 0.2s ease',
@@ -222,7 +212,7 @@ export default function HeaderNavMenu({
             <IconChevronDown size={14} />
           </UnstyledButton>
         </Menu.Target>
-        <Menu.Dropdown>
+        <Menu.Dropdown className="header-nav-dropdown">
           {bestPractices.map(practice => (
             <Menu.Item
               key={practice.slug}

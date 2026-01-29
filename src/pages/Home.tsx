@@ -60,19 +60,18 @@ export default function Home() {
         animate="visible"
       >
         <Stack gap={isMobile ? 'xl' : 'xl'}>
-          {/* Hero Section - Profissional com Rede Neural de Fundo */}
+          {/* Hero Section */}
           <motion.section variants={itemVariants}>
             <Box
               style={{
                 position: 'relative',
                 width: '100%',
-                minHeight: isMobile ? 600 : 700,
+                minHeight: isMobile ? 560 : 680,
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
               }}
             >
-              {/* Content - Organizado Verticalmente */}
               <Stack
                 align="center"
                 ta="center"
@@ -81,17 +80,28 @@ export default function Home() {
                   zIndex: 1,
                   padding: isMobile ? '3rem 1.5rem' : '4rem 2rem',
                   width: '100%',
+                  maxWidth: 900,
                 }}
                 gap={isMobile ? 'xl' : '2xl'}
               >
-                {/* Title Section */}
+                <Badge
+                  size="lg"
+                  variant="light"
+                  color="brand"
+                  radius="md"
+                  style={{ letterSpacing: '0.02em' }}
+                >
+                  Guia prático de arquitetura front-end
+                </Badge>
+
                 <Stack gap="md" align="center">
                   <HeroTitle
-                    size={isSmallMobile ? '2rem' : isMobile ? '2.5rem' : '4rem'}
+                    size={isSmallMobile ? '2rem' : isMobile ? '2.5rem' : '3.5rem'}
                     mb={0}
                     style={{
-                      lineHeight: 1.1,
+                      lineHeight: 1.15,
                       fontWeight: 800,
+                      maxWidth: '100%',
                     }}
                   >
                     Front-End Architecture Playbook
@@ -101,82 +111,79 @@ export default function Home() {
                     size={isMobile ? 'lg' : 'xl'}
                     c="dimmed"
                     style={{
-                      maxWidth: isMobile ? '100%' : 800,
+                      maxWidth: isMobile ? '100%' : 640,
                       lineHeight: 1.6,
                     }}
                   >
-                    20 anos de experiência em arquitetura front-end
+                    Escolha a arquitetura certa e evite refatoração. Baseado em 20 anos de experiência e casos reais.
                   </Text>
                 </Stack>
 
-                {/* CTAs Section */}
-                <Stack
+                <Group
                   gap="md"
-                  w="100%"
-                  style={{ maxWidth: isMobile ? '100%' : 500 }}
+                  justify="center"
+                  wrap="wrap"
+                  style={{ maxWidth: isMobile ? '100%' : 420 }}
                 >
                   <Button
                     component={Link}
                     to="/guides/how-to-choose"
-                    size={isMobile ? 'lg' : 'lg'}
+                    size="lg"
                     variant="filled"
-                    fullWidth={isMobile}
-                    leftSection={<IconRocket size={isMobile ? 24 : 20} />}
-                    rightSection={<IconArrowRight size={isMobile ? 20 : 16} />}
+                    color="brand"
+                    leftSection={<IconRocket size={20} />}
+                    rightSection={<IconArrowRight size={18} />}
                   >
                     Encontre sua Arquitetura
                   </Button>
                   <Button
                     component={Link}
                     to="/guides/dependency-rule"
-                    size={isMobile ? 'lg' : 'lg'}
+                    size="lg"
                     variant="light"
-                    fullWidth={isMobile}
-                    leftSection={<IconShield size={isMobile ? 24 : 20} />}
+                    color="brand"
+                    leftSection={<IconShield size={20} />}
                   >
-                    Ver Dependency Rule
+                    Dependency Rule
                   </Button>
-                </Stack>
+                </Group>
 
-                {/* Stats Section */}
                 <SimpleGrid
                   cols={4}
                   spacing={isMobile ? 'md' : 'xl'}
                   w="100%"
-                  style={{ maxWidth: isMobile ? '100%' : 800 }}
+                  style={{ maxWidth: 720 }}
                 >
-                  <Stack gap={4} align="center">
-                    <Text size={isMobile ? 'xl' : '2xl'} fw={700} c="brand">
-                      13+
-                    </Text>
-                    <Text size={isMobile ? 'xs' : 'sm'} c="dimmed" ta="center">
-                      Arquiteturas
-                    </Text>
-                  </Stack>
-                  <Stack gap={4} align="center">
-                    <Text size={isMobile ? 'xl' : '2xl'} fw={700} c="green">
-                      20
-                    </Text>
-                    <Text size={isMobile ? 'xs' : 'sm'} c="dimmed" ta="center">
-                      Anos Dev
-                    </Text>
-                  </Stack>
-                  <Stack gap={4} align="center">
-                    <Text size={isMobile ? 'xl' : '2xl'} fw={700} c="orange">
-                      50+
-                    </Text>
-                    <Text size={isMobile ? 'xs' : 'sm'} c="dimmed" ta="center">
-                      Projetos
-                    </Text>
-                  </Stack>
-                  <Stack gap={4} align="center">
-                    <Text size={isMobile ? 'xl' : '2xl'} fw={700} c="purple">
-                      16
-                    </Text>
-                    <Text size={isMobile ? 'xs' : 'sm'} c="dimmed" ta="center">
-                      Casos Reais
-                    </Text>
-                  </Stack>
+                  {[
+                    { value: '13+', label: 'Arquiteturas', c: 'brand' as const },
+                    { value: '20', label: 'Anos Dev', c: 'brand' as const },
+                    { value: '50+', label: 'Projetos', c: 'accent' as const },
+                    { value: '16', label: 'Casos Reais', c: 'accent' as const },
+                  ].map(({ value, label, c }) => (
+                    <motion.div
+                      key={label}
+                      variants={itemVariants}
+                      style={{ display: 'flex', justifyContent: 'center' }}
+                    >
+                      <Stack gap={4} align="center">
+                        <Text
+                          size={isMobile ? 'xl' : '2xl'}
+                          fw={700}
+                          c={c}
+                          style={{ lineHeight: 1 }}
+                        >
+                          {value}
+                        </Text>
+                        <Text
+                          size={isMobile ? 'xs' : 'sm'}
+                          c="dimmed"
+                          ta="center"
+                        >
+                          {label}
+                        </Text>
+                      </Stack>
+                    </motion.div>
+                  ))}
                 </SimpleGrid>
               </Stack>
             </Box>
@@ -205,7 +212,7 @@ export default function Home() {
                       size={isMobile ? 60 : 50}
                       radius="xl"
                       variant="light"
-                      color="blue"
+                      color="brand"
                     >
                       <IconShield size={isMobile ? 32 : 28} />
                     </ThemeIcon>
@@ -233,7 +240,7 @@ export default function Home() {
                       size={isMobile ? 60 : 50}
                       radius="xl"
                       variant="light"
-                      color="green"
+                      color="brand"
                     >
                       <IconRocket size={isMobile ? 32 : 28} />
                     </ThemeIcon>
@@ -261,7 +268,7 @@ export default function Home() {
                       size={isMobile ? 60 : 50}
                       radius="xl"
                       variant="light"
-                      color="orange"
+                      color="brand"
                     >
                       <IconBolt size={isMobile ? 32 : 28} />
                     </ThemeIcon>
@@ -289,7 +296,7 @@ export default function Home() {
                       size={isMobile ? 60 : 50}
                       radius="xl"
                       variant="light"
-                      color="purple"
+                      color="brand"
                     >
                       <IconTarget size={isMobile ? 32 : 28} />
                     </ThemeIcon>
@@ -309,225 +316,263 @@ export default function Home() {
             </Stack>
           </motion.section>
 
-          {/* Quick Start Section - Mobile-First */}
+          {/* Comece Aqui - 3 passos claros */}
           <motion.section variants={itemVariants}>
-            <Stack gap={isMobile ? 'md' : 'lg'} align="center" ta="center">
-              <Title order={2} mb={0} size={isMobile ? 'h3' : 'h2'}>
-                <IconRocket
-                  size={isMobile ? 28 : 32}
-                  style={{ verticalAlign: 'middle', marginRight: '8px' }}
-                />
-                Comece Aqui
-              </Title>
+            <Stack gap={isMobile ? 'md' : 'lg'} align="center" w="100%">
+              <Stack gap="xs" align="center" ta="center">
+                <Title order={2} mb={0} size={isMobile ? 'h3' : 'h2'}>
+                  <IconRocket
+                    size={isMobile ? 28 : 32}
+                    style={{ verticalAlign: 'middle', marginRight: '8px' }}
+                  />
+                  Comece Aqui
+                </Title>
+                <Text size={isMobile ? 'sm' : 'md'} c="dimmed" maw={520}>
+                  Três passos para entender arquitetura, escolher a certa e comparar opções.
+                </Text>
+              </Stack>
 
-              <Stack gap="md" w="100%">
+              <SimpleGrid
+                cols={{ base: 1, sm: 3 }}
+                spacing={isMobile ? 'md' : 'lg'}
+                w="100%"
+                style={{ alignItems: 'stretch' }}
+              >
                 <Card
                   withBorder
                   p={isMobile ? 'lg' : 'md'}
-                  radius="md"
+                  radius="lg"
                   component={Link}
                   to="/guides/dependency-rule"
-                  style={{ textDecoration: 'none', cursor: 'pointer' }}
+                  style={{
+                    textDecoration: 'none',
+                    cursor: 'pointer',
+                    transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+                  }}
+                  className="comece-aqui-card"
                 >
-                  <Group gap="md" align="flex-start">
-                    <Badge color="blue" variant="filled" size="lg" radius="xl">
-                      1
-                    </Badge>
-                    <Stack gap="xs" style={{ flex: 1 }}>
-                      <Group gap="xs" align="center">
-                        <IconBulb
-                          size={isMobile ? 24 : 20}
-                          color="var(--mantine-color-blue-6)"
-                        />
-                        <Text fw={600} size={isMobile ? 'md' : 'sm'}>
-                          Dependency Rule
-                        </Text>
-                      </Group>
-                      <Text size={isMobile ? 'sm' : 'xs'} c="dimmed">
-                        Regra fundamental
+                  <Stack gap="md" h="100%">
+                    <Group gap="sm" wrap="nowrap">
+                      <Badge color="brand" variant="filled" size="xl" radius="xl">
+                        1
+                      </Badge>
+                      <ThemeIcon size={44} radius="md" variant="light" color="brand">
+                        <IconBulb size={24} />
+                      </ThemeIcon>
+                    </Group>
+                    <Stack gap={4} style={{ flex: 1 }}>
+                      <Text fw={700} size={isMobile ? 'md' : 'sm'}>
+                        Dependency Rule
                       </Text>
-                      <Button
-                        size={isMobile ? 'sm' : 'xs'}
-                        variant="light"
-                        color="blue"
-                        rightSection={<IconArrowRight size={14} />}
-                        mt="xs"
-                      >
-                        Ler
-                      </Button>
+                      <Text size={isMobile ? 'sm' : 'xs'} c="dimmed" style={{ lineHeight: 1.5 }}>
+                        A regra mais importante: dependências só apontam para dentro. Base de qualquer arquitetura.
+                      </Text>
                     </Stack>
-                  </Group>
+                    <Button
+                      size="sm"
+                      variant="light"
+                      color="brand"
+                      rightSection={<IconArrowRight size={14} />}
+                      fullWidth
+                    >
+                      Ler o guia
+                    </Button>
+                  </Stack>
                 </Card>
 
                 <Card
                   withBorder
                   p={isMobile ? 'lg' : 'md'}
-                  radius="md"
+                  radius="lg"
                   component={Link}
                   to="/guides/how-to-choose"
-                  style={{ textDecoration: 'none', cursor: 'pointer' }}
+                  style={{
+                    textDecoration: 'none',
+                    cursor: 'pointer',
+                    transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+                  }}
+                  className="comece-aqui-card"
                 >
-                  <Group gap="md" align="flex-start">
-                    <Badge color="green" variant="filled" size="lg" radius="xl">
-                      2
-                    </Badge>
-                    <Stack gap="xs" style={{ flex: 1 }}>
-                      <Group gap="xs" align="center">
-                        <IconTarget
-                          size={isMobile ? 24 : 20}
-                          color="var(--mantine-color-green-6)"
-                        />
-                        <Text fw={600} size={isMobile ? 'md' : 'sm'}>
-                          Decision Wizard
-                        </Text>
-                      </Group>
-                      <Text size={isMobile ? 'sm' : 'xs'} c="dimmed">
-                        Escolha sua arquitetura
+                  <Stack gap="md" h="100%">
+                    <Group gap="sm" wrap="nowrap">
+                      <Badge color="brand" variant="filled" size="xl" radius="xl">
+                        2
+                      </Badge>
+                      <ThemeIcon size={44} radius="md" variant="light" color="brand">
+                        <IconTarget size={24} />
+                      </ThemeIcon>
+                    </Group>
+                    <Stack gap={4} style={{ flex: 1 }}>
+                      <Text fw={700} size={isMobile ? 'md' : 'sm'}>
+                        Decision Wizard
                       </Text>
-                      <Button
-                        size={isMobile ? 'sm' : 'xs'}
-                        variant="light"
-                        color="green"
-                        rightSection={<IconArrowRight size={14} />}
-                        mt="xs"
-                      >
-                        Começar
-                      </Button>
+                      <Text size={isMobile ? 'sm' : 'xs'} c="dimmed" style={{ lineHeight: 1.5 }}>
+                        Responda poucas perguntas e receba a recomendação de arquitetura para o seu contexto.
+                      </Text>
                     </Stack>
-                  </Group>
+                    <Button
+                      size="sm"
+                      variant="light"
+                      color="brand"
+                      rightSection={<IconArrowRight size={14} />}
+                      fullWidth
+                    >
+                      Começar o wizard
+                    </Button>
+                  </Stack>
                 </Card>
 
                 <Card
                   withBorder
                   p={isMobile ? 'lg' : 'md'}
-                  radius="md"
+                  radius="lg"
                   component={Link}
                   to="/guides/architecture-comparison"
-                  style={{ textDecoration: 'none', cursor: 'pointer' }}
+                  style={{
+                    textDecoration: 'none',
+                    cursor: 'pointer',
+                    transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+                  }}
+                  className="comece-aqui-card"
                 >
-                  <Group gap="md" align="flex-start">
-                    <Badge
-                      color="orange"
-                      variant="filled"
-                      size="lg"
-                      radius="xl"
-                    >
-                      3
-                    </Badge>
-                    <Stack gap="xs" style={{ flex: 1 }}>
-                      <Group gap="xs" align="center">
-                        <IconScale
-                          size={isMobile ? 24 : 20}
-                          color="var(--mantine-color-orange-6)"
-                        />
-                        <Text fw={600} size={isMobile ? 'md' : 'sm'}>
-                          Comparação Visual
-                        </Text>
-                      </Group>
-                      <Text size={isMobile ? 'sm' : 'xs'} c="dimmed">
-                        9 arquiteturas
+                  <Stack gap="md" h="100%">
+                    <Group gap="sm" wrap="nowrap">
+                      <Badge color="brand" variant="filled" size="xl" radius="xl">
+                        3
+                      </Badge>
+                      <ThemeIcon size={44} radius="md" variant="light" color="brand">
+                        <IconScale size={24} />
+                      </ThemeIcon>
+                    </Group>
+                    <Stack gap={4} style={{ flex: 1 }}>
+                      <Text fw={700} size={isMobile ? 'md' : 'sm'}>
+                        Comparação Visual
                       </Text>
-                      <Button
-                        size={isMobile ? 'sm' : 'xs'}
-                        variant="light"
-                        color="orange"
-                        rightSection={<IconArrowRight size={14} />}
-                        mt="xs"
-                      >
-                        Comparar
-                      </Button>
+                      <Text size={isMobile ? 'sm' : 'xs'} c="dimmed" style={{ lineHeight: 1.5 }}>
+                        9 arquiteturas lado a lado: quando usar, prós, contras e métricas reais.
+                      </Text>
                     </Stack>
-                  </Group>
+                    <Button
+                      size="sm"
+                      variant="light"
+                      color="brand"
+                      rightSection={<IconArrowRight size={14} />}
+                      fullWidth
+                    >
+                      Ver comparação
+                    </Button>
+                  </Stack>
                 </Card>
-              </Stack>
+              </SimpleGrid>
             </Stack>
           </motion.section>
 
-          {/* Featured Content Section - Mobile-First */}
+          {/* Conteúdo em Destaque */}
           <motion.section variants={itemVariants}>
-            <Stack gap={isMobile ? 'md' : 'lg'} align="center" ta="center">
-              <Title order={2} mb={0} size={isMobile ? 'h3' : 'h2'}>
-                <IconStar
-                  size={isMobile ? 28 : 32}
-                  style={{ verticalAlign: 'middle', marginRight: '8px' }}
-                />
-                Conteúdo em Destaque
-              </Title>
+            <Stack gap={isMobile ? 'md' : 'lg'} align="center" w="100%">
+              <Stack gap="xs" align="center" ta="center">
+                <Title order={2} mb={0} size={isMobile ? 'h3' : 'h2'}>
+                  <IconStar
+                    size={isMobile ? 28 : 32}
+                    style={{ verticalAlign: 'middle', marginRight: '8px' }}
+                  />
+                  Conteúdo em Destaque
+                </Title>
+                <Text size={isMobile ? 'sm' : 'md'} c="dimmed" maw={520}>
+                  Guias e casos que mais ajudam a tomar decisão: comparação de arquiteturas e exemplos reais de mercado.
+                </Text>
+              </Stack>
 
-              <Stack gap="md" w="100%">
+              <SimpleGrid
+                cols={{ base: 1, sm: 2 }}
+                spacing={isMobile ? 'md' : 'lg'}
+                w="100%"
+                style={{ alignItems: 'stretch' }}
+              >
                 <Card
                   withBorder
                   p={isMobile ? 'lg' : 'md'}
-                  radius="md"
+                  radius="lg"
                   component={Link}
                   to="/guides/architecture-comparison"
-                  style={{ textDecoration: 'none', cursor: 'pointer' }}
+                  style={{
+                    textDecoration: 'none',
+                    cursor: 'pointer',
+                    transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+                  }}
+                  className="destaque-card"
                 >
-                  <Group gap="md" align="flex-start">
-                    <ThemeIcon
-                      size={isMobile ? 48 : 40}
-                      radius="md"
-                      variant="light"
-                      color="blue"
-                    >
-                      <IconScale size={isMobile ? 24 : 20} />
-                    </ThemeIcon>
-                    <Stack gap="xs" style={{ flex: 1 }}>
-                      <Text fw={600} size={isMobile ? 'md' : 'sm'}>
-                        Comparação Visual
+                  <Stack gap="md" h="100%">
+                    <Group gap="sm" wrap="nowrap">
+                      <ThemeIcon size={48} radius="md" variant="light" color="brand">
+                        <IconScale size={26} />
+                      </ThemeIcon>
+                      <Badge variant="light" color="brand" size="sm" radius="sm">
+                        Comparação
+                      </Badge>
+                    </Group>
+                    <Stack gap={4} style={{ flex: 1 }}>
+                      <Text fw={700} size={isMobile ? 'md' : 'sm'}>
+                        Comparação Visual de Arquiteturas
                       </Text>
-                      <Text size={isMobile ? 'sm' : 'xs'} c="dimmed">
-                        9 arquiteturas comparadas com métricas reais
+                      <Text size={isMobile ? 'sm' : 'xs'} c="dimmed" style={{ lineHeight: 1.5 }}>
+                        9 arquiteturas lado a lado: quando usar, prós, contras, métricas e trade-offs. Ideal para decidir com critério.
                       </Text>
-                      <Button
-                        size={isMobile ? 'sm' : 'xs'}
-                        variant="light"
-                        rightSection={<IconArrowRight size={14} />}
-                        mt="xs"
-                      >
-                        Ver
-                      </Button>
                     </Stack>
-                  </Group>
+                    <Button
+                      size="sm"
+                      variant="light"
+                      color="brand"
+                      rightSection={<IconArrowRight size={14} />}
+                      fullWidth
+                    >
+                      Ver comparação
+                    </Button>
+                  </Stack>
                 </Card>
 
                 <Card
                   withBorder
                   p={isMobile ? 'lg' : 'md'}
-                  radius="md"
+                  radius="lg"
                   component={Link}
                   to="/guides/cases"
-                  style={{ textDecoration: 'none', cursor: 'pointer' }}
+                  style={{
+                    textDecoration: 'none',
+                    cursor: 'pointer',
+                    transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+                  }}
+                  className="destaque-card"
                 >
-                  <Group gap="md" align="flex-start">
-                    <ThemeIcon
-                      size={isMobile ? 48 : 40}
-                      radius="md"
-                      variant="light"
-                      color="green"
-                    >
-                      <IconTrendingUp size={isMobile ? 24 : 20} />
-                    </ThemeIcon>
-                    <Stack gap="xs" style={{ flex: 1 }}>
-                      <Text fw={600} size={isMobile ? 'md' : 'sm'}>
-                        Casos Reais
+                  <Stack gap="md" h="100%">
+                    <Group gap="sm" wrap="nowrap">
+                      <ThemeIcon size={48} radius="md" variant="light" color="brand">
+                        <IconTrendingUp size={26} />
+                      </ThemeIcon>
+                      <Badge variant="light" color="brand" size="sm" radius="sm">
+                        Casos reais
+                      </Badge>
+                    </Group>
+                    <Stack gap={4} style={{ flex: 1 }}>
+                      <Text fw={700} size={isMobile ? 'md' : 'sm'}>
+                        Casos Reais de Mercado
                       </Text>
-                      <Text size={isMobile ? 'sm' : 'xs'} c="dimmed">
-                        16 empresas: Netflix, Spotify, Airbnb...
+                      <Text size={isMobile ? 'sm' : 'xs'} c="dimmed" style={{ lineHeight: 1.5 }}>
+                        16 empresas: Netflix, Spotify, Airbnb, Nubank e outras. Como cada uma usa arquitetura no front-end.
                       </Text>
-                      <Button
-                        size={isMobile ? 'sm' : 'xs'}
-                        variant="light"
-                        color="green"
-                        rightSection={<IconArrowRight size={14} />}
-                        mt="xs"
-                      >
-                        Ver
-                      </Button>
                     </Stack>
-                  </Group>
+                    <Button
+                      size="sm"
+                      variant="light"
+                      color="brand"
+                      rightSection={<IconArrowRight size={14} />}
+                      fullWidth
+                    >
+                      Ver casos
+                    </Button>
+                  </Stack>
                 </Card>
-              </Stack>
+              </SimpleGrid>
             </Stack>
           </motion.section>
 

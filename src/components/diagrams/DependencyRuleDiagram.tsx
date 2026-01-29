@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { Box } from '@mantine/core';
 import { useMantineColorScheme } from '@mantine/core';
+import { semantic } from '../../theme/colors';
 
 interface DependencyRuleDiagramProps {
   /** correct = setas para a direita (UI→Service→Repo→Domain), incorrect = setas para a esquerda */
@@ -54,16 +55,16 @@ export default function DependencyRuleDiagram({
       const centerY = h / 2;
 
       const borderOk = isDark
-        ? 'rgba(34, 197, 94, 0.8)'
-        : 'rgba(22, 163, 74, 0.9)';
+        ? semantic.diagramSuccessBorderDark
+        : semantic.diagramSuccessBorderLight;
       const borderErr = isDark
-        ? 'rgba(239, 68, 68, 0.8)'
-        : 'rgba(220, 38, 38, 0.9)';
+        ? semantic.diagramErrorBorderDark
+        : semantic.diagramErrorBorderLight;
       const fillColor = isDark
-        ? 'rgba(30, 41, 59, 0.5)'
-        : 'rgba(241, 245, 249, 0.9)';
-      const textColor = isDark ? '#e2e8f0' : '#1e293b';
-      const subColor = isDark ? '#94a3b8' : '#64748b';
+        ? semantic.diagramFillDark
+        : semantic.diagramFillLight;
+      const textColor = isDark ? semantic.diagramTextDark : semantic.diagramTextLight;
+      const subColor = isDark ? semantic.diagramSubDark : semantic.diagramSubLight;
 
       ctx.clearRect(0, 0, w, h);
 

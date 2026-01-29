@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Drawer, Box, Text } from '@mantine/core';
 import { Spotlight } from '@mantine/spotlight';
 import { useMediaQuery } from '@mantine/hooks';
@@ -46,10 +47,16 @@ export default function DocsShell({
     setOpened(false);
   };
 
+  const location = useLocation();
+
   return (
     <>
-      {/* Neural Network Background - Global em todas as páginas */}
-      <NeuralNetworkCanvas nodeCount={isMobile ? 60 : 100} fullScreen={true} />
+      {/* Neural Network – comportamento único por página (seed = pathname) */}
+      <NeuralNetworkCanvas
+        nodeCount={isMobile ? 60 : 100}
+        fullScreen={true}
+        seed={location.pathname}
+      />
 
       <ReadingProgress />
       <Spotlight

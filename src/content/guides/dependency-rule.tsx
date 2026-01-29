@@ -27,7 +27,6 @@ import MobileTabs from '../../components/MobileTabs';
 import { createArchitectureTabs } from '../../components/MobileTabsHelpers';
 import GuideNavigation from '../../components/GuideNavigation';
 import GuideCTA from '../../components/GuideCTA';
-import DependencyRuleDiagram from '../../components/diagrams/DependencyRuleDiagram';
 
 export default function DependencyRuleGuide() {
   // Overview Section
@@ -40,12 +39,13 @@ export default function DependencyRuleGuide() {
             Dependency Rule
           </Title>
           <Text size="xl" c="dimmed" mb="md" maw={800}>
-            A regra mais importante de qualquer arquitetura. Se você ignorar
-            isso,
-            <strong>
-              {' '}
-              nenhuma arquitetura consegue salvar seu projeto do caos.
-            </strong>
+            Pense no código como uma <strong>cebola</strong>: camadas em volta
+            umas das outras. A regra: <strong>camada de fora pode usar a de
+            dentro; camada de dentro nunca usa a de fora</strong>. Simples assim.
+          </Text>
+          <Text size="md" c="dimmed" maw={700}>
+            Essa regra é a chave para todas as arquiteturas. Se você dominar ela,
+            pode inclusive criar a sua própria.
           </Text>
         </Stack>
       </section>
@@ -61,17 +61,16 @@ export default function DependencyRuleGuide() {
             O que é a Dependency Rule?
           </Title>
           <Text size="lg" c="dimmed">
-            A Dependency Rule é simples:{' '}
-            <strong>dependências só apontam para dentro</strong>. Camadas
-            externas podem depender das internas, mas nunca o contrário.
+            Seu código tem <strong>camadas</strong> (como uma cebola): a tela
+            é a camada mais de fora, depois vêm as regras de negócio, quem
+            acessa dados, e no centro o núcleo. A regra: <strong>camada de fora
+            pode importar a de dentro; camada de dentro nunca importa a de fora</strong>.
           </Text>
 
           <Alert color="brand" icon={<IconCheck size={20} />} radius="md">
             <Text size="md" fw={500}>
-              <strong>Regra Simples:</strong> Se você está na camada de fora,
-              você pode usar qualquer coisa das camadas de dentro. Se você está
-              na camada de dentro, você NUNCA pode usar nada das camadas de
-              fora.
+              <strong>Resumo:</strong> Camada de fora pode usar a de dentro.
+              Camada de dentro não puxe nada de fora. Só isso.
             </Text>
           </Alert>
 
@@ -82,11 +81,16 @@ export default function DependencyRuleGuide() {
             radius="md"
           >
             <Text size="sm" fw={500}>
-              <strong>Dependency Rule = camadas de arquitetura.</strong> Trata
-              de <strong>quem pode importar quem</strong> (direção das
-              dependências). Não confunda com fluxograma de uma requisição —
-              aqui o foco é a <strong>estrutura das camadas</strong> e os
-              imports entre elas.
+              A regra fala de <strong>quem pode importar quem</strong> no código
+              (a direção dos imports). Não é o fluxo do clique do usuário.
+            </Text>
+          </Alert>
+
+          <Alert color="green" icon={<IconShield size={18} />} radius="md">
+            <Text size="sm" fw={500}>
+              <strong>A regra de dependência é a chave para todas as arquiteturas.</strong>{' '}
+              MVC, Clean Architecture, hexagonal, em camadas: todas respeitam a mesma
+              ideia. Se você souber aplicá-la, pode até inventar a sua própria arquitetura.
             </Text>
           </Alert>
 
@@ -106,8 +110,9 @@ export default function DependencyRuleGuide() {
                   ✅ Pode Depender
                 </Title>
                 <Text size="sm" c="dimmed">
-                  Camadas externas podem usar camadas internas. UI pode usar
-                  services, services podem usar repositories, etc.
+                  Camada de fora pode usar a de dentro. Exemplo: a tela (fora)
+                  importa as regras de negócio (dentro), que importam quem
+                  acessa dados (mais dentro), que importa o núcleo (centro).
                 </Text>
               </Stack>
             </Card>
@@ -127,91 +132,172 @@ export default function DependencyRuleGuide() {
                   ❌ Nunca Depender
                 </Title>
                 <Text size="sm" c="dimmed">
-                  Camadas internas NUNCA usam camadas externas. Domain não usa
-                  UI, repositories não usam services, etc.
+                  Camada de dentro nunca importa a de fora. O núcleo não importa
+                  tela nem regras de negócio. Quem acessa dados não importa
+                  regras de negócio. Se importar, tudo fica grudado.
                 </Text>
               </Stack>
             </Card>
           </SimpleGrid>
 
-          {/* Diagrama Visual das Camadas - Canvas */}
+          {/* Diagramas ASCII: direção das dependências */}
           <Paper withBorder p="xl" radius="md" mt="lg">
             <Stack gap="xs" mb="md">
               <Title order={3} ta="center">
-                Camadas de arquitetura: direção das dependências
+                Direção das dependências (quem pode importar quem)
               </Title>
               <Text size="sm" c="dimmed" ta="center">
-                As setas indicam <strong>quem pode depender de quem</strong>{' '}
-                (imports), não o fluxo de execução de uma requisição.
+                Como na cebola: seta sempre da camada de fora para a de dentro.
+                Nunca da camada de dentro para a de fora.
               </Text>
             </Stack>
 
             <Stack gap="xl">
-              {/* Diagrama Correto - Canvas (full width) */}
-              <div>
+              {/* Diagrama CORRETO - ASCII */}
+              <Box>
                 <Group mb="sm" justify="space-between" align="center">
                   <Badge size="lg" color="green" variant="light">
                     ✅ CORRETO
                   </Badge>
                   <Text size="sm" c="dimmed" fw={500}>
-                    Dependências apontam para dentro (camadas internas)
+                    Dependências só apontam para dentro
                   </Text>
                 </Group>
-                <Box
-                  style={{
-                    marginLeft: 'calc(-1 * var(--mantine-spacing-xl))',
-                    marginRight: 'calc(-1 * var(--mantine-spacing-xl))',
-                    width: 'calc(100% + 2 * var(--mantine-spacing-xl))',
-                  }}
-                >
-                  <DependencyRuleDiagram variant="correct" height={400} />
-                </Box>
-              </div>
+                <Code block style={{ fontSize: '13px', lineHeight: 1.5 }} mt="xs">
+                  {`    ┌─────────────────────────────────────────┐
+    │  UI (páginas, componentes)              │  ← mais externo
+    │  pode importar: Service, Repo, Domain    │
+    └───────────────────┬─────────────────────┘
+                        │ depende de
+                        ▼
+    ┌─────────────────────────────────────────┐
+    │  Service (regras de negócio)             │
+    │  pode importar: Repository, Domain       │
+    └───────────────────┬─────────────────────┘
+                        │ depende de
+                        ▼
+    ┌─────────────────────────────────────────┐
+    │  Repository (acesso a dados)             │
+    │  pode importar: Domain                   │
+    └───────────────────┬─────────────────────┘
+                        │ depende de
+                        ▼
+    ┌─────────────────────────────────────────┐
+    │  Domain (entidades, regras puras)        │  ← mais interno
+    │  NÃO importa nada de outras camadas     │
+    └─────────────────────────────────────────┘`}
+                </Code>
+              </Box>
 
-              {/* Diagrama Incorreto - Canvas (full width) */}
-              <div>
+              {/* Diagrama INCORRETO - ASCII */}
+              <Box>
                 <Group mb="sm" justify="space-between" align="center">
                   <Badge size="lg" color="red" variant="light">
                     ❌ INCORRETO
                   </Badge>
                   <Text size="sm" c="dimmed" fw={500}>
-                    Dependências circulares ou invertidas = CAOS
+                    Dependência invertida ou circular = CAOS
                   </Text>
                 </Group>
-                <Box
-                  style={{
-                    marginLeft: 'calc(-1 * var(--mantine-spacing-xl))',
-                    marginRight: 'calc(-1 * var(--mantine-spacing-xl))',
-                    width: 'calc(100% + 2 * var(--mantine-spacing-xl))',
-                  }}
-                >
-                  <DependencyRuleDiagram variant="incorrect" height={400} />
-                </Box>
-              </div>
+                <Code block style={{ fontSize: '13px', lineHeight: 1.5 }} mt="xs">
+                  {`    ┌─────────────────────────────────────────┐
+    │  Domain                                 │
+    │  importa UI ou Service  ← ❌ QUEBRADO!   │
+    └───────────────────┬─────────────────────┘
+                        │ (não pode apontar para fora)
+                        ▼
+    ┌─────────────────────────────────────────┐
+    │  UI / Service                            │
+    └─────────────────────────────────────────┘
+
+    Se o Domain começar a importar UI ou Service,
+    você perde o controle: fica preso ao framework e
+    testar fica bem mais difícil.`}
+                </Code>
+              </Box>
             </Stack>
 
             <Alert color="blue" icon={<IconBulb size={16} />} mt="lg">
               <Text size="sm" fw={600} mb={4}>
-                💡 Como identificar se está correto?
+                💡 Como saber se você está seguindo?
               </Text>
               <List size="sm">
                 <List.Item>
-                  <strong>Domain</strong> não tem imports de UI, Services ou
-                  Repositories
+                  <strong>Núcleo (domain)</strong>: não importa tela, regras de negócio
+                  nem acesso a dados. Só tipos e regras puras.
                 </List.Item>
                 <List.Item>
-                  <strong>Repository</strong> só importa Domain
+                  <strong>Parte que acessa dados (repository)</strong>: só importa
+                  o núcleo (e talvez lib de banco).
                 </List.Item>
                 <List.Item>
-                  <strong>Service</strong> pode importar Repository e Domain,
-                  mas nunca UI
+                  <strong>Parte das regras de negócio (service)</strong>: pode importar
+                  quem acessa dados e o núcleo. Nunca a tela.
                 </List.Item>
                 <List.Item>
-                  <strong>UI</strong> pode importar qualquer coisa, mas nunca
-                  Database diretamente
+                  <strong>Tela (UI)</strong>: pode importar o que precisar (regras,
+                  etc.). Não acessa banco direto.
                 </List.Item>
               </List>
             </Alert>
+
+            <Title order={3} mt="xl" mb="sm">
+              Exemplos de camadas (a mesma regra)
+            </Title>
+            <Text size="sm" c="dimmed" mb="md">
+              A regra da cebola vale em qualquer modelo de camadas. Três exemplos:
+            </Text>
+            <SimpleGrid cols={{ base: 1, md: 2 }} spacing="lg">
+              <Card withBorder p="md" radius="md">
+                <Text fw={600} size="sm" mb="xs">
+                  MVC (ex.: Angular 1 / AngularJS)
+                </Text>
+                <Text size="xs" c="dimmed" mb="sm">
+                  Model, View, Controller. View (fora) pode usar Controller e Model.
+                  Controller (meio) pode usar Model. Model (dentro) não usa View nem Controller.
+                </Text>
+                <Code block style={{ fontSize: '11px', lineHeight: 1.35 }}>
+                  {`View     → Controller, Model
+Controller → Model
+Model      → NÃO importa os outros`}
+                </Code>
+              </Card>
+              <Card withBorder p="md" radius="md">
+                <Text fw={600} size="sm" mb="xs">
+                  Camadas clássicas (3-tier)
+                </Text>
+                <Text size="xs" c="dimmed" mb="sm">
+                  Apresentação (fora), Negócio (meio), Dados (dentro). Cada uma só usa a de dentro.
+                </Text>
+                <Code block style={{ fontSize: '11px', lineHeight: 1.35 }}>
+                  {`Apresentação → Negócio, Dados
+Negócio      → Dados
+Dados       → NÃO importa os outros`}
+                </Code>
+              </Card>
+              <Card withBorder p="md" radius="md">
+                <Text fw={600} size="sm" mb="xs">
+                  Next.js (exemplo simples)
+                </Text>
+                <Text size="xs" c="dimmed" mb="sm">
+                  app/ e components/ são a tela (fora). lib/services é regra de negócio.
+                  lib/repositories acessa dados. lib/domain é o núcleo. Imports sempre para dentro.
+                </Text>
+                <Code block style={{ fontSize: '10px', lineHeight: 1.3 }}>
+                  {`app/
+  page.tsx        → importa de lib/services
+components/
+  UserCard.tsx    → importa de lib/services
+lib/
+  services/       → importa de lib/repositories, lib/domain
+  repositories/   → importa de lib/domain
+  domain/         → NÃO importa app, components, lib`}
+                </Code>
+              </Card>
+            </SimpleGrid>
+            <Text size="xs" c="dimmed" mt="sm">
+              Em todos os casos: camada de fora pode usar a de dentro; camada de dentro nunca usa a de fora.
+            </Text>
           </Paper>
         </Stack>
       </Paper>
@@ -228,7 +314,7 @@ export default function DependencyRuleGuide() {
               size={32}
               style={{ verticalAlign: 'middle', marginRight: '8px' }}
             />
-            Por que a Dependency Rule é Crucial?
+            Por que essa regra importa tanto?
           </Title>
 
           <SimpleGrid cols={{ base: 1, md: 3 }} spacing="lg">
@@ -246,8 +332,9 @@ export default function DependencyRuleGuide() {
                 Independência
               </Title>
               <Text size="sm" c="dimmed">
-                Seu negócio não depende de framework. Troque React por Vue,
-                troque banco de dados, troque UI - seu core sobrevive.
+                Seu núcleo de negócio não fica amarrado a React, Vue ou banco.
+                Um dia você troca a tela ou o banco e o que importa continua
+                intacto.
               </Text>
             </Card>
 
@@ -262,11 +349,11 @@ export default function DependencyRuleGuide() {
                 <IconCode size={25} />
               </ThemeIcon>
               <Title order={4} size="h5">
-                Testabilidade
+                Testar fica simples
               </Title>
               <Text size="sm" c="dimmed">
-                Teste cada camada isoladamente. Mocks simples, testes rápidos,
-                bugs fáceis de encontrar.
+                Você testa cada pedaço isolado. Menos mock, menos dor de cabeça,
+                e quando quebrar algo, você acha o culpado rápido.
               </Text>
             </Card>
 
@@ -284,8 +371,8 @@ export default function DependencyRuleGuide() {
                 Flexibilidade
               </Title>
               <Text size="sm" c="dimmed">
-                Mude uma camada sem afetar as outras. Refatoração segura,
-                evolução sem medo.
+                Quer mudar uma camada? Você muda sem derrubar o resto. Refatorar
+                deixa de ser um jogo de dominó.
               </Text>
             </Card>
           </SimpleGrid>
@@ -308,104 +395,101 @@ export default function DependencyRuleGuide() {
           </Title>
 
           <Text size="lg" c="dimmed">
-            A Dependency Rule aparece na prática na{' '}
-            <strong>estrutura de pastas</strong> e nos <strong>imports</strong>{' '}
-            entre camadas. Abaixo: como organizar e como validar.
+            No dia a dia, a regra aparece na <strong>estrutura de pastas</strong>{' '}
+            e em <strong>quem importa quem</strong>. Abaixo: como organizar e
+            como checar se está certo.
           </Text>
 
           <SimpleGrid cols={{ base: 1, md: 2 }} spacing="lg" mt="lg">
             <Card withBorder p="md" radius="md">
               <Title order={4} size="h5" mb="md">
-                1. Estrutura de Pastas
+                1. Estrutura de Pastas (ASCII)
               </Title>
-              <Code block style={{ fontSize: '11px' }} mb="sm">
+              <Code block style={{ fontSize: '12px', lineHeight: 1.4 }} mb="sm">
                 {`src/
-├── domain/          ← Mais interno (não depende de nada)
+├── domain/           ← mais interno (não importa nada de fora)
 │   ├── entities/
 │   └── rules/
-├── repositories/    ← Depende de domain
+├── repositories/    ← importa só domain
 │   └── user.repository.ts
-├── services/        ← Depende de domain + repositories
+├── services/        ← importa domain + repositories
 │   └── user.service.ts
-└── ui/              ← Mais externo (pode usar tudo)
+└── ui/               ← mais externo (pode importar tudo)
     ├── components/
     └── pages/`}
               </Code>
-              <List size="sm" spacing="xs" mt="sm">
-                <List.Item>Domain (mais interno)</List.Item>
-                <List.Item>Services (usa Domain)</List.Item>
-                <List.Item>Repositories (usa Domain)</List.Item>
-                <List.Item>UI (usa Services/Repositories)</List.Item>
-              </List>
+              <Text size="xs" c="dimmed" mt="xs">
+                Como na cebola: tela (fora) importa regras de negócio (dentro),
+                que importa quem acessa dados (mais dentro), que importa o
+                núcleo (centro). Sempre para dentro.
+              </Text>
             </Card>
 
             <Card withBorder p="md" radius="md">
               <Title order={4} size="h5" mb="md">
-                2. Estabeleça Direção
+                2. Mantenha a direção
               </Title>
               <List size="sm" spacing="xs">
-                <List.Item>Dependências só apontam para baixo</List.Item>
-                <List.Item>UI pode usar Services</List.Item>
-                <List.Item>Services podem usar Repositories</List.Item>
-                <List.Item>Repositories podem usar Domain</List.Item>
+                <List.Item>Imports sempre de fora para dentro (como na cebola)</List.Item>
+                <List.Item>Camada de fora (tela) pode usar a de dentro (regras, dados, núcleo)</List.Item>
+                <List.Item>Camada de dentro nunca usa a de fora</List.Item>
               </List>
             </Card>
 
             <Card withBorder p="md" radius="md">
               <Title order={4} size="h5" mb="md">
-                3. Valide Imports
+                3. Valide Imports (exemplo ASCII de fluxo)
               </Title>
-              <Code block style={{ fontSize: '11px' }} mb="sm">
-                {`✅ CORRETO:
-// domain/user.ts
-export type User = { id: string; name: string };  // Sem imports externos!
-export function createUser(data: any): User { ... }
-export function getDisplayName(user: User): string { ... }
+              <Code block style={{ fontSize: '11px', lineHeight: 1.35 }} mb="sm">
+                {`✅ CORRETO (imports só para dentro):
 
-// repository/user.repository.ts
-import { User, createUser } from '../domain/user';  // ✅ OK
+  domain/user.ts
+  → export type User; export createUser();   (zero imports de outras camadas)
 
-// service/user.service.ts
-import { User } from '../domain/user';
-import { findUserById } from '../repository/...';  // ✅ OK
+  repository/user.repository.ts
+  → import { User, createUser } from '../domain/user';   ✅
 
-// ui/components/UserProfile.tsx
-import { useUserService } from '../service/...';  // ✅ OK
+  service/user.service.ts
+  → import { User } from '../domain/user';
+  → import { findUserById } from '../repository/...';  ✅
+
+  ui/UserProfile.tsx
+  → import { useUserService } from '../service/...';   ✅
 
 ❌ INCORRETO:
-// domain/user.ts
-import { Button } from '../ui/components';  // ❌ QUEBRADO!
-import { getUserById } from '../service/...';  // ❌ QUEBRADO!
 
-// repository/user.repository.ts
-import { getUserById } from '../service/...';  // ❌ QUEBRADO!`}
+  domain/user.ts
+  → import { Button } from '../ui/...';      ❌
+  → import { getUserById } from '../service/...';  ❌
+
+  repository/user.repository.ts
+  → import { getUserById } from '../service/...';  ❌`}
               </Code>
               <List size="sm" spacing="xs" mt="sm">
-                <List.Item>Verifique imports em cada arquivo</List.Item>
-                <List.Item>Domain não importa UI</List.Item>
-                <List.Item>Repository não importa Service</List.Item>
-                <List.Item>Use ESLint para detectar</List.Item>
+                <List.Item>Núcleo: nenhum import de tela, regras de negócio ou acesso a dados</List.Item>
+                <List.Item>Quem acessa dados: só importa o núcleo</List.Item>
+                <List.Item>Vale usar ESLint (ex.: eslint-plugin-import) para pegar deslizes</List.Item>
               </List>
             </Card>
 
             <Card withBorder p="md" radius="md">
               <Title order={4} size="h5" mb="md">
-                4. Teste Isoladamente
+                4. Teste cada pedaço sozinho
               </Title>
               <List size="sm" spacing="xs">
-                <List.Item>Teste cada camada separadamente</List.Item>
-                <List.Item>Mocks simples para camadas externas</List.Item>
-                <List.Item>Domain deve ser testável sem UI</List.Item>
-                <List.Item>Services devem ser testáveis sem DB</List.Item>
+                <List.Item>Teste cada parte separada (núcleo, regras de negócio, etc.)</List.Item>
+                <List.Item>Use mocks leves para o que está “fora”</List.Item>
+                <List.Item>O núcleo deve rodar sem tela e sem banco</List.Item>
+                <List.Item>As regras de negócio devem rodar sem banco (simulando quem acessa dados)</List.Item>
               </List>
             </Card>
           </SimpleGrid>
 
           <Alert color="brand" icon={<IconBulb size={20} />} radius="md">
             <Text size="md" fw={500}>
-              <strong>Dica:</strong> Comece pequeno. Aplique a regra em um
-              módulo, depois expanda. É melhor ter uma parte bem arquitetada do
-              que tudo quebrado.
+              <strong>Dica:</strong> Não precisa refatorar tudo de uma vez.
+              Escolha um módulo, aplique a regra ali, e vá expandindo. Um
+              pedaço bem feito vale mais que o projeto todo entrelaçado.
             </Text>
           </Alert>
         </Stack>
@@ -423,7 +507,7 @@ import { getUserById } from '../service/...';  // ❌ QUEBRADO!`}
               size={32}
               style={{ verticalAlign: 'middle', marginRight: '8px' }}
             />
-            Benefícios de Seguir a Dependency Rule
+            O que você ganha ao seguir a regra
           </Title>
 
           <SimpleGrid cols={{ base: 1, md: 3 }} spacing="lg">
@@ -438,11 +522,11 @@ import { getUserById } from '../service/...';  // ❌ QUEBRADO!`}
                 <IconCode size={25} />
               </ThemeIcon>
               <Title order={4} size="h5">
-                Testes Rápidos
+                Testes rápidos
               </Title>
               <Text size="sm" c="dimmed">
-                Teste cada camada isoladamente. Mocks simples, testes que rodam
-                em milissegundos.
+                Cada parte você testa sozinha. Menos mock, testes que rodam
+                em milissegundos e você dorme tranquilo.
               </Text>
             </Card>
 
@@ -457,11 +541,11 @@ import { getUserById } from '../service/...';  // ❌ QUEBRADO!`}
                 <IconStack size={25} />
               </ThemeIcon>
               <Title order={4} size="h5">
-                Refatoração Segura
+                Refatorar sem medo
               </Title>
               <Text size="sm" c="dimmed">
-                Mude uma camada sem afetar as outras. Troque framework, troque
-                banco, sem medo.
+                Quer trocar framework ou banco? Você troca sem derrubar tudo.
+                Uma parte muda, o resto continua estável.
               </Text>
             </Card>
 
@@ -476,20 +560,20 @@ import { getUserById } from '../service/...';  // ❌ QUEBRADO!`}
                 <IconShield size={25} />
               </ThemeIcon>
               <Title order={4} size="h5">
-                Independência
+                Seu core livre
               </Title>
               <Text size="sm" c="dimmed">
-                Seu negócio não depende de tecnologia. Troque React por Vue, seu
-                core sobrevive.
+                A lógica que importa não fica presa a React, Vue ou banco.
+                Amanhã você troca a ferramenta e o núcleo segue igual.
               </Text>
             </Card>
           </SimpleGrid>
 
           <Alert color="green" icon={<IconCheck size={20} />} radius="md">
             <Text size="md" fw={500}>
-              <strong>Resultado:</strong> Código que você consegue manter,
-              testar e evoluir sem dor de cabeça. Menos bugs, mais paz,
-              refatoração sem medo.
+              No fim das contas: código que você consegue manter, testar e
+              evoluir sem passar raiva. Menos bug, mais clareza, refatoração
+              sem susto.
             </Text>
           </Alert>
         </Stack>
@@ -511,21 +595,20 @@ import { getUserById } from '../service/...';  // ❌ QUEBRADO!`}
           </Title>
 
           <Text size="lg" c="dimmed" maw={800}>
-            A <strong>Dependency Rule</strong> é a regra mais importante de
-            qualquer arquitetura. Se você ignorar essa regra, nenhuma
-            arquitetura consegue salvar seu projeto do caos.
+            Código como uma cebola: <strong>camada de fora pode usar a de
+            dentro; camada de dentro nunca usa a de fora</strong>. Seguir isso
+            deixa o código previsível. Ignorar vira bagunça.
           </Text>
 
           <SimpleGrid cols={{ base: 1, md: 2 }} spacing="lg" w="100%">
             <Card withBorder p="md" radius="md">
               <Title order={4} size="h5" mb="md">
-                ✅ Lembre-se
+                ✅ Leve na cabeça
               </Title>
               <List size="sm" spacing="xs">
-                <List.Item>Dependências só apontam para dentro</List.Item>
-                <List.Item>Camadas externas podem usar internas</List.Item>
-                <List.Item>Camadas internas NUNCA usam externas</List.Item>
-                <List.Item>Teste cada camada isoladamente</List.Item>
+                <List.Item>Camada de fora pode usar a de dentro; de dentro nunca usa a de fora</List.Item>
+                <List.Item>Como uma cebola: sempre para dentro</List.Item>
+                <List.Item>Teste cada camada sozinha</List.Item>
               </List>
             </Card>
 
@@ -534,10 +617,10 @@ import { getUserById } from '../service/...';  // ❌ QUEBRADO!`}
                 ❌ Evite
               </Title>
               <List size="sm" spacing="xs">
-                <List.Item>UI no domain</List.Item>
-                <List.Item>Service no repository</List.Item>
-                <List.Item>Framework no domain</List.Item>
-                <List.Item>Dependências circulares</List.Item>
+                <List.Item>Importar tela ou regras de negócio no núcleo</List.Item>
+                <List.Item>Regras de negócio dentro de quem acessa dados</List.Item>
+                <List.Item>Framework ou lib de tela no núcleo</List.Item>
+                <List.Item>Ciclos: A importa B, B importa A</List.Item>
               </List>
             </Card>
           </SimpleGrid>
@@ -549,11 +632,8 @@ import { getUserById } from '../service/...';  // ❌ QUEBRADO!`}
             maw={800}
           >
             <Text size="md" fw={500}>
-              <strong>Regra de Ouro:</strong> Se você está na camada de fora,
-              você pode usar qualquer coisa das camadas de dentro. Se você está
-              na camada de dentro, você NUNCA pode usar nada das camadas de
-              fora.
-              <strong>Simples assim.</strong>
+              Regra de ouro: <strong>camada de fora pode usar a de dentro;
+              camada de dentro nunca usa a de fora</strong>. Como uma cebola.
             </Text>
           </Alert>
         </Stack>
@@ -582,6 +662,6 @@ import { getUserById } from '../service/...';  // ❌ QUEBRADO!`}
 DependencyRuleGuide.metadata = {
   title: 'Dependency Rule',
   description:
-    'A regra mais importante de qualquer arquitetura. Se você quebrar essa, nenhuma arquitetura salva seu projeto do caos.',
+    'Código como uma cebola: camada de fora pode usar a de dentro; camada de dentro nunca usa a de fora. Simples assim.',
   category: 'guides',
 };

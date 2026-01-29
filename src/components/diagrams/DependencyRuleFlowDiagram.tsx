@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { Box } from '@mantine/core';
 import { useMantineColorScheme } from '@mantine/core';
+import { semantic } from '../../theme/colors';
 
 const STEPS = [
   { label: 'UI Layer', sub: 'Components' },
@@ -53,13 +54,13 @@ export default function DependencyRuleFlowDiagram({
       const centerY = h / 2;
 
       const borderColor = isDark
-        ? 'rgba(34, 197, 94, 0.7)'
-        : 'rgba(22, 163, 74, 0.8)';
+        ? semantic.diagramSuccessBorderDark
+        : semantic.diagramSuccessBorderLight;
       const fillColor = isDark
-        ? 'rgba(30, 41, 59, 0.5)'
-        : 'rgba(241, 245, 249, 0.8)';
-      const textColor = isDark ? '#e2e8f0' : '#1e293b';
-      const subColor = isDark ? '#94a3b8' : '#64748b';
+        ? semantic.diagramFillDark
+        : semantic.diagramFillLight;
+      const textColor = isDark ? semantic.diagramTextDark : semantic.diagramTextLight;
+      const subColor = isDark ? semantic.diagramSubDark : semantic.diagramSubLight;
 
       ctx.strokeStyle = borderColor;
       ctx.lineWidth = 2;
@@ -87,8 +88,8 @@ export default function DependencyRuleFlowDiagram({
       }
 
       const arrowColor = isDark
-        ? 'rgba(34, 197, 94, 0.9)'
-        : 'rgba(22, 163, 74, 0.9)';
+        ? semantic.diagramArrowDark
+        : semantic.diagramArrowLight;
       for (let i = 0; i < 3; i++) {
         const fromX = startX + i * (boxW + gap) + boxW / 2;
         const toX = startX + (i + 1) * (boxW + gap) - boxW / 2;

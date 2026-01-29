@@ -2,6 +2,40 @@ import { useEffect, useRef } from 'react';
 import { Box } from '@mantine/core';
 import { useMantineColorScheme } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
+import { semantic } from '../theme/colors';
+
+/** Gera número determinístico a partir de uma string (hash simples) */
+function hashString(str: string): number {
+  let h = 0;
+  for (let i = 0; i < str.length; i++) {
+    h = (h << 5) - h + str.charCodeAt(i);
+    h |= 0;
+  }
+  return Math.abs(h);
+}
+
+/** PRNG determinístico (mulberry32) – seed por página para comportamento único */
+function createSeededRandom(seed: number): () => number {
+  return function next() {
+    let t = (seed += 0x6d2b79f5);
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+/** Interação com o mouse: raio de influência e força de repulsão (valores baixos = sutil) */
+const MOUSE_RADIUS = 140;
+const MOUSE_STRENGTH = 0.12;
+
+/** Perfis de animação – cada página sorteia um (seed) e fica com animação diferente */
+const ANIMATION_PROFILES = [
+  { name: 'default', speed: 1, maxDist: 150, damping: 0.995, trailAlpha: 0.4, lineWidth: 1.5, accel: 0.05 },
+  { name: 'calm', speed: 0.55, maxDist: 220, damping: 0.998, trailAlpha: 0.32, lineWidth: 1.1, accel: 0.02 },
+  { name: 'fast', speed: 1.5, maxDist: 95, damping: 0.99, trailAlpha: 0.52, lineWidth: 2.2, accel: 0.08 },
+  { name: 'flow', speed: 0.85, maxDist: 190, damping: 0.997, trailAlpha: 0.38, lineWidth: 1.8, accel: 0.03 },
+  { name: 'pulse', speed: 1.2, maxDist: 130, damping: 0.993, trailAlpha: 0.45, lineWidth: 1.6, accel: 0.06 },
+] as const;
 
 interface Node {
   x: number;
@@ -15,23 +49,38 @@ interface Node {
 interface NeuralNetworkCanvasProps {
   nodeCount?: number;
   fullScreen?: boolean;
+  /** Seed por página (ex: pathname) – cada página tem rede neural única */
+  seed?: string;
 }
 
 export default function NeuralNetworkCanvas({
   nodeCount = 80,
   fullScreen = true,
+  seed: pageSeed,
 }: NeuralNetworkCanvasProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animationFrameRef = useRef<number>();
   const nodesRef = useRef<Node[]>([]);
+  const mouseRef = useRef({ x: -10000, y: -10000 });
   const { colorScheme } = useMantineColorScheme();
   const isMobile = useMediaQuery('(max-width: 768px)');
+  const isDark = colorScheme === 'dark';
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext('2d', { alpha: true });
+    const onMouseMove = (e: MouseEvent) => {
+      mouseRef.current = { x: e.clientX, y: e.clientY };
+    };
+    const onMouseLeave = () => {
+      mouseRef.current = { x: -10000, y: -10000 };
+    };
+    window.addEventListener('mousemove', onMouseMove);
+    window.addEventListener('mouseleave', onMouseLeave);
+
+    // Dark: alpha false = canvas opaco, sem transparência (evita body #030710 aparecer)
+    const ctx = canvas.getContext('2d', { alpha: !isDark });
     if (!ctx) return;
 
     const updateCanvasSize = () => {
@@ -48,57 +97,77 @@ export default function NeuralNetworkCanvas({
     updateCanvasSize();
     window.addEventListener('resize', updateCanvasSize);
 
-    const isDark = colorScheme === 'dark';
-    // Azul escuro alinhado ao tema (brand/accent)
-    const lineColor = isDark
-      ? 'rgba(147, 197, 253, 0.14)'
-      : 'rgba(58, 77, 107, 0.2)';
-    const nodeColor = isDark
-      ? 'rgba(96, 165, 250, 0.65)'
-      : 'rgba(59, 130, 246, 0.5)';
-    const glowColor = isDark
-      ? 'rgba(96, 165, 250, 0.35)'
-      : 'rgba(59, 130, 246, 0.25)';
+    const lineColor = isDark ? semantic.canvasLineDark : semantic.canvasLineLight;
+    const nodeColor = isDark ? semantic.canvasNodeDark : semantic.canvasNodeLight;
+    const glowColor = isDark ? semantic.canvasGlowDark : semantic.canvasGlowLight;
 
-    // Initialize nodes
+    // Animação única por página: seed escolhe perfil + posições/velocidades
+    const seedNum = pageSeed ? hashString(pageSeed) : Math.floor(Math.random() * 0xffffffff);
+    const rng = createSeededRandom(seedNum);
+    const profileIndex = Math.floor(rng() * ANIMATION_PROFILES.length);
+    const profile = ANIMATION_PROFILES[profileIndex];
+    const speedMult = profile.speed;
+    const maxDistance = profile.maxDist;
+    const damping = profile.damping;
+    const trailAlpha = profile.trailAlpha;
+    const lineWidth = profile.lineWidth;
+    const accelAmount = profile.accel;
+
     const nodes: Node[] = [];
     const count = isMobile ? Math.floor(nodeCount * 0.5) : nodeCount;
 
     for (let i = 0; i < count; i++) {
       nodes.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.8, // Aumentado de 0.3 para 0.8
-        vy: (Math.random() - 0.5) * 0.8, // Aumentado de 0.3 para 0.8
-        radius: 3 + Math.random() * 2,
+        x: rng() * canvas.width,
+        y: rng() * canvas.height,
+        vx: (rng() - 0.5) * 1.2 * speedMult,
+        vy: (rng() - 0.5) * 1.2 * speedMult,
+        radius: 2.5 + rng() * 2.5,
         connections: [],
       });
     }
 
     nodesRef.current = nodes;
 
-    // Fundo azul bem escuro (alinhado ao tema)
-    const bgColor = isDark ? 'rgb(6, 11, 20)' : 'rgb(232, 238, 244)';
+    const bgColor = isDark ? semantic.canvasBgDark : semantic.canvasBgLight;
+    // Trail deve usar o mesmo RGB do fundo (dark = preto, light = claro)
+    const trailRgb = isDark ? '0, 0, 0' : '232, 238, 244';
+    const trailColor = `rgba(${trailRgb}, ${trailAlpha})`;
 
     const animate = () => {
       if (!ctx) return;
 
-      // Fundo sólido azul escuro
+      // Fundo sólido (preto no dark, claro no light)
       ctx.fillStyle = bgColor;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      // Clear com fade suave para efeito de trail
-      ctx.fillStyle = isDark
-        ? 'rgba(6, 11, 20, 0.4)'
-        : 'rgba(232, 238, 244, 0.4)';
+      // Trail (alpha por perfil – cada página com sensação diferente)
+      ctx.fillStyle = trailColor;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       const nodes = nodesRef.current;
 
       // Update node positions
+      const mx = mouseRef.current.x;
+      const my = mouseRef.current.y;
+      const mouseActive = mx > -5000 && my > -5000;
+
       nodes.forEach(node => {
         node.x += node.vx;
         node.y += node.vy;
+
+        // Pequena repulsão pelo mouse (só dentro do raio de influência)
+        if (mouseActive) {
+          let dx = node.x - mx;
+          let dy = node.y - my;
+          const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+          if (dist < MOUSE_RADIUS && dist > 2) {
+            const t = 1 - dist / MOUSE_RADIUS;
+            const force = t * t * MOUSE_STRENGTH;
+            node.vx += (dx / dist) * force;
+            node.vy += (dy / dist) * force;
+          }
+        }
 
         // Boundary bounce with wrap-around effect
         if (node.x < 0) {
@@ -112,17 +181,13 @@ export default function NeuralNetworkCanvas({
           node.y = 0;
         }
 
-        // Add slight random acceleration for more organic movement
-        node.vx += (Math.random() - 0.5) * 0.05;
-        node.vy += (Math.random() - 0.5) * 0.05;
-
-        // Damping (menos agressivo para movimento mais fluido)
-        node.vx *= 0.995;
-        node.vy *= 0.995;
+        node.vx += (Math.random() - 0.5) * accelAmount;
+        node.vy += (Math.random() - 0.5) * accelAmount;
+        node.vx *= damping;
+        node.vy *= damping;
       });
 
-      // Calculate connections (considering wrap-around)
-      const maxDistance = 150;
+      // Conexões (maxDistance definido por página no início do effect)
       nodes.forEach((node, i) => {
         node.connections = [];
         nodes.forEach((other, j) => {
@@ -148,9 +213,8 @@ export default function NeuralNetworkCanvas({
         });
       });
 
-      // Draw connections (with wrap-around)
       ctx.strokeStyle = lineColor;
-      ctx.lineWidth = 1.5;
+      ctx.lineWidth = lineWidth;
       nodes.forEach(node => {
         node.connections.forEach(j => {
           const other = nodes[j];
@@ -213,62 +277,59 @@ export default function NeuralNetworkCanvas({
 
     return () => {
       window.removeEventListener('resize', updateCanvasSize);
+      window.removeEventListener('mousemove', onMouseMove);
+      window.removeEventListener('mouseleave', onMouseLeave);
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current);
       }
     };
-  }, [nodeCount, colorScheme, isMobile, fullScreen]);
+  }, [nodeCount, colorScheme, isMobile, fullScreen, pageSeed, isDark]);
 
-  if (!fullScreen) {
-    return (
-      <Box
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          width: '100%',
-          height: '100%',
-          pointerEvents: 'none',
-          zIndex: 0,
-          overflow: 'hidden',
-        }}
-      >
-        <canvas
-          ref={canvasRef}
-          style={{
-            width: '100%',
-            height: '100%',
-            display: 'block',
-          }}
-        />
-      </Box>
-    );
-  }
-
-  return (
-    <Box
-      style={{
-        position: 'fixed',
+  const canvasContainerStyle = fullScreen
+    ? {
+        position: 'fixed' as const,
         top: 0,
         left: 0,
         right: 0,
         bottom: 0,
         width: '100vw',
         height: '100vh',
-        pointerEvents: 'none',
+        pointerEvents: 'none' as const,
         zIndex: 0,
-        overflow: 'hidden',
-      }}
-    >
-      <canvas
-        ref={canvasRef}
-        style={{
-          width: '100%',
-          height: '100%',
-          display: 'block',
-        }}
-      />
+        overflow: 'hidden' as const,
+        backgroundColor: isDark ? '#000' : undefined,
+      }
+    : {
+        position: 'absolute' as const,
+        top: 0,
+        left: 0,
+        right: 0,
+        width: '100%',
+        height: '100%',
+        pointerEvents: 'none' as const,
+        zIndex: 0,
+        overflow: 'hidden' as const,
+        backgroundColor: isDark ? '#000' : undefined,
+      };
+
+  const canvasStyle = {
+    width: '100%',
+    height: '100%',
+    display: 'block' as const,
+    backgroundColor: isDark ? '#000' : undefined,
+  };
+
+  if (!fullScreen) {
+    return (
+      <Box style={canvasContainerStyle}>
+        <canvas ref={canvasRef} style={canvasStyle} />
+      </Box>
+    );
+  }
+
+  return (
+    <Box style={canvasContainerStyle}>
+      <canvas ref={canvasRef} style={canvasStyle} />
     </Box>
   );
 }

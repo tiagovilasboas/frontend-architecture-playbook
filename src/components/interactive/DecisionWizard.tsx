@@ -24,7 +24,6 @@ import {
   IconArrowRight,
   IconBroadcast,
   IconSettings2,
-  IconBulb,
   IconAlertTriangle,
   IconInfoCircle,
   IconRocket,
@@ -779,11 +778,25 @@ export default function DecisionWizard() {
       case 1:
         return (
           <div>
+            <Alert
+              color="blue"
+              icon={<IconInfoCircle size={16} />}
+              radius="md"
+              mb="md"
+            >
+              <Text size="sm">
+                Responda às perguntas abaixo. O resultado é uma{' '}
+                <strong>sugestão inicial</strong> — a decisão final depende do
+                seu contexto, time e restrições. Use como ponto de partida para
+                discussão.
+              </Text>
+            </Alert>
             <Title order={4} mb="sm">
               Qual o tipo do seu projeto?
             </Title>
             <Text size="sm" c="dimmed" mb="md">
-              Isso ajuda a definir as necessidades base
+              Isso ajuda a definir as necessidades base. O resultado será uma
+              sugestão para você explorar e discutir com o time.
             </Text>
             <SimpleGrid cols={isMobile ? 1 : 2} spacing={isMobile ? 8 : 'md'}>
               {projectTypes.map(opt => (
@@ -987,6 +1000,11 @@ export default function DecisionWizard() {
         );
 
       case 6:
+        const resultLabels = [
+          'Melhor match para seu perfil',
+          'Alternativa sólida',
+          'Outra opção a considerar',
+        ];
         return (
           <div
             style={
@@ -994,7 +1012,7 @@ export default function DecisionWizard() {
             }
           >
             <Title order={4} mb="sm">
-              🎯 Recomendações Personalizadas
+              Sugestões para o seu contexto
             </Title>
 
             <Alert
@@ -1003,16 +1021,17 @@ export default function DecisionWizard() {
               radius="md"
               mb="md"
             >
-              <Text size="sm" fw={600} mb={4}>
-                Baseado no seu contexto:{' '}
-                {projectTypes.find(p => p.value === projectType)?.label}, time{' '}
-                {teamSizes.find(t => t.value === teamSize)?.label}, nível{' '}
+              <Text size="sm" mb={4}>
+                Com base nas suas respostas, estas opções costumam fazer sentido.
+                Use como <strong>ponto de partida</strong> para pesquisa e
+                discussão com o time.
+              </Text>
+              <Text size="sm" c="dimmed">
+                Contexto: {projectTypes.find(p => p.value === projectType)?.label},{' '}
+                time {teamSizes.find(t => t.value === teamSize)?.label}, nível{' '}
                 {techLevels.find(t => t.value === techLevel)?.label},
                 priorizando{' '}
-                {priorities
-                  .find(p => p.value === priority)
-                  ?.label.toLowerCase()}
-                .
+                {priorities.find(p => p.value === priority)?.label.toLowerCase()}.
               </Text>
             </Alert>
 
@@ -1042,27 +1061,24 @@ export default function DecisionWizard() {
                         size={isMobile ? 32 : 40}
                         radius="md"
                         variant="light"
-                        color={index === 0 ? 'green' : 'blue'}
+                        color="brand"
                       >
                         {patternIcons[pattern.slug] || (
                           <IconPuzzle size={isMobile ? 18 : 22} />
                         )}
                       </ThemeIcon>
                       <div style={{ flex: 1 }}>
-                        <Group gap={4} align="center" mb={4}>
+                        <Group gap={6} align="center" mb={4} wrap="wrap">
                           <Text fw={700} size={isMobile ? 'sm' : 'md'}>
                             {pattern.title}
                           </Text>
-                          {index === 0 && (
-                            <ThemeIcon
-                              size={16}
-                              radius="sm"
-                              variant="light"
-                              color="green"
-                            >
-                              <IconBulb size={10} />
-                            </ThemeIcon>
-                          )}
+                          <Text
+                            size="xs"
+                            c="dimmed"
+                            style={{ fontWeight: 500 }}
+                          >
+                            — {resultLabels[index] ?? 'Sugestão'}
+                          </Text>
                         </Group>
 
                         <Text c="dimmed" size={isMobile ? 'xs' : 'sm'} mb={4}>
@@ -1073,18 +1089,19 @@ export default function DecisionWizard() {
                           size={isMobile ? 'xs' : 'sm'}
                           fw={500}
                           mb={8}
-                          style={{ color: 'var(--mantine-color-blue-6)' }}
+                          c="dimmed"
                         >
-                          💡 {rec.reason}
+                          Por que consideramos: {rec.reason}
                         </Text>
 
                         <Button
                           variant="light"
                           size="xs"
+                          color="brand"
                           rightSection={<IconArrowRight size={12} />}
                           fullWidth={isMobile}
                         >
-                          Saiba mais
+                          Ler mais e discutir com o time
                         </Button>
                       </div>
                     </Group>
@@ -1096,7 +1113,7 @@ export default function DecisionWizard() {
             {bonusResults.length > 0 && (
               <>
                 <Title order={5} mt="lg" mb="sm">
-                  🎁 Padrões Complementares
+                  Padrões que podem complementar
                 </Title>
                 <Stack gap={isMobile ? 4 : 'xs'}>
                   {bonusResults.map(pat => (
@@ -1137,13 +1154,12 @@ export default function DecisionWizard() {
               mt="lg"
             >
               <Text size="sm" fw={600} mb={4}>
-                ⚠️ Importante lembrar:
+                Use o resultado para conversar com sua equipe, não como decisão automática.
               </Text>
               <Text size="sm" c="dimmed">
-                Estas são sugestões baseadas em padrões comuns e seu contexto.
-                Seu projeto específico pode justificar escolhas diferentes.
-                Sempre valide com sua equipe e considere constraints específicos
-                do negócio.
+                Estas sugestões são baseadas em padrões comuns e no contexto que você informou.
+                Seu projeto pode justificar escolhas diferentes. Sempre valide com o time e
+                considere restrições específicas do negócio antes de decidir.
               </Text>
             </Alert>
 

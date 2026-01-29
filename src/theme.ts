@@ -1,33 +1,5 @@
 import { createTheme } from '@mantine/core';
-import type { MantineColorsTuple } from '@mantine/core';
-
-// Paleta azul bem escuro – fundos e containers
-const brand: MantineColorsTuple = [
-  '#e8eef4', // 0 - Azul claro (bg light)
-  '#d0dce8', // 1
-  '#a8bdd4', // 2
-  '#7a94b0', // 3
-  '#5a7090', // 4
-  '#3d5270', // 5
-  '#2d3d55', // 6
-  '#1e2a3d', // 7
-  '#121b2a', // 8
-  '#060b14', // 9 - Azul muito escuro (bg dark)
-];
-
-// Accent: azul para destaques, links e CTAs (mesma família)
-const accent: MantineColorsTuple = [
-  '#eff6ff', // 0
-  '#dbeafe', // 1
-  '#bfdbfe', // 2
-  '#93c5fd', // 3
-  '#60a5fa', // 4
-  '#3b82f6', // 5
-  '#2563eb', // 6
-  '#1d4ed8', // 7
-  '#1e3a8a', // 8
-  '#172554', // 9
-];
+import { brand, accent, semantic } from './theme/colors';
 
 export const theme = createTheme({
   primaryColor: 'brand',
@@ -53,7 +25,7 @@ export const theme = createTheme({
   components: {
     Anchor: {
       defaultProps: {
-        c: 'brand.6',
+        c: 'brand.7',
         underline: 'hover',
       },
       styles: {
@@ -61,7 +33,7 @@ export const theme = createTheme({
           fontWeight: 500,
           transition: 'color 0.2s ease',
           '&:hover': {
-            color: 'var(--mantine-color-brand-5)',
+            color: 'var(--mantine-color-brand-8)',
           },
         },
       },
@@ -102,7 +74,7 @@ export const theme = createTheme({
         root: {
           '[data-order="1"]': {
             background:
-              'linear-gradient(135deg, var(--mantine-color-brand-6) 0%, var(--mantine-color-accent-5) 100%)',
+              'linear-gradient(135deg, var(--mantine-color-brand-8) 0%, var(--mantine-color-brand-5) 100%)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             backgroundClip: 'text',
@@ -123,7 +95,7 @@ export const theme = createTheme({
       styles: {
         root: {
           '& .mantine-Spotlight-overlay': {
-            backgroundColor: 'rgba(0, 0, 0, 0.6)',
+            backgroundColor: semantic.spotlightOverlay,
             backdropFilter: 'blur(4px)',
           },
         },
@@ -143,7 +115,7 @@ export const theme = createTheme({
             transition: 'all 0.2s ease',
             '&:focus': {
               borderColor: 'var(--mantine-color-brand-6)',
-              boxShadow: '0 0 0 4px rgba(58, 77, 107, 0.15)',
+              boxShadow: `0 0 0 4px ${semantic.focusRing}`,
             },
           },
         },
@@ -159,8 +131,8 @@ export const theme = createTheme({
             transform: 'translateX(4px)',
           },
           '&[data-selected]': {
-            backgroundColor: 'var(--mantine-color-brand-1)',
-            color: 'var(--mantine-color-brand-6)',
+            backgroundColor: 'var(--mantine-color-brand-2)',
+            color: 'var(--mantine-color-brand-8)',
           },
         },
         actionBody: {

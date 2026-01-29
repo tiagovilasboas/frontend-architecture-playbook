@@ -62,7 +62,7 @@ export default function NavMenu({
         <Accordion.Item value="guides">
           <Accordion.Control>
             <Group gap="xs">
-              <IconBook size={16} color="var(--mantine-color-blue-6)" />
+              <IconBook size={16} color="var(--mantine-color-brand-6)" />
               <Title order={6} c="dimmed" style={{ margin: 0 }}>
                 Guias
               </Title>
@@ -88,7 +88,7 @@ export default function NavMenu({
         <Accordion.Item value="best-practices">
           <Accordion.Control>
             <Group gap="xs">
-              <IconCheck size={16} color="var(--mantine-color-teal-6)" />
+              <IconCheck size={16} color="var(--mantine-color-brand-6)" />
               <Title order={6} c="dimmed" style={{ margin: 0 }}>
                 Boas Práticas
               </Title>
@@ -114,7 +114,7 @@ export default function NavMenu({
         <Accordion.Item value="architectures">
           <Accordion.Control>
             <Group gap="xs">
-              <IconStack size={16} color="var(--mantine-color-green-6)" />
+              <IconStack size={16} color="var(--mantine-color-brand-6)" />
               <Title order={6} c="dimmed" style={{ margin: 0 }}>
                 Arquiteturas
               </Title>
@@ -125,7 +125,7 @@ export default function NavMenu({
               {/* 🚀 FUNDAMENTALS */}
               <div>
                 <Group gap="xs" mb="xs">
-                  <IconRocket size={14} color="var(--mantine-color-blue-6)" />
+                  <IconRocket size={14} color="var(--mantine-color-brand-6)" />
                   <Text size="xs" c="dimmed" fw={500}>
                     Fundamentals
                   </Text>
@@ -149,7 +149,7 @@ export default function NavMenu({
                 <Group gap="xs" mb="xs">
                   <IconBuilding
                     size={14}
-                    color="var(--mantine-color-violet-6)"
+                    color="var(--mantine-color-brand-6)"
                   />
                   <Text size="xs" c="dimmed" fw={500}>
                     Padrões de Design
@@ -172,7 +172,7 @@ export default function NavMenu({
               {/* 🔌 INTEGRATION & API */}
               <div>
                 <Group gap="xs" mb="xs">
-                  <IconPlug size={14} color="var(--mantine-color-cyan-6)" />
+                  <IconPlug size={14} color="var(--mantine-color-brand-6)" />
                   <Text size="xs" c="dimmed" fw={500}>
                     Integration & API
                   </Text>
@@ -196,7 +196,7 @@ export default function NavMenu({
                 <Group gap="xs" mb="xs">
                   <IconPuzzlePiece
                     size={14}
-                    color="var(--mantine-color-orange-6)"
+                    color="var(--mantine-color-brand-6)"
                   />
                   <Text size="xs" c="dimmed" fw={500}>
                     Modularization
@@ -219,7 +219,7 @@ export default function NavMenu({
               {/* ⚡ ADVANCED */}
               <div>
                 <Group gap="xs" mb="xs">
-                  <IconBolt size={14} color="var(--mantine-color-red-6)" />
+                  <IconBolt size={14} color="var(--mantine-color-brand-6)" />
                   <Text size="xs" c="dimmed" fw={500}>
                     Advanced
                   </Text>
@@ -245,7 +245,7 @@ export default function NavMenu({
         <Accordion.Item value="patterns">
           <Accordion.Control>
             <Group gap="xs">
-              <IconPuzzle size={16} color="var(--mantine-color-purple-6)" />
+              <IconPuzzle size={16} color="var(--mantine-color-brand-6)" />
               <Title order={6} c="dimmed" style={{ margin: 0 }}>
                 Padrões
               </Title>
@@ -271,7 +271,7 @@ export default function NavMenu({
         <Accordion.Item value="techniques">
           <Accordion.Control>
             <Group gap="xs">
-              <IconTools size={16} color="var(--mantine-color-orange-6)" />
+              <IconTools size={16} color="var(--mantine-color-brand-6)" />
               <Title order={6} c="dimmed" style={{ margin: 0 }}>
                 Técnicas
               </Title>

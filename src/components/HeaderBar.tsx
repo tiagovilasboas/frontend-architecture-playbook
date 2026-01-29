@@ -83,7 +83,9 @@ export default function HeaderBar({
               color: 'inherit',
               minWidth: 0,
               flexShrink: 0,
+              outline: 'none',
             }}
+            className="header-logo-link"
           >
             <Group gap="xs" wrap="nowrap" style={{ minWidth: 0 }}>
               <IconCode
@@ -120,6 +122,7 @@ export default function HeaderBar({
           <ActionIcon
             onClick={() => toggleColorScheme()}
             variant="light"
+            color="brand"
             size={isMobile ? 'xl' : 'lg'}
             aria-label="Toggle color scheme"
           >
@@ -137,7 +140,7 @@ export default function HeaderBar({
               rel="noopener noreferrer"
               style={{ textDecoration: 'none' }}
             >
-              <ActionIcon variant="light" size="lg" aria-label="GitHub">
+              <ActionIcon variant="light" color="brand" size="lg" aria-label="GitHub">
                 <IconBrandGithub size={18} />
               </ActionIcon>
             </Anchor>
