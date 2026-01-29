@@ -56,7 +56,6 @@ export default function HeaderBar({
 
   return (
     <Paper
-      withBorder
       p={0}
       radius={0}
       className="header-bar"
@@ -64,7 +63,6 @@ export default function HeaderBar({
         position: 'sticky',
         top: 0,
         zIndex: 1000,
-        backgroundColor: 'var(--mantine-color-body)',
       }}
     >
       <Group

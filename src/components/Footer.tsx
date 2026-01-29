@@ -9,13 +9,11 @@ import {
 export default function Footer() {
   return (
     <Paper
-      withBorder
       p={0}
       radius={0}
       className="footer-bar"
       style={{
         marginTop: 'auto',
-        backgroundColor: 'var(--mantine-color-body)',
       }}
     >
       <Stack gap="md" py="xl" px="md" ta="center">

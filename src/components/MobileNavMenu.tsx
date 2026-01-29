@@ -102,19 +102,20 @@ export default function MobileNavMenu({
           variant="separated"
           radius="md"
         >
-          {/* Guides Section */}
+          {/* 1. Guias – conceitos e decisão */}
           <Accordion.Item value="guides">
             <Accordion.Control>
               <Group gap="sm">
                 <IconBook size={20} color="var(--mantine-color-brand-6)" />
-                <Text fw={500} size="md">
-                  Guias
-                </Text>
-                {filteredGuides.length > 0 && (
-                  <Text size="xs" c="dimmed">
-                    ({filteredGuides.length})
+                <Stack gap={0}>
+                  <Text fw={500} size="md">
+                    1. Guias
                   </Text>
-                )}
+                  <Text size="xs" c="dimmed">
+                    Conceitos e decisão
+                    {filteredGuides.length > 0 && ` · ${filteredGuides.length}`}
+                  </Text>
+                </Stack>
               </Group>
             </Accordion.Control>
             <Accordion.Panel>
@@ -139,54 +140,19 @@ export default function MobileNavMenu({
             </Accordion.Panel>
           </Accordion.Item>
 
-          {/* Best Practices Section */}
-          <Accordion.Item value="best-practices">
-            <Accordion.Control>
-              <Group gap="sm">
-                <IconCheck size={20} color="var(--mantine-color-brand-6)" />
-                <Text fw={500} size="md">
-                  Boas Práticas
-                </Text>
-                {filteredBestPractices.length > 0 && (
-                  <Text size="xs" c="dimmed">
-                    ({filteredBestPractices.length})
-                  </Text>
-                )}
-              </Group>
-            </Accordion.Control>
-            <Accordion.Panel>
-              <Stack gap={6}>
-                {filteredBestPractices.length > 0 ? (
-                  filteredBestPractices.map(b => (
-                    <NavItem
-                      key={b.slug}
-                      href={`/best-practices/${b.slug}`}
-                      label={b.title}
-                      icon={<IconCheck size={18} />}
-                      active={current === `/best-practices/${b.slug}`}
-                      onNavigate={onNavigate}
-                    />
-                  ))
-                ) : (
-                  <Text size="sm" c="dimmed" ta="center" py="xs">
-                    Nenhum resultado encontrado
-                  </Text>
-                )}
-              </Stack>
-            </Accordion.Panel>
-          </Accordion.Item>
-
-          {/* Architectures Section */}
+          {/* 2. Arquiteturas – o que escolher */}
           <Accordion.Item value="architectures">
             <Accordion.Control>
               <Group gap="sm">
                 <IconStack size={20} color="var(--mantine-color-brand-6)" />
-                <Text fw={500} size="md">
-                  Arquiteturas
-                </Text>
-                <Text size="xs" c="dimmed">
-                  ({architectures.length})
-                </Text>
+                <Stack gap={0}>
+                  <Text fw={500} size="md">
+                    2. Arquiteturas
+                  </Text>
+                  <Text size="xs" c="dimmed">
+                    O que escolher · {architectures.length}
+                  </Text>
+                </Stack>
               </Group>
             </Accordion.Control>
             <Accordion.Panel>
@@ -310,19 +276,20 @@ export default function MobileNavMenu({
             </Accordion.Panel>
           </Accordion.Item>
 
-          {/* Patterns Section */}
+          {/* 3. Padrões – como estruturar */}
           <Accordion.Item value="patterns">
             <Accordion.Control>
               <Group gap="sm">
                 <IconPuzzle size={20} color="var(--mantine-color-brand-6)" />
-                <Text fw={500} size="md">
-                  Padrões
-                </Text>
-                {filteredPatterns.length > 0 && (
-                  <Text size="xs" c="dimmed">
-                    ({filteredPatterns.length})
+                <Stack gap={0}>
+                  <Text fw={500} size="md">
+                    3. Padrões
                   </Text>
-                )}
+                  <Text size="xs" c="dimmed">
+                    Como estruturar
+                    {filteredPatterns.length > 0 && ` · ${filteredPatterns.length}`}
+                  </Text>
+                </Stack>
               </Group>
             </Accordion.Control>
             <Accordion.Panel>
@@ -347,19 +314,21 @@ export default function MobileNavMenu({
             </Accordion.Panel>
           </Accordion.Item>
 
-          {/* Techniques Section */}
+          {/* 4. Técnicas – como implementar */}
           <Accordion.Item value="techniques">
             <Accordion.Control>
               <Group gap="sm">
                 <IconTools size={20} color="var(--mantine-color-brand-6)" />
-                <Text fw={500} size="md">
-                  Técnicas
-                </Text>
-                {filteredTechniques.length > 0 && (
-                  <Text size="xs" c="dimmed">
-                    ({filteredTechniques.length})
+                <Stack gap={0}>
+                  <Text fw={500} size="md">
+                    4. Técnicas
                   </Text>
-                )}
+                  <Text size="xs" c="dimmed">
+                    Como implementar
+                    {filteredTechniques.length > 0 &&
+                      ` · ${filteredTechniques.length}`}
+                  </Text>
+                </Stack>
               </Group>
             </Accordion.Control>
             <Accordion.Panel>
@@ -372,6 +341,45 @@ export default function MobileNavMenu({
                       label={t.title}
                       icon={<IconTools size={18} />}
                       active={current === `/techniques/${t.slug}`}
+                      onNavigate={onNavigate}
+                    />
+                  ))
+                ) : (
+                  <Text size="sm" c="dimmed" ta="center" py="xs">
+                    Nenhum resultado encontrado
+                  </Text>
+                )}
+              </Stack>
+            </Accordion.Panel>
+          </Accordion.Item>
+
+          {/* 5. Boas Práticas – princípios de código */}
+          <Accordion.Item value="best-practices">
+            <Accordion.Control>
+              <Group gap="sm">
+                <IconCheck size={20} color="var(--mantine-color-brand-6)" />
+                <Stack gap={0}>
+                  <Text fw={500} size="md">
+                    5. Boas Práticas
+                  </Text>
+                  <Text size="xs" c="dimmed">
+                    Princípios de código
+                    {filteredBestPractices.length > 0 &&
+                      ` · ${filteredBestPractices.length}`}
+                  </Text>
+                </Stack>
+              </Group>
+            </Accordion.Control>
+            <Accordion.Panel>
+              <Stack gap={6}>
+                {filteredBestPractices.length > 0 ? (
+                  filteredBestPractices.map(b => (
+                    <NavItem
+                      key={b.slug}
+                      href={`/best-practices/${b.slug}`}
+                      label={b.title}
+                      icon={<IconCheck size={18} />}
+                      active={current === `/best-practices/${b.slug}`}
                       onNavigate={onNavigate}
                     />
                   ))

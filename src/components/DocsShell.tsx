@@ -8,6 +8,7 @@ import MobileNavMenu from './MobileNavMenu.tsx';
 import MobileBottomNav from './MobileBottomNav.tsx';
 import MobileBreadcrumbs from './MobileBreadcrumbs.tsx';
 import { ReadingProgress } from './ReadingProgress.tsx';
+import { BackToTop } from './BackToTop.tsx';
 import Footer from './Footer.tsx';
 import NeuralNetworkCanvas from './NeuralNetworkCanvas.tsx';
 import { useNavigationActions } from '../hooks/useNavigationActions.ts';
@@ -135,6 +136,9 @@ export default function DocsShell({
 
         {/* Footer */}
         <Footer />
+
+        {/* Back to top - reduz fadiga de scroll (UX) */}
+        <BackToTop />
 
         {/* Bottom Navigation - apenas no mobile */}
         <MobileBottomNav />

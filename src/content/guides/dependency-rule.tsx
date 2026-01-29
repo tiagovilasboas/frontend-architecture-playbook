@@ -12,6 +12,7 @@ import {
   Group,
   Badge,
   Box,
+  Anchor,
 } from '@mantine/core';
 import {
   IconBulb,
@@ -32,25 +33,17 @@ export default function DependencyRuleGuide() {
   // Overview Section
   const OverviewSection = () => (
     <Stack gap="md">
-      {/* Hero Section */}
+      {/* Topo alinhado à esquerda, como nas outras páginas de conteúdo */}
       <section>
-        <Stack align="center" ta="center" mb="md">
-          <Title order={1} fw={800} size="3.5rem" mb="sm">
-            Dependency Rule
-          </Title>
-          <Text size="xl" c="dimmed" mb="md" maw={800}>
-            Pense no código como uma <strong>cebola</strong>: camadas em volta
-            umas das outras. A regra: <strong>camada de fora pode usar a de
-            dentro; camada de dentro nunca usa a de fora</strong>. Simples assim.
-          </Text>
-          <Text size="md" c="dimmed" maw={700}>
-            Essa regra é a chave para todas as arquiteturas. Se você dominar ela,
-            pode inclusive criar a sua própria.
-          </Text>
-        </Stack>
+        <Title order={1} mb="sm">
+          Dependency Rule
+        </Title>
+        <Text size="lg" c="dimmed">
+          Camada de fora pode usar a de dentro; camada de dentro nunca usa a de fora.
+        </Text>
       </section>
 
-      {/* What is Dependency Rule */}
+      {/* O que é a Dependency Rule */}
       <Paper withBorder p="xl" radius="lg">
         <Stack gap="lg">
           <Title order={2} mb="sm">
@@ -61,10 +54,26 @@ export default function DependencyRuleGuide() {
             O que é a Dependency Rule?
           </Title>
           <Text size="lg" c="dimmed">
-            Seu código tem <strong>camadas</strong> (como uma cebola): a tela
+            Pense no código como uma <strong>cebola</strong>: camadas em volta
+            umas das outras. Seu código tem <strong>camadas</strong>: a tela
             é a camada mais de fora, depois vêm as regras de negócio, quem
             acessa dados, e no centro o núcleo. A regra: <strong>camada de fora
             pode importar a de dentro; camada de dentro nunca importa a de fora</strong>.
+            Essa regra é a chave para todas as arquiteturas. Se você dominar ela,
+            pode inclusive criar a sua própria.
+          </Text>
+          <Text size="sm" c="dimmed">
+            A ideia foi formalizada por{' '}
+            <strong>Robert C. Martin (Uncle Bob)</strong> no artigo{' '}
+            <Anchor
+              href="https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              inherit
+            >
+              The Clean Architecture
+            </Anchor>{' '}
+            e no livro <strong>Clean Architecture</strong>.
           </Text>
 
           <Alert color="brand" icon={<IconCheck size={20} />} radius="md">
@@ -90,7 +99,9 @@ export default function DependencyRuleGuide() {
             <Text size="sm" fw={500}>
               <strong>A regra de dependência é a chave para todas as arquiteturas.</strong>{' '}
               MVC, Clean Architecture, hexagonal, em camadas: todas respeitam a mesma
-              ideia. Se você souber aplicá-la, pode até inventar a sua própria arquitetura.
+              ideia. Uncle Bob (Robert C. Martin) formalizou isso em Clean Architecture:
+              &quot;Nada em um círculo interno pode saber nada sobre algo em um círculo externo.&quot;
+              Se você souber aplicá-la, pode até inventar a sua própria arquitetura.
             </Text>
           </Alert>
 

@@ -58,14 +58,19 @@ export default function NavMenu({
         variant="separated"
         radius="md"
       >
-        {/* Guides Section */}
+        {/* 1. Guias – conceitos e decisão */}
         <Accordion.Item value="guides">
           <Accordion.Control>
             <Group gap="xs">
               <IconBook size={16} color="var(--mantine-color-brand-6)" />
-              <Title order={6} c="dimmed" style={{ margin: 0 }}>
-                Guias
-              </Title>
+              <Stack gap={0}>
+                <Title order={6} c="dimmed" style={{ margin: 0 }}>
+                  1. Guias
+                </Title>
+                <Text size="xs" c="dimmed" visibleFrom="sm">
+                  Conceitos e decisão
+                </Text>
+              </Stack>
             </Group>
           </Accordion.Control>
           <Accordion.Panel>
@@ -84,40 +89,19 @@ export default function NavMenu({
           </Accordion.Panel>
         </Accordion.Item>
 
-        {/* Best Practices Section */}
-        <Accordion.Item value="best-practices">
-          <Accordion.Control>
-            <Group gap="xs">
-              <IconCheck size={16} color="var(--mantine-color-brand-6)" />
-              <Title order={6} c="dimmed" style={{ margin: 0 }}>
-                Boas Práticas
-              </Title>
-            </Group>
-          </Accordion.Control>
-          <Accordion.Panel>
-            <Stack gap={4}>
-              {bestPractices.map(b => (
-                <NavItem
-                  key={b.slug}
-                  href={`/best-practices/${b.slug}`}
-                  label={b.title}
-                  icon={<IconCheck size={16} />}
-                  active={current === `/best-practices/${b.slug}`}
-                  onNavigate={onNavigate}
-                />
-              ))}
-            </Stack>
-          </Accordion.Panel>
-        </Accordion.Item>
-
-        {/* Architectures Section */}
+        {/* 2. Arquiteturas – o que escolher */}
         <Accordion.Item value="architectures">
           <Accordion.Control>
             <Group gap="xs">
               <IconStack size={16} color="var(--mantine-color-brand-6)" />
-              <Title order={6} c="dimmed" style={{ margin: 0 }}>
-                Arquiteturas
-              </Title>
+              <Stack gap={0}>
+                <Title order={6} c="dimmed" style={{ margin: 0 }}>
+                  2. Arquiteturas
+                </Title>
+                <Text size="xs" c="dimmed" visibleFrom="sm">
+                  O que escolher
+                </Text>
+              </Stack>
             </Group>
           </Accordion.Control>
           <Accordion.Panel>
@@ -241,14 +225,19 @@ export default function NavMenu({
           </Accordion.Panel>
         </Accordion.Item>
 
-        {/* Patterns Section */}
+        {/* 3. Padrões – como estruturar */}
         <Accordion.Item value="patterns">
           <Accordion.Control>
             <Group gap="xs">
               <IconPuzzle size={16} color="var(--mantine-color-brand-6)" />
-              <Title order={6} c="dimmed" style={{ margin: 0 }}>
-                Padrões
-              </Title>
+              <Stack gap={0}>
+                <Title order={6} c="dimmed" style={{ margin: 0 }}>
+                  3. Padrões
+                </Title>
+                <Text size="xs" c="dimmed" visibleFrom="sm">
+                  Como estruturar
+                </Text>
+              </Stack>
             </Group>
           </Accordion.Control>
           <Accordion.Panel>
@@ -267,14 +256,19 @@ export default function NavMenu({
           </Accordion.Panel>
         </Accordion.Item>
 
-        {/* Techniques Section */}
+        {/* 4. Técnicas – como implementar */}
         <Accordion.Item value="techniques">
           <Accordion.Control>
             <Group gap="xs">
               <IconTools size={16} color="var(--mantine-color-brand-6)" />
-              <Title order={6} c="dimmed" style={{ margin: 0 }}>
-                Técnicas
-              </Title>
+              <Stack gap={0}>
+                <Title order={6} c="dimmed" style={{ margin: 0 }}>
+                  4. Técnicas
+                </Title>
+                <Text size="xs" c="dimmed" visibleFrom="sm">
+                  Como implementar
+                </Text>
+              </Stack>
             </Group>
           </Accordion.Control>
           <Accordion.Panel>
@@ -286,6 +280,37 @@ export default function NavMenu({
                   label={t.title}
                   icon={<IconTools size={16} />}
                   active={current === `/techniques/${t.slug}`}
+                  onNavigate={onNavigate}
+                />
+              ))}
+            </Stack>
+          </Accordion.Panel>
+        </Accordion.Item>
+
+        {/* 5. Boas Práticas – princípios de código */}
+        <Accordion.Item value="best-practices">
+          <Accordion.Control>
+            <Group gap="xs">
+              <IconCheck size={16} color="var(--mantine-color-brand-6)" />
+              <Stack gap={0}>
+                <Title order={6} c="dimmed" style={{ margin: 0 }}>
+                  5. Boas Práticas
+                </Title>
+                <Text size="xs" c="dimmed" visibleFrom="sm">
+                  Princípios de código
+                </Text>
+              </Stack>
+            </Group>
+          </Accordion.Control>
+          <Accordion.Panel>
+            <Stack gap={4}>
+              {bestPractices.map(b => (
+                <NavItem
+                  key={b.slug}
+                  href={`/best-practices/${b.slug}`}
+                  label={b.title}
+                  icon={<IconCheck size={16} />}
+                  active={current === `/best-practices/${b.slug}`}
                   onNavigate={onNavigate}
                 />
               ))}

@@ -33,24 +33,24 @@
 
 /* Conteúdo principal removido: uso de Container Mantine */
 
-/* Vertical rhythm: aplica espaçamento padrão entre blocos dentro de article/section */
+/* Vertical rhythm: espaçamento moderado para reduzir scroll (UX) */
 article > * + *,
 section > * + * {
-  margin-top: var(--mantine-spacing-md);
+  margin-top: var(--mantine-spacing-sm);
 }
 
 article,
 section {
-  margin-top: var(--mantine-spacing-xl);
-  margin-bottom: var(--mantine-spacing-xl);
+  margin-top: var(--mantine-spacing-lg);
+  margin-bottom: var(--mantine-spacing-lg);
 }
 
 .mantine-SimpleGrid-root,
 .mantine-Grid-root,
 .mantine-Stack-root > .mantine-SimpleGrid-root,
 .mantine-Stack-root > .mantine-Grid-root {
-  margin-top: var(--mantine-spacing-xl) !important;
-  margin-bottom: var(--mantine-spacing-xl) !important;
+  margin-top: var(--mantine-spacing-lg) !important;
+  margin-bottom: var(--mantine-spacing-lg) !important;
 }
 
 /* Container principal com espaçamento vertical */
@@ -133,7 +133,7 @@ a:focus {
 
 /* Header e Footer – bordas na paleta neutral */
 .header-bar {
-  border-bottom: 1px solid var(--mantine-color-brand-7) !important;
+  border: none !important;
 }
 
 /* Logo "Front Arch. Playbook" – sem outline azul ao clicar/focar */
@@ -143,17 +143,17 @@ a:focus {
 }
 
 .footer-bar {
-  border-top: 1px solid var(--mantine-color-brand-7) !important;
+  border: none !important;
 }
 
 [data-mantine-color-scheme='dark'] .header-bar,
 [data-mantine-color-scheme='dark'] .footer-bar {
-  border-color: var(--app-border-dark) !important;
+  background-color: var(--app-header-footer-dark) !important;
 }
 
 [data-mantine-color-scheme='light'] .header-bar,
 [data-mantine-color-scheme='light'] .footer-bar {
-  border-color: var(--app-border-light) !important;
+  background-color: var(--app-header-footer-light) !important;
 }
 
 /* Header desktop – botões do menu (Guias, Arquiteturas, etc.) – mesmas cores do sidebar */

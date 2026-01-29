@@ -33,6 +33,10 @@ export const semantic = {
   borderDark: '#262626',
   borderLight: '#e5e5e5',
 
+  // Header e footer: um pouco mais escuros que o body
+  headerFooterDark: '#050505',
+  headerFooterLight: '#ebebeb',
+
   // Nav dark: overlay branco sutil
   navHoverBgDark: 'rgba(255, 255, 255, 0.08)',
   navActiveBgDark: 'rgba(255, 255, 255, 0.14)',
@@ -48,11 +52,11 @@ export const semantic = {
   canvasBgLight: 'rgb(250, 250, 250)',
   canvasTrailDark: 'rgba(0, 0, 0, 0.65)',
   canvasTrailLight: 'rgba(250, 250, 250, 0.4)',
-  canvasLineDark: 'rgba(255, 255, 255, 0.07)',
-  canvasLineLight: 'rgba(0, 0, 0, 0.05)',
-  canvasNodeDark: 'rgba(255, 255, 255, 0.28)',
-  canvasNodeLight: 'rgba(0, 0, 0, 0.18)',
-  canvasGlowDark: 'rgba(255, 255, 255, 0.14)',
+  canvasLineDark: 'rgba(255, 255, 255, 0.08)',
+  canvasLineLight: 'rgba(0, 0, 0, 0.06)',
+  canvasNodeDark: 'rgba(255, 255, 255, 0.2)',
+  canvasNodeLight: 'rgba(0, 0, 0, 0.14)',
+  canvasGlowDark: 'rgba(255, 255, 255, 0.1)',
   canvasGlowLight: 'rgba(0, 0, 0, 0.08)',
 
   // Diagrams (success/error mantidos para clareza)
@@ -87,4 +91,6 @@ export const semanticCssVars = {
   navHoverBgLight: '--app-nav-hover-bg-light',
   navActiveBgLight: '--app-nav-active-bg-light',
   accordionHoverBgLight: '--app-accordion-hover-bg-light',
+  headerFooterDark: '--app-header-footer-dark',
+  headerFooterLight: '--app-header-footer-light',
 } as const;

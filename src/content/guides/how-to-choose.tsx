@@ -27,29 +27,27 @@ export default function HowToChoose() {
   return (
     <Container size="lg" px={isMobile ? 'xs' : 'md'}>
       <Stack gap={isMobile ? 'sm' : 'md'}>
-        {/* Hero Section */}
+        {/* Topo alinhado à esquerda, como nas outras páginas de conteúdo */}
         <section>
-          <Stack align="center" ta="center" mb={isMobile ? 'sm' : 'md'}>
-            <Title
-              order={1}
-              fw={700}
-              size={isMobile ? '1.7rem' : '2.5rem'}
-              mb={isMobile ? 'xs' : 'sm'}
-            >
-              Como Escolher sua Arquitetura Front-End
-            </Title>
-            <Text size={isMobile ? 'md' : 'lg'} c="dimmed" maw={800}>
-              Não existe arquitetura perfeita. Existe a arquitetura certa para o
-              seu contexto. Vamos descobrir qual faz sentido para o seu projeto.
-            </Text>
-          </Stack>
+          <Title
+            order={1}
+            fw={700}
+            size={isMobile ? '1.7rem' : '2.5rem'}
+            mb={isMobile ? 'xs' : 'sm'}
+          >
+            Como Escolher sua Arquitetura Front-End
+          </Title>
+          <Text size={isMobile ? 'md' : 'lg'} c="dimmed" maw={800}>
+            Não existe arquitetura perfeita. Existe a arquitetura certa para o
+            seu contexto. Vamos descobrir qual faz sentido para o seu projeto.
+          </Text>
         </section>
 
         {/* Decision Wizard */}
         <section>
           <Paper withBorder p={isMobile ? 'xs' : 'md'} radius="lg">
             <Stack gap={isMobile ? 'sm' : 'lg'}>
-              <Stack align="center" ta="center" mb={isMobile ? 'sm' : 'md'}>
+              <Stack mb={isMobile ? 'sm' : 'md'}>
                 <Title
                   order={2}
                   mb={isMobile ? 'xs' : 'sm'}
@@ -66,7 +64,6 @@ export default function HowToChoose() {
                   c="dimmed"
                   maw={isMobile ? '90vw' : 600}
                   mb={isMobile ? 0 : undefined}
-                  lineClamp={isMobile ? 2 : undefined}
                 >
                   6 perguntas para obter sugestões de arquitetura. O resultado é
                   um ponto de partida para discutir com o time, não uma decisão final.
@@ -84,7 +81,7 @@ export default function HowToChoose() {
         <section>
           <Paper withBorder p={isMobile ? 'md' : 'xl'} radius="lg">
             <Stack gap={isMobile ? 'sm' : 'lg'}>
-              <Stack align="center" ta="center" mb={isMobile ? 'sm' : 'md'}>
+              <Stack mb={isMobile ? 'sm' : 'md'}>
                 <Title
                   order={2}
                   mb={isMobile ? 'xs' : 'sm'}
@@ -121,7 +118,6 @@ export default function HowToChoose() {
               <Text
                 size={isMobile ? 'sm' : 'md'}
                 c="dimmed"
-                ta="center"
                 maw={700}
               >
                 Antes de sair copiando padrão, tenta entender o máximo possível
@@ -199,7 +195,6 @@ export default function HowToChoose() {
           <Title
             order={2}
             mb={isMobile ? 'md' : 'lg'}
-            ta="center"
             size={isMobile ? '1.2rem' : undefined}
           >
             <IconBulb
@@ -290,8 +285,8 @@ export default function HowToChoose() {
 
         {/* CTA Section */}
         <section>
-          <Paper withBorder p={isMobile ? 'md' : 'xl'} radius="lg" ta="center">
-            <Stack gap={isMobile ? 'sm' : 'md'} align="center">
+          <Paper withBorder p={isMobile ? 'md' : 'xl'} radius="lg">
+            <Stack gap={isMobile ? 'sm' : 'md'}>
               <Title order={2} size={isMobile ? '1.2rem' : undefined}>
                 Ainda com dúvidas?
               </Title>

@@ -1006,11 +1006,7 @@ export default function DecisionWizard() {
           'Outra opção a considerar',
         ];
         return (
-          <div
-            style={
-              isMobile ? { maxWidth: 420, margin: '0 auto', width: '100%' } : {}
-            }
-          >
+          <div style={isMobile ? { maxWidth: 420, width: '100%' } : {}}>
             <Title order={4} mb="sm">
               Sugestões para o seu contexto
             </Title>

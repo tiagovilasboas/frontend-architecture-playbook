@@ -23,6 +23,7 @@ export default function DocPage() {
   const components = {
     pre: (props: React.ComponentProps<'pre'>) => <CodeHighlight {...props} />,
   };
+
   return (
     <>
       <Group mb="md" justify="flex-end">

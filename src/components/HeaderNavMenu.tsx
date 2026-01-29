@@ -4,6 +4,14 @@ import { Link, useLocation } from 'react-router-dom';
 import { IconChevronDown } from '@tabler/icons-react';
 import type { DocMeta } from '../lib/content.tsx';
 
+const ARCH_GROUPS: { label: string; slice: [number, number] }[] = [
+  { label: 'Fundamentals', slice: [0, 4] },
+  { label: 'Padrões de Design', slice: [4, 7] },
+  { label: 'Integration & API', slice: [7, 9] },
+  { label: 'Modularization', slice: [9, 12] },
+  { label: 'Advanced', slice: [12, 15] },
+];
+
 interface HeaderNavMenuProps {
   guides: DocMeta[];
   architectures: DocMeta[];
@@ -96,14 +104,19 @@ export default function HeaderNavMenu({
           </UnstyledButton>
         </Menu.Target>
         <Menu.Dropdown className="header-nav-dropdown">
-          {architectures.map(arch => (
-            <Menu.Item
-              key={arch.slug}
-              component={Link}
-              to={`/architectures/${arch.slug}`}
-            >
-              {arch.title}
-            </Menu.Item>
+          {ARCH_GROUPS.map(({ label, slice: [start, end] }) => (
+            <React.Fragment key={label}>
+              <Menu.Label>{label}</Menu.Label>
+              {architectures.slice(start, end).map(arch => (
+                <Menu.Item
+                  key={arch.slug}
+                  component={Link}
+                  to={`/architectures/${arch.slug}`}
+                >
+                  {arch.title}
+                </Menu.Item>
+              ))}
+            </React.Fragment>
           ))}
         </Menu.Dropdown>
       </Menu>
