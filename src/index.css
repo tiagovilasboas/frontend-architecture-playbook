@@ -68,11 +68,11 @@ a {
 }
 
 [data-mantine-color-scheme='dark'] a {
-  color: var(--mantine-color-brand-3);
+  color: var(--mantine-color-brand-1);
 }
 
 [data-mantine-color-scheme='dark'] a:hover {
-  color: var(--mantine-color-brand-2);
+  color: var(--mantine-color-brand-0);
 }
 
 a:hover {
@@ -156,6 +156,66 @@ a:focus {
   background-color: var(--app-header-footer-light) !important;
 }
 
+/* Breadcrumb – topo do conteúdo, alinhado à esquerda, dark/light */
+.app-breadcrumbs {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.app-breadcrumbs .mantine-Breadcrumbs-root,
+.app-breadcrumbs-list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.app-breadcrumbs-link {
+  display: inline-flex;
+  align-items: center;
+  color: var(--mantine-color-dimmed);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+[data-mantine-color-scheme='dark'] .app-breadcrumbs-link {
+  color: var(--mantine-color-brand-1);
+}
+
+.app-breadcrumbs-link:hover {
+  color: var(--mantine-color-brand-6);
+}
+
+[data-mantine-color-scheme='dark'] .app-breadcrumbs-link:hover {
+  color: var(--mantine-color-brand-0);
+}
+
+.app-breadcrumbs-separator {
+  color: var(--mantine-color-dimmed);
+  opacity: 0.7;
+  margin: 0 6px;
+  flex-shrink: 0;
+}
+
+[data-mantine-color-scheme='dark'] .app-breadcrumbs-separator {
+  color: var(--mantine-color-brand-3);
+  opacity: 0.9;
+}
+
+.app-breadcrumbs-current {
+  color: var(--mantine-color-brand-6);
+}
+
+[data-mantine-color-scheme='dark'] .app-breadcrumbs-current {
+  color: var(--mantine-color-brand-2);
+}
+
 /* Header desktop – botões do menu (Guias, Arquiteturas, etc.) – mesmas cores do sidebar */
 .header-nav-btn {
   color: inherit;
@@ -212,9 +272,24 @@ a:focus {
   color: var(--mantine-color-brand-8) !important;
 }
 
+[data-mantine-color-scheme='dark'] .header-nav-dropdown .mantine-Menu-item {
+  color: var(--mantine-color-brand-1) !important;
+}
+
 [data-mantine-color-scheme='dark'] .header-nav-dropdown .mantine-Menu-item:hover {
   background: var(--app-nav-hover-bg-dark) !important;
-  color: var(--mantine-color-brand-2) !important;
+  color: var(--mantine-color-brand-0) !important;
+}
+
+/* Dropdown Arquiteturas: 2 colunas para ficar mais compacto na horizontal */
+.header-nav-dropdown-arch .header-nav-arch-items {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 2px;
+}
+
+.header-nav-dropdown-arch .header-nav-arch-items .mantine-Menu-item {
+  min-width: 0;
 }
 
 /* NavMenu – contraste melhor em hover e ativo */

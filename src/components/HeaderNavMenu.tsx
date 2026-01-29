@@ -1,15 +1,27 @@
 import React from 'react';
-import { Menu, UnstyledButton, Text, Group } from '@mantine/core';
+import { Menu, UnstyledButton, Text, Group, Box } from '@mantine/core';
 import { Link, useLocation } from 'react-router-dom';
-import { IconChevronDown } from '@tabler/icons-react';
+import {
+  IconChevronDown,
+  IconChevronRight,
+  IconRocket,
+  IconBuilding,
+  IconPlug,
+  IconPuzzle,
+  IconBolt,
+} from '@tabler/icons-react';
 import type { DocMeta } from '../lib/content.tsx';
 
-const ARCH_GROUPS: { label: string; slice: [number, number] }[] = [
-  { label: 'Fundamentals', slice: [0, 4] },
-  { label: 'Padrões de Design', slice: [4, 7] },
-  { label: 'Integration & API', slice: [7, 9] },
-  { label: 'Modularization', slice: [9, 12] },
-  { label: 'Advanced', slice: [12, 15] },
+const ARCH_GROUPS: {
+  label: string;
+  slice: [number, number];
+  icon: React.ReactNode;
+}[] = [
+  { label: 'Fundamentais', slice: [0, 4], icon: <IconRocket size={14} /> },
+  { label: 'Padrões de Design', slice: [4, 7], icon: <IconBuilding size={14} /> },
+  { label: 'Integração e API', slice: [7, 9], icon: <IconPlug size={14} /> },
+  { label: 'Modularização', slice: [9, 12], icon: <IconPuzzle size={14} /> },
+  { label: 'Avançadas', slice: [12, 15], icon: <IconBolt size={14} /> },
 ];
 
 interface HeaderNavMenuProps {
@@ -77,7 +89,7 @@ export default function HeaderNavMenu({
         </Menu.Dropdown>
       </Menu>
 
-      {/* Architectures Dropdown */}
+      {/* Architectures: dropdown com subdropdowns por grupo */}
       <Menu
         trigger="hover"
         openDelay={100}
@@ -103,20 +115,42 @@ export default function HeaderNavMenu({
             <IconChevronDown size={14} />
           </UnstyledButton>
         </Menu.Target>
-        <Menu.Dropdown className="header-nav-dropdown">
-          {ARCH_GROUPS.map(({ label, slice: [start, end] }) => (
-            <React.Fragment key={label}>
-              <Menu.Label>{label}</Menu.Label>
-              {architectures.slice(start, end).map(arch => (
+        <Menu.Dropdown className="header-nav-dropdown" style={{ minWidth: 200 }}>
+          {ARCH_GROUPS.map(({ label, slice: [start, end], icon }) => (
+            <Menu
+              key={label}
+              trigger="hover"
+              openDelay={100}
+              closeDelay={150}
+              position="right-start"
+              withArrow={false}
+            >
+              <Menu.Target>
                 <Menu.Item
-                  key={arch.slug}
-                  component={Link}
-                  to={`/architectures/${arch.slug}`}
+                  closeMenuOnClick={false}
+                  rightSection={<IconChevronRight size={14} />}
+                  style={{ cursor: 'default' }}
                 >
-                  {arch.title}
+                  <Group gap="xs">
+                    <span style={{ color: 'var(--mantine-color-brand-6)' }}>
+                      {icon}
+                    </span>
+                    <Text size="sm">{label}</Text>
+                  </Group>
                 </Menu.Item>
-              ))}
-            </React.Fragment>
+              </Menu.Target>
+              <Menu.Dropdown className="header-nav-dropdown">
+                {architectures.slice(start, end).map(arch => (
+                  <Menu.Item
+                    key={arch.slug}
+                    component={Link}
+                    to={`/architectures/${arch.slug}`}
+                  >
+                    {arch.title}
+                  </Menu.Item>
+                ))}
+              </Menu.Dropdown>
+            </Menu>
           ))}
         </Menu.Dropdown>
       </Menu>

@@ -6,7 +6,7 @@ import { useMediaQuery } from '@mantine/hooks';
 import HeaderBar from './HeaderBar.tsx';
 import MobileNavMenu from './MobileNavMenu.tsx';
 import MobileBottomNav from './MobileBottomNav.tsx';
-import MobileBreadcrumbs from './MobileBreadcrumbs.tsx';
+import AppBreadcrumbs from './AppBreadcrumbs.tsx';
 import { ReadingProgress } from './ReadingProgress.tsx';
 import { BackToTop } from './BackToTop.tsx';
 import Footer from './Footer.tsx';
@@ -119,10 +119,7 @@ export default function DocsShell({
           bestPractices={bestPractices}
         />
 
-        {/* Breadcrumbs - apenas no mobile */}
-        <MobileBreadcrumbs />
-
-        {/* Main Content */}
+        {/* Main Content – breadcrumb no topo, alinhado à esquerda */}
         <Box
           style={{
             flex: 1,
@@ -131,6 +128,7 @@ export default function DocsShell({
             paddingBottom: isMobile ? '80px' : '2rem', // Espaço para bottom nav
           }}
         >
+          <AppBreadcrumbs />
           {children}
         </Box>
 
