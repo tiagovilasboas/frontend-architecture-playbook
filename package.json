@@ -6,10 +6,9 @@
   "scripts": {
     "dev": "kill-port 5173 && vite",
     "build": "tsc && vite build",
-    "lint": "node ./node_modules/.ignored/eslint/bin/eslint.js .",
-    "lint:fix": "node ./node_modules/.ignored/eslint/bin/eslint.js --fix",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix",
     "format": "prettier --write .",
-    "format:staged": "prettier --write",
     "format:check": "prettier --check .",
     "preview": "vite preview",
     "prepare": "husky",
@@ -17,8 +16,8 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,json,md,mdx}": [
-      "npm run format:staged --",
-      "npm run lint:fix --"
+      "prettier --write",
+      "eslint --fix"
     ]
   },
   "dependencies": {
