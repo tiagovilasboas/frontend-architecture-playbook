@@ -5,14 +5,6 @@ import { ArchitectureLoader } from './components/ArchitectureLoader.tsx';
 import { MobileLoader } from './components/MobileLoader.tsx';
 import { useMobileDetector } from './hooks/useMobileDetector.ts';
 import { updatePageMeta } from './utils/seo.ts';
-import {
-  guides,
-  architectures,
-  patterns,
-  techniques,
-  bestPractices,
-} from './lib/content.tsx';
-
 // Lazy load pages for better performance
 const Home = lazy(() => import('./pages/Home.tsx'));
 const DocPage = lazy(() => import('./pages/DocPage.tsx'));
@@ -27,13 +19,7 @@ function App() {
   }, [location.pathname]);
 
   return (
-    <DocsShell
-      guides={guides}
-      architectures={architectures}
-      patterns={patterns}
-      techniques={techniques}
-      bestPractices={bestPractices}
-    >
+    <DocsShell>
       <Suspense
         fallback={
           isMobile ? <MobileLoader size="lg" /> : <ArchitectureLoader />

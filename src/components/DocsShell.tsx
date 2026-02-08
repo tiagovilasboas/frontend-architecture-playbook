@@ -11,34 +11,15 @@ import Footer from './Footer.tsx';
 import NeuralNetworkCanvas from './NeuralNetworkCanvas.tsx';
 import { useNavigationActions } from '../hooks/useNavigationActions.ts';
 import { useBreakpoints } from '../hooks/useBreakpoints.ts';
-import type { DocMeta } from '../lib/content.tsx';
 
 interface DocsShellProps {
-  guides: DocMeta[];
-  architectures: DocMeta[];
-  patterns: DocMeta[];
-  techniques: DocMeta[];
-  bestPractices: DocMeta[];
   children: React.ReactNode;
 }
 
-export default function DocsShell({
-  guides,
-  architectures,
-  patterns,
-  techniques,
-  bestPractices,
-  children,
-}: DocsShellProps) {
+export default function DocsShell({ children }: DocsShellProps) {
   const [opened, setOpened] = useState(false);
   const { isMobile } = useBreakpoints();
-  const actions = useNavigationActions(
-    guides,
-    architectures,
-    patterns,
-    techniques,
-    bestPractices
-  );
+  const actions = useNavigationActions();
 
   const handleBurgerClick = () => setOpened(prev => !prev);
 
@@ -86,12 +67,7 @@ export default function DocsShell({
         className="mobile-nav-drawer"
       >
         <MobileNavMenu
-          guides={guides}
-          architectures={architectures}
-          patterns={patterns}
-          techniques={techniques}
-          bestPractices={bestPractices}
-          onNavigate={handleDrawerClose} // Fecha o menu quando um link é clicado
+          onNavigate={handleDrawerClose}
         />
       </Drawer>
 
@@ -108,11 +84,6 @@ export default function DocsShell({
         <HeaderBar
           opened={opened}
           onBurger={handleBurgerClick}
-          guides={guides}
-          architectures={architectures}
-          patterns={patterns}
-          techniques={techniques}
-          bestPractices={bestPractices}
         />
 
         {/* Main Content – breadcrumb no topo, alinhado à esquerda */}

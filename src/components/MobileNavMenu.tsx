@@ -1,4 +1,3 @@
-import React from 'react';
 import { Stack, Group, Text, Accordion, ScrollArea, Anchor } from '@mantine/core';
 import {
   IconBook,
@@ -16,26 +15,20 @@ import {
   IconHeart,
 } from '@tabler/icons-react';
 import { useLocation } from 'react-router-dom';
-import type { DocMeta } from '../lib/content.tsx';
 import NavItem from './NavItem.tsx';
-
-interface Props {
-  guides: DocMeta[];
-  architectures: DocMeta[];
-  patterns: DocMeta[];
-  techniques: DocMeta[];
-  bestPractices: DocMeta[];
-  onNavigate?: () => void;
-}
-
-export default function MobileNavMenu({
+import {
   guides,
   architectures,
   patterns,
   techniques,
   bestPractices,
-  onNavigate,
-}: Props) {
+} from '../lib/content.tsx';
+
+interface Props {
+  onNavigate?: () => void;
+}
+
+export default function MobileNavMenu({ onNavigate }: Props) {
   const location = useLocation();
   const current = location.pathname;
 

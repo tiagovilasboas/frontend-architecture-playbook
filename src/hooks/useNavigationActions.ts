@@ -1,5 +1,12 @@
 import { useNavigate } from 'react-router-dom';
 import type { DocMeta, CollectionType } from '../lib/content.tsx';
+import {
+  guides,
+  architectures,
+  patterns,
+  techniques,
+  bestPractices,
+} from '../lib/content.tsx';
 
 interface NavigationAction {
   id: string;
@@ -8,13 +15,7 @@ interface NavigationAction {
   onTrigger: () => void;
 }
 
-export function useNavigationActions(
-  guides: DocMeta[],
-  architectures: DocMeta[],
-  patterns: DocMeta[],
-  techniques: DocMeta[],
-  bestPractices: DocMeta[]
-): NavigationAction[] {
+export function useNavigationActions(): NavigationAction[] {
   const navigate = useNavigate();
 
   const createActions = (

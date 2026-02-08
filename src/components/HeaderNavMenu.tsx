@@ -10,7 +10,13 @@ import {
   IconPuzzle,
   IconBolt,
 } from '@tabler/icons-react';
-import type { DocMeta } from '../lib/content.tsx';
+import {
+  guides,
+  architectures,
+  patterns,
+  techniques,
+  bestPractices,
+} from '../lib/content.tsx';
 
 const ARCH_GROUPS: {
   label: string;
@@ -28,21 +34,7 @@ const ARCH_GROUPS: {
   { label: 'Avançadas', slice: [12, 15], icon: <IconBolt size={14} /> },
 ];
 
-interface HeaderNavMenuProps {
-  guides: DocMeta[];
-  architectures: DocMeta[];
-  patterns: DocMeta[];
-  techniques: DocMeta[];
-  bestPractices: DocMeta[];
-}
-
-export default function HeaderNavMenu({
-  guides,
-  architectures,
-  patterns,
-  techniques,
-  bestPractices,
-}: HeaderNavMenuProps) {
+export default function HeaderNavMenu() {
   const location = useLocation();
 
   const isActive = (path: string) => {

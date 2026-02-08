@@ -16,29 +16,15 @@ import {
   IconBrandGithub,
 } from '@tabler/icons-react';
 import { useMantineColorScheme } from '@mantine/core';
-import type { DocMeta } from '../lib/content.tsx';
 import { useBreakpoints } from '../hooks/useBreakpoints.ts';
 import HeaderNavMenu from './HeaderNavMenu.tsx';
 
 interface Props {
   opened: boolean;
   onBurger: () => void;
-  guides: DocMeta[];
-  architectures: DocMeta[];
-  patterns: DocMeta[];
-  techniques: DocMeta[];
-  bestPractices: DocMeta[];
 }
 
-export default function HeaderBar({
-  opened,
-  onBurger,
-  guides,
-  architectures,
-  patterns,
-  techniques,
-  bestPractices,
-}: Props) {
+export default function HeaderBar({ opened, onBurger }: Props) {
   const { isMobile, isSmallMobile, isDesktop } = useBreakpoints();
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
 
@@ -96,13 +82,7 @@ export default function HeaderBar({
 
           {/* Menu horizontal - apenas no desktop */}
           {!isMobile && (
-            <HeaderNavMenu
-              guides={guides}
-              architectures={architectures}
-              patterns={patterns}
-              techniques={techniques}
-              bestPractices={bestPractices}
-            />
+            <HeaderNavMenu />
           )}
         </Group>
 
