@@ -96,7 +96,7 @@ export default function Performance() {
                 <Text fw={600}>Usuário não espera, ele abandona</Text>
                 <Text size="sm" c="dimmed">
                   Quanto mais lento o carregamento, maior a taxa de abandono.
-                  Cada segundo a mais aumenta significativamente a rejeição
+                  Cada segundo a mais no carregamento aumenta a taxa de rejeição
                 </Text>
               </div>
             </Group>

@@ -143,9 +143,9 @@ export default function ImplementationRoadmap() {
               🎯 Resultado Esperado:
             </Text>
             <Text size="sm">
-              <strong>Performance significativamente melhor</strong>, métricas
-              claras, base sólida para próximas fases. Redução de bundle,
-              carregamento mais rápido.
+              <strong>Métricas de performance mensuráveis</strong>: Lighthouse
+              score, bundle size, LCP e FID documentados. Base sólida para
+              próximas fases.
             </Text>
           </Alert>
         </Stack>
@@ -216,8 +216,9 @@ export default function ImplementationRoadmap() {
               🎯 Resultado Esperado:
             </Text>
             <Text size="sm">
-              <strong>Bundle significativamente menor</strong>, carregamento
-              mais rápido. Code splitting e tree shaking fazem a diferença.
+              <strong>Bundle menor com code splitting e tree shaking</strong>.
+              Lazy loading por rota, chunks otimizados, carregamento
+              progressivo.
             </Text>
           </Alert>
         </Stack>

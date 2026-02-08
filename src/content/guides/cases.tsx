@@ -81,7 +81,7 @@ export default function Cases() {
             size={28}
             style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
-          Os 9 Casos que Viraram Dinheiro
+          Os Casos que Viraram Dinheiro
         </Title>
 
         <Stack gap="lg">
@@ -217,9 +217,9 @@ export default function Cases() {
 
           <Text>
             Esses <strong>15 casos reais</strong> mostram que{' '}
-            <strong>performance vira dinheiro</strong>. Netflix, Spotify,
-            Airbnb, Pinterest, Tinder, Slack, Uber, Twitter e Walmart - todos
-            resolveram problemas reais.
+            <strong>performance vira dinheiro</strong>. Netflix, Shopify,
+            Airbnb, Figma, Notion, Atlassian, Vercel e outras - todos
+            resolveram problemas reais com arquitetura frontend.
           </Text>
 
           <Text>
@@ -276,10 +276,10 @@ export default function Cases() {
           </Alert>
 
           <Text size="sm" c="dimmed">
-            Este repositório é uma coleção curada de estudos de caso técnicos,
-            artigos de engenharia e métricas reais de performance de empresas
-            como Netflix, Spotify, Airbnb e outras. Cada caso foi validado e
-            documentado com dados concretos de impacto.
+            Este repositório é uma coleção curada de estudos de caso técnicos e
+            artigos de engenharia publicados diretamente pelas empresas nos seus
+            tech blogs oficiais. Todos os 15 casos acima incluem link direto
+            para a fonte original.
           </Text>
         </Stack>
       </Paper>

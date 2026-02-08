@@ -228,7 +228,7 @@ function JAMstack() {
                   Blog migrado para JAMstack
                 </Text>
                 <List size="sm" spacing="xs">
-                  <List.Item>Performance significativamente melhor</List.Item>
+                  <List.Item>Performance melhor com páginas pré-geradas</List.Item>
                   <List.Item>SEO otimizado</List.Item>
                   <List.Item>Deploy em segundos</List.Item>
                   <List.Item>Menor custo de infraestrutura</List.Item>

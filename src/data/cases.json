@@ -32,7 +32,7 @@
       "cache de áudio"
     ],
     "results": [
-      "Bundle size inicial reduzido significativamente",
+      "Bundle size inicial menor com lazy loading por módulo",
       "Deploys independentes por time",
       "Carregamento mais rápido do player"
     ],
@@ -52,7 +52,7 @@
       "compressão adaptativa"
     ],
     "results": [
-      "Carregamento das listing pages significativamente mais rápido",
+      "Listing pages mais leves com lazy loading e compressão adaptativa",
       "Menor consumo de dados em mobile",
       "Melhor experiência em conexões lentas"
     ],
@@ -72,8 +72,8 @@
       "compressão automática"
     ],
     "results": [
-      "Tempo de carregamento reduzido drasticamente",
-      "Aumento expressivo na receita por usuário",
+      "Tempo de carregamento menor com service workers e virtual scroll",
+      "Melhoria em métricas de engajamento e receita (detalhes no artigo)",
       "Tempo até primeira interação muito menor"
     ],
     "link": "https://medium.com/dev-channel/a-pinterest-progressive-web-app-performance-case-study-3bd6ed2e6154",
@@ -92,7 +92,7 @@
       "otimização de assets"
     ],
     "results": [
-      "Carregamento significativamente mais rápido",
+      "App funcional em redes lentas com code splitting e cache",
       "Menor consumo de dados",
       "Experiência consistente em conexões lentas"
     ],
@@ -112,7 +112,7 @@
       "cache inteligente"
     ],
     "results": [
-      "Footprint de memória significativamente menor",
+      "Menor consumo de memória com virtualização e lazy loading",
       "Busca de mensagens mais responsiva",
       "Menos travamentos em máquinas modestas"
     ],
@@ -194,7 +194,7 @@
     "results": [
       "30% mais rápido no carregamento de páginas",
       "Arquitetura preparada para IA",
-      "Developer experience significativamente melhor"
+      "Melhor DX com Remix conventions e data loading nativo"
     ],
     "link": "https://shopify.engineering/remixing-shopifys-admin",
     "color": "green"
@@ -232,7 +232,7 @@
       "build incremental"
     ],
     "results": [
-      "Builds significativamente mais rápidos",
+      "Tempo de build menor com Bazel caching distribuído",
       "Caching distribuído reduzindo recompilações",
       "Escala para centenas de engenheiros"
     ],
