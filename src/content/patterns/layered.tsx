@@ -58,31 +58,24 @@ export default function LayeredArchitecture() {
         </Text>
 
         <Code block>
-          {`// 📱 Presentation Layer
-class ProductController {
-  constructor(private productService: ProductService) {}
-  
-  async getProducts(req, res) {
-    const products = await this.productService.getAllProducts()
-    res.json(products)
-  }
+          {`// 📱 Presentation Layer (React Component)
+function ProductList() {
+  const { products, isLoading } = useProducts()
+  if (isLoading) return <Spinner />
+  return products.map(p => <ProductCard key={p.id} product={p} />)
 }
 
-// 💼 Business Layer  
-class ProductService {
-  constructor(private productRepo: ProductRepository) {}
-  
-  async getAllProducts() {
-    const products = await this.productRepo.findAll()
-    return products.filter(p => p.isActive)  // Business rule
-  }
+// 💼 Business Layer (Custom Hook / Service)
+function useProducts() {
+  const { data, isLoading } = useQuery(['products'], productApi.getAll)
+  const products = data?.filter(p => p.isActive) ?? []  // Business rule
+  return { products, isLoading }
 }
 
-// 🗄️ Data Layer
-class ProductRepository {
-  async findAll() {
-    return await db.collection('products').find().toArray()
-  }
+// 🗄️ Data Layer (API Client)
+const productApi = {
+  getAll: () => fetch('/api/products').then(r => r.json()),
+  getById: (id: string) => fetch(\`/api/products/\${id}\`).then(r => r.json()),
 }`}
         </Code>
       </Paper>
@@ -138,28 +131,33 @@ class ProductRepository {
               <Badge variant="light" color="blue" size="lg">
                 Presentation
               </Badge>
-              <Text fw={600}>Controllers, Views, APIs</Text>
+              <Text fw={600}>Components, Pages, UI</Text>
             </Group>
             <Text size="sm" c="dimmed" mb="md">
-              Recebe requests, formata responses
+              Renderiza UI, captura eventos do usuário
             </Text>
             <Code mb="md">
-              {`// Express.js controller
-app.get('/api/orders', async (req, res) => {
-  const orders = await orderService.getOrdersByUser(req.user.id)
-  res.json(orders.map(o => ({
-    id: o.id,
-    total: o.total,
-    status: o.status,
-    createdAt: o.createdAt
-  })))
-})`}
+              {`// React component (Presentation)
+function OrderList() {
+  const { orders, isLoading } = useOrders()
+  
+  if (isLoading) return <Skeleton />
+  
+  return orders.map(order => (
+    <OrderCard
+      key={order.id}
+      total={order.total}
+      status={order.status}
+      date={order.createdAt}
+    />
+  ))
+}`}
             </Code>
             <List size="sm" spacing={4}>
-              <List.Item>HTTP/GraphQL endpoints</List.Item>
-              <List.Item>Input validation</List.Item>
-              <List.Item>Response formatting</List.Item>
-              <List.Item>Authentication/Authorization</List.Item>
+              <List.Item>React components e pages</List.Item>
+              <List.Item>Event handlers e forms</List.Item>
+              <List.Item>Layout e formatação</List.Item>
+              <List.Item>Routing e navegação</List.Item>
             </List>
           </Card>
 
@@ -174,31 +172,28 @@ app.get('/api/orders', async (req, res) => {
               Regras de negócio, validações, orquestração
             </Text>
             <Code mb="md">
-              {`class OrderService {
-  async createOrder(userId: string, items: CartItem[]) {
+              {`// Custom hook (Business Layer)
+function useCreateOrder() {
+  const mutation = useMutation(orderApi.create)
+  
+  const createOrder = (items: CartItem[]) => {
     // Business rules
-    if (items.length === 0) throw new Error('Empty cart')
+    if (items.length === 0) throw new Error('Carrinho vazio')
     
-    const user = await this.userRepo.findById(userId)
-    if (!user.isActive) throw new Error('Inactive user')
+    const total = items.reduce((sum, i) => sum + i.price * i.qty, 0)
+    if (total < 10) throw new Error('Pedido mínimo: R$10')
     
-    const total = items.reduce((sum, item) => sum + item.price, 0)
-    if (total > user.creditLimit) throw new Error('Credit limit exceeded')
-    
-    // Orchestration
-    const order = new Order(userId, items, total)
-    await this.orderRepo.save(order)
-    await this.emailService.sendOrderConfirmation(user.email, order)
-    
-    return order
+    return mutation.mutateAsync({ items, total })
   }
+  
+  return { createOrder, isLoading: mutation.isPending }
 }`}
             </Code>
             <List size="sm" spacing={4}>
-              <List.Item>Business rules enforcement</List.Item>
-              <List.Item>Use case orchestration</List.Item>
-              <List.Item>Cross-cutting concerns</List.Item>
-              <List.Item>Domain logic</List.Item>
+              <List.Item>Regras de negócio em hooks</List.Item>
+              <List.Item>Validações e transformações</List.Item>
+              <List.Item>Orquestração de estado</List.Item>
+              <List.Item>Lógica de domínio</List.Item>
             </List>
           </Card>
 
@@ -207,30 +202,30 @@ app.get('/api/orders', async (req, res) => {
               <Badge variant="light" color="orange" size="lg">
                 Data
               </Badge>
-              <Text fw={600}>Repositories, DAOs, Database</Text>
+              <Text fw={600}>API Clients, Adapters, Storage</Text>
             </Group>
             <Text size="sm" c="dimmed" mb="md">
-              Persistência, queries, acesso a dados
+              Comunicação com APIs, cache, localStorage
             </Text>
             <Code mb="md">
-              {`class OrderRepository {
-  async save(order: Order) {
-    return await db.collection('orders').insertOne(order)
-  }
-  
-  async findByUser(userId: string) {
-    return await db.collection('orders')
-      .find({ userId })
-      .sort({ createdAt: -1 })
-      .toArray()
-  }
+              {`// API client (Data Layer)
+const orderApi = {
+  create: (data: CreateOrderDTO) =>
+    fetch('/api/orders', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    }).then(r => r.json()),
+
+  getByUser: (userId: string) =>
+    fetch(\`/api/orders?user=\${userId}\`).then(r => r.json()),
 }`}
             </Code>
             <List size="sm" spacing={4}>
-              <List.Item>Database operations</List.Item>
-              <List.Item>External APIs</List.Item>
-              <List.Item>File system access</List.Item>
-              <List.Item>Cache management</List.Item>
+              <List.Item>Fetch / Axios API clients</List.Item>
+              <List.Item>localStorage / sessionStorage</List.Item>
+              <List.Item>Cache com React Query / SWR</List.Item>
+              <List.Item>Adapters para APIs externas</List.Item>
             </List>
           </Card>
         </Stack>
@@ -346,7 +341,7 @@ app.get('/api/orders', async (req, res) => {
               ❌ Fat controllers
             </Text>
             <Text size="sm" c="dimmed">
-              Controllers fazem muito. Delegue para services.
+              Componentes fazem muito. Delegue lógica para hooks e services.
             </Text>
           </Alert>
 
@@ -367,7 +362,7 @@ app.get('/api/orders', async (req, res) => {
             <Text size="sm" c="dimmed">
               <strong>Mantenha lógica no domínio:</strong> Rich domain model
               <br />
-              <strong>Controllers magros:</strong> Só routing e formatação
+              <strong>Componentes magros:</strong> Só UI e eventos
               <br />
               <strong>Dependência unidirecional:</strong> Presentation →
               Business → Data
@@ -397,10 +392,10 @@ app.get('/api/orders', async (req, res) => {
             </Title>
             <List size="sm" spacing="xs">
               <List.Item>
-                <strong>Frameworks:</strong> Express.js, Fastify, Koa
+                <strong>Frameworks:</strong> React, Next.js, Vue
               </List.Item>
               <List.Item>
-                <strong>Testing:</strong> Jest, Mocha, Supertest
+                <strong>Testing:</strong> Vitest, Jest, Testing Library
               </List.Item>
               <List.Item>
                 <strong>Architecture:</strong> Clean Architecture, DDD
