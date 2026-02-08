@@ -240,8 +240,8 @@ if ('serviceWorker' in navigator) {
               📱 Mobile-first experience
             </Text>
             <Text>
-              User precisa acessar rápido e frequente. Tipo WhatsApp Web,
-              Instagram, Twitter.
+              User precisa acessar rápido e frequente. Apps de mensagem,
+              redes sociais, ferramentas de produtividade.
             </Text>
           </Card>
 
@@ -298,9 +298,9 @@ if ('serviceWorker' in navigator) {
                 <IconCode size={20} />
               </ThemeIcon>
               <div>
-                <Title order={4}>Twitter Lite</Title>
+                <Title order={4}>Rede social lite</Title>
                 <Text size="sm" c="dimmed" mb="sm">
-                  PWA que substituiu app nativo
+                  PWA para substituir app nativo em mercados emergentes
                 </Text>
                 <List size="sm" spacing="xs">
                   <List.Item>Melhoria significativa em conversões</List.Item>
@@ -338,9 +338,9 @@ if ('serviceWorker' in navigator) {
                 <IconBulb size={20} />
               </ThemeIcon>
               <div>
-                <Title order={4}>Uber</Title>
+                <Title order={4}>App de serviço on-demand</Title>
                 <Text size="sm" c="dimmed" mb="sm">
-                  PWA para mercados emergentes
+                  PWA leve para redes 2G/3G
                 </Text>
                 <List size="sm" spacing="xs">
                   <List.Item>Funciona em conexões lentas</List.Item>

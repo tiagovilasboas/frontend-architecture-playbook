@@ -330,7 +330,7 @@ function ShoppingCart() {
               <div>
                 <Title order={4}>Collaborative Editors</Title>
                 <Text size="sm" c="dimmed" mb="sm">
-                  Google Docs, Figma, Notion
+                  Edição colaborativa em tempo real
                 </Text>
                 <List size="sm" spacing="xs">
                   <List.Item>Eventos: INSERT, DELETE, FORMAT</List.Item>

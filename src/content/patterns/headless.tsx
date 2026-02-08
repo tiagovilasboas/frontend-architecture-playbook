@@ -170,9 +170,9 @@ Frontend: fetch('/api/products') → React/Vue/Angular/qualquer coisa`}
                 <IconCode size={20} />
               </ThemeIcon>
               <div>
-                <Title order={4}>Netflix</Title>
+                <Title order={4}>Streaming multi-plataforma</Title>
                 <Text size="sm" c="dimmed" mb="sm">
-                  Headless CMS para múltiplas plataformas
+                  Headless CMS para TV, mobile e web
                 </Text>
                 <List size="sm" spacing="xs">
                   <List.Item>Website: React + Next.js</List.Item>
@@ -190,9 +190,9 @@ Frontend: fetch('/api/products') → React/Vue/Angular/qualquer coisa`}
                 <IconRocket size={20} />
               </ThemeIcon>
               <div>
-                <Title order={4}>Spotify</Title>
+                <Title order={4}>Plataforma de conteúdo</Title>
                 <Text size="sm" c="dimmed" mb="sm">
-                  Headless para conteúdo de música
+                  Headless CMS para editorial e mídia
                 </Text>
                 <List size="sm" spacing="xs">
                   <List.Item>Web: React</List.Item>

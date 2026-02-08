@@ -150,9 +150,9 @@ function MicroFrontends() {
                 <IconCode size={20} />
               </ThemeIcon>
               <div>
-                <Title order={4}>Netflix</Title>
+                <Title order={4}>Plataforma de streaming</Title>
                 <Text size="sm" c="dimmed" mb="sm">
-                  Plataforma de streaming com múltiplos times
+                  Múltiplos times, múltiplas features
                 </Text>
                 <List size="sm" spacing="xs">
                   <List.Item>Time de busca independente</List.Item>
@@ -170,9 +170,9 @@ function MicroFrontends() {
                 <IconApps size={20} />
               </ThemeIcon>
               <div>
-                <Title order={4}>Spotify</Title>
+                <Title order={4}>Player de mídia</Title>
                 <Text size="sm" c="dimmed" mb="sm">
-                  Player de música com funcionalidades complexas
+                  Funcionalidades complexas por domínio
                 </Text>
                 <List size="sm" spacing="xs">
                   <List.Item>Time de player independente</List.Item>

@@ -31,8 +31,8 @@ import GuideNavigation from '../../components/GuideNavigation';
 // - Complexidade: Curva de aprendizado, overhead cognitivo
 //
 // Fontes das métricas:
-// - Casos reais de empresas (Netflix, Spotify, Airbnb, Uber)
-// - Experiência prática em projetos de diferentes tamanhos
+// - Casos reais documentados em cases.json (com links verificáveis)
+// - Core Web Vitals e métricas de performance padrão da indústria
 // - Análise de trade-offs documentados na literatura
 // - Feedback de desenvolvedores e arquitetos
 // - Métricas de performance e manutenibilidade reais
@@ -698,7 +698,7 @@ function ArchitectureComparisonPage() {
                 📊 Fontes das Métricas:
               </Text>
               <Text size="sm" c="dimmed">
-                • <strong>Casos reais:</strong> Netflix, Spotify, Airbnb, Uber
+                • <strong>Casos reais:</strong> 9 cases com links verificáveis
                 <br />• <strong>Core Web Vitals:</strong> LCP, INP, CLS
                 <br />• <strong>Performance:</strong> Bundle size, build time
                 <br />• <strong>Referências:</strong> Artigos de engenharia

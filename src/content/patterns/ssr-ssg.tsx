@@ -250,9 +250,9 @@ export default function SSRSSGArchitecture() {
                 <IconCode size={20} />
               </ThemeIcon>
               <div>
-                <Title order={4}>Netflix</Title>
+                <Title order={4}>Plataforma de streaming</Title>
                 <Text size="sm" c="dimmed" mb="sm">
-                  Streaming com SSR para performance
+                  SSR para performance e SEO de catálogo
                 </Text>
                 <List size="sm" spacing="xs">
                   <List.Item>SSR para páginas de filme</List.Item>
@@ -297,7 +297,7 @@ export default function SSRSSGArchitecture() {
                 <List size="sm" spacing="xs">
                   <List.Item>SSR para páginas de produto</List.Item>
                   <List.Item>SSG para categorias</List.Item>
-                  <List.Item>SEO para Google Shopping</List.Item>
+                  <List.Item>SEO para motores de busca</List.Item>
                   <List.Item>Performance para mobile</List.Item>
                 </List>
               </div>

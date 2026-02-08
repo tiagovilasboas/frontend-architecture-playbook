@@ -16,12 +16,12 @@ export const getPageMeta = (pathname: string): PageMeta => {
       return {
         title: 'Arquitetura Front-End: Guia Completo + Decision Wizard v3.0',
         description:
-          'Arquitetura Front-End: Guia completo com Decision Wizard v3.0 + 9 arquiteturas comparadas. Clean Architecture, Micro-frontends, SSR/SSG, BFF, PWA. Casos reais Netflix, Spotify, Airbnb.',
+          'Arquitetura Front-End: Guia completo com Decision Wizard v3.0 + 9 arquiteturas comparadas. Clean Architecture, Micro-frontends, SSR/SSG, BFF, PWA. 9 casos reais com fontes verificáveis.',
         keywords:
           'arquitetura front-end, arquitetura frontend, front-end architecture, frontend architecture, clean architecture, micro frontends, javascript patterns, web development, typescript, decision wizard v3, architecture patterns, frontend best practices',
         ogTitle: 'Arquitetura Front-End: Guia Completo + Decision Wizard v3.0',
         ogDescription:
-          'Guia completo de arquitetura front-end com Decision Wizard v3.0 e 9 arquiteturas comparadas. Casos reais Netflix, Spotify, Airbnb.',
+          'Guia completo de arquitetura front-end com Decision Wizard v3.0 e 9 arquiteturas comparadas. 9 casos reais com fontes verificáveis.',
         ogImage: `${baseUrl}/og-image.png`,
         canonical: baseUrl,
       };
@@ -68,9 +68,9 @@ export const getPageMeta = (pathname: string): PageMeta => {
     case '/guides/cases':
       return {
         title:
-          'Casos Reais de Arquitetura Front-End - Netflix, Spotify, Airbnb',
+          'Casos Reais de Arquitetura Front-End - 9 Cases com Fontes',
         description:
-          '9 casos reais de empresas que aplicaram boas práticas com resultado. Netflix, Spotify, Airbnb, Pinterest, Tinder, Slack, Uber, Twitter, Walmart.',
+          '9 casos reais de empresas que aplicaram boas práticas com resultado. Cada caso com link para artigo ou tech blog original.',
         keywords:
           'frontend case studies, netflix architecture, spotify frontend, airbnb tech, real world examples, performance optimization, architecture success stories',
         ogTitle: 'Casos Reais: Quando Front-End Vira Dinheiro',

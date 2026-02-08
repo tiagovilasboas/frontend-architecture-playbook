@@ -201,9 +201,9 @@ function Monorepo() {
                 <IconCode size={20} />
               </ThemeIcon>
               <div>
-                <Title order={4}>Google</Title>
+                <Title order={4}>Empresa grande (1000+ devs)</Title>
                 <Text size="sm" c="dimmed" mb="sm">
-                  Monorepo gigante com bilhões de linhas
+                  Monorepo centralizado com tooling próprio
                 </Text>
                 <List size="sm" spacing="xs">
                   <List.Item>Um repositório para todo código</List.Item>
@@ -221,12 +221,12 @@ function Monorepo() {
                 <IconBrandGithub size={20} />
               </ThemeIcon>
               <div>
-                <Title order={4}>Facebook/Meta</Title>
+                <Title order={4}>Plataforma multi-produto</Title>
                 <Text size="sm" c="dimmed" mb="sm">
-                  Monorepo para produtos sociais
+                  Monorepo para apps que compartilham código
                 </Text>
                 <List size="sm" spacing="xs">
-                  <List.Item>React, React Native, Instagram</List.Item>
+                  <List.Item>Web app, mobile app, admin panel</List.Item>
                   <List.Item>Compartilhamento de componentes</List.Item>
                   <List.Item>Deploy unificado</List.Item>
                   <List.Item>Versionamento coordenado</List.Item>
@@ -241,9 +241,9 @@ function Monorepo() {
                 <IconBulb size={20} />
               </ThemeIcon>
               <div>
-                <Title order={4}>Netflix</Title>
+                <Title order={4}>Streaming multi-device</Title>
                 <Text size="sm" c="dimmed" mb="sm">
-                  Monorepo para streaming
+                  Monorepo para múltiplas plataformas
                 </Text>
                 <List size="sm" spacing="xs">
                   <List.Item>Múltiplas plataformas (TV, mobile, web)</List.Item>

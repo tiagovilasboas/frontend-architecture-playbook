@@ -223,9 +223,9 @@ function FeatureFlags() {
                 <IconCode size={20} />
               </ThemeIcon>
               <div>
-                <Title order={4}>Netflix</Title>
+                <Title order={4}>Testes A/B em produção</Title>
                 <Text size="sm" c="dimmed" mb="sm">
-                  Feature flags para testes A/B
+                  Feature flags para experimentação contínua
                 </Text>
                 <List size="sm" spacing="xs">
                   <List.Item>Teste de algoritmos de recomendação</List.Item>
@@ -245,9 +245,9 @@ function FeatureFlags() {
                 <IconSettings2 size={20} />
               </ThemeIcon>
               <div>
-                <Title order={4}>Facebook</Title>
+                <Title order={4}>Rollout gradual de features</Title>
                 <Text size="sm" c="dimmed" mb="sm">
-                  Feature flags para funcionalidades
+                  Feature flags para lançamentos controlados
                 </Text>
                 <List size="sm" spacing="xs">
                   <List.Item>Novos recursos gradualmente</List.Item>

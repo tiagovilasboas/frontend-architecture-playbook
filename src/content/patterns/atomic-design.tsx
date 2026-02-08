@@ -194,7 +194,7 @@ function AtomicDesign() {
               <div>
                 <Title order={4}>Material Design</Title>
                 <Text size="sm" c="dimmed" mb="sm">
-                  Google's design system
+                  Design system open-source para web e mobile
                 </Text>
                 <List size="sm" spacing="xs">
                   <List.Item>Átomos: Buttons, inputs, icons</List.Item>
@@ -234,7 +234,7 @@ function AtomicDesign() {
               <div>
                 <Title order={4}>Shopify Polaris</Title>
                 <Text size="sm" c="dimmed" mb="sm">
-                  Shopify's design system
+                  Design system para e-commerce
                 </Text>
                 <List size="sm" spacing="xs">
                   <List.Item>Átomos: Foundation components</List.Item>

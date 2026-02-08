@@ -557,7 +557,7 @@ export default function Home() {
                         Casos Reais de Mercado
                       </Text>
                       <Text size={isMobile ? 'sm' : 'xs'} c="dimmed" style={{ lineHeight: 1.5 }}>
-                        9 empresas: Netflix, Spotify, Airbnb, Pinterest e outras. Como cada uma usa arquitetura no front-end.
+                        9 casos reais com links para artigos e tech blogs originais. Arquiteturas que funcionam em produção.
                       </Text>
                     </Stack>
                     <Button

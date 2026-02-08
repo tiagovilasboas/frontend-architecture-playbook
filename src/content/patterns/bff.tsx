@@ -228,9 +228,9 @@ useEffect(() => {
                 <IconCode size={20} />
               </ThemeIcon>
               <div>
-                <Title order={4}>Netflix</Title>
+                <Title order={4}>Multi-device (TV, mobile, web)</Title>
                 <Text size="sm" c="dimmed" mb="sm">
-                  BFF para diferentes dispositivos
+                  Um BFF por tipo de dispositivo
                 </Text>
                 <List size="sm" spacing="xs">
                   <List.Item>TV BFF: dados otimizados para TV</List.Item>
@@ -248,14 +248,14 @@ useEffect(() => {
                 <IconRocket size={20} />
               </ThemeIcon>
               <div>
-                <Title order={4}>Spotify</Title>
+                <Title order={4}>Multi-domínio (features isoladas)</Title>
                 <Text size="sm" c="dimmed" mb="sm">
-                  BFF para diferentes contextos
+                  Um BFF por domínio de negócio
                 </Text>
                 <List size="sm" spacing="xs">
-                  <List.Item>Player BFF: dados para player</List.Item>
-                  <List.Item>Discovery BFF: dados para descoberta</List.Item>
-                  <List.Item>Library BFF: dados para biblioteca</List.Item>
+                  <List.Item>Player BFF: agrega dados de playback</List.Item>
+                  <List.Item>Search BFF: agrega dados de busca</List.Item>
+                  <List.Item>Profile BFF: agrega dados do usuário</List.Item>
                   <List.Item>Normalização de APIs externas</List.Item>
                 </List>
               </div>
