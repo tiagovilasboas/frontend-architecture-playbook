@@ -23,7 +23,7 @@
   {
     "company": "Spotify",
     "icon": "🎧",
-    "title": "Web Player com micro frontends - 500M+ usuários",
+    "title": "Web Player com micro frontends",
     "challenge": "O web player do Spotify tinha um bundle JavaScript gigante (mais de 5MB) que demorava muito para carregar. Qualquer mudança no código afetava toda a aplicação, tornando deploys arriscados e desenvolvimento lento. Usuários abandonavam o site antes mesmo de ouvir a primeira música.",
     "solution": "Adotaram micro frontends, dividindo o app em módulos independentes (player, playlist, busca, etc.). Cada módulo pode ser desenvolvido, testado e deployado separadamente. Implementaram lazy loading inteligente e cache de áudio otimizado.",
     "practices": [
@@ -35,7 +35,7 @@
     "results": [
       "Redução de 60% no bundle size inicial",
       "Tempo até o primeiro play caiu em 40%",
-      "Suporte a 500+ milhões de usuários simultâneos"
+      "Suporte a centenas de milhões de usuários"
     ],
     "link": "https://labs.spotify.com/2019/03/25/building-spotifys-new-web-player/",
     "color": "green",
@@ -87,20 +87,19 @@
   {
     "company": "Tinder",
     "icon": "💘",
-    "title": "React Native + performance crítica - 75M+ usuários",
-    "challenge": "O app do Tinder travava durante swipes rápidos e o scroll infinito de perfis causava crashes frequentes. Em momentos de pico (noites de sexta), o app ficava praticamente inutilizável, causando perda de usuários para concorrentes. Performance era crítica para o negócio.",
-    "solution": "Otimizaram a renderização usando FlatList do React Native com memoização inteligente. Implementaram lazy loading de perfis que carrega apenas 10-15 perfis por vez e otimizaram os gestos de swipe para responder instantaneamente. Criaram um sistema de cache de imagens otimizado.",
+    "title": "PWA para performance mobile",
+    "challenge": "O site mobile do Tinder era lento para carregar e consumia muitos dados, especialmente em mercados com conexões limitadas. Usuários abandonavam antes mesmo de completar o login.",
+    "solution": "Implementaram uma Progressive Web App com service workers para cache inteligente, route-based code splitting e otimização de assets. O resultado foi um app leve que carrega rápido mesmo em conexões 3G.",
     "practices": [
-      "virtual scrolling",
-      "image caching",
-      "gesture optimization",
-      "memoização inteligente"
+      "PWA",
+      "service workers",
+      "code splitting",
+      "otimização de assets"
     ],
     "results": [
-      "Redução de 30% no tempo de resposta do swipe",
-      "Diminuição de 25% nos crashes de performance",
-      "Aumento de 15% no tempo de sessão",
-      "Suporte a 75+ milhões de usuários ativos"
+      "Carregamento significativamente mais rápido",
+      "Menor consumo de dados",
+      "Experiência consistente em conexões lentas"
     ],
     "link": "https://medium.com/@addyosmani/a-tinder-progressive-web-app-performance-case-study-78919d98ece0",
     "color": "pink",
