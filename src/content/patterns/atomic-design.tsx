@@ -68,7 +68,7 @@ function AtomicDesign() {
             <em>
               componentes pequenos se combinam para formar componentes maiores
             </em>
-            . Reutilização máxima, consistência garantida, manutenção fácil.
+            . Reutilização máxima, consistência visual, manutenção simplificada.
           </Text>
         </Stack>
       </Paper>

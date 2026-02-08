@@ -22,7 +22,7 @@ import {
 } from '@tabler/icons-react';
 import GuideNavigation from '../../components/GuideNavigation';
 
-// Métricas baseadas em análise de casos reais e experiência prática
+// Métricas baseadas em análise de padrões arquiteturais e trade-offs documentados
 // Cada métrica (0-10) é avaliada considerando:
 // - Performance: Velocidade, eficiência, tempo de carregamento
 // - Manutenibilidade: Facilidade de manutenção, refatoração, debugging
