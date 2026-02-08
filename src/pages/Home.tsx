@@ -155,7 +155,7 @@ export default function Home() {
                 >
                   {[
                     { value: '13+', label: 'Arquiteturas', c: 'brand' as const },
-                    { value: '9', label: 'Casos Reais', c: 'accent' as const },
+                    { value: '15', label: 'Casos Reais', c: 'accent' as const },
                     { value: '30+', label: 'Code Examples', c: 'brand' as const },
                     { value: '100%', label: 'Fontes Reais', c: 'accent' as const },
                   ].map(({ value, label, c }) => (
@@ -557,7 +557,7 @@ export default function Home() {
                         Casos Reais de Mercado
                       </Text>
                       <Text size={isMobile ? 'sm' : 'xs'} c="dimmed" style={{ lineHeight: 1.5 }}>
-                        9 casos reais com links para artigos e tech blogs originais. Arquiteturas que funcionam em produção.
+                        15 casos reais com links para artigos e tech blogs originais. Arquiteturas que funcionam em produção.
                       </Text>
                     </Stack>
                     <Button

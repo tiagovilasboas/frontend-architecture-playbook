@@ -178,5 +178,125 @@
     ],
     "link": "https://medium.com/walmartlabs/delivering-reactjs-applications-at-scale-5cb8a363f99",
     "color": "yellow"
+  },
+  {
+    "company": "Shopify",
+    "icon": "🛍️",
+    "title": "Remixing Shopify's Admin - 30% mais rápido",
+    "challenge": "O admin do Shopify, usado por milhões de lojistas, tinha performance degradada ao longo dos anos. A arquitetura anterior dificultava melhorias incrementais e integração com IA.",
+    "solution": "Migraram o admin para Remix com foco em server-side rendering e data fetching otimizado. A nova arquitetura permitiu progressive enhancement e preparação para features de IA.",
+    "practices": [
+      "Remix framework",
+      "SSR otimizado",
+      "progressive enhancement",
+      "data fetching no servidor"
+    ],
+    "results": [
+      "30% mais rápido no carregamento de páginas",
+      "Arquitetura preparada para IA",
+      "Developer experience significativamente melhor"
+    ],
+    "link": "https://shopify.engineering/remixing-shopifys-admin",
+    "color": "green"
+  },
+  {
+    "company": "Vercel",
+    "icon": "▲",
+    "title": "Adotando micro-frontends em produção",
+    "challenge": "Com o crescimento do time e da plataforma, a Vercel precisava permitir que múltiplos times trabalhassem de forma independente sem bloquear deploys uns dos outros.",
+    "solution": "Implementaram uma arquitetura de micro-frontends que permite composição de aplicações no edge, com deploys independentes por time e shared dependencies gerenciadas automaticamente.",
+    "practices": [
+      "micro-frontends",
+      "edge composition",
+      "deploys independentes",
+      "shared dependencies"
+    ],
+    "results": [
+      "Times trabalhando de forma totalmente independente",
+      "Deploys mais frequentes e seguros",
+      "Melhor performance via edge rendering"
+    ],
+    "link": "https://vercel.com/blog/how-vercel-adopted-microfrontends",
+    "color": "gray"
+  },
+  {
+    "company": "Airbnb",
+    "icon": "🏗️",
+    "title": "Adotando Bazel para builds web em escala",
+    "challenge": "Com centenas de engenheiros contribuindo para o frontend, os tempos de build do Airbnb estavam cada vez mais lentos, impactando a produtividade.",
+    "solution": "Migraram o sistema de build para Bazel, aproveitando caching distribuído e execução remota para paralelizar builds em escala.",
+    "practices": [
+      "Bazel build system",
+      "caching distribuído",
+      "execução remota",
+      "build incremental"
+    ],
+    "results": [
+      "Builds significativamente mais rápidos",
+      "Caching distribuído reduzindo recompilações",
+      "Escala para centenas de engenheiros"
+    ],
+    "link": "https://medium.com/airbnb-engineering/adopting-bazel-for-web-at-scale-efc49e2c3c3f",
+    "color": "pink"
+  },
+  {
+    "company": "Figma",
+    "icon": "🎨",
+    "title": "WebAssembly para performance de engine gráfica",
+    "challenge": "O editor gráfico do Figma precisava de performance nativa no browser. JavaScript puro não era rápido o suficiente para operações complexas de renderização e manipulação de vetores.",
+    "solution": "Compilaram o engine de renderização para WebAssembly, mantendo a experiência web nativa. O resultado foi performance próxima de apps nativos rodando inteiramente no browser.",
+    "practices": [
+      "WebAssembly",
+      "C++ para WASM",
+      "canvas rendering",
+      "worker threads"
+    ],
+    "results": [
+      "Tempo de carregamento 3x mais rápido com WASM",
+      "Performance de renderização próxima de nativo",
+      "Editor profissional rodando 100% no browser"
+    ],
+    "link": "https://www.figma.com/blog/webassembly-cut-figmas-load-time-by-3x/",
+    "color": "violet"
+  },
+  {
+    "company": "Notion",
+    "icon": "📝",
+    "title": "WASM SQLite para performance no browser",
+    "challenge": "O Notion sofria com lentidão ao navegar entre páginas e carregar workspaces grandes. Cada operação requeria round-trips ao servidor.",
+    "solution": "Implementaram SQLite compilado para WebAssembly rodando no browser, criando um cache local inteligente que elimina a maioria dos round-trips ao servidor.",
+    "practices": [
+      "WASM SQLite",
+      "cache local",
+      "offline-first",
+      "sync incremental"
+    ],
+    "results": [
+      "Navegação entre páginas quase instantânea",
+      "Funcionalidade offline real",
+      "Redução massiva de requests ao servidor"
+    ],
+    "link": "https://www.notion.so/blog/how-we-sped-up-notion-in-the-browser-with-wasm-sqlite",
+    "color": "orange"
+  },
+  {
+    "company": "Atlassian",
+    "icon": "📋",
+    "title": "75% mais rápido removendo barrel files",
+    "challenge": "O build do frontend da Atlassian ficava cada vez mais lento conforme o codebase crescia. Barrel files (index.ts re-exports) criavam chains de importação massivas.",
+    "solution": "Identificaram que barrel files eram o principal gargalo e os removeram sistematicamente, trocando por imports diretos aos módulos necessários.",
+    "practices": [
+      "tree shaking",
+      "imports diretos",
+      "build profiling",
+      "eliminação de barrel files"
+    ],
+    "results": [
+      "75% de redução no tempo de build",
+      "Bundles menores por eliminação de dead code",
+      "Developer experience muito melhor"
+    ],
+    "link": "https://www.atlassian.com/engineering/how-we-achieved-75-faster-builds-by-removing-barrel-files",
+    "color": "blue"
   }
 ]
