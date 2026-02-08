@@ -3,42 +3,129 @@ import {
   IconBook,
   IconPuzzle,
   IconStack,
-  IconTools,
-  IconCheck,
   IconRocket,
   IconBuilding,
-  IconPlug,
-  IconPuzzle as IconPuzzlePiece,
-  IconBolt,
   IconBrandGithub,
   IconBrandLinkedin,
   IconHeart,
+  IconTarget,
 } from '@tabler/icons-react';
 import { useLocation } from 'react-router-dom';
 import NavItem from './NavItem.tsx';
-import {
-  guides,
-  architectures,
-  patterns,
-  techniques,
-  bestPractices,
-} from '../lib/content.tsx';
 
 interface Props {
   onNavigate?: () => void;
 }
 
+// ─── Journey-based navigation structure ───────────────────────────────
+// Each section answers ONE question in order:
+// 1. Fundamentos → "What do I need to know first?"
+// 2. Construindo UI → "How do I build components?"
+// 3. Entrega → "How do I serve my app?"
+// 4. Estrutura → "How do I organize my code?"
+// 5. Escala → "How do I scale for teams?"
+// 6. Decisão → "How do I choose and validate?"
+
+const JOURNEY = [
+  {
+    key: 'fundamentals',
+    label: 'Fundamentos',
+    subtitle: 'Comece aqui',
+    icon: <IconBook size={18} color="var(--mantine-color-brand-6)" />,
+    items: [
+      { href: '/guides/dependency-rule', label: 'Dependency Rule' },
+      { href: '/best-practices/dry', label: 'DRY' },
+      { href: '/best-practices/kiss', label: 'KISS' },
+      { href: '/best-practices/yagni', label: 'YAGNI' },
+      { href: '/best-practices/srp', label: 'Single Responsibility' },
+      { href: '/best-practices/soc', label: 'Separation of Concerns' },
+      { href: '/best-practices/clean-code', label: 'Clean Code' },
+      { href: '/guides/how-to-choose', label: 'Como Escolher Arquitetura' },
+    ],
+  },
+  {
+    key: 'building-ui',
+    label: 'Construindo UI',
+    subtitle: 'Componentes e estado',
+    icon: <IconPuzzle size={18} color="var(--mantine-color-brand-6)" />,
+    items: [
+      { href: '/architectures/spa', label: 'Single Page Application' },
+      { href: '/patterns/component-driven', label: 'Component-Driven Dev' },
+      { href: '/patterns/atomic-design', label: 'Atomic Design' },
+      { href: '/techniques/state-machines', label: 'State Machines' },
+      { href: '/patterns/event-driven', label: 'Event-Driven Architecture' },
+    ],
+  },
+  {
+    key: 'delivery',
+    label: 'Arquitetura de Entrega',
+    subtitle: 'Como servir o app',
+    icon: <IconRocket size={18} color="var(--mantine-color-brand-6)" />,
+    items: [
+      { href: '/architectures/ssr-ssg', label: 'SSR & SSG' },
+      { href: '/architectures/jamstack', label: 'JAMstack' },
+      { href: '/architectures/pwa', label: 'Progressive Web Apps' },
+      { href: '/architectures/islands-architecture', label: 'Islands Architecture' },
+      { href: '/techniques/performance', label: 'Performance' },
+    ],
+  },
+  {
+    key: 'structure',
+    label: 'Estrutura de Código',
+    subtitle: 'Como organizar',
+    icon: <IconBuilding size={18} color="var(--mantine-color-brand-6)" />,
+    items: [
+      { href: '/architectures/clean-architecture', label: 'Clean Architecture' },
+      { href: '/architectures/layered', label: 'Layered Architecture' },
+      { href: '/architectures/hexagonal', label: 'Hexagonal Architecture' },
+      { href: '/patterns/repository-pattern', label: 'Repository Pattern' },
+      { href: '/patterns/security', label: 'Security Patterns' },
+    ],
+  },
+  {
+    key: 'scale',
+    label: 'Escala & Times',
+    subtitle: 'Crescendo o time',
+    icon: <IconStack size={18} color="var(--mantine-color-brand-6)" />,
+    items: [
+      { href: '/architectures/monorepo', label: 'Monorepo' },
+      { href: '/architectures/micro-frontends', label: 'Micro-Frontends' },
+      { href: '/architectures/microservices-frontend', label: 'Microservices Frontend' },
+      { href: '/architectures/bff', label: 'Backend for Frontend (BFF)' },
+      { href: '/architectures/headless', label: 'Headless Architecture' },
+      { href: '/techniques/feature-flags', label: 'Feature Flags' },
+      { href: '/architectures/cqrs', label: 'CQRS' },
+      { href: '/architectures/event-sourcing', label: 'Event Sourcing' },
+    ],
+  },
+  {
+    key: 'decision',
+    label: 'Decisão & Referência',
+    subtitle: 'Nível staff',
+    icon: <IconTarget size={18} color="var(--mantine-color-brand-6)" />,
+    items: [
+      { href: '/guides/architecture-comparison', label: 'Comparação de Arquiteturas' },
+      { href: '/guides/implementation-roadmap', label: 'Roadmap de Implementação' },
+      { href: '/guides/migration-strategies', label: 'Estratégias de Migração' },
+      { href: '/guides/adr', label: 'ADR - Decision Records' },
+      { href: '/guides/cases', label: '19 Casos Reais' },
+    ],
+  },
+] as const;
+
+// Icon map for each section
+const SECTION_ICONS: Record<string, React.ReactNode> = {
+  fundamentals: <IconBook size={18} />,
+  'building-ui': <IconPuzzle size={18} />,
+  delivery: <IconRocket size={18} />,
+  structure: <IconBuilding size={18} />,
+  scale: <IconStack size={18} />,
+  decision: <IconTarget size={18} />,
+};
+
 export default function MobileNavMenu({ onNavigate }: Props) {
   const location = useLocation();
   const current = location.pathname;
-
-  const groupedArchitectures = {
-    fundamental: architectures.slice(0, 4),
-    design: architectures.slice(4, 7),
-    integration: architectures.slice(7, 9),
-    modular: architectures.slice(9, 12),
-    advanced: architectures.slice(12, 15),
-  };
 
   return (
     <Stack gap={0} style={{ height: '100%' }} className="mobile-nav-menu">
@@ -50,253 +137,37 @@ export default function MobileNavMenu({ onNavigate }: Props) {
           radius={0}
           className="mobile-nav-accordion"
         >
-          {/* 1. Guias */}
-          <Accordion.Item value="guides">
-            <Accordion.Control className="mobile-accordion-control">
-              <Group gap="sm">
-                <IconBook size={18} color="var(--mantine-color-brand-6)" />
-                <Text fw={500} size="sm">
-                  Guias · {guides.length}
-                </Text>
-              </Group>
-            </Accordion.Control>
-            <Accordion.Panel className="mobile-nav-panel">
-              <Stack gap={0}>
-                {guides.length > 0 ? (
-                  guides.map(g => (
+          {JOURNEY.map((section, idx) => (
+            <Accordion.Item key={section.key} value={section.key}>
+              <Accordion.Control className="mobile-accordion-control">
+                <Group gap="sm">
+                  {section.icon}
+                  <Stack gap={0}>
+                    <Text fw={500} size="sm">
+                      {idx + 1}. {section.label}
+                    </Text>
+                    <Text size="xs" c="dimmed">
+                      {section.subtitle}
+                    </Text>
+                  </Stack>
+                </Group>
+              </Accordion.Control>
+              <Accordion.Panel className="mobile-nav-panel">
+                <Stack gap={0}>
+                  {section.items.map(item => (
                     <NavItem
-                      key={g.slug}
-                      href={`/guides/${g.slug}`}
-                      label={g.title}
-                      icon={<IconBook size={18} />}
-                      active={current === `/guides/${g.slug}`}
+                      key={item.href}
+                      href={item.href}
+                      label={item.label}
+                      icon={SECTION_ICONS[section.key]}
+                      active={current === item.href}
                       onNavigate={onNavigate}
                     />
-                  ))
-                ) : (
-                  <Text size="sm" c="dimmed" ta="center" py="xs">
-                    Nenhum resultado encontrado
-                  </Text>
-                )}
-              </Stack>
-            </Accordion.Panel>
-          </Accordion.Item>
-
-          {/* 2. Arquiteturas */}
-          <Accordion.Item value="architectures">
-            <Accordion.Control className="mobile-accordion-control">
-              <Group gap="sm">
-                <IconStack size={18} color="var(--mantine-color-brand-6)" />
-                <Text fw={500} size="sm">
-                  Arquiteturas · {architectures.length}
-                </Text>
-              </Group>
-            </Accordion.Control>
-            <Accordion.Panel className="mobile-nav-panel">
-              <Stack gap={0}>
-                <div className="mobile-nav-subgroup">
-                  <Group gap={6} mb={1}>
-                    <IconRocket size={12} color="var(--mantine-color-brand-6)" />
-                    <Text size="xs" c="dimmed" fw={500}>
-                      Fundamentais
-                    </Text>
-                  </Group>
-                  <Stack gap={0}>
-                    {groupedArchitectures.fundamental.map(a => (
-                      <NavItem
-                        key={a.slug}
-                        href={`/architectures/${a.slug}`}
-                        label={a.title}
-                        icon={<IconStack size={18} />}
-                        active={current === `/architectures/${a.slug}`}
-                        onNavigate={onNavigate}
-                      />
-                    ))}
-                  </Stack>
-                </div>
-
-                <div className="mobile-nav-subgroup">
-                  <Group gap={6} mb={1}>
-                    <IconBuilding size={12} color="var(--mantine-color-brand-6)" />
-                    <Text size="xs" c="dimmed" fw={500}>
-                      Padrões de Design
-                    </Text>
-                  </Group>
-                  <Stack gap={0}>
-                    {groupedArchitectures.design.map(a => (
-                      <NavItem
-                        key={a.slug}
-                        href={`/architectures/${a.slug}`}
-                        label={a.title}
-                        icon={<IconStack size={18} />}
-                        active={current === `/architectures/${a.slug}`}
-                        onNavigate={onNavigate}
-                      />
-                    ))}
-                  </Stack>
-                </div>
-
-                <div className="mobile-nav-subgroup">
-                  <Group gap={6} mb={1}>
-                    <IconPlug size={12} color="var(--mantine-color-brand-6)" />
-                    <Text size="xs" c="dimmed" fw={500}>
-                      Integração e API
-                    </Text>
-                  </Group>
-                  <Stack gap={0}>
-                    {groupedArchitectures.integration.map(a => (
-                      <NavItem
-                        key={a.slug}
-                        href={`/architectures/${a.slug}`}
-                        label={a.title}
-                        icon={<IconStack size={18} />}
-                        active={current === `/architectures/${a.slug}`}
-                        onNavigate={onNavigate}
-                      />
-                    ))}
-                  </Stack>
-                </div>
-
-                <div className="mobile-nav-subgroup">
-                  <Group gap={6} mb={1}>
-                    <IconPuzzlePiece size={12} color="var(--mantine-color-brand-6)" />
-                    <Text size="xs" c="dimmed" fw={500}>
-                      Modularização
-                    </Text>
-                  </Group>
-                  <Stack gap={0}>
-                    {groupedArchitectures.modular.map(a => (
-                      <NavItem
-                        key={a.slug}
-                        href={`/architectures/${a.slug}`}
-                        label={a.title}
-                        icon={<IconStack size={18} />}
-                        active={current === `/architectures/${a.slug}`}
-                        onNavigate={onNavigate}
-                      />
-                    ))}
-                  </Stack>
-                </div>
-
-                <div className="mobile-nav-subgroup">
-                  <Group gap={6} mb={1}>
-                    <IconBolt size={12} color="var(--mantine-color-brand-6)" />
-                    <Text size="xs" c="dimmed" fw={500}>
-                      Avançadas
-                    </Text>
-                  </Group>
-                  <Stack gap={0}>
-                    {groupedArchitectures.advanced.map(a => (
-                      <NavItem
-                        key={a.slug}
-                        href={`/architectures/${a.slug}`}
-                        label={a.title}
-                        icon={<IconStack size={18} />}
-                        active={current === `/architectures/${a.slug}`}
-                        onNavigate={onNavigate}
-                      />
-                    ))}
-                  </Stack>
-                </div>
-              </Stack>
-            </Accordion.Panel>
-          </Accordion.Item>
-
-          {/* 3. Padrões */}
-          <Accordion.Item value="patterns">
-            <Accordion.Control className="mobile-accordion-control">
-              <Group gap="sm">
-                <IconPuzzle size={18} color="var(--mantine-color-brand-6)" />
-                <Text fw={500} size="sm">
-                  Padrões · {patterns.length}
-                </Text>
-              </Group>
-            </Accordion.Control>
-            <Accordion.Panel className="mobile-nav-panel">
-              <Stack gap={0}>
-                {patterns.length > 0 ? (
-                  patterns.map(p => (
-                    <NavItem
-                      key={p.slug}
-                      href={`/patterns/${p.slug}`}
-                      label={p.title}
-                      icon={<IconPuzzle size={18} />}
-                      active={current === `/patterns/${p.slug}`}
-                      onNavigate={onNavigate}
-                    />
-                  ))
-                ) : (
-                  <Text size="sm" c="dimmed" ta="center" py="xs">
-                    Nenhum resultado encontrado
-                  </Text>
-                )}
-              </Stack>
-            </Accordion.Panel>
-          </Accordion.Item>
-
-          {/* 4. Técnicas */}
-          <Accordion.Item value="techniques">
-            <Accordion.Control className="mobile-accordion-control">
-              <Group gap="sm">
-                <IconTools size={18} color="var(--mantine-color-brand-6)" />
-                <Text fw={500} size="sm">
-                  Técnicas · {techniques.length}
-                </Text>
-              </Group>
-            </Accordion.Control>
-            <Accordion.Panel className="mobile-nav-panel">
-              <Stack gap={0}>
-                {techniques.length > 0 ? (
-                  techniques.map(t => (
-                    <NavItem
-                      key={t.slug}
-                      href={`/techniques/${t.slug}`}
-                      label={t.title}
-                      icon={<IconTools size={18} />}
-                      active={current === `/techniques/${t.slug}`}
-                      onNavigate={onNavigate}
-                    />
-                  ))
-                ) : (
-                  <Text size="sm" c="dimmed" ta="center" py="xs">
-                    Nenhum resultado encontrado
-                  </Text>
-                )}
-              </Stack>
-            </Accordion.Panel>
-          </Accordion.Item>
-
-          {/* 5. Boas Práticas */}
-          <Accordion.Item value="best-practices">
-            <Accordion.Control className="mobile-accordion-control">
-              <Group gap="sm">
-                <IconCheck size={18} color="var(--mantine-color-brand-6)" />
-                <Text fw={500} size="sm">
-                  Boas Práticas · {bestPractices.length}
-                </Text>
-              </Group>
-            </Accordion.Control>
-            <Accordion.Panel className="mobile-nav-panel">
-              <Stack gap={0}>
-                {bestPractices.length > 0 ? (
-                  bestPractices.map(b => (
-                    <NavItem
-                      key={b.slug}
-                      href={`/best-practices/${b.slug}`}
-                      label={b.title}
-                      icon={<IconCheck size={18} />}
-                      active={current === `/best-practices/${b.slug}`}
-                      onNavigate={onNavigate}
-                    />
-                  ))
-                ) : (
-                  <Text size="sm" c="dimmed" ta="center" py="xs">
-                    Nenhum resultado encontrado
-                  </Text>
-                )}
-              </Stack>
-            </Accordion.Panel>
-          </Accordion.Item>
+                  ))}
+                </Stack>
+              </Accordion.Panel>
+            </Accordion.Item>
+          ))}
         </Accordion>
 
         <div className="mobile-nav-footer">

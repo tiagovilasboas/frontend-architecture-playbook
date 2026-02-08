@@ -13,6 +13,10 @@ const ArchitectureComparison = lazy(
 const ImplementationRoadmap = lazy(
   () => import('../content/guides/implementation-roadmap.tsx')
 );
+const ADR = lazy(() => import('../content/guides/adr.tsx'));
+const MigrationStrategies = lazy(
+  () => import('../content/guides/migration-strategies.tsx')
+);
 
 // Lazy loading para patterns - carregamento sob demanda
 const AtomicDesign = lazy(
@@ -114,6 +118,16 @@ const STATIC_METADATA = {
   'architecture-comparison': {
     title: 'Comparação de Arquiteturas',
     description: 'Compare arquiteturas baseado em métricas práticas',
+  },
+  adr: {
+    title: 'ADR - Architecture Decision Records',
+    description:
+      'Como documentar decisões arquiteturais com ADRs. Template, processo, e exemplos reais.',
+  },
+  'migration-strategies': {
+    title: 'Estratégias de Migração',
+    description:
+      'Strangler Fig, Branch by Abstraction, Parallel Run: como migrar sem big rewrite.',
   },
 
   // Architectures
@@ -273,6 +287,8 @@ export const guides: DocMeta[] = [
   toMeta(ArchitectureComparison, 'architecture-comparison', 'guides', true), // 3. Análise
   toMeta(Cases, 'cases', 'guides', true), // 4. Validação
   toMeta(ImplementationRoadmap, 'implementation-roadmap', 'guides', true), // 5. Implementação
+  toMeta(MigrationStrategies, 'migration-strategies', 'guides', true), // 6. Migração
+  toMeta(ADR, 'adr', 'guides', true), // 7. Documentação de decisões
 ];
 
 // Arquiteturas organizadas por complexidade e popularidade
