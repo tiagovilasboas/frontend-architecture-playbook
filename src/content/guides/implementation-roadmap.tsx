@@ -30,11 +30,12 @@ export default function ImplementationRoadmap() {
       {/* Hero Section */}
       <div>
         <Title order={1} mb="md">
-          Roadmap de Implementação: Como Empresas Reais Fizeram
+          Roadmap de Implementação
         </Title>
         <Text size="lg" c="dimmed">
-          Baseado em cases reais de Netflix, Spotify, Pinterest, Tinder e
-          outros. Como implementar arquitetura front-end que escala.
+          4 fases práticas para evoluir a arquitetura frontend, da
+          performance básica à escala global. Cada fase com métricas
+          e checklists concretos.
         </Text>
       </div>
 
@@ -60,9 +61,8 @@ export default function ImplementationRoadmap() {
           </Text>
 
           <Text>
-            Cada fase tem <strong>métricas reais</strong>, problemas reais e
-            soluções reais. Como Netflix otimizou para Smart TVs, como Spotify
-            modularizou o web player, como Pinterest virou PWA.
+            Cada fase tem <strong>checklists concretos</strong>, ferramentas
+            recomendadas, e critérios claros de quando avançar para a próxima.
           </Text>
 
           <Alert color="yellow" icon={<IconBulb size={16} />} radius="md">
@@ -71,8 +71,8 @@ export default function ImplementationRoadmap() {
             </Text>
             <Text size="sm">
               <strong>Implementação gradual</strong> é melhor que big bang.
-              Netflix começou com performance, depois escalou. Spotify
-              modularizou aos poucos. Pinterest testou PWA antes de migrar tudo.
+              Comece por performance (ganhos imediatos), depois modularize
+              (ganhos de equipe), depois escale (ganhos de infraestrutura).
             </Text>
           </Alert>
         </Stack>
@@ -97,7 +97,7 @@ export default function ImplementationRoadmap() {
               title="Performance Audit"
             >
               <Text size="sm" c="dimmed" mb="md">
-                Como Pinterest fez: audit completo de performance
+                Passo 1: mapeie os gargalos antes de otimizar
               </Text>
               <List size="sm" spacing="xs">
                 <List.Item>Bundle analyzer para identificar gargalos</List.Item>
@@ -112,7 +112,7 @@ export default function ImplementationRoadmap() {
               title="Métricas de Negócio"
             >
               <Text size="sm" c="dimmed" mb="md">
-                Como Google fez: métricas que importam
+                Conecte performance a métricas de negócio
               </Text>
               <List size="sm" spacing="xs">
                 <List.Item>Conversion rate e testes A/B</List.Item>
@@ -127,7 +127,7 @@ export default function ImplementationRoadmap() {
               title="Infraestrutura Básica"
             >
               <Text size="sm" c="dimmed" mb="md">
-                Como Spotify fez: base sólida
+                CI/CD e observabilidade desde o dia 1
               </Text>
               <List size="sm" spacing="xs">
                 <List.Item>CI/CD pipeline com deploys frequentes</List.Item>
@@ -170,7 +170,7 @@ export default function ImplementationRoadmap() {
               title="Code Splitting"
             >
               <Text size="sm" c="dimmed" mb="md">
-                Como Spotify fez: modularização inteligente
+                Carregue só o que o usuário precisa agora
               </Text>
               <List size="sm" spacing="xs">
                 <List.Item>Route-based splitting</List.Item>
@@ -185,7 +185,7 @@ export default function ImplementationRoadmap() {
               title="Caching Strategy"
             >
               <Text size="sm" c="dimmed" mb="md">
-                Como Netflix fez: cache inteligente
+                Múltiplas camadas de cache reduzem requests
               </Text>
               <List size="sm" spacing="xs">
                 <List.Item>Service workers e PWA</List.Item>
@@ -200,7 +200,7 @@ export default function ImplementationRoadmap() {
               title="Bundle Optimization"
             >
               <Text size="sm" c="dimmed" mb="md">
-                Como Tinder fez: bundle enxuto
+                Cada KB a menos é performance ganha
               </Text>
               <List size="sm" spacing="xs">
                 <List.Item>Tree shaking</List.Item>
@@ -244,11 +244,11 @@ export default function ImplementationRoadmap() {
               title="Micro Frontends"
             >
               <Text size="sm" c="dimmed" mb="md">
-                Como Spotify fez: modularização completa
+                Quando times independentes justificam o overhead
               </Text>
               <List size="sm" spacing="xs">
                 <List.Item>
-                  Module federation (Spotify: player independente)
+                  Module federation para deploys independentes
                 </List.Item>
                 <List.Item>Shared dependencies</List.Item>
                 <List.Item>Independent deployments</List.Item>
@@ -261,7 +261,7 @@ export default function ImplementationRoadmap() {
               title="Clean Architecture"
             >
               <Text size="sm" c="dimmed" mb="md">
-                Como Slack fez: separação de responsabilidades
+                Regras de negócio isoladas de UI e infraestrutura
               </Text>
               <List size="sm" spacing="xs">
                 <List.Item>Domain separation</List.Item>
@@ -276,7 +276,7 @@ export default function ImplementationRoadmap() {
               title="PWA Implementation"
             >
               <Text size="sm" c="dimmed" mb="md">
-                Como Pinterest fez: PWA completo
+                App-like experience sem App Store
               </Text>
               <List size="sm" spacing="xs">
                 <List.Item>Service workers e offline</List.Item>
@@ -318,7 +318,7 @@ export default function ImplementationRoadmap() {
               title="Global Optimization"
             >
               <Text size="sm" c="dimmed" mb="md">
-                Como Netflix fez: escala global
+                CDN + edge computing para latência mínima
               </Text>
               <List size="sm" spacing="xs">
                 <List.Item>CDN global e distribuição geográfica</List.Item>
@@ -334,7 +334,7 @@ export default function ImplementationRoadmap() {
               title="Advanced Caching"
             >
               <Text size="sm" c="dimmed" mb="md">
-                Como WhatsApp fez: cache inteligente
+                Cache hierárquico: memória → SW → CDN → origin
               </Text>
               <List size="sm" spacing="xs">
                 <List.Item>Multi-level caching</List.Item>
@@ -349,7 +349,7 @@ export default function ImplementationRoadmap() {
               title="Performance Monitoring"
             >
               <Text size="sm" c="dimmed" mb="md">
-                Como Uber fez: monitoramento real-time
+                Medir continuamente, alertar proativamente
               </Text>
               <List size="sm" spacing="xs">
                 <List.Item>Real user monitoring (RUM)</List.Item>
@@ -397,78 +397,66 @@ export default function ImplementationRoadmap() {
                   }}
                 >
                   <th style={{ padding: '12px', textAlign: 'left' }}>
-                    Empresa
+                    Cenário
                   </th>
                   <th style={{ padding: '12px', textAlign: 'left' }}>Fase 1</th>
                   <th style={{ padding: '12px', textAlign: 'left' }}>Fase 2</th>
                   <th style={{ padding: '12px', textAlign: 'left' }}>Fase 3</th>
                   <th style={{ padding: '12px', textAlign: 'left' }}>Fase 4</th>
                   <th style={{ padding: '12px', textAlign: 'left' }}>
-                    Resultado
+                    Foco
                   </th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td style={{ padding: '12px', fontWeight: 600 }}>
-                    Pinterest
+                    E-commerce
                   </td>
-                  <td style={{ padding: '12px' }}>Performance audit</td>
-                  <td style={{ padding: '12px' }}>PWA implementation</td>
-                  <td style={{ padding: '12px' }}>Service workers</td>
-                  <td style={{ padding: '12px' }}>Global CDN</td>
+                  <td style={{ padding: '12px' }}>Core Web Vitals</td>
+                  <td style={{ padding: '12px' }}>PWA + Service Workers</td>
+                  <td style={{ padding: '12px' }}>Micro-frontends por domínio</td>
+                  <td style={{ padding: '12px' }}>CDN + edge caching</td>
                   <td
                     style={{ padding: '12px', color: 'green', fontWeight: 500 }}
                   >
-                    PWA + receita
+                    Conversão + SEO
                   </td>
                 </tr>
                 <tr>
-                  <td style={{ padding: '12px', fontWeight: 600 }}>Netflix</td>
-                  <td style={{ padding: '12px' }}>Smart TV optimization</td>
-                  <td style={{ padding: '12px' }}>Bundle splitting</td>
-                  <td style={{ padding: '12px' }}>Micro frontends</td>
-                  <td style={{ padding: '12px' }}>Global scale</td>
-                  <td
-                    style={{ padding: '12px', color: 'green', fontWeight: 500 }}
-                  >
-                    Escala global
-                  </td>
-                </tr>
-                <tr>
-                  <td style={{ padding: '12px', fontWeight: 600 }}>Spotify</td>
-                  <td style={{ padding: '12px' }}>Web player audit</td>
-                  <td style={{ padding: '12px' }}>Code splitting</td>
+                  <td style={{ padding: '12px', fontWeight: 600 }}>Streaming</td>
+                  <td style={{ padding: '12px' }}>Bundle audit</td>
+                  <td style={{ padding: '12px' }}>Code splitting agressivo</td>
                   <td style={{ padding: '12px' }}>Module federation</td>
-                  <td style={{ padding: '12px' }}>Performance monitoring</td>
+                  <td style={{ padding: '12px' }}>Multi-device optimization</td>
                   <td
                     style={{ padding: '12px', color: 'green', fontWeight: 500 }}
                   >
-                    Modularização
+                    TTI + modularização
                   </td>
                 </tr>
                 <tr>
-                  <td style={{ padding: '12px', fontWeight: 600 }}>Slack</td>
-                  <td style={{ padding: '12px' }}>Memory optimization</td>
+                  <td style={{ padding: '12px', fontWeight: 600 }}>SaaS / Dashboard</td>
+                  <td style={{ padding: '12px' }}>Memory profiling</td>
                   <td style={{ padding: '12px' }}>Virtual scrolling</td>
                   <td style={{ padding: '12px' }}>Clean architecture</td>
                   <td style={{ padding: '12px' }}>Real-time sync</td>
                   <td
                     style={{ padding: '12px', color: 'green', fontWeight: 500 }}
                   >
-                    Otimização memória
+                    Memória + UX
                   </td>
                 </tr>
                 <tr>
-                  <td style={{ padding: '12px', fontWeight: 600 }}>Uber</td>
-                  <td style={{ padding: '12px' }}>Map performance</td>
-                  <td style={{ padding: '12px' }}>Canvas rendering</td>
-                  <td style={{ padding: '12px' }}>Real-time updates</td>
-                  <td style={{ padding: '12px' }}>Global optimization</td>
+                  <td style={{ padding: '12px', fontWeight: 600 }}>Real-time</td>
+                  <td style={{ padding: '12px' }}>Render profiling</td>
+                  <td style={{ padding: '12px' }}>Canvas / WebGL</td>
+                  <td style={{ padding: '12px' }}>WebSocket architecture</td>
+                  <td style={{ padding: '12px' }}>Global load balancing</td>
                   <td
                     style={{ padding: '12px', color: 'green', fontWeight: 500 }}
                   >
-                    Real-time global
+                    Latência mínima
                   </td>
                 </tr>
               </tbody>
@@ -486,7 +474,7 @@ export default function ImplementationRoadmap() {
             </ThemeIcon>
             <div>
               <Title order={3}>Principais Aprendizados</Title>
-              <Text c="dimmed">O que aprendemos com os cases reais</Text>
+              <Text c="dimmed">Padrões que se repetem em projetos bem-sucedidos</Text>
             </div>
           </Group>
 
@@ -504,9 +492,9 @@ export default function ImplementationRoadmap() {
                 </div>
               </Group>
               <Text size="sm">
-                Pinterest começou com performance audit, depois PWA. Spotify
-                modularizou aos poucos. Netflix otimizou por dispositivo.
-                Implementação gradual funciona.
+                Comece por performance (ganhos imediatos e mensuráveis),
+                depois modularize o código, depois escale a infra. Cada
+                fase valida a anterior antes de avançar.
               </Text>
             </Card>
 
@@ -523,9 +511,9 @@ export default function ImplementationRoadmap() {
                 </div>
               </Group>
               <Text size="sm">
-                Google mediu cliques, Pinterest mediu receita, Netflix mediu
-                TTI. Cada empresa mediu o que importava para seu negócio.
-                Métricas de negócio {'>'} métricas técnicas.
+                LCP importa para e-commerce, TTI importa para SaaS, INP
+                importa para apps interativos. Escolha as métricas que
+                impactam o negócio, não as que são fáceis de medir.
               </Text>
             </Card>
 
@@ -542,9 +530,9 @@ export default function ImplementationRoadmap() {
                 </div>
               </Group>
               <Text size="sm">
-                WhatsApp começou simples, depois escalou para 2B usuários.
-                Netflix otimizou para Smart TVs, depois global. Slack otimizou
-                memória, depois performance. Escale conforme cresce.
+                Não otimize para escala que você ainda não tem. Monolito
+                bem-feito escala mais que micro-frontends mal-feitos.
+                Adicione complexidade só quando a dor justificar.
               </Text>
             </Card>
 
@@ -561,9 +549,9 @@ export default function ImplementationRoadmap() {
                 </div>
               </Group>
               <Text size="sm">
-                Pinterest precisava SEO + performance = PWA. Netflix precisava
-                escala = SPA otimizado. Spotify precisava modularização = Micro
-                frontends. Arquitetura resolve problemas específicos.
+                SEO pesado? SSR/SSG. Times independentes? Micro-frontends.
+                App offline? PWA. Real-time? WebSocket + canvas. Cada
+                arquitetura resolve um problema específico, não todos.
               </Text>
             </Card>
           </SimpleGrid>
@@ -579,5 +567,5 @@ export default function ImplementationRoadmap() {
 ImplementationRoadmap.metadata = {
   title: 'Roadmap de Implementação',
   description:
-    'Roadmap prático baseado em cases reais de Netflix, Spotify, Pinterest, Tinder, Slack, Uber e outros. Como implementar arquitetura front-end que escala com métricas reais e resultados comprovados.',
+    'Roadmap em 4 fases para evoluir a arquitetura frontend: performance, otimização, arquitetura e escala. Com checklists, ferramentas e critérios de avanço.',
 };
