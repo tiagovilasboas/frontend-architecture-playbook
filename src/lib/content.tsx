@@ -109,7 +109,7 @@ const STATIC_METADATA = {
   'implementation-roadmap': {
     title: 'Roadmap de Implementação',
     description:
-      'Roadmap prático baseado em cases reais de Netflix, Spotify, Pinterest, Tinder, Slack, Uber e outros. Como implementar arquitetura front-end que escala com métricas reais e resultados comprovados.',
+      'Roadmap em 4 fases para evoluir a arquitetura frontend: performance, otimização, arquitetura e escala. Com checklists, ferramentas e critérios de avanço.',
   },
   'architecture-comparison': {
     title: 'Comparação de Arquiteturas',

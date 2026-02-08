@@ -111,8 +111,8 @@ export default function Cases() {
           </Text>
 
           <Text>
-            <strong>Escala importa.</strong> WhatsApp, Netflix e Spotify atendem
-            centenas de milhões de usuários. Arquitetura certa escala.
+            <strong>Escala importa.</strong> Plataformas com base de usuários
+            massiva dependem de arquitetura frontend sólida para funcionar.
           </Text>
 
           <Text>
@@ -126,8 +126,8 @@ export default function Cases() {
               💡 Dica Técnica:
             </Text>
             <Text size="sm">
-              <strong>Performance não é opcional</strong> quando você tem
-              milhões de usuários. Cada segundo de delay custa dinheiro real.
+              <strong>Performance não é opcional</strong> em qualquer escala.
+              Cada segundo a mais de carregamento impacta conversão e retenção.
             </Text>
           </Alert>
         </Stack>
@@ -225,7 +225,7 @@ export default function Cases() {
           <Text>
             Não é sobre "qual framework usar", é sobre resolver o problema que
             está matando o negócio. Arquitetura certa + métricas reais =
-            resultado garantido.
+            impacto mensurável.
           </Text>
 
           <Alert color="yellow" icon={<IconRocket size={16} />} radius="md">

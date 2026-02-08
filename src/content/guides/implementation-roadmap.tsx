@@ -57,7 +57,7 @@ export default function ImplementationRoadmap() {
           <Text>
             Este roadmap é baseado em <strong>cases reais</strong> de empresas
             que implementaram arquiteturas front-end com sucesso. Não é teoria,
-            é prática pura.
+            é prática aplicável.
           </Text>
 
           <Text>
@@ -308,7 +308,7 @@ export default function ImplementationRoadmap() {
             </ThemeIcon>
             <div>
               <Title order={3}>Fase 4: Escala (12+ meses)</Title>
-              <Text c="dimmed">Otimizações para milhões de usuários</Text>
+              <Text c="dimmed">Otimizações para escala global</Text>
             </div>
           </Group>
 
@@ -365,8 +365,8 @@ export default function ImplementationRoadmap() {
               🎯 Resultado Esperado:
             </Text>
             <Text size="sm">
-              <strong>Suporte a milhões de usuários</strong>, performance
-              consistente, monitoramento proativo. Infraestrutura global com
+              <strong>Suporte a escala global</strong>, performance
+              consistente, monitoramento proativo. Infraestrutura distribuída com
               observabilidade completa.
             </Text>
           </Alert>
