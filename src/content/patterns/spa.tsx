@@ -91,16 +91,13 @@ function SPA() {
                   Página inicial que carrega JavaScript. O resto é renderizado
                   pelo JavaScript.
                 </Text>
-                <Stack gap="xl">
-                  {spaExamples.map(example => (
-                    <CodeExample
-                      key={example.id}
-                      title={example.title}
-                      description={example.description}
-                      code={example.content}
-                    />
-                  ))}
-                </Stack>
+                {spaExamples[0] && (
+                  <CodeExample
+                    title={spaExamples[0].title}
+                    description={spaExamples[0].description}
+                    code={spaExamples[0].content}
+                  />
+                )}
               </div>
             </Group>
           </Card>
@@ -116,16 +113,13 @@ function SPA() {
                   JavaScript gerencia rotas. URL muda, componente renderiza, sem
                   reload.
                 </Text>
-                <Stack gap="xl">
-                  {spaExamples.map(example => (
-                    <CodeExample
-                      key={example.id}
-                      title={example.title}
-                      description={example.description}
-                      code={example.content}
-                    />
-                  ))}
-                </Stack>
+                {spaExamples[1] && (
+                  <CodeExample
+                    title={spaExamples[1].title}
+                    description={spaExamples[1].description}
+                    code={spaExamples[1].content}
+                  />
+                )}
               </div>
             </Group>
           </Card>
@@ -141,16 +135,13 @@ function SPA() {
                   Estado compartilhado entre componentes. Redux, Context,
                   Zustand.
                 </Text>
-                <Stack gap="xl">
-                  {spaExamples.map(example => (
-                    <CodeExample
-                      key={example.id}
-                      title={example.title}
-                      description={example.description}
-                      code={example.content}
-                    />
-                  ))}
-                </Stack>
+                {spaExamples[2] && (
+                  <CodeExample
+                    title={spaExamples[2].title}
+                    description={spaExamples[2].description}
+                    code={spaExamples[2].content}
+                  />
+                )}
               </div>
             </Group>
           </Card>
@@ -282,16 +273,13 @@ function SPA() {
                 experiência fragmentada.
               </Text>
 
-              <Stack gap="xl">
-                {spaExamples.map(example => (
-                  <CodeExample
-                    key={example.id}
-                    title={example.title}
-                    description={example.description}
-                    code={example.content}
-                  />
-                ))}
-              </Stack>
+              {spaExamples[3] && (
+                <CodeExample
+                  title={spaExamples[3].title}
+                  description={spaExamples[3].description}
+                  code={spaExamples[3].content}
+                />
+              )}
             </Stack>
           </Paper>
 
@@ -310,16 +298,13 @@ function SPA() {
                 experiência fragmentada.
               </Text>
 
-              <Stack gap="xl">
-                {spaExamples.map(example => (
-                  <CodeExample
-                    key={example.id}
-                    title={example.title}
-                    description={example.description}
-                    code={example.content}
-                  />
-                ))}
-              </Stack>
+              {spaExamples[4] && (
+                <CodeExample
+                  title={spaExamples[4].title}
+                  description={spaExamples[4].description}
+                  code={spaExamples[4].content}
+                />
+              )}
             </Stack>
           </Paper>
 
@@ -338,16 +323,13 @@ function SPA() {
                 perdidas, experiência fragmentada.
               </Text>
 
-              <Stack gap="xl">
-                {spaExamples.map(example => (
-                  <CodeExample
-                    key={example.id}
-                    title={example.title}
-                    description={example.description}
-                    code={example.content}
-                  />
-                ))}
-              </Stack>
+              {spaExamples[5] && (
+                <CodeExample
+                  title={spaExamples[5].title}
+                  description={spaExamples[5].description}
+                  code={spaExamples[5].content}
+                />
+              )}
             </Stack>
           </Paper>
         </Stack>

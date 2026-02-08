@@ -101,16 +101,13 @@ function Monorepo() {
                   Libs compartilhadas entre projetos. Muda uma vez, todo mundo
                   ganha.
                 </Text>
-                <Stack gap="xl">
-                  {monorepoExamples.map(example => (
-                    <CodeExample
-                      key={example.id}
-                      title={example.title}
-                      description={example.description}
-                      code={example.content}
-                    />
-                  ))}
-                </Stack>
+                {monorepoExamples[0] && (
+                  <CodeExample
+                    title={monorepoExamples[0].title}
+                    description={monorepoExamples[0].description}
+                    code={monorepoExamples[0].content}
+                  />
+                )}
               </div>
             </Group>
           </Card>
@@ -126,16 +123,13 @@ function Monorepo() {
                   ESLint, Prettier, TypeScript, testes. Configura uma vez,
                   funciona em todo lugar.
                 </Text>
-                <Stack gap="xl">
-                  {monorepoExamples.map(example => (
-                    <CodeExample
-                      key={example.id}
-                      title={example.title}
-                      description={example.description}
-                      code={example.content}
-                    />
-                  ))}
-                </Stack>
+                {monorepoExamples[1] && (
+                  <CodeExample
+                    title={monorepoExamples[1].title}
+                    description={monorepoExamples[1].description}
+                    code={monorepoExamples[1].content}
+                  />
+                )}
               </div>
             </Group>
           </Card>
@@ -151,16 +145,13 @@ function Monorepo() {
                   Muda uma lib, vê o impacto em todos os projetos. Sem quebrar
                   nada.
                 </Text>
-                <Stack gap="xl">
-                  {monorepoExamples.map(example => (
-                    <CodeExample
-                      key={example.id}
-                      title={example.title}
-                      description={example.description}
-                      code={example.content}
-                    />
-                  ))}
-                </Stack>
+                {monorepoExamples[2] && (
+                  <CodeExample
+                    title={monorepoExamples[2].title}
+                    description={monorepoExamples[2].description}
+                    code={monorepoExamples[2].content}
+                  />
+                )}
               </div>
             </Group>
           </Card>
@@ -176,16 +167,13 @@ function Monorepo() {
                   Um commit pode afetar múltiplos projetos. Histórico completo,
                   rastreabilidade total.
                 </Text>
-                <Stack gap="xl">
-                  {monorepoExamples.map(example => (
-                    <CodeExample
-                      key={example.id}
-                      title={example.title}
-                      description={example.description}
-                      code={example.content}
-                    />
-                  ))}
-                </Stack>
+                {monorepoExamples[3] && (
+                  <CodeExample
+                    title={monorepoExamples[3].title}
+                    description={monorepoExamples[3].description}
+                    code={monorepoExamples[3].content}
+                  />
+                )}
               </div>
             </Group>
           </Card>

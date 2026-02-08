@@ -98,16 +98,13 @@ function StateMachines() {
                   Condições bem definidas da aplicação. Cada estado tem
                   comportamentos específicos.
                 </Text>
-                <Stack gap="xl">
-                  {stateMachinesExamples.map(example => (
-                    <CodeExample
-                      key={example.id}
-                      title={example.title}
-                      description={example.description}
-                      code={example.content}
-                    />
-                  ))}
-                </Stack>
+                {stateMachinesExamples[0] && (
+                  <CodeExample
+                    title={stateMachinesExamples[0].title}
+                    description={stateMachinesExamples[0].description}
+                    code={stateMachinesExamples[0].content}
+                  />
+                )}
               </div>
             </Group>
           </Card>
@@ -122,16 +119,13 @@ function StateMachines() {
                 <Text size="sm" c="dimmed">
                   Ações que causam transições. Cada evento pode mudar o estado.
                 </Text>
-                <Stack gap="xl">
-                  {stateMachinesExamples.map(example => (
-                    <CodeExample
-                      key={example.id}
-                      title={example.title}
-                      description={example.description}
-                      code={example.content}
-                    />
-                  ))}
-                </Stack>
+                {stateMachinesExamples[1] && (
+                  <CodeExample
+                    title={stateMachinesExamples[1].title}
+                    description={stateMachinesExamples[1].description}
+                    code={stateMachinesExamples[1].content}
+                  />
+                )}
               </div>
             </Group>
           </Card>
@@ -147,16 +141,13 @@ function StateMachines() {
                   Regras que definem como mudar de estado. Cada transição tem
                   condições e ações.
                 </Text>
-                <Stack gap="xl">
-                  {stateMachinesExamples.map(example => (
-                    <CodeExample
-                      key={example.id}
-                      title={example.title}
-                      description={example.description}
-                      code={example.content}
-                    />
-                  ))}
-                </Stack>
+                {stateMachinesExamples[2] && (
+                  <CodeExample
+                    title={stateMachinesExamples[2].title}
+                    description={stateMachinesExamples[2].description}
+                    code={stateMachinesExamples[2].content}
+                  />
+                )}
               </div>
             </Group>
           </Card>
