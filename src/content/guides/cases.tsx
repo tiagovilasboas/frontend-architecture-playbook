@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   Title,
   Text,
@@ -8,7 +7,11 @@ import {
   ThemeIcon,
   Alert,
   Card,
+  Badge,
+  SimpleGrid,
+  Anchor,
 } from '@mantine/core';
+import { Link } from 'react-router-dom';
 import {
   IconTarget,
   IconRocket,
@@ -17,6 +20,8 @@ import {
   IconCode,
   IconBolt,
   IconGauge,
+  IconBook,
+  IconPuzzle,
 } from '@tabler/icons-react';
 import { CaseCard, type Case } from '../../components/CaseCard';
 import casesData from '../../data/cases.json';
@@ -27,18 +32,96 @@ export default function Cases() {
 
   return (
     <Stack gap="xl">
-      {/* Hero Section */}
-      <div>
-        <Title order={1} mb="md">
-          Casos Reais: Quando Front-End Vira Dinheiro
-        </Title>
-        <Text size="lg" c="dimmed">
-          19 empresas que provaram que performance não é frescura. Stack bonita
-          não paga boleto, mas essas histórias sim.
-        </Text>
-      </div>
+      {/* Hero – Casos Reais: Quando Front-End Vira Dinheiro */}
+      <Paper
+        withBorder
+        p={{ base: 'lg', sm: 'xl' }}
+        radius="lg"
+        style={{
+          background: 'var(--mantine-color-accent-0)',
+          borderColor: 'var(--mantine-color-accent-4)',
+          borderWidth: 2,
+        }}
+      >
+        <Stack gap="md">
+          <Badge size="lg" variant="filled" color="accent" radius="md" w="fit-content">
+            19 casos · fontes verificáveis
+          </Badge>
+          <Title order={1}>
+            Casos Reais: Quando Front-End Vira Dinheiro
+          </Title>
+          <Text size="lg" c="dimmed" maw={620}>
+            Empresas que provaram que performance não é frescura. Cada caso com
+            link para o artigo ou tech blog original — e-commerce, streaming,
+            redes sociais e mais.
+          </Text>
+          <Text size="sm" c="dimmed" fs="italic">
+            Stack bonita não paga boleto. Essas histórias sim.
+          </Text>
+        </Stack>
+      </Paper>
 
-      {/* What is it */}
+      {/* Por que esses casos existem – arquitetura + este material */}
+      <Paper withBorder p="xl" radius="lg">
+        <Stack gap="lg">
+          <Group>
+            <ThemeIcon size={50} radius="md" variant="light" color="brand">
+              <IconBook size={25} />
+            </ThemeIcon>
+            <div>
+              <Title order={3}>Por que casos assim existem?</Title>
+              <Text c="dimmed">
+                Boa arquitetura + os conceitos deste playbook
+              </Text>
+            </div>
+          </Group>
+
+          <Text>
+            Casos como os que você vai ver aqui <strong>só acontecem</strong> quando
+            se junta <strong>decisão arquitetural certa</strong> com os conceitos
+            que este material traz: dependency rule, padrões de entrega (SSR, PWA,
+            micro-frontends), performance, migração gradual e métricas reais.
+          </Text>
+
+          <Alert color="blue" icon={<IconPuzzle size={20} />} radius="md">
+            <Text fw={600} size="sm" mb="xs">
+              O que este playbook tem a ver com isso?
+            </Text>
+            <Text size="sm">
+              Cada caso abaixo usa, na prática, <strong>partes do que você encontra
+              neste guia</strong>: Clean Architecture, BFF, code splitting, feature
+              flags, PWA, monorepo, estratégias de migração. Não é coincidência —
+              é a mesma base que permite que front-end vire dinheiro em produção.
+            </Text>
+          </Alert>
+
+          <Text size="sm" c="dimmed">
+            Use os links ao lado para aprofundar nos temas que aparecem nos casos:
+          </Text>
+          <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="sm">
+            <Anchor component={Link} to="/guides/dependency-rule" size="sm">
+              Dependency Rule
+            </Anchor>
+            <Anchor component={Link} to="/guides/how-to-choose" size="sm">
+              Como Escolher Arquitetura
+            </Anchor>
+            <Anchor component={Link} to="/guides/architecture-comparison" size="sm">
+              Comparação de Arquiteturas
+            </Anchor>
+            <Anchor component={Link} to="/guides/implementation-roadmap" size="sm">
+              Roadmap de Implementação
+            </Anchor>
+            <Anchor component={Link} to="/guides/migration-strategies" size="sm">
+              Estratégias de Migração
+            </Anchor>
+            <Anchor component={Link} to="/techniques/performance" size="sm">
+              Performance
+            </Anchor>
+          </SimpleGrid>
+        </Stack>
+      </Paper>
+
+      {/* O que é (resumido) */}
       <Paper withBorder p="xl" radius="md">
         <Stack gap="md">
           <Group>
@@ -46,30 +129,18 @@ export default function Cases() {
               <IconTarget size={25} />
             </ThemeIcon>
             <div>
-              <Title order={3}>O que é?</Title>
+              <Title order={3}>O que você vai ver</Title>
               <Text c="dimmed">
-                Casos reais de empresas que aplicaram boas práticas com
-                resultado
+                19 casos reais com problema, solução e link para a fonte
               </Text>
             </div>
           </Group>
 
           <Text>
-            Aqui você vai ver <strong>19 casos reais</strong> onde devs
-            resolveram problemas de verdade. Não é sobre "usar React ou Vue", é
-            sobre <strong>fazer dinheiro com código</strong>.
-          </Text>
-
-          <Text>
-            Cada empresa tinha um problema real: site lento, app travando,
-            usuários abandonando. Eles resolveram com arquitetura, não com
-            framework da moda.
-          </Text>
-
-          <Text>
-            A regra é simples:{' '}
-            <em>performance vira conversão, conversão vira dinheiro</em>. Stack
-            bonita não paga boleto, mas essas histórias sim.
+            Em cada card: <strong>desafio</strong>, <strong>solução</strong>, práticas
+            usadas e resultado. Não é sobre "React ou Vue" — é sobre{' '}
+            <strong>fazer dinheiro com código</strong>. Performance vira conversão,
+            conversão vira dinheiro.
           </Text>
         </Stack>
       </Paper>

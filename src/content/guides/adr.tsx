@@ -8,7 +8,6 @@ import {
   ThemeIcon,
   Card,
   SimpleGrid,
-  Code,
   Group,
   Badge,
 } from '@mantine/core';
@@ -19,6 +18,7 @@ import {
   IconCode,
   IconFileText,
 } from '@tabler/icons-react';
+import CodeExample from '../../components/CodeExample';
 import MobileTabs from '../../components/MobileTabs';
 import { createArchitectureTabs } from '../../components/MobileTabsHelpers';
 import GuideNavigation from '../../components/GuideNavigation';
@@ -181,15 +181,17 @@ export default function ADRGuide() {
               <Text fw={600} mb="xs">
                 1. Onde guardar
               </Text>
-              <Code block>{`docs/
+              <CodeExample
+                title="Estrutura docs/adr"
+                description="Versionado junto com o código no mesmo repo."
+                code={`docs/
 └── adr/
     ├── 001-zustand-state-management.md
     ├── 002-remix-migration.md
     ├── 003-monorepo-turborepo.md
-    └── template.md`}</Code>
-              <Text size="sm" c="dimmed" mt="xs">
-                Versionado junto com o código no mesmo repo.
-              </Text>
+    └── template.md`}
+                defaultExpanded={false}
+              />
             </Card>
 
             <Card withBorder p="md">
@@ -286,7 +288,10 @@ export default function ADRGuide() {
             Template Markdown completo
           </Title>
 
-          <Code block>{`# ADR-{NUMBER}: {TÍTULO DA DECISÃO}
+          <CodeExample
+            title="Template ADR (Markdown)"
+            description="Copie e preencha as seções. Mantenha em 1-2 páginas."
+            code={`# ADR-{NUMBER}: {TÍTULO DA DECISÃO}
 
 ## Status
 Proposto | Aceito | Depreciado | Substituído por ADR-XXX
@@ -323,7 +328,9 @@ O que foi decidido. Seja específico.
 - ...
 
 ## Referências
-- Links para docs, artigos, ou discussões relevantes`}</Code>
+- Links para docs, artigos, ou discussões relevantes`}
+            defaultExpanded={true}
+          />
         </Stack>
       </Paper>
 

@@ -14,9 +14,9 @@ export const getPageMeta = (pathname: string): PageMeta => {
   switch (pathname) {
     case '/':
       return {
-        title: 'Arquitetura Front-End: Guia Completo + Decision Wizard v3.0',
+        title: 'Front-End Architecture Playbook: Guia Completo + Decision Wizard v3.0',
         description:
-          'Arquitetura Front-End: Guia completo com Decision Wizard v3.0 + 9 arquiteturas comparadas. Clean Architecture, Micro-frontends, SSR/SSG, BFF, PWA. 19 casos reais com fontes verificáveis.',
+          'Front-End Architecture Playbook: Guia completo com Decision Wizard v3.0 + 9 arquiteturas comparadas. Clean Architecture, Micro-frontends, SSR/SSG, BFF, PWA. 19 casos reais com fontes verificáveis.',
         keywords:
           'arquitetura front-end, arquitetura frontend, front-end architecture, frontend architecture, clean architecture, micro frontends, javascript patterns, web development, typescript, decision wizard v3, architecture patterns, frontend best practices',
         ogTitle: 'Arquitetura Front-End: Guia Completo + Decision Wizard v3.0',

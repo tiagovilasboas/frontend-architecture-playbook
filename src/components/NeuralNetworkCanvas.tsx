@@ -283,7 +283,7 @@ export default function NeuralNetworkCanvas({
           }
 
           const distance = Math.sqrt(dx * dx + dy * dy);
-          const opacity = (1 - distance / maxDistance) * 0.5;
+          const opacity = (1 - distance / maxDistance) * 0.8;
 
           ctx.globalAlpha = opacity;
           ctx.beginPath();
@@ -314,7 +314,7 @@ export default function NeuralNetworkCanvas({
 
         // Node
         ctx.fillStyle = nodeColor;
-        ctx.globalAlpha = 0.8;
+        ctx.globalAlpha = 1;
         ctx.beginPath();
         ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
         ctx.fill();

@@ -8,7 +8,6 @@ import {
   ThemeIcon,
   Card,
   SimpleGrid,
-  Code,
   Group,
   Badge,
   Timeline,
@@ -22,6 +21,7 @@ import {
   IconRocket,
   IconX,
 } from '@tabler/icons-react';
+import CodeExample from '../../components/CodeExample';
 import MobileTabs from '../../components/MobileTabs';
 import { createArchitectureTabs } from '../../components/MobileTabsHelpers';
 import GuideNavigation from '../../components/GuideNavigation';
@@ -150,7 +150,10 @@ export default function MigrationStrategiesGuide() {
             </Timeline.Item>
           </Timeline>
 
-          <Code block>{`// Exemplo: Router proxy para strangler fig
+          <CodeExample
+            title="Router proxy (Next.js) - Strangler Fig"
+            description="Rotas migradas em pages/; o resto vai para o app legado via rewrite."
+            code={`// Exemplo: Router proxy para strangler fig
 // O novo app Next.js serve rotas migradas
 // O legado CRA serve o resto via iframe ou redirect
 
@@ -173,7 +176,9 @@ module.exports = {
 // /dashboard → Next.js (migrado)
 // /settings → Legado (via rewrite)
 // /profile  → Next.js (migrado)
-// /admin    → Legado (via rewrite)`}</Code>
+// /admin    → Legado (via rewrite)`}
+            defaultExpanded={false}
+          />
         </Stack>
       </Paper>
 
@@ -231,7 +236,10 @@ module.exports = {
             implementação por trás da abstração sem afetar os consumidores.
           </Text>
 
-          <Code block>{`// Antes: código acoplado ao fetch direto
+          <CodeExample
+            title="Branch by Abstraction - UserRepository"
+            description="Abstração + duas implementações; troca via feature flag."
+            code={`// Antes: código acoplado ao fetch direto
 const users = await fetch('/api/users').then(r => r.json());
 
 // Step 1: Crie abstração
@@ -268,7 +276,9 @@ class GraphQLUserRepository implements UserRepository {
 // Step 4: Troque via feature flag
 const userRepo: UserRepository = featureFlag('graphql-users')
   ? new GraphQLUserRepository()
-  : new FetchUserRepository();`}</Code>
+  : new FetchUserRepository();`}
+            defaultExpanded={false}
+          />
 
           <Alert color="blue" icon={<IconBulb size={16} />}>
             <Text size="sm">

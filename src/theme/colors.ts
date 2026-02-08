@@ -52,12 +52,12 @@ export const semantic = {
   canvasBgLight: 'rgb(247, 247, 248)',
   canvasTrailDark: 'rgba(33, 33, 33, 0.75)',
   canvasTrailLight: 'rgba(247, 247, 248, 0.4)',
-  canvasLineDark: 'rgba(0, 255, 65, 0.18)',
-  canvasLineLight: 'rgba(0, 160, 40, 0.12)',
-  canvasNodeDark: 'rgba(0, 255, 65, 0.25)',
-  canvasNodeLight: 'rgba(0, 160, 40, 0.16)',
-  canvasGlowDark: 'rgba(0, 255, 65, 0.08)',
-  canvasGlowLight: 'rgba(0, 160, 40, 0.06)',
+  canvasLineDark: 'rgba(0, 255, 65, 0.14)',
+  canvasLineLight: 'rgba(0, 160, 40, 0.10)',
+  canvasNodeDark: 'rgba(0, 255, 65, 0.20)',
+  canvasNodeLight: 'rgba(0, 160, 40, 0.13)',
+  canvasGlowDark: 'rgba(0, 255, 65, 0.06)',
+  canvasGlowLight: 'rgba(0, 160, 40, 0.05)',
 
   // Diagrams (success/error mantidos para clareza)
   diagramSuccessBorderDark: 'rgba(34, 197, 94, 0.8)',

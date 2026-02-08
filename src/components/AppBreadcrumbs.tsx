@@ -2,6 +2,7 @@ import React from 'react';
 import { Breadcrumbs, Anchor, Text } from '@mantine/core';
 import { Link, useLocation } from 'react-router-dom';
 import { IconHome, IconChevronRight } from '@tabler/icons-react';
+import { getBreadcrumbsForPath } from '../lib/navigation';
 
 const COLLECTION_LABELS: Record<string, string> = {
   guides: 'Guias',
@@ -23,21 +24,22 @@ export default function AppBreadcrumbs() {
 
   if (location.pathname === '/') return null;
 
-  const pathSegments = location.pathname.split('/').filter(Boolean);
+  const navItems = getBreadcrumbsForPath(location.pathname);
 
-  const getLabel = (segment: string) =>
-    COLLECTION_LABELS[segment] ?? formatSlug(segment);
-
-  const buildPath = (index: number) =>
-    '/' + pathSegments.slice(0, index + 1).join('/');
-
-  const items = [
-    { title: 'Início', href: '/' },
-    ...pathSegments.map((segment, index) => ({
-      title: getLabel(segment),
-      href: buildPath(index),
-    })),
-  ];
+  const items = navItems ?? (() => {
+    const pathSegments = location.pathname.split('/').filter(Boolean);
+    const getLabel = (segment: string) =>
+      COLLECTION_LABELS[segment] ?? formatSlug(segment);
+    const buildPath = (index: number) =>
+      '/' + pathSegments.slice(0, index + 1).join('/');
+    return [
+      { label: 'Início', href: '/' as string },
+      ...pathSegments.map((segment, index) => ({
+        label: getLabel(segment),
+        href: buildPath(index),
+      })),
+    ].map(({ label, href }) => ({ label, href: href as string | null }));
+  })();
 
   return (
     <nav
@@ -56,37 +58,37 @@ export default function AppBreadcrumbs() {
         className="app-breadcrumbs-list"
       >
         {items.map((item, index) => {
-          const isLast = index === items.length - 1;
+          const isLast = index === items.length - 1 || item.href == null;
 
           if (isLast) {
             return (
               <Text
-                key={item.href}
+                key={item.href ?? item.label}
                 component="span"
                 size="sm"
                 fw={500}
                 className="app-breadcrumbs-current"
               >
-                {item.title}
+                {item.label}
               </Text>
             );
           }
 
           return (
             <Anchor
-              key={item.href}
+              key={item.href ?? index}
               component={Link}
-              to={item.href}
+              to={item.href ?? '#'}
               size="sm"
               className="app-breadcrumbs-link"
             >
               {index === 0 ? (
                 <>
                   <IconHome size={16} style={{ verticalAlign: 'middle' }} />
-                  <span style={{ marginLeft: 4 }}>{item.title}</span>
+                  <span style={{ marginLeft: 4 }}>{item.label}</span>
                 </>
               ) : (
-                item.title
+                item.label
               )}
             </Anchor>
           );

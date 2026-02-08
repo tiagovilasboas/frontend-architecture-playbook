@@ -3,6 +3,22 @@ import { Breadcrumbs, Anchor, Text, Group } from '@mantine/core';
 import { Link, useLocation } from 'react-router-dom';
 import { IconHome, IconChevronRight } from '@tabler/icons-react';
 import { useBreakpoints } from '../hooks/useBreakpoints.ts';
+import { getBreadcrumbsForPath } from '../lib/navigation';
+
+const COLLECTION_LABELS: Record<string, string> = {
+  guides: 'Guias',
+  architectures: 'Arquiteturas',
+  patterns: 'Padrões',
+  techniques: 'Técnicas',
+  'best-practices': 'Boas Práticas',
+};
+
+function formatSlug(slug: string): string {
+  return slug
+    .split('-')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+}
 
 export default function MobileBreadcrumbs() {
   const location = useLocation();
@@ -10,37 +26,22 @@ export default function MobileBreadcrumbs() {
 
   if (!isMobile || location.pathname === '/') return null;
 
-  const pathSegments = location.pathname.split('/').filter(Boolean);
+  const navItems = getBreadcrumbsForPath(location.pathname);
 
-  const getLabel = (segment: string) => {
-    // Capitaliza e formata labels
-    if (segment === 'guides') return 'Guides';
-    if (segment === 'architectures') return 'Architectures';
-    if (segment === 'patterns') return 'Patterns';
-    if (segment === 'techniques') return 'Técnicas';
-    if (segment === 'best-practices') return 'Boas Práticas';
-
-    // Para slugs, capitaliza e substitui hífens
-    return segment
-      .split('-')
-      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(' ');
-  };
-
-  const buildPath = (index: number) => {
-    return '/' + pathSegments.slice(0, index + 1).join('/');
-  };
-
-  const items = [
-    {
-      title: 'Home',
-      href: '/',
-    },
-    ...pathSegments.map((segment, index) => ({
-      title: getLabel(segment),
-      href: buildPath(index),
-    })),
-  ];
+  const items = navItems ?? (() => {
+    const pathSegments = location.pathname.split('/').filter(Boolean);
+    const getLabel = (segment: string) =>
+      COLLECTION_LABELS[segment] ?? formatSlug(segment);
+    const buildPath = (index: number) =>
+      '/' + pathSegments.slice(0, index + 1).join('/');
+    return [
+      { label: 'Início', href: '/' as string },
+      ...pathSegments.map((segment, index) => ({
+        label: getLabel(segment),
+        href: buildPath(index),
+      })),
+    ].map(({ label, href }) => ({ label, href: href as string | null }));
+  })();
 
   return (
     <Group
@@ -61,21 +62,21 @@ export default function MobileBreadcrumbs() {
         }}
       >
         {items.map((item, index) => {
-          const isLast = index === items.length - 1;
+          const isLast = index === items.length - 1 || item.href == null;
 
           if (isLast) {
             return (
-              <Text key={item.href} size="md" fw={500} c="brand">
-                {item.title}
+              <Text key={item.href ?? item.label} size="md" fw={500} c="brand">
+                {item.label}
               </Text>
             );
           }
 
           return (
             <Anchor
-              key={item.href}
+              key={item.href ?? index}
               component={Link}
-              to={item.href}
+              to={item.href ?? '#'}
               size="md"
               c="dimmed"
               style={{
@@ -86,7 +87,7 @@ export default function MobileBreadcrumbs() {
               }}
             >
               {index === 0 && <IconHome size={18} />}
-              {item.title}
+              {item.label}
             </Anchor>
           );
         })}
