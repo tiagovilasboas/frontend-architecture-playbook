@@ -1,13 +1,5 @@
-import React, { useState } from 'react';
-import {
-  Stack,
-  Group,
-  Text,
-  Accordion,
-  TextInput,
-  ActionIcon,
-  ScrollArea,
-} from '@mantine/core';
+import React from 'react';
+import { Stack, Group, Text, Accordion, ScrollArea, Anchor } from '@mantine/core';
 import {
   IconBook,
   IconPuzzle,
@@ -19,8 +11,9 @@ import {
   IconPlug,
   IconPuzzle as IconPuzzlePiece,
   IconBolt,
-  IconSearch,
-  IconX,
+  IconBrandGithub,
+  IconBrandLinkedin,
+  IconHeart,
 } from '@tabler/icons-react';
 import { useLocation } from 'react-router-dom';
 import type { DocMeta } from '../lib/content.tsx';
@@ -44,10 +37,8 @@ export default function MobileNavMenu({
   onNavigate,
 }: Props) {
   const location = useLocation();
-  const [searchQuery, setSearchQuery] = useState('');
   const current = location.pathname;
 
-  // Agrupar arquiteturas por complexidade
   const groupedArchitectures = {
     fundamental: architectures.slice(0, 4),
     design: architectures.slice(4, 7),
@@ -56,72 +47,30 @@ export default function MobileNavMenu({
     advanced: architectures.slice(12, 15),
   };
 
-  // Filtrar itens baseado na busca
-  const filterItems = (items: DocMeta[], query: string) => {
-    if (!query) return items;
-    const lowerQuery = query.toLowerCase();
-    return items.filter(
-      item =>
-        item.title.toLowerCase().includes(lowerQuery) ||
-        item.description?.toLowerCase().includes(lowerQuery)
-    );
-  };
-
-  const filteredGuides = filterItems(guides, searchQuery);
-  const filteredBestPractices = filterItems(bestPractices, searchQuery);
-  const filteredPatterns = filterItems(patterns, searchQuery);
-  const filteredTechniques = filterItems(techniques, searchQuery);
-
   return (
-    <Stack gap="md" style={{ height: '100%' }}>
-      {/* Busca no topo do menu mobile */}
-      <TextInput
-        placeholder="Buscar no menu..."
-        leftSection={<IconSearch size={20} />}
-        rightSection={
-          searchQuery && (
-            <ActionIcon
-              size="md"
-              variant="transparent"
-              onClick={() => setSearchQuery('')}
-            >
-              <IconX size={18} />
-            </ActionIcon>
-          )
-        }
-        value={searchQuery}
-        onChange={e => setSearchQuery(e.target.value)}
-        size="md"
-        mb="sm"
-      />
-
-      <ScrollArea style={{ flex: 1, height: 'calc(100vh - 200px)' }}>
+    <Stack gap={0} style={{ height: '100%' }} className="mobile-nav-menu">
+      <ScrollArea style={{ flex: 1, minHeight: 0 }} className="mobile-nav-scroll">
         <Accordion
-          defaultValue={['guides', 'architectures']}
+          defaultValue={[]}
           multiple
-          variant="separated"
-          radius="md"
+          variant="default"
+          radius={0}
+          className="mobile-nav-accordion"
         >
-          {/* 1. Guias – conceitos e decisão */}
+          {/* 1. Guias */}
           <Accordion.Item value="guides">
-            <Accordion.Control>
+            <Accordion.Control className="mobile-accordion-control">
               <Group gap="sm">
-                <IconBook size={20} color="var(--mantine-color-brand-6)" />
-                <Stack gap={0}>
-                  <Text fw={500} size="md">
-                    1. Guias
-                  </Text>
-                  <Text size="xs" c="dimmed">
-                    Conceitos e decisão
-                    {filteredGuides.length > 0 && ` · ${filteredGuides.length}`}
-                  </Text>
-                </Stack>
+                <IconBook size={18} color="var(--mantine-color-brand-6)" />
+                <Text fw={500} size="sm">
+                  Guias · {guides.length}
+                </Text>
               </Group>
             </Accordion.Control>
-            <Accordion.Panel>
-              <Stack gap={6}>
-                {filteredGuides.length > 0 ? (
-                  filteredGuides.map(g => (
+            <Accordion.Panel className="mobile-nav-panel">
+              <Stack gap={0}>
+                {guides.length > 0 ? (
+                  guides.map(g => (
                     <NavItem
                       key={g.slug}
                       href={`/guides/${g.slug}`}
@@ -140,32 +89,26 @@ export default function MobileNavMenu({
             </Accordion.Panel>
           </Accordion.Item>
 
-          {/* 2. Arquiteturas – o que escolher */}
+          {/* 2. Arquiteturas */}
           <Accordion.Item value="architectures">
-            <Accordion.Control>
+            <Accordion.Control className="mobile-accordion-control">
               <Group gap="sm">
-                <IconStack size={20} color="var(--mantine-color-brand-6)" />
-                <Stack gap={0}>
-                  <Text fw={500} size="md">
-                    2. Arquiteturas
-                  </Text>
-                  <Text size="xs" c="dimmed">
-                    O que escolher · {architectures.length}
-                  </Text>
-                </Stack>
+                <IconStack size={18} color="var(--mantine-color-brand-6)" />
+                <Text fw={500} size="sm">
+                  Arquiteturas · {architectures.length}
+                </Text>
               </Group>
             </Accordion.Control>
-            <Accordion.Panel>
-              <Stack gap="md">
-                {/* 🚀 FUNDAMENTALS */}
-                <div>
-                  <Group gap="sm" mb="sm">
-                    <IconRocket size={18} color="var(--mantine-color-brand-6)" />
-                    <Text size="sm" c="dimmed" fw={500}>
-                      Fundamentals
+            <Accordion.Panel className="mobile-nav-panel">
+              <Stack gap={0}>
+                <div className="mobile-nav-subgroup">
+                  <Group gap={6} mb={1}>
+                    <IconRocket size={12} color="var(--mantine-color-brand-6)" />
+                    <Text size="xs" c="dimmed" fw={500}>
+                      Fundamentais
                     </Text>
                   </Group>
-                  <Stack gap={6}>
+                  <Stack gap={0}>
                     {groupedArchitectures.fundamental.map(a => (
                       <NavItem
                         key={a.slug}
@@ -179,18 +122,14 @@ export default function MobileNavMenu({
                   </Stack>
                 </div>
 
-                {/* 🏗️ DESIGN PATTERNS */}
-                <div>
-                  <Group gap="sm" mb="sm">
-                    <IconBuilding
-                      size={18}
-                      color="var(--mantine-color-brand-6)"
-                    />
-                    <Text size="sm" c="dimmed" fw={500}>
+                <div className="mobile-nav-subgroup">
+                  <Group gap={6} mb={1}>
+                    <IconBuilding size={12} color="var(--mantine-color-brand-6)" />
+                    <Text size="xs" c="dimmed" fw={500}>
                       Padrões de Design
                     </Text>
                   </Group>
-                  <Stack gap={6}>
+                  <Stack gap={0}>
                     {groupedArchitectures.design.map(a => (
                       <NavItem
                         key={a.slug}
@@ -204,15 +143,14 @@ export default function MobileNavMenu({
                   </Stack>
                 </div>
 
-                {/* 🔌 INTEGRATION & API */}
-                <div>
-                  <Group gap="sm" mb="sm">
-                    <IconPlug size={18} color="var(--mantine-color-brand-6)" />
-                    <Text size="sm" c="dimmed" fw={500}>
-                      Integration & API
+                <div className="mobile-nav-subgroup">
+                  <Group gap={6} mb={1}>
+                    <IconPlug size={12} color="var(--mantine-color-brand-6)" />
+                    <Text size="xs" c="dimmed" fw={500}>
+                      Integração e API
                     </Text>
                   </Group>
-                  <Stack gap={6}>
+                  <Stack gap={0}>
                     {groupedArchitectures.integration.map(a => (
                       <NavItem
                         key={a.slug}
@@ -226,18 +164,14 @@ export default function MobileNavMenu({
                   </Stack>
                 </div>
 
-                {/* 🧩 MODULARIZATION */}
-                <div>
-                  <Group gap="sm" mb="sm">
-                    <IconPuzzlePiece
-                      size={18}
-                      color="var(--mantine-color-brand-6)"
-                    />
-                    <Text size="sm" c="dimmed" fw={500}>
-                      Modularization
+                <div className="mobile-nav-subgroup">
+                  <Group gap={6} mb={1}>
+                    <IconPuzzlePiece size={12} color="var(--mantine-color-brand-6)" />
+                    <Text size="xs" c="dimmed" fw={500}>
+                      Modularização
                     </Text>
                   </Group>
-                  <Stack gap={6}>
+                  <Stack gap={0}>
                     {groupedArchitectures.modular.map(a => (
                       <NavItem
                         key={a.slug}
@@ -251,15 +185,14 @@ export default function MobileNavMenu({
                   </Stack>
                 </div>
 
-                {/* ⚡ ADVANCED */}
-                <div>
-                  <Group gap="sm" mb="sm">
-                    <IconBolt size={18} color="var(--mantine-color-brand-6)" />
-                    <Text size="sm" c="dimmed" fw={500}>
-                      Advanced
+                <div className="mobile-nav-subgroup">
+                  <Group gap={6} mb={1}>
+                    <IconBolt size={12} color="var(--mantine-color-brand-6)" />
+                    <Text size="xs" c="dimmed" fw={500}>
+                      Avançadas
                     </Text>
                   </Group>
-                  <Stack gap={6}>
+                  <Stack gap={0}>
                     {groupedArchitectures.advanced.map(a => (
                       <NavItem
                         key={a.slug}
@@ -276,26 +209,20 @@ export default function MobileNavMenu({
             </Accordion.Panel>
           </Accordion.Item>
 
-          {/* 3. Padrões – como estruturar */}
+          {/* 3. Padrões */}
           <Accordion.Item value="patterns">
-            <Accordion.Control>
+            <Accordion.Control className="mobile-accordion-control">
               <Group gap="sm">
-                <IconPuzzle size={20} color="var(--mantine-color-brand-6)" />
-                <Stack gap={0}>
-                  <Text fw={500} size="md">
-                    3. Padrões
-                  </Text>
-                  <Text size="xs" c="dimmed">
-                    Como estruturar
-                    {filteredPatterns.length > 0 && ` · ${filteredPatterns.length}`}
-                  </Text>
-                </Stack>
+                <IconPuzzle size={18} color="var(--mantine-color-brand-6)" />
+                <Text fw={500} size="sm">
+                  Padrões · {patterns.length}
+                </Text>
               </Group>
             </Accordion.Control>
-            <Accordion.Panel>
-              <Stack gap={6}>
-                {filteredPatterns.length > 0 ? (
-                  filteredPatterns.map(p => (
+            <Accordion.Panel className="mobile-nav-panel">
+              <Stack gap={0}>
+                {patterns.length > 0 ? (
+                  patterns.map(p => (
                     <NavItem
                       key={p.slug}
                       href={`/patterns/${p.slug}`}
@@ -314,27 +241,20 @@ export default function MobileNavMenu({
             </Accordion.Panel>
           </Accordion.Item>
 
-          {/* 4. Técnicas – como implementar */}
+          {/* 4. Técnicas */}
           <Accordion.Item value="techniques">
-            <Accordion.Control>
+            <Accordion.Control className="mobile-accordion-control">
               <Group gap="sm">
-                <IconTools size={20} color="var(--mantine-color-brand-6)" />
-                <Stack gap={0}>
-                  <Text fw={500} size="md">
-                    4. Técnicas
-                  </Text>
-                  <Text size="xs" c="dimmed">
-                    Como implementar
-                    {filteredTechniques.length > 0 &&
-                      ` · ${filteredTechniques.length}`}
-                  </Text>
-                </Stack>
+                <IconTools size={18} color="var(--mantine-color-brand-6)" />
+                <Text fw={500} size="sm">
+                  Técnicas · {techniques.length}
+                </Text>
               </Group>
             </Accordion.Control>
-            <Accordion.Panel>
-              <Stack gap={6}>
-                {filteredTechniques.length > 0 ? (
-                  filteredTechniques.map(t => (
+            <Accordion.Panel className="mobile-nav-panel">
+              <Stack gap={0}>
+                {techniques.length > 0 ? (
+                  techniques.map(t => (
                     <NavItem
                       key={t.slug}
                       href={`/techniques/${t.slug}`}
@@ -353,27 +273,20 @@ export default function MobileNavMenu({
             </Accordion.Panel>
           </Accordion.Item>
 
-          {/* 5. Boas Práticas – princípios de código */}
+          {/* 5. Boas Práticas */}
           <Accordion.Item value="best-practices">
-            <Accordion.Control>
+            <Accordion.Control className="mobile-accordion-control">
               <Group gap="sm">
-                <IconCheck size={20} color="var(--mantine-color-brand-6)" />
-                <Stack gap={0}>
-                  <Text fw={500} size="md">
-                    5. Boas Práticas
-                  </Text>
-                  <Text size="xs" c="dimmed">
-                    Princípios de código
-                    {filteredBestPractices.length > 0 &&
-                      ` · ${filteredBestPractices.length}`}
-                  </Text>
-                </Stack>
+                <IconCheck size={18} color="var(--mantine-color-brand-6)" />
+                <Text fw={500} size="sm">
+                  Boas Práticas · {bestPractices.length}
+                </Text>
               </Group>
             </Accordion.Control>
-            <Accordion.Panel>
-              <Stack gap={6}>
-                {filteredBestPractices.length > 0 ? (
-                  filteredBestPractices.map(b => (
+            <Accordion.Panel className="mobile-nav-panel">
+              <Stack gap={0}>
+                {bestPractices.length > 0 ? (
+                  bestPractices.map(b => (
                     <NavItem
                       key={b.slug}
                       href={`/best-practices/${b.slug}`}
@@ -392,6 +305,50 @@ export default function MobileNavMenu({
             </Accordion.Panel>
           </Accordion.Item>
         </Accordion>
+
+        <div className="mobile-nav-footer">
+          <Stack gap={4} className="mobile-nav-footer-links">
+            <Anchor
+              href="https://github.com/tiagovilasboas"
+              target="_blank"
+              rel="noopener noreferrer"
+              size="sm"
+              c="gray"
+              className="mobile-nav-footer-link"
+              aria-label="GitHub - Tiago Vilas Boas"
+            >
+              <Group gap="sm">
+                <IconBrandGithub size={22} />
+                <Text size="sm" fw={500}>GitHub</Text>
+              </Group>
+            </Anchor>
+            <Anchor
+              href="https://www.linkedin.com/in/tiagovilasboas"
+              target="_blank"
+              rel="noopener noreferrer"
+              size="sm"
+              c="gray"
+              className="mobile-nav-footer-link"
+              aria-label="LinkedIn - Tiago Vilas Boas"
+            >
+              <Group gap="sm">
+                <IconBrandLinkedin size={22} />
+                <Text size="sm" fw={500}>LinkedIn</Text>
+              </Group>
+            </Anchor>
+          </Stack>
+          <Text size="sm" c="dimmed" ta="left" mt={4}>
+            Feito com{' '}
+            <IconHeart
+              size={14}
+              style={{
+                verticalAlign: 'middle',
+                color: 'var(--mantine-color-brand-6)',
+              }}
+            />{' '}
+            por Tiago Vilas Boas
+          </Text>
+        </div>
       </ScrollArea>
     </Stack>
   );

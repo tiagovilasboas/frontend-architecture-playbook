@@ -464,6 +464,155 @@ a:focus {
     overflow: auto !important;
   }
 
+  /* Menu mobile – sem bordas, sem espaço em volta */
+  .mobile-nav-drawer .mantine-Drawer-header {
+    padding: 4px 8px !important;
+    min-height: 40px !important;
+    background: var(--app-header-footer-dark) !important;
+    border: none !important;
+    color: var(--mantine-color-gray-0) !important;
+    display: flex !important;
+    justify-content: flex-end !important;
+    align-items: center !important;
+  }
+
+  [data-mantine-color-scheme='light'] .mobile-nav-drawer .mantine-Drawer-header {
+    background: var(--app-header-footer-light) !important;
+    color: var(--mantine-color-dark-7) !important;
+  }
+
+  .mobile-nav-drawer .mantine-Drawer-header .mantine-Drawer-title {
+    display: none !important;
+  }
+
+  .mobile-nav-drawer .mantine-Drawer-close {
+    color: var(--mantine-color-gray-1) !important;
+    margin: 0 !important;
+  }
+
+  .mobile-nav-drawer .mantine-Drawer-content {
+    padding: 0 !important;
+  }
+
+  .mobile-nav-drawer .mantine-Drawer-body {
+    padding: 0 !important;
+    margin-top: 0px;
+    overflow: visible !important;
+    background: var(--mantine-color-body) !important;
+  }
+
+  .mobile-nav-scroll {
+    padding: 0 !important;
+  }
+
+  .mobile-nav-accordion {
+    gap: 0 !important;
+  }
+
+  .mobile-nav-accordion .mantine-Accordion-control {
+    padding: 0px 8px !important;
+    min-height: 34px !important;
+  }
+
+  .mobile-nav-accordion .mantine-Accordion-control:hover {
+    background: var(--app-nav-hover-bg-dark) !important;
+  }
+
+  [data-mantine-color-scheme='light'] .mobile-nav-accordion .mantine-Accordion-control:hover {
+    background: var(--app-nav-hover-bg-light) !important;
+  }
+
+  .mobile-nav-accordion .mantine-Accordion-control .mantine-Accordion-chevron {
+    width: 18px;
+    color: var(--mantine-color-dimmed);
+  }
+
+  .mobile-nav-accordion .mantine-Accordion-label {
+    font-size: 14px !important;
+    font-weight: 500 !important;
+  }
+
+  .mobile-nav-accordion .mantine-Accordion-content {
+    padding: 0 !important;
+  }
+
+  .mobile-nav-accordion .mantine-Accordion-item {
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+  }
+
+  .mobile-nav-accordion .mantine-Accordion-item + .mantine-Accordion-item {
+    margin-top: 0 !important;
+  }
+
+  .mobile-nav-panel {
+    padding: 0 8px 2px !important;
+  }
+
+  .mobile-nav-subgroup + .mobile-nav-subgroup {
+    margin-top: 2px;
+  }
+
+  .mobile-nav-subgroup .mantine-Group-root {
+    margin-bottom: 1px !important;
+    padding-left: 0;
+  }
+
+  .mobile-nav-subgroup .mantine-Text-root {
+    font-size: 11px !important;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+
+  .mobile-nav-menu .navmenu-link {
+    padding: 4px 8px !important;
+    min-height: 36px !important;
+    font-size: 13px !important;
+    font-weight: 400 !important;
+    width: 100% !important;
+    border-radius: 6px !important;
+    margin: 0 !important;
+  }
+
+  .mobile-nav-menu .navmenu-link .mantine-NavLink-section {
+    min-width: 20px;
+  }
+
+  .mobile-nav-menu .navmenu-link .mantine-NavLink-section svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .mobile-nav-footer {
+    margin-top: var(--mantine-spacing-xs);
+    padding: var(--mantine-spacing-sm) var(--mantine-spacing-md);
+    border-top: 1px solid var(--app-border-dark);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  [data-mantine-color-scheme='light'] .mobile-nav-footer {
+    border-top-color: var(--app-border-light);
+  }
+
+  .mobile-nav-footer-link {
+    display: block;
+    min-height: 40px;
+    padding: 4px 0;
+    text-decoration: none;
+    border-radius: var(--mantine-radius-sm);
+  }
+
+  .mobile-nav-footer-link:hover {
+    text-decoration: underline;
+  }
+
+  .mobile-nav-footer-links {
+    width: 100%;
+  }
+
   /* NavMenu container - scroll apenas no mobile */
   .nav-menu-container {
     height: calc(100vh - 120px) !important;
@@ -507,24 +656,7 @@ a:focus {
   }
 }
 
-/* Mobile Bottom Navigation Styles */
 @media (max-width: 768px) {
-  /* Garantir que o footer tenha espaço acima do bottom nav */
-  footer {
-    margin-bottom: 70px !important;
-  }
-
-  /* Bottom nav – paleta neutral */
-  [data-mantine-color-scheme='dark'] .mantine-Paper-root[style*='position: fixed'][style*='bottom: 0'] {
-    background: var(--app-container-dark) !important;
-    border-top-color: var(--app-border-dark) !important;
-  }
-
-  [data-mantine-color-scheme='light'] .mantine-Paper-root[style*='position: fixed'][style*='bottom: 0'] {
-    background: var(--app-container-light) !important;
-    border-top-color: var(--app-border-light) !important;
-  }
-
   /* Breadcrumbs mobile */
   .mantine-Breadcrumbs-root {
     overflow-x: auto;

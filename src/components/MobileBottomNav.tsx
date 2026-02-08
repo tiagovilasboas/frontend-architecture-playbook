@@ -26,31 +26,11 @@ export default function MobileBottomNav() {
   if (!isMobile) return null;
 
   const navItems: NavItem[] = [
-    {
-      icon: <IconHome size={26} />,
-      label: 'Home',
-      path: '/',
-    },
-    {
-      icon: <IconBook size={26} />,
-      label: 'Guides',
-      path: '/guides',
-    },
-    {
-      icon: <IconStack size={26} />,
-      label: 'Arch',
-      path: '/architectures',
-    },
-    {
-      icon: <IconPuzzle size={26} />,
-      label: 'Patterns',
-      path: '/patterns',
-    },
-    {
-      icon: <IconSearch size={26} />,
-      label: 'Search',
-      path: '#search',
-    },
+    { icon: <IconHome size={22} />, label: 'Início', path: '/' },
+    { icon: <IconBook size={22} />, label: 'Guias', path: '/guides' },
+    { icon: <IconStack size={22} />, label: 'Arq.', path: '/architectures' },
+    { icon: <IconPuzzle size={22} />, label: 'Padrões', path: '/patterns' },
+    { icon: <IconSearch size={22} />, label: 'Busca', path: '#search' },
   ];
 
   const isActive = (path: string) => {
@@ -73,8 +53,9 @@ export default function MobileBottomNav() {
   return (
     <Paper
       withBorder
-      p="sm"
+      p="xs"
       radius={0}
+      className="mobile-bottom-nav"
       style={{
         position: 'fixed',
         bottom: 0,
@@ -83,6 +64,7 @@ export default function MobileBottomNav() {
         zIndex: 1000,
         borderTop: '1px solid var(--mantine-color-dark-3)',
         backgroundColor: 'var(--mantine-color-body)',
+        paddingBottom: 'max(8px, env(safe-area-inset-bottom))',
       }}
     >
       <Group justify="space-around" gap={0}>
@@ -92,14 +74,17 @@ export default function MobileBottomNav() {
             <UnstyledButton
               key={item.path}
               onClick={() => handleClick(item.path)}
+              className="mobile-bottom-nav-btn"
               style={{
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
-                gap: 6,
-                padding: '10px 16px',
+                gap: 4,
+                padding: '6px 8px',
                 borderRadius: 8,
-                minWidth: 70,
+                minWidth: 0,
+                flex: 1,
+                maxWidth: 72,
                 position: 'relative',
                 transition: 'all 0.2s ease',
                 color: active
@@ -135,7 +120,7 @@ export default function MobileBottomNav() {
                   </Badge>
                 )}
               </div>
-              <Text size="sm" fw={active ? 600 : 400}>
+              <Text size="xs" fw={active ? 600 : 400} style={{ lineHeight: 1.1 }}>
                 {item.label}
               </Text>
               {active && (

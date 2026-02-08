@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Drawer, Box, Text } from '@mantine/core';
+import { Drawer, Box } from '@mantine/core';
 import { Spotlight } from '@mantine/spotlight';
 import { useMediaQuery } from '@mantine/hooks';
 import HeaderBar from './HeaderBar.tsx';
 import MobileNavMenu from './MobileNavMenu.tsx';
-import MobileBottomNav from './MobileBottomNav.tsx';
 import AppBreadcrumbs from './AppBreadcrumbs.tsx';
 import { ReadingProgress } from './ReadingProgress.tsx';
 import { BackToTop } from './BackToTop.tsx';
@@ -76,18 +75,15 @@ export default function DocsShell({
       <Drawer
         opened={opened}
         onClose={handleDrawerClose}
-        padding="md"
+        padding={0}
         hiddenFrom="sm"
-        title={
-          <Text fw={600} size="lg">
-            Menu
-          </Text>
-        }
+        title={null}
         zIndex={3000}
         lockScroll={false}
         closeOnClickOutside={true}
         closeOnEscape={true}
-        size="85%"
+        size={300}
+        className="mobile-nav-drawer"
       >
         <MobileNavMenu
           guides={guides}
@@ -125,7 +121,7 @@ export default function DocsShell({
             flex: 1,
             width: '100%',
             padding: isMobile ? '1rem' : '2rem',
-            paddingBottom: isMobile ? '80px' : '2rem', // Espaço para bottom nav
+            paddingBottom: isMobile ? '1rem' : '2rem',
           }}
         >
           <AppBreadcrumbs />
@@ -137,9 +133,6 @@ export default function DocsShell({
 
         {/* Back to top - reduz fadiga de scroll (UX) */}
         <BackToTop />
-
-        {/* Bottom Navigation - apenas no mobile */}
-        <MobileBottomNav />
       </Box>
     </>
   );

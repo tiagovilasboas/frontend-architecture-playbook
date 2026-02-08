@@ -1,7 +1,7 @@
 /**
  * Single source of truth for app colors.
- * Dark: paleta black → white (fundo preto, conteúdo em direção ao branco).
- * Light: paleta white → black (fundo branco, conteúdo em direção ao preto).
+ * Dark: cinza escuro estilo ChatGPT (sem preto puro).
+ * Light: branco e cinzas claros.
  */
 
 import type { MantineColorsTuple } from '@mantine/core';
@@ -23,19 +23,19 @@ export const brand: MantineColorsTuple = [
 /** Mesma escala para harmonização total (links, ícones, destaque = tons de cinza) */
 export const accent: MantineColorsTuple = [...brand];
 
-// ─── Semantic tokens (body, containers, nav, canvas) ────────────────────
+// ─── Semantic tokens (body, containers, nav, canvas) – escuro estilo ChatGPT ───
 export const semantic = {
-  // Dark: black → white
-  bodyDark: '#0a0a0a',
+  // Dark: tons escuros (ChatGPT usa ~#212121 área principal, sidebar mais escuro)
+  bodyDark: '#212121',
   bodyLight: '#ffffff',
-  containerDark: '#171717',
-  containerLight: '#fafafa',
-  borderDark: '#262626',
+  containerDark: '#2d2d2d',
+  containerLight: '#f7f7f8',
+  borderDark: '#404040',
   borderLight: '#e5e5e5',
 
-  // Header e footer: um pouco mais escuros que o body
-  headerFooterDark: '#050505',
-  headerFooterLight: '#ebebeb',
+  // Header e footer (sidebar ChatGPT é mais escuro)
+  headerFooterDark: '#171717',
+  headerFooterLight: '#f0f0f0',
 
   // Nav dark: overlay branco sutil
   navHoverBgDark: 'rgba(255, 255, 255, 0.08)',
@@ -47,13 +47,13 @@ export const semantic = {
   navActiveBgLight: 'rgba(0, 0, 0, 0.08)',
   accordionHoverBgLight: 'rgba(0, 0, 0, 0.03)',
 
-  // Neural network canvas
-  canvasBgDark: 'rgb(0, 0, 0)',
-  canvasBgLight: 'rgb(250, 250, 250)',
-  canvasTrailDark: 'rgba(0, 0, 0, 0.65)',
-  canvasTrailLight: 'rgba(250, 250, 250, 0.4)',
-  canvasLineDark: 'rgba(255, 255, 255, 0.08)',
-  canvasLineLight: 'rgba(0, 0, 0, 0.06)',
+  // Neural network canvas (mesmo tom do body no dark)
+  canvasBgDark: '#212121',
+  canvasBgLight: 'rgb(247, 247, 248)',
+  canvasTrailDark: 'rgba(33, 33, 33, 0.75)',
+  canvasTrailLight: 'rgba(247, 247, 248, 0.4)',
+  canvasLineDark: 'rgba(255, 255, 255, 0.2)',
+  canvasLineLight: 'rgba(0, 0, 0, 0.14)',
   canvasNodeDark: 'rgba(255, 255, 255, 0.2)',
   canvasNodeLight: 'rgba(0, 0, 0, 0.14)',
   canvasGlowDark: 'rgba(255, 255, 255, 0.1)',

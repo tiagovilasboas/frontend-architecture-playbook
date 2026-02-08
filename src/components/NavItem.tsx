@@ -44,22 +44,9 @@ export default function NavItem({
       active={active}
       onClick={handleClick}
       leftSection={icon}
-      rightSection={
-        <div
-          style={{
-            width: 12,
-            height: 12,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-        >
-          {active ? <IconChevronRight size={12} /> : null}
-        </div>
-      }
+      rightSection={active ? <IconChevronRight size={14} /> : null}
       variant={active ? 'filled' : 'subtle'}
       className="navmenu-link"
-      style={{ width: '95%' }}
     />
   );
 }
