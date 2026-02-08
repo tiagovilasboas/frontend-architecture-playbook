@@ -32,8 +32,9 @@ function EventDriven() {
           Event-Driven Architecture
         </Title>
         <Text size="lg" c="dimmed">
-          Componentes se comunicam via eventos. Desacoplamento total,
-          extensibilidade máxima, manutenção simplificada.
+          Ações como dados, estado como resposta. useReducer, Zustand com
+          subscribe, XState, e Server-Sent Events - as formas reais de fazer
+          event-driven no frontend React.
         </Text>
       </div>
 
@@ -51,21 +52,29 @@ function EventDriven() {
           </Group>
 
           <Text>
-            Event-Driven é sobre uma coisa só:{' '}
-            <strong>componentes se comunicam via eventos</strong>.
+            Event-Driven no frontend moderno é sobre{' '}
+            <strong>tratar ações do usuário como dados tipados</strong> e reagir
+            a mudanças de estado de forma declarativa.
           </Text>
 
           <Text>
-            Pensa assim: ao invés de componentes chamarem funções diretamente,
-            eles disparam eventos. Outros componentes escutam esses eventos e
-            reagem conforme necessário.
+            No React, isso se manifesta de 3 formas: <strong>useReducer</strong>{' '}
+            (dispatch de ações tipadas), <strong>Zustand/Redux</strong>{' '}
+            (subscriptions reativas), e <strong>XState</strong> (máquinas de
+            estado com eventos). Para real-time, usamos SSE ou WebSockets
+            integrados com React Query.
           </Text>
 
-          <Text>
-            A regra é simples: <em>dispara evento, não chama função</em>.
-            Desacoplamento total, extensibilidade máxima, manutenção
-            simplificada.
-          </Text>
+          <Alert color="orange" icon={<IconAlertTriangle size={16} />}>
+            <Text size="sm">
+              <strong>Atenção:</strong> Muitos tutoriais recomendam{' '}
+              <code>window.dispatchEvent(new CustomEvent(...))</code> para
+              comunicação entre componentes React. Isso é um{' '}
+              <strong>anti-pattern</strong> — bypassa o ciclo de renderização,
+              não tem type safety, e cria dependências invisíveis. Use as
+              abordagens abaixo.
+            </Text>
+          </Alert>
         </Stack>
       </Paper>
     </Stack>
@@ -91,9 +100,9 @@ function EventDriven() {
                 1
               </Badge>
               <div>
-                <Title order={4}>Event Emitter</Title>
+                <Title order={4}>useReducer + Context</Title>
                 <Text size="sm" c="dimmed">
-                  Componente que dispara eventos. Não conhece quem vai escutar.
+                  Ações tipadas como eventos. O dispatch é o event emitter nativo do React.
                 </Text>
                 <CodeExample
                   title={
@@ -117,9 +126,9 @@ function EventDriven() {
                 2
               </Badge>
               <div>
-                <Title order={4}>Event Listener</Title>
+                <Title order={4}>Zustand subscribe</Title>
                 <Text size="sm" c="dimmed">
-                  Componente que escuta eventos. Reage quando evento acontece.
+                  Side-effects reativos. Reage a mudanças de estado como eventos.
                 </Text>
                 <CodeExample
                   title={
@@ -143,9 +152,9 @@ function EventDriven() {
                 3
               </Badge>
               <div>
-                <Title order={4}>Event Bus</Title>
+                <Title order={4}>XState (State Machines)</Title>
                 <Text size="sm" c="dimmed">
-                  Sistema que gerencia eventos. Conecta emitters e listeners.
+                  Eventos tipados + transições explícitas. Para fluxos complexos.
                 </Text>
                 <CodeExample
                   title={
@@ -184,15 +193,14 @@ function EventDriven() {
                 <IconCode size={20} />
               </ThemeIcon>
               <div>
-                <Title order={4}>E-commerce</Title>
+                <Title order={4}>Checkout multi-step</Title>
                 <Text size="sm" c="dimmed" mb="sm">
-                  Eventos para diferentes ações do usuário
+                  XState: transições explícitas, impossível ficar em estado inválido
                 </Text>
                 <List size="sm" spacing="xs">
-                  <List.Item>user:added_to_cart</List.Item>
-                  <List.Item>user:completed_purchase</List.Item>
-                  <List.Item>user:viewed_product</List.Item>
-                  <List.Item>user:searched_products</List.Item>
+                  <List.Item>Estados: cart → shipping → payment → processing → success</List.Item>
+                  <List.Item>Eventos tipados: NEXT, BACK, SUBMIT, PAYMENT_SUCCESS</List.Item>
+                  <List.Item>Visualizável com Stately Studio</List.Item>
                 </List>
               </div>
             </Group>
@@ -204,15 +212,14 @@ function EventDriven() {
                 <IconBolt size={20} />
               </ThemeIcon>
               <div>
-                <Title order={4}>Dashboard</Title>
+                <Title order={4}>Dashboard real-time</Title>
                 <Text size="sm" c="dimmed" mb="sm">
-                  Eventos para atualizações em tempo real
+                  SSE + React Query: dados atualizam automaticamente
                 </Text>
                 <List size="sm" spacing="xs">
-                  <List.Item>data:updated</List.Item>
-                  <List.Item>user:logged_in</List.Item>
-                  <List.Item>system:error_occurred</List.Item>
-                  <List.Item>notification:received</List.Item>
+                  <List.Item>EventSource escuta eventos do servidor</List.Item>
+                  <List.Item>Invalida queries quando dados mudam</List.Item>
+                  <List.Item>Componentes usam useQuery normal - não sabem que é real-time</List.Item>
                 </List>
               </div>
             </Group>
@@ -224,15 +231,14 @@ function EventDriven() {
                 <IconBulb size={20} />
               </ThemeIcon>
               <div>
-                <Title order={4}>Formulários</Title>
+                <Title order={4}>Analytics desacoplado</Title>
                 <Text size="sm" c="dimmed" mb="sm">
-                  Eventos para validação e feedback
+                  Zustand subscribe: side-effects sem acoplar componentes
                 </Text>
                 <List size="sm" spacing="xs">
-                  <List.Item>form:field_changed</List.Item>
-                  <List.Item>form:validation_failed</List.Item>
-                  <List.Item>form:submitted</List.Item>
-                  <List.Item>form:reset</List.Item>
+                  <List.Item>Store muda → subscriber reage automaticamente</List.Item>
+                  <List.Item>Componente não sabe que analytics existe</List.Item>
+                  <List.Item>Adicionar/remover tracking sem tocar em UI</List.Item>
                 </List>
               </div>
             </Group>
@@ -257,44 +263,48 @@ function EventDriven() {
         <Stack gap="md">
           <Alert color="red" icon={<IconAlertTriangle size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ❌ Debugging difícil
+              ❌ window.dispatchEvent em React
             </Text>
             <Text size="sm" c="dimmed">
-              Eventos assíncronos são difíceis de debugar. Use logging e
-              ferramentas de tracing.
+              Bypassa o React, zero type safety, dependências invisíveis.
+              Use useReducer, Zustand ou XState em vez disso.
             </Text>
           </Alert>
 
           <Alert color="orange" icon={<IconAlertTriangle size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ❌ Memory leaks
+              ❌ Over-engineering com XState
             </Text>
             <Text size="sm" c="dimmed">
-              Listeners não removidos causam memory leaks. Sempre remova
-              listeners quando componente desmonta.
+              Nem todo estado precisa de state machine. useState + useReducer
+              resolvem 90% dos casos. Use XState para fluxos com 4+ estados e
+              transições complexas.
             </Text>
           </Alert>
 
           <Alert color="yellow" icon={<IconAlertTriangle size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ❌ Ordem de execução
+              ❌ Subscribers esquecidos no Zustand
             </Text>
             <Text size="sm" c="dimmed">
-              Eventos podem executar em ordem imprevisível. Use prioridades ou
-              sequenciamento quando necessário.
+              subscribe() fora de componentes vive para sempre. Em testes,
+              isso causa memory leaks. Retorne o unsubscribe e limpe em
+              useEffect.
             </Text>
           </Alert>
 
           <Alert color="green" icon={<IconCheck size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ✅ Como evitar
+              ✅ Como escolher
             </Text>
             <Text size="sm" c="dimmed">
-              <strong>Use logging:</strong> Trace todos os eventos
+              <strong>Estado simples:</strong> useState/useReducer
               <br />
-              <strong>Cleanup listeners:</strong> Remove no unmount
+              <strong>Estado global + side-effects:</strong> Zustand subscribe
               <br />
-              <strong>Teste isoladamente:</strong> Unit tests para eventos
+              <strong>Fluxos complexos:</strong> XState
+              <br />
+              <strong>Real-time do servidor:</strong> SSE + React Query
             </Text>
           </Alert>
         </Stack>
@@ -321,16 +331,20 @@ function EventDriven() {
             </Title>
             <List size="sm" spacing="xs">
               <List.Item>
-                <strong>EventEmitter:</strong> Node.js built-in
+                <strong>XState:</strong>{' '}
+                <a href="https://xstate.js.org/" target="_blank" rel="noopener noreferrer">State machines para JavaScript</a>
               </List.Item>
               <List.Item>
-                <strong>RxJS:</strong> Reactive programming
+                <strong>Zustand:</strong>{' '}
+                <a href="https://zustand-demo.pmnd.rs/" target="_blank" rel="noopener noreferrer">State management leve com subscribe</a>
               </List.Item>
               <List.Item>
-                <strong>Redux:</strong> State management com eventos
+                <strong>TanStack Query:</strong>{' '}
+                <a href="https://tanstack.com/query/latest" target="_blank" rel="noopener noreferrer">Server state + invalidation</a>
               </List.Item>
               <List.Item>
-                <strong>Zustand:</strong> Lightweight state management
+                <strong>Stately Studio:</strong>{' '}
+                <a href="https://stately.ai/" target="_blank" rel="noopener noreferrer">Visual editor para XState</a>
               </List.Item>
             </List>
           </Card>
