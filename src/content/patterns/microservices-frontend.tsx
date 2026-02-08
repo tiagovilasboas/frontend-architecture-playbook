@@ -241,15 +241,15 @@ const OrderApp = React.lazy(() => import('orderApp/OrderHistory'))`}
                 <IconCode size={20} />
               </ThemeIcon>
               <div>
-                <Title order={4}>Spotify</Title>
+                <Title order={4}>Streaming de Música</Title>
                 <Text size="sm" c="dimmed" mb="sm">
-                  Micro-frontends para diferentes funcionalidades
+                  Cenário: plataforma com player, busca e biblioteca
                 </Text>
                 <List size="sm" spacing="xs">
-                  <List.Item>Player: React</List.Item>
-                  <List.Item>Discovery: Angular</List.Item>
-                  <List.Item>Library: Vue</List.Item>
+                  <List.Item>Cada feature em seu próprio micro-frontend</List.Item>
+                  <List.Item>Times independentes por domínio</List.Item>
                   <List.Item>Deploy independente por feature</List.Item>
+                  <List.Item>Shell app orquestra carregamento</List.Item>
                 </List>
               </div>
             </Group>
@@ -261,15 +261,15 @@ const OrderApp = React.lazy(() => import('orderApp/OrderHistory'))`}
                 <IconRocket size={20} />
               </ThemeIcon>
               <div>
-                <Title order={4}>IKEA</Title>
+                <Title order={4}>E-commerce</Title>
                 <Text size="sm" c="dimmed" mb="sm">
-                  E-commerce com micro-frontends
+                  Cenário: catálogo, checkout e conta separados
                 </Text>
                 <List size="sm" spacing="xs">
-                  <List.Item>Catalog: React</List.Item>
-                  <List.Item>Checkout: Angular</List.Item>
-                  <List.Item>Account: Vue</List.Item>
-                  <List.Item>Times independentes por domínio</List.Item>
+                  <List.Item>Catálogo: navegação e busca</List.Item>
+                  <List.Item>Checkout: fluxo de pagamento isolado</List.Item>
+                  <List.Item>Conta: perfil e pedidos</List.Item>
+                  <List.Item>Times autônomos por domínio de negócio</List.Item>
                 </List>
               </div>
             </Group>
@@ -281,15 +281,15 @@ const OrderApp = React.lazy(() => import('orderApp/OrderHistory'))`}
                 <IconBulb size={20} />
               </ThemeIcon>
               <div>
-                <Title order={4}>Netflix</Title>
+                <Title order={4}>Dashboard Corporativo</Title>
                 <Text size="sm" c="dimmed" mb="sm">
-                  Streaming com micro-frontends
+                  Cenário: múltiplos módulos de diferentes times
                 </Text>
                 <List size="sm" spacing="xs">
-                  <List.Item>Browse: React</List.Item>
-                  <List.Item>Player: Custom</List.Item>
-                  <List.Item>Account: Angular</List.Item>
-                  <List.Item>Deploy por dispositivo</List.Item>
+                  <List.Item>Módulos carregados sob demanda</List.Item>
+                  <List.Item>Cada time mantém seu módulo</List.Item>
+                  <List.Item>Shared design system entre módulos</List.Item>
+                  <List.Item>Versionamento independente</List.Item>
                 </List>
               </div>
             </Group>
@@ -395,20 +395,24 @@ const OrderApp = React.lazy(() => import('orderApp/OrderHistory'))`}
 
           <Card withBorder p="md">
             <Title order={4} mb="sm">
-              Casos de Sucesso
+              Artigos e Referências
             </Title>
             <List size="sm" spacing="xs">
               <List.Item>
-                <strong>Spotify:</strong> Múltiplas tecnologias
+                <strong>Martin Fowler:</strong>{' '}
+                <a href="https://martinfowler.com/articles/micro-frontends.html" target="_blank" rel="noopener noreferrer">Micro Frontends</a>
               </List.Item>
               <List.Item>
-                <strong>IKEA:</strong> E-commerce escalável
+                <strong>Module Federation:</strong>{' '}
+                <a href="https://module-federation.io/" target="_blank" rel="noopener noreferrer">Documentação oficial</a>
               </List.Item>
               <List.Item>
-                <strong>Netflix:</strong> Streaming multiplataforma
+                <strong>micro-frontends.org:</strong>{' '}
+                <a href="https://micro-frontends.org/" target="_blank" rel="noopener noreferrer">Guia completo</a>
               </List.Item>
               <List.Item>
-                <strong>Amazon:</strong> E-commerce gigante
+                <strong>Luca Mezzalira:</strong>{' '}
+                <a href="https://www.oreilly.com/library/view/building-micro-frontends/9781492082989/" target="_blank" rel="noopener noreferrer">Building Micro-Frontends (O'Reilly)</a>
               </List.Item>
             </List>
           </Card>
