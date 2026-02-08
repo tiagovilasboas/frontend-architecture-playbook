@@ -303,7 +303,7 @@ if ('serviceWorker' in navigator) {
                   PWA que substituiu app nativo
                 </Text>
                 <List size="sm" spacing="xs">
-                  <List.Item>60% melhoria em conversões (Goibibo)</List.Item>
+                  <List.Item>Melhoria significativa em conversões</List.Item>
                   <List.Item>Funciona offline</List.Item>
                   <List.Item>Push notifications</List.Item>
                   <List.Item>Instala na home screen</List.Item>
@@ -326,7 +326,7 @@ if ('serviceWorker' in navigator) {
                   <List.Item>Funciona offline</List.Item>
                   <List.Item>Push para status do pedido</List.Item>
                   <List.Item>Pagamento via PWA</List.Item>
-                  <List.Item>2x mais rápido que app nativo</List.Item>
+                  <List.Item>Carregamento mais rápido que app nativo</List.Item>
                 </List>
               </div>
             </Group>
@@ -455,10 +455,10 @@ if ('serviceWorker' in navigator) {
             </Title>
             <List size="sm" spacing="xs">
               <List.Item>
-                <strong>Goibibo:</strong> 60% melhoria em conversões com PWA
+                <strong>Goibibo:</strong> Melhoria em conversões com PWA
               </List.Item>
               <List.Item>
-                <strong>Starbucks:</strong> 2x mais rápido
+                <strong>Starbucks:</strong> Carregamento mais rápido
               </List.Item>
               <List.Item>
                 <strong>Uber:</strong> Mercados emergentes

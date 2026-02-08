@@ -43,16 +43,6 @@ export default function Performance() {
         </Group>
       </Paper>
 
-      {/* Disclaimer sobre métricas */}
-      <Alert color="green" variant="light" icon={<IconCheck size={16} />}>
-        <Text size="sm">
-          <strong>✅ Métricas Validadas:</strong> Todas as métricas abaixo são
-          baseadas em estudos técnicos validados do repositório oficial
-          frontend-case-studies. Apenas métricas com fontes verificáveis são
-          apresentadas.
-        </Text>
-      </Alert>
-
       {/* O que é? */}
       <Paper withBorder p="xl">
         <Title order={2} mb="md">
@@ -70,19 +60,19 @@ export default function Performance() {
           </Text>
 
           <Text>
-            <strong>Usuário não espera, ele abandona.</strong> 3 segundos de
-            carregamento = 40% de abandono. 5 segundos = 90% de abandono.
-            Performance é sobrevivência.
+            <strong>Usuário não espera, ele abandona.</strong> Quanto mais lento
+            o carregamento, maior a taxa de abandono. Cada segundo conta.
           </Text>
 
           <Text>
-            <strong>Bundle size é morte lenta.</strong> Bundle de 5MB em 3G = 30
-            segundos. Usuário já foi embora. Performance é sobrevivência.
+            <strong>Bundle size é morte lenta.</strong> Bundles pesados em
+            conexões lentas significam espera longa. Usuário já foi embora.
           </Text>
 
           <Text>
-            <strong>Performance = conversão.</strong> Amazon: 100ms de delay =
-            1% menos vendas. Performance vira dinheiro direto.
+            <strong>Performance = conversão.</strong> Estudos mostram que
+            latência impacta diretamente em vendas e engajamento. Performance
+            vira dinheiro direto.
           </Text>
         </Stack>
       </Paper>
@@ -105,8 +95,8 @@ export default function Performance() {
               <div>
                 <Text fw={600}>Usuário não espera, ele abandona</Text>
                 <Text size="sm" c="dimmed">
-                  3 segundos de carregamento = 40% de abandono. 5 segundos = 90%
-                  de abandono
+                  Quanto mais lento o carregamento, maior a taxa de abandono.
+                  Cada segundo a mais aumenta significativamente a rejeição
                 </Text>
               </div>
             </Group>
@@ -120,7 +110,8 @@ export default function Performance() {
               <div>
                 <Text fw={600}>Bundle size = Morte lenta</Text>
                 <Text size="sm" c="dimmed">
-                  Bundle de 5MB em 3G = 30 segundos. Usuário já foi embora
+                  Bundles pesados em conexões lentas (3G/4G) resultam em esperas
+                  inaceitáveis para o usuário
                 </Text>
               </div>
             </Group>
@@ -134,8 +125,8 @@ export default function Performance() {
               <div>
                 <Text fw={600}>Performance = Conversão</Text>
                 <Text size="sm" c="dimmed">
-                  Amazon: 100ms de delay = 1% menos vendas. Performance vira
-                  dinheiro direto
+                  Latência impacta diretamente vendas e engajamento. Menos delay
+                  = mais conversão
                 </Text>
               </div>
             </Group>
@@ -153,70 +144,6 @@ export default function Performance() {
                 </Text>
               </div>
             </Group>
-          </Card>
-        </Stack>
-      </Paper>
-
-      {/* Casos Reais VALIDADOS */}
-      <Paper withBorder p="xl">
-        <Title order={2} mb="md">
-          <ThemeIcon variant="light" color="orange" mr="sm">
-            <IconCode />
-          </ThemeIcon>
-          Casos Reais: Quem Otimizou e Ficou Rico (Validados)
-        </Title>
-
-        <Stack gap="lg">
-          <Card withBorder>
-            <Group>
-              <Badge variant="light" color="orange">
-                Facebook
-              </Badge>
-              <Text fw={600}>1000 requests → 400 requests</Text>
-            </Group>
-            <Text size="sm" mt="sm">
-              Facebook otimizou requests de 1000 para 400. Resultado? 60%
-              redução de requests, carregamento muito mais rápido.
-            </Text>
-          </Card>
-
-          <Card withBorder>
-            <Group>
-              <Badge variant="light" color="orange">
-                Sentry
-              </Badge>
-              <Text fw={600}>100KB → 65KB bundle</Text>
-            </Group>
-            <Text size="sm" mt="sm">
-              Sentry reduziu bundle de 100KB para 65KB. Resultado? 35% redução
-              no bundle size, carregamento muito mais rápido.
-            </Text>
-          </Card>
-
-          <Card withBorder>
-            <Group>
-              <Badge variant="light" color="orange">
-                Goibibo
-              </Badge>
-              <Text fw={600}>PWA melhorou conversões</Text>
-            </Group>
-            <Text size="sm" mt="sm">
-              Goibibo implementou PWA e melhorou 60% em conversões. Performance
-              vira dinheiro real.
-            </Text>
-          </Card>
-
-          <Card withBorder>
-            <Group>
-              <Badge variant="light" color="orange">
-                Shopify
-              </Badge>
-              <Text fw={600}>2s → 1s carregamento</Text>
-            </Group>
-            <Text size="sm" mt="sm">
-              Shopify melhorou carregamento de 2s para 1s. Resultado? 50%
-              melhoria no carregamento, mais conversões.
-            </Text>
           </Card>
         </Stack>
       </Paper>

@@ -64,9 +64,10 @@ export default function SecurityPatterns() {
 
         <Alert icon={<IconAlertTriangle size={16} />} color="orange" mt="md">
           <Text size="sm">
-            <strong>Problema real:</strong> 90% dos ataques web exploram
-            vulnerabilidades básicas que poderiam ser evitadas com algumas
-            práticas simples. Não precisa ser um hacker para se proteger.
+            <strong>Problema real:</strong> A grande maioria dos ataques web
+            exploram vulnerabilidades básicas (como as listadas no OWASP Top 10)
+            que poderiam ser evitadas com práticas simples. Não precisa ser um
+            hacker para se proteger.
           </Text>
         </Alert>
       </Paper>

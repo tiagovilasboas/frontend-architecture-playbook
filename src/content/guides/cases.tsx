@@ -105,21 +105,20 @@ export default function Cases() {
           </Group>
 
           <Text>
-            <strong>Performance é dinheiro.</strong> Sentry reduziu 35% no
-            bundle size. Shopify melhorou 50% no carregamento. Slack economizou
-            50% de memória. Cada segundo conta.
+            <strong>Performance é dinheiro.</strong> Empresas que investiram em
+            otimização de bundle, carregamento e memória viram impacto direto em
+            retenção e conversão. Cada segundo conta.
           </Text>
 
           <Text>
-            <strong>Escala importa.</strong> WhatsApp suporta 2 bilhões de
-            usuários. Netflix roda em 200 milhões de dispositivos. Spotify
-            atende 500 milhões simultâneos. Arquitetura certa escala.
+            <strong>Escala importa.</strong> WhatsApp, Netflix e Spotify atendem
+            centenas de milhões de usuários. Arquitetura certa escala.
           </Text>
 
           <Text>
-            <strong>UX é conversão.</strong> Google testou 41 tons de azul e
-            ganhou milhões. Facebook otimizou 60% dos requests. Goibibo melhorou
-            60% em conversões.
+            <strong>UX é conversão.</strong> Testes A/B, otimização de requests
+            e experiências progressivas (PWA) resultam em mais engajamento e
+            mais receita.
           </Text>
 
           <Alert color="yellow" icon={<IconBolt size={16} />} radius="md">
@@ -153,8 +152,8 @@ export default function Cases() {
               <div>
                 <Title order={4}>Lazy Loading & Code Splitting</Title>
                 <Text size="sm">
-                  Carregar só o que precisa, quando precisa. Bundle de 5MB virou
-                  500KB. Usuário não espera, ele abandona.
+                  Carregar só o que precisa, quando precisa. Bundles menores =
+                  carregamento mais rápido. Usuário não espera, ele abandona.
                 </Text>
               </div>
             </Group>

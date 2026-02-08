@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import type { DocMeta, CollectionType } from '../lib/content.tsx';
 
 interface NavigationAction {
@@ -14,6 +15,8 @@ export function useNavigationActions(
   techniques: DocMeta[],
   bestPractices: DocMeta[]
 ): NavigationAction[] {
+  const navigate = useNavigate();
+
   const createActions = (
     docs: DocMeta[],
     collection: CollectionType
@@ -22,8 +25,7 @@ export function useNavigationActions(
       id: doc.slug,
       label: doc.title,
       description: getCollectionLabel(collection),
-      onTrigger: () =>
-        (window.location.pathname = `/${collection}/${doc.slug}`),
+      onTrigger: () => navigate(`/${collection}/${doc.slug}`),
     }));
 
   return [

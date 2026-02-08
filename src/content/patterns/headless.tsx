@@ -125,7 +125,7 @@ Frontend: fetch('/api/products') → React/Vue/Angular/qualquer coisa`}
               🚀 Performance brutal
             </Text>
             <Text size="sm">
-              Frontend estático + CDN. Time to First Byte abaixo de 100ms.
+              Frontend estático + CDN. Time to First Byte muito baixo.
             </Text>
           </Alert>
           <Alert color="green" icon={<IconCheck size={16} />}>
@@ -142,8 +142,8 @@ Frontend: fetch('/api/products') → React/Vue/Angular/qualquer coisa`}
               📈 Escala independente
             </Text>
             <Text size="sm">
-              CMS handle 1000 editors. Frontend serve 1M users. Cada um no seu
-              ritmo.
+              CMS escala para muitos editores. Frontend escala para muitos
+              usuários. Cada um no seu ritmo.
             </Text>
           </Alert>
         </Stack>

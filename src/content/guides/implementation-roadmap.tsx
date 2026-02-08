@@ -100,11 +100,9 @@ export default function ImplementationRoadmap() {
                 Como Pinterest fez: audit completo de performance
               </Text>
               <List size="sm" spacing="xs">
-                <List.Item>
-                  Bundle analyzer (Pinterest: 2.5MB → 200KB)
-                </List.Item>
-                <List.Item>Core Web Vitals (Netflix: 30s → 9s TTI)</List.Item>
-                <List.Item>Mobile performance (Tinder: -25% crashes)</List.Item>
+                <List.Item>Bundle analyzer para identificar gargalos</List.Item>
+                <List.Item>Core Web Vitals (LCP, INP, CLS)</List.Item>
+                <List.Item>Mobile performance e estabilidade</List.Item>
                 <List.Item>User experience metrics</List.Item>
               </List>
             </Timeline.Item>
@@ -117,9 +115,9 @@ export default function ImplementationRoadmap() {
                 Como Google fez: métricas que importam
               </Text>
               <List size="sm" spacing="xs">
-                <List.Item>Conversion rate (Google: 41 tons de azul)</List.Item>
-                <List.Item>User engagement (Pinterest: +44% receita)</List.Item>
-                <List.Item>Bounce rate (Walmart: +98% conversões)</List.Item>
+                <List.Item>Conversion rate e testes A/B</List.Item>
+                <List.Item>User engagement e receita</List.Item>
+                <List.Item>Bounce rate e taxa de abandono</List.Item>
                 <List.Item>Session duration</List.Item>
               </List>
             </Timeline.Item>
@@ -132,8 +130,8 @@ export default function ImplementationRoadmap() {
                 Como Spotify fez: base sólida
               </Text>
               <List size="sm" spacing="xs">
-                <List.Item>CI/CD pipeline (Spotify: deploys diários)</List.Item>
-                <List.Item>Monitoring (Slack: -60% travamentos)</List.Item>
+                <List.Item>CI/CD pipeline com deploys frequentes</List.Item>
+                <List.Item>Monitoring e alertas proativos</List.Item>
                 <List.Item>Error tracking</List.Item>
                 <List.Item>Performance monitoring</List.Item>
               </List>
@@ -145,9 +143,9 @@ export default function ImplementationRoadmap() {
               🎯 Resultado Esperado:
             </Text>
             <Text size="sm">
-              <strong>Performance 20-35% melhor</strong>, métricas claras, base
-              sólida para próximas fases. Como Sentry: 35% redução bundle,
-              carregamento muito mais rápido.
+              <strong>Performance significativamente melhor</strong>, métricas
+              claras, base sólida para próximas fases. Redução de bundle,
+              carregamento mais rápido.
             </Text>
           </Alert>
         </Stack>
@@ -175,9 +173,7 @@ export default function ImplementationRoadmap() {
                 Como Spotify fez: modularização inteligente
               </Text>
               <List size="sm" spacing="xs">
-                <List.Item>
-                  Route-based splitting (Spotify: 5MB → 2MB)
-                </List.Item>
+                <List.Item>Route-based splitting</List.Item>
                 <List.Item>Component lazy loading</List.Item>
                 <List.Item>Vendor chunk optimization</List.Item>
                 <List.Item>Dynamic imports</List.Item>
@@ -192,7 +188,7 @@ export default function ImplementationRoadmap() {
                 Como Netflix fez: cache inteligente
               </Text>
               <List size="sm" spacing="xs">
-                <List.Item>Service workers (Pinterest: PWA completo)</List.Item>
+                <List.Item>Service workers e PWA</List.Item>
                 <List.Item>CDN optimization</List.Item>
                 <List.Item>Browser caching</List.Item>
                 <List.Item>API response caching</List.Item>
@@ -207,7 +203,7 @@ export default function ImplementationRoadmap() {
                 Como Tinder fez: bundle enxuto
               </Text>
               <List size="sm" spacing="xs">
-                <List.Item>Tree shaking (Tinder: -30% crashes)</List.Item>
+                <List.Item>Tree shaking</List.Item>
                 <List.Item>Minification</List.Item>
                 <List.Item>Compression (Gzip/Brotli)</List.Item>
                 <List.Item>Dead code elimination</List.Item>
@@ -220,9 +216,8 @@ export default function ImplementationRoadmap() {
               🎯 Resultado Esperado:
             </Text>
             <Text size="sm">
-              <strong>Bundle 20-35% menor</strong>, carregamento 50-60% mais
-              rápido. Como Sentry: 35% redução bundle, carregamento muito mais
-              rápido.
+              <strong>Bundle significativamente menor</strong>, carregamento
+              mais rápido. Code splitting e tree shaking fazem a diferença.
             </Text>
           </Alert>
         </Stack>
@@ -269,7 +264,7 @@ export default function ImplementationRoadmap() {
                 Como Slack fez: separação de responsabilidades
               </Text>
               <List size="sm" spacing="xs">
-                <List.Item>Domain separation (Slack: -50% memória)</List.Item>
+                <List.Item>Domain separation</List.Item>
                 <List.Item>Dependency inversion</List.Item>
                 <List.Item>Testability improvement</List.Item>
                 <List.Item>Maintainability</List.Item>
@@ -284,7 +279,7 @@ export default function ImplementationRoadmap() {
                 Como Pinterest fez: PWA completo
               </Text>
               <List size="sm" spacing="xs">
-                <List.Item>Service workers (Pinterest: +44% receita)</List.Item>
+                <List.Item>Service workers e offline</List.Item>
                 <List.Item>Offline capabilities</List.Item>
                 <List.Item>App-like experience</List.Item>
                 <List.Item>Push notifications</List.Item>
@@ -298,8 +293,7 @@ export default function ImplementationRoadmap() {
             </Text>
             <Text size="sm">
               <strong>Arquitetura escalável</strong>, times autônomos,
-              performance otimizada. Como Sentry: 35% menos bundle, Shopify: 50%
-              melhoria carregamento.
+              performance otimizada. Deploys independentes e métricas por domínio.
             </Text>
           </Alert>
         </Stack>
@@ -327,11 +321,11 @@ export default function ImplementationRoadmap() {
                 Como Netflix fez: escala global
               </Text>
               <List size="sm" spacing="xs">
-                <List.Item>CDN global (Facebook: -60% requests)</List.Item>
-                <List.Item>Edge caching (Shopify: -50% carregamento)</List.Item>
-                <List.Item>Load balancing (Sentry: -35% bundle)</List.Item>
-                <List.Item>Auto-scaling (1Password: -90% build time)</List.Item>
-                <List.Item>Monitoring (Goibibo: +60% conversões)</List.Item>
+                <List.Item>CDN global e distribuição geográfica</List.Item>
+                <List.Item>Edge caching</List.Item>
+                <List.Item>Load balancing</List.Item>
+                <List.Item>Auto-scaling</List.Item>
+                <List.Item>Monitoring e observabilidade</List.Item>
               </List>
             </Timeline.Item>
 
@@ -343,9 +337,7 @@ export default function ImplementationRoadmap() {
                 Como WhatsApp fez: cache inteligente
               </Text>
               <List size="sm" spacing="xs">
-                <List.Item>
-                  Multi-level caching (WhatsApp: 2B+ usuários)
-                </List.Item>
+                <List.Item>Multi-level caching</List.Item>
                 <List.Item>Predictive loading</List.Item>
                 <List.Item>Smart prefetching</List.Item>
                 <List.Item>Cache invalidation</List.Item>
@@ -360,9 +352,7 @@ export default function ImplementationRoadmap() {
                 Como Uber fez: monitoramento real-time
               </Text>
               <List size="sm" spacing="xs">
-                <List.Item>
-                  Real user monitoring (Uber: 10x mais motoristas)
-                </List.Item>
+                <List.Item>Real user monitoring (RUM)</List.Item>
                 <List.Item>Performance budgets</List.Item>
                 <List.Item>Alerting systems</List.Item>
                 <List.Item>A/B testing</List.Item>
@@ -376,8 +366,8 @@ export default function ImplementationRoadmap() {
             </Text>
             <Text size="sm">
               <strong>Suporte a milhões de usuários</strong>, performance
-              consistente, monitoramento proativo. Como WhatsApp: 2B+ usuários,
-              Netflix: 200M+ dispositivos.
+              consistente, monitoramento proativo. Infraestrutura global com
+              observabilidade completa.
             </Text>
           </Alert>
         </Stack>
@@ -430,7 +420,7 @@ export default function ImplementationRoadmap() {
                   <td
                     style={{ padding: '12px', color: 'green', fontWeight: 500 }}
                   >
-                    +44% receita
+                    PWA + receita
                   </td>
                 </tr>
                 <tr>
@@ -442,7 +432,7 @@ export default function ImplementationRoadmap() {
                   <td
                     style={{ padding: '12px', color: 'green', fontWeight: 500 }}
                   >
-                    200M+ dispositivos
+                    Escala global
                   </td>
                 </tr>
                 <tr>
@@ -454,7 +444,7 @@ export default function ImplementationRoadmap() {
                   <td
                     style={{ padding: '12px', color: 'green', fontWeight: 500 }}
                   >
-                    500M+ usuários
+                    Modularização
                   </td>
                 </tr>
                 <tr>
@@ -466,7 +456,7 @@ export default function ImplementationRoadmap() {
                   <td
                     style={{ padding: '12px', color: 'green', fontWeight: 500 }}
                   >
-                    -50% memória
+                    Otimização memória
                   </td>
                 </tr>
                 <tr>
@@ -478,7 +468,7 @@ export default function ImplementationRoadmap() {
                   <td
                     style={{ padding: '12px', color: 'green', fontWeight: 500 }}
                   >
-                    100M+ usuários
+                    Real-time global
                   </td>
                 </tr>
               </tbody>

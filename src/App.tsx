@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
-import { lazy, Suspense } from 'react';
+import { useEffect, lazy, Suspense } from 'react';
+import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import DocsShell from './components/DocsShell.tsx';
 import { ArchitectureLoader } from './components/ArchitectureLoader.tsx';
 import { MobileLoader } from './components/MobileLoader.tsx';
@@ -43,6 +42,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path=":collection/:slug" element={<DocPage />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Suspense>
     </DocsShell>
