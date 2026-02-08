@@ -2,9 +2,9 @@
   {
     "company": "Netflix",
     "icon": "📺",
-    "title": "Performance em Smart TVs - 200M+ usuários",
-    "challenge": "O app React da Netflix rodava extremamente lento em Smart TVs antigas com hardware limitado (1GB RAM, processadores fracos). Usuários esperavam até 30 segundos para o app abrir e navegar entre categorias era praticamente impossível, causando frustração e cancelamentos em massa.",
-    "solution": "Desenvolveram uma arquitetura de renderização assíncrona que carrega apenas o conteúdo visível na tela. Implementaram pré-rendering adaptativo que detecta a capacidade do dispositivo e ajusta a qualidade do streaming e interface automaticamente. Criaram um sistema de cache inteligente que funciona offline.",
+    "title": "Performance em Smart TVs com React",
+    "challenge": "O app React da Netflix rodava lento em Smart TVs com hardware limitado. Navegar entre categorias era difícil em dispositivos com pouca memória e processadores fracos.",
+    "solution": "Desenvolveram uma arquitetura de renderização assíncrona que carrega apenas o conteúdo visível na tela. Implementaram pré-rendering adaptativo que detecta a capacidade do dispositivo e ajusta a interface automaticamente.",
     "practices": [
       "renderização por lote",
       "SSR parcial",
@@ -12,20 +12,19 @@
       "cache inteligente"
     ],
     "results": [
-      "Redução de 70% no tempo até primeira interação",
-      "Suporte a 200+ milhões de dispositivos diferentes",
-      "99.9% de uptime durante eventos críticos"
+      "Melhoria significativa no tempo de startup em TVs",
+      "Suporte a grande variedade de dispositivos com capacidades diferentes",
+      "Interface adaptativa baseada no hardware disponível"
     ],
     "link": "https://medium.com/netflix-techblog/crafting-a-high-performance-tv-user-interface-using-react-3350e5a6ad3b",
-    "color": "red",
-    "disclaimer": "Artigo confirmado no repositório oficial. Métricas específicas não foram verificadas no artigo original devido a limitações de acesso."
+    "color": "red"
   },
   {
     "company": "Spotify",
     "icon": "🎧",
     "title": "Web Player com micro frontends",
-    "challenge": "O web player do Spotify tinha um bundle JavaScript gigante (mais de 5MB) que demorava muito para carregar. Qualquer mudança no código afetava toda a aplicação, tornando deploys arriscados e desenvolvimento lento. Usuários abandonavam o site antes mesmo de ouvir a primeira música.",
-    "solution": "Adotaram micro frontends, dividindo o app em módulos independentes (player, playlist, busca, etc.). Cada módulo pode ser desenvolvido, testado e deployado separadamente. Implementaram lazy loading inteligente e cache de áudio otimizado.",
+    "challenge": "O web player do Spotify tinha um bundle JavaScript grande que demorava para carregar. Qualquer mudança no código afetava toda a aplicação, tornando deploys arriscados e desenvolvimento lento.",
+    "solution": "Adotaram micro frontends, dividindo o app em módulos independentes (player, playlist, busca, etc.). Cada módulo pode ser desenvolvido, testado e deployado separadamente. Implementaram lazy loading inteligente.",
     "practices": [
       "modularização",
       "boundaries bem definidos",
@@ -33,20 +32,19 @@
       "cache de áudio"
     ],
     "results": [
-      "Redução de 60% no bundle size inicial",
-      "Tempo até o primeiro play caiu em 40%",
-      "Suporte a centenas de milhões de usuários"
+      "Bundle size inicial reduzido significativamente",
+      "Deploys independentes por time",
+      "Carregamento mais rápido do player"
     ],
     "link": "https://labs.spotify.com/2019/03/25/building-spotifys-new-web-player/",
-    "color": "green",
-    "disclaimer": "Artigo confirmado no repositório oficial. Métricas específicas não foram verificadas no artigo original devido a limitações de acesso."
+    "color": "green"
   },
   {
     "company": "Airbnb",
     "icon": "🏠",
-    "title": "Imagens otimizadas com LQIP - 150M+ usuários",
-    "challenge": "O site da Airbnb tinha páginas que demoravam mais de 8 segundos para carregar devido ao peso das imagens. Os usuários abandonavam a página antes mesmo de ver o conteúdo, causando perda significativa de conversões. O problema era especialmente crítico em dispositivos móveis e conexões lentas.",
-    "solution": "Implementaram Low Quality Image Placeholders (LQIP) - imagens de baixa qualidade (2-5KB) que carregam instantaneamente enquanto as imagens de alta qualidade carregam em background. Combinaram com lazy loading inteligente e compressão adaptativa baseada na velocidade da conexão do usuário.",
+    "title": "Otimização de performance em listing pages",
+    "challenge": "As páginas de listagem do Airbnb eram pesadas devido ao volume de imagens. O carregamento lento impactava a experiência, especialmente em dispositivos móveis e conexões lentas.",
+    "solution": "Implementaram otimizações como lazy loading de imagens, compressão adaptativa e melhorias no carregamento inicial das páginas de listagem. Focaram em reduzir o peso total da página.",
     "practices": [
       "lazy loading",
       "progressive enhancement",
@@ -54,20 +52,19 @@
       "compressão adaptativa"
     ],
     "results": [
-      "Redução de 3.5s no tempo de carregamento",
-      "Aumento de 10% na permanência dos usuários",
-      "Suporte a 150+ milhões de usuários mensais"
+      "Carregamento das listing pages significativamente mais rápido",
+      "Menor consumo de dados em mobile",
+      "Melhor experiência em conexões lentas"
     ],
     "link": "https://medium.com/airbnb-engineering/recent-web-performance-fixes-on-airbnb-listing-pages-6cd8d93df6f4",
-    "color": "pink",
-    "disclaimer": "Artigo confirmado no repositório oficial. Métricas específicas não foram verificadas no artigo original devido a limitações de acesso."
+    "color": "pink"
   },
   {
     "company": "Pinterest",
     "icon": "📌",
-    "title": "PWA que virou case de sucesso - 450M+ usuários",
-    "challenge": "O site mobile do Pinterest tinha bounce rate de 23% - usuários abandonavam a página antes mesmo de ver o conteúdo. O carregamento era lento, as imagens demoravam para aparecer e a navegação era confusa em dispositivos móveis. Perdiam milhões em receita por performance ruim.",
-    "solution": "Reconstruíram totalmente o site mobile usando PWA com React. Implementaram service workers para cache inteligente, virtual scrolling para milhares de pins e lazy loading de imagens que carrega apenas o que está visível na tela. Criaram um sistema de compressão de imagens automático.",
+    "title": "PWA que virou case de sucesso",
+    "challenge": "O site mobile do Pinterest tinha alto bounce rate. Carregamento lento, imagens pesadas e navegação confusa em dispositivos móveis impactavam a receita.",
+    "solution": "Reconstruíram o site mobile usando PWA com React. Implementaram service workers para cache inteligente, virtual scrolling e lazy loading de imagens.",
     "practices": [
       "service workers",
       "virtual scrolling",
@@ -75,14 +72,12 @@
       "compressão automática"
     ],
     "results": [
-      "Redução de 40% no tempo de carregamento",
-      "Aumento de 44% na receita gerada por usuário",
-      "Redução de 60% no tempo até primeira interação",
-      "Suporte a 450+ milhões de usuários mensais"
+      "Tempo de carregamento reduzido drasticamente",
+      "Aumento expressivo na receita por usuário",
+      "Tempo até primeira interação muito menor"
     ],
     "link": "https://medium.com/dev-channel/a-pinterest-progressive-web-app-performance-case-study-3bd6ed2e6154",
-    "color": "red",
-    "disclaimer": "Artigo confirmado no repositório oficial. Métricas específicas não foram verificadas no artigo original devido a limitações de acesso."
+    "color": "red"
   },
   {
     "company": "Tinder",
@@ -102,15 +97,14 @@
       "Experiência consistente em conexões lentas"
     ],
     "link": "https://medium.com/@addyosmani/a-tinder-progressive-web-app-performance-case-study-78919d98ece0",
-    "color": "pink",
-    "disclaimer": "Artigo confirmado no repositório oficial. Métricas específicas não foram verificadas no artigo original devido a limitações de acesso."
+    "color": "pink"
   },
   {
     "company": "Slack",
     "icon": "💬",
-    "title": "Desktop app com Electron otimizado - 12M+ usuários",
-    "challenge": "O app desktop do Slack consumia mais de 500MB de RAM mesmo com poucos canais abertos. A busca de mensagens era extremamente lenta e o app travava frequentemente, especialmente em máquinas com recursos limitados. Usuários reclamavam constantemente da lentidão.",
-    "solution": "Implementaram lazy loading de canais que carrega apenas os canais ativos, virtualização de mensagens que renderiza apenas as visíveis na tela e otimização de bundle que carrega funcionalidades sob demanda. Criaram um sistema de cache de mensagens inteligente.",
+    "title": "Redução de footprint de memória no desktop",
+    "challenge": "O app desktop do Slack consumia muita RAM. A busca era lenta e o app travava em máquinas com recursos limitados.",
+    "solution": "Implementaram lazy loading de canais, virtualização de mensagens e otimização de bundle que carrega funcionalidades sob demanda. Reduziram o footprint de memória com técnicas de garbage collection e cache inteligente.",
     "practices": [
       "code splitting",
       "virtual scrolling",
@@ -118,43 +112,39 @@
       "cache inteligente"
     ],
     "results": [
-      "Redução de 50% no uso de memória",
-      "Melhoria de 35% na velocidade de busca",
-      "Diminuição de 60% nos travamentos",
-      "Suporte a 12+ milhões de usuários ativos"
+      "Footprint de memória significativamente menor",
+      "Busca de mensagens mais responsiva",
+      "Menos travamentos em máquinas modestas"
     ],
     "link": "https://slack.engineering/reducing-slacks-memory-footprint-4480fec7e8eb",
-    "color": "violet",
-    "disclaimer": "Artigo confirmado no repositório oficial. Métricas específicas não foram verificadas no artigo original devido a limitações de acesso."
+    "color": "violet"
   },
   {
     "company": "Uber",
     "icon": "🚗",
-    "title": "Maps em tempo real sem travar - 100M+ usuários",
-    "challenge": "O mapa do Uber travava quando havia muitos motoristas na região (centenas de pins simultâneos) e as atualizações em tempo real causavam lag extremo. Usuários desistiam de pedir corrida devido à lentidão da interface. Performance era crítica para o negócio.",
-    "solution": "Desenvolveram um canvas customizado para renderização do mapa em vez de usar APIs padrão. Implementaram clustering inteligente que agrupa motoristas próximos e debounce de updates que evita renderizações desnecessárias. Criaram um sistema de otimização de geolocalização.",
+    "title": "m.uber.com - web app leve para mercados emergentes",
+    "challenge": "Uber precisava atender mercados com dispositivos de baixo custo e conexões lentas. O app nativo era pesado demais para esses cenários.",
+    "solution": "Criaram o m.uber.com, um web app extremamente leve focado em funcionar bem em redes 2G. Usaram preact, otimização agressiva de bundle e técnicas para minimizar requisições de rede.",
     "practices": [
-      "canvas rendering",
-      "clustering",
-      "websocket optimization",
-      "geolocalização otimizada"
+      "bundle mínimo",
+      "preact",
+      "otimização para 2G",
+      "core app em ~50KB"
     ],
     "results": [
-      "Redução de 70% no tempo de renderização do mapa",
-      "Capacidade de exibir 10x mais motoristas sem lag",
-      "Diminuição de 45% na taxa de abandono durante o pedido",
-      "Suporte a 100+ milhões de usuários ativos"
+      "App funcional mesmo em redes 2G",
+      "Core app extremamente leve",
+      "Acesso em mercados antes inacessíveis"
     ],
     "link": "https://eng.uber.com/m-uber",
-    "color": "indigo",
-    "disclaimer": "Artigo confirmado no repositório oficial. Métricas específicas não foram verificadas no artigo original devido a limitações de acesso."
+    "color": "indigo"
   },
   {
     "company": "Twitter",
     "icon": "🐦",
-    "title": "Twitter Lite com PWA - 400M+ usuários",
-    "challenge": "O app mobile do Twitter consumia muito dados e era lento em redes 2G/3G, especialmente em países emergentes. Usuários abandonavam o app por consumir todo o pacote de dados ou por demorar muito para carregar tweets e imagens.",
-    "solution": "Reconstruíram completamente o app usando PWA (Progressive Web App) com React. Implementaram service workers para cache inteligente, compressão de imagens automática e carregamento progressivo que funciona offline. Criaram um sistema de otimização de dados.",
+    "title": "Twitter Lite - PWA para mercados emergentes",
+    "challenge": "O app mobile do Twitter consumia muitos dados e era lento em redes 2G/3G, especialmente em países emergentes.",
+    "solution": "Construíram o Twitter Lite como PWA com React, usando service workers, app shell pattern e otimização agressiva de dados e imagens.",
     "practices": [
       "app shell",
       "lazy loading",
@@ -162,33 +152,31 @@
       "otimização de dados"
     ],
     "results": [
-      "Redução de 70% no consumo de dados",
-      "Aumento de 65% nas sessões por visitante",
-      "Suporte a 400+ milhões de usuários ativos"
+      "Consumo de dados muito menor",
+      "Mais páginas por sessão",
+      "Funciona offline com service workers"
     ],
     "link": "https://blog.twitter.com/engineering/en_us/topics/open-source/2017/how-we-built-twitter-lite.html",
-    "color": "cyan",
-    "disclaimer": "Artigo confirmado no repositório oficial. Métricas específicas não foram verificadas no artigo original devido a limitações de acesso."
+    "color": "cyan"
   },
   {
     "company": "Walmart",
     "icon": "🛒",
-    "title": "Black Friday com PWA - 200M+ usuários",
-    "challenge": "O site mobile da Walmart travava completamente durante o Black Friday devido ao tráfego massivo. Usuários não conseguiam finalizar compras, imagens não carregavam e o carrinho de compras falhava constantemente, causando perda de milhões em vendas.",
-    "solution": "Reconstruíram o site mobile usando React + PWA com foco em performance. Implementaram preload inteligente de produtos populares, design responsivo otimizado e bundle splitting que carrega apenas o necessário para cada página. Criaram um sistema de cache otimizado.",
+    "title": "React em escala para e-commerce",
+    "challenge": "O site da Walmart precisava servir milhões de usuários com performance consistente. O desafio era entregar React apps em escala com tempos de carregamento aceitáveis.",
+    "solution": "Adotaram React com foco em performance. Implementaram code splitting, otimização de bundle e técnicas para entregar apps React em escala de e-commerce.",
     "practices": [
-      "preload inteligente",
+      "code splitting",
       "design responsivo",
       "otimização de bundle",
-      "cache otimizado"
+      "React em escala"
     ],
     "results": [
-      "+98% de conversões no mobile",
-      "-50% no tempo de carregamento",
-      "Suporte a 200+ milhões de usuários mensais"
+      "Melhoria nas conversões mobile",
+      "Carregamento mais rápido",
+      "Arquitetura escalável para alto tráfego"
     ],
     "link": "https://medium.com/walmartlabs/delivering-reactjs-applications-at-scale-5cb8a363f99",
-    "color": "yellow",
-    "disclaimer": "Artigo confirmado no repositório oficial. Métricas específicas não foram verificadas no artigo original devido a limitações de acesso."
+    "color": "yellow"
   }
 ]
