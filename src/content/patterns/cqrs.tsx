@@ -419,17 +419,17 @@ class OrderQueryHandler {
             </Title>
             <List size="sm" spacing="xs">
               <List.Item>
-                <strong>Netflix:</strong> Recommendation engine
-              </List.Item>
-              <List.Item>
-                <strong>Uber:</strong> Ride booking system
-              </List.Item>
-              <List.Item>
-                <strong>Airbnb:</strong> Search and booking
-              </List.Item>
-              <List.Item>
-                <strong>Spotify:</strong> Music recommendation
-              </List.Item>
+                      <strong>Martin Fowler:</strong>{' '}
+                      <a href="https://martinfowler.com/bliki/CQRS.html" target="_blank" rel="noopener noreferrer">CQRS</a>
+                    </List.Item>
+                    <List.Item>
+                      <strong>Greg Young:</strong>{' '}
+                      <a href="https://cqrs.files.wordpress.com/2010/11/cqrs_documents.pdf" target="_blank" rel="noopener noreferrer">CQRS Documents</a>
+                    </List.Item>
+                    <List.Item>
+                      <strong>TanStack Query:</strong>{' '}
+                      <a href="https://tanstack.com/query/latest" target="_blank" rel="noopener noreferrer">CQRS no frontend (read/write separation)</a>
+                    </List.Item>
             </List>
           </Card>
         </Stack>

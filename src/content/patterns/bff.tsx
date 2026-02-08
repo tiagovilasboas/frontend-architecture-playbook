@@ -385,17 +385,17 @@ useEffect(() => {
             </Title>
             <List size="sm" spacing="xs">
               <List.Item>
-                <strong>Netflix:</strong> BFF para múltiplos dispositivos
-              </List.Item>
-              <List.Item>
-                <strong>Spotify:</strong> BFF para diferentes contextos
-              </List.Item>
-              <List.Item>
-                <strong>Uber:</strong> BFF para mobile vs web
-              </List.Item>
-              <List.Item>
-                <strong>Airbnb:</strong> BFF para diferentes mercados
-              </List.Item>
+                      <strong>Sam Newman:</strong>{' '}
+                      <a href="https://samnewman.io/patterns/architectural/bff/" target="_blank" rel="noopener noreferrer">Backends For Frontends (original)</a>
+                    </List.Item>
+                    <List.Item>
+                      <strong>Phil Calçado:</strong>{' '}
+                      <a href="https://philcalcado.com/2015/09/18/the_back_end_for_front_end_pattern_bff.html" target="_blank" rel="noopener noreferrer">The BFF Pattern</a>
+                    </List.Item>
+                    <List.Item>
+                      <strong>Next.js:</strong>{' '}
+                      <a href="https://nextjs.org/docs/app/building-your-application/data-fetching/server-actions-and-mutations" target="_blank" rel="noopener noreferrer">Server Actions como BFF</a>
+                    </List.Item>
             </List>
           </Card>
         </Stack>

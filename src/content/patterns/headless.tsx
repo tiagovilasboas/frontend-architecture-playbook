@@ -329,17 +329,21 @@ Frontend: fetch('/api/products') → React/Vue/Angular/qualquer coisa`}
             </Title>
             <List size="sm" spacing="xs">
               <List.Item>
-                <strong>Netflix:</strong> Multi-platform content
-              </List.Item>
-              <List.Item>
-                <strong>Spotify:</strong> Music content API
-              </List.Item>
-              <List.Item>
-                <strong>Shopify:</strong> E-commerce headless
-              </List.Item>
-              <List.Item>
-                <strong>Airbnb:</strong> Property content API
-              </List.Item>
+                      <strong>Shopify Hydrogen:</strong>{' '}
+                      <a href="https://hydrogen.shopify.dev/" target="_blank" rel="noopener noreferrer">Headless commerce framework</a>
+                    </List.Item>
+                    <List.Item>
+                      <strong>Strapi:</strong>{' '}
+                      <a href="https://strapi.io/" target="_blank" rel="noopener noreferrer">Open-source headless CMS</a>
+                    </List.Item>
+                    <List.Item>
+                      <strong>Contentful:</strong>{' '}
+                      <a href="https://www.contentful.com/headless-cms/" target="_blank" rel="noopener noreferrer">What is a Headless CMS?</a>
+                    </List.Item>
+                    <List.Item>
+                      <strong>Sanity:</strong>{' '}
+                      <a href="https://www.sanity.io/headless-cms" target="_blank" rel="noopener noreferrer">Structured content platform</a>
+                    </List.Item>
             </List>
           </Card>
         </Stack>

@@ -360,17 +360,21 @@ function JAMstack() {
             </Title>
             <List size="sm" spacing="xs">
               <List.Item>
-                <strong>Smashing Magazine:</strong> Blog migrado para JAMstack
-              </List.Item>
-              <List.Item>
-                <strong>Netlify:</strong> Plataforma JAMstack
-              </List.Item>
-              <List.Item>
-                <strong>Gatsby:</strong> Framework JAMstack
-              </List.Item>
-              <List.Item>
-                <strong>Vercel:</strong> Deploy automático
-              </List.Item>
+                      <strong>Jamstack.org:</strong>{' '}
+                      <a href="https://jamstack.org/" target="_blank" rel="noopener noreferrer">O que é JAMstack</a>
+                    </List.Item>
+                    <List.Item>
+                      <strong>Netlify:</strong>{' '}
+                      <a href="https://www.netlify.com/blog/2020/04/14/what-is-a-static-site-generator-and-3-ways-to-find-the-best-one/" target="_blank" rel="noopener noreferrer">Static Site Generators</a>
+                    </List.Item>
+                    <List.Item>
+                      <strong>Astro:</strong>{' '}
+                      <a href="https://docs.astro.build/en/concepts/why-astro/" target="_blank" rel="noopener noreferrer">Why Astro (Islands + JAMstack)</a>
+                    </List.Item>
+                    <List.Item>
+                      <strong>Next.js:</strong>{' '}
+                      <a href="https://nextjs.org/docs/pages/building-your-application/rendering/static-site-generation" target="_blank" rel="noopener noreferrer">Static Site Generation</a>
+                    </List.Item>
             </List>
           </Card>
         </Stack>

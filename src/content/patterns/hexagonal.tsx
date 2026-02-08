@@ -364,17 +364,17 @@ class SMTPEmailService implements EmailService {
             </Title>
             <List size="sm" spacing="xs">
               <List.Item>
-                <strong>Netflix:</strong> Microservices architecture
-              </List.Item>
-              <List.Item>
-                <strong>Spotify:</strong> Domain-driven design
-              </List.Item>
-              <List.Item>
-                <strong>Uber:</strong> Service-oriented architecture
-              </List.Item>
-              <List.Item>
-                <strong>Airbnb:</strong> Clean architecture
-              </List.Item>
+                      <strong>Alistair Cockburn:</strong>{' '}
+                      <a href="https://alistair.cockburn.us/hexagonal-architecture/" target="_blank" rel="noopener noreferrer">Hexagonal Architecture (original)</a>
+                    </List.Item>
+                    <List.Item>
+                      <strong>Netflix Tech Blog:</strong>{' '}
+                      <a href="https://netflixtechblog.com/ready-for-changes-with-hexagonal-architecture-b315ec967749" target="_blank" rel="noopener noreferrer">Ready for Changes with Hexagonal Architecture</a>
+                    </List.Item>
+                    <List.Item>
+                      <strong>Herberto Graca:</strong>{' '}
+                      <a href="https://herbertograca.com/2017/11/16/explicit-architecture-01-ddd-hexagonal-onion-clean-cqrs-how-i-put-it-all-together/" target="_blank" rel="noopener noreferrer">DDD, Hexagonal, Clean - How I Put It Together</a>
+                    </List.Item>
             </List>
           </Card>
         </Stack>

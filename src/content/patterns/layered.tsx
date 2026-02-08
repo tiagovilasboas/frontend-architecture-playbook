@@ -412,16 +412,16 @@ const orderApi = {
             </Title>
             <List size="sm" spacing="xs">
               <List.Item>
-                <strong>GitHub:</strong> API design
+                <strong>Martin Fowler:</strong>{' '}
+                <a href="https://martinfowler.com/bliki/PresentationDomainDataLayering.html" target="_blank" rel="noopener noreferrer">Presentation Domain Data Layering</a>
               </List.Item>
               <List.Item>
-                <strong>Stripe:</strong> Payment processing
+                <strong>Bulletproof React:</strong>{' '}
+                <a href="https://github.com/alan2207/bulletproof-react" target="_blank" rel="noopener noreferrer">Feature-based layered structure</a>
               </List.Item>
               <List.Item>
-                <strong>Shopify:</strong> E-commerce platform
-              </List.Item>
-              <List.Item>
-                <strong>Discord:</strong> Real-time communication
+                <strong>Eric Elliott:</strong>{' '}
+                <a href="https://medium.com/javascript-scene/the-forgotten-history-of-oop-88d71b9b2d9f" target="_blank" rel="noopener noreferrer">Software Architecture Patterns</a>
               </List.Item>
             </List>
           </Card>

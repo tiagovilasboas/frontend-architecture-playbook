@@ -465,17 +465,17 @@ function ShoppingCart() {
             </Title>
             <List size="sm" spacing="xs">
               <List.Item>
-                <strong>Netflix:</strong> Recommendation events
-              </List.Item>
-              <List.Item>
-                <strong>Uber:</strong> Ride tracking events
-              </List.Item>
-              <List.Item>
-                <strong>Airbnb:</strong> Booking events
-              </List.Item>
-              <List.Item>
-                <strong>Spotify:</strong> Playback events
-              </List.Item>
+                      <strong>Martin Fowler:</strong>{' '}
+                      <a href="https://martinfowler.com/eaaDev/EventSourcing.html" target="_blank" rel="noopener noreferrer">Event Sourcing</a>
+                    </List.Item>
+                    <List.Item>
+                      <strong>Greg Young:</strong>{' '}
+                      <a href="https://www.youtube.com/watch?v=8JKjvY4etTY" target="_blank" rel="noopener noreferrer">CQRS and Event Sourcing (talk)</a>
+                    </List.Item>
+                    <List.Item>
+                      <strong>Redux Toolkit:</strong>{' '}
+                      <a href="https://redux-toolkit.js.org/" target="_blank" rel="noopener noreferrer">Event-driven state no frontend</a>
+                    </List.Item>
             </List>
           </Card>
         </Stack>

@@ -362,17 +362,21 @@ function AtomicDesign() {
             </Title>
             <List size="sm" spacing="xs">
               <List.Item>
-                <strong>Material Design:</strong> Google's design system
-              </List.Item>
-              <List.Item>
-                <strong>Ant Design:</strong> Alibaba's design system
-              </List.Item>
-              <List.Item>
-                <strong>Shopify Polaris:</strong> E-commerce design system
-              </List.Item>
-              <List.Item>
-                <strong>IBM Carbon:</strong> Enterprise design system
-              </List.Item>
+                      <strong>Brad Frost:</strong>{' '}
+                      <a href="https://atomicdesign.bradfrost.com/" target="_blank" rel="noopener noreferrer">Atomic Design (livro completo)</a>
+                    </List.Item>
+                    <List.Item>
+                      <strong>Material Design:</strong>{' '}
+                      <a href="https://m3.material.io/" target="_blank" rel="noopener noreferrer">Google Design System</a>
+                    </List.Item>
+                    <List.Item>
+                      <strong>Shopify Polaris:</strong>{' '}
+                      <a href="https://polaris.shopify.com/" target="_blank" rel="noopener noreferrer">E-commerce design system</a>
+                    </List.Item>
+                    <List.Item>
+                      <strong>IBM Carbon:</strong>{' '}
+                      <a href="https://carbondesignsystem.com/" target="_blank" rel="noopener noreferrer">Enterprise design system</a>
+                    </List.Item>
             </List>
           </Card>
         </Stack>

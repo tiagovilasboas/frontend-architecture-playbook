@@ -346,17 +346,17 @@ function IslandsArchitecture() {
             </Title>
             <List size="sm" spacing="xs">
               <List.Item>
-                <strong>Netflix:</strong> Performance em dispositivos
-              </List.Item>
-              <List.Item>
-                <strong>Shopify:</strong> E-commerce com Islands
-              </List.Item>
-              <List.Item>
-                <strong>Medium:</strong> Blog com comentários interativos
-              </List.Item>
-              <List.Item>
-                <strong>GitHub:</strong> Documentação com exemplos interativos
-              </List.Item>
+                      <strong>Jason Miller:</strong>{' '}
+                      <a href="https://jasonformat.com/islands-architecture/" target="_blank" rel="noopener noreferrer">Islands Architecture (artigo original)</a>
+                    </List.Item>
+                    <List.Item>
+                      <strong>Astro:</strong>{' '}
+                      <a href="https://docs.astro.build/en/concepts/islands/" target="_blank" rel="noopener noreferrer">Astro Islands</a>
+                    </List.Item>
+                    <List.Item>
+                      <strong>patterns.dev:</strong>{' '}
+                      <a href="https://www.patterns.dev/posts/islands-architecture" target="_blank" rel="noopener noreferrer">Islands Architecture Pattern</a>
+                    </List.Item>
             </List>
           </Card>
         </Stack>

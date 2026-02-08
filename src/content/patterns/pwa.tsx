@@ -455,17 +455,21 @@ if ('serviceWorker' in navigator) {
             </Title>
             <List size="sm" spacing="xs">
               <List.Item>
-                <strong>Goibibo:</strong> Melhoria em conversões com PWA
-              </List.Item>
-              <List.Item>
-                <strong>Starbucks:</strong> Carregamento mais rápido
-              </List.Item>
-              <List.Item>
-                <strong>Uber:</strong> Mercados emergentes
-              </List.Item>
-              <List.Item>
-                <strong>Flipkart:</strong> E-commerce PWA
-              </List.Item>
+                      <strong>web.dev:</strong>{' '}
+                      <a href="https://web.dev/explore/progressive-web-apps" target="_blank" rel="noopener noreferrer">Progressive Web Apps (Google)</a>
+                    </List.Item>
+                    <List.Item>
+                      <strong>MDN:</strong>{' '}
+                      <a href="https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps" target="_blank" rel="noopener noreferrer">PWA Guide</a>
+                    </List.Item>
+                    <List.Item>
+                      <strong>Workbox:</strong>{' '}
+                      <a href="https://developer.chrome.com/docs/workbox" target="_blank" rel="noopener noreferrer">Service Worker Toolkit</a>
+                    </List.Item>
+                    <List.Item>
+                      <strong>PWA Stats:</strong>{' '}
+                      <a href="https://www.pwastats.com/" target="_blank" rel="noopener noreferrer">Casos reais com métricas</a>
+                    </List.Item>
             </List>
           </Card>
         </Stack>
