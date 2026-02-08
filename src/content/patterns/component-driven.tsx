@@ -305,14 +305,17 @@ function ComponentDriven() {
             </Title>
             <List size="sm" spacing="xs">
               <List.Item>
-                <strong>Airbnb:</strong> Design system com componentes
-              </List.Item>
-              <List.Item>
-                <strong>Spotify:</strong> Component library interna
-              </List.Item>
-              <List.Item>
-                <strong>Netflix:</strong> Micro-components reutilizáveis
-              </List.Item>
+                      <strong>Storybook:</strong>{' '}
+                      <a href="https://storybook.js.org/tutorials/design-systems-for-developers/" target="_blank" rel="noopener noreferrer">Design Systems for Developers</a>
+                    </List.Item>
+                    <List.Item>
+                      <strong>Chromatic:</strong>{' '}
+                      <a href="https://www.chromatic.com/blog/component-driven-development/" target="_blank" rel="noopener noreferrer">Component Driven Development</a>
+                    </List.Item>
+                    <List.Item>
+                      <strong>Brad Frost:</strong>{' '}
+                      <a href="https://bradfrost.com/blog/post/atomic-web-design/" target="_blank" rel="noopener noreferrer">Atomic Web Design</a>
+                    </List.Item>
             </List>
           </Card>
         </Stack>

@@ -285,15 +285,17 @@ function MicroFrontends() {
             </Title>
             <List size="sm" spacing="xs">
               <List.Item>
-                <strong>Netflix:</strong> Micro-frontends em produção
-              </List.Item>
-              <List.Item>
-                <strong>Spotify:</strong> Arquitetura de micro-apps
-              </List.Item>
-              <List.Item>
-                <strong>Amazon:</strong> Single Page Application vs
-                Micro-frontends
-              </List.Item>
+                      <strong>Martin Fowler:</strong>{' '}
+                      <a href="https://martinfowler.com/articles/micro-frontends.html" target="_blank" rel="noopener noreferrer">Micro Frontends</a>
+                    </List.Item>
+                    <List.Item>
+                      <strong>Module Federation:</strong>{' '}
+                      <a href="https://module-federation.io/" target="_blank" rel="noopener noreferrer">Documentação oficial</a>
+                    </List.Item>
+                    <List.Item>
+                      <strong>Single-SPA:</strong>{' '}
+                      <a href="https://single-spa.js.org/" target="_blank" rel="noopener noreferrer">Framework para micro frontends</a>
+                    </List.Item>
             </List>
           </Card>
 

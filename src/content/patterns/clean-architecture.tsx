@@ -360,16 +360,18 @@ function CleanArchitecture() {
                 Artigos e Casos
               </Title>
               <List size="sm" spacing="xs">
-                <List.Item>
-                  <strong>Netflix:</strong> Micro-frontends com Clean
-                  Architecture
-                </List.Item>
-                <List.Item>
-                  <strong>Spotify:</strong> Domain-driven design em frontend
-                </List.Item>
-                <List.Item>
-                  <strong>Airbnb:</strong> Component architecture patterns
-                </List.Item>
+              <List.Item>
+                      <strong>Uncle Bob:</strong>{' '}
+                      <a href="https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html" target="_blank" rel="noopener noreferrer">The Clean Architecture</a>
+                    </List.Item>
+                    <List.Item>
+                      <strong>Khalil Stemmler:</strong>{' '}
+                      <a href="https://khalilstemmler.com/articles/software-design-architecture/organizing-app-logic/" target="_blank" rel="noopener noreferrer">Organizing App Logic</a>
+                    </List.Item>
+                    <List.Item>
+                      <strong>Bulletproof React:</strong>{' '}
+                      <a href="https://github.com/alan2207/bulletproof-react" target="_blank" rel="noopener noreferrer">Project Structure Guide</a>
+                    </List.Item>
               </List>
             </Card>
           </Grid.Col>

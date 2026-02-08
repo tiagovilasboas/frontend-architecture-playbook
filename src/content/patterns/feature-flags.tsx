@@ -382,17 +382,17 @@ function FeatureFlags() {
             </Title>
             <List size="sm" spacing="xs">
               <List.Item>
-                <strong>Netflix:</strong> A/B testing and rollbacks
-              </List.Item>
-              <List.Item>
-                <strong>Facebook:</strong> Gradual feature releases
-              </List.Item>
-              <List.Item>
-                <strong>Amazon:</strong> Dynamic pricing and features
-              </List.Item>
-              <List.Item>
-                <strong>Uber:</strong> Regional feature rollouts
-              </List.Item>
+                      <strong>LaunchDarkly:</strong>{' '}
+                      <a href="https://launchdarkly.com/blog/what-are-feature-flags/" target="_blank" rel="noopener noreferrer">What are Feature Flags?</a>
+                    </List.Item>
+                    <List.Item>
+                      <strong>Martin Fowler:</strong>{' '}
+                      <a href="https://martinfowler.com/articles/feature-toggles.html" target="_blank" rel="noopener noreferrer">Feature Toggles</a>
+                    </List.Item>
+                    <List.Item>
+                      <strong>Unleash:</strong>{' '}
+                      <a href="https://www.getunleash.io/" target="_blank" rel="noopener noreferrer">Open-source feature management</a>
+                    </List.Item>
             </List>
           </Card>
         </Stack>

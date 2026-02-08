@@ -333,17 +333,17 @@ function StateMachines() {
             </Title>
             <List size="sm" spacing="xs">
               <List.Item>
-                <strong>Netflix:</strong> Video player states
-              </List.Item>
-              <List.Item>
-                <strong>Spotify:</strong> Music player states
-              </List.Item>
-              <List.Item>
-                <strong>Uber:</strong> Ride booking states
-              </List.Item>
-              <List.Item>
-                <strong>Airbnb:</strong> Booking flow states
-              </List.Item>
+                      <strong>XState:</strong>{' '}
+                      <a href="https://xstate.js.org/" target="_blank" rel="noopener noreferrer">State machines para JavaScript</a>
+                    </List.Item>
+                    <List.Item>
+                      <strong>Stately:</strong>{' '}
+                      <a href="https://stately.ai/blog/what-are-state-machines" target="_blank" rel="noopener noreferrer">What are State Machines?</a>
+                    </List.Item>
+                    <List.Item>
+                      <strong>David Khourshid:</strong>{' '}
+                      <a href="https://www.youtube.com/watch?v=VU1NKX6Qkxc" target="_blank" rel="noopener noreferrer">State Machines in React (talk)</a>
+                    </List.Item>
             </List>
           </Card>
         </Stack>

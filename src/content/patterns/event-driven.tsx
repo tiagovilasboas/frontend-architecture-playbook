@@ -341,17 +341,17 @@ function EventDriven() {
             </Title>
             <List size="sm" spacing="xs">
               <List.Item>
-                <strong>Netflix:</strong> Event-driven microservices
-              </List.Item>
-              <List.Item>
-                <strong>Uber:</strong> Real-time event processing
-              </List.Item>
-              <List.Item>
-                <strong>Airbnb:</strong> Booking event system
-              </List.Item>
-              <List.Item>
-                <strong>Spotify:</strong> Music recommendation events
-              </List.Item>
+                      <strong>Martin Fowler:</strong>{' '}
+                      <a href="https://martinfowler.com/articles/201701-event-driven.html" target="_blank" rel="noopener noreferrer">What do you mean by Event-Driven?</a>
+                    </List.Item>
+                    <List.Item>
+                      <strong>EventEmitter3:</strong>{' '}
+                      <a href="https://github.com/primus/eventemitter3" target="_blank" rel="noopener noreferrer">Biblioteca de eventos leve</a>
+                    </List.Item>
+                    <List.Item>
+                      <strong>RxJS:</strong>{' '}
+                      <a href="https://rxjs.dev/" target="_blank" rel="noopener noreferrer">Reactive Extensions para JavaScript</a>
+                    </List.Item>
             </List>
           </Card>
         </Stack>

@@ -359,17 +359,17 @@ function Monorepo() {
             </Title>
             <List size="sm" spacing="xs">
               <List.Item>
-                <strong>Google:</strong> Monorepo gigante
-              </List.Item>
-              <List.Item>
-                <strong>Facebook/Meta:</strong> Produtos sociais
-              </List.Item>
-              <List.Item>
-                <strong>Netflix:</strong> Streaming multiplataforma
-              </List.Item>
-              <List.Item>
-                <strong>Uber:</strong> Apps de mobilidade
-              </List.Item>
+                      <strong>Nx:</strong>{' '}
+                      <a href="https://nx.dev/" target="_blank" rel="noopener noreferrer">Build system para monorepos</a>
+                    </List.Item>
+                    <List.Item>
+                      <strong>Turborepo:</strong>{' '}
+                      <a href="https://turbo.build/repo" target="_blank" rel="noopener noreferrer">Build system incremental</a>
+                    </List.Item>
+                    <List.Item>
+                      <strong>Nrwl:</strong>{' '}
+                      <a href="https://blog.nrwl.io/misconceptions-about-monorepos-monorepo-monolith-df1250d4b03c" target="_blank" rel="noopener noreferrer">Misconceptions about Monorepos</a>
+                    </List.Item>
             </List>
           </Card>
         </Stack>
