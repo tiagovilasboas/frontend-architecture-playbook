@@ -115,7 +115,7 @@ export default function Home() {
                       lineHeight: 1.6,
                     }}
                   >
-                    Escolha a arquitetura certa e evite refatoração. Baseado em 20 anos de experiência e casos reais.
+                    Escolha a arquitetura certa e evite refatoração. Baseado em casos reais e fontes verificáveis.
                   </Text>
                 </Stack>
 
@@ -156,9 +156,9 @@ export default function Home() {
                 >
                   {[
                     { value: '13+', label: 'Arquiteturas', c: 'brand' as const },
-                    { value: '20', label: 'Anos Dev', c: 'brand' as const },
-                    { value: '50+', label: 'Projetos', c: 'accent' as const },
                     { value: '9', label: 'Casos Reais', c: 'accent' as const },
+                    { value: '30+', label: 'Code Examples', c: 'brand' as const },
+                    { value: '100%', label: 'Fontes Reais', c: 'accent' as const },
                   ].map(({ value, label, c }) => (
                     <motion.div
                       key={label}
@@ -280,7 +280,7 @@ export default function Home() {
                       c="dimmed"
                       style={{ lineHeight: 1.6 }}
                     >
-                      20 anos convertidos em decisões práticas
+                      Padrões validados com fontes e artigos reais
                     </Text>
                   </Stack>
                 </Card>
