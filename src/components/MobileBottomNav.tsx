@@ -2,7 +2,7 @@ import React from 'react';
 import { Paper, Group, UnstyledButton, Text, Badge } from '@mantine/core';
 import { Spotlight } from '@mantine/spotlight';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useMediaQuery } from '@mantine/hooks';
+import { useBreakpoints } from '../hooks/useBreakpoints.ts';
 import {
   IconHome,
   IconBook,
@@ -21,7 +21,7 @@ interface NavItem {
 export default function MobileBottomNav() {
   const location = useLocation();
   const navigate = useNavigate();
-  const isMobile = useMediaQuery('(max-width: 768px)');
+  const { isMobile } = useBreakpoints();
 
   if (!isMobile) return null;
 

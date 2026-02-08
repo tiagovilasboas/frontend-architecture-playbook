@@ -1,7 +1,7 @@
 import { Card, ThemeIcon, Title, Text, Group, Stack } from '@mantine/core';
 import type { CardProps } from '@mantine/core';
 import type { IconProps } from '@tabler/icons-react';
-import { useMediaQuery } from '@mantine/hooks';
+import { useBreakpoints } from '../../hooks/useBreakpoints.ts';
 
 /**
  * StatsCard - Componente de estatísticas responsivo
@@ -31,8 +31,7 @@ export function StatsCard({
   iconSize,
   ...props
 }: StatsCardProps) {
-  const isMobile = useMediaQuery('(max-width: 600px)');
-  const isSmallMobile = useMediaQuery('(max-width: 400px)');
+  const { isMobile, isSmallMobile } = useBreakpoints();
 
   // Determina o layout baseado no prop ou automaticamente no mobile
   const finalLayout =

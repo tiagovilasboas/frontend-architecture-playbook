@@ -17,7 +17,7 @@ import {
 } from '@tabler/icons-react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import { useMediaQuery } from '@mantine/hooks';
+import { useBreakpoints } from '../hooks/useBreakpoints.ts';
 
 interface CodeExampleCodeObject {
   content: string;
@@ -40,7 +40,7 @@ export default function CodeExample({
 }: CodeExampleProps) {
   const [expanded, setExpanded] = useState(defaultExpanded);
   const [copied, setCopied] = useState(false);
-  const isMobile = useMediaQuery('(max-width: 768px)');
+  const { isMobile } = useBreakpoints();
 
   // Suporte a string ou objeto
   const codeContent = typeof code === 'string' ? code : code.content;

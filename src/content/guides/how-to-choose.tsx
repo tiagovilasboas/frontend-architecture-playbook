@@ -13,8 +13,8 @@ import { IconBulb, IconRocket, IconCheck } from '@tabler/icons-react';
 import { Link } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import { LoadingOverlay } from '@mantine/core';
-import { useMediaQuery } from '@mantine/hooks';
 import GuideNavigation from '../../components/GuideNavigation';
+import { useBreakpoints } from '../../hooks/useBreakpoints.ts';
 import GuideCTA from '../../components/GuideCTA';
 
 // Lazy load the DecisionWizard component
@@ -23,7 +23,7 @@ const DecisionWizard = lazy(
 );
 
 export default function HowToChoose() {
-  const isMobile = useMediaQuery('(max-width: 600px)');
+  const { isMobile } = useBreakpoints();
   return (
     <Container size="lg" px={isMobile ? 'xs' : 'md'}>
       <Stack gap={isMobile ? 'sm' : 'md'}>

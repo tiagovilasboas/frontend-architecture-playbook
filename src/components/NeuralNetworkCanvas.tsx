@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'react';
 import { Box } from '@mantine/core';
 import { useMantineColorScheme } from '@mantine/core';
-import { useMediaQuery } from '@mantine/hooks';
 import { semantic } from '../theme/colors';
+import { useBreakpoints } from '../hooks/useBreakpoints.ts';
 
 /** Gera número determinístico a partir de uma string (hash simples) */
 function hashString(str: string): number {
@@ -106,7 +106,7 @@ export default function NeuralNetworkCanvas({
   const nodesRef = useRef<Node[]>([]);
   const mouseRef = useRef({ x: -10000, y: -10000 });
   const { colorScheme } = useMantineColorScheme();
-  const isMobile = useMediaQuery('(max-width: 768px)');
+  const { isMobile } = useBreakpoints();
   const isDark = colorScheme === 'dark';
 
   useEffect(() => {

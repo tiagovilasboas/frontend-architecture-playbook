@@ -37,7 +37,7 @@ import {
   IconBoxMultiple,
 } from '@tabler/icons-react';
 import './DecisionWizard.css';
-import { useMediaQuery } from '@mantine/hooks';
+import { useBreakpoints } from '../../hooks/useBreakpoints.ts';
 import { getBonusPatterns } from './getBonusPatterns';
 
 // Mapeamento de ícones por padrão - WIZARD v3.0 com 15 arquiteturas (9 na comparação visual)
@@ -138,7 +138,7 @@ const priorities = [
 ];
 
 export default function DecisionWizard() {
-  const isMobile = useMediaQuery('(max-width: 600px)');
+  const { isMobile } = useBreakpoints();
   const [step, setStep] = useState<1 | 2 | 3 | 4 | 5 | 6>(1);
   const [projectType, setProjectType] = useState<string | null>(null);
   const [teamSize, setTeamSize] = useState<string | null>(null);

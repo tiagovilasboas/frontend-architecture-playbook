@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Drawer, Box } from '@mantine/core';
 import { Spotlight } from '@mantine/spotlight';
-import { useMediaQuery } from '@mantine/hooks';
 import HeaderBar from './HeaderBar.tsx';
 import MobileNavMenu from './MobileNavMenu.tsx';
 import AppBreadcrumbs from './AppBreadcrumbs.tsx';
@@ -11,6 +10,7 @@ import { BackToTop } from './BackToTop.tsx';
 import Footer from './Footer.tsx';
 import NeuralNetworkCanvas from './NeuralNetworkCanvas.tsx';
 import { useNavigationActions } from '../hooks/useNavigationActions.ts';
+import { useBreakpoints } from '../hooks/useBreakpoints.ts';
 import type { DocMeta } from '../lib/content.tsx';
 
 interface DocsShellProps {
@@ -31,7 +31,7 @@ export default function DocsShell({
   children,
 }: DocsShellProps) {
   const [opened, setOpened] = useState(false);
-  const isMobile = useMediaQuery('(max-width: 768px)');
+  const { isMobile } = useBreakpoints();
   const actions = useNavigationActions(
     guides,
     architectures,

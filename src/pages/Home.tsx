@@ -25,7 +25,7 @@ import {
   IconBolt,
   IconScale,
 } from '@tabler/icons-react';
-import { useMediaQuery } from '@mantine/hooks';
+import { useBreakpoints } from '../hooks/useBreakpoints.ts';
 
 // Variantes de animação
 const containerVariants = {
@@ -49,8 +49,7 @@ const itemVariants = {
 };
 
 export default function Home() {
-  const isMobile = useMediaQuery('(max-width: 768px)');
-  const isSmallMobile = useMediaQuery('(max-width: 400px)');
+  const { isMobile, isSmallMobile } = useBreakpoints();
 
   return (
     <Box px={isMobile ? 'md' : 'md'} mt={0}>

@@ -16,8 +16,8 @@ import {
   IconBrandGithub,
 } from '@tabler/icons-react';
 import { useMantineColorScheme } from '@mantine/core';
-import { useMediaQuery } from '@mantine/hooks';
 import type { DocMeta } from '../lib/content.tsx';
+import { useBreakpoints } from '../hooks/useBreakpoints.ts';
 import HeaderNavMenu from './HeaderNavMenu.tsx';
 
 interface Props {
@@ -39,20 +39,10 @@ export default function HeaderBar({
   techniques,
   bestPractices,
 }: Props) {
-  const isMobile = useMediaQuery('(max-width: 768px)');
-  const isSmallMobile = useMediaQuery('(max-width: 480px)');
-  const isDesktop = useMediaQuery('(min-width: 1024px)');
+  const { isMobile, isSmallMobile, isDesktop } = useBreakpoints();
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
 
-  const getTitle = () => {
-    if (isSmallMobile) {
-      return 'Front Arch. Playbook';
-    }
-    if (isMobile) {
-      return 'Front Arch. Playbook';
-    }
-    return 'Front Arch. Playbook';
-  };
+  const title = 'Front Arch. Playbook';
 
   return (
     <Paper
@@ -99,7 +89,7 @@ export default function HeaderBar({
                   minWidth: 0,
                 }}
               >
-                {getTitle()}
+                {title}
               </Title>
             </Group>
           </UnstyledButton>

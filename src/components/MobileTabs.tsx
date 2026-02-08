@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Stack, Tabs } from '@mantine/core';
-import { useMediaQuery } from '@mantine/hooks';
 import type { TabItem } from './MobileTabsHelpers';
+import { useBreakpoints } from '../hooks/useBreakpoints.ts';
 
 interface MobileTabsProps {
   items: TabItem[];
@@ -14,7 +14,7 @@ const MobileTabs: React.FC<MobileTabsProps> = ({
   defaultTab,
   gap = 'xl',
 }) => {
-  const isMobile = useMediaQuery('(max-width: 768px)');
+  const { isMobile } = useBreakpoints();
   const [activeTab, setActiveTab] = useState<string | null>(
     defaultTab || items[0]?.value
   );

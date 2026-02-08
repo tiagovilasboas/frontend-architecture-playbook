@@ -2,13 +2,13 @@ import { useEffect, useState } from 'react';
 import { Affix, Transition, ActionIcon, Tooltip } from '@mantine/core';
 import { useWindowScroll } from '@mantine/hooks';
 import { IconArrowUp } from '@tabler/icons-react';
-import { useMediaQuery } from '@mantine/hooks';
+import { useBreakpoints } from '../hooks/useBreakpoints.ts';
 
 /** Mostra botão "voltar ao topo" após ~1 tela de scroll. Reduz fadiga de scroll (Nielsen, UX patterns). */
 export function BackToTop() {
   const [scroll] = useWindowScroll();
   const [visible, setVisible] = useState(false);
-  const isMobile = useMediaQuery('(max-width: 768px)');
+  const { isMobile } = useBreakpoints();
 
   const showAfter = isMobile ? 400 : 600;
 

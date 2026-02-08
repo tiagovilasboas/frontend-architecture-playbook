@@ -1,12 +1,12 @@
 import React from 'react';
 import { Breadcrumbs, Anchor, Text, Group } from '@mantine/core';
 import { Link, useLocation } from 'react-router-dom';
-import { useMediaQuery } from '@mantine/hooks';
 import { IconHome, IconChevronRight } from '@tabler/icons-react';
+import { useBreakpoints } from '../hooks/useBreakpoints.ts';
 
 export default function MobileBreadcrumbs() {
   const location = useLocation();
-  const isMobile = useMediaQuery('(max-width: 768px)');
+  const { isMobile } = useBreakpoints();
 
   if (!isMobile || location.pathname === '/') return null;
 
