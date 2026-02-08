@@ -284,26 +284,26 @@ export default function SecurityPatterns() {
             </Stack>
           </Card>
 
-          {/* CORS Configuration */}
+          {/* CSRF Protection */}
           <Card withBorder>
             <Title order={3} mb="md">
-              {securityExamples.corsConfiguration.title}
+              {securityExamples.csrfProtection.title}
             </Title>
             <Text size="sm" mb="md">
-              {securityExamples.corsConfiguration.description}
+              {securityExamples.csrfProtection.description}
             </Text>
             <Stack gap="md">
               <CodeExample
-                title={securityExamples.corsConfiguration.bad.title}
-                code={securityExamples.corsConfiguration.bad.code}
+                title={securityExamples.csrfProtection.bad.title}
+                code={securityExamples.csrfProtection.bad.code}
               />
               <CodeExample
-                title={securityExamples.corsConfiguration.good.title}
-                code={securityExamples.corsConfiguration.good.code}
+                title={securityExamples.csrfProtection.good.title}
+                code={securityExamples.csrfProtection.good.code}
               />
               <CodeExample
-                title={securityExamples.corsConfiguration.better.title}
-                code={securityExamples.corsConfiguration.better.code}
+                title={securityExamples.csrfProtection.better.title}
+                code={securityExamples.csrfProtection.better.code}
               />
             </Stack>
           </Card>

