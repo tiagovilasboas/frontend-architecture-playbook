@@ -382,9 +382,33 @@ export default function SSRSSGArchitecture() {
 
         <Stack gap="md">
           <Card withBorder p="md">
-            <Title order={4} mb="sm">
-              Frameworks
-            </Title>
+            <Title order={4} mb="sm">Artigos e Case Studies</Title>
+            <List size="sm" spacing="xs">
+              <List.Item>
+                <strong>The New York Times:</strong>{' '}
+                <a href="https://open.nytimes.com/enhancing-the-new-york-times-web-performance-with-react-18-d6f91a7c5af8" target="_blank" rel="noopener noreferrer">Enhancing Web Performance with React 18</a>
+              </List.Item>
+              <List.Item>
+                <strong>Patreon:</strong>{' '}
+                <a href="https://www.patreon.com/posts/migrating-to-110743498" target="_blank" rel="noopener noreferrer">Migrating to Next.js: Inside a No-Downtime Architecture Overhaul</a>
+              </List.Item>
+              <List.Item>
+                <strong>DoorDash:</strong>{' '}
+                <a href="https://doordash.engineering/2022/03/29/improving-web-page-performance-at-doordash-through-server-side-rendering/" target="_blank" rel="noopener noreferrer">Improving Web Page Performance Through SSR with Next.js</a>
+              </List.Item>
+              <List.Item>
+                <strong>Airbnb:</strong>{' '}
+                <a href="https://medium.com/airbnb-engineering/improving-performance-with-http-streaming-ba9e72c66408" target="_blank" rel="noopener noreferrer">Improving Performance with HTTP Streaming</a>
+              </List.Item>
+              <List.Item>
+                <strong>Yelp:</strong>{' '}
+                <a href="https://engineeringblog.yelp.com/2022/02/server-side-rendering-at-scale.html" target="_blank" rel="noopener noreferrer">Server Side Rendering at Scale</a>
+              </List.Item>
+            </List>
+          </Card>
+
+          <Card withBorder p="md">
+            <Title order={4} mb="sm">Frameworks</Title>
             <List size="sm" spacing="xs">
               <List.Item>
                 <strong>Next.js:</strong> SSR e SSG automático
@@ -397,23 +421,6 @@ export default function SSRSSGArchitecture() {
               </List.Item>
               <List.Item>
                 <strong>Astro:</strong> Islands architecture
-              </List.Item>
-            </List>
-          </Card>
-
-          <Card withBorder p="md">
-            <Title order={4} mb="sm">
-              Ferramentas
-            </Title>
-            <List size="sm" spacing="xs">
-              <List.Item>
-                <strong>Lighthouse:</strong> Performance testing
-              </List.Item>
-              <List.Item>
-                <strong>WebPageTest:</strong> Real user testing
-              </List.Item>
-              <List.Item>
-                <strong>Core Web Vitals:</strong> Google metrics
               </List.Item>
             </List>
           </Card>

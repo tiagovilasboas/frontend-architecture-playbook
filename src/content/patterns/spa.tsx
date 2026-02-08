@@ -408,28 +408,45 @@ function SPA() {
 
         <Stack gap="md">
           <Card withBorder p="md">
-            <Title order={4}>📚 Livros</Title>
-            <List>
-              <List.Item>"Learning React" - Alex Banks</List.Item>
-              <List.Item>"React Router v6" - Documentation</List.Item>
-              <List.Item>"Redux Toolkit" - Official Guide</List.Item>
+            <Title order={4}>Artigos e Case Studies</Title>
+            <List size="sm" spacing="xs">
+              <List.Item>
+                <strong>Airbnb:</strong>{' '}
+                <a href="https://medium.com/airbnb-engineering/rearchitecting-airbnbs-frontend-5e213be0591d" target="_blank" rel="noopener noreferrer">Rearchitecting Airbnb's Frontend</a>
+              </List.Item>
+              <List.Item>
+                <strong>Slack:</strong>{' '}
+                <a href="https://slack.engineering/rebuilding-slack-on-the-desktop-308d6fe94ae4" target="_blank" rel="noopener noreferrer">When a rewrite isn't: rebuilding Slack on the desktop</a>
+              </List.Item>
+              <List.Item>
+                <strong>Instagram:</strong>{' '}
+                <a href="https://instagram-engineering.com/making-instagram-com-faster-part-1-62cc0c327538" target="_blank" rel="noopener noreferrer">Making Instagram.com faster (Part 1)</a>
+              </List.Item>
+              <List.Item>
+                <strong>Notion:</strong>{' '}
+                <a href="https://www.notion.so/blog/how-we-sped-up-notion-in-the-browser-with-wasm-sqlite" target="_blank" rel="noopener noreferrer">How we sped up Notion in the browser with WASM SQLite</a>
+              </List.Item>
+              <List.Item>
+                <strong>Twitter:</strong>{' '}
+                <a href="https://blog.twitter.com/engineering/en_us/topics/open-source/2017/how-we-built-twitter-lite.html" target="_blank" rel="noopener noreferrer">How we built Twitter Lite</a>
+              </List.Item>
             </List>
           </Card>
 
           <Card withBorder p="md">
-            <Title order={4}>🛠️ Ferramentas</Title>
-            <List>
+            <Title order={4}>Ferramentas</Title>
+            <List size="sm" spacing="xs">
               <List.Item>
                 <strong>React Router:</strong> Roteamento client-side
               </List.Item>
               <List.Item>
-                <strong>Redux Toolkit:</strong> Gerenciamento de estado
+                <strong>Redux Toolkit / Zustand:</strong> Gerenciamento de estado
               </List.Item>
               <List.Item>
                 <strong>Vite:</strong> Build tool rápida
               </List.Item>
               <List.Item>
-                <strong>React Query:</strong> Cache e sincronização
+                <strong>TanStack Query:</strong> Cache e sincronização de server state
               </List.Item>
             </List>
           </Card>

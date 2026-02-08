@@ -416,42 +416,51 @@ export default function SecurityPatterns() {
           Referências
         </Title>
 
-        <List spacing="md">
-          <List.Item>
-            <Text fw={600}>OWASP Top 10</Text>
-            <Text size="sm" c="dimmed">
-              Lista das vulnerabilidades mais comuns em aplicações web
-            </Text>
-          </List.Item>
+        <Stack gap="md">
+          <Card withBorder p="md">
+            <Title order={4} mb="sm">Artigos e Case Studies</Title>
+            <List spacing="xs" size="sm">
+              <List.Item>
+                <strong>OWASP:</strong>{' '}
+                <a href="https://owasp.org/www-project-top-ten/" target="_blank" rel="noopener noreferrer">Top 10 Web Application Security Risks</a>
+              </List.Item>
+              <List.Item>
+                <strong>GitHub:</strong>{' '}
+                <a href="https://github.blog/2017-01-19-githubs-post-csp-journey/" target="_blank" rel="noopener noreferrer">GitHub's post-CSP journey</a>
+              </List.Item>
+              <List.Item>
+                <strong>Dropbox:</strong>{' '}
+                <a href="https://dropbox.tech/security/content-security-policy-at-dropbox" target="_blank" rel="noopener noreferrer">Content Security Policy at Dropbox</a>
+              </List.Item>
+              <List.Item>
+                <strong>Discord:</strong>{' '}
+                <a href="https://discord.com/blog/how-discord-modernized-mfa-with-webauthn" target="_blank" rel="noopener noreferrer">How Discord Modernized MFA with WebAuthn</a>
+              </List.Item>
+              <List.Item>
+                <strong>Shopify:</strong>{' '}
+                <a href="https://shopify.engineering/shipping-support-for-module-script-integrity" target="_blank" rel="noopener noreferrer">Shipping support for module script integrity</a>
+              </List.Item>
+            </List>
+          </Card>
 
-          <List.Item>
-            <Text fw={600}>Security Headers</Text>
-            <Text size="sm" c="dimmed">
-              helmet.js, CSP, HSTS, X-Frame-Options
-            </Text>
-          </List.Item>
-
-          <List.Item>
-            <Text fw={600}>Authentication Libraries</Text>
-            <Text size="sm" c="dimmed">
-              NextAuth.js, Auth0, Supabase Auth, Clerk
-            </Text>
-          </List.Item>
-
-          <List.Item>
-            <Text fw={600}>Validation Libraries</Text>
-            <Text size="sm" c="dimmed">
-              Zod, Yup, Joi, class-validator
-            </Text>
-          </List.Item>
-
-          <List.Item>
-            <Text fw={600}>Security Tools</Text>
-            <Text size="sm" c="dimmed">
-              Snyk, npm audit, dependabot, renovate
-            </Text>
-          </List.Item>
-        </List>
+          <Card withBorder p="md">
+            <Title order={4} mb="sm">Ferramentas</Title>
+            <List spacing="xs" size="sm">
+              <List.Item>
+                <strong>helmet.js:</strong> Security headers para Node.js/Express
+              </List.Item>
+              <List.Item>
+                <strong>Zod / Yup:</strong> Validação de input no frontend
+              </List.Item>
+              <List.Item>
+                <strong>DOMPurify:</strong> Sanitização de HTML contra XSS
+              </List.Item>
+              <List.Item>
+                <strong>Snyk / npm audit:</strong> Auditoria de dependências
+              </List.Item>
+            </List>
+          </Card>
+        </Stack>
       </Paper>
 
       {/* Resumo */}
