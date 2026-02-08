@@ -56,23 +56,31 @@ function CleanArchitecture() {
           </Group>
 
           <Text>
-            Clean Architecture é sobre uma coisa só:{' '}
+            Clean Architecture é sobre uma coisa:{' '}
             <strong>
-              seu código de negócio não pode depender de framework
+              regras de negócio isoladas de frameworks e infraestrutura
+            </strong>
+            . No frontend React, isso significa que suas validações, cálculos e
+            regras de domínio vivem em funções puras, testáveis sem mount de
+            componentes.
+          </Text>
+
+          <Text>
+            A tensão real: Clean Architecture clássica usa classes com
+            Dependency Injection via constructor. React usa hooks com closures.
+            A solução pragmática:{' '}
+            <strong>
+              entidades como types/funções puras, use cases como custom hooks,
+              e DI via Context
             </strong>
             .
           </Text>
 
           <Text>
-            Pensa assim: se amanhã o React virar pó, sua lógica de negócio tem
-            que sobreviver. Se o Vue quebrar tudo na próxima versão, suas regras
-            de negócio continuam funcionando.
-          </Text>
-
-          <Text>
-            A regra é simples: <em>dependências apontam para dentro</em>. UI
-            depende do negócio, API depende do negócio, mas negócio não depende
-            de nada externo.
+            A regra de dependência se mantém:{' '}
+            <em>UI → hooks (use cases) → domain (entities/ports)</em>. Nunca
+            o contrário. Entidades não importam React. Hooks de use case não
+            importam componentes.
           </Text>
         </Stack>
       </Paper>
