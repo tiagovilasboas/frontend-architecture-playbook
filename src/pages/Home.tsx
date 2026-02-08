@@ -158,7 +158,7 @@ export default function Home() {
                     { value: '13+', label: 'Arquiteturas', c: 'brand' as const },
                     { value: '20', label: 'Anos Dev', c: 'brand' as const },
                     { value: '50+', label: 'Projetos', c: 'accent' as const },
-                    { value: '16', label: 'Casos Reais', c: 'accent' as const },
+                    { value: '9', label: 'Casos Reais', c: 'accent' as const },
                   ].map(({ value, label, c }) => (
                     <motion.div
                       key={label}
