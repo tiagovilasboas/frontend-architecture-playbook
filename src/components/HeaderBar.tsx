@@ -25,7 +25,7 @@ interface Props {
 }
 
 export default function HeaderBar({ opened, onBurger }: Props) {
-  const { isMobile, isSmallMobile, isDesktop } = useBreakpoints();
+  const { isMobile, isDesktop } = useBreakpoints();
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
 
   const title = 'Front Arch. Playbook';
@@ -81,9 +81,7 @@ export default function HeaderBar({ opened, onBurger }: Props) {
           </UnstyledButton>
 
           {/* Menu horizontal - apenas no desktop */}
-          {!isMobile && (
-            <HeaderNavMenu />
-          )}
+          {!isMobile && <HeaderNavMenu />}
         </Group>
 
         <Group gap="md" wrap="nowrap" style={{ flexShrink: 0 }}>
@@ -108,7 +106,12 @@ export default function HeaderBar({ opened, onBurger }: Props) {
               rel="noopener noreferrer"
               style={{ textDecoration: 'none' }}
             >
-              <ActionIcon variant="light" color="brand" size="lg" aria-label="GitHub">
+              <ActionIcon
+                variant="light"
+                color="brand"
+                size="lg"
+                aria-label="GitHub"
+              >
                 <IconBrandGithub size={18} />
               </ActionIcon>
             </Anchor>

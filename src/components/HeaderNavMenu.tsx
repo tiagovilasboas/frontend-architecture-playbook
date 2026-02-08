@@ -1,15 +1,7 @@
 import React from 'react';
 import { Menu, UnstyledButton, Text, Group } from '@mantine/core';
 import { Link, useLocation } from 'react-router-dom';
-import {
-  IconChevronDown,
-  IconBook,
-  IconPuzzle,
-  IconStack,
-  IconRocket,
-  IconBuilding,
-  IconTarget,
-} from '@tabler/icons-react';
+import { IconChevronDown } from '@tabler/icons-react';
 
 // ─── Journey-based navigation ─────────────────────────────────────────
 // Same structure as MobileNavMenu but rendered as horizontal dropdowns.
@@ -19,7 +11,11 @@ const JOURNEY = [
   {
     key: 'fundamentals',
     label: 'Fundamentos',
-    basePath: ['/guides/dependency-rule', '/best-practices/', '/guides/how-to-choose'],
+    basePath: [
+      '/guides/dependency-rule',
+      '/best-practices/',
+      '/guides/how-to-choose',
+    ],
     items: [
       { href: '/guides/dependency-rule', label: 'Dependency Rule' },
       { href: '/best-practices/dry', label: 'DRY' },
@@ -34,7 +30,13 @@ const JOURNEY = [
   {
     key: 'building-ui',
     label: 'UI',
-    basePath: ['/architectures/spa', '/patterns/component', '/patterns/atomic', '/techniques/state', '/patterns/event'],
+    basePath: [
+      '/architectures/spa',
+      '/patterns/component',
+      '/patterns/atomic',
+      '/techniques/state',
+      '/patterns/event',
+    ],
     items: [
       { href: '/architectures/spa', label: 'Single Page Application' },
       { href: '/patterns/component-driven', label: 'Component-Driven Dev' },
@@ -46,21 +48,39 @@ const JOURNEY = [
   {
     key: 'delivery',
     label: 'Entrega',
-    basePath: ['/architectures/ssr', '/architectures/jam', '/architectures/pwa', '/architectures/islands', '/techniques/performance'],
+    basePath: [
+      '/architectures/ssr',
+      '/architectures/jam',
+      '/architectures/pwa',
+      '/architectures/islands',
+      '/techniques/performance',
+    ],
     items: [
       { href: '/architectures/ssr-ssg', label: 'SSR & SSG' },
       { href: '/architectures/jamstack', label: 'JAMstack' },
       { href: '/architectures/pwa', label: 'Progressive Web Apps' },
-      { href: '/architectures/islands-architecture', label: 'Islands Architecture' },
+      {
+        href: '/architectures/islands-architecture',
+        label: 'Islands Architecture',
+      },
       { href: '/techniques/performance', label: 'Performance' },
     ],
   },
   {
     key: 'structure',
     label: 'Estrutura',
-    basePath: ['/architectures/clean', '/architectures/layered', '/architectures/hexagonal', '/patterns/repository', '/patterns/security'],
+    basePath: [
+      '/architectures/clean',
+      '/architectures/layered',
+      '/architectures/hexagonal',
+      '/patterns/repository',
+      '/patterns/security',
+    ],
     items: [
-      { href: '/architectures/clean-architecture', label: 'Clean Architecture' },
+      {
+        href: '/architectures/clean-architecture',
+        label: 'Clean Architecture',
+      },
       { href: '/architectures/layered', label: 'Layered Architecture' },
       { href: '/architectures/hexagonal', label: 'Hexagonal Architecture' },
       { href: '/patterns/repository-pattern', label: 'Repository Pattern' },
@@ -70,11 +90,22 @@ const JOURNEY = [
   {
     key: 'scale',
     label: 'Escala',
-    basePath: ['/architectures/monorepo', '/architectures/micro', '/architectures/bff', '/architectures/headless', '/techniques/feature', '/architectures/cqrs', '/architectures/event-sourcing'],
+    basePath: [
+      '/architectures/monorepo',
+      '/architectures/micro',
+      '/architectures/bff',
+      '/architectures/headless',
+      '/techniques/feature',
+      '/architectures/cqrs',
+      '/architectures/event-sourcing',
+    ],
     items: [
       { href: '/architectures/monorepo', label: 'Monorepo' },
       { href: '/architectures/micro-frontends', label: 'Micro-Frontends' },
-      { href: '/architectures/microservices-frontend', label: 'Microservices Frontend' },
+      {
+        href: '/architectures/microservices-frontend',
+        label: 'Microservices Frontend',
+      },
       { href: '/architectures/bff', label: 'BFF' },
       { href: '/architectures/headless', label: 'Headless Architecture' },
       { href: '/techniques/feature-flags', label: 'Feature Flags' },
@@ -85,11 +116,23 @@ const JOURNEY = [
   {
     key: 'decision',
     label: 'Decisão',
-    basePath: ['/guides/architecture-comparison', '/guides/implementation', '/guides/migration', '/guides/adr', '/guides/cases'],
+    basePath: [
+      '/guides/architecture-comparison',
+      '/guides/implementation',
+      '/guides/migration',
+      '/guides/adr',
+      '/guides/cases',
+    ],
     items: [
-      { href: '/guides/architecture-comparison', label: 'Comparação de Arquiteturas' },
+      {
+        href: '/guides/architecture-comparison',
+        label: 'Comparação de Arquiteturas',
+      },
       { href: '/guides/implementation-roadmap', label: 'Roadmap' },
-      { href: '/guides/migration-strategies', label: 'Estratégias de Migração' },
+      {
+        href: '/guides/migration-strategies',
+        label: 'Estratégias de Migração',
+      },
       { href: '/guides/adr', label: 'ADR - Decision Records' },
       { href: '/guides/cases', label: '19 Casos Reais' },
     ],
@@ -134,11 +177,7 @@ export default function HeaderNavMenu() {
           </Menu.Target>
           <Menu.Dropdown className="header-nav-dropdown">
             {section.items.map(item => (
-              <Menu.Item
-                key={item.href}
-                component={Link}
-                to={item.href}
-              >
+              <Menu.Item key={item.href} component={Link} to={item.href}>
                 {item.label}
               </Menu.Item>
             ))}

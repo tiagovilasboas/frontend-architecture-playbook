@@ -18,7 +18,6 @@ import {
   IconCheck,
   IconCode,
   IconFileText,
-  IconRocket,
 } from '@tabler/icons-react';
 import MobileTabs from '../../components/MobileTabs';
 import { createArchitectureTabs } from '../../components/MobileTabsHelpers';
@@ -49,8 +48,9 @@ export default function ADRGuide() {
           <Text>
             Um <strong>Architecture Decision Record</strong> é um documento
             curto que captura uma decisão arquitetural importante junto com seu{' '}
-            <strong>contexto</strong>, <strong>alternativas consideradas</strong>
-            , e <strong>consequências</strong>. O objetivo é criar um registro
+            <strong>contexto</strong>,{' '}
+            <strong>alternativas consideradas</strong>, e{' '}
+            <strong>consequências</strong>. O objetivo é criar um registro
             histórico que explica <em>por que</em> a decisão foi tomada, não
             apenas o que foi decidido.
           </Text>
@@ -124,25 +124,37 @@ export default function ADRGuide() {
               <Badge color="blue" variant="light">
                 Template
               </Badge>
-              <Text fw={600}>Título: ADR-001 - Adotar Zustand para state management</Text>
+              <Text fw={600}>
+                Título: ADR-001 - Adotar Zustand para state management
+              </Text>
               <List size="sm" spacing="xs">
                 <List.Item>
-                  <strong>Status:</strong> Aceito | Proposto | Depreciado | Substituído por ADR-XXX
+                  <strong>Status:</strong> Aceito | Proposto | Depreciado |
+                  Substituído por ADR-XXX
                 </List.Item>
                 <List.Item>
                   <strong>Data:</strong> 2025-02-08
                 </List.Item>
                 <List.Item>
-                  <strong>Contexto:</strong> O app tem estado global espalhado em 15 contextos React. Re-renders desnecessários impactam performance. Precisamos de state management centralizado.
+                  <strong>Contexto:</strong> O app tem estado global espalhado
+                  em 15 contextos React. Re-renders desnecessários impactam
+                  performance. Precisamos de state management centralizado.
                 </List.Item>
                 <List.Item>
-                  <strong>Decisão:</strong> Adotar Zustand como state manager global.
+                  <strong>Decisão:</strong> Adotar Zustand como state manager
+                  global.
                 </List.Item>
                 <List.Item>
-                  <strong>Alternativas:</strong> Redux Toolkit (mais boilerplate, overkill para nosso caso), Jotai (atômico, mas time não tem experiência), Context API (causando os re-renders atuais).
+                  <strong>Alternativas:</strong> Redux Toolkit (mais
+                  boilerplate, overkill para nosso caso), Jotai (atômico, mas
+                  time não tem experiência), Context API (causando os re-renders
+                  atuais).
                 </List.Item>
                 <List.Item>
-                  <strong>Consequências:</strong> Bundle +2KB gzip. Time precisa aprender selectors e subscribeWithSelector. Migração gradual possível (coexiste com Context). Em 3 meses avaliar se reduziu re-renders em métricas reais.
+                  <strong>Consequências:</strong> Bundle +2KB gzip. Time precisa
+                  aprender selectors e subscribeWithSelector. Migração gradual
+                  possível (coexiste com Context). Em 3 meses avaliar se reduziu
+                  re-renders em métricas reais.
                 </List.Item>
               </List>
             </Stack>
@@ -166,7 +178,9 @@ export default function ADRGuide() {
 
           <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="md">
             <Card withBorder p="md">
-              <Text fw={600} mb="xs">1. Onde guardar</Text>
+              <Text fw={600} mb="xs">
+                1. Onde guardar
+              </Text>
               <Code block>{`docs/
 └── adr/
     ├── 001-zustand-state-management.md
@@ -179,10 +193,13 @@ export default function ADRGuide() {
             </Card>
 
             <Card withBorder p="md">
-              <Text fw={600} mb="xs">2. Processo</Text>
+              <Text fw={600} mb="xs">
+                2. Processo
+              </Text>
               <List size="sm" spacing="xs">
                 <List.Item>
-                  <strong>Propor:</strong> Abra um PR com o ADR em status "Proposto"
+                  <strong>Propor:</strong> Abra um PR com o ADR em status
+                  "Proposto"
                 </List.Item>
                 <List.Item>
                   <strong>Discutir:</strong> Review no PR (como qualquer código)
@@ -191,7 +208,8 @@ export default function ADRGuide() {
                   <strong>Aceitar:</strong> Merge muda status para "Aceito"
                 </List.Item>
                 <List.Item>
-                  <strong>Evoluir:</strong> Nunca delete. Marque como "Substituído por ADR-XXX"
+                  <strong>Evoluir:</strong> Nunca delete. Marque como
+                  "Substituído por ADR-XXX"
                 </List.Item>
               </List>
             </Card>
@@ -213,26 +231,41 @@ export default function ADRGuide() {
 
           <SimpleGrid cols={{ base: 1, sm: 3 }} spacing="md">
             <Card withBorder p="md">
-              <Badge color="green" variant="light" mb="xs">Aceito</Badge>
-              <Text fw={600} size="sm">ADR-001: Migrar de CRA para Vite</Text>
+              <Badge color="green" variant="light" mb="xs">
+                Aceito
+              </Badge>
+              <Text fw={600} size="sm">
+                ADR-001: Migrar de CRA para Vite
+              </Text>
               <Text size="xs" c="dimmed" mt="xs">
-                Contexto: build de 45s, HMR lento. Vite reduz para ~3s. Trade-off: config manual de proxy e env vars.
+                Contexto: build de 45s, HMR lento. Vite reduz para ~3s.
+                Trade-off: config manual de proxy e env vars.
               </Text>
             </Card>
 
             <Card withBorder p="md">
-              <Badge color="green" variant="light" mb="xs">Aceito</Badge>
-              <Text fw={600} size="sm">ADR-002: Adotar TanStack Query</Text>
+              <Badge color="green" variant="light" mb="xs">
+                Aceito
+              </Badge>
+              <Text fw={600} size="sm">
+                ADR-002: Adotar TanStack Query
+              </Text>
               <Text size="xs" c="dimmed" mt="xs">
-                Contexto: useEffect + useState para fetch em 40+ componentes. Cache manual quebrava. TQ resolve cache, retry, e invalidation.
+                Contexto: useEffect + useState para fetch em 40+ componentes.
+                Cache manual quebrava. TQ resolve cache, retry, e invalidation.
               </Text>
             </Card>
 
             <Card withBorder p="md">
-              <Badge color="orange" variant="light" mb="xs">Substituído</Badge>
-              <Text fw={600} size="sm">ADR-003: Redux para state global</Text>
+              <Badge color="orange" variant="light" mb="xs">
+                Substituído
+              </Badge>
+              <Text fw={600} size="sm">
+                ADR-003: Redux para state global
+              </Text>
               <Text size="xs" c="dimmed" mt="xs">
-                Substituído por ADR-007: migrar para Zustand. Contexto mudou - app menor que o previsto, Redux era overkill.
+                Substituído por ADR-007: migrar para Zustand. Contexto mudou -
+                app menor que o previsto, Redux era overkill.
               </Text>
             </Card>
           </SimpleGrid>
@@ -304,7 +337,8 @@ O que foi decidido. Seja específico.
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Documenting Architecture Decisions - Michael Nygard (artigo original)
+                Documenting Architecture Decisions - Michael Nygard (artigo
+                original)
               </a>
             </List.Item>
             <List.Item>

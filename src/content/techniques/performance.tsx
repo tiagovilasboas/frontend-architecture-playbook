@@ -8,7 +8,6 @@ import {
   ThemeIcon,
   Alert,
   Card,
-  Badge,
   List,
 } from '@mantine/core';
 import CodeExample from '../../components/CodeExample';
