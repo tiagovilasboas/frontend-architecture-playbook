@@ -53,20 +53,23 @@ function MicroFrontends() {
           </Group>
 
           <Text>
-            Micro-Frontends é sobre uma coisa só:{' '}
-            <strong>quebrar aplicações grandes em pedaços menores</strong>.
+            Micro-Frontends dividem uma aplicação em{' '}
+            <strong>micro-apps independentes com deploys separados</strong>.
+            Cada time é dono de uma vertical (feature), do componente ao deploy.
           </Text>
 
           <Text>
-            Pensa assim: você tem uma aplicação gigante com 50 desenvolvedores.
-            Torna-se difícil de gerenciar. Com Micro-Frontends, você quebra em 5
-            aplicações menores, cada uma com seu time, sua tecnologia, seu
-            deploy.
+            A decisão #1 é <strong>como os micro-frontends se comunicam</strong>:
+            shared state via Custom Events ou shared store? Como evitar CSS
+            leaking entre apps? Como rotear entre apps de times diferentes?
+            Essas são as perguntas reais que definem o sucesso da arquitetura.
           </Text>
 
           <Text>
-            A regra é simples: <em>cada micro-frontend é independente</em>. Time
-            A não depende do Time B, tecnologia A não depende da tecnologia B.
+            A regra de ouro: <em>se você tem menos de 3 times, monorepo é
+            melhor</em>. Micro-frontends resolvem problemas organizacionais
+            (times autônomos), não problemas técnicos. O overhead de
+            infraestrutura é real.
           </Text>
         </Stack>
       </Paper>
@@ -220,45 +223,60 @@ function MicroFrontends() {
         <Stack gap="md">
           <Alert color="red" icon={<IconAlertTriangle size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ❌ Complexidade desnecessária
+              ❌ CSS Leaking entre apps
             </Text>
             <Text size="sm" c="dimmed">
-              Micro-frontends para projetos pequenos é over-engineering. Use
-              apenas quando a complexidade justifica.
+              Estilos de um micro-frontend afetam outro. Soluções: Shadow DOM
+              (isolamento real, mas perde CSS global), CSS Modules com prefixo
+              por app, ou Tailwind com prefixo (ex: <code>app1-</code>).
             </Text>
           </Alert>
 
           <Alert color="orange" icon={<IconAlertTriangle size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ❌ Integração complexa
+              ❌ Shared state entre apps
             </Text>
             <Text size="sm" c="dimmed">
-              Coordenar múltiplos micro-frontends pode ser complicado. Precisa
-              de um Shell bem planejado.
+              Se dois apps precisam do mesmo estado (user logado, carrinho),
+              as opções são: Custom Events (simples, sem type safety), shared
+              npm package com store (acoplamento de versão), ou API como
+              fonte de verdade (mais requests, mais correto).
             </Text>
           </Alert>
 
           <Alert color="yellow" icon={<IconAlertTriangle size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ❌ Performance overhead
+              ❌ Bundle duplicado (React carrega 3x)
             </Text>
             <Text size="sm" c="dimmed">
-              Carregar múltiplos bundles pode impactar performance. Otimize
-              carregamento e cache.
+              Cada micro-frontend traz seu próprio React, Lodash, etc. Module
+              Federation resolve com <code>shared</code> config, mas exige
+              versões compatíveis. Singleton mode é essencial.
+            </Text>
+          </Alert>
+
+          <Alert color="yellow" icon={<IconAlertTriangle size={16} />} mb="md">
+            <Text size="sm" fw={600} mb={4}>
+              ❌ Roteamento cross-app
+            </Text>
+            <Text size="sm" c="dimmed">
+              Quem controla a URL? O shell app precisa delegar rotas para cada
+              micro-frontend. single-spa resolve, mas adiciona complexidade.
+              Alternativa: cada app é um SPA em path prefix (/checkout/*).
             </Text>
           </Alert>
 
           <Alert color="green" icon={<IconCheck size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ✅ Como evitar
+              ✅ Quando NÃO usar
             </Text>
             <Text size="sm" c="dimmed">
-              <strong>Comece simples:</strong> Monorepo antes de micro-frontends
+              <strong>{'< 3 times independentes:'}</strong> Monorepo resolve
               <br />
-              <strong>Planeje integração:</strong> Shell bem arquitetado
+              <strong>{'< 50 devs:'}</strong> O overhead não compensa
               <br />
-              <strong>Otimize performance:</strong> Lazy loading e code
-              splitting
+              <strong>Sem CI/CD maduro:</strong> Deploy independente exige
+              preview deploys, rollback por app e feature flags
             </Text>
           </Alert>
         </Stack>
