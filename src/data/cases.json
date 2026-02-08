@@ -298,5 +298,85 @@
     ],
     "link": "https://www.atlassian.com/engineering/how-we-achieved-75-faster-builds-by-removing-barrel-files",
     "color": "blue"
+  },
+  {
+    "company": "eBay",
+    "icon": "🏷️",
+    "title": "100ms mais rápido = +0.5% Add to Cart",
+    "challenge": "O eBay precisava provar o impacto de performance em receita. A View Item page (250M views/dia) não recebia rewrite há 10 anos e era mantida em 4 plataformas separadas.",
+    "solution": "Implementaram performance budgets rigorosos e métricas centradas no usuário. Modernizaram a View Item page com Marko (framework próprio), SSR progressivo e async fragments para renderização incremental.",
+    "practices": [
+      "performance budgets",
+      "SSR progressivo",
+      "async fragments",
+      "Marko framework"
+    ],
+    "results": [
+      "Cada 100ms de melhoria = +0.5% em Add to Cart (verificado)",
+      "Core Web Vitals aprovados (LCP, CLS, FID)",
+      "View Item page modernizada após 10 anos de legacy"
+    ],
+    "link": "https://web.dev/shopping-for-speed-on-ebay/",
+    "color": "red"
+  },
+  {
+    "company": "Etsy",
+    "icon": "🧶",
+    "title": "Migração para TypeScript e monorepo em escala",
+    "challenge": "O frontend do Etsy cresceu organicamente ao longo dos anos, resultando em código JavaScript difícil de manter, sem type safety, e builds lentos com Webpack em um monorepo crescente.",
+    "solution": "Migraram progressivamente para TypeScript, adotaram JSX com seu framework Mobius priorizando UX, e otimizaram builds em monorepo com Webpack. Implementaram medição de performance com dados de usuários reais.",
+    "practices": [
+      "migração gradual para TypeScript",
+      "monorepo com Webpack",
+      "real user monitoring",
+      "JSX com framework próprio"
+    ],
+    "results": [
+      "Codebase frontend com type safety",
+      "Builds otimizados em monorepo",
+      "Métricas de performance baseadas em usuários reais"
+    ],
+    "link": "https://www.etsy.com/codeascraft/etsys-journey-to-typescript",
+    "color": "orange"
+  },
+  {
+    "company": "Zalando",
+    "icon": "👗",
+    "title": "Micro-frontends com Concurrent React em e-commerce",
+    "challenge": "A Zalando opera um dos maiores e-commerces de moda da Europa. Precisavam escalar o frontend para múltiplos times independentes mantendo performance de carregamento em páginas com centenas de produtos.",
+    "solution": "Desenvolveram o Rendering Engine, um framework de micro-frontends baseado em React com SSR universal. Cada 'Entity' (produto, coleção, banner) é um renderer independente com dados via GraphQL. Recentemente migraram para React Concurrent com streaming.",
+    "practices": [
+      "micro-frontends (Rendering Engine)",
+      "React Concurrent + streaming",
+      "GraphQL por entity",
+      "SSR universal"
+    ],
+    "results": [
+      "Times independentes deployando features isoladas",
+      "Páginas compostas por entities reutilizáveis",
+      "Migração para React Concurrent com streaming SSR"
+    ],
+    "link": "https://engineering.zalando.com/posts/2023/07/rendering-engine-tales-road-to-concurrent-react.html",
+    "color": "orange"
+  },
+  {
+    "company": "Shopify",
+    "icon": "💎",
+    "title": "Hydrogen - Framework headless para storefronts",
+    "challenge": "Lojistas Shopify precisavam de storefronts customizados com performance de nível enterprise, mas frameworks genéricos não otimizavam para o caso de uso de e-commerce (catálogo, checkout, carrinho).",
+    "solution": "Criaram o Hydrogen, um framework React baseado em Remix otimizado para commerce. Integra diretamente com a Storefront API via GraphQL, com componentes pré-otimizados para catálogo, carrinho e checkout.",
+    "practices": [
+      "Remix + React Server Components",
+      "Storefront API (GraphQL)",
+      "edge rendering (Oxygen)",
+      "componentes commerce-first"
+    ],
+    "results": [
+      "Storefronts headless com performance otimizada",
+      "Deploy no edge via Oxygen (infra própria Shopify)",
+      "DX simplificada com hooks e componentes prontos para commerce"
+    ],
+    "link": "https://shopify.engineering/high-performance-hydrogen-powered-storefronts",
+    "color": "green"
   }
 ]

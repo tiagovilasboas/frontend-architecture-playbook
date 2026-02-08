@@ -26,7 +26,7 @@
 ### **4. `cases.tsx` - Casos Reais**
 
 - **Propósito:** Provar ROI com casos reais
-- **Conteúdo:** 15 casos de empresas com links verificáveis
+- **Conteúdo:** 19 casos de empresas com links verificáveis
 - **Público:** Stakeholders e devs que precisam justificar
 - **Fluxo:** Problema → Solução → Resultado
 

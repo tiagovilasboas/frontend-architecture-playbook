@@ -33,7 +33,7 @@ export default function Cases() {
           Casos Reais: Quando Front-End Vira Dinheiro
         </Title>
         <Text size="lg" c="dimmed">
-          15 empresas que provaram que performance não é frescura. Stack bonita
+          19 empresas que provaram que performance não é frescura. Stack bonita
           não paga boleto, mas essas histórias sim.
         </Text>
       </div>
@@ -55,7 +55,7 @@ export default function Cases() {
           </Group>
 
           <Text>
-            Aqui você vai ver <strong>15 casos reais</strong> onde devs
+            Aqui você vai ver <strong>19 casos reais</strong> onde devs
             resolveram problemas de verdade. Não é sobre "usar React ou Vue", é
             sobre <strong>fazer dinheiro com código</strong>.
           </Text>
@@ -100,7 +100,7 @@ export default function Cases() {
             </ThemeIcon>
             <div>
               <Title order={3}>Insights Principais</Title>
-              <Text c="dimmed">O que aprendemos com esses 15 casos reais</Text>
+              <Text c="dimmed">O que aprendemos com esses 19 casos reais</Text>
             </div>
           </Group>
 
@@ -211,14 +211,14 @@ export default function Cases() {
             </ThemeIcon>
             <div>
               <Title order={3}>Conclusão</Title>
-              <Text c="dimmed">O que aprendemos com esses 15 casos reais</Text>
+              <Text c="dimmed">O que aprendemos com esses 19 casos reais</Text>
             </div>
           </Group>
 
           <Text>
-            Esses <strong>15 casos reais</strong> mostram que{' '}
-            <strong>performance vira dinheiro</strong>. Netflix, Shopify,
-            Airbnb, Figma, Notion, Atlassian, Vercel e outras - todos
+            Esses <strong>19 casos reais</strong> mostram que{' '}
+            <strong>performance vira dinheiro</strong>. Netflix, Shopify, eBay,
+            Etsy, Zalando, Airbnb, Figma, Notion, Atlassian e outras - todos
             resolveram problemas reais com arquitetura frontend.
           </Text>
 
@@ -278,7 +278,7 @@ export default function Cases() {
           <Text size="sm" c="dimmed">
             Este repositório é uma coleção curada de estudos de caso técnicos e
             artigos de engenharia publicados diretamente pelas empresas nos seus
-            tech blogs oficiais. Todos os 15 casos acima incluem link direto
+            tech blogs oficiais. Todos os 19 casos acima incluem link direto
             para a fonte original.
           </Text>
         </Stack>
@@ -293,5 +293,5 @@ export default function Cases() {
 Cases.metadata = {
   title: 'Casos Reais de Impacto',
   description:
-    '15 casos reais de empresas como Netflix, Shopify, Airbnb, Figma, Notion e outras. Cada caso com link para o artigo ou tech blog original.',
+    '19 casos reais de empresas como Netflix, Shopify, eBay, Etsy, Zalando, Airbnb, Figma e outras. Cada caso com link para o artigo ou tech blog original.',
 };

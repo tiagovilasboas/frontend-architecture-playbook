@@ -698,7 +698,7 @@ function ArchitectureComparisonPage() {
                 📊 Fontes das Métricas:
               </Text>
               <Text size="sm" c="dimmed">
-                • <strong>Casos reais:</strong> 15 cases com links verificáveis
+                • <strong>Casos reais:</strong> 19 cases com links verificáveis
                 <br />• <strong>Core Web Vitals:</strong> LCP, INP, CLS
                 <br />• <strong>Performance:</strong> Bundle size, build time
                 <br />• <strong>Referências:</strong> Artigos de engenharia

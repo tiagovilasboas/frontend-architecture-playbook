@@ -16,12 +16,12 @@ export const getPageMeta = (pathname: string): PageMeta => {
       return {
         title: 'Arquitetura Front-End: Guia Completo + Decision Wizard v3.0',
         description:
-          'Arquitetura Front-End: Guia completo com Decision Wizard v3.0 + 9 arquiteturas comparadas. Clean Architecture, Micro-frontends, SSR/SSG, BFF, PWA. 15 casos reais com fontes verificáveis.',
+          'Arquitetura Front-End: Guia completo com Decision Wizard v3.0 + 9 arquiteturas comparadas. Clean Architecture, Micro-frontends, SSR/SSG, BFF, PWA. 19 casos reais com fontes verificáveis.',
         keywords:
           'arquitetura front-end, arquitetura frontend, front-end architecture, frontend architecture, clean architecture, micro frontends, javascript patterns, web development, typescript, decision wizard v3, architecture patterns, frontend best practices',
         ogTitle: 'Arquitetura Front-End: Guia Completo + Decision Wizard v3.0',
         ogDescription:
-          'Guia completo de arquitetura front-end com Decision Wizard v3.0 e 9 arquiteturas comparadas. 15 casos reais com fontes verificáveis.',
+          'Guia completo de arquitetura front-end com Decision Wizard v3.0 e 9 arquiteturas comparadas. 19 casos reais com fontes verificáveis.',
         ogImage: `${baseUrl}/og-image.png`,
         canonical: baseUrl,
       };
@@ -70,12 +70,12 @@ export const getPageMeta = (pathname: string): PageMeta => {
         title:
           'Casos Reais de Arquitetura Front-End - 9 Cases com Fontes',
         description:
-          '15 casos reais de empresas que aplicaram boas práticas com resultado. Cada caso com link para artigo ou tech blog original.',
+          '19 casos reais de empresas que aplicaram boas práticas com resultado. Cada caso com link para artigo ou tech blog original.',
         keywords:
           'frontend case studies, netflix architecture, spotify frontend, airbnb tech, real world examples, performance optimization, architecture success stories',
         ogTitle: 'Casos Reais: Quando Front-End Vira Dinheiro',
         ogDescription:
-          '15 empresas que provaram que performance não é frescura. Stack bonita não paga boleto, mas essas histórias sim.',
+          '19 empresas que provaram que performance não é frescura. Stack bonita não paga boleto, mas essas histórias sim.',
         canonical: `${baseUrl}/guides/cases`,
       };
 
