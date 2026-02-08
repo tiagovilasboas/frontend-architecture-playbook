@@ -33,7 +33,7 @@ export default function Cases() {
           Casos Reais: Quando Front-End Vira Dinheiro
         </Title>
         <Text size="lg" c="dimmed">
-          16 empresas que provaram que performance não é frescura. Stack bonita
+          9 empresas que provaram que performance não é frescura. Stack bonita
           não paga boleto, mas essas histórias sim.
         </Text>
       </div>
@@ -55,7 +55,7 @@ export default function Cases() {
           </Group>
 
           <Text>
-            Aqui você vai ver <strong>16 casos reais</strong> onde devs
+            Aqui você vai ver <strong>9 casos reais</strong> onde devs
             resolveram problemas de verdade. Não é sobre "usar React ou Vue", é
             sobre <strong>fazer dinheiro com código</strong>.
           </Text>
@@ -81,7 +81,7 @@ export default function Cases() {
             size={28}
             style={{ verticalAlign: 'middle', marginRight: '8px' }}
           />
-          Os 16 Casos que Viraram Dinheiro
+          Os 9 Casos que Viraram Dinheiro
         </Title>
 
         <Stack gap="lg">
@@ -100,7 +100,7 @@ export default function Cases() {
             </ThemeIcon>
             <div>
               <Title order={3}>Insights Principais</Title>
-              <Text c="dimmed">O que aprendemos com esses 16 casos reais</Text>
+              <Text c="dimmed">O que aprendemos com esses 9 casos reais</Text>
             </div>
           </Group>
 
@@ -211,15 +211,14 @@ export default function Cases() {
             </ThemeIcon>
             <div>
               <Title order={3}>Conclusão</Title>
-              <Text c="dimmed">O que aprendemos com esses 16 casos reais</Text>
+              <Text c="dimmed">O que aprendemos com esses 9 casos reais</Text>
             </div>
           </Group>
 
           <Text>
-            Esses <strong>16 casos reais</strong> mostram que{' '}
+            Esses <strong>9 casos reais</strong> mostram que{' '}
             <strong>performance vira dinheiro</strong>. Netflix, Spotify,
-            Airbnb, Pinterest, Tinder, Slack, Uber, WhatsApp, Zoom, Figma,
-            Discord, Google, Booking.com, Twitter, Walmart e GOV.UK - todos
+            Airbnb, Pinterest, Tinder, Slack, Uber, Twitter e Walmart - todos
             resolveram problemas reais.
           </Text>
 
@@ -294,5 +293,5 @@ export default function Cases() {
 Cases.metadata = {
   title: 'Casos Reais de Impacto',
   description:
-    '16 exemplos reais de empresas como Netflix, Spotify, Airbnb, Pinterest, Tinder, Slack, Uber, WhatsApp, Zoom, Figma, Discord, Google, Booking.com, Twitter, Walmart e GOV.UK mostrando como boas práticas e arquitetura front-end geram resultados concretos em performance, conversão e experiência do usuário.',
+    '9 exemplos reais de empresas como Netflix, Spotify, Airbnb, Pinterest, Tinder, Slack, Uber, Twitter e Walmart mostrando como boas práticas e arquitetura front-end geram resultados concretos em performance, conversão e experiência do usuário.',
 };
