@@ -17,7 +17,6 @@ import {
 } from '@tabler/icons-react';
 import { useMantineColorScheme } from '@mantine/core';
 import { useBreakpoints } from '../hooks/useBreakpoints.ts';
-import HeaderNavMenu from './HeaderNavMenu.tsx';
 
 interface Props {
   opened: boolean;
@@ -38,17 +37,23 @@ export default function HeaderBar({ opened, onBurger }: Props) {
       style={{
         position: 'sticky',
         top: 0,
-        zIndex: 1000,
+        zIndex: 2500,
       }}
     >
       <Group
-        h={isMobile ? 64 : 56}
+        h={56}
         px={isMobile ? 'lg' : 'xl'}
         justify="space-between"
         wrap="nowrap"
       >
         <Group gap="lg" wrap="nowrap" style={{ minWidth: 0, flex: 1 }}>
-          {isMobile && <Burger opened={opened} onClick={onBurger} size="sm" />}
+          <Burger
+            opened={opened}
+            onClick={onBurger}
+            size="sm"
+            color="var(--mantine-color-brand-2)"
+            aria-label={opened ? 'Fechar menu' : 'Abrir menu'}
+          />
           <UnstyledButton
             component={Link}
             to="/"
@@ -79,9 +84,6 @@ export default function HeaderBar({ opened, onBurger }: Props) {
               </Title>
             </Group>
           </UnstyledButton>
-
-          {/* Menu horizontal - apenas no desktop */}
-          {!isMobile && <HeaderNavMenu />}
         </Group>
 
         <Group gap="md" wrap="nowrap" style={{ flexShrink: 0 }}>

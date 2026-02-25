@@ -86,7 +86,6 @@ export default defineConfig({
           'components-core': [
             './src/components/DocsShell.tsx',
             './src/components/HeaderBar.tsx',
-            './src/components/NavMenu.tsx',
             './src/components/Footer.tsx',
           ],
 

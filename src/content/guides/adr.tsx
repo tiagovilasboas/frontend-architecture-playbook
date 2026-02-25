@@ -224,6 +224,30 @@ export default function ADRGuide() {
               (Request for Comments), não um ADR. ADR é decisão, não design doc.
             </Text>
           </Alert>
+
+          <Card withBorder p="md" mt="md">
+            <Text fw={600} mb="xs">
+              Como usar no seu time
+            </Text>
+            <List size="sm" spacing="xs">
+              <List.Item>
+                Exija ADR quando mudar padrão (framework, state, build). Não
+                exija para bug fix ou refactor sem mudança de contrato.
+              </List.Item>
+              <List.Item>
+                Guarde em <code>docs/adr/</code> versionado com o código. Review
+                de ADR no mesmo PR da mudança.
+              </List.Item>
+              <List.Item>
+                Status: Proposto → discussão; Aceito → merge; evoluções futuras
+                → Substituído por ADR-XXX, nunca apague.
+              </List.Item>
+              <List.Item>
+                Staff: use como critério de code review — “essa decisão precisa
+                de ADR?”.
+              </List.Item>
+            </List>
+          </Card>
         </Stack>
       </Paper>
 
@@ -330,6 +354,57 @@ O que foi decidido. Seja específico.
 ## Referências
 - Links para docs, artigos, ou discussões relevantes`}
             defaultExpanded={true}
+          />
+
+          <Text fw={600} mt="lg" mb="xs">
+            Exemplo completo preenchido (copy-paste)
+          </Text>
+          <CodeExample
+            title="ADR-001 - Adotar Zustand para state management"
+            description="Um ADR real em 1 página. Copie e adapte."
+            code={`# ADR-001: Adotar Zustand para state management
+
+## Status
+Aceito
+
+## Data
+2025-02-08
+
+## Contexto
+O app tem estado global espalhado em 15 contextos React. Re-renders desnecessários impactam performance (métricas no dashboard). Precisamos de state management centralizado com selectors finos.
+
+## Decisão
+Adotar Zustand como state manager global para novas features e migração gradual dos contextos mais críticos.
+
+## Alternativas Consideradas
+
+### Redux Toolkit
+- Prós: ecossistema, DevTools, time conhece.
+- Contras: boilerplate, overkill para nosso tamanho de estado.
+
+### Jotai (atômico)
+- Prós: bundle pequeno, mental model simples.
+- Contras: time sem experiência; migração mais disruptiva.
+
+### Manter Context API
+- Contras: é a causa dos re-renders atuais; não resolve.
+
+## Consequências
+
+### Positivas
+- Bundle +2KB gzip. Coexiste com Context durante migração.
+- Menos re-renders; métricas em 3 meses.
+
+### Negativas
+- Time precisa aprender selectors e subscribeWithSelector.
+
+### Riscos
+- Migração pela metade se prioridades mudarem; mitigar com ADR de migração.
+
+## Referências
+- Zustand docs: https://github.com/pmndrs/zustand
+- Comparação com Redux (nosso caso): decisão interna.`}
+            defaultExpanded={false}
           />
         </Stack>
       </Paper>

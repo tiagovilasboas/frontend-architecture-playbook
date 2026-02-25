@@ -786,7 +786,7 @@ export default function DecisionWizard() {
             >
               <Text size="sm">
                 Responda às perguntas abaixo. O resultado é uma{' '}
-                <strong>sugestão inicial</strong> — a decisão final depende do
+                <strong>sugestão inicial</strong>, a decisão final depende do
                 seu contexto, time e restrições. Use como ponto de partida para
                 discussão.
               </Text>
@@ -1077,7 +1077,7 @@ export default function DecisionWizard() {
                             c="dimmed"
                             style={{ fontWeight: 500 }}
                           >
-                            — {resultLabels[index] ?? 'Sugestão'}
+                            • {resultLabels[index] ?? 'Sugestão'}
                           </Text>
                         </Group>
 

@@ -9,23 +9,23 @@ export const theme = createTheme({
   },
   fontFamily: 'Inter, sans-serif',
   fontSizes: {
-    xs: '0.8125rem', // ~13px
-    sm: '0.9375rem', // ~15px
-    md: '1.0625rem', // ~17px
-    lg: '1.1875rem', // ~19px
-    xl: '1.375rem', // ~22px
+    xs: '0.9375rem', // ~15px (era ~13px)
+    sm: '1.0625rem', // ~17px (era ~15px)
+    md: '1.1875rem', // ~19px (era ~17px)
+    lg: '1.3125rem', // ~21px (era ~19px)
+    xl: '1.5rem', // ~24px (era ~22px)
   },
   headings: {
     fontFamily: 'Inter, sans-serif',
     sizes: {
-      h1: { fontSize: '2.25rem', fontWeight: '700' },
+      h1: { fontSize: '2.5rem', fontWeight: '700' }, // um pouco maior
     },
   },
   // Custom components with consistent styling
   components: {
     Anchor: {
       defaultProps: {
-        c: 'brand.7',
+        c: 'brand.6',
         underline: 'hover',
       },
       styles: {
@@ -33,7 +33,7 @@ export const theme = createTheme({
           fontWeight: 500,
           transition: 'color 0.2s ease',
           '&:hover': {
-            color: 'var(--mantine-color-brand-8)',
+            color: 'var(--mantine-color-brand-7)',
           },
         },
       },

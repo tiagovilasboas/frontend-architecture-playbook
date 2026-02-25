@@ -5,6 +5,7 @@ import { Spotlight } from '@mantine/spotlight';
 import HeaderBar from './HeaderBar.tsx';
 import MobileNavMenu from './MobileNavMenu.tsx';
 import AppBreadcrumbs from './AppBreadcrumbs.tsx';
+import PrevNextArrows from './PrevNextArrows.tsx';
 import { ReadingProgress } from './ReadingProgress.tsx';
 import { BackToTop } from './BackToTop.tsx';
 import Footer from './Footer.tsx';
@@ -52,12 +53,11 @@ export default function DocsShell({ children }: DocsShellProps) {
         limit={10}
       />
 
-      {/* Drawer do menu mobile - apenas visível em telas pequenas */}
+      {/* Drawer do menu: abre quando o burger é clicado (burger aparece quando largura < 1100px) */}
       <Drawer
         opened={opened}
         onClose={handleDrawerClose}
         padding={0}
-        hiddenFrom="sm"
         title={null}
         zIndex={3000}
         lockScroll={false}
@@ -66,9 +66,7 @@ export default function DocsShell({ children }: DocsShellProps) {
         size={300}
         className="mobile-nav-drawer"
       >
-        <MobileNavMenu
-          onNavigate={handleDrawerClose}
-        />
+        <MobileNavMenu onNavigate={handleDrawerClose} />
       </Drawer>
 
       <Box
@@ -81,22 +79,24 @@ export default function DocsShell({ children }: DocsShellProps) {
         }}
       >
         {/* Header */}
-        <HeaderBar
-          opened={opened}
-          onBurger={handleBurgerClick}
-        />
+        <HeaderBar opened={opened} onBurger={handleBurgerClick} />
 
-        {/* Main Content – breadcrumb no topo, alinhado à esquerda */}
+        {/* Main Content – setas prev/next nas laterais, breadcrumb e conteúdo no centro */}
         <Box
           style={{
             flex: 1,
             width: '100%',
             padding: isMobile ? '1rem' : '2rem',
             paddingBottom: isMobile ? '1rem' : '2rem',
+            display: 'flex',
+            flexDirection: 'column',
+            minHeight: 0,
           }}
         >
-          <AppBreadcrumbs />
-          {children}
+          <PrevNextArrows>
+            <AppBreadcrumbs />
+            {children}
+          </PrevNextArrows>
         </Box>
 
         {/* Footer */}
