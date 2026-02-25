@@ -1,8 +1,8 @@
 /**
  * Single source of truth for journey-based navigation.
- * Used by MobileNavMenu and HeaderNavMenu (DRY).
+ * Used by MobileNavMenu (DRY).
  *
- * Order: 1. Fundamentos → 2. Construindo UI → 3. Entrega → 4. Estrutura → 5. Escala → 6. Decisão
+ * Order: 1. Por onde começar → 2. Fundamentos → 3. Construindo UI → 4. Entrega → 5. Estrutura → 6. Escala → 7. Decisão
  */
 
 export interface NavItemEntry {
@@ -11,6 +11,7 @@ export interface NavItemEntry {
 }
 
 export type NavSectionIconKey =
+  | 'map'
   | 'book'
   | 'puzzle'
   | 'rocket'
@@ -31,6 +32,14 @@ export interface NavSectionEntry {
 
 export const NAV_JOURNEY: NavSectionEntry[] = [
   {
+    key: 'study-guide',
+    label: 'Por onde começar',
+    shortLabel: 'Por onde começar',
+    subtitle: 'Roteiro por senioridade',
+    iconKey: 'map',
+    items: [{ href: '/guides/study-guide', label: 'Por onde começar' }],
+  },
+  {
     key: 'fundamentals',
     label: 'Fundamentos',
     shortLabel: 'Fundamentos',
@@ -45,6 +54,7 @@ export const NAV_JOURNEY: NavSectionEntry[] = [
       { href: '/best-practices/soc', label: 'Separation of Concerns' },
       { href: '/best-practices/clean-code', label: 'Clean Code' },
       { href: '/guides/how-to-choose', label: 'Como Escolher Arquitetura' },
+      { href: '/guides/staff-fundamentals', label: 'Staff · Fundamentos' },
     ],
   },
   {
@@ -59,6 +69,7 @@ export const NAV_JOURNEY: NavSectionEntry[] = [
       { href: '/patterns/atomic-design', label: 'Atomic Design' },
       { href: '/techniques/state-machines', label: 'State Machines' },
       { href: '/patterns/event-driven', label: 'Event-Driven Architecture' },
+      { href: '/guides/staff-ui', label: 'Staff · UI' },
     ],
   },
   {
@@ -71,8 +82,12 @@ export const NAV_JOURNEY: NavSectionEntry[] = [
       { href: '/architectures/ssr-ssg', label: 'SSR & SSG' },
       { href: '/architectures/jamstack', label: 'JAMstack' },
       { href: '/architectures/pwa', label: 'Progressive Web Apps' },
-      { href: '/architectures/islands-architecture', label: 'Islands Architecture' },
+      {
+        href: '/architectures/islands-architecture',
+        label: 'Islands Architecture',
+      },
       { href: '/techniques/performance', label: 'Performance' },
+      { href: '/guides/staff-entrega', label: 'Staff · Entrega' },
     ],
   },
   {
@@ -82,11 +97,15 @@ export const NAV_JOURNEY: NavSectionEntry[] = [
     subtitle: 'Como organizar',
     iconKey: 'building',
     items: [
-      { href: '/architectures/clean-architecture', label: 'Clean Architecture' },
+      {
+        href: '/architectures/clean-architecture',
+        label: 'Clean Architecture',
+      },
       { href: '/architectures/layered', label: 'Layered Architecture' },
       { href: '/architectures/hexagonal', label: 'Hexagonal Architecture' },
       { href: '/patterns/repository-pattern', label: 'Repository Pattern' },
       { href: '/patterns/security', label: 'Security Patterns' },
+      { href: '/guides/staff-estrutura', label: 'Staff · Estrutura' },
     ],
   },
   {
@@ -98,12 +117,16 @@ export const NAV_JOURNEY: NavSectionEntry[] = [
     items: [
       { href: '/architectures/monorepo', label: 'Monorepo' },
       { href: '/architectures/micro-frontends', label: 'Micro-Frontends' },
-      { href: '/architectures/microservices-frontend', label: 'Microservices Frontend' },
+      {
+        href: '/architectures/microservices-frontend',
+        label: 'Microservices Frontend',
+      },
       { href: '/architectures/bff', label: 'Backend for Frontend (BFF)' },
       { href: '/architectures/headless', label: 'Headless Architecture' },
       { href: '/techniques/feature-flags', label: 'Feature Flags' },
       { href: '/architectures/cqrs', label: 'CQRS' },
       { href: '/architectures/event-sourcing', label: 'Event Sourcing' },
+      { href: '/guides/staff-escala', label: 'Staff · Escala' },
     ],
   },
   {
@@ -113,20 +136,59 @@ export const NAV_JOURNEY: NavSectionEntry[] = [
     subtitle: 'Nível staff',
     iconKey: 'target',
     items: [
-      { href: '/guides/architecture-comparison', label: 'Comparação de Arquiteturas' },
-      { href: '/guides/implementation-roadmap', label: 'Roadmap de Implementação' },
-      { href: '/guides/migration-strategies', label: 'Estratégias de Migração' },
+      { href: '/guides/staff', label: 'Para Staff' },
+      {
+        href: '/guides/architecture-comparison',
+        label: 'Comparação de Arquiteturas',
+      },
+      {
+        href: '/guides/implementation-roadmap',
+        label: 'Roadmap de Implementação',
+      },
+      {
+        href: '/guides/migration-strategies',
+        label: 'Estratégias de Migração',
+      },
       { href: '/guides/adr', label: 'ADR - Decision Records' },
       { href: '/guides/cases', label: '19 Casos Reais' },
+      { href: '/guides/security-business', label: 'Segurança & Negócio' },
+      { href: '/guides/mcp', label: 'MCP (Cursor)' },
     ],
   },
 ];
 
+/** Lista plana de todos os itens da jornada, na ordem do menu (para prev/next). */
+export function getAllJourneyItems(): NavItemEntry[] {
+  return NAV_JOURNEY.flatMap(section => section.items);
+}
+
+/**
+ * Retorna o item anterior e o próximo na jornada (para setas de navegação).
+ * Na Home (/) mostra só "próximo" = primeiro item. Breadcrumb atualiza ao navegar.
+ */
+export function getPrevNext(pathname: string): {
+  prev: NavItemEntry | null;
+  next: NavItemEntry | null;
+} {
+  const items = getAllJourneyItems();
+  if (pathname === '/' || pathname === '') {
+    return { prev: null, next: items[0] ?? null };
+  }
+  const index = items.findIndex(item => item.href === pathname);
+  if (index < 0) return { prev: null, next: null };
+  return {
+    prev: index > 0 ? items[index - 1]! : null,
+    next: index < items.length - 1 ? items[index + 1]! : null,
+  };
+}
+
 /** True if pathname is this section (exact or child of an item). */
-export function isSectionActive(pathname: string, items: NavItemEntry[]): boolean {
+export function isSectionActive(
+  pathname: string,
+  items: NavItemEntry[]
+): boolean {
   return items.some(
-    item =>
-      pathname === item.href || pathname.startsWith(item.href + '/')
+    item => pathname === item.href || pathname.startsWith(item.href + '/')
   );
 }
 
@@ -137,21 +199,19 @@ export interface BreadcrumbItem {
 
 /**
  * Gera breadcrumbs automaticamente a partir da navegação (NAV_JOURNEY).
- * Retorna [Início, Seção, Página atual] com labels corretos, ou null se a rota não estiver no menu.
+ * Retorna [Início, Página atual]. Seções do menu (Fundamentos, Arquiteturas, etc.)
+ * são apenas categorização e não entram no breadcrumb.
  */
-export function getBreadcrumbsForPath(pathname: string): BreadcrumbItem[] | null {
+export function getBreadcrumbsForPath(
+  pathname: string
+): BreadcrumbItem[] | null {
   if (!pathname || pathname === '/') return null;
 
   for (const section of NAV_JOURNEY) {
     const item = section.items.find(entry => entry.href === pathname);
     if (item) {
-      const firstInSection = section.items[0];
       return [
         { label: 'Início', href: '/' },
-        {
-          label: section.label,
-          href: firstInSection.href === pathname ? null : firstInSection.href,
-        },
         { label: item.label, href: null },
       ];
     }

@@ -3,22 +3,7 @@ import { Breadcrumbs, Anchor, Text, Group } from '@mantine/core';
 import { Link, useLocation } from 'react-router-dom';
 import { IconHome, IconChevronRight } from '@tabler/icons-react';
 import { useBreakpoints } from '../hooks/useBreakpoints.ts';
-import { getBreadcrumbsForPath } from '../lib/navigation';
-
-const COLLECTION_LABELS: Record<string, string> = {
-  guides: 'Guias',
-  architectures: 'Arquiteturas',
-  patterns: 'Padrões',
-  techniques: 'Técnicas',
-  'best-practices': 'Boas Práticas',
-};
-
-function formatSlug(slug: string): string {
-  return slug
-    .split('-')
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ');
-}
+import { getBreadcrumbItems } from '../lib/breadcrumbs';
 
 export default function MobileBreadcrumbs() {
   const location = useLocation();
@@ -26,22 +11,7 @@ export default function MobileBreadcrumbs() {
 
   if (!isMobile || location.pathname === '/') return null;
 
-  const navItems = getBreadcrumbsForPath(location.pathname);
-
-  const items = navItems ?? (() => {
-    const pathSegments = location.pathname.split('/').filter(Boolean);
-    const getLabel = (segment: string) =>
-      COLLECTION_LABELS[segment] ?? formatSlug(segment);
-    const buildPath = (index: number) =>
-      '/' + pathSegments.slice(0, index + 1).join('/');
-    return [
-      { label: 'Início', href: '/' as string },
-      ...pathSegments.map((segment, index) => ({
-        label: getLabel(segment),
-        href: buildPath(index),
-      })),
-    ].map(({ label, href }) => ({ label, href: href as string | null }));
-  })();
+  const items = getBreadcrumbItems(location.pathname);
 
   return (
     <Group
