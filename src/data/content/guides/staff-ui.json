@@ -1,0 +1,88 @@
+{
+  "meta": {
+    "title": "Staff · Construindo UI",
+    "description": "Para Staff: design system como guardrail, estado e state machines, Component-Driven e Atomic Design no time."
+  },
+  "layout": {
+    "showGuideNav": "staff",
+    "showRelated": true
+  },
+  "body": [
+    {
+      "type": "hero",
+      "title": "Staff · Construindo UI",
+      "subtitle": "Na seção de UI (componentes, estado, design system), Staff garante consistência, acessibilidade e padrões que o time segue. Você define como a gente constrói interfaces: design system como guardrail, estado previsível (state machines quando fizer sentido) e componentes reutilizáveis."
+    },
+    {
+      "type": "section",
+      "title": "O que Staff faz em Construindo UI",
+      "children": [
+        {
+          "type": "list",
+          "icon": "check",
+          "spacing": "sm",
+          "items": [
+            {
+              "title": "Design system como guardrail:",
+              "description": "componentes base, tokens, acessibilidade — o time não inventa padrão novo sem alinhar."
+            },
+            {
+              "title": "Estado e complexidade:",
+              "description": "quando exigir state machines ou fluxo explícito (wizards, formulários longos)."
+            },
+            {
+              "title": "Component-Driven e Atomic Design:",
+              "description": "definir nível de granularidade e quando quebrar componente."
+            },
+            {
+              "title": "Event-Driven na UI:",
+              "description": "quando eventos entre módulos viram contrato e documentação."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Conteúdo do playbook nesta seção",
+      "children": [
+        {
+          "type": "linkCards",
+          "cols": { "base": 1, "sm": 2 },
+          "cards": [
+            {
+              "to": "/architectures/spa",
+              "title": "Single Page Application",
+              "description": "Base da entrega de UI no cliente.",
+              "icon": "puzzle"
+            },
+            {
+              "to": "/patterns/component-driven",
+              "title": "Component-Driven Dev",
+              "description": "Construir como Lego; padrão que o time segue.",
+              "icon": "puzzle"
+            },
+            {
+              "to": "/patterns/atomic-design",
+              "title": "Atomic Design",
+              "description": "Estrutura do design system.",
+              "icon": "palette"
+            },
+            {
+              "to": "/techniques/state-machines",
+              "title": "State Machines",
+              "description": "Estado previsível em fluxos complexos.",
+              "icon": "puzzle"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "anchor",
+      "label": "← Voltar ao hub Para Staff",
+      "to": "/guides/staff",
+      "back": true
+    }
+  ]
+}

@@ -1,0 +1,177 @@
+{
+  "meta": {
+    "title": "MCP: use o playbook no Cursor",
+    "description": "Configure o servidor MCP para usar o conteúdo do playbook no Cursor: guias, casos e navegação via chat."
+  },
+  "layout": {
+    "showGuideNav": "mcp",
+    "showRelated": true
+  },
+  "body": [
+    {
+      "type": "hero",
+      "title": "MCP: use o playbook no Cursor",
+      "subtitle": "O conteúdo do playbook fica disponível via Model Context Protocol (MCP). No Cursor (ou em outro cliente MCP) você consulta guias, casos e navegação direto no chat."
+    },
+    {
+      "type": "section",
+      "title": "O que é o MCP?",
+      "icon": "plug",
+      "children": [
+        {
+          "type": "text",
+          "content": "Um servidor que o Cursor sobe e usa pra ler o índice do playbook, os guias e os 19 casos. O assistente usa essas tools pra responder com base no conteúdo real.",
+          "dimmed": true
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Recursos (read-only)",
+      "icon": "book",
+      "children": [
+        {
+          "type": "table",
+          "headers": ["URI", "Descrição"],
+          "rows": [
+            [
+              "code:playbook://index",
+              "Navegação completa e todos os guias (título, descrição, URL)."
+            ],
+            [
+              "code:playbook://cases",
+              "19 casos reais (Netflix, Spotify, eBay, Shopify, etc.) com challenge, solution, practices, results e link."
+            ],
+            [
+              "code:playbook://guide/{slug}",
+              "Um guia por slug (ex.: dependency-rule, how-to-choose, migration-strategies)."
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Ferramentas (tools)",
+      "icon": "tool",
+      "children": [
+        {
+          "type": "table",
+          "headers": ["Tool", "Descrição"],
+          "rows": [
+            [
+              "code:playbook_search",
+              "Busca por palavra-chave em títulos/descrições. Argumento: query (string)."
+            ],
+            [
+              "code:playbook_get_guide",
+              "Retorna um guia por slug. Argumento: slug (string)."
+            ],
+            [
+              "code:playbook_list_guides",
+              "Lista todos os guias por seção. Sem argumentos."
+            ],
+            [
+              "code:playbook_get_cases",
+              "Retorna os casos; opcionalmente filtra por empresa. Argumento: company (opcional)."
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Como configurar no Cursor",
+      "children": [
+        {
+          "type": "list",
+          "ordered": true,
+          "spacing": "sm",
+          "items": [
+            {
+              "title": "Antes de tudo:",
+              "description": "no terminal, na pasta do repo, roda cd mcp-server && npm install && npm run build. O Cursor executa o dist/index.js; sem build esse arquivo não existe."
+            },
+            {
+              "title": "Configurar o servidor:",
+              "description": "em Cursor → Settings → MCP, adicione um novo servidor."
+            },
+            {
+              "title": "Nome:",
+              "description": "frontend-playbook (ou outro que preferir)."
+            },
+            { "title": "Command:", "description": "node" },
+            {
+              "title": "Arguments:",
+              "description": "use um único argumento, o caminho absoluto do seu computador até o arquivo mcp-server/dist/index.js (dentro do clone do repositório). Exemplo no Mac/Linux: [\"/Users/fulano/projetos/frontend-architecture-playbook/mcp-server/dist/index.js\"]. No Windows, o caminho pode ser algo como C:\\Users\\fulano\\projetos\\frontend-architecture-playbook\\mcp-server\\dist\\index.js (com barras invertidas ou normais)."
+            },
+            {
+              "title": "Como achar o caminho:",
+              "description": "no terminal, entra na pasta mcp-server e roda pwd (Mac/Linux) ou cd (Windows). O resultado + /dist/index.js é o que você coloca no argumento."
+            },
+            "Reinicie o Cursor (ou recarregue o MCP) e use o chat para perguntar sobre o playbook."
+          ]
+        },
+        {
+          "type": "alert",
+          "message": "Dá pra editar direto o config do Cursor (em Settings → MCP ele mostra o caminho do arquivo, tipo ~/.cursor/mcp.json). Exemplo abaixo. Só troca o caminho pelo caminho absoluto real do seu clone (onde tá o mcp-server/dist/index.js).",
+          "color": "blue"
+        },
+        {
+          "type": "code",
+          "code": "{\n  \"mcpServers\": {\n    \"frontend-playbook\": {\n      \"command\": \"node\",\n      \"args\": [\"/Users/fulano/projetos/frontend-architecture-playbook/mcp-server/dist/index.js\"]\n    }\n  }\n}",
+          "block": true
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Exemplos de perguntas no chat",
+      "children": [
+        {
+          "type": "text",
+          "content": "Depois de configurar, pode perguntar por exemplo:",
+          "size": "sm"
+        },
+        {
+          "type": "badges",
+          "items": [
+            "O que o playbook diz sobre dependency rule?",
+            "Procura no playbook por security",
+            "Lista os 19 casos do playbook",
+            "Qual guia devo ler para migração?",
+            "Casos da Netflix e Shopify"
+          ]
+        },
+        {
+          "type": "text",
+          "content": "O modelo usa as tools e resources do MCP pra responder com base no conteúdo real do playbook.",
+          "size": "sm",
+          "dimmed": true
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Instalação local (dev ou testar)",
+      "children": [
+        {
+          "type": "list",
+          "icon": "check",
+          "spacing": "xs",
+          "items": [
+            "Node.js 18+",
+            "No repo: cd mcp-server && npm install && npm run build. Gera a pasta dist/ com index.js.",
+            "O servidor lê tudo de mcp-server/data/ (playbook.json, cases.json). O path é relativo ao script, então funciona mesmo se o Cursor rodar de outra pasta."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "anchor",
+      "label": "← Voltar ao hub de guias",
+      "to": "/guides",
+      "back": true
+    }
+  ]
+}

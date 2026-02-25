@@ -1,0 +1,88 @@
+{
+  "meta": {
+    "title": "Staff · Escala & Times",
+    "description": "Para Staff: decisão de escala com evidência (casos, comparação), migração incremental e quando usar cada arquitetura."
+  },
+  "layout": {
+    "showGuideNav": "staff",
+    "showRelated": true
+  },
+  "body": [
+    {
+      "type": "hero",
+      "title": "Staff · Escala & Times",
+      "subtitle": "Em escala (monorepo, micro-frontends, BFF, headless, feature flags), Staff decide com evidência: casos reais, comparação de arquiteturas e estratégias de migração. Você leva recomendação pro time e pro ADR, não opinião."
+    },
+    {
+      "type": "section",
+      "title": "O que Staff faz em Escala",
+      "children": [
+        {
+          "type": "list",
+          "icon": "check",
+          "spacing": "sm",
+          "items": [
+            {
+              "title": "Decisão com caso e fonte:",
+              "description": "micro-frontends, monorepo, BFF — usar os 19 casos e a comparação de arquiteturas. \"A Spotify fez X; o artigo diz Y.\" Levar link do artigo na reunião."
+            },
+            {
+              "title": "Comparação e trade-offs:",
+              "description": "quando usar monorepo vs multi-repo, micro-frontends vs módulos, BFF vs API direta. O guia de Comparação e o Decision Wizard ajudam; você traduz pro contexto do time."
+            },
+            {
+              "title": "Migração sem big bang:",
+              "description": "Strangler, branch by abstraction. Definir estratégia e documentar no ADR. O time não pode ficar preso em rewrite infinito."
+            },
+            {
+              "title": "Feature flags e headless:",
+              "description": "quando são solução de escala (rollout, A/B, múltiplos canais) e como guardrail de deploy e negócio."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Conteúdo do playbook nesta seção",
+      "children": [
+        {
+          "type": "linkCards",
+          "cols": { "base": 1, "sm": 2 },
+          "cards": [
+            {
+              "to": "/guides/cases",
+              "title": "19 Casos Reais",
+              "description": "Evidência com link do artigo. Base pra decisão de escala.",
+              "icon": "trending-up"
+            },
+            {
+              "to": "/guides/architecture-comparison",
+              "title": "Comparação de Arquiteturas",
+              "description": "Quando usar cada uma, prós e contras.",
+              "icon": "scale"
+            },
+            {
+              "to": "/guides/how-to-choose",
+              "title": "Decision Wizard",
+              "description": "Recomendação por contexto; ponto de partida pro ADR.",
+              "icon": "scale"
+            },
+            {
+              "to": "/guides/migration-strategies",
+              "title": "Estratégias de Migração",
+              "description": "Strangler, branch by abstraction — sem big bang.",
+              "icon": "route"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "anchor",
+      "label": "← Voltar ao hub Para Staff",
+      "to": "/guides/staff",
+      "back": true
+    }
+  ]
+}

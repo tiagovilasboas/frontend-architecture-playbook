@@ -1,5 +1,6 @@
 import React, { lazy } from 'react';
 import { LazyComponentWrapper } from '../components/LazyWrapper';
+import ContentDrivenPage from '../components/ContentDrivenPage';
 
 // Lazy loading para guides - carregamento sob demanda
 const HowToChoose = lazy(() => import('../content/guides/how-to-choose.tsx'));
@@ -13,10 +14,7 @@ const ArchitectureComparison = lazy(
 const ImplementationRoadmap = lazy(
   () => import('../content/guides/implementation-roadmap.tsx')
 );
-const ADR = lazy(() => import('../content/guides/adr.tsx'));
-const MigrationStrategies = lazy(
-  () => import('../content/guides/migration-strategies.tsx')
-);
+const Staff = lazy(() => import('../content/guides/staff.tsx'));
 
 // Lazy loading para patterns - carregamento sob demanda
 const AtomicDesign = lazy(
@@ -128,6 +126,51 @@ const STATIC_METADATA = {
     title: 'Estratégias de Migração',
     description:
       'Strangler Fig, Branch by Abstraction, Parallel Run: como migrar sem big rewrite.',
+  },
+  mcp: {
+    title: 'MCP: use o playbook no Cursor',
+    description:
+      'Configure o servidor MCP para usar o conteúdo do playbook no Cursor: guias, casos e navegação via chat.',
+  },
+  'security-business': {
+    title: 'Segurança & Negócio',
+    description:
+      'Segurança como decisão de negócio: impacto financeiro, priorização e como comunicar com stakeholders. Nível staff.',
+  },
+  'study-guide': {
+    title: 'Por onde começar',
+    description:
+      'Roteiro que segmenta o conteúdo do playbook por nível: Júnior, Pleno, Sênior e Staff. Links para o que estudar em cada etapa.',
+  },
+  staff: {
+    title: 'Para Staff',
+    description:
+      'Hub para nível Staff: decisão com evidência, performance e métricas, OKRs, regras de negócio, falar com o negócio, boas práticas e guardrails. Staff por seção (Fundamentos, UI, Entrega, Estrutura, Escala).',
+  },
+  'staff-fundamentals': {
+    title: 'Staff · Fundamentos',
+    description:
+      'Para Staff: usar fundamentos (Dependency Rule, Clean Code, SRP) como guardrails, critérios de revisão e quando exigir ADR.',
+  },
+  'staff-ui': {
+    title: 'Staff · Construindo UI',
+    description:
+      'Para Staff: design system como guardrail, estado e state machines, Component-Driven e Atomic Design no time.',
+  },
+  'staff-entrega': {
+    title: 'Staff · Arquitetura de Entrega',
+    description:
+      'Para Staff: performance, métricas, OKRs, Core Web Vitals e guardrails de entrega (SSR, SSG, JAMstack).',
+  },
+  'staff-estrutura': {
+    title: 'Staff · Estrutura de Código',
+    description:
+      'Para Staff: guardrails de camadas, quando documentar no ADR, revisão de estrutura e segurança.',
+  },
+  'staff-escala': {
+    title: 'Staff · Escala & Times',
+    description:
+      'Para Staff: decisão de escala com evidência (casos, comparação), migração incremental e quando usar cada arquitetura.',
   },
 
   // Architectures
@@ -287,9 +330,51 @@ export const guides: DocMeta[] = [
   toMeta(ArchitectureComparison, 'architecture-comparison', 'guides', true), // 3. Análise
   toMeta(Cases, 'cases', 'guides', true), // 4. Validação
   toMeta(ImplementationRoadmap, 'implementation-roadmap', 'guides', true), // 5. Implementação
-  toMeta(MigrationStrategies, 'migration-strategies', 'guides', true), // 6. Migração
-  toMeta(ADR, 'adr', 'guides', true), // 7. Documentação de decisões
+  toMeta(ContentDrivenPage, 'migration-strategies', 'guides', false), // 6. Migração (content JSON)
+  toMeta(ContentDrivenPage, 'adr', 'guides', false), // 7. Documentação de decisões (content JSON)
+  toMeta(ContentDrivenPage, 'mcp', 'guides', false), // 8. MCP (Cursor, content JSON)
+  toMeta(ContentDrivenPage, 'security-business', 'guides', false), // 9. Segurança & Negócio (content JSON)
+  toMeta(ContentDrivenPage, 'study-guide', 'guides', false), // 10. Por onde começar (content JSON)
+  toMeta(Staff, 'staff', 'guides', true), // 11. Para Staff (hub)
+  toMeta(ContentDrivenPage, 'staff-fundamentals', 'guides', false), // 12. Staff · Fundamentos (content JSON)
+  toMeta(ContentDrivenPage, 'staff-ui', 'guides', false), // 13. Staff · UI (content JSON)
+  toMeta(ContentDrivenPage, 'staff-entrega', 'guides', false), // 14. Staff · Entrega (content JSON)
+  toMeta(ContentDrivenPage, 'staff-estrutura', 'guides', false), // 15. Staff · Estrutura (content JSON)
+  toMeta(ContentDrivenPage, 'staff-escala', 'guides', false), // 16. Staff · Escala (content JSON)
 ];
+
+/** Slug order for GuideNavigation (sidebar "Todos os Guias"). Single source of truth. */
+export const GUIDE_NAV_SLUGS = [
+  'dependency-rule',
+  'how-to-choose',
+  'architecture-comparison',
+  'cases',
+  'study-guide',
+  'staff',
+  'security-business',
+  'mcp',
+  'adr',
+  'migration-strategies',
+] as const;
+
+export interface GuideNavItem {
+  id: string;
+  title: string;
+  description: string;
+  path: string;
+}
+
+export function getGuideNavItems(): GuideNavItem[] {
+  return GUIDE_NAV_SLUGS.map(slug => {
+    const g = guides.find(m => m.slug === slug);
+    return {
+      id: slug,
+      title: g?.title ?? slug,
+      description: g?.description ?? '',
+      path: `/guides/${slug}`,
+    };
+  });
+}
 
 // Arquiteturas organizadas por complexidade e popularidade
 export const architectures: DocMeta[] = [

@@ -1,0 +1,88 @@
+{
+  "meta": {
+    "title": "Staff · Arquitetura de Entrega",
+    "description": "Para Staff: performance, métricas, OKRs, Core Web Vitals e guardrails de entrega (SSR, SSG, JAMstack)."
+  },
+  "layout": {
+    "showGuideNav": "staff",
+    "showRelated": true
+  },
+  "body": [
+    {
+      "type": "hero",
+      "title": "Staff · Arquitetura de Entrega",
+      "subtitle": "Na entrega (SSR, SSG, JAMstack, PWA, performance), Staff trabalha com métricas, Core Web Vitals e impacto em conversão. Você conecta decisão técnica a resultado mensurável e a OKRs do negócio."
+    },
+    {
+      "type": "section",
+      "title": "O que Staff faz em Entrega",
+      "children": [
+        {
+          "type": "list",
+          "icon": "check",
+          "spacing": "sm",
+          "items": [
+            {
+              "title": "Performance e métricas:",
+              "description": "Core Web Vitals (LCP, FID, CLS), tempo de carregamento. Casos com fonte (eBay 100ms = +0,5% Add to Cart)."
+            },
+            {
+              "title": "OKRs:",
+              "description": "traduzir entrega técnica em key results. Alinhar com objetivos do time e do negócio."
+            },
+            {
+              "title": "Guardrails de entrega:",
+              "description": "performance budgets, não regredir Core Web Vitals sem justificativa."
+            },
+            {
+              "title": "SSR/SSG/JAMstack/Islands:",
+              "description": "quando recomendar cada um, com evidência. Levar pro ADR e pro time."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Conteúdo do playbook nesta seção",
+      "children": [
+        {
+          "type": "linkCards",
+          "cols": { "base": 1, "sm": 2 },
+          "cards": [
+            {
+              "to": "/techniques/performance",
+              "title": "Performance",
+              "description": "Métricas, Core Web Vitals, impacto em conversão.",
+              "icon": "chart-bar"
+            },
+            {
+              "to": "/guides/cases",
+              "title": "19 Casos Reais",
+              "description": "Evidência com link do artigo.",
+              "icon": "chart-bar"
+            },
+            {
+              "to": "/architectures/ssr-ssg",
+              "title": "SSR & SSG",
+              "description": "Quando usar; primeiro paint e SEO.",
+              "icon": "rocket"
+            },
+            {
+              "to": "/architectures/jamstack",
+              "title": "JAMstack",
+              "description": "Decisão de entrega e conteúdo estático.",
+              "icon": "rocket"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "anchor",
+      "label": "← Voltar ao hub Para Staff",
+      "to": "/guides/staff",
+      "back": true
+    }
+  ]
+}

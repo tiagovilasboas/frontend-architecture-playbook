@@ -4,49 +4,42 @@ import { Group, Button, Text, Badge, Stack, Paper } from '@mantine/core';
 import {
   IconArrowLeft,
   IconBulb,
+  IconMap2,
+  IconPlug,
+  IconShield,
   IconTarget,
   IconScale,
   IconTrendingUp,
+  IconFileText,
+  IconRoute,
 } from '@tabler/icons-react';
+import { getGuideNavItems } from '../lib/content';
 
 interface GuideNavigationProps {
   currentGuide: string;
 }
 
-const guides = [
-  {
-    id: 'dependency-rule',
-    title: 'Dependency Rule',
-    description: 'Regra fundamental',
-    icon: <IconBulb size={16} />,
-    path: '/guides/dependency-rule',
-  },
-  {
-    id: 'how-to-choose',
-    title: 'Decision Wizard',
-    description: 'Escolha sua arquitetura',
-    icon: <IconTarget size={16} />,
-    path: '/guides/how-to-choose',
-  },
-  {
-    id: 'architecture-comparison',
-    title: 'Comparação',
-    description: 'Análise detalhada',
-    icon: <IconScale size={16} />,
-    path: '/guides/architecture-comparison',
-  },
-  {
-    id: 'cases',
-    title: 'Casos Reais',
-    description: 'Prova de ROI',
-    icon: <IconTrendingUp size={16} />,
-    path: '/guides/cases',
-  },
-];
+const GUIDE_ICONS: Record<string, React.ReactNode> = {
+  'dependency-rule': <IconBulb size={16} />,
+  'how-to-choose': <IconTarget size={16} />,
+  'architecture-comparison': <IconScale size={16} />,
+  cases: <IconTrendingUp size={16} />,
+  'study-guide': <IconMap2 size={16} />,
+  staff: <IconTarget size={16} />,
+  'security-business': <IconShield size={16} />,
+  mcp: <IconPlug size={16} />,
+  adr: <IconFileText size={16} />,
+  'migration-strategies': <IconRoute size={16} />,
+};
 
 export const GuideNavigation: React.FC<GuideNavigationProps> = ({
   currentGuide,
 }) => {
+  const guides = getGuideNavItems().map(g => ({
+    ...g,
+    icon: GUIDE_ICONS[g.id] ?? <IconTarget size={16} />,
+  }));
+
   const currentIndex = guides.findIndex(guide => guide.id === currentGuide);
   const currentGuideData = guides[currentIndex];
   const prevGuide = guides[currentIndex - 1];

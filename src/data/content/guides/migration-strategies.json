@@ -1,0 +1,252 @@
+{
+  "meta": {
+    "title": "Estratégias de Migração",
+    "description": "Strangler Fig, Branch by Abstraction, Parallel Run: como migrar arquitetura frontend sem big rewrite. Com exemplos de código e checklist."
+  },
+  "layout": {
+    "showGuideNav": "migration-strategies",
+    "showRelated": true
+  },
+  "body": [
+    {
+      "type": "hero",
+      "title": "Estratégias de Migração",
+      "subtitle": "Como evoluir uma arquitetura frontend sem parar tudo e reescrever do zero."
+    },
+    {
+      "type": "section",
+      "title": "Por que migração gradual?",
+      "icon": "bulb",
+      "children": [
+        {
+          "type": "text",
+          "content": "A tentação de \"reescrever tudo do zero\" é forte, mas na prática a maioria dos big rewrites falha. O negócio não para enquanto o time reescreve, features novas continuam chegando, e o novo sistema precisa atingir paridade antes de substituir o antigo."
+        },
+        {
+          "type": "alert",
+          "message": "A regra de ouro: Se a migração demora mais de 3 meses, ela provavelmente nunca termina. Prefira estratégias incrementais que entregam valor a cada sprint.",
+          "color": "red",
+          "icon": "alert-triangle"
+        },
+        {
+          "type": "iconCards",
+          "cols": { "base": 1, "sm": 2 },
+          "cards": [
+            {
+              "icon": "alert-triangle",
+              "iconColor": "red",
+              "title": "Big Rewrite (evite)",
+              "items": [
+                "Meses sem entregar valor",
+                "Feature parity é um alvo móvel",
+                "Risco alto de cancelamento",
+                "Time dividido: manutenção + novo"
+              ]
+            },
+            {
+              "icon": "check",
+              "iconColor": "green",
+              "title": "Migração Gradual (prefira)",
+              "items": [
+                "Valor entregue a cada sprint",
+                "Risco isolado por componente",
+                "Rollback fácil se algo falhar",
+                "Time aprende enquanto migra"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Strangler Fig Pattern",
+      "icon": "code",
+      "children": [
+        {
+          "type": "text",
+          "content": "Inspirado na figueira estranguladora: o novo sistema cresce ao redor do antigo, substituindo peça por peça até que o legado não exista mais. É a estratégia mais segura para migrações grandes."
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "spacing": "sm",
+          "items": [
+            {
+              "title": "1. Identifique a fronteira",
+              "description": "Encontre um boundary claro entre o sistema antigo e o novo. Pode ser uma rota, um componente, ou uma feature inteira."
+            },
+            {
+              "title": "2. Crie um proxy/router",
+              "description": "Um router que direciona tráfego: rotas migradas vão para o novo sistema, o resto continua no antigo."
+            },
+            {
+              "title": "3. Migre uma rota por vez",
+              "description": "Comece pela rota de menor risco. Valide em produção. Repita."
+            },
+            {
+              "title": "4. Expanda gradualmente",
+              "description": "A cada sprint, migre mais rotas. O sistema antigo encolhe naturalmente."
+            },
+            {
+              "title": "5. Remova o legado",
+              "description": "Quando a última rota migrar, delete o código antigo."
+            }
+          ]
+        },
+        {
+          "type": "codeExample",
+          "title": "Router proxy (Next.js) - Strangler Fig",
+          "description": "Rotas migradas em pages/; o resto vai para o app legado via rewrite.",
+          "code": "// Exemplo: Router proxy para strangler fig\n// O novo app Next.js serve rotas migradas\n// O legado CRA serve o resto via iframe ou redirect\n\n// next.config.js\nmodule.exports = {\n  async rewrites() {\n    return {\n      fallback: [\n        {\n          source: '/:path*',\n          destination: 'https://legacy-app.internal/:path*',\n        },\n      ],\n    };\n  },\n};\n\n// Rotas migradas ficam em pages/ normalmente\n// /dashboard → Next.js (migrado)\n// /settings → Legado (via rewrite)\n// /profile  → Next.js (migrado)\n// /admin    → Legado (via rewrite)",
+          "defaultExpanded": false
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Parallel Run",
+      "icon": "arrow-right",
+      "children": [
+        {
+          "type": "text",
+          "content": "Ambos os sistemas rodam simultaneamente em produção. O antigo serve o usuário, o novo roda em \"shadow mode\" processando as mesmas requests. Compare resultados para validar antes de trocar."
+        },
+        {
+          "type": "iconCards",
+          "cols": { "base": 1, "sm": 2 },
+          "cards": [
+            {
+              "title": "Quando usar",
+              "items": [
+                "Migração de lógica de negócio crítica",
+                "Sistema financeiro ou de pagamento",
+                "Quando erros são inaceitáveis"
+              ]
+            },
+            {
+              "title": "Trade-offs",
+              "items": [
+                "Dobro de infra durante a migração",
+                "Complexidade de comparação de outputs",
+                "Tempo limitado (custo operacional alto)"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Branch by Abstraction",
+      "icon": "rocket",
+      "children": [
+        {
+          "type": "text",
+          "content": "Crie uma abstração (interface/adapter) entre o código que consome e o código que será substituído. Troque a implementação por trás da abstração sem afetar os consumidores."
+        },
+        {
+          "type": "codeExample",
+          "title": "Branch by Abstraction - UserRepository",
+          "description": "Abstração + duas implementações; troca via feature flag.",
+          "code": "// Antes: código acoplado ao fetch direto\nconst users = await fetch('/api/users').then(r => r.json());\n\n// Step 1: Crie abstração\ninterface UserRepository {\n  getAll(): Promise<User[]>;\n  getById(id: string): Promise<User>;\n}\n\n// Step 2: Implemente com o código atual (legado)\nclass FetchUserRepository implements UserRepository {\n  async getAll() { return fetch('/api/users').then(r => r.json()); }\n  async getById(id: string) { return fetch(`/api/users/${id}`).then(r => r.json()); }\n}\n\n// Step 3: Implemente a nova versão\nclass GraphQLUserRepository implements UserRepository { ... }\n\n// Step 4: Troque via feature flag\nconst userRepo: UserRepository = featureFlag('graphql-users')\n  ? new GraphQLUserRepository()\n  : new FetchUserRepository();",
+          "defaultExpanded": false
+        },
+        {
+          "type": "alert",
+          "message": "Combine Branch by Abstraction com Feature Flags para controlar a migração em produção sem deploy. Rollback instantâneo se algo falhar.",
+          "color": "blue",
+          "icon": "bulb"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Checklist de migração",
+      "children": [
+        {
+          "type": "iconCards",
+          "cols": { "base": 1, "sm": 2 },
+          "cards": [
+            {
+              "title": "Antes de começar",
+              "items": [
+                "Métricas do sistema atual documentadas (baseline)",
+                "Critérios de sucesso definidos",
+                "ADR documentando a decisão de migrar",
+                "Rollback plan testado",
+                "Feature flags configurados"
+              ]
+            },
+            {
+              "title": "Durante a migração",
+              "items": [
+                "Uma rota/componente por vez",
+                "Cada passo validado em produção",
+                "Métricas comparadas com baseline",
+                "Zero downtime (ambos sistemas coexistem)",
+                "Código legado removido após validação"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Qual estratégia usar?",
+      "children": [
+        {
+          "type": "iconCards",
+          "cols": { "base": 1, "sm": 3 },
+          "cards": [
+            {
+              "title": "Strangler Fig",
+              "description": "Melhor para: Migração de framework (CRA → Next.js, Angular → React). Migração de rotas inteiras. Quando o boundary é claro."
+            },
+            {
+              "title": "Branch by Abstraction",
+              "description": "Melhor para: Troca de biblioteca (REST → GraphQL, Redux → Zustand). Quando a interface pública não muda. Migração interna."
+            },
+            {
+              "title": "Parallel Run",
+              "description": "Melhor para: Sistemas críticos (pagamento, auth). Quando erros são inaceitáveis. Validação antes de trocar."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Referências",
+      "children": [
+        {
+          "type": "anchor",
+          "label": "Strangler Fig Application - Martin Fowler",
+          "href": "https://martinfowler.com/bliki/StranglerFigApplication.html"
+        },
+        {
+          "type": "anchor",
+          "label": "Branch By Abstraction - Martin Fowler",
+          "href": "https://martinfowler.com/bliki/BranchByAbstraction.html"
+        },
+        {
+          "type": "anchor",
+          "label": "Parallel Change (expand-contract) - Martin Fowler",
+          "href": "https://martinfowler.com/bliki/ParallelChange.html"
+        },
+        {
+          "type": "anchor",
+          "label": "Remixing Shopify's Admin - Strangler fig em produção real",
+          "href": "https://shopify.engineering/remixing-shopifys-admin"
+        }
+      ]
+    },
+    {
+      "type": "anchor",
+      "label": "← Voltar ao hub de guias",
+      "to": "/guides",
+      "back": true
+    }
+  ]
+}

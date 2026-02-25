@@ -1,0 +1,191 @@
+{
+  "meta": {
+    "title": "Por onde começar",
+    "description": "Roteiro que segmenta o conteúdo do playbook por nível: Júnior, Pleno, Sênior e Staff. Links para o que estudar em cada etapa."
+  },
+  "layout": {
+    "showGuideNav": "study-guide",
+    "showRelated": true
+  },
+  "body": [
+    {
+      "type": "hero",
+      "title": "Por onde começar",
+      "subtitle": "O playbook tem muita coisa. Este roteiro segmenta o conteúdo por nível: o que estudar primeiro como Júnior, o que somar como Pleno e Sênior, e o que entra no radar de Staff. Tudo com links para o conteúdo que já existe."
+    },
+    {
+      "type": "section",
+      "title": "Como usar",
+      "icon": "map",
+      "children": [
+        {
+          "type": "text",
+          "content": "Cada nível traz o objetivo em uma frase e a lista de páginas na ordem sugerida. Quando estiver confortável, veja \"Próximo nível\" e siga.",
+          "size": "sm",
+          "dimmed": true
+        }
+      ]
+    },
+    {
+      "type": "richCardGrid",
+      "cols": { "base": 1, "md": 2 },
+      "cards": [
+        {
+          "icon": "school",
+          "iconColor": "green",
+          "title": "Júnior",
+          "subtitle": "Fundamentos e entrega de valor em feature.",
+          "bodyText": "Foco em Dependency Rule, boas práticas de código, visão geral de como escolher arquitetura, SPA, component-driven e noções de segurança.",
+          "links": [
+            { "to": "/guides/dependency-rule", "label": "Dependency Rule" },
+            { "to": "/best-practices/dry", "label": "DRY" },
+            { "to": "/best-practices/kiss", "label": "KISS" },
+            { "to": "/best-practices/yagni", "label": "YAGNI" },
+            { "to": "/best-practices/srp", "label": "Single Responsibility" },
+            { "to": "/best-practices/soc", "label": "Separation of Concerns" },
+            { "to": "/best-practices/clean-code", "label": "Clean Code" },
+            {
+              "to": "/guides/how-to-choose",
+              "label": "Como Escolher Arquitetura (visão geral)"
+            },
+            { "to": "/architectures/spa", "label": "Single Page Application" },
+            {
+              "to": "/patterns/component-driven",
+              "label": "Component-Driven Dev"
+            },
+            {
+              "to": "/patterns/security",
+              "label": "Security Patterns (noções de XSS/validação)"
+            }
+          ],
+          "nextLevel": {
+            "title": "Próximo nível (Pleno)",
+            "content": "Atomic Design, State Machines, SSR/SSG, PWA, Performance, Clean/Layered/Hexagonal, Repository e Security Patterns completo."
+          }
+        },
+        {
+          "icon": "trending-up",
+          "iconColor": "blue",
+          "title": "Pleno",
+          "subtitle": "Dono de fluxo e qualidade.",
+          "bodyText": "Tudo do Júnior, mais: Atomic Design, State Machines, SSR/SSG, PWA, Performance, Clean/Layered/Hexagonal, Repository e Security Patterns completo.",
+          "links": [
+            { "to": "/patterns/atomic-design", "label": "Atomic Design" },
+            { "to": "/techniques/state-machines", "label": "State Machines" },
+            { "to": "/architectures/ssr-ssg", "label": "SSR & SSG" },
+            { "to": "/architectures/jamstack", "label": "JAMstack" },
+            { "to": "/architectures/pwa", "label": "Progressive Web Apps" },
+            { "to": "/techniques/performance", "label": "Performance" },
+            {
+              "to": "/architectures/clean-architecture",
+              "label": "Clean Architecture"
+            },
+            { "to": "/architectures/layered", "label": "Layered Architecture" },
+            {
+              "to": "/architectures/hexagonal",
+              "label": "Hexagonal Architecture"
+            },
+            {
+              "to": "/patterns/repository-pattern",
+              "label": "Repository Pattern"
+            }
+          ],
+          "nextLevel": {
+            "title": "Próximo nível (Sênior)",
+            "content": "Monorepo, Micro-frontends, BFF, Feature Flags, Comparação de Arquiteturas, Roadmap de Implementação, Migração e 19 Casos em decisão."
+          }
+        },
+        {
+          "icon": "users",
+          "iconColor": "violet",
+          "title": "Sênior",
+          "subtitle": "Escala e decisão técnica.",
+          "bodyText": "Tudo do Pleno, mais: Monorepo, Micro-frontends, BFF, Feature Flags, Comparação de Arquiteturas, Roadmap de Implementação, Estratégias de Migração e 19 Casos para usar em decisão.",
+          "links": [
+            { "to": "/architectures/monorepo", "label": "Monorepo" },
+            {
+              "to": "/architectures/micro-frontends",
+              "label": "Micro-Frontends"
+            },
+            {
+              "to": "/architectures/microservices-frontend",
+              "label": "Microservices Frontend"
+            },
+            {
+              "to": "/architectures/bff",
+              "label": "Backend for Frontend (BFF)"
+            },
+            { "to": "/techniques/feature-flags", "label": "Feature Flags" },
+            {
+              "to": "/guides/architecture-comparison",
+              "label": "Comparação de Arquiteturas"
+            },
+            {
+              "to": "/guides/implementation-roadmap",
+              "label": "Roadmap de Implementação"
+            },
+            {
+              "to": "/guides/migration-strategies",
+              "label": "Estratégias de Migração"
+            },
+            {
+              "to": "/guides/cases",
+              "label": "19 Casos Reais (uso em decisão)"
+            }
+          ],
+          "nextLevel": {
+            "title": "Próximo nível (Staff)",
+            "content": "Hub Para Staff, Staff por seção, ADR, Casos, Decision Wizard, Segurança & Negócio, back-end/protocolos, ferramentas. Justificar, documentar e falar com negócio e com back-end/front."
+          }
+        },
+        {
+          "icon": "target",
+          "iconColor": "orange",
+          "title": "Staff",
+          "subtitle": "Decisão, alinhamento e referência.",
+          "bodyText": "Tudo do Sênior, mais: hub Para Staff e Staff por seção (Fundamentos, UI, Entrega, Estrutura, Escala), ADR, Casos como evidência, Decision Wizard, Segurança & Negócio. Foco em justificar e documentar, falar com negócio e com back-end/front, back-end e protocolos, ferramentas e guardrails.",
+          "links": [
+            { "to": "/guides/staff", "label": "Para Staff (hub)" },
+            {
+              "to": "/guides/staff-fundamentals",
+              "label": "Staff · Fundamentos"
+            },
+            { "to": "/guides/staff-ui", "label": "Staff · Construindo UI" },
+            { "to": "/guides/staff-entrega", "label": "Staff · Entrega" },
+            { "to": "/guides/staff-estrutura", "label": "Staff · Estrutura" },
+            { "to": "/guides/staff-escala", "label": "Staff · Escala" },
+            { "to": "/guides/adr", "label": "ADR - Decision Records" },
+            {
+              "to": "/guides/cases",
+              "label": "19 Casos (evidência em decisões)"
+            },
+            { "to": "/guides/how-to-choose", "label": "Decision Wizard" },
+            {
+              "to": "/guides/implementation-roadmap",
+              "label": "Roadmap de Implementação"
+            },
+            {
+              "to": "/guides/migration-strategies",
+              "label": "Estratégias de Migração"
+            },
+            {
+              "to": "/guides/security-business",
+              "label": "Segurança & Negócio"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "children": [
+        {
+          "type": "text",
+          "content": "O conteúdo do playbook é o mesmo para todos; o que muda é a ordem e o foco por nível. Use o menu principal para navegar por tema (Fundamentos, UI, Entrega, etc.) quando quiser explorar por assunto em vez de por senioridade.",
+          "size": "sm",
+          "dimmed": true
+        }
+      ]
+    }
+  ]
+}

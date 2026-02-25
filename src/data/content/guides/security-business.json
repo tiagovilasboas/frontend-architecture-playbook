@@ -1,0 +1,179 @@
+{
+  "meta": {
+    "title": "Segurança & Negócio",
+    "description": "Segurança como decisão de negócio: impacto financeiro, priorização e como comunicar com stakeholders. Nível staff."
+  },
+  "layout": {
+    "showGuideNav": "security-business",
+    "showRelated": true
+  },
+  "body": [
+    {
+      "type": "hero",
+      "title": "Segurança & Negócio",
+      "subtitle": "Segurança não é só técnica: impacta receita, compliance e reputação. Este guia ajuda a priorizar e comunicar investimento em segurança em nível de decisão (staff)."
+    },
+    {
+      "type": "section",
+      "title": "Por que segurança é tema de staff?",
+      "icon": "shield",
+      "children": [
+        {
+          "type": "text",
+          "content": "Porque falhas de segurança geram custo direto (multas, perda de dados, downtime) e indireto (confiança, marca, fuga de clientes). Decidir quanto e onde investir é decisão de negócio, não só de engenharia.",
+          "dimmed": true
+        },
+        {
+          "type": "alert",
+          "message": "Ligação com o playbook: Os Security Patterns cobrem o como implementar (XSS, validação, CSP, etc.). Este guia foca no por quê e no quanto priorizar, e em como falar disso com stakeholders.",
+          "color": "blue",
+          "icon": "shield"
+        },
+        {
+          "type": "anchor",
+          "label": "Security Patterns",
+          "to": "/patterns/security"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Impacto financeiro",
+      "icon": "currency-dollar",
+      "children": [
+        {
+          "type": "text",
+          "content": "Incidentes de segurança têm custo mensurável. Prevenção também tem custo, mas costuma ser ordens de grandeza menor que a resposta a um breach."
+        },
+        {
+          "type": "iconCards",
+          "cols": { "base": 1, "sm": 2 },
+          "cards": [
+            {
+              "icon": "alert-triangle",
+              "iconColor": "red",
+              "title": "Custo de um incidente",
+              "items": [
+                "Multas (LGPD, GDPR, setor regulado)",
+                "Perda de dados e recuperação",
+                "Downtime e perda de receita",
+                "Custo de resposta (forense, comunicação, jurídico)",
+                "Perda de confiança e churn de clientes"
+              ]
+            },
+            {
+              "icon": "check",
+              "iconColor": "green",
+              "title": "Custo da prevenção",
+              "items": [
+                "Treinamento e padrões (Security Patterns)",
+                "Revisão em code review e pipeline",
+                "Ferramentas (SAST, dependências, headers)",
+                "Design seguro desde o início (arquitetura)"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "alert",
+          "message": "ROI de segurança: Estudos e relatórios setoriais (ex.: IBM Cost of a Data Breach) mostram que o custo médio por registro vazado e por tempo de contenção cresce ano a ano. Investir em prevenção e detecção reduz tempo de contenção e magnitude, e isso se traduz em menos prejuízo e melhor resultado financeiro.",
+          "color": "yellow"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Onde priorizar (front-end)",
+      "icon": "chart-bar",
+      "children": [
+        {
+          "type": "text",
+          "content": "No front-end, as decisões que mais impactam negócio costumam ser:"
+        },
+        {
+          "type": "list",
+          "icon": "check",
+          "spacing": "sm",
+          "items": [
+            {
+              "title": "Dados sensíveis na UI:",
+              "description": "não expor tokens, PII ou segredos no client; definir o que nunca vai para o browser."
+            },
+            {
+              "title": "Autenticação e sessão:",
+              "description": "onde guardar token, refresh, logout em todos os dispositivos, impacto em confiança do usuário."
+            },
+            {
+              "title": "Proteção contra XSS e injeção:",
+              "description": "sanitização, CSP, evitar dangerouslySetInnerHTML com conteúdo dinâmico."
+            },
+            {
+              "title": "Compliance (LGPD, PCI, etc.):",
+              "description": "consentimento, minimização de dados, auditoria do que é enviado/armazenado no front-end."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "content": "Detalhes de implementação estão em Security Patterns.",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "anchor",
+          "label": "Security Patterns",
+          "to": "/patterns/security"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Como comunicar com stakeholders",
+      "icon": "message-circle",
+      "children": [
+        {
+          "type": "text",
+          "content": "Em nível staff, você precisa traduzir risco técnico em linguagem de negócio e priorização."
+        },
+        {
+          "type": "list",
+          "spacing": "xs",
+          "items": [
+            {
+              "title": "Risco em termos de impacto:",
+              "description": "\"Se X acontecer, podemos ter vazamento de Y dados, multa estimada Z, e perda de confiança em [segmento].\""
+            },
+            {
+              "title": "Opções e custo:",
+              "description": "\"Para reduzir esse risco, podemos [A] com custo X e prazo Y, ou [B] com custo menor mas cobrindo só [cenário].\""
+            },
+            {
+              "title": "Compliance:",
+              "description": "\"Para [LGPD/PCI/contrato], precisamos de [controle]; sem isso, estamos expostos a [consequência].\""
+            },
+            {
+              "title": "Métricas que importam para negócio:",
+              "description": "tempo de detecção, tempo de contenção, número de dados afetados, custo por incidente. Use dados de relatórios do setor quando não tiver dados internos."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Resumo",
+      "children": [
+        {
+          "type": "text",
+          "content": "Segurança a nível staff é sobre decisão e priorização: onde investir, quanto e como explicar isso em termos de negócio e resultado financeiro. O front-end contribui com proteção de dados no client, autenticação/sessão e compliance de dados na UI. Use os Security Patterns para o como implementar e este guia para o por quê e para o diálogo com o negócio.",
+          "size": "sm"
+        },
+        {
+          "type": "anchor",
+          "label": "Security Patterns",
+          "to": "/patterns/security"
+        }
+      ]
+    }
+  ]
+}
