@@ -1,0 +1,362 @@
+{
+  "baseUrl": "https://frontend-architecture-playbook.vercel.app",
+  "navigation": [
+    {
+      "key": "study-guide",
+      "label": "Por onde começar",
+      "items": [
+        {
+          "href": "/guides/study-guide",
+          "label": "Por onde começar",
+          "slug": "study-guide",
+          "title": "Por onde começar",
+          "description": "Roteiro que segmenta o conteúdo por nível: Júnior, Pleno, Sênior e Staff. Links para o que estudar em cada etapa."
+        }
+      ]
+    },
+    {
+      "key": "fundamentals",
+      "label": "Fundamentos",
+      "items": [
+        {
+          "href": "/guides/dependency-rule",
+          "label": "Dependency Rule",
+          "slug": "dependency-rule",
+          "title": "Dependency Rule",
+          "description": "Código como uma cebola: camada de fora pode usar a de dentro; camada de dentro nunca usa a de fora. Simples assim."
+        },
+        {
+          "href": "/best-practices/dry",
+          "label": "DRY",
+          "slug": "dry",
+          "title": "DRY - Don't Repeat Yourself",
+          "description": "Elimine duplicação de código."
+        },
+        {
+          "href": "/best-practices/kiss",
+          "label": "KISS",
+          "slug": "kiss",
+          "title": "KISS - Keep It Simple, Stupid",
+          "description": "Simplicidade acima de tudo."
+        },
+        {
+          "href": "/best-practices/yagni",
+          "label": "YAGNI",
+          "slug": "yagni",
+          "title": "YAGNI - You Aren't Gonna Need It",
+          "description": "Não implemente features futuras."
+        },
+        {
+          "href": "/best-practices/srp",
+          "label": "Single Responsibility",
+          "slug": "srp",
+          "title": "Single Responsibility Principle",
+          "description": "Uma classe, uma responsabilidade."
+        },
+        {
+          "href": "/best-practices/soc",
+          "label": "Separation of Concerns",
+          "slug": "soc",
+          "title": "Separation of Concerns",
+          "description": "Separe responsabilidades claramente."
+        },
+        {
+          "href": "/best-practices/clean-code",
+          "label": "Clean Code",
+          "slug": "clean-code",
+          "title": "Clean Code",
+          "description": "Código legível e manutenível."
+        },
+        {
+          "href": "/guides/how-to-choose",
+          "label": "Como Escolher Arquitetura",
+          "slug": "how-to-choose",
+          "title": "Como Escolher sua Arquitetura Front-End",
+          "description": "Perguntas práticas para encontrar a melhor arquitetura para o seu contexto."
+        },
+        {
+          "href": "/guides/staff-fundamentals",
+          "label": "Staff · Fundamentos",
+          "slug": "staff-fundamentals",
+          "title": "Staff · Fundamentos",
+          "description": "Para Staff: guardrails, code review e quando exigir ADR."
+        }
+      ]
+    },
+    {
+      "key": "building-ui",
+      "label": "Construindo UI",
+      "items": [
+        {
+          "href": "/architectures/spa",
+          "label": "Single Page Application",
+          "slug": "spa",
+          "title": "Single Page Application",
+          "description": "Uma página, múltiplas rotas. JavaScript renderiza tudo."
+        },
+        {
+          "href": "/patterns/component-driven",
+          "label": "Component-Driven Dev",
+          "slug": "component-driven",
+          "title": "Component-Driven Development",
+          "description": "Construa interfaces como Lego com componentes reutilizáveis."
+        },
+        {
+          "href": "/patterns/atomic-design",
+          "label": "Atomic Design",
+          "slug": "atomic-design",
+          "title": "Atomic Design",
+          "description": "Design system estruturado."
+        },
+        {
+          "href": "/techniques/state-machines",
+          "label": "State Machines",
+          "slug": "state-machines",
+          "title": "State Machines",
+          "description": "Máquinas de estado."
+        },
+        {
+          "href": "/patterns/event-driven",
+          "label": "Event-Driven Architecture",
+          "slug": "event-driven",
+          "title": "Event-Driven Architecture",
+          "description": "Arquitetura baseada em eventos."
+        },
+        {
+          "href": "/guides/staff-ui",
+          "label": "Staff · UI",
+          "slug": "staff-ui",
+          "title": "Staff · Construindo UI",
+          "description": "Para Staff: design system, estado e padrões de componentes."
+        }
+      ]
+    },
+    {
+      "key": "delivery",
+      "label": "Arquitetura de Entrega",
+      "items": [
+        {
+          "href": "/architectures/ssr-ssg",
+          "label": "SSR & SSG",
+          "slug": "ssr-ssg",
+          "title": "SSR & SSG",
+          "description": "Server-Side Rendering e Static Site Generation."
+        },
+        {
+          "href": "/architectures/jamstack",
+          "label": "JAMstack",
+          "slug": "jamstack",
+          "title": "JAMstack",
+          "description": "JavaScript, APIs, Markup."
+        },
+        {
+          "href": "/architectures/pwa",
+          "label": "Progressive Web Apps",
+          "slug": "pwa",
+          "title": "Progressive Web Apps (PWA)",
+          "description": "Web apps que funcionam offline e instalam como nativos."
+        },
+        {
+          "href": "/architectures/islands-architecture",
+          "label": "Islands Architecture",
+          "slug": "islands-architecture",
+          "title": "Islands Architecture",
+          "description": "Arquitetura de ilhas."
+        },
+        {
+          "href": "/techniques/performance",
+          "label": "Performance",
+          "slug": "performance",
+          "title": "Performance",
+          "description": "Code splitting, lazy loading, chunks e métricas que fazem diferença real."
+        },
+        {
+          "href": "/guides/staff-entrega",
+          "label": "Staff · Entrega",
+          "slug": "staff-entrega",
+          "title": "Staff · Arquitetura de Entrega",
+          "description": "Para Staff: performance, métricas, OKRs e Core Web Vitals."
+        }
+      ]
+    },
+    {
+      "key": "structure",
+      "label": "Estrutura de Código",
+      "items": [
+        {
+          "href": "/architectures/clean-architecture",
+          "label": "Clean Architecture",
+          "slug": "clean-architecture",
+          "title": "Clean Architecture no Front-End",
+          "description": "Separação clara de responsabilidades."
+        },
+        {
+          "href": "/architectures/layered",
+          "label": "Layered Architecture",
+          "slug": "layered",
+          "title": "Layered Architecture",
+          "description": "Arquitetura em 3 camadas: Presentation, Business, Data."
+        },
+        {
+          "href": "/architectures/hexagonal",
+          "label": "Hexagonal Architecture",
+          "slug": "hexagonal",
+          "title": "Hexagonal Architecture",
+          "description": "Ports & Adapters - isola business logic no centro."
+        },
+        {
+          "href": "/patterns/repository-pattern",
+          "label": "Repository Pattern",
+          "slug": "repository-pattern",
+          "title": "Repository Pattern",
+          "description": "Abstração da camada de dados."
+        },
+        {
+          "href": "/patterns/security",
+          "label": "Security Patterns",
+          "slug": "security",
+          "title": "Security Patterns",
+          "description": "Técnicas e práticas para proteger aplicações front-end contra vulnerabilidades comuns."
+        },
+        {
+          "href": "/guides/staff-estrutura",
+          "label": "Staff · Estrutura",
+          "slug": "staff-estrutura",
+          "title": "Staff · Estrutura de Código",
+          "description": "Para Staff: guardrails de camadas, ADR e revisão de estrutura."
+        }
+      ]
+    },
+    {
+      "key": "scale",
+      "label": "Escala & Times",
+      "items": [
+        {
+          "href": "/architectures/monorepo",
+          "label": "Monorepo",
+          "slug": "monorepo",
+          "title": "Monorepo",
+          "description": "Múltiplos projetos em um repositório."
+        },
+        {
+          "href": "/architectures/micro-frontends",
+          "label": "Micro-Frontends",
+          "slug": "micro-frontends",
+          "title": "Micro-frontends",
+          "description": "Quebre aplicações grandes em pedaços pequenos."
+        },
+        {
+          "href": "/architectures/microservices-frontend",
+          "label": "Microservices Frontend",
+          "slug": "microservices-frontend",
+          "title": "Microservices Frontend",
+          "description": "Arquitetura distribuída por domínio."
+        },
+        {
+          "href": "/architectures/bff",
+          "label": "Backend for Frontend (BFF)",
+          "slug": "bff",
+          "title": "Backend-for-Frontend (BFF)",
+          "description": "API sob medida pro seu frontend."
+        },
+        {
+          "href": "/architectures/headless",
+          "label": "Headless Architecture",
+          "slug": "headless",
+          "title": "Headless/API-First",
+          "description": "Separação total entre backend e frontend."
+        },
+        {
+          "href": "/techniques/feature-flags",
+          "label": "Feature Flags",
+          "slug": "feature-flags",
+          "title": "Feature Flags",
+          "description": "Controle dinâmico de funcionalidades."
+        },
+        {
+          "href": "/architectures/cqrs",
+          "label": "CQRS",
+          "slug": "cqrs",
+          "title": "CQRS Frontend",
+          "description": "Command Query Responsibility Segregation."
+        },
+        {
+          "href": "/architectures/event-sourcing",
+          "label": "Event Sourcing",
+          "slug": "event-sourcing",
+          "title": "Event Sourcing Frontend",
+          "description": "Armazenamento baseado em eventos."
+        },
+        {
+          "href": "/guides/staff-escala",
+          "label": "Staff · Escala",
+          "slug": "staff-escala",
+          "title": "Staff · Escala & Times",
+          "description": "Para Staff: decisão de escala com evidência, casos e migração."
+        }
+      ]
+    },
+    {
+      "key": "decision",
+      "label": "Decisão & Referência",
+      "items": [
+        {
+          "href": "/guides/staff",
+          "label": "Para Staff",
+          "slug": "staff",
+          "title": "Para Staff",
+          "description": "Hub para nível Staff: decisão com evidência, performance e métricas, OKRs, back-end e protocolos, segurança, ferramentas, regras de negócio, falar com negócio e com back-end/front, boas práticas e guardrails. Staff por seção (Fundamentos, UI, Entrega, Estrutura, Escala). Impacto prático e checklist."
+        },
+        {
+          "href": "/guides/architecture-comparison",
+          "label": "Comparação de Arquiteturas",
+          "slug": "architecture-comparison",
+          "title": "Comparação de Arquiteturas",
+          "description": "Compare arquiteturas baseado em métricas práticas."
+        },
+        {
+          "href": "/guides/implementation-roadmap",
+          "label": "Roadmap de Implementação",
+          "slug": "implementation-roadmap",
+          "title": "Roadmap de Implementação",
+          "description": "4 fases para evoluir a arquitetura frontend."
+        },
+        {
+          "href": "/guides/migration-strategies",
+          "label": "Estratégias de Migração",
+          "slug": "migration-strategies",
+          "title": "Estratégias de Migração",
+          "description": "Strangler Fig, Branch by Abstraction, Parallel Run."
+        },
+        {
+          "href": "/guides/adr",
+          "label": "ADR - Decision Records",
+          "slug": "adr",
+          "title": "ADR - Architecture Decision Records",
+          "description": "Como documentar decisões arquiteturais com ADRs."
+        },
+        {
+          "href": "/guides/cases",
+          "label": "19 Casos Reais",
+          "slug": "cases",
+          "title": "Casos Reais de Impacto",
+          "description": "19 casos de empresas como Netflix, Shopify, eBay com link para o artigo original."
+        },
+        {
+          "href": "/guides/security-business",
+          "label": "Segurança & Negócio",
+          "slug": "security-business",
+          "title": "Segurança & Negócio",
+          "description": "Segurança como decisão de negócio: impacto financeiro, priorização e como comunicar com stakeholders. Nível staff."
+        },
+        {
+          "href": "/guides/mcp",
+          "label": "MCP (Cursor)",
+          "slug": "mcp",
+          "title": "MCP: use o playbook no Cursor",
+          "description": "Configure o servidor MCP para usar o conteúdo do playbook no Cursor: guias, casos e navegação via chat."
+        }
+      ]
+    }
+  ]
+}

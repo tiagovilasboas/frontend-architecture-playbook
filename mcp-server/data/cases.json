@@ -1,0 +1,382 @@
+[
+  {
+    "company": "Netflix",
+    "icon": "📺",
+    "title": "Performance em Smart TVs com React",
+    "challenge": "O app React da Netflix rodava lento em Smart TVs com hardware limitado. Navegar entre categorias era difícil em dispositivos com pouca memória e processadores fracos.",
+    "solution": "Desenvolveram uma arquitetura de renderização assíncrona que carrega apenas o conteúdo visível na tela. Implementaram pré-rendering adaptativo que detecta a capacidade do dispositivo e ajusta a interface automaticamente.",
+    "practices": [
+      "renderização por lote",
+      "SSR parcial",
+      "foco no device",
+      "cache inteligente"
+    ],
+    "results": [
+      "Melhoria significativa no tempo de startup em TVs",
+      "Suporte a grande variedade de dispositivos com capacidades diferentes",
+      "Interface adaptativa baseada no hardware disponível"
+    ],
+    "link": "https://medium.com/netflix-techblog/crafting-a-high-performance-tv-user-interface-using-react-3350e5a6ad3b",
+    "color": "red"
+  },
+  {
+    "company": "Spotify",
+    "icon": "🎧",
+    "title": "Web Player com micro frontends",
+    "challenge": "O web player do Spotify tinha um bundle JavaScript grande que demorava para carregar. Qualquer mudança no código afetava toda a aplicação, tornando deploys arriscados e desenvolvimento lento.",
+    "solution": "Adotaram micro frontends, dividindo o app em módulos independentes (player, playlist, busca, etc.). Cada módulo pode ser desenvolvido, testado e deployado separadamente. Implementaram lazy loading inteligente.",
+    "practices": [
+      "modularização",
+      "boundaries bem definidos",
+      "lazy load",
+      "cache de áudio"
+    ],
+    "results": [
+      "Bundle size inicial menor com lazy loading por módulo",
+      "Deploys independentes por time",
+      "Carregamento mais rápido do player"
+    ],
+    "link": "https://labs.spotify.com/2019/03/25/building-spotifys-new-web-player/",
+    "color": "green"
+  },
+  {
+    "company": "Airbnb",
+    "icon": "🏠",
+    "title": "Otimização de performance em listing pages",
+    "challenge": "As páginas de listagem do Airbnb eram pesadas devido ao volume de imagens. O carregamento lento impactava a experiência, especialmente em dispositivos móveis e conexões lentas.",
+    "solution": "Implementaram otimizações como lazy loading de imagens, compressão adaptativa e melhorias no carregamento inicial das páginas de listagem. Focaram em reduzir o peso total da página.",
+    "practices": [
+      "lazy loading",
+      "progressive enhancement",
+      "build otimizado",
+      "compressão adaptativa"
+    ],
+    "results": [
+      "Listing pages mais leves com lazy loading e compressão adaptativa",
+      "Menor consumo de dados em mobile",
+      "Melhor experiência em conexões lentas"
+    ],
+    "link": "https://medium.com/airbnb-engineering/recent-web-performance-fixes-on-airbnb-listing-pages-6cd8d93df6f4",
+    "color": "pink"
+  },
+  {
+    "company": "Pinterest",
+    "icon": "📌",
+    "title": "PWA que virou case de sucesso",
+    "challenge": "O site mobile do Pinterest tinha alto bounce rate. Carregamento lento, imagens pesadas e navegação confusa em dispositivos móveis impactavam a receita.",
+    "solution": "Reconstruíram o site mobile usando PWA com React. Implementaram service workers para cache inteligente, virtual scrolling e lazy loading de imagens.",
+    "practices": [
+      "service workers",
+      "virtual scrolling",
+      "image lazy loading",
+      "compressão automática"
+    ],
+    "results": [
+      "Tempo de carregamento menor com service workers e virtual scroll",
+      "Melhoria em métricas de engajamento e receita (detalhes no artigo)",
+      "Tempo até primeira interação muito menor"
+    ],
+    "link": "https://medium.com/dev-channel/a-pinterest-progressive-web-app-performance-case-study-3bd6ed2e6154",
+    "color": "red"
+  },
+  {
+    "company": "Tinder",
+    "icon": "💘",
+    "title": "PWA para performance mobile",
+    "challenge": "O site mobile do Tinder era lento para carregar e consumia muitos dados, especialmente em mercados com conexões limitadas. Usuários abandonavam antes mesmo de completar o login.",
+    "solution": "Implementaram uma Progressive Web App com service workers para cache inteligente, route-based code splitting e otimização de assets. O resultado foi um app leve que carrega rápido mesmo em conexões 3G.",
+    "practices": [
+      "PWA",
+      "service workers",
+      "code splitting",
+      "otimização de assets"
+    ],
+    "results": [
+      "App funcional em redes lentas com code splitting e cache",
+      "Menor consumo de dados",
+      "Experiência consistente em conexões lentas"
+    ],
+    "link": "https://medium.com/@addyosmani/a-tinder-progressive-web-app-performance-case-study-78919d98ece0",
+    "color": "pink"
+  },
+  {
+    "company": "Slack",
+    "icon": "💬",
+    "title": "Redução de footprint de memória no desktop",
+    "challenge": "O app desktop do Slack consumia muita RAM. A busca era lenta e o app travava em máquinas com recursos limitados.",
+    "solution": "Implementaram lazy loading de canais, virtualização de mensagens e otimização de bundle que carrega funcionalidades sob demanda. Reduziram o footprint de memória com técnicas de garbage collection e cache inteligente.",
+    "practices": [
+      "code splitting",
+      "virtual scrolling",
+      "memory management",
+      "cache inteligente"
+    ],
+    "results": [
+      "Menor consumo de memória com virtualização e lazy loading",
+      "Busca de mensagens mais responsiva",
+      "Menos travamentos em máquinas modestas"
+    ],
+    "link": "https://slack.engineering/reducing-slacks-memory-footprint-4480fec7e8eb",
+    "color": "violet"
+  },
+  {
+    "company": "Uber",
+    "icon": "🚗",
+    "title": "m.uber.com - web app leve para mercados emergentes",
+    "challenge": "Uber precisava atender mercados com dispositivos de baixo custo e conexões lentas. O app nativo era pesado demais para esses cenários.",
+    "solution": "Criaram o m.uber.com, um web app extremamente leve focado em funcionar bem em redes 2G. Usaram preact, otimização agressiva de bundle e técnicas para minimizar requisições de rede.",
+    "practices": [
+      "bundle mínimo",
+      "preact",
+      "otimização para 2G",
+      "core app em ~50KB"
+    ],
+    "results": [
+      "App funcional mesmo em redes 2G",
+      "Core app extremamente leve",
+      "Acesso em mercados antes inacessíveis"
+    ],
+    "link": "https://eng.uber.com/m-uber",
+    "color": "indigo"
+  },
+  {
+    "company": "Twitter",
+    "icon": "🐦",
+    "title": "Twitter Lite - PWA para mercados emergentes",
+    "challenge": "O app mobile do Twitter consumia muitos dados e era lento em redes 2G/3G, especialmente em países emergentes.",
+    "solution": "Construíram o Twitter Lite como PWA com React, usando service workers, app shell pattern e otimização agressiva de dados e imagens.",
+    "practices": [
+      "app shell",
+      "lazy loading",
+      "cache otimizado",
+      "otimização de dados"
+    ],
+    "results": [
+      "Consumo de dados muito menor",
+      "Mais páginas por sessão",
+      "Funciona offline com service workers"
+    ],
+    "link": "https://blog.twitter.com/engineering/en_us/topics/open-source/2017/how-we-built-twitter-lite.html",
+    "color": "cyan"
+  },
+  {
+    "company": "Walmart",
+    "icon": "🛒",
+    "title": "React em escala para e-commerce",
+    "challenge": "O site da Walmart precisava servir milhões de usuários com performance consistente. O desafio era entregar React apps em escala com tempos de carregamento aceitáveis.",
+    "solution": "Adotaram React com foco em performance. Implementaram code splitting, otimização de bundle e técnicas para entregar apps React em escala de e-commerce.",
+    "practices": [
+      "code splitting",
+      "design responsivo",
+      "otimização de bundle",
+      "React em escala"
+    ],
+    "results": [
+      "Melhoria nas conversões mobile",
+      "Carregamento mais rápido",
+      "Arquitetura escalável para alto tráfego"
+    ],
+    "link": "https://medium.com/walmartlabs/delivering-reactjs-applications-at-scale-5cb8a363f99",
+    "color": "yellow"
+  },
+  {
+    "company": "Shopify",
+    "icon": "🛍️",
+    "title": "Remixing Shopify's Admin - 30% mais rápido",
+    "challenge": "O admin do Shopify, usado por milhões de lojistas, tinha performance degradada ao longo dos anos. A arquitetura anterior dificultava melhorias incrementais e integração com IA.",
+    "solution": "Migraram o admin para Remix com foco em server-side rendering e data fetching otimizado. A nova arquitetura permitiu progressive enhancement e preparação para features de IA.",
+    "practices": [
+      "Remix framework",
+      "SSR otimizado",
+      "progressive enhancement",
+      "data fetching no servidor"
+    ],
+    "results": [
+      "30% mais rápido no carregamento de páginas",
+      "Arquitetura preparada para IA",
+      "Melhor DX com Remix conventions e data loading nativo"
+    ],
+    "link": "https://shopify.engineering/remixing-shopifys-admin",
+    "color": "green"
+  },
+  {
+    "company": "Vercel",
+    "icon": "▲",
+    "title": "Adotando micro-frontends em produção",
+    "challenge": "Com o crescimento do time e da plataforma, a Vercel precisava permitir que múltiplos times trabalhassem de forma independente sem bloquear deploys uns dos outros.",
+    "solution": "Implementaram uma arquitetura de micro-frontends que permite composição de aplicações no edge, com deploys independentes por time e shared dependencies gerenciadas automaticamente.",
+    "practices": [
+      "micro-frontends",
+      "edge composition",
+      "deploys independentes",
+      "shared dependencies"
+    ],
+    "results": [
+      "Times trabalhando de forma totalmente independente",
+      "Deploys mais frequentes e seguros",
+      "Melhor performance via edge rendering"
+    ],
+    "link": "https://vercel.com/blog/how-vercel-adopted-microfrontends",
+    "color": "gray"
+  },
+  {
+    "company": "Airbnb",
+    "icon": "🏗️",
+    "title": "Adotando Bazel para builds web em escala",
+    "challenge": "Com centenas de engenheiros contribuindo para o frontend, os tempos de build do Airbnb estavam cada vez mais lentos, impactando a produtividade.",
+    "solution": "Migraram o sistema de build para Bazel, aproveitando caching distribuído e execução remota para paralelizar builds em escala.",
+    "practices": [
+      "Bazel build system",
+      "caching distribuído",
+      "execução remota",
+      "build incremental"
+    ],
+    "results": [
+      "Tempo de build menor com Bazel caching distribuído",
+      "Caching distribuído reduzindo recompilações",
+      "Escala para centenas de engenheiros"
+    ],
+    "link": "https://medium.com/airbnb-engineering/adopting-bazel-for-web-at-scale-efc49e2c3c3f",
+    "color": "pink"
+  },
+  {
+    "company": "Figma",
+    "icon": "🎨",
+    "title": "WebAssembly para performance de engine gráfica",
+    "challenge": "O editor gráfico do Figma precisava de performance nativa no browser. JavaScript puro não era rápido o suficiente para operações complexas de renderização e manipulação de vetores.",
+    "solution": "Compilaram o engine de renderização para WebAssembly, mantendo a experiência web nativa. O resultado foi performance próxima de apps nativos rodando inteiramente no browser.",
+    "practices": [
+      "WebAssembly",
+      "C++ para WASM",
+      "canvas rendering",
+      "worker threads"
+    ],
+    "results": [
+      "Tempo de carregamento 3x mais rápido com WASM",
+      "Performance de renderização próxima de nativo",
+      "Editor profissional rodando 100% no browser"
+    ],
+    "link": "https://www.figma.com/blog/webassembly-cut-figmas-load-time-by-3x/",
+    "color": "violet"
+  },
+  {
+    "company": "Notion",
+    "icon": "📝",
+    "title": "WASM SQLite para performance no browser",
+    "challenge": "O Notion sofria com lentidão ao navegar entre páginas e carregar workspaces grandes. Cada operação requeria round-trips ao servidor.",
+    "solution": "Implementaram SQLite compilado para WebAssembly rodando no browser, criando um cache local inteligente que elimina a maioria dos round-trips ao servidor.",
+    "practices": [
+      "WASM SQLite",
+      "cache local",
+      "offline-first",
+      "sync incremental"
+    ],
+    "results": [
+      "Navegação entre páginas quase instantânea",
+      "Funcionalidade offline real",
+      "Redução massiva de requests ao servidor"
+    ],
+    "link": "https://www.notion.so/blog/how-we-sped-up-notion-in-the-browser-with-wasm-sqlite",
+    "color": "orange"
+  },
+  {
+    "company": "Atlassian",
+    "icon": "📋",
+    "title": "75% mais rápido removendo barrel files",
+    "challenge": "O build do frontend da Atlassian ficava cada vez mais lento conforme o codebase crescia. Barrel files (index.ts re-exports) criavam chains de importação massivas.",
+    "solution": "Identificaram que barrel files eram o principal gargalo e os removeram sistematicamente, trocando por imports diretos aos módulos necessários.",
+    "practices": [
+      "tree shaking",
+      "imports diretos",
+      "build profiling",
+      "eliminação de barrel files"
+    ],
+    "results": [
+      "75% de redução no tempo de build",
+      "Bundles menores por eliminação de dead code",
+      "Developer experience muito melhor"
+    ],
+    "link": "https://www.atlassian.com/engineering/how-we-achieved-75-faster-builds-by-removing-barrel-files",
+    "color": "blue"
+  },
+  {
+    "company": "eBay",
+    "icon": "🏷️",
+    "title": "100ms mais rápido = +0.5% Add to Cart",
+    "challenge": "O eBay precisava provar o impacto de performance em receita. A View Item page (250M views/dia) não recebia rewrite há 10 anos e era mantida em 4 plataformas separadas.",
+    "solution": "Implementaram performance budgets rigorosos e métricas centradas no usuário. Modernizaram a View Item page com Marko (framework próprio), SSR progressivo e async fragments para renderização incremental.",
+    "practices": [
+      "performance budgets",
+      "SSR progressivo",
+      "async fragments",
+      "Marko framework"
+    ],
+    "results": [
+      "Cada 100ms de melhoria = +0.5% em Add to Cart (verificado)",
+      "Core Web Vitals aprovados (LCP, CLS, FID)",
+      "View Item page modernizada após 10 anos de legacy"
+    ],
+    "link": "https://web.dev/shopping-for-speed-on-ebay/",
+    "color": "red"
+  },
+  {
+    "company": "Etsy",
+    "icon": "🧶",
+    "title": "Migração para TypeScript e monorepo em escala",
+    "challenge": "O frontend do Etsy cresceu organicamente ao longo dos anos, resultando em código JavaScript difícil de manter, sem type safety, e builds lentos com Webpack em um monorepo crescente.",
+    "solution": "Migraram progressivamente para TypeScript, adotaram JSX com seu framework Mobius priorizando UX, e otimizaram builds em monorepo com Webpack. Implementaram medição de performance com dados de usuários reais.",
+    "practices": [
+      "migração gradual para TypeScript",
+      "monorepo com Webpack",
+      "real user monitoring",
+      "JSX com framework próprio"
+    ],
+    "results": [
+      "Codebase frontend com type safety",
+      "Builds otimizados em monorepo",
+      "Métricas de performance baseadas em usuários reais"
+    ],
+    "link": "https://www.etsy.com/codeascraft/etsys-journey-to-typescript",
+    "color": "orange"
+  },
+  {
+    "company": "Zalando",
+    "icon": "👗",
+    "title": "Micro-frontends com Concurrent React em e-commerce",
+    "challenge": "A Zalando opera um dos maiores e-commerces de moda da Europa. Precisavam escalar o frontend para múltiplos times independentes mantendo performance de carregamento em páginas com centenas de produtos.",
+    "solution": "Desenvolveram o Rendering Engine, um framework de micro-frontends baseado em React com SSR universal. Cada 'Entity' (produto, coleção, banner) é um renderer independente com dados via GraphQL. Recentemente migraram para React Concurrent com streaming.",
+    "practices": [
+      "micro-frontends (Rendering Engine)",
+      "React Concurrent + streaming",
+      "GraphQL por entity",
+      "SSR universal"
+    ],
+    "results": [
+      "Times independentes deployando features isoladas",
+      "Páginas compostas por entities reutilizáveis",
+      "Migração para React Concurrent com streaming SSR"
+    ],
+    "link": "https://engineering.zalando.com/posts/2023/07/rendering-engine-tales-road-to-concurrent-react.html",
+    "color": "orange"
+  },
+  {
+    "company": "Shopify",
+    "icon": "💎",
+    "title": "Hydrogen - Framework headless para storefronts",
+    "challenge": "Lojistas Shopify precisavam de storefronts customizados com performance de nível enterprise, mas frameworks genéricos não otimizavam para o caso de uso de e-commerce (catálogo, checkout, carrinho).",
+    "solution": "Criaram o Hydrogen, um framework React baseado em Remix otimizado para commerce. Integra diretamente com a Storefront API via GraphQL, com componentes pré-otimizados para catálogo, carrinho e checkout.",
+    "practices": [
+      "Remix + React Server Components",
+      "Storefront API (GraphQL)",
+      "edge rendering (Oxygen)",
+      "componentes commerce-first"
+    ],
+    "results": [
+      "Storefronts headless com performance otimizada",
+      "Deploy no edge via Oxygen (infra própria Shopify)",
+      "DX simplificada com hooks e componentes prontos para commerce"
+    ],
+    "link": "https://shopify.engineering/high-performance-hydrogen-powered-storefronts",
+    "color": "green"
+  }
+]
