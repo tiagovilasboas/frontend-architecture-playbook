@@ -90,17 +90,23 @@ function RepositoryPattern() {
               w="100%"
               style={{ minWidth: 0, width: '100%' }}
             >
-              <Group w="100%" style={{ minWidth: 0, width: '100%' }}>
+              <Group
+                align="flex-start"
+                wrap="nowrap"
+                style={{ width: '100%', minWidth: 0 }}
+              >
                 <Badge
                   size="lg"
                   variant="light"
-                  color={['red', 'green'][idx] || 'gray'}
+                  color={idx === 0 ? 'red' : 'green'}
                 >
                   {idx === 0 ? '❌' : '✅'}
                 </Badge>
-                <div style={{ flex: 1, width: '100%' }}>
-                  <Title order={4}>{ex.title}</Title>
-                  <Text size="sm" c="dimmed">
+                <div style={{ flex: 1, minWidth: 0, width: '100%' }}>
+                  <Title order={4} mb="xs" style={{ marginTop: 0 }}>
+                    {ex.title}
+                  </Title>
+                  <Text size="sm" c="dimmed" mb="md">
                     {ex.description}
                   </Text>
                   <CodeExample title={ex.title} code={ex.code} />
@@ -182,7 +188,7 @@ function RepositoryPattern() {
         <Stack gap="md">
           <Alert color="green" icon={<IconCheck size={16} />} radius="md">
             <Text size="sm" fw={600} mb={4}>
-              ✅ Use quando:
+              Use quando:
             </Text>
             <List size="sm" c="dimmed">
               <List.Item>
@@ -197,7 +203,7 @@ function RepositoryPattern() {
 
           <Alert color="red" icon={<IconAlertTriangle size={16} />} radius="md">
             <Text size="sm" fw={600} mb={4}>
-              ❌ Evite quando:
+              Evite quando:
             </Text>
             <List size="sm" c="dimmed">
               <List.Item>Projeto pequeno/MVP (over-engineering)</List.Item>

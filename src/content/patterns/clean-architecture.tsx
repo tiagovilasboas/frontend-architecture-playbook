@@ -70,16 +70,16 @@ function CleanArchitecture() {
             Dependency Injection via constructor. React usa hooks com closures.
             A solução pragmática:{' '}
             <strong>
-              entidades como types/funções puras, use cases como custom hooks,
-              e DI via Context
+              entidades como types/funções puras, use cases como custom hooks, e
+              DI via Context
             </strong>
             .
           </Text>
 
           <Text>
             A regra de dependência se mantém:{' '}
-            <em>UI → hooks (use cases) → domain (entities/ports)</em>. Nunca
-            o contrário. Entidades não importam React. Hooks de use case não
+            <em>UI → hooks (use cases) → domain (entities/ports)</em>. Nunca o
+            contrário. Entidades não importam React. Hooks de use case não
             importam componentes.
           </Text>
         </Stack>
@@ -272,7 +272,7 @@ function CleanArchitecture() {
           <Grid.Col span={{ base: 12, md: 6 }}>
             <Alert color="red" icon={<IconAlertTriangle size={16} />} mb="md">
               <Text size="sm" fw={600} mb={4}>
-                ❌ Over-engineering
+                Over-engineering
               </Text>
               <Text size="sm" c="dimmed">
                 Clean Architecture para um MVP simples é exagero. Use apenas
@@ -286,7 +286,7 @@ function CleanArchitecture() {
               mb="md"
             >
               <Text size="sm" fw={600} mb={4}>
-                ❌ Dependências circulares
+                Dependências circulares
               </Text>
               <Text size="sm" c="dimmed">
                 Quebrar a regra de dependências. Use Case não pode importar UI.
@@ -299,7 +299,7 @@ function CleanArchitecture() {
               mb="md"
             >
               <Text size="sm" fw={600} mb={4}>
-                ❌ Domínio anêmico
+                Domínio anêmico
               </Text>
               <Text size="sm" c="dimmed">
                 Entidades só com getters/setters. Coloque lógica de negócio nas
@@ -311,7 +311,7 @@ function CleanArchitecture() {
           <Grid.Col span={{ base: 12, md: 6 }}>
             <Alert color="green" icon={<IconCheck size={16} />} mb="md">
               <Text size="sm" fw={600} mb={4}>
-                ✅ Como evitar
+                Como evitar
               </Text>
               <Text size="sm" c="dimmed">
                 <strong>Comece simples:</strong> Adicione camadas conforme
@@ -368,18 +368,36 @@ function CleanArchitecture() {
                 Artigos e Casos
               </Title>
               <List size="sm" spacing="xs">
-              <List.Item>
-                      <strong>Uncle Bob:</strong>{' '}
-                      <a href="https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html" target="_blank" rel="noopener noreferrer">The Clean Architecture</a>
-                    </List.Item>
-                    <List.Item>
-                      <strong>Khalil Stemmler:</strong>{' '}
-                      <a href="https://khalilstemmler.com/articles/software-design-architecture/organizing-app-logic/" target="_blank" rel="noopener noreferrer">Organizing App Logic</a>
-                    </List.Item>
-                    <List.Item>
-                      <strong>Bulletproof React:</strong>{' '}
-                      <a href="https://github.com/alan2207/bulletproof-react" target="_blank" rel="noopener noreferrer">Project Structure Guide</a>
-                    </List.Item>
+                <List.Item>
+                  <strong>Uncle Bob:</strong>{' '}
+                  <a
+                    href="https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    The Clean Architecture
+                  </a>
+                </List.Item>
+                <List.Item>
+                  <strong>Khalil Stemmler:</strong>{' '}
+                  <a
+                    href="https://khalilstemmler.com/articles/software-design-architecture/organizing-app-logic/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Organizing App Logic
+                  </a>
+                </List.Item>
+                <List.Item>
+                  <strong>Bulletproof React:</strong>{' '}
+                  <a
+                    href="https://github.com/alan2207/bulletproof-react"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Project Structure Guide
+                  </a>
+                </List.Item>
               </List>
             </Card>
           </Grid.Col>

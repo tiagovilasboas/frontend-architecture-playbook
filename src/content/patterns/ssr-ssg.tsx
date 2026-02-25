@@ -122,7 +122,7 @@ export default function SSRSSGArchitecture() {
             </Text>
 
             <Text fw={600} size="sm" mb="xs">
-              ✅ Use quando:
+              Use quando:
             </Text>
             <List size="sm" spacing={4} mb="md">
               <List.Item>Conteúdo muda frequentemente</List.Item>
@@ -132,7 +132,7 @@ export default function SSRSSGArchitecture() {
             </List>
 
             <Text fw={600} size="sm" mb="xs">
-              ❌ Evite quando:
+              Evite quando:
             </Text>
             <List size="sm" spacing={4}>
               <List.Item>Server costs são críticos</List.Item>
@@ -154,7 +154,7 @@ export default function SSRSSGArchitecture() {
             </Text>
 
             <Text fw={600} size="sm" mb="xs">
-              ✅ Use quando:
+              Use quando:
             </Text>
             <List size="sm" spacing={4} mb="md">
               <List.Item>Conteúdo é estático</List.Item>
@@ -164,7 +164,7 @@ export default function SSRSSGArchitecture() {
             </List>
 
             <Text fw={600} size="sm" mb="xs">
-              ❌ Evite quando:
+              Evite quando:
             </Text>
             <List size="sm" spacing={4}>
               <List.Item>Conteúdo muda constantemente</List.Item>
@@ -323,7 +323,7 @@ export default function SSRSSGArchitecture() {
         <Stack gap="md">
           <Alert color="red" icon={<IconAlertTriangle size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ❌ Complexidade desnecessária
+              Complexidade desnecessária
             </Text>
             <Text size="sm" c="dimmed">
               SSR/SSG para apps internos ou dashboards simples é
@@ -333,7 +333,7 @@ export default function SSRSSGArchitecture() {
 
           <Alert color="orange" icon={<IconAlertTriangle size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ❌ Server costs
+              Server costs
             </Text>
             <Text size="sm" c="dimmed">
               SSR aumenta custos de servidor. SSG pode ter build times longos.
@@ -343,7 +343,7 @@ export default function SSRSSGArchitecture() {
 
           <Alert color="yellow" icon={<IconAlertTriangle size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ❌ Hydration issues
+              Hydration issues
             </Text>
             <Text size="sm" c="dimmed">
               Diferenças entre server e client podem causar erros. Teste
@@ -353,7 +353,7 @@ export default function SSRSSGArchitecture() {
 
           <Alert color="green" icon={<IconCheck size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ✅ Como evitar
+              Como evitar
             </Text>
             <Text size="sm" c="dimmed">
               <strong>Comece simples:</strong> SPA antes de SSR/SSG
@@ -382,33 +382,68 @@ export default function SSRSSGArchitecture() {
 
         <Stack gap="md">
           <Card withBorder p="md">
-            <Title order={4} mb="sm">Artigos e Case Studies</Title>
+            <Title order={4} mb="sm">
+              Artigos e Case Studies
+            </Title>
             <List size="sm" spacing="xs">
               <List.Item>
                 <strong>The New York Times:</strong>{' '}
-                <a href="https://open.nytimes.com/enhancing-the-new-york-times-web-performance-with-react-18-d6f91a7c5af8" target="_blank" rel="noopener noreferrer">Enhancing Web Performance with React 18</a>
+                <a
+                  href="https://open.nytimes.com/enhancing-the-new-york-times-web-performance-with-react-18-d6f91a7c5af8"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Enhancing Web Performance with React 18
+                </a>
               </List.Item>
               <List.Item>
                 <strong>Patreon:</strong>{' '}
-                <a href="https://www.patreon.com/posts/migrating-to-110743498" target="_blank" rel="noopener noreferrer">Migrating to Next.js: Inside a No-Downtime Architecture Overhaul</a>
+                <a
+                  href="https://www.patreon.com/posts/migrating-to-110743498"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Migrating to Next.js: Inside a No-Downtime Architecture
+                  Overhaul
+                </a>
               </List.Item>
               <List.Item>
                 <strong>DoorDash:</strong>{' '}
-                <a href="https://doordash.engineering/2022/03/29/improving-web-page-performance-at-doordash-through-server-side-rendering/" target="_blank" rel="noopener noreferrer">Improving Web Page Performance Through SSR with Next.js</a>
+                <a
+                  href="https://doordash.engineering/2022/03/29/improving-web-page-performance-at-doordash-through-server-side-rendering/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Improving Web Page Performance Through SSR with Next.js
+                </a>
               </List.Item>
               <List.Item>
                 <strong>Airbnb:</strong>{' '}
-                <a href="https://medium.com/airbnb-engineering/improving-performance-with-http-streaming-ba9e72c66408" target="_blank" rel="noopener noreferrer">Improving Performance with HTTP Streaming</a>
+                <a
+                  href="https://medium.com/airbnb-engineering/improving-performance-with-http-streaming-ba9e72c66408"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Improving Performance with HTTP Streaming
+                </a>
               </List.Item>
               <List.Item>
                 <strong>Yelp:</strong>{' '}
-                <a href="https://engineeringblog.yelp.com/2022/02/server-side-rendering-at-scale.html" target="_blank" rel="noopener noreferrer">Server Side Rendering at Scale</a>
+                <a
+                  href="https://engineeringblog.yelp.com/2022/02/server-side-rendering-at-scale.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Server Side Rendering at Scale
+                </a>
               </List.Item>
             </List>
           </Card>
 
           <Card withBorder p="md">
-            <Title order={4} mb="sm">Frameworks</Title>
+            <Title order={4} mb="sm">
+              Frameworks
+            </Title>
             <List size="sm" spacing="xs">
               <List.Item>
                 <strong>Next.js:</strong> SSR e SSG automático

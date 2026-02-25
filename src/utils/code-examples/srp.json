@@ -1,11 +1,11 @@
 [
   {
-    "title": "❌ Violando SRP",
+    "title": "Violando SRP",
     "description": "Função fazendo múltiplas responsabilidades",
     "code": "function processUser(user) {\n  if (!validateUser(user)) throw new Error('Invalid');\n  saveUser(user);\n  sendWelcomeEmail(user);\n  logUserCreation(user);\n}\n\n// Uma função fazendo validação, salvamento, email e log."
   },
   {
-    "title": "✅ Seguindo SRP",
+    "title": "Seguindo SRP",
     "description": "Cada função com uma responsabilidade específica",
     "code": "function validateUser(user) {\n  // Validação apenas\n}\n\nfunction saveUser(user) {\n  // Salvamento apenas\n}\n\nfunction sendWelcomeEmail(user) {\n  // Email apenas\n}\n\nfunction logUserCreation(user) {\n  // Log apenas\n}\n\nfunction processUser(user) {\n  if (!validateUser(user)) throw new Error('Invalid');\n  saveUser(user);\n  sendWelcomeEmail(user);\n  logUserCreation(user);\n}"
   },

@@ -87,17 +87,23 @@ function Yagni() {
               w="100%"
               style={{ minWidth: 0, width: '100%' }}
             >
-              <Group w="100%" style={{ minWidth: 0, width: '100%' }}>
+              <Group
+                align="flex-start"
+                wrap="nowrap"
+                style={{ width: '100%', minWidth: 0 }}
+              >
                 <Badge
                   size="lg"
                   variant="light"
-                  color={['red', 'green'][idx] || 'gray'}
+                  color={idx === 0 ? 'red' : 'green'}
                 >
                   {idx === 0 ? '❌' : '✅'}
                 </Badge>
-                <div style={{ flex: 1, width: '100%' }}>
-                  <Title order={4}>{ex.title}</Title>
-                  <Text size="sm" c="dimmed">
+                <div style={{ flex: 1, minWidth: 0, width: '100%' }}>
+                  <Title order={4} mb="xs" style={{ marginTop: 0 }}>
+                    {ex.title}
+                  </Title>
+                  <Text size="sm" c="dimmed" mb="md">
                     {ex.description}
                   </Text>
                   <CodeExample title={ex.title} code={ex.code} />
@@ -179,7 +185,7 @@ function Yagni() {
         <Stack gap="md">
           <Alert color="green" icon={<IconCheck size={16} />} radius="md">
             <Text size="sm" fw={600} mb={4}>
-              ✅ Sempre aplique:
+              Sempre aplique:
             </Text>
             <List size="sm" c="dimmed">
               <List.Item>Features que \"podem ser úteis no futuro\"</List.Item>
@@ -198,7 +204,7 @@ function Yagni() {
             radius="md"
           >
             <Text size="sm" fw={600} mb={4}>
-              ⚠️ Cuidado com:
+              Cuidado com:
             </Text>
             <List size="sm" c="dimmed">
               <List.Item>Ignorar requisitos reais do presente</List.Item>

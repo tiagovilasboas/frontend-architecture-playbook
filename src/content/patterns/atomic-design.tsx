@@ -277,7 +277,7 @@ function AtomicDesign() {
         <Stack gap="md">
           <Alert color="red" icon={<IconAlertTriangle size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ❌ Over-abstraction
+              Over-abstraction
             </Text>
             <Text size="sm" c="dimmed">
               Criar átomos demais pode complicar. Use apenas quando há
@@ -287,7 +287,7 @@ function AtomicDesign() {
 
           <Alert color="orange" icon={<IconAlertTriangle size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ❌ Rigidez excessiva
+              Rigidez excessiva
             </Text>
             <Text size="sm" c="dimmed">
               Seguir Atomic Design rigidamente pode limitar criatividade. Use
@@ -297,7 +297,7 @@ function AtomicDesign() {
 
           <Alert color="yellow" icon={<IconAlertTriangle size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ❌ Complexidade desnecessária
+              Complexidade desnecessária
             </Text>
             <Text size="sm" c="dimmed">
               Para projetos pequenos, Atomic Design pode ser overkill. Use
@@ -307,7 +307,7 @@ function AtomicDesign() {
 
           <Alert color="green" icon={<IconCheck size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ✅ Como evitar
+              Como evitar
             </Text>
             <Text size="sm" c="dimmed">
               <strong>Comece simples:</strong> Átomos básicos primeiro
@@ -362,21 +362,45 @@ function AtomicDesign() {
             </Title>
             <List size="sm" spacing="xs">
               <List.Item>
-                      <strong>Brad Frost:</strong>{' '}
-                      <a href="https://atomicdesign.bradfrost.com/" target="_blank" rel="noopener noreferrer">Atomic Design (livro completo)</a>
-                    </List.Item>
-                    <List.Item>
-                      <strong>Material Design:</strong>{' '}
-                      <a href="https://m3.material.io/" target="_blank" rel="noopener noreferrer">Google Design System</a>
-                    </List.Item>
-                    <List.Item>
-                      <strong>Shopify Polaris:</strong>{' '}
-                      <a href="https://polaris.shopify.com/" target="_blank" rel="noopener noreferrer">E-commerce design system</a>
-                    </List.Item>
-                    <List.Item>
-                      <strong>IBM Carbon:</strong>{' '}
-                      <a href="https://carbondesignsystem.com/" target="_blank" rel="noopener noreferrer">Enterprise design system</a>
-                    </List.Item>
+                <strong>Brad Frost:</strong>{' '}
+                <a
+                  href="https://atomicdesign.bradfrost.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Atomic Design (livro completo)
+                </a>
+              </List.Item>
+              <List.Item>
+                <strong>Material Design:</strong>{' '}
+                <a
+                  href="https://m3.material.io/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Google Design System
+                </a>
+              </List.Item>
+              <List.Item>
+                <strong>Shopify Polaris:</strong>{' '}
+                <a
+                  href="https://polaris.shopify.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  E-commerce design system
+                </a>
+              </List.Item>
+              <List.Item>
+                <strong>IBM Carbon:</strong>{' '}
+                <a
+                  href="https://carbondesignsystem.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Enterprise design system
+                </a>
+              </List.Item>
             </List>
           </Card>
         </Stack>

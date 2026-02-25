@@ -1007,7 +1007,7 @@ function ArchitectureComparisonPage() {
           <Grid.Col span={{ base: 12, md: 6 }}>
             <Alert color="green" icon={<IconBulb size={16} />} radius="md">
               <Text size="sm" fw={600} mb={4}>
-                ✅ Escolha por:
+                Escolha por:
               </Text>
               <Text size="sm" c="dimmed">
                 • <strong>Performance:</strong> Se velocidade é crítica
@@ -1027,7 +1027,7 @@ function ArchitectureComparisonPage() {
               radius="md"
             >
               <Text size="sm" fw={600} mb="4">
-                ⚠️ Cuidado com:
+                Cuidado com:
               </Text>
               <Text size="sm" c="dimmed">
                 • <strong>Over-engineering:</strong> Complexidade desnecessária

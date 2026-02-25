@@ -44,15 +44,19 @@ export default function Cases() {
         }}
       >
         <Stack gap="md">
-          <Badge size="lg" variant="filled" color="accent" radius="md" w="fit-content">
+          <Badge
+            size="lg"
+            variant="filled"
+            color="accent"
+            radius="md"
+            w="fit-content"
+          >
             19 casos · fontes verificáveis
           </Badge>
-          <Title order={1}>
-            Casos Reais: Quando Front-End Vira Dinheiro
-          </Title>
+          <Title order={1}>Casos Reais: Quando Front-End Vira Dinheiro</Title>
           <Text size="lg" c="dimmed" maw={620}>
             Empresas que provaram que performance não é frescura. Cada caso com
-            link para o artigo ou tech blog original — e-commerce, streaming,
+            link para o artigo ou tech blog original: e-commerce, streaming,
             redes sociais e mais.
           </Text>
           <Text size="sm" c="dimmed" fs="italic">
@@ -77,10 +81,11 @@ export default function Cases() {
           </Group>
 
           <Text>
-            Casos como os que você vai ver aqui <strong>só acontecem</strong> quando
-            se junta <strong>decisão arquitetural certa</strong> com os conceitos
-            que este material traz: dependency rule, padrões de entrega (SSR, PWA,
-            micro-frontends), performance, migração gradual e métricas reais.
+            Casos como os que você vai ver aqui <strong>só acontecem</strong>{' '}
+            quando se junta <strong>decisão arquitetural certa</strong> com os
+            conceitos que este material traz: dependency rule, padrões de
+            entrega (SSR, PWA, micro-frontends), performance, migração gradual e
+            métricas reais.
           </Text>
 
           <Alert color="blue" icon={<IconPuzzle size={20} />} radius="md">
@@ -88,15 +93,29 @@ export default function Cases() {
               O que este playbook tem a ver com isso?
             </Text>
             <Text size="sm">
-              Cada caso abaixo usa, na prática, <strong>partes do que você encontra
-              neste guia</strong>: Clean Architecture, BFF, code splitting, feature
-              flags, PWA, monorepo, estratégias de migração. Não é coincidência —
-              é a mesma base que permite que front-end vire dinheiro em produção.
+              Cada caso abaixo usa, na prática,{' '}
+              <strong>partes do que você encontra neste guia</strong>: Clean
+              Architecture, BFF, code splitting, feature flags, PWA, monorepo,
+              estratégias de migração. Não é coincidência: é a mesma base que
+              permite que front-end vire dinheiro em produção.
             </Text>
           </Alert>
 
+          <Card withBorder p="md">
+            <Text fw={600} size="sm" mb="xs">
+              Como usar no seu time
+            </Text>
+            <Text size="xs" c="dimmed">
+              Leve o link do caso para a reunião quando defender investimento em
+              performance ou arquitetura. Cite em ADRs (“como no caso da
+              Shopify…”). Use números e fontes reais em propostas para negócio —
+              stack bonita não paga boleto, esses casos sim.
+            </Text>
+          </Card>
+
           <Text size="sm" c="dimmed">
-            Use os links ao lado para aprofundar nos temas que aparecem nos casos:
+            Use os links ao lado para aprofundar nos temas que aparecem nos
+            casos:
           </Text>
           <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="sm">
             <Anchor component={Link} to="/guides/dependency-rule" size="sm">
@@ -105,19 +124,68 @@ export default function Cases() {
             <Anchor component={Link} to="/guides/how-to-choose" size="sm">
               Como Escolher Arquitetura
             </Anchor>
-            <Anchor component={Link} to="/guides/architecture-comparison" size="sm">
+            <Anchor
+              component={Link}
+              to="/guides/architecture-comparison"
+              size="sm"
+            >
               Comparação de Arquiteturas
             </Anchor>
-            <Anchor component={Link} to="/guides/implementation-roadmap" size="sm">
+            <Anchor
+              component={Link}
+              to="/guides/implementation-roadmap"
+              size="sm"
+            >
               Roadmap de Implementação
             </Anchor>
-            <Anchor component={Link} to="/guides/migration-strategies" size="sm">
+            <Anchor
+              component={Link}
+              to="/guides/migration-strategies"
+              size="sm"
+            >
               Estratégias de Migração
             </Anchor>
             <Anchor component={Link} to="/techniques/performance" size="sm">
               Performance
             </Anchor>
           </SimpleGrid>
+        </Stack>
+      </Paper>
+
+      {/* Para Staff: impacto e conhecer cases */}
+      <Paper
+        withBorder
+        p="xl"
+        radius="lg"
+        style={{ borderColor: 'var(--mantine-color-brand-5)', borderWidth: 2 }}
+      >
+        <Stack gap="md">
+          <Group>
+            <ThemeIcon size={50} radius="md" variant="light" color="brand">
+              <IconTarget size={25} />
+            </ThemeIcon>
+            <div>
+              <Title order={3}>
+                Para Staff: todo Staff deve gerar impacto e conhecer cases
+              </Title>
+              <Text c="dimmed">
+                Casos são evidência. Use na reunião, no ADR e na conversa com
+                negócio.
+              </Text>
+            </div>
+          </Group>
+          <Text>
+            No nível Staff, impacto vem quando decisões técnicas viram resultado
+            mensurável e quando produto e CTO confiam na sua recomendação.
+            Conhecer casos reais (como estes 19) é uma das formas mais diretas:
+            você para de falar em teoria e mostra "a Netflix fez X nas Smart
+            TVs; o eBay provou que 100ms = +0,5% Add to Cart". Todo Staff
+            deveria ter um repertório de casos na cabeça e usar como evidência.
+            Cada card abaixo tem link pro artigo original.
+          </Text>
+          <Anchor component={Link} to="/guides/staff" size="sm" fw={600}>
+            Ver hub Para Staff
+          </Anchor>
         </Stack>
       </Paper>
 
@@ -137,10 +205,10 @@ export default function Cases() {
           </Group>
 
           <Text>
-            Em cada card: <strong>desafio</strong>, <strong>solução</strong>, práticas
-            usadas e resultado. Não é sobre "React ou Vue" — é sobre{' '}
-            <strong>fazer dinheiro com código</strong>. Performance vira conversão,
-            conversão vira dinheiro.
+            Em cada card: <strong>desafio</strong>, <strong>solução</strong>,
+            práticas usadas e resultado. Não é sobre "React ou Vue", é sobre{' '}
+            <strong>fazer dinheiro com código</strong>. Performance vira
+            conversão, conversão vira dinheiro.
           </Text>
         </Stack>
       </Paper>
@@ -295,8 +363,8 @@ export default function Cases() {
 
           <Text>
             Não é sobre "qual framework usar", é sobre resolver o problema que
-            está matando o negócio. Arquitetura certa + métricas reais =
-            impacto mensurável.
+            está matando o negócio. Arquitetura certa + métricas reais = impacto
+            mensurável.
           </Text>
 
           <Alert color="yellow" icon={<IconRocket size={16} />} radius="md">

@@ -418,36 +418,71 @@ export default function SecurityPatterns() {
 
         <Stack gap="md">
           <Card withBorder p="md">
-            <Title order={4} mb="sm">Artigos e Case Studies</Title>
+            <Title order={4} mb="sm">
+              Artigos e Case Studies
+            </Title>
             <List spacing="xs" size="sm">
               <List.Item>
                 <strong>OWASP:</strong>{' '}
-                <a href="https://owasp.org/www-project-top-ten/" target="_blank" rel="noopener noreferrer">Top 10 Web Application Security Risks</a>
+                <a
+                  href="https://owasp.org/www-project-top-ten/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Top 10 Web Application Security Risks
+                </a>
               </List.Item>
               <List.Item>
                 <strong>GitHub:</strong>{' '}
-                <a href="https://github.blog/2017-01-19-githubs-post-csp-journey/" target="_blank" rel="noopener noreferrer">GitHub's post-CSP journey</a>
+                <a
+                  href="https://github.blog/2017-01-19-githubs-post-csp-journey/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  GitHub's post-CSP journey
+                </a>
               </List.Item>
               <List.Item>
                 <strong>Dropbox:</strong>{' '}
-                <a href="https://dropbox.tech/security/content-security-policy-at-dropbox" target="_blank" rel="noopener noreferrer">Content Security Policy at Dropbox</a>
+                <a
+                  href="https://dropbox.tech/security/content-security-policy-at-dropbox"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Content Security Policy at Dropbox
+                </a>
               </List.Item>
               <List.Item>
                 <strong>Discord:</strong>{' '}
-                <a href="https://discord.com/blog/how-discord-modernized-mfa-with-webauthn" target="_blank" rel="noopener noreferrer">How Discord Modernized MFA with WebAuthn</a>
+                <a
+                  href="https://discord.com/blog/how-discord-modernized-mfa-with-webauthn"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  How Discord Modernized MFA with WebAuthn
+                </a>
               </List.Item>
               <List.Item>
                 <strong>Shopify:</strong>{' '}
-                <a href="https://shopify.engineering/shipping-support-for-module-script-integrity" target="_blank" rel="noopener noreferrer">Shipping support for module script integrity</a>
+                <a
+                  href="https://shopify.engineering/shipping-support-for-module-script-integrity"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Shipping support for module script integrity
+                </a>
               </List.Item>
             </List>
           </Card>
 
           <Card withBorder p="md">
-            <Title order={4} mb="sm">Ferramentas</Title>
+            <Title order={4} mb="sm">
+              Ferramentas
+            </Title>
             <List spacing="xs" size="sm">
               <List.Item>
-                <strong>helmet.js:</strong> Security headers para Node.js/Express
+                <strong>helmet.js:</strong> Security headers para
+                Node.js/Express
               </List.Item>
               <List.Item>
                 <strong>Zod / Yup:</strong> Validação de input no frontend
@@ -476,15 +511,20 @@ export default function SecurityPatterns() {
             pequenos, implemente as práticas básicas:
           </Text>
 
-          <List spacing="sm">
-            <List.Item>✅ Valide todos os inputs</List.Item>
-            <List.Item>✅ Sanitize conteúdo do usuário</List.Item>
-            <List.Item>✅ Use HTTPS sempre</List.Item>
-            <List.Item>✅ Configure CORS corretamente</List.Item>
-            <List.Item>✅ Mantenha dependências atualizadas</List.Item>
-            <List.Item>
-              ✅ Não confie no front-end para dados sensíveis
-            </List.Item>
+          <List
+            spacing="sm"
+            icon={
+              <ThemeIcon size={20} radius="xl" color="green">
+                <IconCheck size={12} />
+              </ThemeIcon>
+            }
+          >
+            <List.Item>Valide todos os inputs</List.Item>
+            <List.Item>Sanitize conteúdo do usuário</List.Item>
+            <List.Item>Use HTTPS sempre</List.Item>
+            <List.Item>Configure CORS corretamente</List.Item>
+            <List.Item>Mantenha dependências atualizadas</List.Item>
+            <List.Item>Não confie no front-end para dados sensíveis</List.Item>
           </List>
 
           <Alert color="blue" title="Lembre-se">

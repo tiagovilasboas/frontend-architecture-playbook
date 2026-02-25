@@ -59,17 +59,18 @@ function MicroFrontends() {
           </Text>
 
           <Text>
-            A decisão #1 é <strong>como os micro-frontends se comunicam</strong>:
-            shared state via Custom Events ou shared store? Como evitar CSS
+            A decisão #1 é <strong>como os micro-frontends se comunicam</strong>
+            : shared state via Custom Events ou shared store? Como evitar CSS
             leaking entre apps? Como rotear entre apps de times diferentes?
             Essas são as perguntas reais que definem o sucesso da arquitetura.
           </Text>
 
           <Text>
-            A regra de ouro: <em>se você tem menos de 3 times, monorepo é
-            melhor</em>. Micro-frontends resolvem problemas organizacionais
-            (times autônomos), não problemas técnicos. O overhead de
-            infraestrutura é real.
+            A regra de ouro:{' '}
+            <em>se você tem menos de 3 times, monorepo é melhor</em>.
+            Micro-frontends resolvem problemas organizacionais (times
+            autônomos), não problemas técnicos. O overhead de infraestrutura é
+            real.
           </Text>
         </Stack>
       </Paper>
@@ -223,7 +224,7 @@ function MicroFrontends() {
         <Stack gap="md">
           <Alert color="red" icon={<IconAlertTriangle size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ❌ CSS Leaking entre apps
+              CSS Leaking entre apps
             </Text>
             <Text size="sm" c="dimmed">
               Estilos de um micro-frontend afetam outro. Soluções: Shadow DOM
@@ -234,19 +235,19 @@ function MicroFrontends() {
 
           <Alert color="orange" icon={<IconAlertTriangle size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ❌ Shared state entre apps
+              Shared state entre apps
             </Text>
             <Text size="sm" c="dimmed">
-              Se dois apps precisam do mesmo estado (user logado, carrinho),
-              as opções são: Custom Events (simples, sem type safety), shared
-              npm package com store (acoplamento de versão), ou API como
-              fonte de verdade (mais requests, mais correto).
+              Se dois apps precisam do mesmo estado (user logado, carrinho), as
+              opções são: Custom Events (simples, sem type safety), shared npm
+              package com store (acoplamento de versão), ou API como fonte de
+              verdade (mais requests, mais correto).
             </Text>
           </Alert>
 
           <Alert color="yellow" icon={<IconAlertTriangle size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ❌ Bundle duplicado (React carrega 3x)
+              Bundle duplicado (React carrega 3x)
             </Text>
             <Text size="sm" c="dimmed">
               Cada micro-frontend traz seu próprio React, Lodash, etc. Module
@@ -257,7 +258,7 @@ function MicroFrontends() {
 
           <Alert color="yellow" icon={<IconAlertTriangle size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ❌ Roteamento cross-app
+              Roteamento cross-app
             </Text>
             <Text size="sm" c="dimmed">
               Quem controla a URL? O shell app precisa delegar rotas para cada
@@ -268,7 +269,7 @@ function MicroFrontends() {
 
           <Alert color="green" icon={<IconCheck size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ✅ Quando NÃO usar
+              Quando NÃO usar
             </Text>
             <Text size="sm" c="dimmed">
               <strong>{'< 3 times independentes:'}</strong> Monorepo resolve
@@ -303,17 +304,35 @@ function MicroFrontends() {
             </Title>
             <List size="sm" spacing="xs">
               <List.Item>
-                      <strong>Martin Fowler:</strong>{' '}
-                      <a href="https://martinfowler.com/articles/micro-frontends.html" target="_blank" rel="noopener noreferrer">Micro Frontends</a>
-                    </List.Item>
-                    <List.Item>
-                      <strong>Module Federation:</strong>{' '}
-                      <a href="https://module-federation.io/" target="_blank" rel="noopener noreferrer">Documentação oficial</a>
-                    </List.Item>
-                    <List.Item>
-                      <strong>Single-SPA:</strong>{' '}
-                      <a href="https://single-spa.js.org/" target="_blank" rel="noopener noreferrer">Framework para micro frontends</a>
-                    </List.Item>
+                <strong>Martin Fowler:</strong>{' '}
+                <a
+                  href="https://martinfowler.com/articles/micro-frontends.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Micro Frontends
+                </a>
+              </List.Item>
+              <List.Item>
+                <strong>Module Federation:</strong>{' '}
+                <a
+                  href="https://module-federation.io/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Documentação oficial
+                </a>
+              </List.Item>
+              <List.Item>
+                <strong>Single-SPA:</strong>{' '}
+                <a
+                  href="https://single-spa.js.org/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Framework para micro frontends
+                </a>
+              </List.Item>
             </List>
           </Card>
 

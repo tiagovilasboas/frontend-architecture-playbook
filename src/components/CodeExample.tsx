@@ -99,41 +99,45 @@ export default function CodeExample({
       onClick={handleToggle}
     >
       <Stack gap="sm">
-        <Group justify="space-between" align="center" wrap="nowrap">
-          <Group gap="xs" align="center" style={{ minWidth: 0, flex: 1 }}>
-            <IconCode size={16} />
-            <Text
-              fw={600}
-              size={isMobile ? 'xs' : 'sm'}
-              style={{
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
-                whiteSpace: 'nowrap',
-              }}
-            >
-              {title}
-            </Text>
-          </Group>
-          <Group gap={4} align="center" style={{ flexShrink: 0 }}>
-            <div
-              style={{
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                padding: '4px',
-              }}
-              onClick={e => {
-                e.stopPropagation();
-                handleToggle();
-              }}
-            >
-              {expanded ? (
-                <IconChevronUp size={isMobile ? 20 : 24} />
-              ) : (
-                <IconChevronDown size={isMobile ? 20 : 24} />
-              )}
-            </div>
-          </Group>
+        <Group
+          gap="xs"
+          align="center"
+          wrap="nowrap"
+          style={{ width: '100%', minWidth: 0 }}
+        >
+          <div
+            style={{
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              padding: '4px',
+              flexShrink: 0,
+            }}
+            onClick={e => {
+              e.stopPropagation();
+              handleToggle();
+            }}
+          >
+            {expanded ? (
+              <IconChevronUp size={isMobile ? 20 : 24} />
+            ) : (
+              <IconChevronDown size={isMobile ? 20 : 24} />
+            )}
+          </div>
+          <IconCode size={16} style={{ flexShrink: 0 }} />
+          <Text
+            fw={600}
+            size={isMobile ? 'xs' : 'sm'}
+            style={{
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              whiteSpace: 'nowrap',
+              minWidth: 0,
+              flex: 1,
+            }}
+          >
+            {title}
+          </Text>
         </Group>
 
         <Group justify="space-between" align="center" mb={4}>

@@ -143,7 +143,7 @@ class UserService {
             <Text size="sm" mb="md">
               Contratos que o core define
             </Text>
-            <Code mb="md">
+            <Code block mb="md">
               {`interface UserRepository {
   save(user: User): Promise<User>
   findById(id: string): Promise<User>
@@ -166,7 +166,7 @@ interface EmailService {
             <Text size="sm" mb="md">
               Como conectar com mundo real
             </Text>
-            <Code mb="md">
+            <Code block mb="md">
               {`class MongoUserRepository implements UserRepository {
   async save(user: User) {
     return await UserModel.create(user)
@@ -282,7 +282,7 @@ class SMTPEmailService implements EmailService {
         <Stack gap="md">
           <Alert color="red" icon={<IconAlertTriangle size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ❌ Over-engineering
+              Over-engineering
             </Text>
             <Text size="sm" c="dimmed">
               Hexagonal para projetos simples. Use apenas quando há complexidade
@@ -292,7 +292,7 @@ class SMTPEmailService implements EmailService {
 
           <Alert color="orange" icon={<IconAlertTriangle size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ❌ Interface explosion
+              Interface explosion
             </Text>
             <Text size="sm" c="dimmed">
               Muitas interfaces podem complicar. Mantenha foco no essencial.
@@ -301,7 +301,7 @@ class SMTPEmailService implements EmailService {
 
           <Alert color="yellow" icon={<IconAlertTriangle size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ❌ Performance overhead
+              Performance overhead
             </Text>
             <Text size="sm" c="dimmed">
               Muitas abstrações podem impactar performance. Use com moderação.
@@ -310,7 +310,7 @@ class SMTPEmailService implements EmailService {
 
           <Alert color="green" icon={<IconCheck size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ✅ Como evitar
+              Como evitar
             </Text>
             <Text size="sm" c="dimmed">
               <strong>Use quando necessário:</strong> Complexidade real apenas
@@ -364,17 +364,35 @@ class SMTPEmailService implements EmailService {
             </Title>
             <List size="sm" spacing="xs">
               <List.Item>
-                      <strong>Alistair Cockburn:</strong>{' '}
-                      <a href="https://alistair.cockburn.us/hexagonal-architecture/" target="_blank" rel="noopener noreferrer">Hexagonal Architecture (original)</a>
-                    </List.Item>
-                    <List.Item>
-                      <strong>Netflix Tech Blog:</strong>{' '}
-                      <a href="https://netflixtechblog.com/ready-for-changes-with-hexagonal-architecture-b315ec967749" target="_blank" rel="noopener noreferrer">Ready for Changes with Hexagonal Architecture</a>
-                    </List.Item>
-                    <List.Item>
-                      <strong>Herberto Graca:</strong>{' '}
-                      <a href="https://herbertograca.com/2017/11/16/explicit-architecture-01-ddd-hexagonal-onion-clean-cqrs-how-i-put-it-all-together/" target="_blank" rel="noopener noreferrer">DDD, Hexagonal, Clean - How I Put It Together</a>
-                    </List.Item>
+                <strong>Alistair Cockburn:</strong>{' '}
+                <a
+                  href="https://alistair.cockburn.us/hexagonal-architecture/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Hexagonal Architecture (original)
+                </a>
+              </List.Item>
+              <List.Item>
+                <strong>Netflix Tech Blog:</strong>{' '}
+                <a
+                  href="https://netflixtechblog.com/ready-for-changes-with-hexagonal-architecture-b315ec967749"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Ready for Changes with Hexagonal Architecture
+                </a>
+              </List.Item>
+              <List.Item>
+                <strong>Herberto Graca:</strong>{' '}
+                <a
+                  href="https://herbertograca.com/2017/11/16/explicit-architecture-01-ddd-hexagonal-onion-clean-cqrs-how-i-put-it-all-together/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  DDD, Hexagonal, Clean - How I Put It Together
+                </a>
+              </List.Item>
             </List>
           </Card>
         </Stack>

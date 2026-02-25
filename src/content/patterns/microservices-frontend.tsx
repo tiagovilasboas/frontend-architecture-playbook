@@ -159,7 +159,7 @@ shell-app/
             <Text size="sm" c="dimmed" mb="md">
               Micro-frontends como bibliotecas
             </Text>
-            <Code mb="md">
+            <Code block mb="md">
               {`// Shell app - instala micro-frontends
 {
   "dependencies": {
@@ -198,7 +198,7 @@ function Dashboard() {
             <Text size="sm" c="dimmed" mb="md">
               Carregar micro-frontends dinamicamente
             </Text>
-            <Code mb="md">
+            <Code block mb="md">
               {`// webpack.config.js - Module Federation
 new ModuleFederationPlugin({
   name: 'shell',
@@ -246,7 +246,9 @@ const OrderApp = React.lazy(() => import('orderApp/OrderHistory'))`}
                   Cenário: plataforma com player, busca e biblioteca
                 </Text>
                 <List size="sm" spacing="xs">
-                  <List.Item>Cada feature em seu próprio micro-frontend</List.Item>
+                  <List.Item>
+                    Cada feature em seu próprio micro-frontend
+                  </List.Item>
                   <List.Item>Times independentes por domínio</List.Item>
                   <List.Item>Deploy independente por feature</List.Item>
                   <List.Item>Shell app orquestra carregamento</List.Item>
@@ -314,7 +316,7 @@ const OrderApp = React.lazy(() => import('orderApp/OrderHistory'))`}
         <Stack gap="md">
           <Alert color="red" icon={<IconAlertTriangle size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ❌ Complexidade excessiva
+              Complexidade excessiva
             </Text>
             <Text size="sm" c="dimmed">
               Micro-frontends para times pequenos é overkill. Use apenas quando
@@ -324,7 +326,7 @@ const OrderApp = React.lazy(() => import('orderApp/OrderHistory'))`}
 
           <Alert color="orange" icon={<IconAlertTriangle size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ❌ Performance degradada
+              Performance degradada
             </Text>
             <Text size="sm" c="dimmed">
               Múltiplos bundles, carregamento lento. Use code splitting e lazy
@@ -334,7 +336,7 @@ const OrderApp = React.lazy(() => import('orderApp/OrderHistory'))`}
 
           <Alert color="yellow" icon={<IconAlertTriangle size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ❌ Inconsistência de UX
+              Inconsistência de UX
             </Text>
             <Text size="sm" c="dimmed">
               Diferentes tecnologias podem criar UX inconsistente. Use design
@@ -344,7 +346,7 @@ const OrderApp = React.lazy(() => import('orderApp/OrderHistory'))`}
 
           <Alert color="green" icon={<IconCheck size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ✅ Como evitar
+              Como evitar
             </Text>
             <Text size="sm" c="dimmed">
               <strong>Comece simples:</strong> Monolito antes de micro-frontends
@@ -400,19 +402,43 @@ const OrderApp = React.lazy(() => import('orderApp/OrderHistory'))`}
             <List size="sm" spacing="xs">
               <List.Item>
                 <strong>Martin Fowler:</strong>{' '}
-                <a href="https://martinfowler.com/articles/micro-frontends.html" target="_blank" rel="noopener noreferrer">Micro Frontends</a>
+                <a
+                  href="https://martinfowler.com/articles/micro-frontends.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Micro Frontends
+                </a>
               </List.Item>
               <List.Item>
                 <strong>Module Federation:</strong>{' '}
-                <a href="https://module-federation.io/" target="_blank" rel="noopener noreferrer">Documentação oficial</a>
+                <a
+                  href="https://module-federation.io/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Documentação oficial
+                </a>
               </List.Item>
               <List.Item>
                 <strong>micro-frontends.org:</strong>{' '}
-                <a href="https://micro-frontends.org/" target="_blank" rel="noopener noreferrer">Guia completo</a>
+                <a
+                  href="https://micro-frontends.org/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Guia completo
+                </a>
               </List.Item>
               <List.Item>
                 <strong>Luca Mezzalira:</strong>{' '}
-                <a href="https://www.oreilly.com/library/view/building-micro-frontends/9781492082989/" target="_blank" rel="noopener noreferrer">Building Micro-Frontends (O'Reilly)</a>
+                <a
+                  href="https://www.oreilly.com/library/view/building-micro-frontends/9781492082989/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Building Micro-Frontends (O'Reilly)
+                </a>
               </List.Item>
             </List>
           </Card>

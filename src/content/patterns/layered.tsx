@@ -136,7 +136,7 @@ const productApi = {
             <Text size="sm" c="dimmed" mb="md">
               Renderiza UI, captura eventos do usuário
             </Text>
-            <Code mb="md">
+            <Code block mb="md">
               {`// React component (Presentation)
 function OrderList() {
   const { orders, isLoading } = useOrders()
@@ -171,7 +171,7 @@ function OrderList() {
             <Text size="sm" c="dimmed" mb="md">
               Regras de negócio, validações, orquestração
             </Text>
-            <Code mb="md">
+            <Code block mb="md">
               {`// Custom hook (Business Layer)
 function useCreateOrder() {
   const mutation = useMutation(orderApi.create)
@@ -207,7 +207,7 @@ function useCreateOrder() {
             <Text size="sm" c="dimmed" mb="md">
               Comunicação com APIs, cache, localStorage
             </Text>
-            <Code mb="md">
+            <Code block mb="md">
               {`// API client (Data Layer)
 const orderApi = {
   create: (data: CreateOrderDTO) =>
@@ -329,7 +329,7 @@ const orderApi = {
         <Stack gap="md">
           <Alert color="red" icon={<IconAlertTriangle size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ❌ Anemic domain model
+              Anemic domain model
             </Text>
             <Text size="sm" c="dimmed">
               Business logic vaza para services. Mantenha lógica no domínio.
@@ -338,7 +338,7 @@ const orderApi = {
 
           <Alert color="orange" icon={<IconAlertTriangle size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ❌ Fat controllers
+              Fat controllers
             </Text>
             <Text size="sm" c="dimmed">
               Componentes fazem muito. Delegue lógica para hooks e services.
@@ -347,7 +347,7 @@ const orderApi = {
 
           <Alert color="yellow" icon={<IconAlertTriangle size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ❌ Circular dependencies
+              Circular dependencies
             </Text>
             <Text size="sm" c="dimmed">
               Camadas dependem umas das outras. Mantenha dependência
@@ -357,7 +357,7 @@ const orderApi = {
 
           <Alert color="green" icon={<IconCheck size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ✅ Como evitar
+              Como evitar
             </Text>
             <Text size="sm" c="dimmed">
               <strong>Mantenha lógica no domínio:</strong> Rich domain model
@@ -413,15 +413,33 @@ const orderApi = {
             <List size="sm" spacing="xs">
               <List.Item>
                 <strong>Martin Fowler:</strong>{' '}
-                <a href="https://martinfowler.com/bliki/PresentationDomainDataLayering.html" target="_blank" rel="noopener noreferrer">Presentation Domain Data Layering</a>
+                <a
+                  href="https://martinfowler.com/bliki/PresentationDomainDataLayering.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Presentation Domain Data Layering
+                </a>
               </List.Item>
               <List.Item>
                 <strong>Bulletproof React:</strong>{' '}
-                <a href="https://github.com/alan2207/bulletproof-react" target="_blank" rel="noopener noreferrer">Feature-based layered structure</a>
+                <a
+                  href="https://github.com/alan2207/bulletproof-react"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Feature-based layered structure
+                </a>
               </List.Item>
               <List.Item>
                 <strong>Eric Elliott:</strong>{' '}
-                <a href="https://medium.com/javascript-scene/the-forgotten-history-of-oop-88d71b9b2d9f" target="_blank" rel="noopener noreferrer">Software Architecture Patterns</a>
+                <a
+                  href="https://medium.com/javascript-scene/the-forgotten-history-of-oop-88d71b9b2d9f"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Software Architecture Patterns
+                </a>
               </List.Item>
             </List>
           </Card>

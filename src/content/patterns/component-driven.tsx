@@ -222,7 +222,7 @@ function ComponentDriven() {
         <Stack gap="md">
           <Alert color="red" icon={<IconAlertTriangle size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ❌ Over-abstraction
+              Over-abstraction
             </Text>
             <Text size="sm" c="dimmed">
               Criar componentes muito genéricos que não resolvem problemas
@@ -232,7 +232,7 @@ function ComponentDriven() {
 
           <Alert color="orange" icon={<IconAlertTriangle size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ❌ Props explosion
+              Props explosion
             </Text>
             <Text size="sm" c="dimmed">
               Componentes com muitas props se tornam difíceis de usar. Use
@@ -242,7 +242,7 @@ function ComponentDriven() {
 
           <Alert color="yellow" icon={<IconAlertTriangle size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ❌ Inconsistência
+              Inconsistência
             </Text>
             <Text size="sm" c="dimmed">
               Componentes sem padrões claros criam inconsistência visual.
@@ -252,7 +252,7 @@ function ComponentDriven() {
 
           <Alert color="green" icon={<IconCheck size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ✅ Como evitar
+              Como evitar
             </Text>
             <Text size="sm" c="dimmed">
               <strong>Comece simples:</strong> Componentes específicos antes de
@@ -305,17 +305,35 @@ function ComponentDriven() {
             </Title>
             <List size="sm" spacing="xs">
               <List.Item>
-                      <strong>Storybook:</strong>{' '}
-                      <a href="https://storybook.js.org/tutorials/design-systems-for-developers/" target="_blank" rel="noopener noreferrer">Design Systems for Developers</a>
-                    </List.Item>
-                    <List.Item>
-                      <strong>Chromatic:</strong>{' '}
-                      <a href="https://www.chromatic.com/blog/component-driven-development/" target="_blank" rel="noopener noreferrer">Component Driven Development</a>
-                    </List.Item>
-                    <List.Item>
-                      <strong>Brad Frost:</strong>{' '}
-                      <a href="https://bradfrost.com/blog/post/atomic-web-design/" target="_blank" rel="noopener noreferrer">Atomic Web Design</a>
-                    </List.Item>
+                <strong>Storybook:</strong>{' '}
+                <a
+                  href="https://storybook.js.org/tutorials/design-systems-for-developers/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Design Systems for Developers
+                </a>
+              </List.Item>
+              <List.Item>
+                <strong>Chromatic:</strong>{' '}
+                <a
+                  href="https://www.chromatic.com/blog/component-driven-development/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Component Driven Development
+                </a>
+              </List.Item>
+              <List.Item>
+                <strong>Brad Frost:</strong>{' '}
+                <a
+                  href="https://bradfrost.com/blog/post/atomic-web-design/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Atomic Web Design
+                </a>
+              </List.Item>
             </List>
           </Card>
         </Stack>

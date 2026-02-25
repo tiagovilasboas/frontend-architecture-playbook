@@ -147,6 +147,24 @@ export default function Performance() {
         </Stack>
       </Paper>
 
+      {/* Como usar no seu time */}
+      <Paper withBorder p="xl">
+        <Title order={2} mb="md">
+          <ThemeIcon variant="light" color="blue" mr="sm">
+            <IconCheck />
+          </ThemeIcon>
+          Como usar no seu time
+        </Title>
+        <Stack gap="sm">
+          <Text size="sm">
+            Priorize por impacto no negócio: LCP e FID em páginas de conversão
+            primeiro. Use métricas reais (Core Web Vitals, dashboard) em OKRs e
+            em ADRs quando a decisão afetar entrega. Staff: exija “antes/depois”
+            em PRs que mexem em bundle ou render — números, não opinião.
+          </Text>
+        </Stack>
+      </Paper>
+
       {/* Técnicas Práticas */}
       <Paper withBorder p="xl">
         <Title order={2} mb="md">

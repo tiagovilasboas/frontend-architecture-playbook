@@ -243,7 +243,7 @@ Frontend: fetch('/api/products') → React/Vue/Angular/qualquer coisa`}
         <Stack gap="md">
           <Alert color="red" icon={<IconAlertTriangle size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ❌ Complexidade de setup
+              Complexidade de setup
             </Text>
             <Text size="sm" c="dimmed">
               Headless CMS requer mais configuração inicial. Use ferramentas
@@ -253,7 +253,7 @@ Frontend: fetch('/api/products') → React/Vue/Angular/qualquer coisa`}
 
           <Alert color="orange" icon={<IconAlertTriangle size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ❌ Dependência de APIs
+              Dependência de APIs
             </Text>
             <Text size="sm" c="dimmed">
               Frontend depende de APIs externas. Implemente cache e fallbacks
@@ -263,7 +263,7 @@ Frontend: fetch('/api/products') → React/Vue/Angular/qualquer coisa`}
 
           <Alert color="yellow" icon={<IconAlertTriangle size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ❌ Over-engineering
+              Over-engineering
             </Text>
             <Text size="sm" c="dimmed">
               Headless para sites simples é overkill. Use apenas quando há
@@ -273,7 +273,7 @@ Frontend: fetch('/api/products') → React/Vue/Angular/qualquer coisa`}
 
           <Alert color="green" icon={<IconCheck size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ✅ Como evitar
+              Como evitar
             </Text>
             <Text size="sm" c="dimmed">
               <strong>Comece simples:</strong> CMS tradicional para sites
@@ -329,21 +329,45 @@ Frontend: fetch('/api/products') → React/Vue/Angular/qualquer coisa`}
             </Title>
             <List size="sm" spacing="xs">
               <List.Item>
-                      <strong>Shopify Hydrogen:</strong>{' '}
-                      <a href="https://hydrogen.shopify.dev/" target="_blank" rel="noopener noreferrer">Headless commerce framework</a>
-                    </List.Item>
-                    <List.Item>
-                      <strong>Strapi:</strong>{' '}
-                      <a href="https://strapi.io/" target="_blank" rel="noopener noreferrer">Open-source headless CMS</a>
-                    </List.Item>
-                    <List.Item>
-                      <strong>Contentful:</strong>{' '}
-                      <a href="https://www.contentful.com/headless-cms/" target="_blank" rel="noopener noreferrer">What is a Headless CMS?</a>
-                    </List.Item>
-                    <List.Item>
-                      <strong>Sanity:</strong>{' '}
-                      <a href="https://www.sanity.io/headless-cms" target="_blank" rel="noopener noreferrer">Structured content platform</a>
-                    </List.Item>
+                <strong>Shopify Hydrogen:</strong>{' '}
+                <a
+                  href="https://hydrogen.shopify.dev/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Headless commerce framework
+                </a>
+              </List.Item>
+              <List.Item>
+                <strong>Strapi:</strong>{' '}
+                <a
+                  href="https://strapi.io/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Open-source headless CMS
+                </a>
+              </List.Item>
+              <List.Item>
+                <strong>Contentful:</strong>{' '}
+                <a
+                  href="https://www.contentful.com/headless-cms/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  What is a Headless CMS?
+                </a>
+              </List.Item>
+              <List.Item>
+                <strong>Sanity:</strong>{' '}
+                <a
+                  href="https://www.sanity.io/headless-cms"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Structured content platform
+                </a>
+              </List.Item>
             </List>
           </Card>
         </Stack>

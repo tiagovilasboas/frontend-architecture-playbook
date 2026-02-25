@@ -381,7 +381,7 @@ function ShoppingCart() {
         <Stack gap="md">
           <Alert color="red" icon={<IconAlertTriangle size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ❌ Performance issues
+              Performance issues
             </Text>
             <Text size="sm" c="dimmed">
               Muitos eventos podem impactar performance. Use snapshots e
@@ -391,7 +391,7 @@ function ShoppingCart() {
 
           <Alert color="orange" icon={<IconAlertTriangle size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ❌ Complexidade excessiva
+              Complexidade excessiva
             </Text>
             <Text size="sm" c="dimmed">
               Event Sourcing para problemas simples. Use apenas quando
@@ -401,7 +401,7 @@ function ShoppingCart() {
 
           <Alert color="yellow" icon={<IconAlertTriangle size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ❌ Event schema evolution
+              Event schema evolution
             </Text>
             <Text size="sm" c="dimmed">
               Mudanças no schema de eventos podem quebrar replay. Versioning é
@@ -411,7 +411,7 @@ function ShoppingCart() {
 
           <Alert color="green" icon={<IconCheck size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ✅ Como evitar
+              Como evitar
             </Text>
             <Text size="sm" c="dimmed">
               <strong>Use snapshots:</strong> Para performance
@@ -465,17 +465,35 @@ function ShoppingCart() {
             </Title>
             <List size="sm" spacing="xs">
               <List.Item>
-                      <strong>Martin Fowler:</strong>{' '}
-                      <a href="https://martinfowler.com/eaaDev/EventSourcing.html" target="_blank" rel="noopener noreferrer">Event Sourcing</a>
-                    </List.Item>
-                    <List.Item>
-                      <strong>Greg Young:</strong>{' '}
-                      <a href="https://www.youtube.com/watch?v=8JKjvY4etTY" target="_blank" rel="noopener noreferrer">CQRS and Event Sourcing (talk)</a>
-                    </List.Item>
-                    <List.Item>
-                      <strong>Redux Toolkit:</strong>{' '}
-                      <a href="https://redux-toolkit.js.org/" target="_blank" rel="noopener noreferrer">Event-driven state no frontend</a>
-                    </List.Item>
+                <strong>Martin Fowler:</strong>{' '}
+                <a
+                  href="https://martinfowler.com/eaaDev/EventSourcing.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Event Sourcing
+                </a>
+              </List.Item>
+              <List.Item>
+                <strong>Greg Young:</strong>{' '}
+                <a
+                  href="https://www.youtube.com/watch?v=8JKjvY4etTY"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  CQRS and Event Sourcing (talk)
+                </a>
+              </List.Item>
+              <List.Item>
+                <strong>Redux Toolkit:</strong>{' '}
+                <a
+                  href="https://redux-toolkit.js.org/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Event-driven state no frontend
+                </a>
+              </List.Item>
             </List>
           </Card>
         </Stack>

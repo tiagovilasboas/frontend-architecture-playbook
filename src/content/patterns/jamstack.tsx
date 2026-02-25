@@ -228,7 +228,9 @@ function JAMstack() {
                   Blog migrado para JAMstack
                 </Text>
                 <List size="sm" spacing="xs">
-                  <List.Item>Performance melhor com páginas pré-geradas</List.Item>
+                  <List.Item>
+                    Performance melhor com páginas pré-geradas
+                  </List.Item>
                   <List.Item>SEO otimizado</List.Item>
                   <List.Item>Deploy em segundos</List.Item>
                   <List.Item>Menor custo de infraestrutura</List.Item>
@@ -276,7 +278,7 @@ function JAMstack() {
         <Stack gap="md">
           <Alert color="red" icon={<IconAlertTriangle size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ❌ Build times longos
+              Build times longos
             </Text>
             <Text size="sm" c="dimmed">
               Sites grandes podem ter build times de 10+ minutos. Use
@@ -286,7 +288,7 @@ function JAMstack() {
 
           <Alert color="orange" icon={<IconAlertTriangle size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ❌ Dados dinâmicos
+              Dados dinâmicos
             </Text>
             <Text size="sm" c="dimmed">
               Conteúdo que muda constantemente precisa de rebuilds frequentes.
@@ -296,7 +298,7 @@ function JAMstack() {
 
           <Alert color="yellow" icon={<IconAlertTriangle size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ❌ Complexidade de deploy
+              Complexidade de deploy
             </Text>
             <Text size="sm" c="dimmed">
               Múltiplas APIs e serviços podem complicar o deploy. Use
@@ -306,7 +308,7 @@ function JAMstack() {
 
           <Alert color="green" icon={<IconCheck size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ✅ Como evitar
+              Como evitar
             </Text>
             <Text size="sm" c="dimmed">
               <strong>Comece simples:</strong> Site estático antes de APIs
@@ -360,21 +362,45 @@ function JAMstack() {
             </Title>
             <List size="sm" spacing="xs">
               <List.Item>
-                      <strong>Jamstack.org:</strong>{' '}
-                      <a href="https://jamstack.org/" target="_blank" rel="noopener noreferrer">O que é JAMstack</a>
-                    </List.Item>
-                    <List.Item>
-                      <strong>Netlify:</strong>{' '}
-                      <a href="https://www.netlify.com/blog/2020/04/14/what-is-a-static-site-generator-and-3-ways-to-find-the-best-one/" target="_blank" rel="noopener noreferrer">Static Site Generators</a>
-                    </List.Item>
-                    <List.Item>
-                      <strong>Astro:</strong>{' '}
-                      <a href="https://docs.astro.build/en/concepts/why-astro/" target="_blank" rel="noopener noreferrer">Why Astro (Islands + JAMstack)</a>
-                    </List.Item>
-                    <List.Item>
-                      <strong>Next.js:</strong>{' '}
-                      <a href="https://nextjs.org/docs/pages/building-your-application/rendering/static-site-generation" target="_blank" rel="noopener noreferrer">Static Site Generation</a>
-                    </List.Item>
+                <strong>Jamstack.org:</strong>{' '}
+                <a
+                  href="https://jamstack.org/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  O que é JAMstack
+                </a>
+              </List.Item>
+              <List.Item>
+                <strong>Netlify:</strong>{' '}
+                <a
+                  href="https://www.netlify.com/blog/2020/04/14/what-is-a-static-site-generator-and-3-ways-to-find-the-best-one/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Static Site Generators
+                </a>
+              </List.Item>
+              <List.Item>
+                <strong>Astro:</strong>{' '}
+                <a
+                  href="https://docs.astro.build/en/concepts/why-astro/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Why Astro (Islands + JAMstack)
+                </a>
+              </List.Item>
+              <List.Item>
+                <strong>Next.js:</strong>{' '}
+                <a
+                  href="https://nextjs.org/docs/pages/building-your-application/rendering/static-site-generation"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Static Site Generation
+                </a>
+              </List.Item>
             </List>
           </Card>
         </Stack>

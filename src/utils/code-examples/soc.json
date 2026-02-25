@@ -1,11 +1,11 @@
 [
   {
-    "title": "❌ Violando SOC",
+    "title": "Violando SOC",
     "description": "Componente misturando UI, lógica de negócio e API",
     "code": "function UserCard({ user }) {\n  const [data, setData] = useState(null);\n  \n  // UI fazendo lógica de negócio\n  const calculateDiscount = (price) => {\n    if (user.type === 'premium') return price * 0.2;\n    if (user.type === 'vip') return price * 0.3;\n    return 0;\n  };\n  \n  // UI fazendo chamada de API\n  useEffect(() => {\n    fetch('/api/users/' + user.id)\n      .then(res => res.json())\n      .then(setData);\n  }, []);\n  \n  return <div>{/* renderização */}</div>;\n}"
   },
   {
-    "title": "✅ Seguindo SOC",
+    "title": "Seguindo SOC",
     "description": "Cada parte com sua responsabilidade específica",
     "code": "// Lógica de negócio separada\nconst calculateDiscount = (user, price) => {\n  if (user.type === 'premium') return price * 0.2;\n  if (user.type === 'vip') return price * 0.3;\n  return 0;\n};\n\n// Serviço de API separado\nconst userService = {\n  getUser: (id) => fetch('/api/users/' + id).then(r => r.json())\n};\n\n// Componente só com UI\nfunction UserCard({ user, discount }) {\n  return <div>{/* só renderização */}</div>;\n}"
   },

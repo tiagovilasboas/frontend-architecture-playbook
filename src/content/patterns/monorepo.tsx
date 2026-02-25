@@ -274,7 +274,7 @@ function Monorepo() {
         <Stack gap="md">
           <Alert color="red" icon={<IconAlertTriangle size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ❌ Build times longos
+              Build times longos
             </Text>
             <Text size="sm" c="dimmed">
               Monorepos grandes podem ter builds muito lentos. Use build
@@ -284,7 +284,7 @@ function Monorepo() {
 
           <Alert color="orange" icon={<IconAlertTriangle size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ❌ Complexidade de permissões
+              Complexidade de permissões
             </Text>
             <Text size="sm" c="dimmed">
               Múltiplos times podem conflitar. Use CODEOWNERS e branch
@@ -294,7 +294,7 @@ function Monorepo() {
 
           <Alert color="yellow" icon={<IconAlertTriangle size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ❌ Dependências circulares
+              Dependências circulares
             </Text>
             <Text size="sm" c="dimmed">
               Projetos podem criar dependências circulares. Use ferramentas como
@@ -304,7 +304,7 @@ function Monorepo() {
 
           <Alert color="green" icon={<IconCheck size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ✅ Como evitar
+              Como evitar
             </Text>
             <Text size="sm" c="dimmed">
               <strong>Comece pequeno:</strong> Monorepo simples antes de
@@ -359,17 +359,35 @@ function Monorepo() {
             </Title>
             <List size="sm" spacing="xs">
               <List.Item>
-                      <strong>Nx:</strong>{' '}
-                      <a href="https://nx.dev/" target="_blank" rel="noopener noreferrer">Build system para monorepos</a>
-                    </List.Item>
-                    <List.Item>
-                      <strong>Turborepo:</strong>{' '}
-                      <a href="https://turbo.build/repo" target="_blank" rel="noopener noreferrer">Build system incremental</a>
-                    </List.Item>
-                    <List.Item>
-                      <strong>Nrwl:</strong>{' '}
-                      <a href="https://blog.nrwl.io/misconceptions-about-monorepos-monorepo-monolith-df1250d4b03c" target="_blank" rel="noopener noreferrer">Misconceptions about Monorepos</a>
-                    </List.Item>
+                <strong>Nx:</strong>{' '}
+                <a
+                  href="https://nx.dev/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Build system para monorepos
+                </a>
+              </List.Item>
+              <List.Item>
+                <strong>Turborepo:</strong>{' '}
+                <a
+                  href="https://turbo.build/repo"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Build system incremental
+                </a>
+              </List.Item>
+              <List.Item>
+                <strong>Nrwl:</strong>{' '}
+                <a
+                  href="https://blog.nrwl.io/misconceptions-about-monorepos-monorepo-monolith-df1250d4b03c"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Misconceptions about Monorepos
+                </a>
+              </List.Item>
             </List>
           </Card>
         </Stack>

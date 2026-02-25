@@ -298,7 +298,7 @@ function FeatureFlags() {
         <Stack gap="md">
           <Alert color="red" icon={<IconAlertTriangle size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ❌ Flag debt
+              Flag debt
             </Text>
             <Text size="sm" c="dimmed">
               Flags antigas que nunca são removidas. Limpe flags desnecessárias
@@ -308,7 +308,7 @@ function FeatureFlags() {
 
           <Alert color="orange" icon={<IconAlertTriangle size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ❌ Complexidade excessiva
+              Complexidade excessiva
             </Text>
             <Text size="sm" c="dimmed">
               Muitas flags podem complicar o código. Use apenas quando
@@ -318,7 +318,7 @@ function FeatureFlags() {
 
           <Alert color="yellow" icon={<IconAlertTriangle size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ❌ Performance impact
+              Performance impact
             </Text>
             <Text size="sm" c="dimmed">
               Verificar flags pode impactar performance. Use cache e
@@ -328,7 +328,7 @@ function FeatureFlags() {
 
           <Alert color="green" icon={<IconCheck size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ✅ Como evitar
+              Como evitar
             </Text>
             <Text size="sm" c="dimmed">
               <strong>Limpe regularmente:</strong> Remova flags desnecessárias
@@ -382,17 +382,35 @@ function FeatureFlags() {
             </Title>
             <List size="sm" spacing="xs">
               <List.Item>
-                      <strong>LaunchDarkly:</strong>{' '}
-                      <a href="https://launchdarkly.com/blog/what-are-feature-flags/" target="_blank" rel="noopener noreferrer">What are Feature Flags?</a>
-                    </List.Item>
-                    <List.Item>
-                      <strong>Martin Fowler:</strong>{' '}
-                      <a href="https://martinfowler.com/articles/feature-toggles.html" target="_blank" rel="noopener noreferrer">Feature Toggles</a>
-                    </List.Item>
-                    <List.Item>
-                      <strong>Unleash:</strong>{' '}
-                      <a href="https://www.getunleash.io/" target="_blank" rel="noopener noreferrer">Open-source feature management</a>
-                    </List.Item>
+                <strong>LaunchDarkly:</strong>{' '}
+                <a
+                  href="https://launchdarkly.com/blog/what-are-feature-flags/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  What are Feature Flags?
+                </a>
+              </List.Item>
+              <List.Item>
+                <strong>Martin Fowler:</strong>{' '}
+                <a
+                  href="https://martinfowler.com/articles/feature-toggles.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Feature Toggles
+                </a>
+              </List.Item>
+              <List.Item>
+                <strong>Unleash:</strong>{' '}
+                <a
+                  href="https://www.getunleash.io/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Open-source feature management
+                </a>
+              </List.Item>
             </List>
           </Card>
         </Stack>

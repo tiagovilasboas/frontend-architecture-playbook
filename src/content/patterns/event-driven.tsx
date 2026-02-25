@@ -70,7 +70,7 @@ function EventDriven() {
               <strong>Atenção:</strong> Muitos tutoriais recomendam{' '}
               <code>window.dispatchEvent(new CustomEvent(...))</code> para
               comunicação entre componentes React. Isso é um{' '}
-              <strong>anti-pattern</strong> — bypassa o ciclo de renderização,
+              <strong>anti-pattern</strong>: bypassa o ciclo de renderização,
               não tem type safety, e cria dependências invisíveis. Use as
               abordagens abaixo.
             </Text>
@@ -102,7 +102,8 @@ function EventDriven() {
               <div>
                 <Title order={4}>useReducer + Context</Title>
                 <Text size="sm" c="dimmed">
-                  Ações tipadas como eventos. O dispatch é o event emitter nativo do React.
+                  Ações tipadas como eventos. O dispatch é o event emitter
+                  nativo do React.
                 </Text>
                 <CodeExample
                   title={
@@ -128,7 +129,8 @@ function EventDriven() {
               <div>
                 <Title order={4}>Zustand subscribe</Title>
                 <Text size="sm" c="dimmed">
-                  Side-effects reativos. Reage a mudanças de estado como eventos.
+                  Side-effects reativos. Reage a mudanças de estado como
+                  eventos.
                 </Text>
                 <CodeExample
                   title={
@@ -154,7 +156,8 @@ function EventDriven() {
               <div>
                 <Title order={4}>XState (State Machines)</Title>
                 <Text size="sm" c="dimmed">
-                  Eventos tipados + transições explícitas. Para fluxos complexos.
+                  Eventos tipados + transições explícitas. Para fluxos
+                  complexos.
                 </Text>
                 <CodeExample
                   title={
@@ -195,11 +198,16 @@ function EventDriven() {
               <div>
                 <Title order={4}>Checkout multi-step</Title>
                 <Text size="sm" c="dimmed" mb="sm">
-                  XState: transições explícitas, impossível ficar em estado inválido
+                  XState: transições explícitas, impossível ficar em estado
+                  inválido
                 </Text>
                 <List size="sm" spacing="xs">
-                  <List.Item>Estados: cart → shipping → payment → processing → success</List.Item>
-                  <List.Item>Eventos tipados: NEXT, BACK, SUBMIT, PAYMENT_SUCCESS</List.Item>
+                  <List.Item>
+                    Estados: cart → shipping → payment → processing → success
+                  </List.Item>
+                  <List.Item>
+                    Eventos tipados: NEXT, BACK, SUBMIT, PAYMENT_SUCCESS
+                  </List.Item>
                   <List.Item>Visualizável com Stately Studio</List.Item>
                 </List>
               </div>
@@ -219,7 +227,9 @@ function EventDriven() {
                 <List size="sm" spacing="xs">
                   <List.Item>EventSource escuta eventos do servidor</List.Item>
                   <List.Item>Invalida queries quando dados mudam</List.Item>
-                  <List.Item>Componentes usam useQuery normal - não sabem que é real-time</List.Item>
+                  <List.Item>
+                    Componentes usam useQuery normal - não sabem que é real-time
+                  </List.Item>
                 </List>
               </div>
             </Group>
@@ -236,9 +246,15 @@ function EventDriven() {
                   Zustand subscribe: side-effects sem acoplar componentes
                 </Text>
                 <List size="sm" spacing="xs">
-                  <List.Item>Store muda → subscriber reage automaticamente</List.Item>
-                  <List.Item>Componente não sabe que analytics existe</List.Item>
-                  <List.Item>Adicionar/remover tracking sem tocar em UI</List.Item>
+                  <List.Item>
+                    Store muda → subscriber reage automaticamente
+                  </List.Item>
+                  <List.Item>
+                    Componente não sabe que analytics existe
+                  </List.Item>
+                  <List.Item>
+                    Adicionar/remover tracking sem tocar em UI
+                  </List.Item>
                 </List>
               </div>
             </Group>
@@ -263,17 +279,17 @@ function EventDriven() {
         <Stack gap="md">
           <Alert color="red" icon={<IconAlertTriangle size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ❌ window.dispatchEvent em React
+              window.dispatchEvent em React
             </Text>
             <Text size="sm" c="dimmed">
-              Bypassa o React, zero type safety, dependências invisíveis.
-              Use useReducer, Zustand ou XState em vez disso.
+              Bypassa o React, zero type safety, dependências invisíveis. Use
+              useReducer, Zustand ou XState em vez disso.
             </Text>
           </Alert>
 
           <Alert color="orange" icon={<IconAlertTriangle size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ❌ Over-engineering com XState
+              Over-engineering com XState
             </Text>
             <Text size="sm" c="dimmed">
               Nem todo estado precisa de state machine. useState + useReducer
@@ -284,18 +300,17 @@ function EventDriven() {
 
           <Alert color="yellow" icon={<IconAlertTriangle size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ❌ Subscribers esquecidos no Zustand
+              Subscribers esquecidos no Zustand
             </Text>
             <Text size="sm" c="dimmed">
-              subscribe() fora de componentes vive para sempre. Em testes,
-              isso causa memory leaks. Retorne o unsubscribe e limpe em
-              useEffect.
+              subscribe() fora de componentes vive para sempre. Em testes, isso
+              causa memory leaks. Retorne o unsubscribe e limpe em useEffect.
             </Text>
           </Alert>
 
           <Alert color="green" icon={<IconCheck size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ✅ Como escolher
+              Como escolher
             </Text>
             <Text size="sm" c="dimmed">
               <strong>Estado simples:</strong> useState/useReducer
@@ -332,19 +347,43 @@ function EventDriven() {
             <List size="sm" spacing="xs">
               <List.Item>
                 <strong>XState:</strong>{' '}
-                <a href="https://xstate.js.org/" target="_blank" rel="noopener noreferrer">State machines para JavaScript</a>
+                <a
+                  href="https://xstate.js.org/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  State machines para JavaScript
+                </a>
               </List.Item>
               <List.Item>
                 <strong>Zustand:</strong>{' '}
-                <a href="https://zustand-demo.pmnd.rs/" target="_blank" rel="noopener noreferrer">State management leve com subscribe</a>
+                <a
+                  href="https://zustand-demo.pmnd.rs/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  State management leve com subscribe
+                </a>
               </List.Item>
               <List.Item>
                 <strong>TanStack Query:</strong>{' '}
-                <a href="https://tanstack.com/query/latest" target="_blank" rel="noopener noreferrer">Server state + invalidation</a>
+                <a
+                  href="https://tanstack.com/query/latest"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Server state + invalidation
+                </a>
               </List.Item>
               <List.Item>
                 <strong>Stately Studio:</strong>{' '}
-                <a href="https://stately.ai/" target="_blank" rel="noopener noreferrer">Visual editor para XState</a>
+                <a
+                  href="https://stately.ai/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Visual editor para XState
+                </a>
               </List.Item>
             </List>
           </Card>
@@ -355,17 +394,35 @@ function EventDriven() {
             </Title>
             <List size="sm" spacing="xs">
               <List.Item>
-                      <strong>Martin Fowler:</strong>{' '}
-                      <a href="https://martinfowler.com/articles/201701-event-driven.html" target="_blank" rel="noopener noreferrer">What do you mean by Event-Driven?</a>
-                    </List.Item>
-                    <List.Item>
-                      <strong>EventEmitter3:</strong>{' '}
-                      <a href="https://github.com/primus/eventemitter3" target="_blank" rel="noopener noreferrer">Biblioteca de eventos leve</a>
-                    </List.Item>
-                    <List.Item>
-                      <strong>RxJS:</strong>{' '}
-                      <a href="https://rxjs.dev/" target="_blank" rel="noopener noreferrer">Reactive Extensions para JavaScript</a>
-                    </List.Item>
+                <strong>Martin Fowler:</strong>{' '}
+                <a
+                  href="https://martinfowler.com/articles/201701-event-driven.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  What do you mean by Event-Driven?
+                </a>
+              </List.Item>
+              <List.Item>
+                <strong>EventEmitter3:</strong>{' '}
+                <a
+                  href="https://github.com/primus/eventemitter3"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Biblioteca de eventos leve
+                </a>
+              </List.Item>
+              <List.Item>
+                <strong>RxJS:</strong>{' '}
+                <a
+                  href="https://rxjs.dev/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Reactive Extensions para JavaScript
+                </a>
+              </List.Item>
             </List>
           </Card>
         </Stack>

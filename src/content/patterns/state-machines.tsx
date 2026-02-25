@@ -248,7 +248,7 @@ function StateMachines() {
         <Stack gap="md">
           <Alert color="red" icon={<IconAlertTriangle size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ❌ Over-engineering
+              Over-engineering
             </Text>
             <Text size="sm" c="dimmed">
               State machines para problemas simples. Use apenas quando há
@@ -258,7 +258,7 @@ function StateMachines() {
 
           <Alert color="orange" icon={<IconAlertTriangle size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ❌ Estados inválidos
+              Estados inválidos
             </Text>
             <Text size="sm" c="dimmed">
               Estados que não deveriam existir. Defina todos os estados
@@ -268,7 +268,7 @@ function StateMachines() {
 
           <Alert color="yellow" icon={<IconAlertTriangle size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ❌ Complexidade desnecessária
+              Complexidade desnecessária
             </Text>
             <Text size="sm" c="dimmed">
               Muitos estados podem complicar. Mantenha simples e claro.
@@ -277,7 +277,7 @@ function StateMachines() {
 
           <Alert color="green" icon={<IconCheck size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ✅ Como evitar
+              Como evitar
             </Text>
             <Text size="sm" c="dimmed">
               <strong>Use quando necessário:</strong> Estados complexos apenas
@@ -333,17 +333,35 @@ function StateMachines() {
             </Title>
             <List size="sm" spacing="xs">
               <List.Item>
-                      <strong>XState:</strong>{' '}
-                      <a href="https://xstate.js.org/" target="_blank" rel="noopener noreferrer">State machines para JavaScript</a>
-                    </List.Item>
-                    <List.Item>
-                      <strong>Stately:</strong>{' '}
-                      <a href="https://stately.ai/blog/what-are-state-machines" target="_blank" rel="noopener noreferrer">What are State Machines?</a>
-                    </List.Item>
-                    <List.Item>
-                      <strong>David Khourshid:</strong>{' '}
-                      <a href="https://www.youtube.com/watch?v=VU1NKX6Qkxc" target="_blank" rel="noopener noreferrer">State Machines in React (talk)</a>
-                    </List.Item>
+                <strong>XState:</strong>{' '}
+                <a
+                  href="https://xstate.js.org/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  State machines para JavaScript
+                </a>
+              </List.Item>
+              <List.Item>
+                <strong>Stately:</strong>{' '}
+                <a
+                  href="https://stately.ai/blog/what-are-state-machines"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  What are State Machines?
+                </a>
+              </List.Item>
+              <List.Item>
+                <strong>David Khourshid:</strong>{' '}
+                <a
+                  href="https://www.youtube.com/watch?v=VU1NKX6Qkxc"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  State Machines in React (talk)
+                </a>
+              </List.Item>
             </List>
           </Card>
         </Stack>

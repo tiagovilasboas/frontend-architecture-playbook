@@ -133,7 +133,7 @@ self.addEventListener('fetch', (event) => {
               JavaScript que roda em background, intercepta requests
             </Text>
 
-            <Code mb="md">
+            <Code block mb="md">
               {`// sw.js - Service Worker básico
 const CACHE_NAME = 'app-v1'
 const urlsToCache = [
@@ -173,7 +173,7 @@ self.addEventListener('fetch', (event) => {
               JSON que define como o app aparece quando instalado
             </Text>
 
-            <Code mb="md">
+            <Code block mb="md">
               {`// manifest.json
 {
   "name": "Meu App PWA",
@@ -205,7 +205,7 @@ self.addEventListener('fetch', (event) => {
               Service Workers só funcionam em HTTPS (ou localhost)
             </Text>
 
-            <Code mb="md">
+            <Code block mb="md">
               {`// Registra o Service Worker
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
@@ -240,8 +240,8 @@ if ('serviceWorker' in navigator) {
               📱 Mobile-first experience
             </Text>
             <Text>
-              User precisa acessar rápido e frequente. Apps de mensagem,
-              redes sociais, ferramentas de produtividade.
+              User precisa acessar rápido e frequente. Apps de mensagem, redes
+              sociais, ferramentas de produtividade.
             </Text>
           </Card>
 
@@ -371,7 +371,7 @@ if ('serviceWorker' in navigator) {
         <Stack gap="md">
           <Alert color="red" icon={<IconAlertTriangle size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ❌ Complexidade de cache
+              Complexidade de cache
             </Text>
             <Text size="sm" c="dimmed">
               Gerenciar cache é complicado. Cache velho = bugs. Cache novo =
@@ -381,7 +381,7 @@ if ('serviceWorker' in navigator) {
 
           <Alert color="orange" icon={<IconAlertTriangle size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ❌ Browser support
+              Browser support
             </Text>
             <Text size="sm" c="dimmed">
               Service Workers não funcionam em todos os browsers. iOS Safari tem
@@ -391,7 +391,7 @@ if ('serviceWorker' in navigator) {
 
           <Alert color="yellow" icon={<IconAlertTriangle size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ❌ Debugging difícil
+              Debugging difícil
             </Text>
             <Text size="sm" c="dimmed">
               Service Workers são difíceis de debugar. Cache não limpa fácil.
@@ -401,7 +401,7 @@ if ('serviceWorker' in navigator) {
 
           <Alert color="green" icon={<IconCheck size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ✅ Como evitar
+              Como evitar
             </Text>
             <Text size="sm" c="dimmed">
               <strong>Comece simples:</strong> Cache básico antes de complexo
@@ -455,21 +455,45 @@ if ('serviceWorker' in navigator) {
             </Title>
             <List size="sm" spacing="xs">
               <List.Item>
-                      <strong>web.dev:</strong>{' '}
-                      <a href="https://web.dev/explore/progressive-web-apps" target="_blank" rel="noopener noreferrer">Progressive Web Apps (Google)</a>
-                    </List.Item>
-                    <List.Item>
-                      <strong>MDN:</strong>{' '}
-                      <a href="https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps" target="_blank" rel="noopener noreferrer">PWA Guide</a>
-                    </List.Item>
-                    <List.Item>
-                      <strong>Workbox:</strong>{' '}
-                      <a href="https://developer.chrome.com/docs/workbox" target="_blank" rel="noopener noreferrer">Service Worker Toolkit</a>
-                    </List.Item>
-                    <List.Item>
-                      <strong>PWA Stats:</strong>{' '}
-                      <a href="https://www.pwastats.com/" target="_blank" rel="noopener noreferrer">Casos reais com métricas</a>
-                    </List.Item>
+                <strong>web.dev:</strong>{' '}
+                <a
+                  href="https://web.dev/explore/progressive-web-apps"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Progressive Web Apps (Google)
+                </a>
+              </List.Item>
+              <List.Item>
+                <strong>MDN:</strong>{' '}
+                <a
+                  href="https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  PWA Guide
+                </a>
+              </List.Item>
+              <List.Item>
+                <strong>Workbox:</strong>{' '}
+                <a
+                  href="https://developer.chrome.com/docs/workbox"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Service Worker Toolkit
+                </a>
+              </List.Item>
+              <List.Item>
+                <strong>PWA Stats:</strong>{' '}
+                <a
+                  href="https://www.pwastats.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Casos reais com métricas
+                </a>
+              </List.Item>
             </List>
           </Card>
         </Stack>

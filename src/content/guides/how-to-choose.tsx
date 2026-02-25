@@ -41,6 +41,28 @@ export default function HowToChoose() {
             Não existe arquitetura perfeita. Existe a arquitetura certa para o
             seu contexto. Vamos descobrir qual faz sentido para o seu projeto.
           </Text>
+
+          <Paper withBorder p={isMobile ? 'sm' : 'md'} radius="md" mt="md">
+            <Stack gap="xs">
+              <Text size="sm" fw={600}>
+                Quando usar:
+              </Text>
+              <Text size="xs" c="dimmed">
+                Antes de propor arquitetura nova; em kickoff de projeto; quando
+                alguém pergunta “qual stack?”; para alinhar expectativas com o
+                time.
+              </Text>
+              <Text size="sm" fw={600} mt="xs">
+                O que fazer com o resultado:
+              </Text>
+              <Text size="xs" c="dimmed">
+                Leve as sugestões para discussão no time — não decida sozinho.
+                Cruze com os <Link to="/guides/cases">casos reais</Link> e, se
+                for decisão que fica, documente com{' '}
+                <Link to="/guides/adr">ADR</Link>.
+              </Text>
+            </Stack>
+          </Paper>
         </section>
 
         {/* Decision Wizard */}
@@ -66,7 +88,8 @@ export default function HowToChoose() {
                   mb={isMobile ? 0 : undefined}
                 >
                   6 perguntas para obter sugestões de arquitetura. O resultado é
-                  um ponto de partida para discutir com o time, não uma decisão final.
+                  um ponto de partida para discutir com o time, não uma decisão
+                  final.
                 </Text>
               </Stack>
 
@@ -115,11 +138,7 @@ export default function HowToChoose() {
                 </Text>
               </Alert>
 
-              <Text
-                size={isMobile ? 'sm' : 'md'}
-                c="dimmed"
-                maw={700}
-              >
+              <Text size={isMobile ? 'sm' : 'md'} c="dimmed" maw={700}>
                 Antes de sair copiando padrão, tenta entender o máximo possível
                 do negócio:
               </Text>
@@ -281,6 +300,24 @@ export default function HowToChoose() {
               </Text>
             </Alert>
           </SimpleGrid>
+        </section>
+
+        {/* Use no seu time */}
+        <section>
+          <Paper withBorder p={isMobile ? 'md' : 'xl'} radius="lg">
+            <Stack gap="md">
+              <Title order={2} size={isMobile ? '1.2rem' : undefined}>
+                Use no seu time
+              </Title>
+              <Text size="sm" c="dimmed">
+                Rode o wizard em reunião (tela compartilhada) e use as sugestões
+                como ponto de partida. Peça que cada um justifique com contexto
+                (prazo, tamanho do time, integrações). Se a decisão for grande,
+                exija um ADR depois. Staff: use isso como guardrail — “já
+                rodamos o wizard e cruzamos com os casos”.
+              </Text>
+            </Stack>
+          </Paper>
         </section>
 
         {/* CTA Section */}

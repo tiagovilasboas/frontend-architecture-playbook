@@ -262,7 +262,7 @@ function IslandsArchitecture() {
         <Stack gap="md">
           <Alert color="red" icon={<IconAlertTriangle size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ❌ Complexidade de hidratação
+              Complexidade de hidratação
             </Text>
             <Text size="sm" c="dimmed">
               Hidratar ilhas pode ser complexo. Use frameworks como Astro ou
@@ -272,7 +272,7 @@ function IslandsArchitecture() {
 
           <Alert color="orange" icon={<IconAlertTriangle size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ❌ Estado compartilhado
+              Estado compartilhado
             </Text>
             <Text size="sm" c="dimmed">
               Compartilhar estado entre ilhas pode ser difícil. Use URL params
@@ -282,7 +282,7 @@ function IslandsArchitecture() {
 
           <Alert color="yellow" icon={<IconAlertTriangle size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ❌ Over-engineering
+              Over-engineering
             </Text>
             <Text size="sm" c="dimmed">
               Islands para sites simples é overkill. Use apenas quando há
@@ -292,7 +292,7 @@ function IslandsArchitecture() {
 
           <Alert color="green" icon={<IconCheck size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ✅ Como evitar
+              Como evitar
             </Text>
             <Text size="sm" c="dimmed">
               <strong>Use frameworks:</strong> Astro, Fresh, Marko
@@ -346,17 +346,35 @@ function IslandsArchitecture() {
             </Title>
             <List size="sm" spacing="xs">
               <List.Item>
-                      <strong>Jason Miller:</strong>{' '}
-                      <a href="https://jasonformat.com/islands-architecture/" target="_blank" rel="noopener noreferrer">Islands Architecture (artigo original)</a>
-                    </List.Item>
-                    <List.Item>
-                      <strong>Astro:</strong>{' '}
-                      <a href="https://docs.astro.build/en/concepts/islands/" target="_blank" rel="noopener noreferrer">Astro Islands</a>
-                    </List.Item>
-                    <List.Item>
-                      <strong>patterns.dev:</strong>{' '}
-                      <a href="https://www.patterns.dev/posts/islands-architecture" target="_blank" rel="noopener noreferrer">Islands Architecture Pattern</a>
-                    </List.Item>
+                <strong>Jason Miller:</strong>{' '}
+                <a
+                  href="https://jasonformat.com/islands-architecture/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Islands Architecture (artigo original)
+                </a>
+              </List.Item>
+              <List.Item>
+                <strong>Astro:</strong>{' '}
+                <a
+                  href="https://docs.astro.build/en/concepts/islands/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Astro Islands
+                </a>
+              </List.Item>
+              <List.Item>
+                <strong>patterns.dev:</strong>{' '}
+                <a
+                  href="https://www.patterns.dev/posts/islands-architecture"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Islands Architecture Pattern
+                </a>
+              </List.Item>
             </List>
           </Card>
         </Stack>

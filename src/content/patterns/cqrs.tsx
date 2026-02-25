@@ -150,7 +150,7 @@ class UserCommands {
             <Text size="sm" c="dimmed" mb="md">
               Faz mudanças no sistema
             </Text>
-            <Code mb="md">
+            <Code block mb="md">
               {`class CreateOrderCommand {
   constructor(
     public userId: string,
@@ -198,7 +198,7 @@ class OrderCommandHandler {
             <Text size="sm" c="dimmed" mb="md">
               Busca dados do sistema
             </Text>
-            <Code mb="md">
+            <Code block mb="md">
               {`class GetOrdersQuery {
   constructor(
     public userId: string,
@@ -337,7 +337,7 @@ class OrderQueryHandler {
         <Stack gap="md">
           <Alert color="red" icon={<IconAlertTriangle size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ❌ Over-engineering
+              Over-engineering
             </Text>
             <Text size="sm" c="dimmed">
               CQRS para aplicações simples. Use apenas quando há complexidade
@@ -347,7 +347,7 @@ class OrderQueryHandler {
 
           <Alert color="orange" icon={<IconAlertTriangle size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ❌ Eventual consistency
+              Eventual consistency
             </Text>
             <Text size="sm" c="dimmed">
               Read e write models podem ficar desincronizados. Implemente sync.
@@ -356,7 +356,7 @@ class OrderQueryHandler {
 
           <Alert color="yellow" icon={<IconAlertTriangle size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ❌ Complexidade desnecessária
+              Complexidade desnecessária
             </Text>
             <Text size="sm" c="dimmed">
               Muitos handlers e models. Mantenha simples quando possível.
@@ -365,7 +365,7 @@ class OrderQueryHandler {
 
           <Alert color="green" icon={<IconCheck size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ✅ Como evitar
+              Como evitar
             </Text>
             <Text size="sm" c="dimmed">
               <strong>Use quando necessário:</strong> Complexidade real apenas
@@ -419,17 +419,35 @@ class OrderQueryHandler {
             </Title>
             <List size="sm" spacing="xs">
               <List.Item>
-                      <strong>Martin Fowler:</strong>{' '}
-                      <a href="https://martinfowler.com/bliki/CQRS.html" target="_blank" rel="noopener noreferrer">CQRS</a>
-                    </List.Item>
-                    <List.Item>
-                      <strong>Greg Young:</strong>{' '}
-                      <a href="https://cqrs.files.wordpress.com/2010/11/cqrs_documents.pdf" target="_blank" rel="noopener noreferrer">CQRS Documents</a>
-                    </List.Item>
-                    <List.Item>
-                      <strong>TanStack Query:</strong>{' '}
-                      <a href="https://tanstack.com/query/latest" target="_blank" rel="noopener noreferrer">CQRS no frontend (read/write separation)</a>
-                    </List.Item>
+                <strong>Martin Fowler:</strong>{' '}
+                <a
+                  href="https://martinfowler.com/bliki/CQRS.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  CQRS
+                </a>
+              </List.Item>
+              <List.Item>
+                <strong>Greg Young:</strong>{' '}
+                <a
+                  href="https://cqrs.files.wordpress.com/2010/11/cqrs_documents.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  CQRS Documents
+                </a>
+              </List.Item>
+              <List.Item>
+                <strong>TanStack Query:</strong>{' '}
+                <a
+                  href="https://tanstack.com/query/latest"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  CQRS no frontend (read/write separation)
+                </a>
+              </List.Item>
             </List>
           </Card>
         </Stack>

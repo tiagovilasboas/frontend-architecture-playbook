@@ -301,7 +301,7 @@ useEffect(() => {
         <Stack gap="md">
           <Alert color="red" icon={<IconAlertTriangle size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ❌ Duplicação de lógica
+              Duplicação de lógica
             </Text>
             <Text size="sm" c="dimmed">
               BFFs podem duplicar lógica de negócio. Use shared libraries ou
@@ -311,7 +311,7 @@ useEffect(() => {
 
           <Alert color="orange" icon={<IconAlertTriangle size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ❌ Complexidade de deploy
+              Complexidade de deploy
             </Text>
             <Text size="sm" c="dimmed">
               Múltiplos BFFs = múltiplos deploys. Use CI/CD automatizado e
@@ -321,7 +321,7 @@ useEffect(() => {
 
           <Alert color="yellow" icon={<IconAlertTriangle size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ❌ Over-engineering
+              Over-engineering
             </Text>
             <Text size="sm" c="dimmed">
               BFF para projetos simples é overkill. Use apenas quando há
@@ -331,7 +331,7 @@ useEffect(() => {
 
           <Alert color="green" icon={<IconCheck size={16} />} mb="md">
             <Text size="sm" fw={600} mb={4}>
-              ✅ Como evitar
+              Como evitar
             </Text>
             <Text size="sm" c="dimmed">
               <strong>Comece simples:</strong> Uma API antes de múltiplas
@@ -385,17 +385,35 @@ useEffect(() => {
             </Title>
             <List size="sm" spacing="xs">
               <List.Item>
-                      <strong>Sam Newman:</strong>{' '}
-                      <a href="https://samnewman.io/patterns/architectural/bff/" target="_blank" rel="noopener noreferrer">Backends For Frontends (original)</a>
-                    </List.Item>
-                    <List.Item>
-                      <strong>Phil Calçado:</strong>{' '}
-                      <a href="https://philcalcado.com/2015/09/18/the_back_end_for_front_end_pattern_bff.html" target="_blank" rel="noopener noreferrer">The BFF Pattern</a>
-                    </List.Item>
-                    <List.Item>
-                      <strong>Next.js:</strong>{' '}
-                      <a href="https://nextjs.org/docs/app/building-your-application/data-fetching/server-actions-and-mutations" target="_blank" rel="noopener noreferrer">Server Actions como BFF</a>
-                    </List.Item>
+                <strong>Sam Newman:</strong>{' '}
+                <a
+                  href="https://samnewman.io/patterns/architectural/bff/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Backends For Frontends (original)
+                </a>
+              </List.Item>
+              <List.Item>
+                <strong>Phil Calçado:</strong>{' '}
+                <a
+                  href="https://philcalcado.com/2015/09/18/the_back_end_for_front_end_pattern_bff.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  The BFF Pattern
+                </a>
+              </List.Item>
+              <List.Item>
+                <strong>Next.js:</strong>{' '}
+                <a
+                  href="https://nextjs.org/docs/app/building-your-application/data-fetching/server-actions-and-mutations"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Server Actions como BFF
+                </a>
+              </List.Item>
             </List>
           </Card>
         </Stack>
