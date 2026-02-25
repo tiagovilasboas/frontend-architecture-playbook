@@ -1,5 +1,10 @@
 # Front-End Architecture Playbook – MCP Server
 
+> **Em construção / Under construction**  
+> This MCP integration (server, tools, and resources) is under active development. APIs and behavior may change. Use it to experiment and share feedback.
+
+---
+
 MCP server that exposes the [Front-End Architecture Playbook](https://github.com/tiagovilasboas/frontend-architecture-playbook) so **Cursor** (or any MCP client) can use its content: guides, cases, and navigation.
 
 ## What it exposes

@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "MCP: use o playbook no Cursor",
-    "description": "Configure o servidor MCP para usar o conteúdo do playbook no Cursor: guias, casos e navegação via chat."
+    "description": "Integração MCP (em construção). Configure o servidor para usar o conteúdo do playbook no Cursor: guias, casos e navegação via chat."
   },
   "layout": {
     "showGuideNav": "mcp",
@@ -12,6 +12,12 @@
       "type": "hero",
       "title": "MCP: use o playbook no Cursor",
       "subtitle": "O conteúdo do playbook fica disponível via Model Context Protocol (MCP). No Cursor (ou em outro cliente MCP) você consulta guias, casos e navegação direto no chat."
+    },
+    {
+      "type": "alert",
+      "message": "Em construção: a integração MCP (servidor, tools e recursos) está em desenvolvimento. A documentação e o servidor podem mudar. Use para experimentar e dar feedback.",
+      "color": "yellow",
+      "icon": "alert-triangle"
     },
     {
       "type": "section",

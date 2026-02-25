@@ -130,7 +130,7 @@ const STATIC_METADATA = {
   mcp: {
     title: 'MCP: use o playbook no Cursor',
     description:
-      'Configure o servidor MCP para usar o conteúdo do playbook no Cursor: guias, casos e navegação via chat.',
+      'Integração MCP (em construção). Configure o servidor para usar o conteúdo do playbook no Cursor: guias, casos e navegação via chat.',
   },
   'security-business': {
     title: 'Segurança & Negócio',
