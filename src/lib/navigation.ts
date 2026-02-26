@@ -152,6 +152,7 @@ export const NAV_JOURNEY: NavSectionEntry[] = [
       { href: '/guides/adr', label: 'ADR - Decision Records' },
       { href: '/guides/cases', label: '19 Casos Reais' },
       { href: '/guides/security-business', label: 'Segurança & Negócio' },
+      { href: '/guides/glossary', label: 'Glossário' },
       { href: '/guides/mcp', label: 'MCP (Cursor)' },
     ],
   },

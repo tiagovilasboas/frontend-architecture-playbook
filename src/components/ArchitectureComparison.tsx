@@ -191,7 +191,7 @@ const ArchitectureComparison: React.FC<ArchitectureComparisonProps> = ({
       {/* Disclaimer sobre métricas */}
       <Alert color="green" variant="light" icon={<IconCheck size={16} />}>
         <Text size="sm">
-          <strong>✅ Métricas Validadas:</strong> Todas as métricas abaixo são
+          <strong>Métricas Validadas:</strong> Todas as métricas abaixo são
           baseadas em estudos técnicos validados do repositório oficial
           frontend-case-studies. Apenas métricas com fontes verificáveis são
           apresentadas.
@@ -233,8 +233,13 @@ const ArchitectureComparison: React.FC<ArchitectureComparisonProps> = ({
                               {case_.company}
                             </Badge>
                             {case_.validated && (
-                              <Badge variant="light" color="green" size="xs">
-                                ✅ Validado
+                              <Badge
+                                variant="light"
+                                color="green"
+                                size="xs"
+                                leftSection={<IconCheck size={10} />}
+                              >
+                                Validado
                               </Badge>
                             )}
                           </Group>

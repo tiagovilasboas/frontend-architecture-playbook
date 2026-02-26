@@ -1,0 +1,64 @@
+{
+  "meta": {
+    "title": "Comparação de Arquiteturas",
+    "description": "Compare arquiteturas baseado em métricas práticas. Encontre a certa para seu projeto."
+  },
+  "layout": {
+    "showGuideNav": "architecture-comparison",
+    "showRelated": true
+  },
+  "body": [
+    {
+      "type": "hero",
+      "title": "Comparação de Arquiteturas Front-End",
+      "subtitle": "Compare arquiteturas de forma direta e prática. Encontre a certa para seu projeto."
+    },
+    {
+      "type": "section",
+      "title": "Origem das Métricas",
+      "icon": "info-circle",
+      "children": [
+        {
+          "type": "text",
+          "content": "Estas métricas são específicas para front-end e baseadas em casos reais.",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "alert",
+          "message": "Fontes das Métricas: Casos reais (19 cases com links verificáveis). Core Web Vitals (LCP, INP, CLS). Performance (bundle size, build time). Referências (artigos de engenharia verificáveis). Feedback da comunidade (devs e arquitetos).",
+          "color": "blue",
+          "icon": "target"
+        },
+        {
+          "type": "alert",
+          "message": "Foco Front-End: Performance (tempo de carregamento, renderização). Manutenibilidade (facilidade de refatorar código). Testabilidade (testes unitários e e2e). Escalabilidade (crescimento do time e features). Complexidade (curva de aprendizado front-end).",
+          "color": "green",
+          "icon": "bulb"
+        }
+      ]
+    },
+    {
+      "type": "architectureComparison"
+    },
+    {
+      "type": "section",
+      "title": "Como Escolher",
+      "icon": "bulb",
+      "children": [
+        {
+          "type": "alert",
+          "message": "Escolha por: Performance (se velocidade é crítica). Manutenibilidade (se vai crescer muito). Testabilidade (se qualidade é prioridade). Escalabilidade (se o time vai aumentar). Complexidade (se o time é júnior).",
+          "color": "green",
+          "icon": "bulb"
+        },
+        {
+          "type": "alert",
+          "message": "Cuidado com: Over-engineering (complexidade desnecessária). Under-engineering (simplicidade que não escala). Decisão prematura (escolher antes de entender). Ignorar contexto (copiar sem adaptar).",
+          "color": "yellow",
+          "icon": "alert-triangle"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "meta": {
+    "title": "Staff · Fundamentos",
+    "description": "Para Staff: usar fundamentos (Dependency Rule, Clean Code, SRP) como guardrails, critérios de revisão e quando exigir ADR."
+  },
+  "layout": {
+    "showGuideNav": "staff",
+    "showRelated": true
+  },
+  "body": [
+    {
+      "type": "hero",
+      "title": "Staff · Fundamentos",
+      "subtitle": "No nível Staff, os fundamentos (Dependency Rule, DRY, KISS, Clean Code, SRP, SoC) deixam de ser só \"como escrever código\" e viram base para revisão de arquitetura, definição de guardrails e critérios de qualidade do time. Você é quem exige que as boas práticas não sejam ignoradas."
+    },
+    {
+      "type": "section",
+      "title": "O que Staff faz com os fundamentos",
+      "children": [
+        {
+          "type": "list",
+          "icon": "check",
+          "spacing": "sm",
+          "items": [
+            {
+              "title": "Revisar decisão de arquitetura",
+              "description": "à luz da Dependency Rule e da separação de responsabilidades — não só \"feature funcionando\"."
+            },
+            {
+              "title": "Definir guardrails:",
+              "description": "\"não quebrar a Dependency Rule\", \"todo novo módulo segue SRP\", \"débito técnico tem limite e prazo\"."
+            },
+            {
+              "title": "Critérios de code review:",
+              "description": "além de funcionalidade, checar DRY, KISS, segurança (validação, XSS) e padrões do time."
+            },
+            {
+              "title": "Quando virar ADR:",
+              "description": "mudança que afeta princípio (ex.: inverter dependência, novo padrão de camadas) deve ser documentada."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Conteúdo do playbook nesta seção",
+      "children": [
+        {
+          "type": "linkCards",
+          "cols": { "base": 1, "sm": 2 },
+          "cards": [
+            {
+              "to": "/guides/dependency-rule",
+              "title": "Dependency Rule",
+              "description": "A base de tudo. Use como guardrail e critério de revisão.",
+              "icon": "code"
+            },
+            {
+              "to": "/best-practices/clean-code",
+              "title": "Clean Code e princípios",
+              "description": "DRY, KISS, YAGNI, SRP, SoC — padrões que o time não pode ignorar.",
+              "icon": "code"
+            },
+            {
+              "to": "/patterns/security",
+              "title": "Security Patterns",
+              "description": "Validação, XSS, padrões que viram critério de revisão.",
+              "icon": "lock"
+            },
+            {
+              "to": "/guides/adr",
+              "title": "ADR",
+              "description": "Quando decisão de princípio vira documento.",
+              "icon": "file-text"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "anchor",
+      "label": "← Voltar ao hub Para Staff",
+      "to": "/guides/staff",
+      "back": true
+    }
+  ]
+}

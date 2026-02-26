@@ -1,0 +1,166 @@
+{
+  "meta": {
+    "title": "DRY - Don't Repeat Yourself",
+    "description": "Elimine duplicação de código. Se você está escrevendo a mesma coisa duas vezes, você está fazendo algo errado."
+  },
+  "layout": {
+    "showRelated": true
+  },
+  "body": [
+    {
+      "type": "hero",
+      "title": "DRY - Don't Repeat Yourself",
+      "subtitle": "Elimine duplicação de código. Se você está escrevendo a mesma coisa duas vezes, você está fazendo algo errado."
+    },
+    {
+      "type": "section",
+      "title": "O que é?",
+      "icon": "code",
+      "children": [
+        {
+          "type": "text",
+          "content": "Princípio que elimina duplicação de código",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "text",
+          "content": "DRY significa \"Don't Repeat Yourself\". É sobre não repetir lógica de negócio, não apenas código."
+        },
+        {
+          "type": "text",
+          "content": "Pensa assim: se você precisa mudar uma regra de negócio (desconto, validação, cálculo) e ela está duplicada em 5 lugares, você vai esquecer de mudar em algum lugar. E aí vem o bug."
+        },
+        {
+          "type": "text",
+          "content": "A regra é clara: cada regra de negócio deve ter uma representação única, não ambígua e autoritativa."
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Exemplos Práticos",
+      "icon": "code",
+      "children": [
+        {
+          "type": "codeExample",
+          "title": "❌ Lógica de Negócio Duplicada",
+          "description": "Regras de negócio repetidas em múltiplos lugares",
+          "code": "// ❌ RUIM - Lógica de negócio duplicada\n\n// Componente de checkout\nconst CheckoutForm = ({ user, cart }) => {\n  const calculateTotal = () => {\n    let total = cart.items.reduce((sum, item) => sum + item.price, 0);\n    \n    // Lógica de negócio duplicada: desconto para usuários premium\n    if (user.type === 'premium') {\n      total = total * 0.9; // 10% desconto\n    }\n    \n    // Lógica de negócio duplicada: frete grátis acima de R$ 100\n    if (total < 100) {\n      total += 15; // frete\n    }\n    \n    return total;\n  };\n  \n  return <div>Total: R$ {calculateTotal()}</div>;\n};\n\n// Componente de resumo do pedido\nconst OrderSummary = ({ user, items }) => {\n  const calculateTotal = () => {\n    let total = items.reduce((sum, item) => sum + item.price, 0);\n    \n    // MESMA LÓGICA DUPLICADA\n    if (user.type === 'premium') {\n      total = total * 0.9;\n    }\n    \n    if (total < 100) {\n      total += 15;\n    }\n    \n    return total;\n  };\n  \n  return <div>Total: R$ {calculateTotal()}</div>;\n};\n\n// Componente de carrinho\nconst CartWidget = ({ user, items }) => {\n  const calculateTotal = () => {\n    let total = items.reduce((sum, item) => sum + item.price, 0);\n    \n    // MESMA LÓGICA DUPLICADA NOVAMENTE\n    if (user.type === 'premium') {\n      total = total * 0.9;\n    }\n    \n    if (total < 100) {\n      total += 15;\n    }\n    \n    return total;\n  };\n  \n  return <div>R$ {calculateTotal()}</div>;\n};"
+        },
+        {
+          "type": "codeExample",
+          "title": "✅ Lógica de Negócio Centralizada",
+          "description": "Regras de negócio em um lugar só",
+          "code": "// ✅ BOM - Lógica de negócio centralizada\n\n// services/pricing.ts - Lógica de negócio centralizada\nexport const calculateOrderTotal = (user: User, items: CartItem[]): number => {\n  let total = items.reduce((sum, item) => sum + item.price, 0);\n  \n  // Regras de negócio em um lugar só\n  if (user.type === 'premium') {\n    total = total * 0.9; // 10% desconto para premium\n  }\n  \n  if (total < 100) {\n    total += 15; // frete grátis acima de R$ 100\n  }\n  \n  return total;\n};\n\n// Componentes usam a lógica centralizada\nconst CheckoutForm = ({ user, cart }) => {\n  const total = calculateOrderTotal(user, cart.items);\n  return <div>Total: R$ {total}</div>;\n};\n\nconst OrderSummary = ({ user, items }) => {\n  const total = calculateOrderTotal(user, items);\n  return <div>Total: R$ {total}</div>;\n};\n\nconst CartWidget = ({ user, items }) => {\n  const total = calculateOrderTotal(user, items);\n  return <div>R$ {total}</div>;\n};"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Por que vale a pena?",
+      "icon": "check",
+      "children": [
+        {
+          "type": "iconCards",
+          "cols": {
+            "base": 1,
+            "sm": 3
+          },
+          "cards": [
+            {
+              "icon": "check",
+              "iconColor": "green",
+              "title": "Menos Bugs",
+              "description": "Uma mudança em um lugar só. Sem risco de esquecer de atualizar código duplicado."
+            },
+            {
+              "icon": "code",
+              "iconColor": "blue",
+              "title": "Manutenibilidade",
+              "description": "Código mais limpo, mais fácil de entender e manter."
+            },
+            {
+              "icon": "bulb",
+              "iconColor": "orange",
+              "title": "Reutilização",
+              "description": "Funções e componentes reutilizáveis. Menos código, mais funcionalidade."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Quando aplicar?",
+      "icon": "bulb",
+      "children": [
+        {
+          "type": "alert",
+          "message": "Sempre aplique: Regras de negócio repetidas (cálculos, validações). Lógica de validação de formulários. Transformação de dados similar. Configurações de API. Utilitários e helpers.",
+          "color": "green",
+          "icon": "check"
+        },
+        {
+          "type": "list",
+          "icon": "check",
+          "items": [
+            "Regras de negócio repetidas (cálculos, validações)",
+            "Lógica de validação de formulários",
+            "Transformação de dados similar",
+            "Configurações de API",
+            "Utilitários e helpers"
+          ]
+        },
+        {
+          "type": "alert",
+          "message": "Cuidado com: Over-abstração (YAGNI). Abstrações muito genéricas. Dependências desnecessárias.",
+          "color": "yellow",
+          "icon": "alert-triangle"
+        },
+        {
+          "type": "list",
+          "icon": "alert-triangle",
+          "items": [
+            "Over-abstração (YAGNI)",
+            "Abstrações muito genéricas",
+            "Dependências desnecessárias"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Armadilhas Comuns",
+      "icon": "alert-triangle",
+      "children": [
+        {
+          "type": "codeExample",
+          "title": "Validações de Negócio Duplicadas",
+          "description": "Regras de validação repetidas em múltiplos formulários",
+          "code": "// ❌ RUIM - Validações de negócio duplicadas\n\n// Formulário de cadastro\nconst SignupForm = () => {\n  const validateForm = (data) => {\n    const errors = {};\n    \n    // Lógica de negócio duplicada: validação de CPF\n    if (data.cpf) {\n      const cpf = data.cpf.replace(/[^0-9]/g, '');\n      if (cpf.length !== 11) {\n        errors.cpf = 'CPF inválido';\n      }\n      // Validação complexa de CPF...\n    }\n    \n    // Lógica de negócio duplicada: validação de idade\n    if (data.birthDate) {\n      const age = new Date().getFullYear() - new Date(data.birthDate).getFullYear();\n      if (age < 18) {\n        errors.birthDate = 'Deve ser maior de 18 anos';\n      }\n    }\n    \n    return errors;\n  };\n};\n\n// Formulário de perfil\nconst ProfileForm = () => {\n  const validateForm = (data) => {\n    const errors = {};\n    \n    // MESMA LÓGICA DUPLICADA\n    if (data.cpf) {\n      const cpf = data.cpf.replace(/[^0-9]/g, '');\n      if (cpf.length !== 11) {\n        errors.cpf = 'CPF inválido';\n      }\n    }\n    \n    if (data.birthDate) {\n      const age = new Date().getFullYear() - new Date(data.birthDate).getFullYear();\n      if (age < 18) {\n        errors.birthDate = 'Deve ser maior de 18 anos';\n      }\n    }\n    \n    return errors;\n  };\n};"
+        },
+        {
+          "type": "codeExample",
+          "title": "Validações Centralizadas",
+          "description": "Regras de validação em um lugar só",
+          "code": "// ✅ BOM - Validações centralizadas\n\n// utils/validations.ts - Regras de negócio centralizadas\nexport const validateCPF = (cpf: string): boolean => {\n  const cleanCPF = cpf.replace(/[^0-9]/g, '');\n  if (cleanCPF.length !== 11) return false;\n  \n  // Lógica complexa de validação de CPF\n  // ...\n  return true;\n};\n\nexport const validateAge = (birthDate: string): boolean => {\n  const age = new Date().getFullYear() - new Date(birthDate).getFullYear();\n  return age >= 18;\n};\n\nexport const validateUserData = (data: UserData) => {\n  const errors = {};\n  \n  if (data.cpf && !validateCPF(data.cpf)) {\n    errors.cpf = 'CPF inválido';\n  }\n  \n  if (data.birthDate && !validateAge(data.birthDate)) {\n    errors.birthDate = 'Deve ser maior de 18 anos';\n  }\n  \n  return errors;\n};\n\n// Formulários usam as validações centralizadas\nconst SignupForm = () => {\n  const handleSubmit = (data) => {\n    const errors = validateUserData(data);\n    // ...\n  };\n};\n\nconst ProfileForm = () => {\n  const handleSubmit = (data) => {\n    const errors = validateUserData(data);\n    // ...\n  };\n};"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Resumo",
+      "children": [
+        {
+          "type": "text",
+          "content": "DRY é sobre eliminar duplicação de lógica de negócio, não sobre criar abstrações complexas. Se você está copiando regras de negócio, pare e pense em uma forma melhor."
+        },
+        {
+          "type": "text",
+          "content": "Regra de ouro: Se você precisa mudar a mesma regra de negócio em mais de um lugar, você está violando DRY."
+        }
+      ]
+    }
+  ]
+}

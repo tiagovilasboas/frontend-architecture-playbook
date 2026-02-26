@@ -1,0 +1,978 @@
+{
+  "meta": {
+    "description": "Termos técnicos de front-end com definição curta e referências. SSR, performance, segurança, estado, cache, observers, memória, workers e APIs.",
+    "updatedAt": "2025-02"
+  },
+  "categories": [
+    { "id": "ssr-entrega", "label": "SSR & Entrega", "order": 1 },
+    { "id": "performance", "label": "Performance", "order": 2 },
+    { "id": "security", "label": "Segurança", "order": 3 },
+    { "id": "state", "label": "Estado & Concorrência", "order": 4 },
+    { "id": "cache-rede", "label": "Cache & Rede", "order": 5 },
+    { "id": "observers-memory", "label": "Observers & Memória", "order": 6 },
+    { "id": "workers-apis", "label": "Workers & APIs", "order": 7 }
+  ],
+  "terms": [
+    {
+      "id": "hydration",
+      "term": "Hydration",
+      "termPt": "Hidratação",
+      "definition": "Técnica em que o JavaScript no cliente \"reativa\" o HTML já renderizado no servidor: anexa event listeners e estado ao DOM existente, tornando a página interativa. O framework reutiliza os nós do DOM em vez de recriá-los. Há um período em que a página parece carregada mas ainda não responde a cliques até a hidratação terminar.",
+      "category": "ssr-entrega",
+      "guideHref": "/architectures/ssr-ssg",
+      "guideLabel": "SSR & SSG",
+      "references": [
+        {
+          "label": "React: hydrateRoot",
+          "url": "https://react.dev/reference/react-dom/client/hydrateRoot"
+        },
+        {
+          "label": "Wikipedia - Hydration (web development)",
+          "url": "https://en.wikipedia.org/wiki/Hydration_(web_development)"
+        }
+      ]
+    },
+    {
+      "id": "partial-hydration",
+      "term": "Partial hydration",
+      "termPt": "Hidratação parcial",
+      "definition": "Estratégia que define **o quê** hidratar: só as partes da página que realmente precisam de interatividade recebem JavaScript; o resto permanece HTML estático. O desenvolvedor ou o compilador decide antecipadamente quais componentes hidratar, em vez de hidratar a página inteira. Reduz bundle e tempo de execução.",
+      "category": "ssr-entrega",
+      "guideHref": "/architectures/islands-architecture",
+      "guideLabel": "Islands Architecture",
+      "references": [
+        {
+          "label": "patterns.dev - Selective Hydration",
+          "url": "https://www.patterns.dev/react/react-selective-hydration"
+        },
+        {
+          "label": "Progressive vs Partial hydration (jschaefer)",
+          "url": "https://www.jschaefer.dev/blog/progressive-vs-partial-hydration/"
+        }
+      ]
+    },
+    {
+      "id": "islands-architecture",
+      "term": "Islands architecture",
+      "termPt": "Arquitetura de ilhas",
+      "definition": "Padrão de front-end em que a maior parte da página é HTML estático rápido, com \"ilhas\" menores de componentes interativos (JavaScript) só onde é necessário. Cada ilha hidrata de forma isolada. Minimiza payload de JS e melhora performance; frameworks como Astro popularizaram o conceito com hidratação seletiva embutida.",
+      "category": "ssr-entrega",
+      "guideHref": "/architectures/islands-architecture",
+      "guideLabel": "Islands Architecture",
+      "references": [
+        {
+          "label": "Astro - Islands",
+          "url": "https://docs.astro.build/en/concepts/islands"
+        },
+        {
+          "label": "Babbel - Partial Hydration / Islands",
+          "url": "https://www.babbel.com/en/magazine/exploring-web-rendering-partial-hydration-a-k-a-islands"
+        }
+      ]
+    },
+    {
+      "id": "streaming-ssr",
+      "term": "Streaming SSR",
+      "termPt": "SSR em streaming",
+      "definition": "SSR que envia HTML ao navegador de forma progressiva, em pedaços, em vez de esperar a página inteira ser renderizada no servidor. Usa APIs como renderToPipeableStream (React 18) e Suspense: o \"shell\" da página (conteúdo acima da dobra) é enviado logo; componentes que dependem de dados mais lentos entram em stream quando ficam prontos. Melhora TTFB e Core Web Vitals.",
+      "category": "ssr-entrega",
+      "guideHref": "/architectures/ssr-ssg",
+      "guideLabel": "SSR & SSG",
+      "references": [
+        {
+          "label": "React - renderToPipeableStream",
+          "url": "https://react.dev/reference/react-dom/server/renderToPipeableStream"
+        },
+        {
+          "label": "LogRocket - Streaming SSR React 18",
+          "url": "https://blog.logrocket.com/streaming-ssr-with-react-18"
+        }
+      ]
+    },
+    {
+      "id": "selective-hydration",
+      "term": "Selective hydration",
+      "termPt": "Hidratação seletiva",
+      "definition": "Recurso do React 18+ em que componentes dentro de boundaries de Suspense hidratam de forma independente, não todos de uma vez. O que é crítico (acima da dobra) hidrata primeiro; interações do usuário (clique, hover) podem priorizar a hidratação daquele componente. Reduz Time to Interactive (TTI) e melhora a percepção de responsividade.",
+      "category": "ssr-entrega",
+      "guideHref": "/architectures/ssr-ssg",
+      "guideLabel": "SSR & SSG",
+      "references": [
+        {
+          "label": "patterns.dev - Selective Hydration",
+          "url": "https://www.patterns.dev/react/react-selective-hydration"
+        },
+        {
+          "label": "React 18 - Selective Hydration (GitHub)",
+          "url": "https://github.com/reactwg/react-18/discussions/130"
+        }
+      ]
+    },
+    {
+      "id": "server-components",
+      "term": "Server Components",
+      "termPt": "Componentes de servidor",
+      "definition": "Componentes React que rodam apenas no servidor: não enviam JS do componente para o cliente, podendo acessar banco de dados e APIs diretamente. O resultado é enviado como parte do HTML ou do stream. Reduz bundle do cliente e permite dados frescos sem expor credenciais. Diferente de SSR clássico: o boundary servidor/cliente é por componente.",
+      "category": "ssr-entrega",
+      "guideHref": "/architectures/ssr-ssg",
+      "guideLabel": "SSR & SSG",
+      "references": [
+        {
+          "label": "React - Server Components",
+          "url": "https://react.dev/reference/react/use-server"
+        },
+        {
+          "label": "Next.js - Server Components",
+          "url": "https://nextjs.org/docs/app/building-your-application/rendering/server-components"
+        }
+      ]
+    },
+    {
+      "id": "edge-rendering",
+      "term": "Edge rendering",
+      "termPt": "Renderização na borda",
+      "definition": "Execução de SSR ou lógica de renderização em runtimes na borda da rede (edge), próximos ao usuário (CDN, edge functions), em vez de em um datacenter único. Reduz latência (TTFB) e permite personalização por região. Plataformas como Vercel Edge, Cloudflare Workers e Deno Deploy oferecem edge rendering.",
+      "category": "ssr-entrega",
+      "guideHref": "/architectures/ssr-ssg",
+      "guideLabel": "SSR & SSG",
+      "references": [
+        {
+          "label": "Vercel - Edge Functions",
+          "url": "https://vercel.com/docs/functions/edge-functions"
+        },
+        {
+          "label": "web.dev - Edge computing",
+          "url": "https://web.dev/articles/edge-computing"
+        }
+      ]
+    },
+    {
+      "id": "critical-rendering-path",
+      "term": "Critical rendering path",
+      "termPt": "Caminho crítico de renderização",
+      "definition": "Sequência de passos que o navegador executa para transformar HTML, CSS e JavaScript em pixels na tela: construção do DOM, do CSSOM, da árvore de renderização, layout e pintura. Otimizar esse caminho reduz o tempo até a primeira renderização e o jank. Minimizar recursos bloqueantes, o tamanho da cadeia de dependências e o número de bytes críticos melhora a métrica.",
+      "category": "performance",
+      "guideHref": "/techniques/performance",
+      "guideLabel": "Performance",
+      "references": [
+        {
+          "label": "MDN - Critical rendering path",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/Performance/Guides/Critical_rendering_path"
+        },
+        {
+          "label": "web.dev - Optimizing the critical rendering path",
+          "url": "https://web.dev/articles/critical-rendering-path/optimizing-critical-rendering-path"
+        }
+      ]
+    },
+    {
+      "id": "lcp",
+      "term": "Largest Contentful Paint (LCP)",
+      "termPt": "Maior pintura de conteúdo",
+      "definition": "Métrica estável dos Core Web Vitals que mede a velocidade percebida de carregamento: marca o momento em que o maior bloco de conteúdo visível (imagem, texto ou vídeo) foi renderizado, em relação ao início da navegação. Alvo: 2,5 segundos ou menos no 75º percentil. Elementos considerados incluem imagens, blocos de texto e vídeos no viewport.",
+      "category": "performance",
+      "guideHref": "/techniques/performance",
+      "guideLabel": "Performance",
+      "references": [
+        { "label": "web.dev - LCP", "url": "https://web.dev/articles/lcp" },
+        {
+          "label": "Chrome - LCP breakdown",
+          "url": "https://developer.chrome.com/docs/performance/insights/lcp-breakdown"
+        }
+      ]
+    },
+    {
+      "id": "fid",
+      "term": "First Input Delay (FID)",
+      "termPt": "Atraso da primeira entrada",
+      "definition": "Métrica que mede o tempo entre a primeira interação do usuário (clique, toque, teclado) e o momento em que o navegador consegue processar os event handlers. Bom valor: 100 ms ou menos no 75º percentil. O atraso ocorre quando a main thread está ocupada com JavaScript. FID foi substituído oficialmente por INP como Core Web Vital em março de 2024.",
+      "category": "performance",
+      "guideHref": "/techniques/performance",
+      "guideLabel": "Performance",
+      "references": [
+        { "label": "web.dev - FID", "url": "https://web.dev/articles/fid" },
+        {
+          "label": "web.dev - INP substitui FID (2024)",
+          "url": "https://web.dev/blog/inp-cwv-march-12"
+        }
+      ]
+    },
+    {
+      "id": "inp",
+      "term": "Interaction to Next Paint (INP)",
+      "termPt": "Interação até a próxima pintura",
+      "definition": "Core Web Vital (desde março de 2024) que mede a responsividade da página observando a latência de todas as interações (clique, toque, teclado) durante toda a visita, não só a primeira. Foca no tempo até o feedback visual aparecer na próxima pintura após a interação. Bom valor: 200 ms ou menos no 75º percentil. Substitui FID por capturar melhor a experiência ao longo do ciclo de vida da página.",
+      "category": "performance",
+      "guideHref": "/techniques/performance",
+      "guideLabel": "Performance",
+      "references": [
+        { "label": "web.dev - INP", "url": "https://web.dev/articles/inp" },
+        {
+          "label": "web.dev - Optimize INP",
+          "url": "https://web.dev/articles/optimize-inp"
+        }
+      ]
+    },
+    {
+      "id": "cls",
+      "term": "Cumulative Layout Shift (CLS)",
+      "termPt": "Deslocamento cumulativo de layout",
+      "definition": "Core Web Vital que mede a estabilidade visual: rastreia deslocamentos inesperados de elementos visíveis entre frames. O score considera a maior \"janela\" de layout shifts em sequência (menos de 1 s entre shifts, até 5 s no total). Bom: 0,1 ou menos; precisa melhorar: 0,1–0,25; ruim: acima de 0,25. Causas comuns: imagens/vídeos sem dimensões, fontes que mudam o layout, conteúdo injetado dinamicamente.",
+      "category": "performance",
+      "guideHref": "/techniques/performance",
+      "guideLabel": "Performance",
+      "references": [
+        { "label": "web.dev - CLS", "url": "https://web.dev/cls/" },
+        {
+          "label": "web.dev - Optimize CLS",
+          "url": "https://web.dev/patterns/web-vitals-patterns/placeholders/placeholders"
+        }
+      ]
+    },
+    {
+      "id": "render-blocking-resources",
+      "term": "Render-blocking resources",
+      "termPt": "Recursos bloqueantes de renderização",
+      "definition": "CSS e JavaScript que impedem o navegador de renderizar o conteúdo até serem baixados e processados. Folhas de estilo vinculadas sem media específico e scripts no head sem defer ou async bloqueiam a primeira pintura e atrasam FCP e LCP. Estratégias: inline do crítico, defer/async em scripts não críticos, remover CSS/JS não usados no first paint e usar code splitting.",
+      "category": "performance",
+      "guideHref": "/techniques/performance",
+      "guideLabel": "Performance",
+      "references": [
+        {
+          "label": "Chrome - Eliminate render-blocking resources",
+          "url": "https://developer.chrome.com/docs/lighthouse/performance/render-blocking-resources"
+        },
+        {
+          "label": "web.dev - Optimize resource loading",
+          "url": "https://web.dev/learn/performance/optimize-resource-loading"
+        }
+      ]
+    },
+    {
+      "id": "long-tasks-api",
+      "term": "Long Tasks API",
+      "termPt": "API de tarefas longas",
+      "definition": "Especificação W3C que detecta quando tarefas de JavaScript ocupam a main thread por 50 ms ou mais sem interrupção, atrasando resposta a input e causando jank. O limite de 50 ms vem do modelo RAIL (resposta visível em até 100 ms). A API é usada via PerformanceObserver para monitorar e reportar bloqueios da main thread em ferramentas de análise e otimização.",
+      "category": "performance",
+      "guideHref": "/techniques/performance",
+      "guideLabel": "Performance",
+      "references": [
+        {
+          "label": "W3C - Long Tasks API",
+          "url": "https://www.w3.org/TR/longtasks-1/"
+        },
+        {
+          "label": "web.dev - Long tasks in DevTools",
+          "url": "https://web.dev/articles/long-tasks-devtools"
+        }
+      ]
+    },
+    {
+      "id": "performance-observer",
+      "term": "PerformanceObserver API",
+      "termPt": "API PerformanceObserver",
+      "definition": "Interface Web que permite observar entradas da timeline de performance e receber notificações quando novas entradas são registradas. Evita polling; os callbacks rodam em períodos ociosos, reduzindo impacto. Suporta tipos como resource, mark, measure e longtask. Usada para métricas customizadas (latência de clique, tempo de hidratação) e para integrar Core Web Vitals e Long Tasks em ferramentas de monitoramento.",
+      "category": "performance",
+      "guideHref": "/techniques/performance",
+      "guideLabel": "Performance",
+      "references": [
+        {
+          "label": "MDN - PerformanceObserver",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/API/PerformanceObserver"
+        },
+        {
+          "label": "web.dev - Custom metrics",
+          "url": "https://web.dev/articles/custom-metrics"
+        }
+      ]
+    },
+    {
+      "id": "paint-composite-layout",
+      "term": "Paint vs composite vs layout",
+      "termPt": "Pintura, composição e layout",
+      "definition": "Três etapas do pipeline de renderização do navegador. Layout (reflow): calcula posição e dimensões dos elementos; mudanças em width, margin, etc. disparam recálculo custoso. Paint: rasteriza pixels (cores, bordas, sombras). Composite: junta as camadas na GPU para a imagem final. Animações com transform ou opacity disparam só composite (mais barato); alterar propriedades de layout dispara layout + paint + composite. Priorize transform/opacity para animações fluidas.",
+      "category": "performance",
+      "guideHref": "/techniques/performance",
+      "guideLabel": "Performance",
+      "references": [
+        {
+          "label": "web.dev - Rendering performance",
+          "url": "https://web.dev/articles/rendering-performance"
+        },
+        {
+          "label": "CSS-Tricks - Browser painting",
+          "url": "https://css-tricks.com/browser-painting-and-considerations-for-web-performance/"
+        }
+      ]
+    },
+    {
+      "id": "css-containment",
+      "term": "CSS containment",
+      "termPt": "Contenção CSS",
+      "definition": "A propriedade CSS contain informa ao navegador que um elemento e seus filhos são independentes do resto da página, limitando o escopo de layout, paint e style. contain: layout evita que mudanças internas afetem o layout externo; contain: paint impede que descendentes pintem fora do container. contain: content equivale a layout style paint. Útil em cards, listas e modais: o navegador não recalcula o resto da página quando o conteúdo interno muda.",
+      "category": "performance",
+      "guideHref": "/techniques/performance",
+      "guideLabel": "Performance",
+      "references": [
+        {
+          "label": "MDN - Using CSS containment",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_containment/Using_CSS_containment"
+        },
+        {
+          "label": "CSS-Tricks - contain property",
+          "url": "https://css-tricks.com/almanac/properties/c/contain/"
+        }
+      ]
+    },
+    {
+      "id": "layout-thrashing",
+      "term": "Layout thrashing",
+      "termPt": "Layout thrashing / reflow forçado",
+      "definition": "Ocorre quando o JavaScript lê propriedades geométricas (offsetHeight, getBoundingClientRect, etc.) logo após modificar o DOM, forçando o navegador a recalcular o layout de forma síncrona (reflow forçado). Em loop, vira thrashing: várias leituras e escritas alternadas na mesma frame, custando muito. Solução: agrupar leituras, depois escritas; evitar acessar layout dentro de loops. Chrome DevTools sinaliza reflows forçados acima de ~30 ms.",
+      "category": "performance",
+      "guideHref": "/techniques/performance",
+      "guideLabel": "Performance",
+      "references": [
+        {
+          "label": "web.dev - Avoid layout thrashing",
+          "url": "https://web.dev/articles/avoid-large-complex-layouts-and-layout-thrashing"
+        },
+        {
+          "label": "Chrome - Forced reflow",
+          "url": "https://developer.chrome.com/docs/performance/insights/forced-reflow"
+        }
+      ]
+    },
+    {
+      "id": "tree-shaking",
+      "term": "Tree shaking",
+      "termPt": "Tree shaking",
+      "definition": "Eliminação de código morto em bundlers JavaScript: o bundler analisa imports/exports estáticos (ES modules) e remove exportações não usadas do bundle final. Depende de módulos ES; CommonJS dificulta a análise. Webpack e Rollup suportam; o package.json pode declarar sideEffects para indicar arquivos \"puros\" seguros para remoção. Reduz tamanho do bundle e tempo de parse/compile.",
+      "category": "performance",
+      "guideHref": "/techniques/performance",
+      "guideLabel": "Performance",
+      "references": [
+        {
+          "label": "Webpack - Tree Shaking",
+          "url": "https://webpack.js.org/guides/tree-shaking/"
+        },
+        { "label": "Rollup - Tree shaking", "url": "https://rollupjs.org/faqs" }
+      ]
+    },
+    {
+      "id": "code-splitting",
+      "term": "Code splitting strategies",
+      "termPt": "Estratégias de code splitting",
+      "definition": "Dividir o bundle em chunks menores carregados sob demanda em vez de tudo no carregamento inicial. Comum: por rota (React.lazy + Suspense, next/dynamic) e por componente (componentes pesados carregados no interação). Usa dynamic import() que retorna Promise. Reduz tempo até interatividade e melhora INP ao diminuir JS parse/compile na main thread. Webpack SplitChunksPlugin e Parcel fazem splitting automático com dynamic import.",
+      "category": "performance",
+      "guideHref": "/techniques/performance",
+      "guideLabel": "Performance",
+      "references": [
+        {
+          "label": "web.dev - Code-split JavaScript",
+          "url": "https://web.dev/learn/performance/code-split-javascript"
+        },
+        {
+          "label": "web.dev - Code splitting with dynamic imports (Next.js)",
+          "url": "https://web.dev/articles/code-splitting-with-dynamic-imports-in-nextjs"
+        }
+      ]
+    },
+    {
+      "id": "cors-preflight",
+      "term": "CORS preflight",
+      "termPt": "Preflight CORS",
+      "definition": "Pedido OPTIONS enviado automaticamente pelo navegador para verificar se o servidor permite uma requisição cross-origin antes de enviar a requisição real. Usa cabeçalhos Access-Control-Request-Method e Origin; o servidor responde com Access-Control-Allow-Methods e afins. Ocorre em requisições \"não simples\" (métodos como PUT/DELETE, cabeçalhos customizados). Requisições simples (GET, POST com cabeçalhos safelist) dispensam preflight. Respostas podem ser cacheadas com Access-Control-Max-Age.",
+      "category": "security",
+      "guideHref": "/patterns/security",
+      "guideLabel": "Security Patterns",
+      "references": [
+        {
+          "label": "MDN - CORS",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS"
+        },
+        {
+          "label": "MDN - Preflight request",
+          "url": "https://developer.mozilla.org/en-US/docs/Glossary/Preflight_request"
+        }
+      ]
+    },
+    {
+      "id": "csp",
+      "term": "Content Security Policy (CSP)",
+      "termPt": "Política de segurança de conteúdo",
+      "definition": "Mecanismo de segurança via cabeçalho HTTP Content-Security-Policy (ou meta tag) que instrui o navegador sobre quais recursos (scripts, estilos, imagens, etc.) a página pode carregar. Principal uso: mitigar XSS ao restringir origens de script. Políticas modernas \"strict\" usam nonce ou hash em vez de allowlists. Diretivas como script-src, default-src controlam fontes permitidas. CSP também ajuda contra clickjacking e injeção de código.",
+      "category": "security",
+      "guideHref": "/patterns/security",
+      "guideLabel": "Security Patterns",
+      "references": [
+        {
+          "label": "MDN - Content Security Policy",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP"
+        },
+        {
+          "label": "web.dev - Strict CSP",
+          "url": "https://web.dev/articles/strict-csp"
+        }
+      ]
+    },
+    {
+      "id": "trusted-types",
+      "term": "Trusted Types",
+      "termPt": "Trusted Types",
+      "definition": "API web que reduz DOM XSS ao exigir que dados passados a sinks perigosos (innerHTML, eval, script.src, etc.) sejam objetos tipados criados por políticas de sanitização, em vez de strings brutas. O desenvolvedor define políticas (ex.: com DOMPurify); o navegador só aceita TrustedHTML/TrustedScript etc. nessas APIs. Pode ser imposta via CSP (trusted-types, require-trusted-types-for). Suporte: Chrome, Edge; Firefox e Safari ainda sem suporte nativo.",
+      "category": "security",
+      "guideHref": "/patterns/security",
+      "guideLabel": "Security Patterns",
+      "references": [
+        {
+          "label": "MDN - Trusted Types API",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/API/Trusted_Types_API"
+        },
+        {
+          "label": "web.dev - Trusted Types",
+          "url": "https://web.dev/articles/trusted-types"
+        }
+      ]
+    },
+    {
+      "id": "csrf-vs-xss",
+      "term": "CSRF vs XSS mitigation",
+      "termPt": "Mitigação CSRF vs XSS",
+      "definition": "XSS: atacante injeta script em página confiável; executa no navegador da vítima (roubo de cookie, sessão, deface). Mitigação: escape de saída, sanitização (ex.: DOMPurify), CSP, Trusted Types. CSRF: atacante faz o navegador da vítima autenticada enviar requisições indesejadas ao site. Mitigação: tokens CSRF, SameSite em cookies, verificação de origem. XSS pode anular proteções CSRF; as duas defesas são necessárias.",
+      "category": "security",
+      "guideHref": "/patterns/security",
+      "guideLabel": "Security Patterns",
+      "references": [
+        {
+          "label": "OWASP - XSS Prevention",
+          "url": "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html"
+        },
+        {
+          "label": "OWASP - CSRF Prevention",
+          "url": "https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html"
+        }
+      ]
+    },
+    {
+      "id": "samesite-cookies",
+      "term": "SameSite cookie attribute",
+      "termPt": "Atributo SameSite em cookies",
+      "definition": "Atributo do Set-Cookie que controla se o cookie é enviado em requisições cross-site. SameSite=Strict: só em contexto first-party (mesmo site na barra de endereço); ideal para ações sensíveis. SameSite=Lax: enviado em navegações de topo (ex.: clique em link), não em recursos embutidos (img, iframe de outro site); recomendado para cookies de exibição. SameSite=None exige Secure e envia em todos os contextos (ex.: widgets, SSO). Ajuda a mitigar CSRF.",
+      "category": "security",
+      "guideHref": "/patterns/security",
+      "guideLabel": "Security Patterns",
+      "references": [
+        {
+          "label": "MDN - Set-Cookie SameSite",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie/SameSite"
+        },
+        {
+          "label": "web.dev - SameSite cookies",
+          "url": "https://web.dev/articles/samesite-cookies-explained"
+        }
+      ]
+    },
+    {
+      "id": "dom-clobbering",
+      "term": "DOM clobbering",
+      "termPt": "DOM clobbering",
+      "definition": "Ataque em que o atacante injeta elementos HTML com id ou name que coincidem com variáveis ou APIs sensíveis; o navegador expõe elementos nomeados em window/document e eles sobrescrevem (clobber) referências esperadas pelo código. Perigoso quando CSP ou sanitizers bloqueiam script mas permitem HTML: um id como redirectTo pode desviar lógica de redirecionamento. Mitigações: prefixar ids/names, sanitizar atributos perigosos, Object.defineProperty não configurável em propriedades sensíveis.",
+      "category": "security",
+      "guideHref": "/patterns/security",
+      "guideLabel": "Security Patterns",
+      "references": [
+        {
+          "label": "OWASP - DOM Clobbering Prevention",
+          "url": "https://cheatsheetseries.owasp.org/cheatsheets/DOM_Clobbering_Prevention_Cheat_Sheet.html"
+        },
+        {
+          "label": "PortSwigger - DOM clobbering",
+          "url": "https://portswigger.net/web-security/dom-based/dom-clobbering"
+        }
+      ]
+    },
+    {
+      "id": "prototype-pollution",
+      "term": "Prototype pollution",
+      "termPt": "Poluição de protótipo",
+      "definition": "Vulnerabilidade em JavaScript em que o atacante altera propriedades no protótipo de objetos (ex.: Object.prototype), fazendo valores maliciosos aparecerem em objetos que herdam do protótipo. Explorada via __proto__, constructor.prototype ou merge inseguro de objetos. Pode levar a XSS, execução de código, elevação de privilégio ou negação de serviço. Mitigação: Object.create(null), evitar merge de input em objetos, congelar protótipos, não confiar em __proto__ de payloads.",
+      "category": "security",
+      "guideHref": "/patterns/security",
+      "guideLabel": "Security Patterns",
+      "references": [
+        {
+          "label": "MDN - Prototype pollution",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/Security/Attacks/Prototype_pollution"
+        },
+        {
+          "label": "OWASP - Prototype Pollution Prevention",
+          "url": "https://cheatsheetseries.owasp.org/cheatsheets/Prototype_Pollution_Prevention_Cheat_Sheet.html"
+        }
+      ]
+    },
+    {
+      "id": "concurrent-rendering",
+      "term": "Concurrent rendering",
+      "termPt": "Renderização concorrente",
+      "definition": "Mecanismo do React 18 que permite preparar várias versões da UI ao mesmo tempo e torna a renderização interrompível: o React pode pausar um trabalho e priorizar outro (ex.: input do usuário). Habilitado ao usar createRoot; desbloqueia startTransition, useDeferredValue e Suspense para streaming. Não é um \"modo\" separado; é a base que permite essas features sem bloquear a main thread.",
+      "category": "state",
+      "guideHref": "/techniques/state-machines",
+      "guideLabel": "State Machines",
+      "references": [
+        {
+          "label": "React 18 - Concurrent rendering",
+          "url": "https://react.dev/blog/2022/03/29/react-v18"
+        },
+        {
+          "label": "React - Concurrent Mode intro",
+          "url": "https://reactjs.org/docs/concurrent-mode-intro.html"
+        }
+      ]
+    },
+    {
+      "id": "reconciliation",
+      "term": "Reconciliation algorithm",
+      "termPt": "Algoritmo de reconciliação",
+      "definition": "Processo do React que compara a árvore Virtual DOM anterior com a nova, determina o conjunto mínimo de mudanças e aplica só essas mudanças no DOM real. Usa heurística O(n) com duas premissas: elementos de tipo diferente geram árvores diferentes; keys estáveis em listas permitem rastrear itens. Evita o custo O(n³) de um diff genérico e reduz manipulação direta do DOM.",
+      "category": "state",
+      "guideHref": "/techniques/state-machines",
+      "guideLabel": "State Machines",
+      "references": [
+        {
+          "label": "React - Reconciliation",
+          "url": "https://reactjs.org/docs/reconciliation.html"
+        }
+      ]
+    },
+    {
+      "id": "virtual-dom",
+      "term": "Virtual DOM",
+      "termPt": "Virtual DOM",
+      "definition": "Representação em memória (objetos JavaScript) do DOM real. O React mantém uma árvore Virtual DOM, compara com a nova após atualização de estado e aplica apenas o diff no DOM, reduzindo custo de manipulação direta. O \"Virtual DOM\" em si não é uma spec; é o padrão de manter uma cópia leve e fazer batch de updates. A complexidade do diff é mitigada pelo algoritmo de reconciliação e pelo uso de keys.",
+      "category": "state",
+      "guideHref": "/techniques/state-machines",
+      "guideLabel": "State Machines",
+      "references": [
+        {
+          "label": "React - Reconciliation",
+          "url": "https://reactjs.org/docs/reconciliation.html"
+        }
+      ]
+    },
+    {
+      "id": "fiber-architecture",
+      "term": "Fiber architecture",
+      "termPt": "Arquitetura Fiber",
+      "definition": "Reescrita do núcleo do React que substitui o reconciler baseado em pilha por unidades de trabalho (fibers): cada fiber é um objeto que representa um nó da árvore e permite trabalho interrompível e priorizado. O scheduler usa prioridades (immediate, user-blocking, normal, low, idle) e shouldYield() para ceder a main thread. Habilita Concurrent Mode, Suspense e SSR em streaming.",
+      "category": "state",
+      "guideHref": "/techniques/state-machines",
+      "guideLabel": "State Machines",
+      "references": [
+        {
+          "label": "React Fiber - Code With Seb",
+          "url": "https://www.codewithseb.com/blog/deep-dive-into-react-fiber-the-engine-behind-modern-react"
+        },
+        {
+          "label": "React Scheduler - jser.dev",
+          "url": "https://jser.dev/react/2022/03/16/how-react-scheduler-works"
+        }
+      ]
+    },
+    {
+      "id": "stale-closure",
+      "term": "Stale closure",
+      "termPt": "Closure obsoleta",
+      "definition": "Quando uma função captura um valor antigo de uma variável (ex.: state) e continua usando esse valor após atualizações. Comum em React com useEffect/useCallback com array de dependências vazio ou incompleto: um setInterval dentro do effect pode ver sempre o estado inicial. Soluções: listar todas as dependências; usar atualização funcional de setState (prev => ...); ou refs para valores que não devem retrigger o effect.",
+      "category": "state",
+      "guideHref": "/best-practices/clean-code",
+      "guideLabel": "Clean Code",
+      "references": [
+        {
+          "label": "React - useMemo",
+          "url": "https://react.dev/reference/react/useMemo"
+        },
+        {
+          "label": "Dealing with stale closure (DEV)",
+          "url": "https://dev.to/thekhairul/dealing-with-stale-closure-in-react-395i"
+        }
+      ]
+    },
+    {
+      "id": "memoization-pitfalls",
+      "term": "Memoization pitfalls",
+      "termPt": "Armadilhas da memoização",
+      "definition": "useMemo e useCallback reduzem recálculos e re-renders, mas usar demais ou errado custa: dependências que mudam sempre anulam o benefício; esquecer dependências causa bugs; chamar hooks dentro de loops/condicionais quebra regras do React. Regra prática: memoizar só quando há custo mensurável (cálculo pesado ou filhos memo() que recebem o valor/função). O React Compiler tende a automatizar parte disso.",
+      "category": "state",
+      "guideHref": "/techniques/performance",
+      "guideLabel": "Performance",
+      "references": [
+        {
+          "label": "React - useMemo",
+          "url": "https://react.dev/reference/react/useMemo"
+        },
+        {
+          "label": "React - useCallback",
+          "url": "https://react.dev/reference/react/useCallback"
+        }
+      ]
+    },
+    {
+      "id": "race-conditions-ui",
+      "term": "Race conditions in UI state",
+      "termPt": "Condições de corrida no estado da UI",
+      "definition": "Quando várias operações assíncronas (ex.: fetches) terminam em ordem inesperada e uma resposta mais antiga sobrescreve uma mais nova, corrompendo o estado. Em React é comum com useEffect + async quando a dependência muda rápido (ex.: busca ao digitar). Mitigação: AbortController para cancelar requests anteriores; cleanup no useEffect; ou libs (TanStack Query, SWR) que deduplicam e cancelam automaticamente.",
+      "category": "state",
+      "guideHref": "/techniques/state-machines",
+      "guideLabel": "State Machines",
+      "references": [
+        {
+          "label": "React - useEffect cleanup",
+          "url": "https://react.dev/reference/react/useEffect"
+        },
+        {
+          "label": "Avoid useEffect race condition (Stack Overflow)",
+          "url": "https://stackoverflow.com/questions/64024877/how-to-avoid-useeffect-race-condition"
+        }
+      ]
+    },
+    {
+      "id": "optimistic-ui-rollback",
+      "term": "Optimistic UI rollback",
+      "termPt": "Rollback de UI otimista",
+      "definition": "Padrão em que a UI é atualizada na hora assumindo sucesso da operação no servidor; se a requisição falhar, o estado é revertido ao anterior. Requer: guardar o estado anterior (ex.: snapshot do cache), aplicar a mudança otimista, e em onError restaurar o snapshot. Bom para ações reversíveis (like, comentar); evite em transações financeiras ou exclusões irreversíveis. React Query, useOptimistic e SWR suportam o padrão.",
+      "category": "state",
+      "guideHref": "/techniques/state-machines",
+      "guideLabel": "State Machines",
+      "references": [
+        {
+          "label": "web.dev / React useOptimistic",
+          "url": "https://www.freecodecamp.org/news/how-to-use-the-optimistic-ui-pattern-with-the-useoptimistic-hook-in-react/"
+        },
+        {
+          "label": "TanStack Query - Optimistic updates",
+          "url": "https://sveltequery.vercel.app/guides/optimistic-updates"
+        }
+      ]
+    },
+    {
+      "id": "service-worker-lifecycle",
+      "term": "Service Worker lifecycle",
+      "termPt": "Ciclo de vida do Service Worker",
+      "definition": "Estados pelos quais um Service Worker passa: parsed (após download), installing (durante install), installed/waiting (aguardando), activating (durante activate), activated (controlando páginas e recebendo fetch), redundant (substituído ou falhou). O evento install é o primeiro; nele faz-se cache inicial. Só depois de activated o worker intercepta fetch. Páginas já abertas precisam ser recarregadas para serem controladas pelo novo worker. Garante uma única versão ativa por escopo.",
+      "category": "cache-rede",
+      "guideHref": "/architectures/pwa",
+      "guideLabel": "Progressive Web Apps",
+      "references": [
+        {
+          "label": "web.dev - Service worker lifecycle",
+          "url": "https://web.dev/articles/service-worker-lifecycle"
+        },
+        {
+          "label": "MDN - ServiceWorker.state",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorker/state"
+        }
+      ]
+    },
+    {
+      "id": "cache-invalidation",
+      "term": "Cache invalidation strategies",
+      "termPt": "Estratégias de invalidação de cache",
+      "definition": "Formas de tornar cache obsoleto ou forçar revalidação: Cache-Control (max-age, no-cache, must-revalidate) define por quanto tempo a resposta é \"fresca\"; ETag + If-None-Match permitem revalidação condicional (304 sem corpo); versionar URL do recurso (fingerprint) força novo download ao mudar o conteúdo; APIs emergentes permitem invalidar cache em gateways/CDN. Para ativos estáticos, max-age longo + URL versionada é comum.",
+      "category": "cache-rede",
+      "guideHref": "/architectures/pwa",
+      "guideLabel": "Progressive Web Apps",
+      "references": [
+        {
+          "label": "MDN - Cache-Control",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control"
+        },
+        {
+          "label": "MDN - HTTP Caching",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching"
+        }
+      ]
+    },
+    {
+      "id": "stale-while-revalidate",
+      "term": "Stale-while-revalidate",
+      "termPt": "Stale-while-revalidate",
+      "definition": "Estratégia de cache via diretiva Cache-Control: stale-while-revalidate=N permite servir conteúdo em cache já \"stale\" (após max-age) imediatamente enquanto em background uma nova versão é buscada e o cache é atualizado. Equilibra resposta rápida e atualização. Fase fresca (0 a max-age): usa cache; fase stale (max-age a max-age+N): serve cache e revalida; depois disso precisa de rede. Chrome 75+, Firefox 68+.",
+      "category": "cache-rede",
+      "guideHref": "/architectures/pwa",
+      "guideLabel": "Progressive Web Apps",
+      "references": [
+        {
+          "label": "web.dev - Stale-while-revalidate",
+          "url": "https://web.dev/articles/stale-while-revalidate"
+        }
+      ]
+    },
+    {
+      "id": "preload-prefetch-preconnect",
+      "term": "Preload vs Prefetch vs Preconnect",
+      "termPt": "Preload, Prefetch e Preconnect",
+      "definition": "Resource hints que orientam o carregamento: preconnect aquece a conexão (DNS, TCP, TLS) com um origin antes de pedir recursos; preload busca com alta prioridade um recurso crítico da página atual (melhora LCP); prefetch busca com baixa prioridade para provável navegação futura. Usar com moderação; preload exige as=\"tipo\". dns-prefetch é mais leve que preconnect quando só DNS importa.",
+      "category": "cache-rede",
+      "guideHref": "/techniques/performance",
+      "guideLabel": "Performance",
+      "references": [
+        {
+          "label": "web.dev - Resource hints",
+          "url": "https://web.dev/learn/performance/resource-hints"
+        },
+        {
+          "label": "MDN - preconnect",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/rel/preconnect"
+        }
+      ]
+    },
+    {
+      "id": "etag-cache-control",
+      "term": "ETag vs Cache-Control",
+      "termPt": "ETag e Cache-Control",
+      "definition": "Cache-Control define se e por quanto tempo a resposta pode ser cacheada (max-age, no-store, private, etc.). ETag é um validador opaco enviado pelo servidor; o cliente revalida com If-None-Match; se o recurso não mudou, o servidor responde 304 Not Modified sem corpo. Cache-Control controla \"quando revalidar\"; ETag permite revalidação condicional barata. Para recursos imutáveis (hash na URL), max-age longo sem ETag é comum.",
+      "category": "cache-rede",
+      "guideHref": "/techniques/performance",
+      "guideLabel": "Performance",
+      "references": [
+        {
+          "label": "MDN - HTTP Caching",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching"
+        },
+        {
+          "label": "RFC 9111 - HTTP Caching",
+          "url": "https://datatracker.ietf.org/doc/html/rfc9111"
+        }
+      ]
+    },
+    {
+      "id": "abort-controller",
+      "term": "AbortController",
+      "termPt": "AbortController",
+      "definition": "API do navegador para cancelar requisições fetch (e outras operações que aceitam AbortSignal). Cria-se um AbortController, passa controller.signal para fetch({ signal }); ao chamar controller.abort(), o fetch é cancelado e a Promise rejeita com DOMException AbortError. Essencial para evitar race conditions: cancelar o fetch anterior quando a dependência muda (ex.: novo termo de busca). Um controller abortado não pode ser reutilizado; criar um novo por requisição.",
+      "category": "cache-rede",
+      "guideHref": "/techniques/performance",
+      "guideLabel": "Performance",
+      "references": [
+        {
+          "label": "MDN - AbortController",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/API/AbortController"
+        },
+        {
+          "label": "javascript.info - Fetch abort",
+          "url": "https://javascript.info/fetch-abort"
+        }
+      ]
+    },
+    {
+      "id": "intersection-observer",
+      "term": "IntersectionObserver",
+      "termPt": "IntersectionObserver",
+      "definition": "API que observa de forma assíncrona quando elementos entram ou saem do viewport (ou de um ancestral). Usada para lazy load de imagens e conteúdo: evita scroll handlers e getBoundingClientRect em loop, que causam jank. Configuração: root, rootMargin (estilo CSS), threshold (0–1, ex.: 0.1 = 10% visível). Padrão típico: data-src no elemento, trocar por src quando intersectar e parar de observar. Suporte amplo desde 2019.",
+      "category": "observers-memory",
+      "guideHref": "/techniques/performance",
+      "guideLabel": "Performance",
+      "references": [
+        {
+          "label": "MDN - Intersection Observer API",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API"
+        },
+        {
+          "label": "MDN - Lazy loading",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/Performance/Lazy_loading"
+        }
+      ]
+    },
+    {
+      "id": "resize-observer-loop",
+      "term": "ResizeObserver loop limit",
+      "termPt": "Limite de loop do ResizeObserver",
+      "definition": "Erro \"ResizeObserver loop limit exceeded\" ocorre quando o navegador não consegue processar todas as observações de resize pendentes dentro de um frame. É uma proteção de performance, não necessariamente bug do app: evita loops infinitos (resize que dispara outro resize). Callbacks pesados ou muitos elementos observados podem disparar. Em geral não impacta o usuário; o navegador adia o resto para o próximo frame. Boa prática: ignorar em monitoramento de erros; evitar trabalho pesado ou mudanças de layout em cascata no callback.",
+      "category": "observers-memory",
+      "guideHref": "/techniques/performance",
+      "guideLabel": "Performance",
+      "references": [
+        {
+          "label": "TrackJS - ResizeObserver loop",
+          "url": "https://trackjs.com/javascript-errors/resizeobserver-loop-limit-exceeded/"
+        },
+        {
+          "label": "Stack Overflow - ResizeObserver loop",
+          "url": "https://stackoverflow.com/questions/49384120/resizeobserver-loop-limit-exceeded"
+        }
+      ]
+    },
+    {
+      "id": "mutation-observer-cost",
+      "term": "MutationObserver cost",
+      "termPt": "Custo do MutationObserver",
+      "definition": "Observar grandes árvores (ex.: document.body) pode degradar performance: cada mutação dispara o callback e processamento síncrono pesado causa jank. Mitigações: observar só o container necessário; fazer debounce: acumular mutações e processar em requestAnimationFrame ou setTimeout; evitar loops lentos no callback; em mudanças fora da área visível, desconectar e reagendar. O problema não é usar MutationObserver, e sim escopo amplo e callback custoso.",
+      "category": "observers-memory",
+      "guideHref": "/techniques/performance",
+      "guideLabel": "Performance",
+      "references": [
+        {
+          "label": "Stack Overflow - MutationObserver performance",
+          "url": "https://stackoverflow.com/questions/31659567/performance-of-mutationobserver-to-detect-nodes-in-entire-dom"
+        },
+        {
+          "label": "Stack Overflow - Make MutationObserver less heavy",
+          "url": "https://stackoverflow.com/questions/32425192/make-mutation-observer-faster-and-less-resource-heavy"
+        }
+      ]
+    },
+    {
+      "id": "detached-dom",
+      "term": "Detached DOM nodes",
+      "termPt": "Nós DOM destacados",
+      "definition": "Nó removido da árvore DOM (remove(), unmount, innerHTML) mas ainda referenciado por JavaScript (closure, timer, listener, variável global). O GC não libera esses nós, causando vazamento de memória. Retenção de um nó mantém toda a subárvore. Causas comuns: log de elementos no console (DevTools segura referência), setInterval/setTimeout que referenciam elementos, listeners não removidos no unmount. Detecção: Heap snapshot no Chrome, filtrar \"Detached\"; comparar snapshots. Solução: limpar refs e listeners (ex.: AbortController), não guardar referências a nós removidos.",
+      "category": "observers-memory",
+      "guideHref": "/techniques/performance",
+      "guideLabel": "Performance",
+      "references": [
+        {
+          "label": "Microsoft Edge - Detached Elements tool",
+          "url": "https://learn.microsoft.com/en-us/microsoft-edge/devtools-guide-chromium/memory-problems/dom-leaks"
+        },
+        {
+          "label": "DebugBear - Memory leaks",
+          "url": "https://www.debugbear.com/blog/debugging-javascript-memory-leaks"
+        }
+      ]
+    },
+    {
+      "id": "memory-leak-detection",
+      "term": "Browser memory leak detection",
+      "termPt": "Detecção de vazamento de memória",
+      "definition": "Uso do painel Memory do Chrome DevTools: Heap snapshot grava objetos e nós DOM alcançáveis; comparar dois snapshots (antes e depois de repetir a ação suspeita) na vista Comparison, ordenando por Size Delta, revela o que cresceu. Summary agrupa por construtor; Containment mostra referências globais. Tamanho retido (retained size) indica o que seria liberado ao remover o objeto. Allocation timeline faz snapshots periódicos para ver alocação e GC ao longo do tempo. Foco em detached DOM, listeners e closures que retêm árvores grandes.",
+      "category": "observers-memory",
+      "guideHref": "/techniques/performance",
+      "guideLabel": "Performance",
+      "references": [
+        {
+          "label": "Chrome - Heap snapshots",
+          "url": "https://developer.chrome.com/docs/devtools/memory-problems/heap-snapshots"
+        },
+        {
+          "label": "Chrome - Fix memory problems",
+          "url": "https://developer.chrome.com/docs/devtools/memory-problems"
+        }
+      ]
+    },
+    {
+      "id": "indexeddb",
+      "term": "IndexedDB",
+      "termPt": "IndexedDB",
+      "definition": "API de armazenamento NoSQL no cliente para dados estruturados e binários (blobs). Assíncrona; acessível da main thread, Web Workers e Service Workers. Cada origem tem suas bases; limite de armazenamento generoso. Usada em PWAs para dados que precisam persistir offline e ser consultados (índices, transações). Para recursos de rede (HTML, JS, imagens) use Cache API. Conceitos: database, object store, index, transaction, cursor. Bibliotecas como idb simplificam o uso com Promises.",
+      "category": "observers-memory",
+      "guideHref": "/architectures/pwa",
+      "guideLabel": "Progressive Web Apps",
+      "references": [
+        {
+          "label": "web.dev - Offline data",
+          "url": "https://web.dev/learn/pwa/offline-data"
+        },
+        {
+          "label": "Google - Working with IndexedDB",
+          "url": "https://developers.google.com/web/ilt/pwa/working-with-indexeddb"
+        }
+      ]
+    },
+    {
+      "id": "web-workers-vs-service-workers",
+      "term": "Web Workers vs Service Workers",
+      "termPt": "Web Workers vs Service Workers",
+      "definition": "Web Workers: threads em background criados pela página para tarefas pesadas de CPU (parsing, cálculos); mantêm a UI responsiva; você inicia e troca mensagens. Service Workers: workers especiais que ficam entre o app e a rede; interceptam fetch, permitem cache e offline; suportam push e background sync; atuam como proxy. Ambos rodam fora da main thread e não acessam DOM/Window. Resumo: Web Worker = computação pesada; Service Worker = rede, cache e PWA.",
+      "category": "workers-apis",
+      "guideHref": "/architectures/pwa",
+      "guideLabel": "Progressive Web Apps",
+      "references": [
+        {
+          "label": "web.dev - Workers overview",
+          "url": "https://web.dev/articles/workers-overview"
+        },
+        {
+          "label": "Stack Overflow - Service vs Web Workers",
+          "url": "https://stackoverflow.com/questions/43958155/technical-differences-between-service-and-web-workers"
+        }
+      ]
+    },
+    {
+      "id": "shadow-dom",
+      "term": "Shadow DOM",
+      "termPt": "Shadow DOM",
+      "definition": "Subárvore DOM encapsulada anexada a um elemento (host). Estilos e estrutura internos ficam isolados do documento (shadow boundary); o código externo não acessa o interior por seletores normais. Usado em Web Components. Conceitos: shadow host, shadow tree, shadow root. Criação via Element.attachShadow() ou Declarative Shadow DOM (<template shadowrootmode>) para SSR. Proporciona scoping de CSS e encapsulamento de DOM sem conflito com o resto da página.",
+      "category": "workers-apis",
+      "guideHref": "/patterns/component-driven",
+      "guideLabel": "Component-Driven Dev",
+      "references": [
+        {
+          "label": "MDN - Using shadow DOM",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_shadow_DOM"
+        },
+        {
+          "label": "MDN - attachShadow()",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/API/Element/attachShadow"
+        }
+      ]
+    },
+    {
+      "id": "custom-elements-lifecycle",
+      "term": "Custom Elements lifecycle",
+      "termPt": "Ciclo de vida de Custom Elements",
+      "definition": "Métodos de ciclo de vida: constructor() (só estado interno; evitar acessar DOM/atributos); connectedCallback() quando o elemento é inserido no DOM (inicializar, montar Shadow DOM, listeners globais); disconnectedCallback() quando é removido (limpar); attributeChangedCallback() quando atributos observados mudam (exige observedAttributes estático). Adiar trabalho para connectedCallback em vez do constructor; em connectedCallback o elemento pode ainda não ter filhos, então evitar querySelector que dependa deles.",
+      "category": "workers-apis",
+      "guideHref": "/patterns/component-driven",
+      "guideLabel": "Component-Driven Dev",
+      "references": [
+        {
+          "label": "MDN - Using custom elements",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_custom_elements"
+        },
+        {
+          "label": "Web Components Guide - Lifecycle",
+          "url": "https://webcomponents.guide/learn/components/lifecycle-reference"
+        }
+      ]
+    },
+    {
+      "id": "module-federation",
+      "term": "Module federation",
+      "termPt": "Module federation",
+      "definition": "Padrão (Webpack 5 ModuleFederationPlugin) em que vários builds independentes (micro-frontends) expõem e consomem módulos em runtime. Cada build é um container; módulos remotos são carregados de outros containers de forma assíncrona; shared permite compartilhar libs (ex.: React) entre containers. Reduz duplicação, melhora manutenção e tamanho total. Module Federation 2.0 adiciona runtime, manifest e plugins. Útil para arquiteturas de múltiplos times com deploys independentes.",
+      "category": "workers-apis",
+      "guideHref": "/architectures/micro-frontends",
+      "guideLabel": "Micro-Frontends",
+      "references": [
+        {
+          "label": "Webpack - Module Federation",
+          "url": "https://webpack.js.org/concepts/module-federation/"
+        },
+        {
+          "label": "module-federation.io",
+          "url": "https://module-federation.io/guide/start/index.html"
+        }
+      ]
+    },
+    {
+      "id": "webassembly",
+      "term": "WebAssembly integration",
+      "termPt": "Integração WebAssembly",
+      "definition": "WASM permite rodar código compilado (C, Rust, etc.) no navegador com performance próxima de nativo. Integração via JavaScript: fetch do .wasm, WebAssembly.instantiate(bytes, importObject) para compilar e instanciar; instance.exports expõe funções. Memória linear pode ser compartilhada com JS. Uso típico: cálculos pesados, decoders, jogos, ferramentas que já têm código em outras linguagens. O carregamento é assíncrono; imports (ex.: funções JS) são passados no importObject.",
+      "category": "workers-apis",
+      "guideHref": "/techniques/performance",
+      "guideLabel": "Performance",
+      "references": [
+        {
+          "label": "MDN - WebAssembly JavaScript API",
+          "url": "https://developer.mozilla.org/en-US/docs/WebAssembly/Guides/Using_the_JavaScript_API"
+        },
+        {
+          "label": "WebAssembly.org - JS API",
+          "url": "https://webassembly.org/getting-started/js-api/"
+        }
+      ]
+    }
+  ]
+}

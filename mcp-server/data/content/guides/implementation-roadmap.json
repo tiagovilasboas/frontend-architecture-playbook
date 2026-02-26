@@ -1,0 +1,362 @@
+{
+  "meta": {
+    "title": "Roadmap de Implementação",
+    "description": "Roadmap em 4 fases para evoluir a arquitetura frontend: performance, otimização, arquitetura e escala. Com checklists, ferramentas e critérios de avanço."
+  },
+  "layout": {
+    "showGuideNav": "implementation-roadmap",
+    "showRelated": true
+  },
+  "body": [
+    {
+      "type": "hero",
+      "title": "Roadmap de Implementação",
+      "subtitle": "4 fases práticas para evoluir a arquitetura frontend, da performance básica à escala global. Cada fase com métricas e checklists concretos."
+    },
+    {
+      "type": "section",
+      "title": "O que é?",
+      "icon": "rocket",
+      "children": [
+        {
+          "type": "text",
+          "content": "Roadmap prático baseado em implementações reais",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "text",
+          "content": "Este roadmap é baseado em cases reais de empresas que implementaram arquiteturas front-end com sucesso. Não é teoria, é prática aplicável."
+        },
+        {
+          "type": "text",
+          "content": "Cada fase tem checklists concretos, ferramentas recomendadas, e critérios claros de quando avançar para a próxima."
+        },
+        {
+          "type": "alert",
+          "message": "Implementação gradual é melhor que big bang. Comece por performance (ganhos imediatos), depois modularize (ganhos de equipe), depois escale (ganhos de infraestrutura).",
+          "color": "yellow",
+          "icon": "bulb"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Fase 1: Fundação (0-3 meses)",
+      "icon": "target",
+      "children": [
+        {
+          "type": "text",
+          "content": "Performance e métricas básicas",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "timeline",
+          "active": 1,
+          "items": [
+            {
+              "title": "Performance Audit",
+              "description": "Passo 1: mapeie os gargalos antes de otimizar",
+              "items": [
+                "Bundle analyzer para identificar gargalos",
+                "Core Web Vitals (LCP, INP, CLS)",
+                "Mobile performance e estabilidade",
+                "User experience metrics"
+              ]
+            },
+            {
+              "title": "Métricas de Negócio",
+              "description": "Conecte performance a métricas de negócio",
+              "items": [
+                "Conversion rate e testes A/B",
+                "User engagement e receita",
+                "Bounce rate e taxa de abandono",
+                "Session duration"
+              ]
+            },
+            {
+              "title": "Infraestrutura Básica",
+              "description": "CI/CD e observabilidade desde o dia 1",
+              "items": [
+                "CI/CD pipeline com deploys frequentes",
+                "Monitoring e alertas proativos",
+                "Error tracking",
+                "Performance monitoring"
+              ]
+            }
+          ],
+          "resultAlert": {
+            "message": "Métricas de performance mensuráveis: Lighthouse score, bundle size, LCP e FID documentados. Base sólida para próximas fases.",
+            "color": "green",
+            "icon": "trending-up"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Fase 2: Otimização (3-6 meses)",
+      "icon": "chart-bar",
+      "children": [
+        {
+          "type": "text",
+          "content": "Otimizações específicas baseadas em dados",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "timeline",
+          "active": 2,
+          "items": [
+            {
+              "title": "Code Splitting",
+              "description": "Carregue só o que o usuário precisa agora",
+              "items": [
+                "Route-based splitting",
+                "Component lazy loading",
+                "Vendor chunk optimization",
+                "Dynamic imports"
+              ]
+            },
+            {
+              "title": "Caching Strategy",
+              "description": "Múltiplas camadas de cache reduzem requests",
+              "items": [
+                "Service workers e PWA",
+                "CDN optimization",
+                "Browser caching",
+                "API response caching"
+              ]
+            },
+            {
+              "title": "Bundle Optimization",
+              "description": "Cada KB a menos é performance ganha",
+              "items": [
+                "Tree shaking",
+                "Minification",
+                "Compression (Gzip/Brotli)",
+                "Dead code elimination"
+              ]
+            }
+          ],
+          "resultAlert": {
+            "message": "Bundle menor com code splitting e tree shaking. Lazy loading por rota, chunks otimizados, carregamento progressivo.",
+            "color": "blue",
+            "icon": "chart-bar"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Fase 3: Arquitetura (6-12 meses)",
+      "icon": "code",
+      "children": [
+        {
+          "type": "text",
+          "content": "Arquitetura escalável baseada em necessidades",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "timeline",
+          "active": 3,
+          "items": [
+            {
+              "title": "Micro Frontends",
+              "description": "Quando times independentes justificam o overhead",
+              "items": [
+                "Module federation para deploys independentes",
+                "Shared dependencies",
+                "Independent deployments",
+                "Team autonomy"
+              ]
+            },
+            {
+              "title": "Clean Architecture",
+              "description": "Regras de negócio isoladas de UI e infraestrutura",
+              "items": [
+                "Domain separation",
+                "Dependency inversion",
+                "Testability improvement",
+                "Maintainability"
+              ]
+            },
+            {
+              "title": "PWA Implementation",
+              "description": "App-like experience sem App Store",
+              "items": [
+                "Service workers e offline",
+                "Offline capabilities",
+                "App-like experience",
+                "Push notifications"
+              ]
+            }
+          ],
+          "resultAlert": {
+            "message": "Arquitetura escalável, times autônomos, performance otimizada. Deploys independentes e métricas por domínio.",
+            "color": "brand",
+            "icon": "code"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Fase 4: Escala (12+ meses)",
+      "icon": "users",
+      "children": [
+        {
+          "type": "text",
+          "content": "Otimizações para escala global",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "timeline",
+          "active": 4,
+          "items": [
+            {
+              "title": "Global Optimization",
+              "description": "CDN + edge computing para latência mínima",
+              "items": [
+                "CDN global e distribuição geográfica",
+                "Edge caching",
+                "Load balancing",
+                "Auto-scaling",
+                "Monitoring e observabilidade"
+              ]
+            },
+            {
+              "title": "Advanced Caching",
+              "description": "Cache hierárquico: memória → SW → CDN → origin",
+              "items": [
+                "Multi-level caching",
+                "Predictive loading",
+                "Smart prefetching",
+                "Cache invalidation"
+              ]
+            },
+            {
+              "title": "Performance Monitoring",
+              "description": "Medir continuamente, alertar proativamente",
+              "items": [
+                "Real user monitoring (RUM)",
+                "Performance budgets",
+                "Alerting systems",
+                "A/B testing"
+              ]
+            }
+          ],
+          "resultAlert": {
+            "message": "Suporte a escala global, performance consistente, monitoramento proativo. Infraestrutura distribuída com observabilidade completa.",
+            "color": "yellow",
+            "icon": "users"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Cases Reais de Implementação",
+      "icon": "trending-up",
+      "children": [
+        {
+          "type": "text",
+          "content": "Como empresas reais implementaram cada fase",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Cenário",
+            "Fase 1",
+            "Fase 2",
+            "Fase 3",
+            "Fase 4",
+            "Foco"
+          ],
+          "rows": [
+            [
+              "E-commerce",
+              "Core Web Vitals",
+              "PWA + Service Workers",
+              "Micro-frontends por domínio",
+              "CDN + edge caching",
+              "Conversão + SEO"
+            ],
+            [
+              "Streaming",
+              "Bundle audit",
+              "Code splitting agressivo",
+              "Module federation",
+              "Multi-device optimization",
+              "TTI + modularização"
+            ],
+            [
+              "SaaS / Dashboard",
+              "Memory profiling",
+              "Virtual scrolling",
+              "Clean architecture",
+              "Real-time sync",
+              "Memória + UX"
+            ],
+            [
+              "Real-time",
+              "Render profiling",
+              "Canvas / WebGL",
+              "WebSocket architecture",
+              "Global load balancing",
+              "Latência mínima"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Principais Aprendizados",
+      "icon": "bulb",
+      "children": [
+        {
+          "type": "text",
+          "content": "Padrões que se repetem em projetos bem-sucedidos",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "iconCards",
+          "cols": { "base": 1, "sm": 2 },
+          "cards": [
+            {
+              "icon": "target",
+              "iconColor": "blue",
+              "title": "Implementação Gradual",
+              "description": "Não faça tudo de uma vez. Comece por performance (ganhos imediatos e mensuráveis), depois modularize o código, depois escale a infra. Cada fase valida a anterior antes de avançar."
+            },
+            {
+              "icon": "chart-bar",
+              "iconColor": "green",
+              "title": "Métricas Reais",
+              "description": "Meça o que importa. LCP importa para e-commerce, TTI importa para SaaS, INP importa para apps interativos. Escolha as métricas que impactam o negócio, não as que são fáceis de medir."
+            },
+            {
+              "icon": "users",
+              "iconColor": "orange",
+              "title": "Escala Progressiva",
+              "description": "Cresça conforme necessário. Não otimize para escala que você ainda não tem. Monolito bem-feito escala mais que micro-frontends mal-feitos. Adicione complexidade só quando a dor justificar."
+            },
+            {
+              "icon": "code",
+              "iconColor": "violet",
+              "title": "Arquitetura Certa",
+              "description": "Resolve problemas reais. SEO pesado? SSR/SSG. Times independentes? Micro-frontends. App offline? PWA. Real-time? WebSocket + canvas. Cada arquitetura resolve um problema específico, não todos."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

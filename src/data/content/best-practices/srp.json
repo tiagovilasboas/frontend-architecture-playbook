@@ -1,0 +1,167 @@
+{
+  "meta": {
+    "title": "Single Responsibility Principle",
+    "description": "Uma classe, uma responsabilidade. Cada módulo deve ter apenas um motivo para mudar."
+  },
+  "layout": { "showRelated": true },
+  "body": [
+    {
+      "type": "hero",
+      "title": "Single Responsibility Principle",
+      "subtitle": "Uma classe, uma responsabilidade. Cada módulo deve ter apenas um motivo para mudar."
+    },
+    {
+      "type": "section",
+      "title": "O que é?",
+      "icon": "target",
+      "children": [
+        {
+          "type": "text",
+          "content": "Princípio que define responsabilidade única para cada módulo",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "text",
+          "content": "SRP significa \"Single Responsibility Principle\". É sobre cada classe, função ou módulo ter apenas uma responsabilidade."
+        },
+        {
+          "type": "text",
+          "content": "Pensa assim: se você precisa alterar uma classe por múltiplas razões (validação mudou, email mudou, banco mudou), ela está fazendo demais. Cada mudança deve afetar apenas um módulo."
+        },
+        {
+          "type": "text",
+          "content": "A regra é clara: uma classe deve ter apenas um motivo para mudar. Se há múltiplos motivos, quebre em classes menores."
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Exemplos Práticos",
+      "icon": "code",
+      "children": [
+        {
+          "type": "codeExample",
+          "title": "Violando SRP",
+          "description": "Função fazendo múltiplas responsabilidades",
+          "code": "function processUser(user) {\n  if (!validateUser(user)) throw new Error('Invalid');\n  saveUser(user);\n  sendWelcomeEmail(user);\n  logUserCreation(user);\n}\n\n// Uma função fazendo validação, salvamento, email e log."
+        },
+        {
+          "type": "codeExample",
+          "title": "Seguindo SRP",
+          "description": "Cada função com uma responsabilidade específica",
+          "code": "function validateUser(user) {\n  // Validação apenas\n}\n\nfunction saveUser(user) {\n  // Salvamento apenas\n}\n\nfunction sendWelcomeEmail(user) {\n  // Email apenas\n}\n\nfunction logUserCreation(user) {\n  // Log apenas\n}\n\nfunction processUser(user) {\n  if (!validateUser(user)) throw new Error('Invalid');\n  saveUser(user);\n  sendWelcomeEmail(user);\n  logUserCreation(user);\n}"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Por que vale a pena?",
+      "icon": "check",
+      "children": [
+        {
+          "type": "iconCards",
+          "cols": { "base": 1, "sm": 3 },
+          "cards": [
+            {
+              "icon": "check",
+              "iconColor": "green",
+              "title": "Mudanças Isoladas",
+              "description": "Alterar uma funcionalidade não afeta outras. Menos bugs, menos regressões."
+            },
+            {
+              "icon": "code",
+              "iconColor": "blue",
+              "title": "Testes Focados",
+              "description": "Cada classe tem seus testes específicos. Mais fácil de testar e manter."
+            },
+            {
+              "icon": "bulb",
+              "iconColor": "orange",
+              "title": "Reutilização",
+              "description": "Classes pequenas são mais fáceis de reutilizar em diferentes contextos."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Quando aplicar?",
+      "icon": "bulb",
+      "children": [
+        {
+          "type": "alert",
+          "message": "Sempre aplique: Classes com múltiplas responsabilidades. Funções que fazem muitas coisas. Módulos que mudam por motivos diferentes. Testes que precisam mockar muitas dependências. Código difícil de entender e manter.",
+          "color": "green",
+          "icon": "check"
+        },
+        {
+          "type": "list",
+          "icon": "check",
+          "items": [
+            "Classes com múltiplas responsabilidades",
+            "Funções que fazem muitas coisas",
+            "Módulos que mudam por motivos diferentes",
+            "Testes que precisam mockar muitas dependências",
+            "Código difícil de entender e manter"
+          ]
+        },
+        {
+          "type": "alert",
+          "message": "Cuidado com: Classes anêmicas (só getters/setters). Over-engineering (YAGNI). Quebrar demais sem necessidade.",
+          "color": "yellow",
+          "icon": "alert-triangle"
+        },
+        {
+          "type": "list",
+          "icon": "alert-triangle",
+          "items": [
+            "Classes anêmicas (só getters/setters)",
+            "Over-engineering (YAGNI)",
+            "Quebrar demais sem necessidade"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Armadilhas Comuns",
+      "icon": "alert-triangle",
+      "children": [
+        {
+          "type": "codeExample",
+          "title": "Classes com Responsabilidade Única",
+          "description": "Cada classe deve ter apenas um motivo para mudar",
+          "code": "// ❌ Classe fazendo tudo\nclass UserManager {\n  validateUser(user) { ... }\n  saveUser(user) { ... }\n  sendEmail(user) { ... }\n  generateReport() { ... }\n}\n\n// ✅ Classes separadas\nclass UserValidator {\n  validate(user) { ... }\n}\n\nclass UserRepository {\n  save(user) { ... }\n}\n\nclass EmailService {\n  sendWelcome(user) { ... }\n}\n\nclass ReportGenerator {\n  generateUserReport() { ... }\n}"
+        },
+        {
+          "type": "codeExample",
+          "title": "Identificando Violações",
+          "description": "Como saber se está violando SRP",
+          "code": "// Sinais de violação:\n// 1. Múltiplos \"e\" na descrição\n// \"Essa classe valida E salva E envia email\"\n\n// 2. Métodos não relacionados\nclass OrderProcessor {\n  processOrder() { ... }\n  sendEmail() { ... } // ❌ Não relacionado\n  generateInvoice() { ... } // ❌ Não relacionado\n}\n\n// 3. Mudanças frequentes por motivos diferentes\n// Classe muda porque: validação mudou, email mudou, banco mudou"
+        },
+        {
+          "type": "codeExample",
+          "title": "Testes Focados",
+          "description": "Cada classe deve ter seus testes específicos",
+          "code": "// ❌ Teste complexo testando tudo\nit('should process user completely', () => {\n  // Mock de validação, salvamento, email, log...\n  // Teste difícil de manter\n});\n\n// ✅ Testes focados\nit('should validate user correctly', () => {\n  // Teste só de validação\n});\n\nit('should save user to database', () => {\n  // Teste só de salvamento\n});\n\nit('should send welcome email', () => {\n  // Teste só de email\n});"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Resumo",
+      "children": [
+        {
+          "type": "text",
+          "content": "SRP é sobre foco. Cada classe deve ter uma responsabilidade clara e única. Se você precisa mudar uma classe por múltiplas razões, quebre em classes menores."
+        },
+        {
+          "type": "text",
+          "content": "Regra de ouro: Se você pode descrever uma classe com múltiplos \"e\", ela está violando SRP. \"Essa classe valida E salva E envia email\" = violação."
+        }
+      ]
+    }
+  ]
+}

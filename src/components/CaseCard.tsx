@@ -149,7 +149,7 @@ export function CaseCard({ case_, index }: CaseCardProps) {
               radius="md"
             >
               <Text fw={600} size="sm" mb="xs">
-                📈 Impacto Real:
+                Impacto Real:
               </Text>
               <List spacing={4} size="sm">
                 {case_.results.map((result, idx) => (
@@ -171,7 +171,7 @@ export function CaseCard({ case_, index }: CaseCardProps) {
             {/* Reference */}
             <div>
               <Text fw={600} size="sm" c="dimmed" mb="xs">
-                📚 Referência:
+                Referência:
               </Text>
               <Anchor
                 href={case_.link}
@@ -197,7 +197,7 @@ export function CaseCard({ case_, index }: CaseCardProps) {
                 radius="sm"
               >
                 <Text size="xs" c="dimmed">
-                  <strong>ℹ️ Nota:</strong> {case_.disclaimer}
+                  <strong>Nota:</strong> {case_.disclaimer}
                 </Text>
               </Alert>
             )}

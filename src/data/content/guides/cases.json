@@ -1,0 +1,244 @@
+{
+  "meta": {
+    "title": "Casos Reais de Impacto",
+    "description": "19 casos reais de empresas como Netflix, Shopify, eBay, Etsy, Zalando, Airbnb, Figma e outras. Cada caso com link para o artigo ou tech blog original."
+  },
+  "layout": {
+    "showGuideNav": "cases",
+    "showRelated": true
+  },
+  "body": [
+    { "type": "badges", "items": ["19 casos · fontes verificáveis"] },
+    {
+      "type": "hero",
+      "title": "Casos Reais: Quando Front-End Vira Dinheiro",
+      "subtitle": "Empresas que provaram que performance não é frescura. Cada caso com link para o artigo ou tech blog original: e-commerce, streaming, redes sociais e mais."
+    },
+    {
+      "type": "text",
+      "content": "Stack bonita não paga boleto. Essas histórias sim.",
+      "size": "sm",
+      "dimmed": true
+    },
+    {
+      "type": "section",
+      "title": "Por que esses casos existem?",
+      "icon": "book",
+      "children": [
+        {
+          "type": "text",
+          "content": "Boa arquitetura + os conceitos deste playbook",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "text",
+          "content": "Casos como os que você vai ver aqui só acontecem quando se junta decisão arquitetural certa com os conceitos que este material traz: dependency rule, padrões de entrega (SSR, PWA, micro-frontends), performance, migração gradual e métricas reais."
+        },
+        {
+          "type": "alert",
+          "message": "O que este playbook tem a ver com isso? Cada caso abaixo usa, na prática, partes do que você encontra neste guia: Clean Architecture, BFF, code splitting, feature flags, PWA, monorepo, estratégias de migração. Não é coincidência: é a mesma base que permite que front-end vire dinheiro em produção.",
+          "color": "blue",
+          "icon": "puzzle"
+        },
+        {
+          "type": "callout",
+          "title": "Como usar no seu time",
+          "content": "Leve o link do caso para a reunião quando defender investimento em performance ou arquitetura. Cite em ADRs (\"como no caso da Shopify…\"). Use números e fontes reais em propostas para negócio — stack bonita não paga boleto, esses casos sim.",
+          "dimmed": true
+        },
+        {
+          "type": "text",
+          "content": "Use os links ao lado para aprofundar nos temas que aparecem nos casos:",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "linkList",
+          "links": [
+            { "to": "/guides/dependency-rule", "label": "Dependency Rule" },
+            {
+              "to": "/guides/how-to-choose",
+              "label": "Como Escolher Arquitetura"
+            },
+            {
+              "to": "/guides/architecture-comparison",
+              "label": "Comparação de Arquiteturas"
+            },
+            {
+              "to": "/guides/implementation-roadmap",
+              "label": "Roadmap de Implementação"
+            },
+            {
+              "to": "/guides/migration-strategies",
+              "label": "Estratégias de Migração"
+            },
+            { "to": "/techniques/performance", "label": "Performance" }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Para Staff: todo Staff deve gerar impacto e conhecer cases",
+      "icon": "target",
+      "children": [
+        {
+          "type": "text",
+          "content": "Casos são evidência. Use na reunião, no ADR e na conversa com negócio."
+        },
+        {
+          "type": "text",
+          "content": "No nível Staff, impacto vem quando decisões técnicas viram resultado mensurável e quando produto e CTO confiam na sua recomendação. Conhecer casos reais (como estes 19) é uma das formas mais diretas: você para de falar em teoria e mostra \"a Netflix fez X nas Smart TVs; o eBay provou que 100ms = +0,5% Add to Cart\". Todo Staff deveria ter um repertório de casos na cabeça e usar como evidência. Cada card abaixo tem link pro artigo original."
+        },
+        {
+          "type": "anchor",
+          "label": "Ver hub Para Staff",
+          "to": "/guides/staff"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "O que você vai ver",
+      "icon": "target",
+      "children": [
+        {
+          "type": "text",
+          "content": "19 casos reais com problema, solução e link para a fonte"
+        },
+        {
+          "type": "text",
+          "content": "Em cada card: desafio, solução, práticas usadas e resultado. Não é sobre \"React ou Vue\", é sobre fazer dinheiro com código. Performance vira conversão, conversão vira dinheiro."
+        }
+      ]
+    },
+    {
+      "type": "casesGrid",
+      "title": "Os Casos que Viraram Dinheiro"
+    },
+    {
+      "type": "section",
+      "title": "Insights Principais",
+      "icon": "bulb",
+      "children": [
+        {
+          "type": "text",
+          "content": "O que aprendemos com esses 19 casos reais"
+        },
+        {
+          "type": "text",
+          "content": "Performance é dinheiro. Empresas que investiram em otimização de bundle, carregamento e memória viram impacto direto em retenção e conversão. Cada segundo conta."
+        },
+        {
+          "type": "text",
+          "content": "Escala importa. Plataformas com base de usuários massiva dependem de arquitetura frontend sólida para funcionar."
+        },
+        {
+          "type": "text",
+          "content": "UX é conversão. Testes A/B, otimização de requests e experiências progressivas (PWA) resultam em mais engajamento e mais receita."
+        },
+        {
+          "type": "alert",
+          "message": "Dica Técnica: Performance não é opcional em qualquer escala. Cada segundo a mais de carregamento impacta conversão e retenção.",
+          "color": "yellow",
+          "icon": "bulb"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Deep Dive Técnico: Performance que Vira Dinheiro",
+      "icon": "trending-up",
+      "children": [
+        {
+          "type": "iconCards",
+          "cols": { "base": 1, "sm": 1 },
+          "cards": [
+            {
+              "icon": "code",
+              "iconColor": "blue",
+              "title": "Lazy Loading & Code Splitting",
+              "description": "Carregar só o que precisa, quando precisa. Bundles menores = carregamento mais rápido. Usuário não espera, ele abandona."
+            },
+            {
+              "icon": "chart-bar",
+              "iconColor": "green",
+              "title": "Chunks Inteligentes",
+              "description": "Dividir código em pedaços que fazem sentido. Vendor separado, rotas lazy, componentes sob demanda. Cache otimizado."
+            },
+            {
+              "icon": "trending-up",
+              "iconColor": "orange",
+              "title": "Métricas Reais",
+              "description": "Core Web Vitals, First Contentful Paint, Time to Interactive. Se não está medindo, está chutando no escuro."
+            }
+          ]
+        },
+        {
+          "type": "alert",
+          "message": "Dica Técnica: Lazy loading não é só React.lazy(). É arquitetura: carregar só o que o usuário vai usar. Bundle size é morte lenta.",
+          "color": "blue",
+          "icon": "bulb"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Conclusão",
+      "icon": "rocket",
+      "children": [
+        {
+          "type": "text",
+          "content": "O que aprendemos com esses 19 casos reais"
+        },
+        {
+          "type": "text",
+          "content": "Esses 19 casos reais mostram que performance vira dinheiro. Netflix, Shopify, eBay, Etsy, Zalando, Airbnb, Figma, Notion, Atlassian e outras - todos resolveram problemas reais com arquitetura frontend."
+        },
+        {
+          "type": "text",
+          "content": "Não é sobre \"qual framework usar\", é sobre resolver o problema que está matando o negócio. Arquitetura certa + métricas reais = impacto mensurável."
+        },
+        {
+          "type": "alert",
+          "message": "Stack bonita não paga boleto. Performance, UX e resultado de negócio sim.",
+          "color": "yellow",
+          "icon": "rocket"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Referências",
+      "icon": "code",
+      "children": [
+        {
+          "type": "text",
+          "content": "Fontes dos casos e estudos técnicos"
+        },
+        {
+          "type": "text",
+          "content": "Todos os casos apresentados são baseados em dados reais e estudos técnicos publicados pelas próprias empresas. Os links de cada caso direcionam para seções específicas do repositório Frontend Case Studies."
+        },
+        {
+          "type": "alert",
+          "message": "Fonte Principal: Frontend Case Studies - Repositório com mais de 200 estudos de caso de empresas reais.",
+          "color": "blue",
+          "icon": "code"
+        },
+        {
+          "type": "anchor",
+          "label": "github.com/andrew--r/frontend-case-studies",
+          "href": "https://github.com/andrew--r/frontend-case-studies"
+        },
+        {
+          "type": "text",
+          "content": "Este repositório é uma coleção curada de estudos de caso técnicos e artigos de engenharia publicados diretamente pelas empresas nos seus tech blogs oficiais. Todos os 19 casos acima incluem link direto para a fonte original.",
+          "size": "sm",
+          "dimmed": true
+        }
+      ]
+    }
+  ]
+}

@@ -18,11 +18,8 @@ export default defineConfig({
           ],
           'vendor-icons': ['@tabler/icons-react'],
 
-          // Architecture chunks - Core (mais usados)
-          'architectures-core': [
-            './src/content/patterns/monorepo.tsx',
-            './src/content/patterns/spa.tsx',
-          ],
+          // Architecture chunks - Core (SPA migrado para JSON; restante em TSX)
+          'architectures-core': ['./src/content/patterns/ssr-ssg.tsx'],
 
           // Clean Architecture (separado por ser muito grande)
           'clean-architecture': [
@@ -35,16 +32,11 @@ export default defineConfig({
           // Architecture chunks - Modern (tendências)
           'architectures-modern': [
             './src/content/patterns/islands-architecture.tsx',
-            './src/content/patterns/jamstack.tsx',
-            './src/content/patterns/pwa.tsx',
-            './src/content/patterns/ssr-ssg.tsx',
-            './src/content/patterns/bff.tsx',
           ],
 
           // Architecture chunks - Advanced (complexos)
           'architectures-advanced': [
             './src/content/patterns/hexagonal.tsx',
-            './src/content/patterns/layered.tsx',
             './src/content/patterns/event-sourcing.tsx',
             './src/content/patterns/cqrs.tsx',
             './src/content/patterns/microservices-frontend.tsx',
@@ -63,24 +55,14 @@ export default defineConfig({
             './src/content/patterns/feature-flags.tsx',
           ],
 
-          // Pattern chunks - Best Practices (princípios)
+          // Pattern chunks - Best Practices (princípios; dry/kiss/yagni/clean-code/srp/soc migrados para JSON)
           'patterns-best-practices': [
-            './src/content/patterns/dry.tsx',
-            './src/content/patterns/kiss.tsx',
-            './src/content/patterns/yagni.tsx',
-            './src/content/patterns/clean-code.tsx',
-            './src/content/patterns/srp.tsx',
-            './src/content/patterns/soc.tsx',
             './src/content/patterns/repository-pattern.tsx',
             './src/content/patterns/security.tsx',
           ],
 
-          // Guide chunks
-          'content-guides': [
-            './src/content/guides/how-to-choose.tsx',
-            './src/content/guides/dependency-rule.tsx',
-            './src/content/guides/cases.tsx',
-          ],
+          // Guide chunks (guias migrados para JSON; só glossary é TSX)
+          'content-guides': ['./src/content/guides/glossary.tsx'],
 
           // UI Components
           'components-core': [

@@ -26,8 +26,10 @@ export default function DocPage() {
   useEffect(() => {
     if (contentPage?.meta?.title) {
       document.title = `${contentPage.meta.title} · Front Arch. Playbook`;
+    } else if (doc?.title) {
+      document.title = `${doc.title} · Front Arch. Playbook`;
     }
-  }, [contentPage?.meta?.title]);
+  }, [contentPage?.meta?.title, doc?.title]);
 
   if (!collection || !slug) return <p>Invalid route</p>;
 
@@ -67,6 +69,7 @@ export default function DocPage() {
   const components = {
     pre: (props: React.ComponentProps<'pre'>) => <CodeHighlight {...props} />,
   };
+  const showGuideNav = collection === 'guides' && slug;
 
   return (
     <>
@@ -76,6 +79,7 @@ export default function DocPage() {
       <div data-doc-content>
         <TypographyStylesProvider>
           <Component components={components} />
+          {showGuideNav && <GuideNavigation currentGuide={slug} />}
         </TypographyStylesProvider>
       </div>
       <RelatedContent />

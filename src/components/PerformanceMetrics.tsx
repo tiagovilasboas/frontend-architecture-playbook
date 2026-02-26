@@ -61,11 +61,13 @@ const PerformanceMetrics: React.FC<PerformanceMetricsProps> = ({
   const getImpactIcon = (impact: string) => {
     switch (impact) {
       case 'positive':
-        return '📈';
+        return <IconTrendingUp size={12} />;
       case 'negative':
-        return '📉';
+        return (
+          <IconTrendingUp size={12} style={{ transform: 'rotate(180deg)' }} />
+        );
       default:
-        return '➡️';
+        return <IconBulb size={12} />;
     }
   };
 
@@ -153,7 +155,7 @@ const PerformanceMetrics: React.FC<PerformanceMetricsProps> = ({
       {/* Disclaimer sobre métricas */}
       <Alert color="green" variant="light" icon={<IconCheck size={16} />}>
         <Text size="sm">
-          <strong>✅ Métricas Validadas:</strong> Todas as métricas abaixo são
+          <strong>Métricas Validadas:</strong> Todas as métricas abaixo são
           baseadas em estudos técnicos validados do repositório oficial
           frontend-case-studies. Apenas métricas com fontes verificáveis são
           apresentadas.
@@ -208,8 +210,13 @@ const PerformanceMetrics: React.FC<PerformanceMetricsProps> = ({
                   </Text>
 
                   {case_.validated && (
-                    <Badge variant="light" color="green" size="xs">
-                      ✅ Validado
+                    <Badge
+                      variant="light"
+                      color="green"
+                      size="xs"
+                      leftSection={<IconCheck size={10} />}
+                    >
+                      Validado
                     </Badge>
                   )}
                 </Stack>
@@ -263,8 +270,10 @@ const PerformanceMetrics: React.FC<PerformanceMetricsProps> = ({
                       <Badge
                         variant="light"
                         color={getImpactColor(metric.impact)}
+                        size="sm"
+                        leftSection={getImpactIcon(metric.impact)}
                       >
-                        {getImpactIcon(metric.impact)}
+                        {' '}
                       </Badge>
                     </Group>
 

@@ -1,0 +1,498 @@
+{
+  "meta": {
+    "title": "Para Staff",
+    "description": "Hub para nível Staff: decisão com evidência, performance e métricas, OKRs, regras de negócio, falar com o negócio e com back-end/front, boas práticas e guardrails. Staff por seção (Fundamentos, UI, Entrega, Estrutura, Escala)."
+  },
+  "layout": {
+    "showGuideNav": "staff",
+    "showRelated": true
+  },
+  "body": [
+    {
+      "type": "hero",
+      "title": "Para Staff",
+      "subtitle": "No nível Staff o foco é decisão, alinhamento e referência. Você precisa trabalhar com performance e métricas, conhecer regras de negócio (e-commerce e o que impacta resultado), falar com o negócio em linguagem não técnica, dominar OKRs e ser o detentor das boas práticas e guardrails do time. Staff front-end de verdade conhece bem back-end, todas as práticas de segurança e protocolos (HTTP, REST, auth, OWASP), comunica com fluidez com back-end e com o time de front, e está antenado nas melhores ferramentas do mercado e nas novidades. Este guia é o hub: o que o playbook te oferece pra isso e o que mais você precisa dominar."
+    },
+    {
+      "type": "section",
+      "title": "Staff por seção",
+      "children": [
+        {
+          "type": "text",
+          "content": "O conteúdo avançado para Staff está segmentado por seção do playbook. Cada link leva ao que você precisa dominar naquela área: guardrails, métricas, evidência e práticas.",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "linkCards",
+          "cols": { "base": 1, "sm": 2, "md": 3 },
+          "cards": [
+            {
+              "to": "/guides/staff-fundamentals",
+              "title": "Staff · Fundamentos",
+              "description": "Guardrails, code review e quando exigir ADR.",
+              "icon": "code"
+            },
+            {
+              "to": "/guides/staff-ui",
+              "title": "Staff · Construindo UI",
+              "description": "Design system, estado e padrões de componentes.",
+              "icon": "code"
+            },
+            {
+              "to": "/guides/staff-entrega",
+              "title": "Staff · Entrega",
+              "description": "Performance, métricas, OKRs e Core Web Vitals.",
+              "icon": "chart-bar"
+            },
+            {
+              "to": "/guides/staff-estrutura",
+              "title": "Staff · Estrutura",
+              "description": "Camadas, dependências, ADR e segurança.",
+              "icon": "code"
+            },
+            {
+              "to": "/guides/staff-escala",
+              "title": "Staff · Escala",
+              "description": "Casos, comparação, migração e decisão com evidência.",
+              "icon": "scale"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "O valor que você leva daqui (impacto prático)",
+      "children": [
+        {
+          "type": "text",
+          "content": "O playbook gera impacto quando você usa no dia a dia: não é só ler, é levar pra reunião, pro ADR e pro time.",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "list",
+          "icon": "check",
+          "items": [
+            {
+              "title": "Antes de propor arquitetura",
+              "description": "rode o Decision Wizard com o contexto do time e use a recomendação como ponto de partida (e documente no ADR)."
+            },
+            {
+              "title": "Na reunião com produto ou CTO",
+              "description": "leve um caso com link do artigo (ex.: eBay 100ms, Spotify micro-frontends) em vez de opinião solta."
+            },
+            {
+              "title": "Quando mudar padrão ou arquitetura",
+              "description": "exija ADR com contexto, alternativas e consequências; assim o time e quem entrar depois sabem o porquê."
+            },
+            {
+              "title": "Em code review e guardrails",
+              "description": "use Dependency Rule, segurança e acessibilidade como critério, não só \"feature funcionando\"."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Por que todo Staff deve gerar impacto e conhecer cases",
+      "children": [
+        {
+          "type": "text",
+          "content": "Staff gera impacto quando decisões técnicas viram resultado mensurável e quando o time e o negócio confiam na sua recomendação. Conhecer casos reais (como os 19 deste playbook) é uma das formas mais diretas: você deixa de falar em teoria e passa a mostrar \"a Spotify fez X e ganhou Y; o eBay provou que 100ms = +0,5% Add to Cart\"."
+        },
+        {
+          "type": "text",
+          "content": "Todo Staff deveria ter um repertório de casos na cabeça (ou nos favoritos) e usar como evidência em reunião, em ADR e em conversa com produto e CTO. Os 19 casos daqui são um ponto de partida; cada um tem link pro artigo original.",
+          "size": "sm",
+          "dimmed": true
+        },
+        { "type": "anchor", "label": "Ver os 19 casos", "to": "/guides/cases" }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "O que o playbook te dá (Decisão & Referência)",
+      "children": [
+        {
+          "type": "linkCards",
+          "cols": { "base": 1, "sm": 2 },
+          "cards": [
+            {
+              "to": "/guides/architecture-comparison",
+              "title": "Comparação de Arquiteturas",
+              "description": "Quando usar cada uma, prós e contras. Base pra recomendar.",
+              "icon": "scale"
+            },
+            {
+              "to": "/guides/cases",
+              "title": "19 Casos Reais",
+              "description": "Evidência com fonte. Leva o link pro artigo na reunião.",
+              "icon": "trending-up"
+            },
+            {
+              "to": "/guides/how-to-choose",
+              "title": "Decision Wizard",
+              "description": "Recomendação por contexto. Ponto de partida pro time.",
+              "icon": "target"
+            },
+            {
+              "to": "/guides/adr",
+              "title": "ADR",
+              "description": "Documentar o porquê da decisão. Contexto pro futuro.",
+              "icon": "file-text"
+            },
+            {
+              "to": "/guides/migration-strategies",
+              "title": "Estratégias de Migração",
+              "description": "Como mudar sem big bang. Strangler, branch by abstraction.",
+              "icon": "route"
+            },
+            {
+              "to": "/guides/security-business",
+              "title": "Segurança & Negócio",
+              "description": "Priorizar e comunicar investimento em segurança.",
+              "icon": "shield"
+            },
+            {
+              "to": "/guides/implementation-roadmap",
+              "title": "Roadmap de Implementação",
+              "description": "4 fases: performance, otimização, arquitetura e escala.",
+              "icon": "map"
+            },
+            {
+              "to": "/guides/glossary",
+              "title": "Glossário",
+              "description": "Termos técnicos com definição e link para o guia que aprofunda.",
+              "icon": "book"
+            },
+            {
+              "to": "/techniques/performance",
+              "title": "Performance",
+              "description": "Métricas, Core Web Vitals e impacto em conversão.",
+              "icon": "chart-bar"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Performance, métricas e OKRs",
+      "icon": "chart-bar",
+      "children": [
+        {
+          "type": "text",
+          "content": "Staff tem que trabalhar com performance e métricas de forma constante. Não basta \"a página tá rápida\": você precisa saber Core Web Vitals (LCP, FID, CLS), ter números que o negócio entende (tempo de carregamento, taxa de conversão, bounce) e conectar decisão técnica a resultado. Casos como o eBay (100ms de atraso = -0,5% Add to Cart) existem pra você levar pra reunião."
+        },
+        {
+          "type": "text",
+          "content": "OKRs (Objectives and Key Results) são a linguagem de alinhamento em muitas empresas. Staff precisa entender os OKRs do negócio e do time, e traduzir o que a engenharia entrega em resultados mensuráveis. \"Melhorar LCP em 20%\" vira key result; \"reduzir tempo de checkout\" vira impacto em conversão. O playbook de Performance e os 19 casos te dão base pra propor metas e justificar investimento.",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "linkList",
+          "icon": "arrow-right",
+          "links": [
+            { "to": "/techniques/performance", "label": "Guia de Performance" },
+            { "to": "/guides/cases", "label": "19 casos (métricas com fonte)" }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Regras de negócio e e-commerce",
+      "icon": "currency-dollar",
+      "children": [
+        {
+          "type": "text",
+          "content": "Em e-commerce (e em muitos produtos digitais), existem regras que impactam o negócio diretamente: checkout que não pode travar, carrinho que não pode perder item, página de produto que precisa rankear no Google, tempo de resposta que afeta conversão. Staff precisa conhecer esse tipo de regra e o vocabulário do negócio: funil (aquisição → conversão → retenção), AOV (average order value), conversion rate, bounce, tempo no funil."
+        },
+        {
+          "type": "text",
+          "content": "Quando você discute arquitetura com produto ou CTO, \"não podemos quebrar o checkout\" ou \"SEO é critério de sucesso\" são restrições de negócio. Conhecer regras de e-commerce e métricas que impactam receita ajuda a priorizar (performance da PDP, resiliência do carrinho, tracking de conversão) e a falar na língua de quem segura a grana.",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "linkList",
+          "links": [
+            {
+              "to": "/guides/security-business",
+              "label": "Segurança & Negócio"
+            },
+            { "to": "/guides/cases", "label": "Casos (e-commerce e métricas)" }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Back-end, segurança e protocolos",
+      "icon": "plug",
+      "children": [
+        {
+          "type": "text",
+          "content": "Staff front-end de verdade conhece muito de back-end e todas as práticas de segurança. Não é sobre virar dev back-end: é sobre falar a mesma língua, desenhar contratos (API, eventos), entender custos e riscos. Você precisa manjar de protocolos (HTTP, REST, GraphQL, WebSockets), autenticação e autorização (OAuth, JWT, CORS), e das práticas que impactam o front (OWASP Top 10, XSS, CSRF, CSP, cookies seguros, HTTPS). Assim você comunica com fluidez com o time de back-end e define guardrails que protegem os dois lados."
+        },
+        {
+          "type": "text",
+          "content": "Segurança não é checklist de uma vez: é critério de revisão, padrões de contrato e quando escalar pro time de segurança ou produto. O playbook cobre Security Patterns e Segurança & Negócio; complemente com documentação de APIs do seu stack e guias OWASP quando for definir política pro time.",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "linkList",
+          "links": [
+            { "to": "/patterns/security", "label": "Security Patterns" },
+            {
+              "to": "/guides/security-business",
+              "label": "Segurança & Negócio"
+            },
+            { "to": "/architectures/bff", "label": "BFF (contrato front/back)" }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Ferramentas e novidades do mercado",
+      "icon": "tool",
+      "children": [
+        {
+          "type": "text",
+          "content": "Staff deve conhecer as melhores ferramentas do mercado e estar antenado nas novidades: frameworks, bundlers, runtimes, ferramentas de teste e de observabilidade, padrões que estão ganhando adoção e o que já está em declínio. Isso não é modismo: é poder recomendar com critério, avaliar trade-offs (ex.: migrar ou não pra X) e alinhar o time em cima de uma stack sustentável."
+        },
+        {
+          "type": "text",
+          "content": "Este playbook não lista \"as top 10 ferramentas do ano\" — isso muda rápido. O que a gente cobre é arquitetura, padrões e como decidir (Comparação, Decision Wizard, ADR, casos com fonte). Use isso como base e mantenha o hábito de ler tech blogs, release notes e discussões da comunidade (e, quando fizer sentido, provar em spike) antes de levar recomendação pro time.",
+          "size": "sm",
+          "dimmed": true
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Três práticas que fazem diferença",
+      "children": [
+        {
+          "type": "stack",
+          "gap": "lg",
+          "children": [
+            {
+              "type": "section",
+              "children": [
+                {
+                  "type": "title",
+                  "content": "1. Justificar com caso e fonte",
+                  "order": 3
+                },
+                {
+                  "type": "text",
+                  "content": "Em vez de \"micro-frontends é melhor\", use \"a Spotify reduziu o bundle e ganhou deploys independentes; aqui está o artigo.\" Os 19 casos do playbook servem pra isso. Link pro tech blog na mão na hora de falar com produto ou CTO.",
+                  "size": "sm",
+                  "dimmed": true
+                },
+                {
+                  "type": "anchor",
+                  "label": "Ver casos",
+                  "to": "/guides/cases"
+                }
+              ]
+            },
+            {
+              "type": "section",
+              "children": [
+                {
+                  "type": "title",
+                  "content": "2. Documentar no ADR",
+                  "order": 3
+                },
+                {
+                  "type": "text",
+                  "content": "Decisão importante vira ADR: contexto, alternativas, consequências. Em 6 meses ninguém lembra por que escolheu X. O ADR preserva isso e alinha quem entra no time depois.",
+                  "size": "sm",
+                  "dimmed": true
+                },
+                {
+                  "type": "anchor",
+                  "label": "Ver guia ADR",
+                  "to": "/guides/adr"
+                }
+              ]
+            },
+            {
+              "type": "section",
+              "children": [
+                {
+                  "type": "title",
+                  "content": "3. Falar com o negócio (e com back-end e front) de forma não técnica",
+                  "order": 3
+                },
+                {
+                  "type": "text",
+                  "content": "Staff precisa conversar com produto, CTO e negócio em linguagem que eles entendem; e com o time de back-end e de front com fluidez — mesmo vocabulário, contratos claros, trade-offs explícitos. Em vez de \"latência p99\" ou \"micro-frontends\", fale em impacto: \"página mais rápida = mais conversão\", \"deploy independente = menos risco de parar o site\". Conheça OKRs do time e do negócio e conecte o que a engenharia entrega a resultados mensuráveis. O guia Segurança & Negócio traz exemplos de como comunicar risco, custo e benefício com stakeholders.",
+                  "size": "sm",
+                  "dimmed": true
+                },
+                {
+                  "type": "anchor",
+                  "label": "Segurança & Negócio",
+                  "to": "/guides/security-business"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Checklist antes de fechar uma decisão",
+      "children": [
+        {
+          "type": "list",
+          "icon": "check",
+          "spacing": "xs",
+          "items": [
+            "Temos um caso de referência ou evidência (artigo, métrica) que apoia a recomendação?",
+            "Vamos documentar no ADR (contexto, alternativas, consequências)?",
+            "Comunicamos o trade-off pro negócio (risco, custo, prazo) em linguagem não técnica?",
+            "Consideramos impacto em performance, métricas e OKRs do time/negócio?",
+            "Quando a decisão impacta API: alinhamos com back-end (contrato, versionamento, breaking changes)?",
+            "Acessibilidade e segurança entram como critério de revisão e guardrail?",
+            "Respeitamos os guardrails (fluxos críticos, testes, budgets) e reforçamos as boas práticas?"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Fale com o negócio (glossário rápido, linguagem não técnica)",
+      "icon": "message-circle",
+      "children": [
+        {
+          "type": "text",
+          "content": "Traduzir jargão técnico ajuda na reunião. Use impacto e resultado, não sigla:",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "list",
+          "spacing": "xs",
+          "items": [
+            {
+              "title": "Micro-frontends",
+              "description": "→ times podendo deployar sem travar uns aos outros."
+            },
+            {
+              "title": "Performance / Core Web Vitals",
+              "description": "→ página mais rápida, mais conversão (eBay: 100ms = +0,5% Add to Cart)."
+            },
+            {
+              "title": "SSR / entrega no servidor",
+              "description": "→ primeiro paint mais rápido e melhor pra SEO."
+            },
+            {
+              "title": "Migração incremental (Strangler)",
+              "description": "→ trocar o sistema aos poucos, sem parar o produto."
+            },
+            {
+              "title": "OKRs",
+              "description": "→ objetivos e resultados mensuráveis; alinhe o que o time entrega com os do negócio."
+            },
+            {
+              "title": "Checkout / carrinho",
+              "description": "→ regras de negócio que não podem quebrar; performance e resiliência aqui impactam receita."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Boas práticas e guardrails: você é o detentor",
+      "icon": "lock",
+      "children": [
+        {
+          "type": "text",
+          "content": "Staff é quem define e defende as boas práticas e os guardrails do time. Não é burocracia: é garantir que o time não corte cantos que custam caro depois. Você é o detentor do \"como a gente faz aqui\" — Dependency Rule, revisão de código, quando algo vira ADR, limites de débito técnico, métricas de qualidade (cobertura, performance budgets)."
+        },
+        {
+          "type": "text",
+          "content": "Guardrails são os limites que protegem o produto e o time: \"não fazer deploy sem testes e2e nos fluxos críticos\", \"toda mudança de arquitetura vira ADR\", \"Core Web Vitals não podem regredir sem justificativa\". Pensar em tudo isso é parte do papel: escolher o que é obrigatório, documentar e fazer valer sem virar gargalo. O playbook te dá a base técnica (Fundamentos, ADR, Performance); você traduz em padrões e critérios de revisão pro seu contexto.",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "list",
+          "icon": "check",
+          "spacing": "xs",
+          "items": [
+            "Definir quando decisão vira ADR e como o time documenta.",
+            "Revisar arquitetura e qualidade (Dependency Rule, SRP, segurança) além de \"feature funcionando\".",
+            "Estabelecer métricas e budgets (performance, cobertura) e não deixar regredir sem critério.",
+            "Proteger fluxos críticos de negócio (checkout, carrinho, login) com testes e resiliência."
+          ]
+        },
+        {
+          "type": "linkList",
+          "links": [
+            { "to": "/guides/dependency-rule", "label": "Dependency Rule" },
+            { "to": "/guides/adr", "label": "ADR" },
+            { "to": "/techniques/performance", "label": "Performance" }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "O que mais um Staff precisa dominar",
+      "children": [
+        {
+          "type": "text",
+          "content": "Além de decisão, evidência, performance, métricas e guardrails, Staff se apoia em código de qualidade e em soft skills. Este playbook cobre a parte técnica e como falar com o negócio; o resto você complementa por fora.",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "list",
+          "spacing": "md",
+          "items": [
+            {
+              "title": "Boas práticas de programação (avançadas)",
+              "description": "Dependency Rule, DRY, KISS, YAGNI, Clean Code, SRP, SoC: no nível Staff você usa isso pra revisar decisão de arquitetura e qualidade do código, e pra definir os guardrails do time — não só pra escrever feature. O playbook tem tudo em Fundamentos e em Security Patterns."
+            },
+            {
+              "title": "Influência, mentoring e débito técnico",
+              "description": "Influência sem autoridade (convencer sem ser tech lead direto), mentoring e facilitação de decisão são parte do dia a dia. Débito técnico: saber priorizar o que pagar primeiro, como comunicar pro negócio (risco, custo de manutenção) e quando incluir no roadmap. Complemente com livros e cursos de liderança técnica e product sense. O playbook cobre a base técnica e como falar com o negócio; você leva isso pro time."
+            }
+          ]
+        },
+        {
+          "type": "linkList",
+          "links": [
+            { "to": "/guides/dependency-rule", "label": "Dependency Rule" },
+            { "to": "/best-practices/clean-code", "label": "Clean Code" },
+            { "to": "/patterns/security", "label": "Security Patterns" }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "alert",
+      "message": "Roteiro por nível: Se você quer ver o que estudar em cada etapa (Júnior, Pleno, Sênior, Staff), use o Por onde começar (roteiro por senioridade). Este guia aqui é o \"o que fazer com isso\" quando você já está no radar de Staff.",
+      "color": "blue",
+      "icon": "info-circle"
+    },
+    {
+      "type": "anchor",
+      "label": "Por onde começar (roteiro por senioridade)",
+      "to": "/guides/study-guide"
+    }
+  ]
+}

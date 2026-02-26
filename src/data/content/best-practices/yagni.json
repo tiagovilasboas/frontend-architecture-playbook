@@ -1,0 +1,173 @@
+{
+  "meta": {
+    "title": "YAGNI - You Aren't Gonna Need It",
+    "description": "Não implemente features futuras. Se você não precisa hoje, não implemente hoje. O futuro é incerto, o presente é real."
+  },
+  "layout": { "showRelated": true },
+  "body": [
+    {
+      "type": "hero",
+      "title": "YAGNI - You Aren't Gonna Need It",
+      "subtitle": "Não implemente features futuras. Se você não precisa hoje, não implemente hoje. O futuro é incerto, o presente é real."
+    },
+    {
+      "type": "section",
+      "title": "O que é?",
+      "icon": "code",
+      "children": [
+        {
+          "type": "text",
+          "content": "Princípio que evita implementar features futuras",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "text",
+          "content": "YAGNI significa \"You Aren't Gonna Need It\". É sobre não implementar funcionalidades que você acha que vai precisar no futuro."
+        },
+        {
+          "type": "text",
+          "content": "Pensa assim: se você implementa uma feature que não está sendo usada hoje, você está gastando tempo e criando complexidade desnecessária. E quando você realmente precisar, os requisitos já mudaram."
+        },
+        {
+          "type": "text",
+          "content": "A regra é clara: implemente apenas o que você precisa hoje. O futuro vai cuidar de si mesmo."
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Exemplos Práticos",
+      "icon": "code",
+      "children": [
+        {
+          "type": "codeExample",
+          "title": "Implementando Features Futuras",
+          "description": "Código que implementa funcionalidades que não são necessárias hoje",
+          "code": "// ❌ RUIM - Implementando features futuras\n\n// Interface genérica para \"qualquer tipo de usuário\"\ninterface User {\n  id: string;\n  name: string;\n  email: string;\n  role: 'admin' | 'user' | 'moderator' | 'guest';\n  permissions: string[];\n  preferences: {\n    theme: 'light' | 'dark' | 'auto';\n    language: string;\n    notifications: boolean;\n    privacy: 'public' | 'private' | 'friends';\n  };\n  metadata: {\n    lastLogin: Date;\n    loginCount: number;\n    ipAddress: string;\n    userAgent: string;\n  };\n}\n\n// Componente que \"pode ser usado no futuro\"\nconst UserProfile = ({ user }: { user: User }) => {\n  return (\n    <div>\n      <h1>{user.name}</h1>\n      <p>{user.email}</p>\n      <p>Role: {user.role}</p>\n      <p>Permissions: {user.permissions.join(', ')}</p>\n      <p>Theme: {user.preferences.theme}</p>\n      <p>Language: {user.preferences.language}</p>\n      <p>Last Login: {user.metadata.lastLogin.toLocaleDateString()}</p>\n      <p>Login Count: {user.metadata.loginCount}</p>\n    </div>\n  );\n};"
+        },
+        {
+          "type": "codeExample",
+          "title": "Implementando Apenas o Necessário",
+          "description": "Código focado no que é realmente necessário hoje",
+          "code": "// ✅ BOM - Implementando apenas o necessário\n\n// Interface simples para o que precisamos hoje\ninterface User {\n  id: string;\n  name: string;\n  email: string;\n}\n\n// Componente simples e focado\nconst UserProfile = ({ user }: { user: User }) => {\n  return (\n    <div>\n      <h1>{user.name}</h1>\n      <p>{user.email}</p>\n    </div>\n  );\n};\n\n// Quando precisar de mais campos, adicione conforme necessário\n// Não implemente \"por precaução\""
+        },
+        {
+          "type": "codeExample",
+          "title": "Abstrações Prematuras",
+          "description": "Criando abstrações para casos que podem não acontecer",
+          "code": "// ❌ RUIM - Abstrações prematuras\n\n// Sistema de notificações \"genérico\" para o futuro\nclass NotificationSystem {\n  private channels: Map<string, NotificationChannel> = new Map();\n  \n  registerChannel(type: string, channel: NotificationChannel) {\n    this.channels.set(type, channel);\n  }\n  \n  async sendNotification(type: string, message: string, user: User) {\n    const channel = this.channels.get(type);\n    if (channel) {\n      await channel.send(message, user);\n    }\n  }\n}\n\n// Configurando canais que não são usados\nconst notificationSystem = new NotificationSystem();\nnotificationSystem.registerChannel('email', new EmailChannel());\nnotificationSystem.registerChannel('sms', new SMSChannel());\nnotificationSystem.registerChannel('push', new PushChannel());\nnotificationSystem.registerChannel('slack', new SlackChannel());\n\n// Usando apenas email, mas implementando tudo"
+        },
+        {
+          "type": "codeExample",
+          "title": "Implementação Simples",
+          "description": "Implementando apenas o que é usado hoje",
+          "code": "// ✅ BOM - Implementação simples\n\n// Função simples para enviar email\nconst sendEmail = async (to: string, subject: string, body: string) => {\n  // Implementação real de envio de email\n  console.log(`Sending email to ${to}: ${subject}`);\n};\n\n// Usando apenas o que precisamos\nconst notifyUser = async (user: User, message: string) => {\n  await sendEmail(user.email, 'Notification', message);\n};\n\n// Quando precisar de SMS, implemente SMS\n// Quando precisar de push, implemente push\n// Não implemente \"por precaução\""
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Por que vale a pena?",
+      "icon": "check",
+      "children": [
+        {
+          "type": "iconCards",
+          "cols": { "base": 1, "sm": 3 },
+          "cards": [
+            {
+              "icon": "check",
+              "iconColor": "green",
+              "title": "Velocidade",
+              "description": "Menos código para escrever, testar e manter. Entregas mais rápidas."
+            },
+            {
+              "icon": "code",
+              "iconColor": "blue",
+              "title": "Simplicidade",
+              "description": "Código mais simples, menos bugs, menos complexidade para entender."
+            },
+            {
+              "icon": "bulb",
+              "iconColor": "orange",
+              "title": "Flexibilidade",
+              "description": "Quando precisar da feature, implemente com os requisitos reais, não imaginários."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Quando aplicar?",
+      "icon": "bulb",
+      "children": [
+        {
+          "type": "alert",
+          "message": "Sempre aplique: Features que \"podem ser úteis no futuro\". Abstrações \"genéricas\" para casos futuros. Configurações para cenários hipotéticos. Validações para dados que não existem. Interfaces para APIs que não foram definidas.",
+          "color": "green",
+          "icon": "check"
+        },
+        {
+          "type": "list",
+          "icon": "check",
+          "items": [
+            "Features que \"podem ser úteis no futuro\"",
+            "Abstrações \"genéricas\" para casos futuros",
+            "Configurações para cenários hipotéticos",
+            "Validações para dados que não existem",
+            "Interfaces para APIs que não foram definidas"
+          ]
+        },
+        {
+          "type": "alert",
+          "message": "Cuidado com: Ignorar requisitos reais do presente. Não planejar arquitetura básica. Deixar código desorganizado.",
+          "color": "yellow",
+          "icon": "alert-triangle"
+        },
+        {
+          "type": "list",
+          "icon": "alert-triangle",
+          "items": [
+            "Ignorar requisitos reais do presente",
+            "Não planejar arquitetura básica",
+            "Deixar código desorganizado"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Armadilhas Comuns",
+      "icon": "alert-triangle",
+      "children": [
+        {
+          "type": "codeExample",
+          "title": "Abstrações Prematuras",
+          "description": "Criando abstrações para casos que podem não acontecer",
+          "code": "// ❌ RUIM - Abstrações prematuras\n\n// Sistema de notificações \"genérico\" para o futuro\nclass NotificationSystem {\n  private channels: Map<string, NotificationChannel> = new Map();\n  \n  registerChannel(type: string, channel: NotificationChannel) {\n    this.channels.set(type, channel);\n  }\n  \n  async sendNotification(type: string, message: string, user: User) {\n    const channel = this.channels.get(type);\n    if (channel) {\n      await channel.send(message, user);\n    }\n  }\n}\n\n// Configurando canais que não são usados\nconst notificationSystem = new NotificationSystem();\nnotificationSystem.registerChannel('email', new EmailChannel());\nnotificationSystem.registerChannel('sms', new SMSChannel());\nnotificationSystem.registerChannel('push', new PushChannel());\nnotificationSystem.registerChannel('slack', new SlackChannel());\n\n// Usando apenas email, mas implementando tudo"
+        },
+        {
+          "type": "codeExample",
+          "title": "Implementação Simples",
+          "description": "Implementando apenas o que é usado hoje",
+          "code": "// ✅ BOM - Implementação simples\n\n// Função simples para enviar email\nconst sendEmail = async (to: string, subject: string, body: string) => {\n  // Implementação real de envio de email\n  console.log(`Sending email to ${to}: ${subject}`);\n};\n\n// Usando apenas o que precisamos\nconst notifyUser = async (user: User, message: string) => {\n  await sendEmail(user.email, 'Notification', message);\n};\n\n// Quando precisar de SMS, implemente SMS\n// Quando precisar de push, implemente push\n// Não implemente \"por precaução\""
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Resumo",
+      "children": [
+        {
+          "type": "text",
+          "content": "YAGNI é sobre foco no presente. Implemente apenas o que você precisa hoje. O futuro vai trazer requisitos reais, não imaginários."
+        },
+        {
+          "type": "text",
+          "content": "Regra de ouro: Se você não tem um requisito real hoje, não implemente. Quando precisar, implemente com os requisitos reais."
+        }
+      ]
+    }
+  ]
+}

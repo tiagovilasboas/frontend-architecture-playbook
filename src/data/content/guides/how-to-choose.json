@@ -1,0 +1,169 @@
+{
+  "meta": {
+    "title": "Como Escolher uma Arquitetura",
+    "description": "Guia para escolher a arquitetura certa. Decision Wizard com 6 perguntas e sugestões baseadas no seu contexto."
+  },
+  "layout": {
+    "showGuideNav": "how-to-choose",
+    "showRelated": true
+  },
+  "body": [
+    {
+      "type": "hero",
+      "title": "Como Escolher sua Arquitetura Front-End",
+      "subtitle": "Não existe arquitetura perfeita. Existe a arquitetura certa para o seu contexto. Vamos descobrir qual faz sentido para o seu projeto."
+    },
+    {
+      "type": "section",
+      "title": "Quando usar",
+      "children": [
+        {
+          "type": "text",
+          "content": "Antes de propor arquitetura nova; em kickoff de projeto; quando alguém pergunta \"qual stack?\"; para alinhar expectativas com o time.",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "text",
+          "content": "O que fazer com o resultado: Leve as sugestões para discussão no time — não decida sozinho. Cruze com os casos reais e, se for decisão que fica, documente com ADR."
+        },
+        {
+          "type": "linkList",
+          "links": [
+            { "to": "/guides/cases", "label": "Casos reais" },
+            { "to": "/guides/adr", "label": "ADR" }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "decisionWizard"
+    },
+    {
+      "type": "section",
+      "title": "Mas, ó: Contexto é Tudo",
+      "icon": "bulb",
+      "children": [
+        {
+          "type": "alert",
+          "message": "Isso aqui não tá escrito em pedra. Arquitetura não é receita de bolo. O que faz sentido pra um MVP pode virar um inferno num SaaS gigante, e o que parece overkill pra um projeto pequeno pode salvar sua pele quando o negócio explode.",
+          "color": "yellow",
+          "icon": "check"
+        },
+        {
+          "type": "text",
+          "content": "Antes de sair copiando padrão, tenta entender o máximo possível do negócio:",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "iconCards",
+          "cols": { "base": 1, "sm": 2 },
+          "cards": [
+            {
+              "title": "Pra onde esse projeto quer ir?",
+              "description": "Vai crescer rápido? Precisa escalar pra milhares de usuários ou é mais nicho?"
+            },
+            {
+              "title": "O time é grande ou só você?",
+              "description": "Micro-frontends fazem sentido com 10+ devs, mas são overkill pra 2 pessoas."
+            },
+            {
+              "title": "Precisa integrar com muita coisa?",
+              "description": "APIs externas, sistemas legados, múltiplos backends? Isso muda tudo."
+            },
+            {
+              "title": "Tem prazo apertado?",
+              "description": "Clean Architecture é ótima, mas se você tem 2 semanas, vai com SPA mesmo."
+            }
+          ]
+        },
+        {
+          "type": "alert",
+          "message": "Essas perguntas são só um ponto de partida. O segredo é ajustar a arquitetura conforme o projeto evolui. Não existe bala de prata, existe contexto.",
+          "color": "blue",
+          "icon": "bulb"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Dicas Importantes",
+      "icon": "bulb",
+      "children": [
+        {
+          "type": "iconCards",
+          "cols": { "base": 1, "sm": 2 },
+          "cards": [
+            {
+              "icon": "check",
+              "iconColor": "blue",
+              "title": "Comece Simples",
+              "description": "Não over-engineer desde o início. Escolha a arquitetura que resolve seu problema atual, não o problema que você acha que vai ter no futuro."
+            },
+            {
+              "icon": "check",
+              "iconColor": "green",
+              "title": "Considere o Time",
+              "description": "A arquitetura tem que fazer sentido para o seu time. Se ninguém entende, não vai dar certo, mesmo que seja tecnicamente perfeita."
+            },
+            {
+              "icon": "check",
+              "iconColor": "orange",
+              "title": "Pense no Futuro",
+              "description": "Mas não muito. Escolha algo que você consegue evoluir sem refatorar tudo. Clean Architecture é ótima pra isso."
+            },
+            {
+              "icon": "check",
+              "iconColor": "violet",
+              "title": "Teste na Prática",
+              "description": "Não acredite só no que lê. Teste a arquitetura em um projeto pequeno primeiro. Só assim você vai saber se funciona pra você."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Use no seu time",
+      "children": [
+        {
+          "type": "text",
+          "content": "Rode o wizard em reunião (tela compartilhada) e use as sugestões como ponto de partida. Peça que cada um justifique com contexto (prazo, tamanho do time, integrações). Se a decisão for grande, exija um ADR depois. Staff: use isso como guardrail — \"já rodamos o wizard e cruzamos com os casos\".",
+          "size": "sm",
+          "dimmed": true
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Ainda com dúvidas?",
+      "children": [
+        {
+          "type": "text",
+          "content": "Dá uma olhada nos exemplos práticos e casos de uso de cada arquitetura.",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "linkCards",
+          "cols": { "base": 1, "sm": 2 },
+          "cards": [
+            {
+              "to": "/architectures/clean-architecture",
+              "title": "Clean Architecture",
+              "description": "Ver guia",
+              "icon": "rocket"
+            },
+            {
+              "to": "/patterns/component-driven",
+              "title": "Component-Driven",
+              "description": "Ver guia",
+              "icon": "rocket"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

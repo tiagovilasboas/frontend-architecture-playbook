@@ -3,18 +3,7 @@ import { LazyComponentWrapper } from '../components/LazyWrapper';
 import ContentDrivenPage from '../components/ContentDrivenPage';
 
 // Lazy loading para guides - carregamento sob demanda
-const HowToChoose = lazy(() => import('../content/guides/how-to-choose.tsx'));
-const DependencyRule = lazy(
-  () => import('../content/guides/dependency-rule.tsx')
-);
-const Cases = lazy(() => import('../content/guides/cases.tsx'));
-const ArchitectureComparison = lazy(
-  () => import('../content/guides/architecture-comparison.tsx')
-);
-const ImplementationRoadmap = lazy(
-  () => import('../content/guides/implementation-roadmap.tsx')
-);
-const Staff = lazy(() => import('../content/guides/staff.tsx'));
+const GlossaryPage = lazy(() => import('../content/guides/glossary.tsx'));
 
 // Lazy loading para patterns - carregamento sob demanda
 const AtomicDesign = lazy(
@@ -29,12 +18,9 @@ const ComponentDriven = lazy(
 const IslandsArchitecture = lazy(
   () => import('../content/patterns/islands-architecture.tsx')
 );
-const Jamstack = lazy(() => import('../content/patterns/jamstack.tsx'));
 const MicroFrontends = lazy(
   () => import('../content/patterns/micro-frontends.tsx')
 );
-const Monorepo = lazy(() => import('../content/patterns/monorepo.tsx'));
-const Spa = lazy(() => import('../content/patterns/spa.tsx'));
 const StateMachines = lazy(
   () => import('../content/patterns/state-machines.tsx')
 );
@@ -42,29 +28,15 @@ const EventDriven = lazy(() => import('../content/patterns/event-driven.tsx'));
 const FeatureFlags = lazy(
   () => import('../content/patterns/feature-flags.tsx')
 );
-const Dry = lazy(() => import('../content/patterns/dry.tsx'));
-const Kiss = lazy(() => import('../content/patterns/kiss.tsx'));
-const Yagni = lazy(() => import('../content/patterns/yagni.tsx'));
 const RepositoryPattern = lazy(
   () => import('../content/patterns/repository-pattern.tsx')
 );
 const SecurityPatterns = lazy(() => import('../content/patterns/security.tsx'));
-const CleanCode = lazy(() => import('../content/patterns/clean-code.tsx'));
-const SRP = lazy(() => import('../content/patterns/srp.tsx'));
-const SOC = lazy(() => import('../content/patterns/soc.tsx'));
 const SSRSSGArchitecture = lazy(
   () => import('../content/patterns/ssr-ssg.tsx')
 );
-const BFFArchitecture = lazy(() => import('../content/patterns/bff.tsx'));
-const PWAArchitecture = lazy(() => import('../content/patterns/pwa.tsx'));
-const HeadlessArchitecture = lazy(
-  () => import('../content/patterns/headless.tsx')
-);
 const HexagonalArchitecture = lazy(
   () => import('../content/patterns/hexagonal.tsx')
-);
-const LayeredArchitecture = lazy(
-  () => import('../content/patterns/layered.tsx')
 );
 const EventSourcingArchitecture = lazy(
   () => import('../content/patterns/event-sourcing.tsx')
@@ -171,6 +143,11 @@ const STATIC_METADATA = {
     title: 'Staff · Escala & Times',
     description:
       'Para Staff: decisão de escala com evidência (casos, comparação), migração incremental e quando usar cada arquitetura.',
+  },
+  glossary: {
+    title: 'Glossário',
+    description:
+      'Conceitos de front-end com definição curta e link para o guia que aprofunda. SSR, hidratação, performance e mais.',
   },
 
   // Architectures
@@ -325,22 +302,23 @@ function toMeta(
 // Organização por categorias com comentários explicativos
 // Fluxo sequencial: Fundamento → Escolha → Análise → Validação
 export const guides: DocMeta[] = [
-  toMeta(DependencyRule, 'dependency-rule', 'guides', true), // 1. Fundamento
-  toMeta(HowToChoose, 'how-to-choose', 'guides', true), // 2. Escolha
-  toMeta(ArchitectureComparison, 'architecture-comparison', 'guides', true), // 3. Análise
-  toMeta(Cases, 'cases', 'guides', true), // 4. Validação
-  toMeta(ImplementationRoadmap, 'implementation-roadmap', 'guides', true), // 5. Implementação
+  toMeta(ContentDrivenPage, 'dependency-rule', 'guides', false), // 1. Fundamento (content JSON)
+  toMeta(ContentDrivenPage, 'how-to-choose', 'guides', false), // 2. Escolha (content JSON + decisionWizard)
+  toMeta(ContentDrivenPage, 'architecture-comparison', 'guides', false), // 3. Análise (content JSON + ArchitectureComparisonWidget)
+  toMeta(ContentDrivenPage, 'cases', 'guides', false), // 4. Validação (content JSON + casesGrid)
+  toMeta(ContentDrivenPage, 'implementation-roadmap', 'guides', false), // 5. Implementação (content JSON + timeline)
   toMeta(ContentDrivenPage, 'migration-strategies', 'guides', false), // 6. Migração (content JSON)
   toMeta(ContentDrivenPage, 'adr', 'guides', false), // 7. Documentação de decisões (content JSON)
   toMeta(ContentDrivenPage, 'mcp', 'guides', false), // 8. MCP (Cursor, content JSON)
   toMeta(ContentDrivenPage, 'security-business', 'guides', false), // 9. Segurança & Negócio (content JSON)
   toMeta(ContentDrivenPage, 'study-guide', 'guides', false), // 10. Por onde começar (content JSON)
-  toMeta(Staff, 'staff', 'guides', true), // 11. Para Staff (hub)
+  toMeta(ContentDrivenPage, 'staff', 'guides', false), // 11. Para Staff (hub, content JSON)
   toMeta(ContentDrivenPage, 'staff-fundamentals', 'guides', false), // 12. Staff · Fundamentos (content JSON)
   toMeta(ContentDrivenPage, 'staff-ui', 'guides', false), // 13. Staff · UI (content JSON)
   toMeta(ContentDrivenPage, 'staff-entrega', 'guides', false), // 14. Staff · Entrega (content JSON)
   toMeta(ContentDrivenPage, 'staff-estrutura', 'guides', false), // 15. Staff · Estrutura (content JSON)
   toMeta(ContentDrivenPage, 'staff-escala', 'guides', false), // 16. Staff · Escala (content JSON)
+  toMeta(GlossaryPage, 'glossary', 'guides', true), // 17. Glossário (conceitos)
 ];
 
 /** Slug order for GuideNavigation (sidebar "Todos os Guias"). Single source of truth. */
@@ -352,9 +330,11 @@ export const GUIDE_NAV_SLUGS = [
   'study-guide',
   'staff',
   'security-business',
+  'glossary',
   'mcp',
   'adr',
   'migration-strategies',
+  'implementation-roadmap',
 ] as const;
 
 export interface GuideNavItem {
@@ -379,19 +359,19 @@ export function getGuideNavItems(): GuideNavItem[] {
 // Arquiteturas organizadas por complexidade e popularidade
 export const architectures: DocMeta[] = [
   // 🚀 FUNDAMENTAIS (mais usadas)
-  toMeta(Spa, 'spa', 'architectures', true),
+  toMeta(ContentDrivenPage, 'spa', 'architectures', false),
   toMeta(SSRSSGArchitecture, 'ssr-ssg', 'architectures', true),
-  toMeta(Jamstack, 'jamstack', 'architectures', true),
-  toMeta(PWAArchitecture, 'pwa', 'architectures', true),
+  toMeta(ContentDrivenPage, 'jamstack', 'architectures', false),
+  toMeta(ContentDrivenPage, 'pwa', 'architectures', false),
 
   // 🏗️ PADRÕES DE DESIGN (Clean Architecture)
   toMeta(CleanArchitecture, 'clean-architecture', 'architectures', true),
-  toMeta(LayeredArchitecture, 'layered', 'architectures', true),
+  toMeta(ContentDrivenPage, 'layered', 'architectures', false),
   toMeta(HexagonalArchitecture, 'hexagonal', 'architectures', true),
 
   // 🔌 INTEGRAÇÃO E API
-  toMeta(BFFArchitecture, 'bff', 'architectures', true),
-  toMeta(HeadlessArchitecture, 'headless', 'architectures', true),
+  toMeta(ContentDrivenPage, 'bff', 'architectures', false),
+  toMeta(ContentDrivenPage, 'headless', 'architectures', false),
 
   // 🧩 MODULARIZAÇÃO (Micro-frontends)
   toMeta(MicroFrontends, 'micro-frontends', 'architectures', true),
@@ -401,7 +381,7 @@ export const architectures: DocMeta[] = [
     'architectures',
     true
   ),
-  toMeta(Monorepo, 'monorepo', 'architectures', true),
+  toMeta(ContentDrivenPage, 'monorepo', 'architectures', false),
 
   // ⚡ AVANÇADAS (Event-driven, Performance)
   toMeta(EventSourcingArchitecture, 'event-sourcing', 'architectures', true),
@@ -427,12 +407,12 @@ export const techniques: DocMeta[] = [
 
 // Boas práticas - princípios fundamentais de código limpo
 export const bestPractices: DocMeta[] = [
-  toMeta(Dry, 'dry', 'best-practices', true),
-  toMeta(Kiss, 'kiss', 'best-practices', true),
-  toMeta(Yagni, 'yagni', 'best-practices', true),
-  toMeta(CleanCode, 'clean-code', 'best-practices', true),
-  toMeta(SRP, 'srp', 'best-practices', true),
-  toMeta(SOC, 'soc', 'best-practices', true),
+  toMeta(ContentDrivenPage, 'dry', 'best-practices', false),
+  toMeta(ContentDrivenPage, 'kiss', 'best-practices', false),
+  toMeta(ContentDrivenPage, 'yagni', 'best-practices', false),
+  toMeta(ContentDrivenPage, 'clean-code', 'best-practices', false),
+  toMeta(ContentDrivenPage, 'srp', 'best-practices', false),
+  toMeta(ContentDrivenPage, 'soc', 'best-practices', false),
 ];
 
 // Mapa de coleções para facilitar lookup

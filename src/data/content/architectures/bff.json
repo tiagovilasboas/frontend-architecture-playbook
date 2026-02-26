@@ -1,0 +1,219 @@
+{
+  "meta": {
+    "title": "Backend-for-Frontend (BFF)",
+    "description": "Como criar uma API sob medida pro seu frontend, agregando dados de múltiplos services de forma otimizada."
+  },
+  "layout": { "showRelated": true },
+  "body": [
+    {
+      "type": "hero",
+      "title": "Backend-for-Frontend (BFF)",
+      "subtitle": "Uma API sob medida pro seu front",
+      "icon": "plug"
+    },
+    {
+      "type": "section",
+      "title": "O que é?",
+      "icon": "stack",
+      "children": [
+        {
+          "type": "text",
+          "content": "Sabe quando você tem 5 APIs diferentes e precisa fazer 7 requests pra montar uma tela? BFF é uma camada que agrega, transforma e otimiza dados especificamente pro seu frontend."
+        },
+        {
+          "type": "text",
+          "content": "É tipo ter um garçom exclusivo que conhece exatamente como você gosta do seu pedido, em vez de ir direto na cozinha negociar com 5 chefs diferentes."
+        },
+        {
+          "type": "code",
+          "code": "// ❌ Sem BFF - Frontend vira spaghetti de requests\nuseEffect(() => {\n  Promise.all([\n    fetch('/api/users/123'),\n    fetch('/api/orders/user/123'),\n    fetch('/api/payments/user/123'),\n    fetch('/api/shipping/user/123'),\n    fetch('/api/reviews/user/123')\n  ]).then(([user, orders, payments, shipping, reviews]) => {\n    const profile = { ...user, totalSpent: payments.reduce((sum, p) => sum + p.amount, 0), ordersCount: orders.length }\n  })\n}, [])\n\n// ✅ Com BFF - Um request resolve tudo\nuseEffect(() => {\n  fetch('/bff/user-profile/123')\n    .then(profile => setProfile(profile))\n}, [])",
+          "block": true
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Como funciona na prática?",
+      "icon": "code",
+      "children": [
+        {
+          "type": "code",
+          "code": "┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐\n│   React App     │    │   Vue Mobile    │    │   Next.js Web   │\n└─────────┬───────┘    └─────────┬───────┘    └─────────┬───────┘\n          │                      │                      │\n          │              ┌───────┴──────────────────────┘\n          ▼              ▼\n  ┌─────────────────────────────────────────────────────────────┐\n  │                    BFF Layer                                │\n  │  ┌─────────────┐  ┌─────────────┐  ┌─────────────────────┐ │\n  │  │  Mobile BFF │  │ Desktop BFF │  │   Admin Panel BFF   │ │\n  │  │ • Lean data │  │ • Full data │  │ • Analytics data     │ │\n  │  └─────────────┘  └─────────────┘  └─────────────────────┘ │\n  └─────────────────────┬───────────────────────────────────────┘\n          ┌─────────────┼─────────────────────────────┐\n          ▼             ▼             ▼               ▼\n  ┌─────────────┐ ┌─────────────┐ ┌─────────────┐ ┌─────────────┐\n  │ User Service│ │Order Service│ │Payment API  │ │Shipping API  │\n  └─────────────┘ └─────────────┘ └─────────────┘ └─────────────┘",
+          "block": true
+        },
+        {
+          "type": "alert",
+          "message": "A mágica do BFF: Cada frontend tem sua API otimizada. BFF faz agregação, cache e transformação. Microservices continuam independentes. Frontend não conhece complexidade interna.",
+          "color": "blue",
+          "icon": "bulb"
+        },
+        {
+          "type": "list",
+          "icon": "bulb",
+          "items": [
+            "Cada frontend tem sua API otimizada",
+            "BFF faz agregação, cache e transformação",
+            "Microservices continuam independentes",
+            "Frontend não conhece complexidade interna"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Quando usar?",
+      "icon": "bulb",
+      "children": [
+        {
+          "type": "iconCards",
+          "cols": { "base": 1, "sm": 2 },
+          "cards": [
+            {
+              "icon": "building",
+              "iconColor": "orange",
+              "title": "Múltiplas APIs internas",
+              "description": "Microservices que não conversam bem. Cada um tem sua estrutura, versionamento, formato."
+            },
+            {
+              "icon": "device-mobile",
+              "iconColor": "orange",
+              "title": "Mobile vs Desktop",
+              "description": "App mobile precisa de dados otimizados. Web desktop quer tudo detalhado. Mesma API não serve."
+            },
+            {
+              "icon": "chart-bar",
+              "iconColor": "orange",
+              "title": "Over/Under-fetching",
+              "description": "GraphQL é overkill mas REST genérica traz dados demais ou de menos pro que você precisa."
+            },
+            {
+              "icon": "plug",
+              "iconColor": "orange",
+              "title": "APIs de terceiros",
+              "description": "Stripe, PayPal, AWS - cada uma com formato diferente. BFF normaliza tudo."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Casos Reais",
+      "icon": "bulb",
+      "children": [
+        {
+          "type": "iconCards",
+          "cols": { "base": 1, "sm": 1 },
+          "cards": [
+            {
+              "icon": "code",
+              "iconColor": "green",
+              "title": "Multi-device (TV, mobile, web)",
+              "description": "Um BFF por tipo de dispositivo",
+              "items": [
+                "TV BFF: dados otimizados para TV",
+                "Mobile BFF: dados para app",
+                "Web BFF: dados para browser",
+                "Agregação de múltiplos serviços"
+              ]
+            },
+            {
+              "icon": "rocket",
+              "iconColor": "blue",
+              "title": "Multi-domínio (features isoladas)",
+              "description": "Um BFF por domínio de negócio",
+              "items": [
+                "Player BFF: agrega dados de playback",
+                "Search BFF: agrega dados de busca",
+                "Profile BFF: agrega dados do usuário",
+                "Normalização de APIs externas"
+              ]
+            },
+            {
+              "icon": "bulb",
+              "iconColor": "blue",
+              "title": "E-commerce",
+              "description": "BFF para diferentes funcionalidades",
+              "items": [
+                "Catalog BFF: dados de produtos",
+                "Checkout BFF: dados de pagamento",
+                "User BFF: dados de usuário",
+                "Integração com APIs de pagamento"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Armadilhas Comuns",
+      "icon": "alert-triangle",
+      "children": [
+        {
+          "type": "alert",
+          "message": "Duplicação de lógica: BFFs podem duplicar lógica de negócio. Use shared libraries ou microservices bem definidos.",
+          "color": "red",
+          "icon": "alert-triangle"
+        },
+        {
+          "type": "alert",
+          "message": "Complexidade de deploy: Múltiplos BFFs = múltiplos deploys. Use CI/CD automatizado e versionamento consistente.",
+          "color": "yellow",
+          "icon": "alert-triangle"
+        },
+        {
+          "type": "alert",
+          "message": "Over-engineering: BFF para projetos simples é overkill. Use apenas quando há múltiplas APIs ou frontends.",
+          "color": "yellow",
+          "icon": "alert-triangle"
+        },
+        {
+          "type": "alert",
+          "message": "Como evitar: Comece simples (uma API antes de múltiplas). Compartilhe código (libraries entre BFFs). Automatize deploy (CI/CD para todos os BFFs).",
+          "color": "green",
+          "icon": "check"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Referências e Recursos",
+      "icon": "code",
+      "children": [
+        { "type": "title", "content": "Ferramentas", "order": 4 },
+        {
+          "type": "list",
+          "items": [
+            "Apollo Server: GraphQL BFF",
+            "Express.js: REST BFF simples",
+            "Fastify: BFF de alta performance",
+            "NestJS: BFF com TypeScript"
+          ]
+        },
+        { "type": "title", "content": "Casos de Sucesso", "order": 4 },
+        {
+          "type": "stack",
+          "gap": "xs",
+          "children": [
+            {
+              "type": "anchor",
+              "label": "Sam Newman: Backends For Frontends (original)",
+              "href": "https://samnewman.io/patterns/architectural/bff/"
+            },
+            {
+              "type": "anchor",
+              "label": "Phil Calçado: The BFF Pattern",
+              "href": "https://philcalcado.com/2015/09/18/the_back_end_for_front_end_pattern_bff.html"
+            },
+            {
+              "type": "anchor",
+              "label": "Next.js: Server Actions como BFF",
+              "href": "https://nextjs.org/docs/app/building-your-application/data-fetching/server-actions-and-mutations"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

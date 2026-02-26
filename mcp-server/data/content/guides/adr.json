@@ -1,0 +1,243 @@
+{
+  "meta": {
+    "title": "ADR - Architecture Decision Records",
+    "description": "Como documentar decisões arquiteturais com ADRs. Template, processo, e exemplos reais para times frontend."
+  },
+  "layout": {
+    "showGuideNav": "adr",
+    "showRelated": true
+  },
+  "body": [
+    {
+      "type": "hero",
+      "title": "ADR - Architecture Decision Records",
+      "subtitle": "Documente decisões arquiteturais para que o time futuro entenda o porquê, não só o quê."
+    },
+    {
+      "type": "section",
+      "title": "O que é um ADR?",
+      "icon": "bulb",
+      "children": [
+        {
+          "type": "text",
+          "content": "Um Architecture Decision Record é um documento curto que captura uma decisão arquitetural importante junto com seu contexto, alternativas consideradas, e consequências. O objetivo é criar um registro histórico que explica por que a decisão foi tomada, não apenas o que foi decidido."
+        },
+        {
+          "type": "alert",
+          "message": "Por que isso importa? 6 meses depois, ninguém lembra por que escolheram Redux ao invés de Zustand. O ADR preserva o contexto da decisão para o time futuro (que pode ser você mesmo).",
+          "color": "blue",
+          "icon": "bulb"
+        },
+        {
+          "type": "iconCards",
+          "cols": { "base": 1, "sm": 2 },
+          "cards": [
+            {
+              "icon": "check",
+              "iconColor": "green",
+              "title": "Quando usar ADR",
+              "items": [
+                "Escolha de framework ou biblioteca",
+                "Mudança de padrão arquitetural",
+                "Adoção de nova ferramenta de build",
+                "Estratégia de deploy ou CI/CD",
+                "Decisões de breaking change"
+              ]
+            },
+            {
+              "icon": "alert-triangle",
+              "iconColor": "red",
+              "title": "Quando NÃO usar",
+              "items": [
+                "Escolha de nome de variável",
+                "Bug fix simples",
+                "Refactoring sem mudança de interface",
+                "Atualização de patch version",
+                "Decisões facilmente reversíveis"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Anatomia de um ADR",
+      "icon": "file-text",
+      "children": [
+        {
+          "type": "text",
+          "content": "Um ADR segue uma estrutura fixa e curta. A regra de ouro: se não cabe em 1-2 páginas, está longo demais."
+        },
+        {
+          "type": "badges",
+          "items": ["Template"]
+        },
+        {
+          "type": "text",
+          "content": "Título: ADR-001 - Adotar Zustand para state management",
+          "size": "sm"
+        },
+        {
+          "type": "list",
+          "spacing": "xs",
+          "items": [
+            {
+              "title": "Status:",
+              "description": "Aceito | Proposto | Depreciado | Substituído por ADR-XXX"
+            },
+            { "title": "Data:", "description": "2025-02-08" },
+            {
+              "title": "Contexto:",
+              "description": "O app tem estado global espalhado em 15 contextos React. Re-renders desnecessários impactam performance. Precisamos de state management centralizado."
+            },
+            {
+              "title": "Decisão:",
+              "description": "Adotar Zustand como state manager global."
+            },
+            {
+              "title": "Alternativas:",
+              "description": "Redux Toolkit (mais boilerplate, overkill para nosso caso), Jotai (atômico, mas time não tem experiência), Context API (causando os re-renders atuais)."
+            },
+            {
+              "title": "Consequências:",
+              "description": "Bundle +2KB gzip. Time precisa aprender selectors e subscribeWithSelector. Migração gradual possível (coexiste com Context). Em 3 meses avaliar se reduziu re-renders em métricas reais."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Como implementar ADRs no time",
+      "icon": "code",
+      "children": [
+        { "type": "title", "content": "1. Onde guardar", "order": 4 },
+        {
+          "type": "codeExample",
+          "title": "Estrutura docs/adr",
+          "description": "Versionado junto com o código no mesmo repo.",
+          "code": "docs/\n└── adr/\n    ├── 001-zustand-state-management.md\n    ├── 002-remix-migration.md\n    ├── 003-monorepo-turborepo.md\n    └── template.md",
+          "defaultExpanded": false
+        },
+        { "type": "title", "content": "2. Processo", "order": 4 },
+        {
+          "type": "list",
+          "spacing": "xs",
+          "items": [
+            {
+              "title": "Propor:",
+              "description": "Abra um PR com o ADR em status \"Proposto\""
+            },
+            {
+              "title": "Discutir:",
+              "description": "Review no PR (como qualquer código)"
+            },
+            {
+              "title": "Aceitar:",
+              "description": "Merge muda status para \"Aceito\""
+            },
+            {
+              "title": "Evoluir:",
+              "description": "Nunca delete. Marque como \"Substituído por ADR-XXX\""
+            }
+          ]
+        },
+        {
+          "type": "alert",
+          "message": "Armadilha comum: ADRs que viram documentação extensa. Se precisou de mais de 2 páginas, provavelmente é um RFC (Request for Comments), não um ADR. ADR é decisão, não design doc.",
+          "color": "yellow",
+          "icon": "alert-triangle"
+        },
+        { "type": "title", "content": "Como usar no seu time", "order": 4 },
+        {
+          "type": "list",
+          "spacing": "xs",
+          "items": [
+            "Exija ADR quando mudar padrão (framework, state, build). Não exija para bug fix ou refactor sem mudança de contrato.",
+            "Guarde em docs/adr/ versionado com o código. Review de ADR no mesmo PR da mudança.",
+            "Status: Proposto → discussão; Aceito → merge; evoluções futuras → Substituído por ADR-XXX, nunca apague.",
+            "Staff: use como critério de code review — \"essa decisão precisa de ADR?\"."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Exemplos reais de ADRs em frontend",
+      "children": [
+        {
+          "type": "iconCards",
+          "cols": { "base": 1, "sm": 3 },
+          "cards": [
+            {
+              "title": "ADR-001: Migrar de CRA para Vite",
+              "description": "Contexto: build de 45s, HMR lento. Vite reduz para ~3s. Trade-off: config manual de proxy e env vars."
+            },
+            {
+              "title": "ADR-002: Adotar TanStack Query",
+              "description": "Contexto: useEffect + useState para fetch em 40+ componentes. Cache manual quebrava. TQ resolve cache, retry, e invalidation."
+            },
+            {
+              "title": "ADR-003: Redux para state global",
+              "description": "Substituído por ADR-007: migrar para Zustand. Contexto mudou - app menor que o previsto, Redux era overkill."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Template Markdown completo",
+      "icon": "code",
+      "children": [
+        {
+          "type": "codeExample",
+          "title": "Template ADR (Markdown)",
+          "description": "Copie e preencha as seções. Mantenha em 1-2 páginas.",
+          "code": "# ADR-{NUMBER}: {TÍTULO DA DECISÃO}\n\n## Status\nProposto | Aceito | Depreciado | Substituído por ADR-XXX\n\n## Data\nYYYY-MM-DD\n\n## Contexto\nDescreva o problema ou necessidade que motivou esta decisão.\nInclua constraints técnicos e de negócio relevantes.\n\n## Decisão\nO que foi decidido. Seja específico.\n\n## Alternativas Consideradas\n\n### Opção A: {nome}\n- Prós: ...\n- Contras: ...\n\n### Opção B: {nome}\n- Prós: ...\n- Contras: ...\n\n## Consequências\n\n### Positivas\n- ...\n\n### Negativas\n- ...\n\n### Riscos\n- ...\n\n## Referências\n- Links para docs, artigos, ou discussões relevantes",
+          "defaultExpanded": true
+        },
+        {
+          "type": "text",
+          "content": "Exemplo completo preenchido (copy-paste)",
+          "size": "sm"
+        },
+        {
+          "type": "codeExample",
+          "title": "ADR-001 - Adotar Zustand para state management",
+          "description": "Um ADR real em 1 página. Copie e adapte.",
+          "code": "# ADR-001: Adotar Zustand para state management\n\n## Status\nAceito\n\n## Data\n2025-02-08\n\n## Contexto\nO app tem estado global espalhado em 15 contextos React. Re-renders desnecessários impactam performance (métricas no dashboard). Precisamos de state management centralizado com selectors finos.\n\n## Decisão\nAdotar Zustand como state manager global para novas features e migração gradual dos contextos mais críticos.\n\n## Alternativas Consideradas\n\n### Redux Toolkit\n- Prós: ecossistema, DevTools, time conhece.\n- Contras: boilerplate, overkill para nosso tamanho de estado.\n\n### Jotai (atômico)\n- Prós: bundle pequeno, mental model simples.\n- Contras: time sem experiência; migração mais disruptiva.\n\n### Manter Context API\n- Contras: é a causa dos re-renders atuais; não resolve.\n\n## Consequências\n\n### Positivas\n- Bundle +2KB gzip. Coexiste com Context durante migração.\n- Menos re-renders; métricas em 3 meses.\n\n### Negativas\n- Time precisa aprender selectors e subscribeWithSelector.\n\n### Riscos\n- Migração pela metade se prioridades mudarem; mitigar com ADR de migração.\n\n## Referências\n- Zustand docs: https://github.com/pmndrs/zustand\n- Comparação com Redux (nosso caso): decisão interna.",
+          "defaultExpanded": false
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Referências",
+      "children": [
+        {
+          "type": "anchor",
+          "label": "Documenting Architecture Decisions - Michael Nygard (artigo original)",
+          "href": "https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions"
+        },
+        {
+          "type": "anchor",
+          "label": "ADR GitHub Organization - Ferramentas e templates",
+          "href": "https://adr.github.io/"
+        },
+        {
+          "type": "anchor",
+          "label": "Architecture Decision Record collection - Joel Parker Henderson",
+          "href": "https://github.com/joelparkerhenderson/architecture-decision-record"
+        }
+      ]
+    },
+    {
+      "type": "anchor",
+      "label": "← Voltar ao hub de guias",
+      "to": "/guides",
+      "back": true
+    }
+  ]
+}

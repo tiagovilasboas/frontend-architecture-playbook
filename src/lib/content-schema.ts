@@ -139,6 +139,25 @@ export type ContentBlock =
       type: 'stack';
       gap?: 'sm' | 'md' | 'lg' | 'xl';
       children: ContentBlock[];
+    }
+  | { type: 'casesGrid'; title?: string }
+  | { type: 'architectureComparison'; title?: string }
+  | { type: 'decisionWizard' }
+  | {
+      type: 'timeline';
+      /** Which step is active (1-based); optional. */
+      active?: number;
+      items: Array<{
+        title: string;
+        description?: string;
+        items: string[];
+      }>;
+      /** Optional alert after the timeline (e.g. "Resultado esperado"). */
+      resultAlert?: {
+        message: string;
+        color?: 'blue' | 'green' | 'yellow' | 'red' | 'brand';
+        icon?: ContentIconKey;
+      };
     };
 
 /** Full page content: meta + body blocks */

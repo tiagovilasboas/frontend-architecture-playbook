@@ -350,6 +350,13 @@
           "description": "Segurança como decisão de negócio: impacto financeiro, priorização e como comunicar com stakeholders. Nível staff."
         },
         {
+          "href": "/guides/glossary",
+          "label": "Glossário",
+          "slug": "glossary",
+          "title": "Glossário",
+          "description": "Conceitos de front-end com definição curta e link para o guia que aprofunda. SSR, hidratação, performance e mais."
+        },
+        {
           "href": "/guides/mcp",
           "label": "MCP (Cursor)",
           "slug": "mcp",

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import {
   Title,
   Text,
@@ -14,6 +14,8 @@ import {
   Alert,
   Table,
   Badge,
+  Timeline,
+  LoadingOverlay,
 } from '@mantine/core';
 import {
   IconCheck,
@@ -46,6 +48,10 @@ import {
   IconTool,
 } from '@tabler/icons-react';
 import { Link } from 'react-router-dom';
+import { CaseCard } from './CaseCard';
+import casesData from '../data/cases.json';
+import ArchitectureComparisonWidget from './ArchitectureComparisonWidget';
+const DecisionWizard = lazy(() => import('./interactive/DecisionWizard.tsx'));
 import type {
   ContentBlock,
   ContentIconKey,
@@ -514,6 +520,95 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
       return (
         <Stack key={key} gap={block.gap ?? 'md'}>
           {stackChildren.map((child, i) => renderBlock(child, i))}
+        </Stack>
+      );
+    }
+
+    case 'architectureComparison':
+      return (
+        <div key={key}>
+          <ArchitectureComparisonWidget />
+        </div>
+      );
+
+    case 'decisionWizard':
+      return (
+        <Paper key={key} withBorder p="md" radius="lg">
+          <Stack gap="lg">
+            <div>
+              <Title order={2} mb="sm">
+                Decision Wizard v3.0
+              </Title>
+              <Text size="lg" c="dimmed">
+                6 perguntas para obter sugestões de arquitetura. O resultado é
+                um ponto de partida para discutir com o time, não uma decisão
+                final.
+              </Text>
+            </div>
+            <Suspense fallback={<LoadingOverlay visible />}>
+              <DecisionWizard />
+            </Suspense>
+          </Stack>
+        </Paper>
+      );
+
+    case 'casesGrid': {
+      const cases = Array.isArray(casesData) ? casesData : [];
+      const gridTitle = block.title;
+      return (
+        <div key={key}>
+          {gridTitle ? (
+            <Group gap="xs" mb="lg">
+              {getIcon('trending-up', 28)}
+              <Title order={2}>{gridTitle}</Title>
+            </Group>
+          ) : null}
+          <Stack gap="lg">
+            {cases.map((case_: (typeof casesData)[number], index: number) => (
+              <CaseCard key={case_.company} case_={case_} index={index} />
+            ))}
+          </Stack>
+        </div>
+      );
+    }
+
+    case 'timeline': {
+      const items = Array.isArray(block.items) ? block.items : [];
+      const resultAlert = block.resultAlert;
+      return (
+        <Stack key={key} gap="lg">
+          <Timeline active={block.active} bulletSize={24} lineWidth={2}>
+            {items.map((item, i) => (
+              <Timeline.Item
+                key={i}
+                bullet={getIcon('check', 16)}
+                title={item.title}
+              >
+                {item.description ? (
+                  <Text size="sm" c="dimmed" mb="md">
+                    {item.description}
+                  </Text>
+                ) : null}
+                <List size="sm" spacing="xs">
+                  {(item.items || []).map((bullet, j) => (
+                    <List.Item key={j}>{bullet}</List.Item>
+                  ))}
+                </List>
+              </Timeline.Item>
+            ))}
+          </Timeline>
+          {resultAlert?.message ? (
+            <Alert
+              color={resultAlert.color ?? 'blue'}
+              icon={resultAlert.icon ? getIcon(resultAlert.icon, 16) : null}
+              radius="md"
+            >
+              <Text size="sm" fw={600} mb={4}>
+                Resultado Esperado:
+              </Text>
+              <Text size="sm">{resultAlert.message}</Text>
+            </Alert>
+          ) : null}
         </Stack>
       );
     }

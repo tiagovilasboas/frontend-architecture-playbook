@@ -1,0 +1,94 @@
+{
+  "meta": {
+    "title": "Staff · Estrutura de Código",
+    "description": "Para Staff: guardrails de camadas, quando documentar no ADR, revisão de estrutura e segurança."
+  },
+  "layout": {
+    "showGuideNav": "staff",
+    "showRelated": true
+  },
+  "body": [
+    {
+      "type": "hero",
+      "title": "Staff · Estrutura de Código",
+      "subtitle": "Na estrutura (Clean Architecture, camadas, hexagonal, repositórios, segurança), Staff define como o código é organizado e onde cada coisa vive. Você é o detentor dos guardrails de camadas e dependências."
+    },
+    {
+      "type": "section",
+      "title": "O que Staff faz em Estrutura",
+      "children": [
+        {
+          "type": "list",
+          "icon": "check",
+          "spacing": "sm",
+          "items": [
+            {
+              "title": "Guardrails de camadas:",
+              "description": "dependências só apontam pra dentro (Dependency Rule). Nenhum atalho que quebra a arquitetura sem ADR."
+            },
+            {
+              "title": "Quando documentar no ADR:",
+              "description": "mudança de estrutura (nova camada, inversão de dependência, hexagonal) vira ADR com contexto e alternativas."
+            },
+            {
+              "title": "Repositórios e segurança:",
+              "description": "padrões de acesso a dados e segurança como critério de revisão e guardrail."
+            },
+            {
+              "title": "Revisar além da feature:",
+              "description": "em code review, checar se respeita a estrutura e não introduz dependência proibida."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Conteúdo do playbook nesta seção",
+      "children": [
+        {
+          "type": "linkCards",
+          "cols": { "base": 1, "sm": 2 },
+          "cards": [
+            {
+              "to": "/architectures/clean-architecture",
+              "title": "Clean Architecture",
+              "description": "Separação de responsabilidades e dependências.",
+              "icon": "building"
+            },
+            {
+              "to": "/architectures/layered",
+              "title": "Layered Architecture",
+              "description": "Camadas e fluxo de dependência.",
+              "icon": "building"
+            },
+            {
+              "to": "/architectures/hexagonal",
+              "title": "Hexagonal",
+              "description": "Ports and Adapters no front.",
+              "icon": "building"
+            },
+            {
+              "to": "/guides/adr",
+              "title": "ADR",
+              "description": "Documentar decisão de estrutura.",
+              "icon": "file-text"
+            },
+            {
+              "to": "/patterns/security",
+              "title": "Security Patterns",
+              "description": "Padrões que viram critério de revisão.",
+              "icon": "lock"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "anchor",
+      "label": "← Voltar ao hub Para Staff",
+      "to": "/guides/staff",
+      "back": true
+    }
+  ]
+}

@@ -1,0 +1,358 @@
+{
+  "meta": {
+    "title": "Dependency Rule",
+    "description": "Código como uma cebola: camada de fora pode usar a de dentro; camada de dentro nunca usa a de fora. Simples assim."
+  },
+  "layout": {
+    "showGuideNav": "dependency-rule",
+    "showRelated": true
+  },
+  "body": [
+    {
+      "type": "hero",
+      "title": "Dependency Rule",
+      "subtitle": "Camada de fora pode usar a de dentro; camada de dentro nunca usa a de fora."
+    },
+    {
+      "type": "section",
+      "title": "O que é a Dependency Rule?",
+      "icon": "bulb",
+      "children": [
+        {
+          "type": "text",
+          "content": "Pense no código como uma cebola: camadas em volta umas das outras. Seu código tem camadas: a tela é a camada mais de fora, depois vêm as regras de negócio, quem acessa dados, e no centro o núcleo. A regra: camada de fora pode importar a de dentro; camada de dentro nunca importa a de fora. Essa regra é a chave para todas as arquiteturas. Se você dominar ela, pode inclusive criar a sua própria."
+        },
+        {
+          "type": "text",
+          "content": "A ideia foi formalizada por Robert C. Martin (Uncle Bob) no artigo The Clean Architecture e no livro Clean Architecture.",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "anchor",
+          "label": "The Clean Architecture (blog.cleancoder.com)",
+          "href": "https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html"
+        },
+        {
+          "type": "alert",
+          "message": "Resumo: Camada de fora pode usar a de dentro. Camada de dentro não puxe nada de fora. Só isso.",
+          "color": "brand",
+          "icon": "check"
+        },
+        {
+          "type": "alert",
+          "message": "A regra fala de quem pode importar quem no código (a direção dos imports). Não é o fluxo do clique do usuário.",
+          "color": "blue",
+          "icon": "stack"
+        },
+        {
+          "type": "alert",
+          "message": "A regra de dependência é a chave para todas as arquiteturas. MVC, Clean Architecture, hexagonal, em camadas: todas respeitam a mesma ideia. Uncle Bob (Robert C. Martin) formalizou isso em Clean Architecture: \"Nada em um círculo interno pode saber nada sobre algo em um círculo externo.\" Se você souber aplicá-la, pode até inventar a sua própria arquitetura.",
+          "color": "green",
+          "icon": "shield"
+        },
+        {
+          "type": "iconCards",
+          "cols": { "base": 1, "sm": 2 },
+          "cards": [
+            {
+              "icon": "check",
+              "iconColor": "green",
+              "title": "Pode Depender",
+              "description": "Camada de fora pode usar a de dentro. Exemplo: a tela (fora) importa as regras de negócio (dentro), que importam quem acessa dados (mais dentro), que importa o núcleo (centro)."
+            },
+            {
+              "icon": "alert-triangle",
+              "iconColor": "red",
+              "title": "Nunca Depender",
+              "description": "Camada de dentro nunca importa a de fora. O núcleo não importa tela nem regras de negócio. Quem acessa dados não importa regras de negócio. Se importar, tudo fica grudado."
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "title": "Direção das dependências (quem pode importar quem)",
+          "children": [
+            {
+              "type": "text",
+              "content": "Como na cebola: seta sempre da camada de fora para a de dentro. Nunca da camada de dentro para a de fora.",
+              "size": "sm",
+              "dimmed": true
+            },
+            {
+              "type": "title",
+              "content": "CORRETO — Dependências só apontam para dentro",
+              "order": 3
+            },
+            {
+              "type": "code",
+              "code": "    ┌─────────────────────────────────────────┐\n    │  UI (páginas, componentes)              │  ← mais externo\n    │  pode importar: Service, Repo, Domain    │\n    └───────────────────┬─────────────────────┘\n                        │ depende de\n                        ▼\n    ┌─────────────────────────────────────────┐\n    │  Service (regras de negócio)             │\n    │  pode importar: Repository, Domain       │\n    └───────────────────┬─────────────────────┘\n                        │ depende de\n                        ▼\n    ┌─────────────────────────────────────────┐\n    │  Repository (acesso a dados)             │\n    │  pode importar: Domain                   │\n    └───────────────────┬─────────────────────┘\n                        │ depende de\n                        ▼\n    ┌─────────────────────────────────────────┐\n    │  Domain (entidades, regras puras)        │  ← mais interno\n    │  NÃO importa nada de outras camadas     │\n    └─────────────────────────────────────────┘",
+              "block": true
+            },
+            {
+              "type": "title",
+              "content": "INCORRETO — Dependência invertida ou circular = CAOS",
+              "order": 3
+            },
+            {
+              "type": "code",
+              "code": "    ┌─────────────────────────────────────────┐\n    │  Domain                                 │\n    │  importa UI ou Service  ← ❌ QUEBRADO!   │\n    └───────────────────┬─────────────────────┘\n                        │ (não pode apontar para fora)\n                        ▼\n    ┌─────────────────────────────────────────┐\n    │  UI / Service                            │\n    └─────────────────────────────────────────┘\n\n    Se o Domain começar a importar UI ou Service,\n    você perde o controle: fica preso ao framework e\n    testar fica bem mais difícil.",
+              "block": true
+            },
+            {
+              "type": "alert",
+              "message": "Como saber se você está seguindo?",
+              "color": "blue",
+              "icon": "bulb"
+            },
+            {
+              "type": "list",
+              "icon": "check",
+              "spacing": "sm",
+              "items": [
+                {
+                  "title": "Núcleo (domain)",
+                  "description": "não importa tela, regras de negócio nem acesso a dados. Só tipos e regras puras."
+                },
+                {
+                  "title": "Parte que acessa dados (repository)",
+                  "description": "só importa o núcleo (e talvez lib de banco)."
+                },
+                {
+                  "title": "Parte das regras de negócio (service)",
+                  "description": "pode importar quem acessa dados e o núcleo. Nunca a tela."
+                },
+                {
+                  "title": "Tela (UI)",
+                  "description": "pode importar o que precisar (regras, etc.). Não acessa banco direto."
+                }
+              ]
+            },
+            {
+              "type": "title",
+              "content": "Exemplos de camadas (a mesma regra)",
+              "order": 3
+            },
+            {
+              "type": "text",
+              "content": "A regra da cebola vale em qualquer modelo de camadas. Três exemplos:",
+              "size": "sm",
+              "dimmed": true
+            },
+            {
+              "type": "codeExample",
+              "title": "MVC (ex.: Angular 1 / AngularJS)",
+              "description": "Model, View, Controller. View (fora) pode usar Controller e Model. Controller (meio) pode usar Model. Model (dentro) não usa View nem Controller.",
+              "code": "View     → Controller, Model\nController → Model\nModel      → NÃO importa os outros"
+            },
+            {
+              "type": "codeExample",
+              "title": "Camadas clássicas (3-tier)",
+              "description": "Apresentação (fora), Negócio (meio), Dados (dentro). Cada uma só usa a de dentro.",
+              "code": "Apresentação → Negócio, Dados\nNegócio      → Dados\nDados       → NÃO importa os outros"
+            },
+            {
+              "type": "codeExample",
+              "title": "Next.js (exemplo simples)",
+              "description": "app/ e components/ são a tela (fora). lib/services é regra de negócio. lib/repositories acessa dados. lib/domain é o núcleo. Imports sempre para dentro.",
+              "code": "app/\n  page.tsx        → importa de lib/services\ncomponents/\n  UserCard.tsx    → importa de lib/services\nlib/\n  services/       → importa de lib/repositories, lib/domain\n  repositories/   → importa de lib/domain\n  domain/         → NÃO importa app, components, lib"
+            },
+            {
+              "type": "text",
+              "content": "Em todos os casos: camada de fora pode usar a de dentro; camada de dentro nunca usa a de fora.",
+              "size": "sm",
+              "dimmed": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Por que essa regra importa tanto?",
+      "icon": "alert-triangle",
+      "children": [
+        {
+          "type": "iconCards",
+          "cols": { "base": 1, "sm": 3 },
+          "cards": [
+            {
+              "icon": "shield",
+              "iconColor": "green",
+              "title": "Independência",
+              "description": "Seu núcleo de negócio não fica amarrado a React, Vue ou banco. Um dia você troca a tela ou o banco e o que importa continua intacto."
+            },
+            {
+              "icon": "code",
+              "iconColor": "blue",
+              "title": "Testar fica simples",
+              "description": "Você testa cada pedaço isolado. Menos mock, menos dor de cabeça, e quando quebrar algo, você acha o culpado rápido."
+            },
+            {
+              "icon": "stack",
+              "iconColor": "orange",
+              "title": "Flexibilidade",
+              "description": "Quer mudar uma camada? Você muda sem derrubar o resto. Refatorar deixa de ser um jogo de dominó."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Como Implementar na Prática",
+      "icon": "code",
+      "children": [
+        {
+          "type": "text",
+          "content": "No dia a dia, a regra aparece na estrutura de pastas e em quem importa quem. Abaixo: como organizar e como checar se está certo."
+        },
+        {
+          "type": "codeExample",
+          "title": "1. Estrutura de Pastas (ASCII)",
+          "description": "Como na cebola: tela (fora) importa regras de negócio (dentro), que importa quem acessa dados (mais dentro), que importa o núcleo (centro). Sempre para dentro.",
+          "code": "src/\n├── domain/           ← mais interno (não importa nada de fora)\n│   ├── entities/\n│   └── rules/\n├── repositories/    ← importa só domain\n│   └── user.repository.ts\n├── services/        ← importa domain + repositories\n│   └── user.service.ts\n└── ui/               ← mais externo (pode importar tudo)\n    ├── components/\n    └── pages/"
+        },
+        {
+          "type": "section",
+          "title": "2. Mantenha a direção",
+          "children": [
+            {
+              "type": "list",
+              "icon": "check",
+              "spacing": "xs",
+              "items": [
+                "Imports sempre de fora para dentro (como na cebola)",
+                "Camada de fora (tela) pode usar a de dentro (regras, dados, núcleo)",
+                "Camada de dentro nunca usa a de fora"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "title": "3. Valide Imports (exemplo ASCII de fluxo)",
+          "children": [
+            {
+              "type": "code",
+              "code": "✅ CORRETO (imports só para dentro):\n\n  domain/user.ts\n  → export type User; export createUser();   (zero imports de outras camadas)\n\n  repository/user.repository.ts\n  → import { User, createUser } from '../domain/user';   ✅\n\n  service/user.service.ts\n  → import { User } from '../domain/user';\n  → import { findUserById } from '../repository/...';  ✅\n\n  ui/UserProfile.tsx\n  → import { useUserService } from '../service/...';   ✅\n\n❌ INCORRETO:\n\n  domain/user.ts\n  → import { Button } from '../ui/...';      ❌\n  → import { getUserById } from '../service/...';  ❌\n\n  repository/user.repository.ts\n  → import { getUserById } from '../service/...';  ❌",
+              "block": true
+            },
+            {
+              "type": "list",
+              "icon": "check",
+              "spacing": "xs",
+              "items": [
+                "Núcleo: nenhum import de tela, regras de negócio ou acesso a dados",
+                "Quem acessa dados: só importa o núcleo",
+                "Vale usar ESLint (ex.: eslint-plugin-import) para pegar deslizes"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "title": "4. Teste cada pedaço sozinho",
+          "children": [
+            {
+              "type": "list",
+              "icon": "check",
+              "spacing": "xs",
+              "items": [
+                "Teste cada parte separada (núcleo, regras de negócio, etc.)",
+                "Use mocks leves para o que está \"fora\"",
+                "O núcleo deve rodar sem tela e sem banco",
+                "As regras de negócio devem rodar sem banco (simulando quem acessa dados)"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "alert",
+          "message": "Dica: Não precisa refatorar tudo de uma vez. Escolha um módulo, aplique a regra ali, e vá expandindo. Um pedaço bem feito vale mais que o projeto todo entrelaçado.",
+          "color": "brand",
+          "icon": "bulb"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "O que você ganha ao seguir a regra",
+      "icon": "shield",
+      "children": [
+        {
+          "type": "iconCards",
+          "cols": { "base": 1, "sm": 3 },
+          "cards": [
+            {
+              "icon": "code",
+              "iconColor": "green",
+              "title": "Testes rápidos",
+              "description": "Cada parte você testa sozinha. Menos mock, testes que rodam em milissegundos e você dorme tranquilo."
+            },
+            {
+              "icon": "stack",
+              "iconColor": "blue",
+              "title": "Refatorar sem medo",
+              "description": "Quer trocar framework ou banco? Você troca sem derrubar tudo. Uma parte muda, o resto continua estável."
+            },
+            {
+              "icon": "shield",
+              "iconColor": "orange",
+              "title": "Seu core livre",
+              "description": "A lógica que importa não fica presa a React, Vue ou banco. Amanhã você troca a ferramenta e o núcleo segue igual."
+            }
+          ]
+        },
+        {
+          "type": "alert",
+          "message": "No fim das contas: código que você consegue manter, testar e evoluir sem passar raiva. Menos bug, mais clareza, refatoração sem susto.",
+          "color": "green",
+          "icon": "check"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Resumo",
+      "icon": "bulb",
+      "children": [
+        {
+          "type": "text",
+          "content": "Código como uma cebola: camada de fora pode usar a de dentro; camada de dentro nunca usa a de fora. Seguir isso deixa o código previsível. Ignorar vira bagunça."
+        },
+        {
+          "type": "iconCards",
+          "cols": { "base": 1, "sm": 2 },
+          "cards": [
+            {
+              "icon": "check",
+              "title": "Leve na cabeça",
+              "items": [
+                "Camada de fora pode usar a de dentro; de dentro nunca usa a de fora",
+                "Como uma cebola: sempre para dentro",
+                "Teste cada camada sozinha"
+              ]
+            },
+            {
+              "icon": "alert-triangle",
+              "title": "Evite",
+              "items": [
+                "Importar tela ou regras de negócio no núcleo",
+                "Regras de negócio dentro de quem acessa dados",
+                "Framework ou lib de tela no núcleo",
+                "Ciclos: A importa B, B importa A"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "alert",
+          "message": "Regra de ouro: camada de fora pode usar a de dentro; camada de dentro nunca usa a de fora. Como uma cebola.",
+          "color": "brand",
+          "icon": "shield"
+        }
+      ]
+    }
+  ]
+}

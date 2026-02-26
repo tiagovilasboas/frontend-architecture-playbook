@@ -68,7 +68,7 @@ export const GuideNavigation: React.FC<GuideNavigationProps> = ({
               leftSection={<IconArrowLeft size={16} />}
               size="sm"
             >
-              ← {prevGuide.title}
+              {prevGuide.title}
             </Button>
           ) : (
             <div />
@@ -87,7 +87,7 @@ export const GuideNavigation: React.FC<GuideNavigationProps> = ({
               }
               size="sm"
             >
-              {nextGuide.title} →
+              {nextGuide.title}
             </Button>
           ) : (
             <div />
