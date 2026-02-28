@@ -108,7 +108,7 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
       return (
         <div key={key}>
           {iconEl ? (
-            <Group gap="sm" mb="md">
+            <Group gap="sm" mb="md" align="flex-start">
               <ThemeIcon size="xl" radius="md" variant="light" color="brand">
                 {iconEl}
               </ThemeIcon>
@@ -144,7 +144,11 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
       return (
         <Paper key={key} withBorder p="xl" radius="md">
           {(block.title || iconEl) && (
-            <Group gap="sm" mb={block.children?.length ? 'md' : undefined}>
+            <Group
+              gap="sm"
+              mb={block.children?.length ? 'md' : undefined}
+              align="flex-start"
+            >
               {iconEl && (
                 <ThemeIcon size="lg" radius="md" variant="light" color="brand">
                   {iconEl}
@@ -267,7 +271,7 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
                 to={card.to}
                 style={{ textDecoration: 'none' }}
               >
-                <Group gap="sm">
+                <Group gap="sm" align="flex-start">
                   {iconEl && (
                     <ThemeIcon
                       size={36}
@@ -303,7 +307,11 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
             const iconEl = c.icon ? getIcon(c.icon, 20) : null;
             return (
               <Card key={i} withBorder p="md">
-                <Group gap="sm" mb={c.items?.length ? 'sm' : undefined}>
+                <Group
+                  gap="sm"
+                  mb={c.items?.length ? 'sm' : undefined}
+                  align="flex-start"
+                >
                   {iconEl && (
                     <ThemeIcon
                       size="lg"
@@ -432,7 +440,7 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
             return (
               <Card key={i} withBorder p="xl" radius="lg">
                 <Stack gap="md">
-                  <Group gap="sm">
+                  <Group gap="sm" align="flex-start">
                     {iconEl && (
                       <ThemeIcon
                         size={44}
@@ -558,7 +566,7 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
       return (
         <div key={key}>
           {gridTitle ? (
-            <Group gap="xs" mb="lg">
+            <Group gap="xs" mb="lg" align="flex-start">
               {getIcon('trending-up', 28)}
               <Title order={2}>{gridTitle}</Title>
             </Group>
