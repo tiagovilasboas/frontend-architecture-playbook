@@ -32,9 +32,6 @@ const RepositoryPattern = lazy(
   () => import('../content/patterns/repository-pattern.tsx')
 );
 const SecurityPatterns = lazy(() => import('../content/patterns/security.tsx'));
-const SSRSSGArchitecture = lazy(
-  () => import('../content/patterns/ssr-ssg.tsx')
-);
 const HexagonalArchitecture = lazy(
   () => import('../content/patterns/hexagonal.tsx')
 );
@@ -360,7 +357,7 @@ export function getGuideNavItems(): GuideNavItem[] {
 export const architectures: DocMeta[] = [
   // 🚀 FUNDAMENTAIS (mais usadas)
   toMeta(ContentDrivenPage, 'spa', 'architectures', false),
-  toMeta(SSRSSGArchitecture, 'ssr-ssg', 'architectures', true),
+  toMeta(ContentDrivenPage, 'ssr-ssg', 'architectures', false),
   toMeta(ContentDrivenPage, 'jamstack', 'architectures', false),
   toMeta(ContentDrivenPage, 'pwa', 'architectures', false),
 

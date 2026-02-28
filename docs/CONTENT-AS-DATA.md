@@ -17,11 +17,11 @@ Ou seja: **JSON tem prioridade**. Só cai no TSX se não existir JSON para essa 
 
 ### Três tipos de página
 
-| Tipo                 | Descrição                                                                                                                                                   | Exemplo                                                                                                                                   |
-| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| **Conteúdo (JSON)**  | Página definida por um único JSON; `ContentRenderer` desenha hero, sections, listas, alerts, código, etc.                                                   | Guias (dependency-rule, staff, cases, …), best-practices dry e kiss                                                                       |
-| **Componente (TSX)** | Página é um componente React em `src/content/` (patterns, architectures, techniques ou best-practices). Pode ter muito código, MDX-like, ou layout próprio. | Architectures (spa, ssr-ssg, …), patterns (clean-architecture, …), techniques (performance), best-practices (yagni, clean-code, srp, soc) |
-| **Híbrido**          | Componente TSX que lê dados em JSON; não usa ContentRenderer.                                                                                               | **Glossário:** `GlossaryPage` lê `src/data/glossary/terms.json` (filtro, categorias, links)                                               |
+| Tipo                 | Descrição                                                                                                                                                   | Exemplo                                                                                                                            |
+| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| **Conteúdo (JSON)**  | Página definida por um único JSON; `ContentRenderer` desenha hero, sections, listas, alerts, código, etc.                                                   | Guias (dependency-rule, staff, cases, …), best-practices dry e kiss                                                                |
+| **Componente (TSX)** | Página é um componente React em `src/content/` (patterns, architectures, techniques ou best-practices). Pode ter muito código, MDX-like, ou layout próprio. | Architectures (clean-architecture, hexagonal, …), patterns, techniques (performance), best-practices (yagni, clean-code, srp, soc) |
+| **Híbrido**          | Componente TSX que lê dados em JSON; não usa ContentRenderer.                                                                                               | **Glossário:** `GlossaryPage` lê `src/data/glossary/terms.json` (filtro, categorias, links)                                        |
 
 ### Blocos no JSON que são componentes (código)
 
@@ -39,8 +39,8 @@ Ou seja: **o conteúdo é JSON, mas layout e interação (wizard, comparador, ca
 
 ### Onde está cada tipo (resumo)
 
-- **JSON (ContentRenderer):** `src/data/content/guides/*.json` (16), `src/data/content/best-practices/*.json` (6), `src/data/content/architectures/*.json` (7: layered, bff, headless, pwa, jamstack, monorepo, spa). Registro em `content.tsx` com `ContentDrivenPage`.
-- **TSX (componente de página):** `src/content/guides/glossary.tsx`; `src/content/patterns/*.tsx` (architectures + patterns + techniques restantes). Registro em `content.tsx` com `toMeta(LazyComponent, slug, collection, true)`. Layered, BFF, Headless, PWA, JAMstack, Monorepo e SPA migrados para JSON.
+- **JSON (ContentRenderer):** `src/data/content/guides/*.json` (16), `src/data/content/best-practices/*.json` (6), `src/data/content/architectures/*.json` (8: layered, bff, headless, pwa, jamstack, monorepo, spa, ssr-ssg). Registro em `content.tsx` com `ContentDrivenPage`.
+- **TSX (componente de página):** `src/content/guides/glossary.tsx`; `src/content/patterns/*.tsx` (architectures + patterns + techniques restantes). Registro em `content.tsx` com `toMeta(LazyComponent, slug, collection, true)`. Layered, BFF, Headless, PWA, JAMstack, Monorepo, SPA e SSR-SSG migrados para JSON.
 - **Órfãos:** Nenhum. dry.tsx e kiss.tsx foram removidos (conteúdo em JSON).
 
 Esta análise deve ser tida em conta na marcha de migração: nem tudo precisa virar JSON; páginas muito orientadas a código ou com UI muito específica podem permanecer TSX ou usar blocos como `code` / `codeExample` no JSON.
@@ -96,7 +96,7 @@ Ordem sugerida: mais architectures ou patterns para JSON (layered já migrado; b
 ### Outras coleções (architectures, patterns, techniques, best-practices)
 
 - **best-practices:** todas em JSON: `dry`, `kiss`, `yagni`, `clean-code`, `srp`, `soc`. Migração concluída.
-- **architectures:** 7 em JSON: `layered`, `bff`, `headless`, `pwa`, `jamstack`, `monorepo`, `spa`. Demais TSX.
+- **architectures:** 8 em JSON: `layered`, `bff`, `headless`, `pwa`, `jamstack`, `monorepo`, `spa`, `ssr-ssg`. Demais TSX.
 - **patterns, techniques:** todas TSX.
 
 ### Glossário

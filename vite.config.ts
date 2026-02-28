@@ -18,11 +18,8 @@ export default defineConfig({
           ],
           'vendor-icons': ['@tabler/icons-react'],
 
-          // Architecture chunks - Core (SPA migrado para JSON; restante em TSX)
-          'architectures-core': ['./src/content/patterns/ssr-ssg.tsx'],
-
-          // Clean Architecture (separado por ser muito grande)
-          'clean-architecture': [
+          // Architecture chunks - Core (SPA/SSR-SSG em JSON; restante TSX)
+          'architectures-core': [
             './src/content/patterns/clean-architecture.tsx',
           ],
 
