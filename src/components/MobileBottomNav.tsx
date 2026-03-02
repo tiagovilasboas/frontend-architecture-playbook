@@ -80,11 +80,11 @@ export default function MobileBottomNav() {
                 flexDirection: 'column',
                 alignItems: 'center',
                 gap: 4,
-                padding: '6px 8px',
+                padding: '10px 6px',
                 borderRadius: 8,
                 minWidth: 0,
                 flex: 1,
-                maxWidth: 72,
+                maxWidth: 60,
                 position: 'relative',
                 transition: 'all 0.2s ease',
                 color: active
@@ -120,7 +120,11 @@ export default function MobileBottomNav() {
                   </Badge>
                 )}
               </div>
-              <Text size="xs" fw={active ? 600 : 400} style={{ lineHeight: 1.1 }}>
+              <Text
+                size="xs"
+                fw={active ? 600 : 400}
+                style={{ lineHeight: 1.1 }}
+              >
                 {item.label}
               </Text>
               {active && (

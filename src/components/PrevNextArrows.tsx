@@ -17,7 +17,8 @@ function NavArrow({ direction, item }: NavArrowProps) {
   const { isMobile } = useBreakpoints();
   if (!item) return null;
 
-  const size = isMobile ? 36 : 44;
+  const width = isMobile ? 22 : 44;
+  const height = isMobile ? 52 : 44;
   const iconSize = isMobile ? 20 : 24;
 
   return (
@@ -28,12 +29,13 @@ function NavArrow({ direction, item }: NavArrowProps) {
       <UnstyledButton
         component={Link}
         to={item.href}
+        onClick={() => window.scrollTo({ top: 0, behavior: 'auto' })}
         style={{
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          width: size,
-          height: size,
+          width,
+          height,
           borderRadius: 'var(--mantine-radius-md)',
           color: 'var(--mantine-color-text)',
           backgroundColor: 'var(--mantine-color-default-hover)',

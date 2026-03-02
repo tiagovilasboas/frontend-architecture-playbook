@@ -160,7 +160,7 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
           {(block.title || iconEl) && (
             <Group
               gap="sm"
-              mb={block.children?.length ? 'md' : undefined}
+              mb={block.children?.length ? 'sm' : undefined}
               align="flex-start"
               wrap="nowrap"
               justify="flex-start"
@@ -209,7 +209,7 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
 
     case 'title':
       return (
-        <Title key={key} order={block.order ?? 3} mb="md">
+        <Title key={key} order={block.order ?? 3} mb="xs">
           {block.content}
         </Title>
       );
@@ -478,7 +478,7 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
             const iconEl = c.icon ? getIcon(c.icon, 24) : null;
             return (
               <Card key={i} withBorder p="xl" radius="lg">
-                <Stack gap="md">
+                <Stack gap="sm">
                   <Group gap="sm" align="flex-start">
                     {iconEl && (
                       <ThemeIcon
@@ -681,7 +681,7 @@ export interface ContentRendererProps {
 export default function ContentRenderer({ page, after }: ContentRendererProps) {
   const body = Array.isArray(page?.body) ? page.body : [];
   return (
-    <Stack gap={{ base: 'md', sm: 'xl' }}>
+    <Stack gap={{ base: 'sm', sm: 'md' }}>
       {body.map((block, index) => renderBlock(block, index))}
       {after}
     </Stack>

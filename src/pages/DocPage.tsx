@@ -45,7 +45,7 @@ export default function DocPage() {
 
     return (
       <>
-        <Group mb="md" justify="flex-end" gap="xs">
+        <Group mb={{ base: 'xs', sm: 'md' }} justify="flex-end" gap="xs">
           <ReadingTime />
           <span
             data-content-driven-marker

@@ -78,7 +78,7 @@ export default function Home() {
                 style={{
                   position: 'relative',
                   zIndex: 1,
-                  padding: isMobile ? '3rem 1.5rem' : '4rem 2rem',
+                  padding: isMobile ? '3rem 0' : '4rem 0',
                   width: '100%',
                   maxWidth: 900,
                 }}
