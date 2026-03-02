@@ -1,8 +1,8 @@
-# 🗺️ **Roadmap: Decision Wizard Evolution**
+# Roadmap: Decision Wizard
 
-## 🎯 **Visão 2025: O Melhor Assistente de Decisão Arquitetural**
+## Visão 2025
 
-O Decision Wizard está evoluindo de uma ferramenta educacional (7/10) para o assistente definitivo de decisões arquiteturais (10/10), considerando contexto real, dados históricos e aprendizado contínuo.
+O Decision Wizard hoje é uma ferramenta educacional sólida (7/10). A meta: virar o assistente de decisão arquitetural que o time realmente usa — contexto real, dados históricos, aprendizado contínuo. Objetivo 10/10.
 
 ---
 
@@ -353,4 +353,4 @@ graph TD
 
 ---
 
-**Ready to build the future of architecture decisions? Let's ship it! 🚀**
+**Próximo passo: escolher um quick win e mandar.**

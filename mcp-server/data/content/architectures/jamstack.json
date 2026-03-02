@@ -1,0 +1,228 @@
+{
+  "meta": {
+    "title": "JAMstack",
+    "description": "JavaScript, APIs, Markup. Sites estáticos, performance máxima, segurança de sobra. Deploy simples, escalabilidade automática."
+  },
+  "layout": { "showRelated": true },
+  "body": [
+    {
+      "type": "hero",
+      "title": "JAMstack",
+      "subtitle": "JavaScript, APIs, Markup. Sites estáticos, performance máxima, segurança de sobra. Deploy simples, escalabilidade automática.",
+      "icon": "rocket"
+    },
+    {
+      "type": "section",
+      "title": "O que é?",
+      "icon": "code",
+      "children": [
+        {
+          "type": "text",
+          "content": "JavaScript, APIs, Markup - arquitetura moderna para web",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "text",
+          "content": "JAMstack é sobre uma coisa só: separar front-end de back-end."
+        },
+        {
+          "type": "text",
+          "content": "Pensa assim: ao invés de servidor renderizando páginas, você tem sites estáticos servidos por CDN, com JavaScript fazendo a mágica e APIs fornecendo dados."
+        },
+        {
+          "type": "text",
+          "content": "A regra é simples: pre-renderiza tudo, serve estático, JavaScript adiciona interatividade. Performance máxima, segurança de sobra."
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Os 3 Pilares",
+      "icon": "stack",
+      "children": [
+        {
+          "type": "title",
+          "content": "JavaScript",
+          "order": 3
+        },
+        {
+          "type": "text",
+          "content": "Interatividade no cliente. React, Vue, vanilla JS. Tudo que roda no browser.",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "codeExample",
+          "title": "JavaScript - Interatividade no Cliente",
+          "description": "JavaScript adiciona interatividade aos sites estáticos.",
+          "code": "// React component para interatividade\nfunction ProductCard({ product }) {\n  const [isLiked, setIsLiked] = useState(false);\n  const [quantity, setQuantity] = useState(1);\n  const handleAddToCart = async () => {\n    await fetch('/api/cart', { method: 'POST', body: JSON.stringify({ productId: product.id, quantity }) });\n  };\n  return (\n    <div className=\"product-card\">\n      <img src={product.image} alt={product.name} />\n      <h3>{product.name}</h3>\n      <p>R$ {product.price}</p>\n      <button onClick={handleAddToCart}>Adicionar ao Carrinho</button>\n      <button onClick={() => setIsLiked(!isLiked)}>{isLiked ? '❤️' : '🤍'}</button>\n    </div>\n  );\n}\n\n// JavaScript adiciona interatividade. Sem servidor para processar. Performance máxima."
+        },
+        {
+          "type": "title",
+          "content": "APIs",
+          "order": 3
+        },
+        {
+          "type": "text",
+          "content": "Dados e funcionalidades via APIs. REST, GraphQL, serverless functions.",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "codeExample",
+          "title": "APIs - Dados e Funcionalidades",
+          "description": "APIs fornecem dados e funcionalidades para sites estáticos.",
+          "code": "// api/products.js\nexport async function getProducts() {\n  return [\n    { id: 1, name: 'Produto 1', price: 99.99 },\n    { id: 2, name: 'Produto 2', price: 149.99 }\n  ];\n}\n\n// netlify/functions/checkout.js\nexports.handler = async (event) => {\n  const { items } = JSON.parse(event.body);\n  return { statusCode: 200, body: JSON.stringify({ orderId: '123' }) };\n};\n\n// APIs isoladas. Fácil de escalar. Segurança de sobra."
+        },
+        {
+          "type": "title",
+          "content": "Markup",
+          "order": 3
+        },
+        {
+          "type": "text",
+          "content": "HTML pré-renderizado. Gatsby, Next.js, Nuxt. Sites estáticos servidos por CDN.",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "codeExample",
+          "title": "Markup - HTML Pré-renderizado",
+          "description": "HTML pré-renderizado servido por CDN.",
+          "code": "<!-- HTML pré-renderizado pelo Gatsby -->\n<!DOCTYPE html>\n<html>\n<head>\n  <title>Meu E-commerce</title>\n  <meta name=\"description\" content=\"Produtos incríveis\" />\n</head>\n<body>\n  <header>\n    <nav>\n      <a href=\"/\">Home</a>\n      <a href=\"/produtos\">Produtos</a>\n      <a href=\"/carrinho\">Carrinho</a>\n    </nav>\n  </header>\n  <main>\n    <div class=\"products-grid\">\n      <div class=\"product-card\">\n        <img src=\"/produto1.jpg\" alt=\"Produto 1\" />\n        <h3>Produto 1</h3>\n        <p>R$ 99,99</p>\n        <button>Adicionar ao Carrinho</button>\n      </div>\n    </div>\n  </main>\n  <script src=\"/app.js\"></script>\n</body>\n</html>\n\n<!-- Servido por CDN. Performance máxima. SEO otimizado -->"
+        },
+        {
+          "type": "alert",
+          "message": "Como funciona: O HTML é pré-renderizado no build e servido por CDN (Markup). JavaScript adiciona interatividade no cliente (JavaScript). APIs fornecem dados e funcionalidades (APIs). Resultado: performance máxima, segurança de sobra, escalabilidade automática.",
+          "color": "blue",
+          "icon": "bulb"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Casos Reais",
+      "icon": "bulb",
+      "children": [
+        {
+          "type": "iconCards",
+          "cols": { "base": 1, "sm": 1 },
+          "cards": [
+            {
+              "icon": "code",
+              "iconColor": "green",
+              "title": "Netlify",
+              "description": "Plataforma JAMstack por excelência",
+              "items": [
+                "Deploy automático via Git",
+                "CDN global para performance",
+                "Serverless functions",
+                "Form handling sem backend"
+              ]
+            },
+            {
+              "icon": "rocket",
+              "iconColor": "blue",
+              "title": "Smashing Magazine",
+              "description": "Blog migrado para JAMstack",
+              "items": [
+                "Performance melhor com páginas pré-geradas",
+                "SEO otimizado",
+                "Deploy em segundos",
+                "Menor custo de infraestrutura"
+              ]
+            },
+            {
+              "icon": "bulb",
+              "iconColor": "blue",
+              "title": "E-commerce",
+              "description": "Lojas online com JAMstack",
+              "items": [
+                "Catálogo estático pré-renderizado",
+                "Checkout via APIs",
+                "Performance para SEO",
+                "Escalabilidade automática"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Armadilhas Comuns",
+      "icon": "alert-triangle",
+      "children": [
+        {
+          "type": "alert",
+          "message": "Build times longos: Sites grandes podem ter build times de 10+ minutos. Use incremental builds e cache.",
+          "color": "red",
+          "icon": "alert-triangle"
+        },
+        {
+          "type": "alert",
+          "message": "Dados dinâmicos: Conteúdo que muda constantemente precisa de rebuilds frequentes. Use ISR ou client-side fetching.",
+          "color": "yellow",
+          "icon": "alert-triangle"
+        },
+        {
+          "type": "alert",
+          "message": "Complexidade de deploy: Múltiplas APIs e serviços podem complicar o deploy. Use ferramentas como Netlify ou Vercel.",
+          "color": "yellow",
+          "icon": "alert-triangle"
+        },
+        {
+          "type": "alert",
+          "message": "Como evitar: Comece simples (site estático antes de APIs). Otimize builds (incremental builds e cache). Use ISR (Incremental Static Regeneration).",
+          "color": "green",
+          "icon": "check"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Referências e Recursos",
+      "icon": "code",
+      "children": [
+        { "type": "title", "content": "Ferramentas", "order": 4 },
+        {
+          "type": "list",
+          "items": [
+            "Netlify: Deploy e hosting JAMstack",
+            "Vercel: Deploy automático",
+            "Gatsby: Static site generator",
+            "Next.js: React com SSG"
+          ]
+        },
+        { "type": "title", "content": "Casos de Sucesso", "order": 4 },
+        {
+          "type": "stack",
+          "gap": "xs",
+          "children": [
+            {
+              "type": "anchor",
+              "label": "Jamstack.org: O que é JAMstack",
+              "href": "https://jamstack.org/"
+            },
+            {
+              "type": "anchor",
+              "label": "Netlify: Static Site Generators",
+              "href": "https://www.netlify.com/blog/2020/04/14/what-is-a-static-site-generator-and-3-ways-to-find-the-best-one/"
+            },
+            {
+              "type": "anchor",
+              "label": "Astro: Why Astro (Islands + JAMstack)",
+              "href": "https://docs.astro.build/en/concepts/why-astro/"
+            },
+            {
+              "type": "anchor",
+              "label": "Next.js: Static Site Generation",
+              "href": "https://nextjs.org/docs/pages/building-your-application/rendering/static-site-generation"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,234 @@
+{
+  "meta": {
+    "title": "SSR & SSG",
+    "description": "Server-Side Rendering e Static Site Generation - como entregar conteúdo instantâneo e SEO que funciona de verdade."
+  },
+  "layout": { "showRelated": true },
+  "body": [
+    {
+      "type": "hero",
+      "title": "Server-Side Rendering (SSR) & Static Site Generation (SSG)",
+      "subtitle": "Se você liga pra SEO, você usa SSR",
+      "icon": "code"
+    },
+    {
+      "type": "section",
+      "title": "O que é?",
+      "icon": "stack",
+      "children": [
+        {
+          "type": "text",
+          "content": "Imagine o seguinte: você abre um site e vê o conteúdo na mesma hora, não aquela tela branca seguida de loading. Isso é SSR/SSG funcionando."
+        },
+        {
+          "type": "text",
+          "content": "SSR renderiza o HTML no servidor a cada request. SSG gera o HTML em build time. Ambos entregam conteúdo pronto pro browser, não JavaScript que vai construir a página."
+        },
+        {
+          "type": "code",
+          "code": "// ❌ SPA tradicional - browser recebe isso:\n<div id=\"root\"></div>\n<script src=\"app.js\"></script>\n// User vê tela branca até JS carregar e executar\n\n// ✅ SSR/SSG - browser recebe isso:\n<div id=\"root\">\n  <h1>Produtos em Promoção</h1>\n  <div class=\"product-grid\">\n    <article>\n      <h2>iPhone 15</h2>\n      <p>R$ 4.999</p>\n    </article>\n  </div>\n</div>\n// User vê conteúdo IMEDIATAMENTE",
+          "block": true
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "SSR vs SSG: Quando usar cada um?",
+      "icon": "scale",
+      "children": [
+        {
+          "type": "iconCards",
+          "cols": { "base": 1, "sm": 2 },
+          "cards": [
+            {
+              "icon": "code",
+              "iconColor": "blue",
+              "title": "SSR - Renderização no servidor",
+              "description": "Cada request gera HTML novo",
+              "items": [
+                "Use quando: Conteúdo muda frequentemente, dados personalizados por user, real-time ou quase real-time, dashboard/feeds/carrinho",
+                "Evite quando: Server costs são críticos, traffic altíssimo, conteúdo é estático"
+              ]
+            },
+            {
+              "icon": "check",
+              "iconColor": "green",
+              "title": "SSG - Geração estática",
+              "description": "HTML gerado em build time",
+              "items": [
+                "Use quando: Conteúdo é estático, blog/documentação, landing pages, performance é crítica",
+                "Evite quando: Conteúdo muda constantemente, dados personalizados, real-time features"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Quando usar?",
+      "icon": "bulb",
+      "children": [
+        {
+          "type": "iconCards",
+          "cols": { "base": 1, "sm": 2 },
+          "cards": [
+            {
+              "icon": "chart-bar",
+              "iconColor": "orange",
+              "title": "E-commerce",
+              "description": "SEO é crítico. Cada segundo a mais = conversão a menos. Google precisa indexar produtos."
+            },
+            {
+              "icon": "file-text",
+              "iconColor": "orange",
+              "title": "Blogs/Content Sites",
+              "description": "Core Web Vitals impactam ranking. Conteúdo precisa ser descobrível por crawlers."
+            },
+            {
+              "icon": "building",
+              "iconColor": "orange",
+              "title": "Landing Pages",
+              "description": "Primeira impressão decide tudo. Zero tolerância pra tela branca ou loading."
+            },
+            {
+              "icon": "device-mobile",
+              "iconColor": "orange",
+              "title": "Mobile-first",
+              "description": "Redes lentas, devices limitados. HTML pronto é sempre mais rápido que JS + render."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Casos Reais",
+      "icon": "bulb",
+      "children": [
+        {
+          "type": "iconCards",
+          "cols": { "base": 1, "sm": 1 },
+          "cards": [
+            {
+              "icon": "code",
+              "iconColor": "green",
+              "title": "Plataforma de streaming",
+              "description": "SSR para performance e SEO de catálogo",
+              "items": [
+                "SSR para páginas de filme",
+                "SEO para descoberta de conteúdo",
+                "Performance em redes lentas",
+                "Core Web Vitals otimizados"
+              ]
+            },
+            {
+              "icon": "rocket",
+              "iconColor": "blue",
+              "title": "Vercel",
+              "description": "Plataforma com SSG por padrão",
+              "items": [
+                "Next.js com SSG automático",
+                "Deploy estático global",
+                "Performance máxima",
+                "CDN distribuído"
+              ]
+            },
+            {
+              "icon": "bulb",
+              "iconColor": "blue",
+              "title": "E-commerce",
+              "description": "SEO crítico para conversão",
+              "items": [
+                "SSR para páginas de produto",
+                "SSG para categorias",
+                "SEO para motores de busca",
+                "Performance para mobile"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Armadilhas Comuns",
+      "icon": "alert-triangle",
+      "children": [
+        {
+          "type": "alert",
+          "message": "Complexidade desnecessária: SSR/SSG para apps internos ou dashboards simples é over-engineering. Use apenas quando SEO/performance são críticos.",
+          "color": "red",
+          "icon": "alert-triangle"
+        },
+        {
+          "type": "alert",
+          "message": "Server costs: SSR aumenta custos de servidor. SSG pode ter build times longos. Calcule ROI antes de implementar.",
+          "color": "yellow",
+          "icon": "alert-triangle"
+        },
+        {
+          "type": "alert",
+          "message": "Hydration issues: Diferenças entre server e client podem causar erros. Teste thoroughly e use proper hydration.",
+          "color": "yellow",
+          "icon": "alert-triangle"
+        },
+        {
+          "type": "alert",
+          "message": "Como evitar: Comece simples (SPA antes de SSR/SSG). Meça performance (Core Web Vitals). Teste hydration (server/client consistency).",
+          "color": "green",
+          "icon": "check"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Referências e Recursos",
+      "icon": "code",
+      "children": [
+        { "type": "title", "content": "Frameworks", "order": 4 },
+        {
+          "type": "list",
+          "items": [
+            "Next.js: SSR e SSG automático",
+            "Nuxt.js: Vue com SSR/SSG",
+            "Gatsby: SSG para React",
+            "Astro: Islands architecture"
+          ]
+        },
+        { "type": "title", "content": "Artigos e Case Studies", "order": 4 },
+        {
+          "type": "stack",
+          "gap": "xs",
+          "children": [
+            {
+              "type": "anchor",
+              "label": "The New York Times: Enhancing Web Performance with React 18",
+              "href": "https://open.nytimes.com/enhancing-the-new-york-times-web-performance-with-react-18-d6f91a7c5af8"
+            },
+            {
+              "type": "anchor",
+              "label": "Patreon: Migrating to Next.js",
+              "href": "https://www.patreon.com/posts/migrating-to-110743498"
+            },
+            {
+              "type": "anchor",
+              "label": "DoorDash: Improving Web Page Performance Through SSR",
+              "href": "https://doordash.engineering/2022/03/29/improving-web-page-performance-at-doordash-through-server-side-rendering/"
+            },
+            {
+              "type": "anchor",
+              "label": "Airbnb: Improving Performance with HTTP Streaming",
+              "href": "https://medium.com/airbnb-engineering/improving-performance-with-http-streaming-ba9e72c66408"
+            },
+            {
+              "type": "anchor",
+              "label": "Yelp: Server Side Rendering at Scale",
+              "href": "https://engineeringblog.yelp.com/2022/02/server-side-rendering-at-scale.html"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

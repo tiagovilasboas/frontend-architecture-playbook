@@ -1,0 +1,217 @@
+{
+  "meta": {
+    "title": "Hexagonal Architecture (Ports & Adapters)",
+    "description": "Ports & Adapters - isola business logic no centro, conecta ao mundo externo via interfaces. Clean Architecture mais flexível."
+  },
+  "layout": { "showRelated": true },
+  "body": [
+    {
+      "type": "hero",
+      "title": "Hexagonal Architecture (Ports & Adapters)",
+      "subtitle": "Lógica de negócio no centro; framework, banco e API do lado de fora. Clean Architecture sem frescura.",
+      "icon": "plug"
+    },
+    {
+      "type": "section",
+      "title": "O que é?",
+      "icon": "plug",
+      "children": [
+        {
+          "type": "text",
+          "content": "Core da aplicação no centro, conectado ao mundo externo através de ports (interfaces) e adapters (implementações). Framework? Banco? API? Detalhes. Business logic não sabe que existem."
+        },
+        {
+          "type": "code",
+          "code": "// ❌ Código acoplado\nclass UserController {\n  async createUser(data) {\n    // Business logic misturado com infra\n    const user = await UserModel.create(data) // Mongoose específico\n    await sendEmail(user.email)               // NodeMailer específico\n    return res.json(user)                     // Express específico\n  }\n}\n\n// ✅ Hexagonal - Business logic isolado\nclass UserService {\n  constructor(userRepo, emailService) {\n    this.userRepo = userRepo      // Port - interface\n    this.emailService = emailService // Port - interface\n  }\n  \n  async createUser(data) {\n    const user = this.userRepo.save(data)     // Não sabe se é Mongo, SQL, etc\n    await this.emailService.send(user.email)  // Não sabe se é SMTP, SES, etc\n    return user                               // Pure business logic\n  }\n}",
+          "block": true
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Quando usar?",
+      "icon": "target",
+      "children": [
+        {
+          "type": "iconCards",
+          "cols": { "base": 1, "sm": 3 },
+          "cards": [
+            {
+              "icon": "route",
+              "iconColor": "blue",
+              "title": "Migrações frequentes",
+              "description": "Troca MongoDB por PostgreSQL. Ou AWS por Azure. Business logic não muda."
+            },
+            {
+              "icon": "check",
+              "iconColor": "teal",
+              "title": "Testing crítico",
+              "description": "Mock de tudo é fácil. Unit tests rodam sem banco, sem API, sem nada."
+            },
+            {
+              "icon": "trending-up",
+              "iconColor": "indigo",
+              "title": "Projeto longo",
+              "description": "5+ anos de vida. Vai trocar libs, frameworks, serviços. Core fica intacto."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Ports & Adapters na Prática",
+      "icon": "plug",
+      "children": [
+        {
+          "type": "title",
+          "content": "Ports (Interfaces)",
+          "order": 4
+        },
+        {
+          "type": "text",
+          "content": "Contratos que o core define. Core só conhece interfaces, não implementações.",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "code",
+          "code": "interface UserRepository {\n  save(user: User): Promise<User>\n  findById(id: string): Promise<User>\n  findByEmail(email: string): Promise<User>\n}\n\ninterface EmailService {\n  send(to: string, subject: string, body: string): Promise<void>\n}",
+          "block": true
+        },
+        {
+          "type": "title",
+          "content": "Adapters (Implementações)",
+          "order": 4
+        },
+        {
+          "type": "text",
+          "content": "Como conectar com mundo real. Implementações específicas de cada tecnologia.",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "code",
+          "code": "class MongoUserRepository implements UserRepository {\n  async save(user: User) {\n    return await UserModel.create(user)\n  }\n}\n\nclass SMTPEmailService implements EmailService {\n  async send(to: string, subject: string, body: string) {\n    return await nodemailer.sendMail({to, subject, html: body})\n  }\n}",
+          "block": true
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Casos Reais",
+      "icon": "bulb",
+      "children": [
+        {
+          "type": "iconCards",
+          "cols": { "base": 1, "sm": 3 },
+          "cards": [
+            {
+              "icon": "building",
+              "iconColor": "green",
+              "title": "E-commerce Platform",
+              "description": "Migração de tecnologias",
+              "items": [
+                "Core: Business logic isolado",
+                "Ports: Payment, Inventory, Shipping",
+                "Adapters: Stripe, PayPal, AWS S3",
+                "Migração sem afetar core"
+              ]
+            },
+            {
+              "icon": "rocket",
+              "iconColor": "blue",
+              "title": "Banking System",
+              "description": "Testabilidade crítica",
+              "items": [
+                "Core: Transaction logic",
+                "Ports: Account, Transaction, Notification",
+                "Adapters: Database, SMS, Email",
+                "Unit tests sem dependências"
+              ]
+            },
+            {
+              "icon": "bulb",
+              "iconColor": "purple",
+              "title": "SaaS Platform",
+              "description": "Projeto de longo prazo",
+              "items": [
+                "Core: Subscription logic",
+                "Ports: User, Billing, Analytics",
+                "Adapters: Multiple providers",
+                "Evolução sem quebrar core"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Armadilhas Comuns",
+      "icon": "alert-triangle",
+      "children": [
+        {
+          "type": "alert",
+          "color": "red",
+          "icon": "alert-triangle",
+          "message": "Over-engineering: Hexagonal para projetos simples. Use apenas quando há complexidade real."
+        },
+        {
+          "type": "alert",
+          "color": "orange",
+          "icon": "alert-triangle",
+          "message": "Interface explosion: Muitas interfaces podem complicar. Mantenha foco no essencial."
+        },
+        {
+          "type": "alert",
+          "color": "yellow",
+          "icon": "alert-triangle",
+          "message": "Performance overhead: Muitas abstrações podem impactar performance. Use com moderação."
+        },
+        {
+          "type": "alert",
+          "color": "green",
+          "icon": "check",
+          "message": "Como evitar: Use quando necessário (complexidade real apenas). Mantenha simples (interfaces essenciais). Monitore performance (abstrações com moderação)."
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Referências e Recursos",
+      "icon": "code",
+      "children": [
+        {
+          "type": "title",
+          "content": "Ferramentas",
+          "order": 4
+        },
+        {
+          "type": "list",
+          "spacing": "xs",
+          "items": [
+            "Dependency Injection: Inversify, Awilix",
+            "Testing: Jest, Mockito, TestContainers",
+            "Architecture: Clean Architecture, DDD",
+            "Frameworks: NestJS, Spring Boot"
+          ]
+        },
+        {
+          "type": "title",
+          "content": "Casos de Sucesso",
+          "order": 4
+        },
+        {
+          "type": "list",
+          "spacing": "xs",
+          "items": [
+            "Alistair Cockburn - Hexagonal Architecture: https://alistair.cockburn.us/hexagonal-architecture/",
+            "Netflix Tech Blog - Ready for Changes: https://netflixtechblog.com/ready-for-changes-with-hexagonal-architecture-b315ec967749",
+            "Herberto Graca - DDD, Hexagonal, Clean: https://herbertograca.com/2017/11/16/explicit-architecture-01-ddd-hexagonal-onion-clean-cqrs-how-i-put-it-all-together/"
+          ]
+        }
+      ]
+    }
+  ]
+}

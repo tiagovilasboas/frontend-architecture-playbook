@@ -1,0 +1,220 @@
+{
+  "meta": {
+    "title": "Islands Architecture",
+    "description": "HTML estático com ilhas de interatividade. Performance máxima, SEO perfeito."
+  },
+  "layout": {
+    "showRelated": true
+  },
+  "body": [
+    {
+      "type": "hero",
+      "title": "Islands Architecture",
+      "subtitle": "HTML estático com ilhas de interatividade. Performance máxima, SEO perfeito, JavaScript só onde precisa. O melhor dos dois mundos.",
+      "icon": "device-mobile"
+    },
+    {
+      "type": "section",
+      "title": "O que é?",
+      "icon": "device-mobile",
+      "children": [
+        {
+          "type": "text",
+          "content": "HTML estático com ilhas de JavaScript interativo",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "text",
+          "content": "Islands Architecture é sobre uma coisa só: JavaScript só onde precisa."
+        },
+        {
+          "type": "text",
+          "content": "Pensa assim: ao invés de SPA (tudo JavaScript) ou SSR (tudo servidor), você tem HTML estático com pequenas ilhas de interatividade. O resto é HTML puro, rápido e SEO-friendly."
+        },
+        {
+          "type": "text",
+          "content": "A regra é simples: HTML estático por padrão, JavaScript só onde interatividade importa. Performance máxima, SEO perfeito, JavaScript mínimo.",
+          "dimmed": true
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Os 3 Conceitos Principais",
+      "icon": "code",
+      "children": [
+        {
+          "type": "title",
+          "content": "1. HTML Estático",
+          "order": 4
+        },
+        {
+          "type": "text",
+          "content": "Base da página é HTML puro. Rápido, SEO-friendly, sem JavaScript desnecessário.",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "codeExample",
+          "title": "HTML estático",
+          "description": "Base da página é HTML puro. Rápido, SEO-friendly, sem JavaScript desnecessário.",
+          "code": "<!DOCTYPE html>\n<html>\n<head>\n  <title>E-commerce - Produtos</title>\n  <meta name=\"description\" content=\"Produtos incríveis\">\n</head>\n<body>\n  <header>\n    <nav>\n      <a href=\"/\">Home</a>\n      <a href=\"/produtos\">Produtos</a>\n      <a href=\"/sobre\">Sobre</a>\n    </nav>\n  </header>\n  \n  <main>\n    <h1>Nossos Produtos</h1>\n    <p>HTML puro, carregamento instantâneo</p>\n    \n    <div id=\"carrinho\">\n      <!-- Ilha de carrinho será hidratada -->\n    </div>\n  </main>\n</body>\n</html>"
+        },
+        {
+          "type": "title",
+          "content": "2. Ilhas de Interatividade",
+          "order": 4
+        },
+        {
+          "type": "text",
+          "content": "JavaScript só nos componentes que precisam de interatividade.",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "codeExample",
+          "title": "Ilha de carrinho",
+          "description": "JavaScript só nos componentes que precisam de interatividade.",
+          "code": "// Carrinho.tsx - Ilha de interatividade\nimport { useState } from 'react';\n\nexport function Carrinho() {\n  const [items, setItems] = useState([]);\n  const [total, setTotal] = useState(0);\n\n  const addItem = (product) => {\n    setItems([...items, product]);\n    setTotal(total + product.price);\n  };\n\n  const removeItem = (id) => {\n    setItems(items.filter(item => item.id !== id));\n    // Recalcula total...\n  };\n\n  return (\n    <div className=\"carrinho\">\n      <h3>Carrinho ({items.length})</h3>\n      {items.map(item => (\n        <div key={item.id}>\n          {item.name} - R$ {item.price}\n          <button onClick={() => removeItem(item.id)}>Remover</button>\n        </div>\n      ))}\n      <div>Total: R$ {total}</div>\n    </div>\n  );\n}"
+        },
+        {
+          "type": "title",
+          "content": "3. Hidratação Seletiva",
+          "order": 4
+        },
+        {
+          "type": "text",
+          "content": "JavaScript hidrata apenas as ilhas. Resto da página permanece estático.",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "codeExample",
+          "title": "Hidratação seletiva",
+          "description": "JavaScript hidrata apenas as ilhas. Resto da página permanece estático.",
+          "code": "// Hidratação seletiva\n// app.js\nimport { hydrateRoot } from 'react-dom/client';\nimport Carrinho from './components/Carrinho';\nimport Busca from './components/Busca';\n\n// Hidrata apenas o carrinho\nconst carrinhoContainer = document.getElementById('carrinho');\nif (carrinhoContainer) {\n  hydrateRoot(carrinhoContainer, <Carrinho />);\n}\n\n// Hidrata apenas a busca\nconst buscaContainer = document.getElementById('busca');\nif (buscaContainer) {\n  hydrateRoot(buscaContainer, <Busca />);\n}\n\n// Resto da página permanece estático\n// Performance máxima\n// JavaScript mínimo\n\n// Resultado:\n// - HTML estático: 95% da página\n// - JavaScript: apenas 5% (ilhas)\n// - Performance: 10x melhor que Single Page Application"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Casos Reais",
+      "icon": "bulb",
+      "children": [
+        {
+          "type": "iconCards",
+          "cols": {
+            "base": 1,
+            "sm": 3
+          },
+          "cards": [
+            {
+              "icon": "code",
+              "iconColor": "green",
+              "title": "E-commerce",
+              "description": "Catálogo estático com ilhas interativas",
+              "items": [
+                "Catálogo: HTML estático",
+                "Carrinho: Ilha interativa",
+                "Busca: Ilha interativa",
+                "Filtros: Ilha interativa"
+              ]
+            },
+            {
+              "icon": "device-mobile",
+              "iconColor": "blue",
+              "title": "Blog/News",
+              "description": "Conteúdo estático com comentários interativos",
+              "items": [
+                "Artigos: HTML estático",
+                "Comentários: Ilha interativa",
+                "Newsletter: Ilha interativa",
+                "Social sharing: Ilha interativa"
+              ]
+            },
+            {
+              "icon": "bulb",
+              "iconColor": "purple",
+              "title": "Dashboard",
+              "description": "Layout estático com widgets interativos",
+              "items": [
+                "Layout: HTML estático",
+                "Gráficos: Ilhas interativas",
+                "Filtros: Ilha interativa",
+                "Notificações: Ilha interativa"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Armadilhas Comuns",
+      "icon": "alert-triangle",
+      "children": [
+        {
+          "type": "alert",
+          "color": "red",
+          "icon": "alert-triangle",
+          "message": "Complexidade de hidratação: Hidratar ilhas pode ser complexo. Use frameworks como Astro ou Fresh que facilitam isso."
+        },
+        {
+          "type": "alert",
+          "color": "orange",
+          "icon": "alert-triangle",
+          "message": "Estado compartilhado: Compartilhar estado entre ilhas pode ser difícil. Use URL params ou localStorage."
+        },
+        {
+          "type": "alert",
+          "color": "yellow",
+          "icon": "alert-triangle",
+          "message": "Over-engineering: Islands para sites simples é overkill. Use apenas quando há componentes realmente interativos."
+        },
+        {
+          "type": "alert",
+          "color": "green",
+          "icon": "check",
+          "message": "Como evitar: Use frameworks (Astro, Fresh, Marko). Identifique ilhas (apenas componentes interativos). Mantenha simples (HTML estático por padrão)."
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Referências e Recursos",
+      "icon": "code",
+      "children": [
+        {
+          "type": "title",
+          "content": "Ferramentas",
+          "order": 4
+        },
+        {
+          "type": "list",
+          "spacing": "xs",
+          "items": [
+            "Astro: Framework Islands por excelência",
+            "Fresh: Islands para Deno",
+            "Marko: Islands para Node.js",
+            "Qwik: Resumability e Islands"
+          ]
+        },
+        {
+          "type": "title",
+          "content": "Casos de Sucesso",
+          "order": 4
+        },
+        {
+          "type": "list",
+          "spacing": "xs",
+          "items": [
+            "Jason Miller - Islands Architecture: https://jasonformat.com/islands-architecture/",
+            "Astro Islands: https://docs.astro.build/en/concepts/islands/",
+            "patterns.dev - Islands Architecture: https://www.patterns.dev/posts/islands-architecture"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -279,6 +279,60 @@ a:focus,
   opacity: 0.8;
 }
 
+/* Conteúdo do playbook no mobile: tipografia e espaçamento mais compactos */
+@media (max-width: 767px) {
+  [data-doc-content] {
+    font-size: 15px;
+  }
+  [data-doc-content] h1.mantine-Title-root {
+    font-size: 1.35rem !important;
+    line-height: 1.25;
+  }
+  [data-doc-content] h2.mantine-Title-root {
+    font-size: 1.15rem !important;
+    line-height: 1.3;
+  }
+  [data-doc-content] h3.mantine-Title-root,
+  [data-doc-content] h4.mantine-Title-root {
+    font-size: 1rem !important;
+    line-height: 1.35;
+  }
+  [data-doc-content] .mantine-Text-root {
+    font-size: 0.9375rem !important;
+    line-height: 1.45;
+  }
+  [data-doc-content] .mantine-Text-root[data-size='lg'] {
+    font-size: 1rem !important;
+  }
+  [data-doc-content] .mantine-Text-root[data-size='sm'] {
+    font-size: 0.875rem !important;
+  }
+  [data-doc-content] .mantine-Text-root[data-size='xs'] {
+    font-size: 0.8125rem !important;
+  }
+  [data-doc-content] .mantine-Paper-root {
+    padding: var(--mantine-spacing-md) !important;
+  }
+  [data-doc-content] .mantine-Card-root {
+    padding: var(--mantine-spacing-sm) var(--mantine-spacing-md) !important;
+  }
+  [data-doc-content] .mantine-Stack-root {
+    gap: var(--mantine-spacing-sm) !important;
+  }
+  [data-doc-content] .mantine-SimpleGrid-root {
+    gap: var(--mantine-spacing-sm) !important;
+  }
+  [data-doc-content] .mantine-List-item {
+    font-size: 0.9375rem;
+    padding-block: 2px;
+  }
+  [data-doc-content] .mantine-Code-root pre,
+  [data-doc-content] pre.mantine-Code-root {
+    font-size: 0.8125rem;
+    padding: var(--mantine-spacing-sm) !important;
+  }
+}
+
 /* Wrapper do menu horizontal: uma linha, scroll se necessário (evita quebra em desktop estreito) */
 .header-nav-wrap {
   display: flex;

@@ -158,7 +158,8 @@ export type ContentBlock =
         color?: 'blue' | 'green' | 'yellow' | 'red' | 'brand';
         icon?: ContentIconKey;
       };
-    };
+    }
+  | { type: 'glossary' };
 
 /** Full page content: meta + body blocks */
 export interface ContentPage {

@@ -1,0 +1,201 @@
+{
+  "meta": {
+    "title": "Micro-Frontends",
+    "description": "Quebre aplicações grandes em pedaços pequenos. Times independentes, tecnologias diferentes, deploy separado."
+  },
+  "layout": {
+    "showRelated": true
+  },
+  "body": [
+    {
+      "type": "hero",
+      "title": "Micro-Frontends",
+      "description": "Quebre aplicações grandes em pedaços menores. Times independentes, tecnologias heterogêneas, deploy separado. Escalabilidade real.",
+      "icon": "puzzle"
+    },
+    {
+      "type": "section",
+      "title": "O que é?",
+      "icon": "puzzle",
+      "children": [
+        {
+          "type": "text",
+          "content": "Arquitetura que quebra aplicações grandes em micro-aplicações",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "text",
+          "content": "Micro-Frontends dividem uma aplicação em micro-apps independentes com deploys separados. Cada time é dono de uma vertical (feature), do componente ao deploy."
+        },
+        {
+          "type": "text",
+          "content": "A decisão #1 é como os micro-frontends se comunicam: shared state via Custom Events ou shared store? Como evitar CSS leaking entre apps? Como rotear entre apps de times diferentes? Essas são as perguntas reais que definem o sucesso da arquitetura."
+        },
+        {
+          "type": "text",
+          "content": "A regra de ouro: se você tem menos de 3 times, monorepo é melhor. Micro-frontends resolvem problemas organizacionais (times autônomos), não problemas técnicos. O overhead de infraestrutura é real.",
+          "dimmed": true
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Os 4 Conceitos Principais",
+      "icon": "puzzle",
+      "children": [
+        {
+          "type": "codeExample",
+          "title": "Independência de Times",
+          "description": "Cada micro-frontend tem seu time. Não precisa esperar ninguém.",
+          "code": "// Time A - Produto\n// apps/product/src/App.tsx\nexport function ProductApp() {\n  return (\n    <div>\n      <ProductList />\n      <ProductDetails />\n      <AddToCart />\n    </div>\n  );\n}\n\n// Time B - Carrinho\n// apps/cart/src/App.tsx\nexport function CartApp() {\n  return (\n    <div>\n      <CartItems />\n      <CartSummary />\n      <CheckoutButton />\n    </div>\n  );\n}\n\n// Cada time desenvolve independentemente\n// Não precisa esperar o outro time\n// Deploy separado, sem conflitos"
+        },
+        {
+          "type": "codeExample",
+          "title": "Tecnologias Heterogêneas",
+          "description": "Cada micro-frontend pode usar tecnologia diferente.",
+          "code": "// Time A - React + TypeScript\n// apps/product/src/App.tsx\nimport React from 'react';\n\nexport function ProductApp() {\n  return <ProductList />;\n}\n\n// Time B - Vue + JavaScript\n// apps/cart/src/App.vue\n<template>\n  <div>\n    <CartItems />\n  </div>\n</template>\n\n<script>\nexport default {\n  name: 'CartApp'\n};\n</script>\n\n// Time C - Angular\n// apps/checkout/src/app.component.ts\n@Component({\n  selector: 'app-checkout',\n  template: '<CheckoutForm />'\n})\nexport class CheckoutApp {}\n\n// Cada time escolhe sua tecnologia\n// Sem imposição de stack única"
+        },
+        {
+          "type": "codeExample",
+          "title": "Deploy Independente",
+          "description": "Cada micro-frontend faz deploy separado.",
+          "code": "// Time A - Deploy do produto\n// apps/product/package.json\n{\n  \"name\": \"product-app\",\n  \"scripts\": {\n    \"build\": \"vite build\",\n    \"deploy\": \"npm run build && aws s3 sync dist/ s3://product-app\"\n  }\n}\n\n// Time B - Deploy do carrinho\n// apps/cart/package.json\n{\n  \"name\": \"cart-app\",\n  \"scripts\": {\n    \"build\": \"vue-cli-service build\",\n    \"deploy\": \"npm run build && netlify deploy\"\n  }\n}\n\n// Deploy independente\n// Muda um, não afeta os outros\n// Rollback individual"
+        },
+        {
+          "type": "codeExample",
+          "title": "Integração via Shell",
+          "description": "Shell (container) orquestra os micro-frontends.",
+          "code": "// Shell - Container principal\n// apps/shell/src/App.tsx\nimport { loadMicroFrontend } from './utils/micro-frontend-loader';\n\nexport function ShellApp() {\n  const [currentRoute, setCurrentRoute] = useState('/');\n\n  const loadApp = async (route: string) => {\n    switch (route) {\n      case '/products':\n        return await loadMicroFrontend('product-app');\n      case '/cart':\n        return await loadMicroFrontend('cart-app');\n      case '/checkout':\n        return await loadMicroFrontend('checkout-app');\n    }\n  };\n\n  return (\n    <div>\n      <Navigation />\n      <main>\n        {loadApp(currentRoute)}\n      </main>\n    </div>\n  );\n}\n\n// utils/micro-frontend-loader.ts\nexport async function loadMicroFrontend(appName: string) {\n  const script = document.createElement('script');\n  script.src = `https://cdn.example.com/${appName}/main.js`;\n  document.head.appendChild(script);\n  \n  return new Promise((resolve) => {\n    script.onload = () => {\n      // Micro-frontend carregado\n      resolve(window[appName]);\n    };\n  });\n}"
+        },
+        {
+          "type": "callout",
+          "title": "Como funciona",
+          "content": "Cada micro-frontend é uma aplicação independente com seu time, tecnologia e deploy. O Shell (container) orquestra tudo, carregando os micro-frontends conforme necessário. Times trabalham sem depender uns dos outros, mas a integração precisa ser bem planejada.",
+          "dimmed": true
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Casos Reais",
+      "icon": "bulb",
+      "children": [
+        {
+          "type": "iconCards",
+          "cols": { "base": 1, "sm": 3 },
+          "cards": [
+            {
+              "icon": "code",
+              "iconColor": "green",
+              "title": "Plataforma de streaming",
+              "description": "Múltiplos times, múltiplas features",
+              "items": [
+                "Time de busca independente",
+                "Time de player independente",
+                "Time de recomendações independente",
+                "Deploy independente por funcionalidade"
+              ]
+            },
+            {
+              "icon": "puzzle",
+              "iconColor": "blue",
+              "title": "Player de mídia",
+              "description": "Funcionalidades complexas por domínio",
+              "items": [
+                "Time de player independente",
+                "Time de playlists independente",
+                "Time de descoberta independente",
+                "Tecnologias diferentes por time"
+              ]
+            },
+            {
+              "icon": "bulb",
+              "iconColor": "brand",
+              "title": "E-commerce",
+              "description": "Loja online com múltiplas funcionalidades",
+              "items": [
+                "Time de catálogo independente",
+                "Time de checkout independente",
+                "Time de pagamento independente",
+                "Time de reviews independente"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Armadilhas Comuns",
+      "icon": "alert-triangle",
+      "children": [
+        {
+          "type": "alert",
+          "color": "red",
+          "icon": "alert-triangle",
+          "message": "CSS Leaking entre apps: Estilos de um micro-frontend afetam outro. Soluções: Shadow DOM (isolamento real, mas perde CSS global), CSS Modules com prefixo por app, ou Tailwind com prefixo (ex: app1-)."
+        },
+        {
+          "type": "alert",
+          "color": "orange",
+          "icon": "alert-triangle",
+          "message": "Shared state entre apps: Se dois apps precisam do mesmo estado (user logado, carrinho), as opções são: Custom Events (simples, sem type safety), shared npm package com store (acoplamento de versão), ou API como fonte de verdade (mais requests, mais correto)."
+        },
+        {
+          "type": "alert",
+          "color": "yellow",
+          "icon": "alert-triangle",
+          "message": "Bundle duplicado (React carrega 3x): Cada micro-frontend traz seu próprio React, Lodash, etc. Module Federation resolve com shared config, mas exige versões compatíveis. Singleton mode é essencial."
+        },
+        {
+          "type": "alert",
+          "color": "yellow",
+          "icon": "alert-triangle",
+          "message": "Roteamento cross-app: Quem controla a URL? O shell app precisa delegar rotas para cada micro-frontend. single-spa resolve, mas adiciona complexidade. Alternativa: cada app é um SPA em path prefix (/checkout/*)."
+        },
+        {
+          "type": "alert",
+          "color": "green",
+          "icon": "check",
+          "message": "Quando NÃO usar: < 3 times independentes → Monorepo resolve. < 50 devs → O overhead não compensa. Sem CI/CD maduro → Deploy independente exige preview deploys, rollback por app e feature flags."
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Referências e Recursos",
+      "icon": "code",
+      "children": [
+        {
+          "type": "title",
+          "content": "Artigos e Casos",
+          "order": 4
+        },
+        {
+          "type": "list",
+          "spacing": "xs",
+          "items": [
+            "Martin Fowler - Micro Frontends: https://martinfowler.com/articles/micro-frontends.html",
+            "Module Federation - Documentação oficial: https://module-federation.io/",
+            "Single-SPA - Framework para micro frontends: https://single-spa.js.org/"
+          ]
+        },
+        {
+          "type": "title",
+          "content": "Ferramentas",
+          "order": 4
+        },
+        {
+          "type": "list",
+          "spacing": "xs",
+          "items": [
+            "Module Federation: Webpack 5",
+            "Single-SPA: Framework para micro-frontends",
+            "Nx: Monorepo com micro-frontends"
+          ]
+        }
+      ]
+    }
+  ]
+}

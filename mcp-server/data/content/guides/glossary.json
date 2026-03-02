@@ -1,0 +1,21 @@
+{
+  "meta": {
+    "title": "Glossário",
+    "description": "Conceitos de front-end com definição curta e link para o guia que aprofunda. SSR, hidratação, performance e mais."
+  },
+  "layout": {
+    "showGuideNav": "glossary",
+    "showRelated": true
+  },
+  "body": [
+    {
+      "type": "hero",
+      "title": "Glossário",
+      "subtitle": "Conceitos de front-end com definição curta e link para o guia que aprofunda.",
+      "icon": "book"
+    },
+    {
+      "type": "glossary"
+    }
+  ]
+}

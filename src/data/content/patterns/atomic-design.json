@@ -1,0 +1,240 @@
+{
+  "meta": {
+    "title": "Atomic Design",
+    "description": "Metodologia para criar design systems estruturados. Átomos, moléculas, organismos, templates, páginas."
+  },
+  "layout": {
+    "showRelated": true
+  },
+  "body": [
+    {
+      "type": "hero",
+      "title": "Atomic Design",
+      "subtitle": "Átomos, moléculas, organismos, templates, páginas. Design system estruturado, componentes reutilizáveis.",
+      "icon": "puzzle"
+    },
+    {
+      "type": "section",
+      "title": "O que é?",
+      "icon": "puzzle",
+      "children": [
+        {
+          "type": "text",
+          "content": "Atomic Design é sobre uma coisa só: componentes organizados.",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "text",
+          "content": "Pensa assim: ao invés de criar componentes aleatórios, você segue uma hierarquia clara: átomos → moléculas → organismos → templates → páginas. Cada nível é construído com os níveis anteriores."
+        },
+        {
+          "type": "text",
+          "content": "A regra é simples: componentes pequenos se combinam para formar componentes maiores. Reutilização máxima, consistência visual, manutenção simplificada.",
+          "dimmed": true
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Os 5 Níveis",
+      "icon": "code",
+      "children": [
+        {
+          "type": "iconCards",
+          "cols": {
+            "base": 1,
+            "sm": 2
+          },
+          "cards": [
+            {
+              "icon": "check",
+              "iconColor": "green",
+              "title": "1. Átomos",
+              "description": "Componentes básicos. Botões, inputs, labels, ícones. Não podem ser divididos em componentes menores."
+            },
+            {
+              "icon": "code",
+              "iconColor": "blue",
+              "title": "2. Moléculas",
+              "description": "Combinação de átomos. Search bar, form field, card. Funcionalidade específica."
+            },
+            {
+              "icon": "code",
+              "iconColor": "orange",
+              "title": "3. Organismos",
+              "description": "Combinação de moléculas. Header, footer, product list. Seções complexas da interface."
+            },
+            {
+              "icon": "code",
+              "iconColor": "red",
+              "title": "4. Templates",
+              "description": "Layout da página. Estrutura sem conteúdo real. Wireframes com organismos."
+            },
+            {
+              "icon": "bulb",
+              "iconColor": "purple",
+              "title": "5. Páginas",
+              "description": "Templates com conteúdo real. Páginas específicas. Instâncias dos templates."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "title": "Como funciona",
+          "content": "Os 5 níveis se constroem de baixo para cima. Átomos (Button, Input) se combinam em Moléculas (SearchBar, FormField). Moléculas formam Organismos (Header, ProductList). Organismos vão para Templates (layouts). Templates com conteúdo real viram Páginas. Cada nível reutiliza os anteriores."
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Casos Reais",
+      "icon": "bulb",
+      "children": [
+        {
+          "type": "iconCards",
+          "cols": {
+            "base": 1,
+            "sm": 3
+          },
+          "cards": [
+            {
+              "icon": "code",
+              "iconColor": "green",
+              "title": "Material Design",
+              "description": "Design system open-source para web e mobile",
+              "items": [
+                "Átomos: Buttons, inputs, icons",
+                "Moléculas: Cards, chips, dialogs",
+                "Organismos: App bars, navigation",
+                "Templates: Layout patterns"
+              ]
+            },
+            {
+              "icon": "code",
+              "iconColor": "blue",
+              "title": "Ant Design",
+              "description": "Alibaba's design system",
+              "items": [
+                "Átomos: Basic components",
+                "Moléculas: Form components",
+                "Organismos: Layout components",
+                "Templates: Page layouts"
+              ]
+            },
+            {
+              "icon": "bulb",
+              "iconColor": "purple",
+              "title": "Shopify Polaris",
+              "description": "Design system para e-commerce",
+              "items": [
+                "Átomos: Foundation components",
+                "Moléculas: Interactive components",
+                "Organismos: Complex components",
+                "Templates: Page structures"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "codeExample",
+      "title": "Atomic Design - Átomos",
+      "description": "Componentes atômicos: Button, Input e Icon. São os blocos mais básicos, reutilizáveis e indivisíveis do design system.",
+      "code": "// components/atoms/Button.tsx\nfunction Button({ children, variant = 'primary', ...props }) {\n  return (\n    <button \n      className={`btn btn-${variant}`}\n      {...props}\n    >\n      {children}\n    </button>\n  );\n}\n\n// components/atoms/Input.tsx\nfunction Input({ label, ...props }) {\n  return (\n    <div className=\"input-wrapper\">\n      {label && <label>{label}</label>}\n      <input {...props} />\n    </div>\n  );\n}\n\n// components/atoms/Icon.tsx\nfunction Icon({ name, size = 16 }) {\n  return (\n    <span className={`icon icon-${name}`} style={{ fontSize: size }}>\n      {getIcon(name)}\n    </span>\n  );\n}\n\n// Componentes básicos\n// Não podem ser divididos\n// Reutilizáveis em todo lugar"
+    },
+    {
+      "type": "codeExample",
+      "title": "Atomic Design - Moléculas",
+      "description": "Moléculas: combinação de átomos para criar componentes com funcionalidade específica, como SearchBar e FormField.",
+      "code": "// components/molecules/SearchBar.tsx\nimport { Input } from '../atoms/Input';\nimport { Button } from '../atoms/Button';\nimport { Icon } from '../atoms/Icon';\n\nfunction SearchBar({ onSearch, placeholder }) {\n  const [query, setQuery] = useState('');\n  \n  const handleSubmit = (e) => {\n    e.preventDefault();\n    onSearch(query);\n  };\n  \n  return (\n    <form onSubmit={handleSubmit} className=\"search-bar\">\n      <Input\n        value={query}\n        onChange={(e) => setQuery(e.target.value)}\n        placeholder={placeholder}\n      />\n      <Button type=\"submit\">\n        <Icon name=\"search\" />\n      </Button>\n    </form>\n  );\n}\n\n// components/molecules/FormField.tsx\nimport { Input } from '../atoms/Input';\nimport { Icon } from '../atoms/Icon';\n\nfunction FormField({ label, error, icon, ...props }) {\n  return (\n    <div className=\"form-field\">\n      <Input \n        label={label}\n        {...props}\n      />\n      {icon && <Icon name={icon} />}\n      {error && <span className=\"error\">{error}</span>}\n    </div>\n  );\n}\n\n// Combinação de átomos\n// Funcionalidade específica\n// Reutilizável"
+    },
+    {
+      "type": "codeExample",
+      "title": "Atomic Design - Organismos",
+      "description": "Organismos: combinação de moléculas e átomos para criar seções completas e independentes, como Header, Footer ou ProductList.",
+      "code": "// components/organisms/Header.tsx\nimport { Logo } from '../atoms/Logo';\nimport { NavMenu } from '../molecules/NavMenu';\n\nfunction Header() {\n  return (\n    <header>\n      <Logo />\n      <NavMenu />\n    </header>\n  );\n}\n\n// components/organisms/ProductList.tsx\nimport { ProductCard } from '../molecules/ProductCard';\n\nfunction ProductList({ products }) {\n  return (\n    <section>\n      {products.map(product => (\n        <ProductCard key={product.id} product={product} />\n      ))}\n    </section>\n  );\n}\n\n// Organismos são blocos grandes e independentes\n// Podem ser usados em várias páginas"
+    },
+    {
+      "type": "codeExample",
+      "title": "Atomic Design - Templates",
+      "description": "Templates: estrutura de layout da página, organizando organismos e placeholders para conteúdo real.",
+      "code": "// components/templates/MainTemplate.tsx\nimport { Header } from '../organisms/Header';\nimport { Footer } from '../organisms/Footer';\n\nfunction MainTemplate({ children }) {\n  return (\n    <div>\n      <Header />\n      <main>{children}</main>\n      <Footer />\n    </div>\n  );\n}\n\n// Templates definem a estrutura, mas não o conteúdo final\n// Usados para padronizar páginas"
+    },
+    {
+      "type": "codeExample",
+      "title": "Atomic Design - Páginas",
+      "description": "Páginas: instâncias reais dos templates, já com dados e conteúdo final renderizado.",
+      "code": "// pages/HomePage.tsx\nimport { MainTemplate } from '../components/templates/MainTemplate';\nimport { ProductList } from '../components/organisms/ProductList';\n\nfunction HomePage({ products }) {\n  return (\n    <MainTemplate>\n      <h1>Bem-vindo!</h1>\n      <ProductList products={products} />\n    </MainTemplate>\n  );\n}\n\n// Páginas são o topo da hierarquia\n// Cada página é uma combinação de template + dados reais"
+    },
+    {
+      "type": "section",
+      "title": "Armadilhas Comuns",
+      "icon": "alert-triangle",
+      "children": [
+        {
+          "type": "alert",
+          "color": "red",
+          "icon": "alert-triangle",
+          "message": "Over-abstraction: Criar átomos demais pode complicar. Use apenas quando há reutilização real."
+        },
+        {
+          "type": "alert",
+          "color": "orange",
+          "icon": "alert-triangle",
+          "message": "Rigidez excessiva: Seguir Atomic Design rigidamente pode limitar criatividade. Use como guia, não regra."
+        },
+        {
+          "type": "alert",
+          "color": "yellow",
+          "icon": "alert-triangle",
+          "message": "Complexidade desnecessária: Para projetos pequenos, Atomic Design pode ser overkill. Use apenas quando há muitos componentes."
+        },
+        {
+          "type": "alert",
+          "color": "green",
+          "icon": "check",
+          "message": "Como evitar: Comece simples (átomos básicos primeiro). Use como guia (não seja rígido). Foque na reutilização (só abstraia quando necessário)."
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Referências e Recursos",
+      "icon": "code",
+      "children": [
+        {
+          "type": "title",
+          "content": "Ferramentas",
+          "order": 4
+        },
+        {
+          "type": "list",
+          "spacing": "xs",
+          "items": [
+            "Storybook: Component documentation",
+            "Figma: Design system tools",
+            "Bit: Component-driven development",
+            "Styleguide: Component libraries"
+          ]
+        },
+        {
+          "type": "title",
+          "content": "Casos de Sucesso",
+          "order": 4
+        },
+        {
+          "type": "list",
+          "spacing": "xs",
+          "items": [
+            "Brad Frost - Atomic Design: https://atomicdesign.bradfrost.com/",
+            "Material Design: https://m3.material.io/",
+            "Shopify Polaris: https://polaris.shopify.com/",
+            "IBM Carbon: https://carbondesignsystem.com/"
+          ]
+        }
+      ]
+    }
+  ]
+}

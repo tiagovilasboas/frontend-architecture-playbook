@@ -1,0 +1,233 @@
+{
+  "meta": {
+    "title": "Feature Flags",
+    "description": "Controle dinâmico de funcionalidades. Deploy seguro, testes em produção, rollback instantâneo."
+  },
+  "layout": {
+    "showRelated": true
+  },
+  "body": [
+    {
+      "type": "hero",
+      "title": "Feature Flags",
+      "subtitle": "Controle dinâmico de funcionalidades. Deploy seguro, testes em produção, rollback instantâneo. O que acontece quando você quer mudar código sem fazer deploy.",
+      "icon": "code"
+    },
+    {
+      "type": "section",
+      "title": "O que é?",
+      "icon": "code",
+      "children": [
+        {
+          "type": "text",
+          "content": "Feature Flags é sobre uma coisa só: controlar funcionalidades sem fazer deploy.",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "text",
+          "content": "Pensa assim: ao invés de fazer deploy toda vez que quer ativar/desativar uma funcionalidade, você tem um sistema que controla isso dinamicamente. Novo código pode ficar dormindo até você decidir ativar."
+        },
+        {
+          "type": "text",
+          "content": "A regra é simples: código sempre no ar, funcionalidade controlada por flag. Deploy seguro, rollback instantâneo, testes em produção.",
+          "dimmed": true
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Os 4 Conceitos Principais",
+      "icon": "code",
+      "children": [
+        {
+          "type": "title",
+          "content": "1. Feature Flags (Toggles)",
+          "order": 4
+        },
+        {
+          "type": "text",
+          "content": "Variáveis que controlam se uma funcionalidade está ativa ou não.",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "codeExample",
+          "title": "useFeatureFlag",
+          "description": "Hook para controlar funcionalidades dinamicamente",
+          "code": "import { useEffect, useState } from 'react';\n\nexport function useFeatureFlag(flagKey: string, defaultValue = false) {\n  const [isEnabled, setIsEnabled] = useState(defaultValue);\n\n  useEffect(() => {\n    fetch(`/api/flags/${flagKey}`)\n      .then((res) => res.json())\n      .then((data) => setIsEnabled(!!data.enabled))\n      .catch(() => setIsEnabled(defaultValue));\n  }, [flagKey, defaultValue]);\n\n  return isEnabled;\n}"
+        },
+        {
+          "type": "title",
+          "content": "2. Flag Providers",
+          "order": 4
+        },
+        {
+          "type": "text",
+          "content": "Sistemas que gerenciam e distribuem flags. Local, API, CDN.",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "codeExample",
+          "title": "Provider simples",
+          "description": "Provider para gerenciar feature flags",
+          "code": "// Provider simples\nconst FeatureFlagsProvider = ({ children }) => {\n  const [flags, setFlags] = useState({});\n  \n  useEffect(() => {\n    fetch('/api/flags')\n      .then(res => res.json())\n      .then(setFlags);\n  }, []);\n  \n  return (\n    <FeatureFlagsContext.Provider value={flags}>\n      {children}\n    </FeatureFlagsContext.Provider>\n  );\n};"
+        },
+        {
+          "type": "title",
+          "content": "3. Targeting Rules",
+          "order": 4
+        },
+        {
+          "type": "text",
+          "content": "Regras que determinam quem vê qual funcionalidade. Usuário, localização, porcentagem.",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "codeExample",
+          "title": "Targeting por usuário",
+          "description": "Targeting por usuário",
+          "code": "// Targeting por usuário\nfunction useFeatureFlag(flagKey: string, user?: User) {\n  const [isEnabled, setIsEnabled] = useState(false);\n  \n  useEffect(() => {\n    if (!user) return;\n    \n    fetch(`/api/flags/${flagKey}?userId=${user.id}`)\n      .then(res => res.json())\n      .then(data => setIsEnabled(data.enabled));\n  }, [flagKey, user]);\n  \n  return isEnabled;\n}"
+        },
+        {
+          "type": "title",
+          "content": "4. Rollback & Monitoring",
+          "order": 4
+        },
+        {
+          "type": "text",
+          "content": "Sistemas para desativar flags rapidamente e monitorar impacto.",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "codeExample",
+          "title": "Rollback automático",
+          "description": "Rollback automático",
+          "code": "// Rollback automático\nfunction useFeatureFlagWithRollback(flagKey: string) {\n  const [isEnabled, setIsEnabled] = useState(false);\n  const [errorRate, setErrorRate] = useState(0);\n  \n  useEffect(() => {\n    // Monitora taxa de erro\n    const interval = setInterval(() => {\n      fetch('/api/metrics/errors')\n        .then(res => res.json())\n        .then(data => {\n          if (data.errorRate > 0.05) { // 5%\n            setIsEnabled(false); // Rollback automático\n          }\n        });\n    }, 60000);\n    \n    return () => clearInterval(interval);\n  }, []);\n  \n  return isEnabled;\n}"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Casos Reais",
+      "icon": "bulb",
+      "children": [
+        {
+          "type": "iconCards",
+          "cols": {
+            "base": 1,
+            "sm": 3
+          },
+          "cards": [
+            {
+              "icon": "code",
+              "iconColor": "green",
+              "title": "Testes A/B em produção",
+              "description": "Feature flags para experimentação contínua",
+              "items": [
+                "Teste de algoritmos de recomendação",
+                "Rollback instantâneo em caso de problemas",
+                "Deploy contínuo sem risco",
+                "Experimentos em produção"
+              ]
+            },
+            {
+              "icon": "code",
+              "iconColor": "blue",
+              "title": "Rollout gradual de features",
+              "description": "Feature flags para lançamentos controlados",
+              "items": [
+                "Novos recursos gradualmente",
+                "Teste com usuários específicos",
+                "Rollback em segundos",
+                "Experimentos em larga escala"
+              ]
+            },
+            {
+              "icon": "bulb",
+              "iconColor": "purple",
+              "title": "E-commerce",
+              "description": "Feature flags para vendas",
+              "items": [
+                "Novos métodos de pagamento",
+                "Teste de preços dinâmicos",
+                "Funcionalidades sazonais",
+                "Rollback rápido em caso de bugs"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Armadilhas Comuns",
+      "icon": "alert-triangle",
+      "children": [
+        {
+          "type": "alert",
+          "color": "red",
+          "icon": "alert-triangle",
+          "message": "Flag debt: Flags antigas que nunca são removidas. Limpe flags desnecessárias regularmente."
+        },
+        {
+          "type": "alert",
+          "color": "orange",
+          "icon": "alert-triangle",
+          "message": "Complexidade excessiva: Muitas flags podem complicar o código. Use apenas quando necessário."
+        },
+        {
+          "type": "alert",
+          "color": "yellow",
+          "icon": "alert-triangle",
+          "message": "Performance impact: Verificar flags pode impactar performance. Use cache e otimizações."
+        },
+        {
+          "type": "alert",
+          "color": "green",
+          "icon": "check",
+          "message": "Como evitar: Limpe regularmente (remova flags desnecessárias). Use com moderação (só quando realmente necessário). Monitore performance (cache e otimizações)."
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Referências e Recursos",
+      "icon": "code",
+      "children": [
+        {
+          "type": "title",
+          "content": "Ferramentas",
+          "order": 4
+        },
+        {
+          "type": "list",
+          "spacing": "xs",
+          "items": [
+            "LaunchDarkly: Feature flag management",
+            "Split.io: Feature flags and experimentation",
+            "Unleash: Open-source feature flags",
+            "Flagsmith: Feature flag platform"
+          ]
+        },
+        {
+          "type": "title",
+          "content": "Casos de Sucesso",
+          "order": 4
+        },
+        {
+          "type": "list",
+          "spacing": "xs",
+          "items": [
+            "LaunchDarkly - What are Feature Flags: https://launchdarkly.com/blog/what-are-feature-flags/",
+            "Martin Fowler - Feature Toggles: https://martinfowler.com/articles/feature-toggles.html",
+            "Unleash: https://www.getunleash.io/"
+          ]
+        }
+      ]
+    }
+  ]
+}

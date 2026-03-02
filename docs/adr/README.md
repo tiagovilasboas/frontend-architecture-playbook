@@ -1,81 +1,54 @@
-# 📋 Architecture Decision Records (ADRs)
+# ADRs — Architecture Decision Records
 
-Este diretório contém todas as decisões arquiteturais importantes do projeto Frontend Architecture Playbook.
+Decisões arquiteturais que a gente tomou (ou está propondo). Quando alguém perguntar "por que a gente fez assim?", a resposta começa aqui.
 
-## 🎯 **O que são ADRs?**
+## O que é um ADR?
 
-Architecture Decision Records (ADRs) documentam decisões arquiteturais importantes, incluindo:
+Um ADR documenta uma decisão importante com:
 
-- **Contexto** da decisão
-- **Problema** que estava sendo resolvido
-- **Alternativas** consideradas
-- **Decisão** tomada e justificativa
-- **Consequências** esperadas
+- **Contexto** — o que tava na mesa
+- **Problema** — o que a gente queria resolver
+- **Alternativas** — o que foi considerado e descartado
+- **Decisão** — o que a gente escolheu e por quê
+- **Consequências** — o que ganhamos (e o que perdemos)
 
-## 📚 **Índice de ADRs**
+Sem enrolação. Objetivo: daqui a 6 meses qualquer um entende por que a decisão foi tomada.
 
-| ID                                             | Status      | Título                                         | Data       | Owner         |
-| ---------------------------------------------- | ----------- | ---------------------------------------------- | ---------- | ------------- |
-| [001](./001-visualizations-and-comparisons.md) | 🎯 Proposto | Visualizações e Comparações no Decision Wizard | 2024-12-19 | Frontend Team |
+## Índice
 
-## 📊 **Status Legend**
+| ID                                             | Status   | Título                                         | Data       | Owner         |
+| ---------------------------------------------- | -------- | ---------------------------------------------- | ---------- | ------------- |
+| [001](./001-visualizations-and-comparisons.md) | Proposto | Visualizações e Comparações no Decision Wizard | 2024-12-19 | Frontend Team |
 
-- 🎯 **Proposto:** Em discussão/planejamento
-- ✅ **Aceito:** Aprovado e em implementação
-- 🚀 **Implementado:** Concluído e em produção
-- ❌ **Rejeitado:** Decidido não implementar
-- 📄 **Superseded:** Substituído por outra decisão
+## Status
 
-## 🔄 **Processo de ADR**
+- **Proposto** — em discussão / planejamento
+- **Aceito** — aprovado, em implementação
+- **Implementado** — feito e em produção
+- **Rejeitado** — decidimos não fazer
+- **Superseded** — substituído por outra decisão
 
-### **1. Criação**
+## Processo (resumido)
 
-```bash
-# Criar nova ADR
-cp docs/adr/template.md docs/adr/XXX-titulo-da-decisao.md
-```
+1. **Criar:** copiar o template, preencher contexto + decisão + consequências.
+2. **Review:** PR, feedback do time, validação técnica.
+3. **Aprovar:** merge, atualizar status, avisar quem precisa saber.
+4. **Implementar:** issues/PRs atrelados; depois, lessons learned se fizer sentido.
 
-### **2. Review**
+## Quando criar um ADR?
 
-- Discussão em PRs
-- Feedback da equipe
-- Validação técnica
+**Criar** quando for:
 
-### **3. Aprovação**
+- Escolha de tech relevante (React vs Vue, lib de gráficos, etc.)
+- Padrão arquitetural (Clean Architecture, micro-frontends, estrutura de pastas)
+- Estratégia de teste ou trade-off grande de performance/UX
 
-- Merge do PR
-- Update do status
-- Comunicação para a equipe
+**Não criar** para:
 
-### **4. Implementação**
+- Bug fix, refactor pequeno, decisão fácil de reverter, preferência pessoal de código
 
-- Tracking via issues/PRs
-- Update de progresso
-- Lessons learned
+## Template e links
 
-## 🎯 **Quando criar uma ADR?**
-
-### **Criar ADR para:**
-
-- ✅ Escolhas de tecnologia major (React vs Vue)
-- ✅ Padrões arquiteturais (Clean Architecture, Micro-frontends)
-- ✅ Estrutura de pastas/organização
-- ✅ Estratégias de teste
-- ✅ Performance/UX trade-offs significativos
-
-### **Não criar ADR para:**
-
-- ❌ Bugs fixes rotineiros
-- ❌ Pequenos refactors
-- ❌ Decisões facilmente reversíveis
-- ❌ Preferências pessoais de código
-
-## 📝 **Template**
-
-Para criar uma nova ADR, use o [template padrão](./template.md).
-
-## 🔗 **Links Relacionados**
-
-- [Roadmap do Projeto](../ROADMAP.md)
-- [Documentação Técnica](../README.md)
-- [Contributing Guidelines](../../.github/CONTRIBUTING.md)
+- Novo ADR: use o [template](./template.md) (se existir) ou espelhe o 001.
+- [Roadmap](../ROADMAP.md) — planejamento do projeto
+- [Docs](../README.md) — índice da documentação

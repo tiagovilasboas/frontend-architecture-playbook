@@ -1,0 +1,214 @@
+{
+  "meta": {
+    "title": "Event-Driven Architecture",
+    "description": "Arquitetura baseada em eventos e mensagens. useReducer, Zustand, XState, SSE."
+  },
+  "layout": {
+    "showRelated": true
+  },
+  "body": [
+    {
+      "type": "hero",
+      "title": "Event-Driven Architecture",
+      "subtitle": "Ações como dados, estado como resposta. useReducer, Zustand com subscribe, XState, e Server-Sent Events - as formas reais de fazer event-driven no frontend React.",
+      "icon": "code"
+    },
+    {
+      "type": "section",
+      "title": "O que é?",
+      "icon": "code",
+      "children": [
+        {
+          "type": "text",
+          "content": "Event-Driven no frontend moderno é sobre tratar ações do usuário como dados tipados e reagir a mudanças de estado de forma declarativa.",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "text",
+          "content": "No React, isso se manifesta de 3 formas: useReducer (dispatch de ações tipadas), Zustand/Redux (subscriptions reativas), e XState (máquinas de estado com eventos). Para real-time, usamos SSE ou WebSockets integrados com React Query."
+        },
+        {
+          "type": "alert",
+          "color": "orange",
+          "icon": "alert-triangle",
+          "message": "Atenção: Muitos tutoriais recomendam window.dispatchEvent(new CustomEvent(...)) para comunicação entre componentes React. Isso é um anti-pattern: bypassa o ciclo de renderização, não tem type safety, e cria dependências invisíveis. Use as abordagens abaixo."
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Os 3 Conceitos Principais",
+      "icon": "code",
+      "children": [
+        {
+          "type": "title",
+          "content": "1. useReducer + Context",
+          "order": 4
+        },
+        {
+          "type": "text",
+          "content": "Ações tipadas como eventos. O dispatch é o event emitter nativo do React.",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "codeExample",
+          "title": "useReducer + dispatch (React nativo)",
+          "description": "Event-driven com o próprio React: ações como eventos",
+          "code": "// Ações são os \"eventos\" do seu app\ntype CartEvent =\n  | { type: 'ITEM_ADDED'; product: Product; qty: number }\n  | { type: 'ITEM_REMOVED'; productId: string }\n  | { type: 'CART_CLEARED' };\n\n// Reducer é o \"event handler\" central\nfunction cartReducer(state: CartState, event: CartEvent): CartState {\n  switch (event.type) {\n    case 'ITEM_ADDED':\n      return { ...state, items: [...state.items, { ...event.product, qty: event.qty }] };\n    case 'ITEM_REMOVED':\n      return { ...state, items: state.items.filter(i => i.id !== event.productId) };\n    case 'CART_CLEARED':\n      return { ...state, items: [] };\n  }\n}\n\n// Componente emite eventos via dispatch\nfunction AddToCartButton({ product }: { product: Product }) {\n  const dispatch = useCartDispatch(); // Context\n  return (\n    <button onClick={() => dispatch({ type: 'ITEM_ADDED', product, qty: 1 })}>\n      Adicionar\n    </button>\n  );\n}"
+        },
+        {
+          "type": "title",
+          "content": "2. Zustand subscribe",
+          "order": 4
+        },
+        {
+          "type": "text",
+          "content": "Side-effects reativos. Reage a mudanças de estado como eventos.",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "codeExample",
+          "title": "Zustand com subscribe (side-effects reativos)",
+          "description": "Reagir a mudanças de estado como eventos",
+          "code": "import { create } from 'zustand';\nimport { subscribeWithSelector } from 'zustand/middleware';\n\nconst useCartStore = create(\n  subscribeWithSelector<CartState>((set) => ({\n    items: [],\n    addItem: (product: Product) =>\n      set((s) => ({ items: [...s.items, product] })),\n  }))\n);\n\n// Side-effects reativos - equivalente a \"listeners\"\n// Analytics reage automaticamente quando items muda\nuseCartStore.subscribe(\n  (state) => state.items,\n  (items, prevItems) => {\n    if (items.length > prevItems.length) {\n      const added = items[items.length - 1];\n      analytics.track('item_added', { product: added.id });\n    }\n  }\n);\n\n// Componente fica limpo - só lê estado\nfunction CartBadge() {\n  const count = useCartStore((s) => s.items.length);\n  return <Badge>{count}</Badge>;\n}"
+        },
+        {
+          "type": "title",
+          "content": "3. XState (State Machines)",
+          "order": 4
+        },
+        {
+          "type": "text",
+          "content": "Eventos tipados + transições explícitas. Para fluxos complexos.",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "codeExample",
+          "title": "XState (state machine event-driven)",
+          "description": "Máquina de estados para fluxos complexos",
+          "code": "import { createMachine, assign } from 'xstate';\nimport { useMachine } from '@xstate/react';\n\n// Eventos tipados definem o que pode acontecer\ntype CheckoutEvent =\n  | { type: 'NEXT' }\n  | { type: 'BACK' }\n  | { type: 'SUBMIT' }\n  | { type: 'PAYMENT_SUCCESS' }\n  | { type: 'PAYMENT_ERROR'; error: string };\n\nconst checkoutMachine = createMachine({\n  id: 'checkout',\n  initial: 'cart',\n  states: {\n    cart:     { on: { NEXT: 'shipping' } },\n    shipping: { on: { NEXT: 'payment', BACK: 'cart' } },\n    payment:  { on: {\n      SUBMIT: 'processing',\n      BACK: 'shipping'\n    }},\n    processing: { on: {\n      PAYMENT_SUCCESS: 'success',\n      PAYMENT_ERROR: 'payment'\n    }},\n    success: { type: 'final' }\n  }\n});\n\nfunction Checkout() {\n  const [state, send] = useMachine(checkoutMachine);\n  \n  // Cada evento é type-safe - impossível enviar evento inválido\n  return (\n    <div>\n      {state.matches('cart') && <Cart onNext={() => send({ type: 'NEXT' })} />}\n      {state.matches('shipping') && <Shipping onNext={() => send({ type: 'NEXT' })} />}\n      {state.matches('payment') && <Payment onSubmit={() => send({ type: 'SUBMIT' })} />}\n      {state.matches('processing') && <Spinner />}\n      {state.matches('success') && <ThankYou />}\n    </div>\n  );\n}"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Casos Reais",
+      "icon": "bulb",
+      "children": [
+        {
+          "type": "iconCards",
+          "cols": {
+            "base": 1,
+            "sm": 3
+          },
+          "cards": [
+            {
+              "icon": "code",
+              "iconColor": "green",
+              "title": "Checkout multi-step",
+              "description": "XState: transições explícitas, impossível ficar em estado inválido",
+              "items": [
+                "Estados: cart → shipping → payment → processing → success",
+                "Eventos tipados: NEXT, BACK, SUBMIT, PAYMENT_SUCCESS",
+                "Visualizável com Stately Studio"
+              ]
+            },
+            {
+              "icon": "code",
+              "iconColor": "blue",
+              "title": "Dashboard real-time",
+              "description": "SSE + React Query: dados atualizam automaticamente",
+              "items": [
+                "EventSource escuta eventos do servidor",
+                "Invalida queries quando dados mudam",
+                "Componentes usam useQuery normal - não sabem que é real-time"
+              ]
+            },
+            {
+              "icon": "bulb",
+              "iconColor": "purple",
+              "title": "Analytics desacoplado",
+              "description": "Zustand subscribe: side-effects sem acoplar componentes",
+              "items": [
+                "Store muda → subscriber reage automaticamente",
+                "Componente não sabe que analytics existe",
+                "Adicionar/remover tracking sem tocar em UI"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Armadilhas Comuns",
+      "icon": "alert-triangle",
+      "children": [
+        {
+          "type": "alert",
+          "color": "red",
+          "icon": "alert-triangle",
+          "message": "window.dispatchEvent em React: Bypassa o React, zero type safety, dependências invisíveis. Use useReducer, Zustand ou XState em vez disso."
+        },
+        {
+          "type": "alert",
+          "color": "orange",
+          "icon": "alert-triangle",
+          "message": "Over-engineering com XState: Nem todo estado precisa de state machine. useState + useReducer resolvem 90% dos casos. Use XState para fluxos com 4+ estados e transições complexas."
+        },
+        {
+          "type": "alert",
+          "color": "yellow",
+          "icon": "alert-triangle",
+          "message": "Subscribers esquecidos no Zustand: subscribe() fora de componentes vive para sempre. Em testes, isso causa memory leaks. Retorne o unsubscribe e limpe em useEffect."
+        },
+        {
+          "type": "alert",
+          "color": "green",
+          "icon": "check",
+          "message": "Como escolher: Estado simples → useState/useReducer. Estado global + side-effects → Zustand subscribe. Fluxos complexos → XState. Real-time do servidor → SSE + React Query."
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Referências e Recursos",
+      "icon": "code",
+      "children": [
+        {
+          "type": "title",
+          "content": "Ferramentas",
+          "order": 4
+        },
+        {
+          "type": "list",
+          "spacing": "xs",
+          "items": [
+            "XState: https://xstate.js.org/",
+            "Zustand: https://zustand-demo.pmnd.rs/",
+            "TanStack Query: https://tanstack.com/query/latest",
+            "Stately Studio: https://stately.ai/"
+          ]
+        },
+        {
+          "type": "title",
+          "content": "Casos de Sucesso",
+          "order": 4
+        },
+        {
+          "type": "list",
+          "spacing": "xs",
+          "items": [
+            "Martin Fowler - What do you mean by Event-Driven?: https://martinfowler.com/articles/201701-event-driven.html",
+            "EventEmitter3: https://github.com/primus/eventemitter3",
+            "RxJS: https://rxjs.dev/"
+          ]
+        }
+      ]
+    }
+  ]
+}

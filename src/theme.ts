@@ -9,16 +9,16 @@ export const theme = createTheme({
   },
   fontFamily: 'Inter, sans-serif',
   fontSizes: {
-    xs: '0.9375rem', // ~15px (era ~13px)
-    sm: '1.0625rem', // ~17px (era ~15px)
-    md: '1.1875rem', // ~19px (era ~17px)
-    lg: '1.3125rem', // ~21px (era ~19px)
-    xl: '1.5rem', // ~24px (era ~22px)
+    xs: '0.8125rem', // ~13px
+    sm: '0.9375rem', // ~15px
+    md: '1rem', // 16px
+    lg: '1.125rem', // ~18px
+    xl: '1.25rem', // 20px
   },
   headings: {
     fontFamily: 'Inter, sans-serif',
     sizes: {
-      h1: { fontSize: '2.5rem', fontWeight: '700' }, // um pouco maior
+      h1: { fontSize: '2rem', fontWeight: '700' },
     },
   },
   // Custom components with consistent styling

@@ -1,0 +1,211 @@
+{
+  "meta": {
+    "title": "Headless Architecture",
+    "description": "Separação total entre backend (dados) e frontend (apresentação) para performance máxima e flexibilidade de stack."
+  },
+  "layout": { "showRelated": true },
+  "body": [
+    {
+      "type": "hero",
+      "title": "Headless / API-First Architecture",
+      "subtitle": "Separação igreja-estado entre content e apresentação",
+      "icon": "plug"
+    },
+    {
+      "type": "section",
+      "title": "O que é?",
+      "icon": "code",
+      "children": [
+        {
+          "type": "text",
+          "content": "Backend que só serve dados + frontend que só renderiza. Zero acoplamento. CMS não dita como seu site vai parecer."
+        },
+        {
+          "type": "code",
+          "code": "// ❌ CMS tradicional - WordPress, Drupal\nTheme.php controla TUDO:\n- Como dados são buscados\n- Como HTML é gerado\n- Como CSS é aplicado\n- Mudança = mexer no backend\n\n// ✅ Headless - Strapi, Contentful, Sanity\nBackend: { \"title\": \"iPhone 15\", \"price\": 4999 }\nFrontend: fetch('/api/products') → React/Vue/Angular/qualquer coisa",
+          "block": true
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Quando usar?",
+      "icon": "target",
+      "children": [
+        {
+          "type": "iconCards",
+          "cols": { "base": 1, "sm": 3 },
+          "cards": [
+            {
+              "icon": "device-mobile",
+              "iconColor": "orange",
+              "title": "Multi-channel",
+              "description": "Website + app mobile + smartwatch + Alexa. Mesmo conteúdo, interfaces diferentes."
+            },
+            {
+              "icon": "rocket",
+              "iconColor": "orange",
+              "title": "Performance crítica",
+              "description": "Frontend otimizado sem bloat do CMS. CDN, SSG, cache agressivo."
+            },
+            {
+              "icon": "users",
+              "iconColor": "orange",
+              "title": "Teams separados",
+              "description": "Devs fazem frontend. Content team mexe no CMS. Zero conflito."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Por que vale a pena?",
+      "icon": "check",
+      "children": [
+        {
+          "type": "alert",
+          "message": "Performance brutal: Frontend estático + CDN. Time to First Byte muito baixo.",
+          "color": "green",
+          "icon": "check"
+        },
+        {
+          "type": "alert",
+          "message": "Tech stack livre: Backend PHP, frontend React. Ou Django + Vue. Ou .NET + Angular. Tanto faz.",
+          "color": "green",
+          "icon": "check"
+        },
+        {
+          "type": "alert",
+          "message": "Escala independente: CMS escala para muitos editores. Frontend escala para muitos usuários. Cada um no seu ritmo.",
+          "color": "green",
+          "icon": "check"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Casos Reais",
+      "icon": "bulb",
+      "children": [
+        {
+          "type": "iconCards",
+          "cols": { "base": 1, "sm": 1 },
+          "cards": [
+            {
+              "icon": "code",
+              "iconColor": "green",
+              "title": "Streaming multi-plataforma",
+              "description": "Headless CMS para TV, mobile e web",
+              "items": [
+                "Website: React + Next.js",
+                "Mobile: React Native",
+                "TV: Custom framework",
+                "Mesmo conteúdo, interfaces diferentes"
+              ]
+            },
+            {
+              "icon": "rocket",
+              "iconColor": "blue",
+              "title": "Plataforma de conteúdo",
+              "description": "Headless CMS para editorial e mídia",
+              "items": [
+                "Web: React",
+                "Mobile: Native apps",
+                "Desktop: Electron",
+                "API-first para todos os clientes"
+              ]
+            },
+            {
+              "icon": "bulb",
+              "iconColor": "blue",
+              "title": "E-commerce",
+              "description": "Headless para lojas online",
+              "items": [
+                "Website: Next.js",
+                "Mobile app: React Native",
+                "Admin: Vue.js",
+                "Performance otimizada"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Armadilhas Comuns",
+      "icon": "alert-triangle",
+      "children": [
+        {
+          "type": "alert",
+          "message": "Complexidade de setup: Headless CMS requer mais configuração inicial. Use ferramentas como Strapi ou Contentful.",
+          "color": "red",
+          "icon": "alert-triangle"
+        },
+        {
+          "type": "alert",
+          "message": "Dependência de APIs: Frontend depende de APIs externas. Implemente cache e fallbacks robustos.",
+          "color": "yellow",
+          "icon": "alert-triangle"
+        },
+        {
+          "type": "alert",
+          "message": "Over-engineering: Headless para sites simples é overkill. Use apenas quando há múltiplas plataformas.",
+          "color": "yellow",
+          "icon": "alert-triangle"
+        },
+        {
+          "type": "alert",
+          "message": "Como evitar: Comece simples (CMS tradicional para sites básicos). Use ferramentas prontas (Strapi, Contentful, Sanity). Implemente cache (CDN e cache agressivo).",
+          "color": "green",
+          "icon": "check"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Referências e Recursos",
+      "icon": "code",
+      "children": [
+        { "type": "title", "content": "Ferramentas", "order": 4 },
+        {
+          "type": "list",
+          "items": [
+            "Strapi: Open-source headless CMS",
+            "Contentful: Cloud-based headless CMS",
+            "Sanity: Real-time headless CMS",
+            "Prismic: API-first CMS"
+          ]
+        },
+        { "type": "title", "content": "Casos de Sucesso", "order": 4 },
+        {
+          "type": "stack",
+          "gap": "xs",
+          "children": [
+            {
+              "type": "anchor",
+              "label": "Shopify Hydrogen: Headless commerce framework",
+              "href": "https://hydrogen.shopify.dev/"
+            },
+            {
+              "type": "anchor",
+              "label": "Strapi: Open-source headless CMS",
+              "href": "https://strapi.io/"
+            },
+            {
+              "type": "anchor",
+              "label": "Contentful: What is a Headless CMS?",
+              "href": "https://www.contentful.com/headless-cms/"
+            },
+            {
+              "type": "anchor",
+              "label": "Sanity: Structured content platform",
+              "href": "https://www.sanity.io/headless-cms"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

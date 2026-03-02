@@ -1,0 +1,212 @@
+{
+  "meta": {
+    "title": "CQRS Frontend",
+    "description": "Command Query Responsibility Segregation - separa leitura de escrita para performance e clareza."
+  },
+  "layout": {
+    "showRelated": true
+  },
+  "body": [
+    {
+      "type": "hero",
+      "title": "CQRS Frontend",
+      "subtitle": "Read diferente de write - performance e clareza",
+      "icon": "code"
+    },
+    {
+      "type": "section",
+      "title": "O que é?",
+      "icon": "code",
+      "children": [
+        {
+          "type": "text",
+          "content": "Separar leitura de escrita. Commands (write) fazem mudanças. Queries (read) buscam dados. Dois modelos diferentes, otimizados pra cada caso. Performance e clareza de responsabilidades."
+        },
+        {
+          "type": "code",
+          "code": "// ❌ CRUD tradicional - mesmo modelo pra tudo\nclass UserController {\n  async getUsers() {\n    return User.findAll({ include: ['orders', 'profile', 'settings'] })\n  }\n  async updateUser(id, data) {\n    return User.update(data, { where: { id } })\n  }\n}\n\n// ✅ CQRS - separado por responsabilidade\n// Read Model - otimizado pra leitura\nclass UserQueries {\n  async getUsersForList() {\n    return await db.query('SELECT id, name, email FROM users_view')\n  }\n  async getUserProfile(id) {\n    return await cache.get('user:' + id) || await db.query('SELECT * FROM user_profile_view WHERE id = ?', [id])\n  }\n}\n\n// Write Model - otimizado pra escrita\nclass UserCommands {\n  async updateUserProfile(command) {\n    await this.validateCommand(command)\n    await this.applyBusinessRules(command)\n    const event = await User.update(command.data)\n    await this.publishEvent('USER_UPDATED', event)\n  }\n}",
+          "block": true
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Quando usar?",
+      "icon": "target",
+      "children": [
+        {
+          "type": "iconCards",
+          "cols": {
+            "base": 1,
+            "sm": 3
+          },
+          "cards": [
+            {
+              "icon": "chart-bar",
+              "iconColor": "blue",
+              "title": "Read/Write imbalance",
+              "description": "1000 reads pra cada write. Otimizar cada um separadamente."
+            },
+            {
+              "icon": "route",
+              "iconColor": "teal",
+              "title": "Complex business logic",
+              "description": "Writes têm regras complexas. Reads são simples. Misturar complica."
+            },
+            {
+              "icon": "rocket",
+              "iconColor": "orange",
+              "title": "Performance crítica",
+              "description": "Dashboards, analytics, real-time feeds. Read model específico pro caso."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Commands vs Queries",
+      "icon": "code",
+      "children": [
+        {
+          "type": "title",
+          "content": "Commands (Write Model)",
+          "order": 4
+        },
+        {
+          "type": "text",
+          "content": "Faz mudanças no sistema. Foco em business rules, validações complexas, side effects. Normalmente retorna ID ou void.",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "title",
+          "content": "Queries (Read Model)",
+          "order": 4
+        },
+        {
+          "type": "text",
+          "content": "Busca dados do sistema. Foco em performance, queries otimizadas, cache quando possível. Retorna dados prontos.",
+          "size": "sm",
+          "dimmed": true
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Casos Reais",
+      "icon": "bulb",
+      "children": [
+        {
+          "type": "iconCards",
+          "cols": {
+            "base": 1,
+            "sm": 3
+          },
+          "cards": [
+            {
+              "icon": "rocket",
+              "iconColor": "green",
+              "title": "E-commerce",
+              "description": "Separação de leitura e escrita",
+              "items": [
+                "Commands: Criar pedido, atualizar estoque",
+                "Queries: Listar produtos, buscar pedidos",
+                "Performance otimizada para cada caso"
+              ]
+            },
+            {
+              "icon": "chart-bar",
+              "iconColor": "blue",
+              "title": "Dashboard Analytics",
+              "description": "Queries otimizadas para relatórios",
+              "items": [
+                "Commands: Atualizar métricas",
+                "Queries: Relatórios complexos",
+                "Cache para queries pesadas"
+              ]
+            },
+            {
+              "icon": "bulb",
+              "iconColor": "purple",
+              "title": "Social Media",
+              "description": "Feed otimizado para leitura",
+              "items": [
+                "Commands: Criar post, like",
+                "Queries: Feed, timeline, busca",
+                "Read model específico"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Armadilhas Comuns",
+      "icon": "alert-triangle",
+      "children": [
+        {
+          "type": "alert",
+          "color": "red",
+          "icon": "alert-triangle",
+          "message": "Over-engineering: CQRS para aplicações simples. Use apenas quando há complexidade real."
+        },
+        {
+          "type": "alert",
+          "color": "orange",
+          "icon": "alert-triangle",
+          "message": "Eventual consistency: Read e write models podem ficar desincronizados. Implemente sync."
+        },
+        {
+          "type": "alert",
+          "color": "yellow",
+          "icon": "alert-triangle",
+          "message": "Complexidade desnecessária: Muitos handlers e models. Mantenha simples quando possível."
+        },
+        {
+          "type": "alert",
+          "color": "green",
+          "icon": "check",
+          "message": "Como evitar: Use quando necessário. Implemente sync (eventual consistency). Mantenha simples."
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Referências e Recursos",
+      "icon": "code",
+      "children": [
+        {
+          "type": "title",
+          "content": "Ferramentas",
+          "order": 4
+        },
+        {
+          "type": "list",
+          "spacing": "xs",
+          "items": [
+            "MediatR: Command/Query separation",
+            "Axon Framework: CQRS implementation",
+            "EventStore: Event sourcing with CQRS",
+            "NestJS: Built-in CQRS support"
+          ]
+        },
+        {
+          "type": "title",
+          "content": "Casos de Sucesso",
+          "order": 4
+        },
+        {
+          "type": "list",
+          "spacing": "xs",
+          "items": [
+            "Martin Fowler - CQRS: https://martinfowler.com/bliki/CQRS.html",
+            "Greg Young - CQRS Documents: https://cqrs.files.wordpress.com/2010/11/cqrs_documents.pdf",
+            "TanStack Query: https://tanstack.com/query/latest"
+          ]
+        }
+      ]
+    }
+  ]
+}

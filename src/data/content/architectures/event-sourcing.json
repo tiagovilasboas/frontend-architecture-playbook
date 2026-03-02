@@ -1,0 +1,202 @@
+{
+  "meta": {
+    "title": "Event Sourcing Frontend",
+    "description": "Arquitetura baseada em eventos para auditoria completa, time travel debugging e undo/redo natural."
+  },
+  "layout": {
+    "showRelated": true
+  },
+  "body": [
+    {
+      "type": "hero",
+      "title": "Event Sourcing Frontend",
+      "subtitle": "Toda ação é um evento - debug e auditoria que funciona",
+      "icon": "book"
+    },
+    {
+      "type": "section",
+      "title": "O que é?",
+      "icon": "book",
+      "children": [
+        {
+          "type": "text",
+          "content": "Em vez de salvar estado atual, salva sequência de eventos que levaram até ele. Quer saber como chegou aqui? Replay dos eventos. Time travel debugging de graça."
+        },
+        {
+          "type": "code",
+          "code": "// ❌ State tradicional - só o resultado final\nconst user = {\n  id: 1,\n  name: \"João Silva\",\n  email: \"joao@email.com\",\n  credits: 1500\n}\n\n// ✅ Event Sourcing - toda a história\nconst events = [\n  { type: 'USER_REGISTERED', data: { name: \"João Silva\", email: \"joao@email.com\" } },\n  { type: 'EMAIL_UPDATED', data: { newEmail: \"joao@email.com\", oldEmail: \"joao@gmail.com\" } },\n  { type: 'CREDITS_ADDED', data: { amount: 1000, reason: \"signup_bonus\" } },\n  { type: 'CREDITS_SPENT', data: { amount: 500, product: \"premium_plan\" } },\n  { type: 'CREDITS_ADDED', data: { amount: 1000, reason: \"referral_bonus\" } }\n]\n\n// Estado atual = replay de todos os eventos\nconst currentState = events.reduce(applyEvent, initialState)",
+          "block": true
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Quando usar?",
+      "icon": "target",
+      "children": [
+        {
+          "type": "iconCards",
+          "cols": {
+            "base": 1,
+            "sm": 3
+          },
+          "cards": [
+            {
+              "icon": "check",
+              "iconColor": "grape",
+              "title": "Auditoria crítica",
+              "description": "Finanças, saúde, compliance. Precisa provar como chegou no resultado."
+            },
+            {
+              "icon": "route",
+              "iconColor": "blue",
+              "title": "Undo/Redo complexo",
+              "description": "Editores colaborativos, design tools. Voltar no tempo não é opcional."
+            },
+            {
+              "icon": "code",
+              "iconColor": "orange",
+              "title": "Debug nightmare",
+              "description": "\"Como esse bug aconteceu?\" Replay exato da sequência que quebrou."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Como funciona na prática?",
+      "icon": "code",
+      "children": [
+        {
+          "type": "text",
+          "content": "Event Store guarda eventos. Event handler aplica cada evento ao estado. Replay de eventos reconstrói o estado. Componente usa dispatch(event) e goBackInTime(index) para time travel.",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "code",
+          "code": "// Types: CartItem, CartState, Event\n// Event Store - append, getEvents, replay\n// ShoppingCartEventHandler - applyEvent (ITEM_ADDED, ITEM_REMOVED, DISCOUNT_APPLIED)\n// Component: dispatch(event), goBackInTime(eventIndex) - time travel\n// Estado atual = replay de eventos. Auditoria e debug de graça.",
+          "block": true
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Casos Reais",
+      "icon": "bulb",
+      "children": [
+        {
+          "type": "iconCards",
+          "cols": {
+            "base": 1,
+            "sm": 3
+          },
+          "cards": [
+            {
+              "icon": "book",
+              "iconColor": "green",
+              "title": "Banking Systems",
+              "description": "Auditoria completa de transações",
+              "items": [
+                "Eventos: DEPOSIT, WITHDRAW, TRANSFER",
+                "Auditoria completa",
+                "Compliance",
+                "Debug de transações"
+              ]
+            },
+            {
+              "icon": "rocket",
+              "iconColor": "blue",
+              "title": "Collaborative Editors",
+              "description": "Edição colaborativa em tempo real",
+              "items": [
+                "Eventos: INSERT, DELETE, FORMAT",
+                "Undo/Redo perfeito",
+                "Conflict resolution"
+              ]
+            },
+            {
+              "icon": "bulb",
+              "iconColor": "purple",
+              "title": "Gaming",
+              "description": "Replay de partidas",
+              "items": [
+                "Eventos: MOVE, ATTACK, ITEM_USE",
+                "Replay de partidas",
+                "Anti-cheat"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Armadilhas Comuns",
+      "icon": "alert-triangle",
+      "children": [
+        {
+          "type": "alert",
+          "color": "red",
+          "icon": "alert-triangle",
+          "message": "Performance issues: Muitos eventos podem impactar performance. Use snapshots e otimizações."
+        },
+        {
+          "type": "alert",
+          "color": "orange",
+          "icon": "alert-triangle",
+          "message": "Complexidade excessiva: Event Sourcing para problemas simples. Use apenas quando necessário."
+        },
+        {
+          "type": "alert",
+          "color": "yellow",
+          "icon": "alert-triangle",
+          "message": "Event schema evolution: Mudanças no schema de eventos podem quebrar replay. Versioning é crucial."
+        },
+        {
+          "type": "alert",
+          "color": "green",
+          "icon": "check",
+          "message": "Como evitar: Use snapshots (performance). Version events (evolução). Use quando necessário (auditoria crítica apenas)."
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Referências e Recursos",
+      "icon": "code",
+      "children": [
+        {
+          "type": "title",
+          "content": "Ferramentas",
+          "order": 4
+        },
+        {
+          "type": "list",
+          "spacing": "xs",
+          "items": [
+            "EventStore: Event sourcing database",
+            "Axon Framework: Event sourcing framework",
+            "Apache Kafka: Event streaming platform",
+            "Redux Toolkit: State management with events"
+          ]
+        },
+        {
+          "type": "title",
+          "content": "Casos de Sucesso",
+          "order": 4
+        },
+        {
+          "type": "list",
+          "spacing": "xs",
+          "items": [
+            "Martin Fowler - Event Sourcing: https://martinfowler.com/eaaDev/EventSourcing.html",
+            "Greg Young - CQRS and Event Sourcing: https://www.youtube.com/watch?v=8JKjvY4etTY",
+            "Redux Toolkit: https://redux-toolkit.js.org/"
+          ]
+        }
+      ]
+    }
+  ]
+}

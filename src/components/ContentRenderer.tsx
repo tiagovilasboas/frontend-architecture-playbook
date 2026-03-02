@@ -58,6 +58,7 @@ import type {
   ContentPage,
 } from '../lib/content-schema';
 import CodeExample from './CodeExample';
+import GlossaryBlock from './GlossaryBlock';
 
 const ICON_MAP: Record<
   ContentIconKey,
@@ -108,8 +109,13 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
       return (
         <div key={key}>
           {iconEl ? (
-            <Group gap="sm" mb="md" align="flex-start">
-              <ThemeIcon size="xl" radius="md" variant="light" color="brand">
+            <Group gap="sm" mb={{ base: 'sm', sm: 'md' }} align="flex-start">
+              <ThemeIcon
+                size={{ base: 'lg', sm: 'xl' }}
+                radius="md"
+                variant="light"
+                color="brand"
+              >
                 {iconEl}
               </ThemeIcon>
               <div>
@@ -117,7 +123,7 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
                   {block.title}
                 </Title>
                 {block.subtitle && (
-                  <Text size="lg" c="dimmed" mt="xs">
+                  <Text size={{ base: 'md', sm: 'lg' }} c="dimmed" mt="xs">
                     {block.subtitle}
                   </Text>
                 )}
@@ -125,11 +131,11 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
             </Group>
           ) : (
             <>
-              <Title order={1} mb="md">
+              <Title order={1} mb={{ base: 'sm', sm: 'md' }}>
                 {block.title}
               </Title>
               {block.subtitle && (
-                <Text size="lg" c="dimmed">
+                <Text size={{ base: 'md', sm: 'lg' }} c="dimmed">
                   {block.subtitle}
                 </Text>
               )}
@@ -142,7 +148,7 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
     case 'section': {
       const iconEl = block.icon ? getIcon(block.icon) : null;
       return (
-        <Paper key={key} withBorder p="xl" radius="md">
+        <Paper key={key} withBorder p={{ base: 'md', sm: 'xl' }} radius="md">
           {(block.title || iconEl) && (
             <Group
               gap="sm"
@@ -158,7 +164,7 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
             </Group>
           )}
           {block.children?.length ? (
-            <Stack gap="md">
+            <Stack gap={{ base: 'sm', sm: 'md' }}>
               {block.children.map((child, i) => renderBlock(child, i))}
             </Stack>
           ) : null}
@@ -580,6 +586,13 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
       );
     }
 
+    case 'glossary':
+      return (
+        <div key={key}>
+          <GlossaryBlock />
+        </div>
+      );
+
     case 'timeline': {
       const items = Array.isArray(block.items) ? block.items : [];
       const resultAlert = block.resultAlert;
@@ -635,7 +648,7 @@ export interface ContentRendererProps {
 export default function ContentRenderer({ page, after }: ContentRendererProps) {
   const body = Array.isArray(page?.body) ? page.body : [];
   return (
-    <Stack gap="xl">
+    <Stack gap={{ base: 'md', sm: 'xl' }}>
       {body.map((block, index) => renderBlock(block, index))}
       {after}
     </Stack>

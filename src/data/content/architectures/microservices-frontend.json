@@ -1,0 +1,242 @@
+{
+  "meta": {
+    "title": "Microservices Frontend",
+    "description": "Arquitetura distribuída onde cada domínio tem seu próprio frontend. Times autônomos, deploys independentes, tech diversity."
+  },
+  "layout": {
+    "showRelated": true
+  },
+  "body": [
+    {
+      "type": "hero",
+      "title": "Microservices Frontend",
+      "subtitle": "Dividir pra conquistar - times, deploys, responsabilidades",
+      "icon": "route"
+    },
+    {
+      "type": "section",
+      "title": "O que é?",
+      "icon": "route",
+      "children": [
+        {
+          "type": "text",
+          "content": "Frontend espelhando backend: cada microservice tem seu próprio frontend. Times autônomos, deploys independentes, tecnologias diferentes. Conway's Law aplicado conscientemente."
+        },
+        {
+          "type": "code",
+          "code": "// ❌ Monolito Frontend - tudo junto\nsrc/\n├── components/\n│   ├── UserProfile/\n│   ├── OrderHistory/  \n│   ├── PaymentMethods/\n│   ├── ProductCatalog/\n│   └── ShoppingCart/\n└── pages/\n    ├── dashboard.tsx  // 5 teams mexendo no mesmo arquivo\n    └── checkout.tsx   // Deploy = tudo junto\n\n// ✅ Microservices Frontend - separado por domínio\nuser-service-frontend/     (Team: Auth & Profile)\n├── src/components/UserProfile/\n├── src/pages/profile.tsx  \n└── deploy: frontend-user.vercel.app\n\norder-service-frontend/    (Team: Orders & History)  \n├── src/components/OrderHistory/\n├── src/pages/orders.tsx\n└── deploy: frontend-orders.vercel.app\n\npayment-service-frontend/  (Team: Payments)\n├── src/components/PaymentMethods/\n├── src/pages/payments.tsx\n└── deploy: frontend-payments.vercel.app\n\n// Shell App - orquestra tudo\nshell-app/\n├── src/\n│   ├── shell.tsx          // Layout + navigation\n│   └── moduleRegistry.ts  // Registra micro-frontends\n└── deploy: main-app.vercel.app",
+          "block": true
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Quando usar?",
+      "icon": "target",
+      "children": [
+        {
+          "type": "iconCards",
+          "cols": { "base": 1, "sm": 2 },
+          "cards": [
+            {
+              "icon": "users",
+              "iconColor": "yellow",
+              "title": "Times grandes (30+ devs)",
+              "description": "Conway's Law: arquitetura vai espelhar organização. Aceite e otimize pra isso."
+            },
+            {
+              "icon": "building",
+              "iconColor": "yellow",
+              "title": "Domínios diferentes",
+              "description": "User, Order, Payment, Catalog. Business domains naturalmente separados."
+            },
+            {
+              "icon": "rocket",
+              "iconColor": "yellow",
+              "title": "Deploy independente",
+              "description": "Payment team deploy sem quebrar User. Zero coordination overhead."
+            },
+            {
+              "icon": "code",
+              "iconColor": "yellow",
+              "title": "Tech diversity",
+              "description": "React, Vue, Angular no mesmo app. Team escolhe stack que domina."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Estratégias de Composição",
+      "icon": "puzzle",
+      "children": [
+        {
+          "type": "title",
+          "content": "Build-time: NPM packages",
+          "order": 4
+        },
+        {
+          "type": "text",
+          "content": "Micro-frontends como bibliotecas",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "code",
+          "code": "// Shell app - instala micro-frontends\n{\n  \"dependencies\": {\n    \"@company/user-frontend\": \"^1.2.0\",\n    \"@company/order-frontend\": \"^2.1.0\", \n    \"@company/payment-frontend\": \"^1.0.5\"\n  }\n}\n\n// Shell renders micro-frontends\nimport { UserProfile } from '@company/user-frontend'\nimport { OrderHistory } from '@company/order-frontend'\n\nfunction Dashboard() {\n  return (\n    <Layout>\n      <UserProfile userId={currentUser.id} />\n      <OrderHistory userId={currentUser.id} />\n    </Layout>\n  )\n}",
+          "block": true
+        },
+        {
+          "type": "list",
+          "items": [
+            "Type safety, bundle optimization",
+            "Deploy coupling, versioning hell"
+          ],
+          "spacing": "xs"
+        },
+        {
+          "type": "title",
+          "content": "Runtime: Module Federation / Single-SPA",
+          "order": 4
+        },
+        {
+          "type": "text",
+          "content": "Carregar micro-frontends dinamicamente",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "code",
+          "code": "// webpack.config.js - Module Federation\nnew ModuleFederationPlugin({\n  name: 'shell',\n  remotes: {\n    userApp: 'user@http://localhost:3001/remoteEntry.js',\n    orderApp: 'order@http://localhost:3002/remoteEntry.js'\n  }\n})\n\n// Shell carrega dinamicamente\nconst UserApp = React.lazy(() => import('userApp/UserProfile'))\nconst OrderApp = React.lazy(() => import('orderApp/OrderHistory'))",
+          "block": true
+        },
+        {
+          "type": "list",
+          "items": [
+            "Deploy independente, runtime loading",
+            "Complexidade, performance overhead"
+          ],
+          "spacing": "xs"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Casos Reais",
+      "icon": "bulb",
+      "children": [
+        {
+          "type": "iconCards",
+          "cols": { "base": 1, "sm": 3 },
+          "cards": [
+            {
+              "icon": "code",
+              "iconColor": "green",
+              "title": "Streaming de Música",
+              "description": "Cenário: plataforma com player, busca e biblioteca",
+              "items": [
+                "Cada feature em seu próprio micro-frontend",
+                "Times independentes por domínio",
+                "Deploy independente por feature",
+                "Shell app orquestra carregamento"
+              ]
+            },
+            {
+              "icon": "rocket",
+              "iconColor": "blue",
+              "title": "E-commerce",
+              "description": "Cenário: catálogo, checkout e conta separados",
+              "items": [
+                "Catálogo: navegação e busca",
+                "Checkout: fluxo de pagamento isolado",
+                "Conta: perfil e pedidos",
+                "Times autônomos por domínio de negócio"
+              ]
+            },
+            {
+              "icon": "bulb",
+              "iconColor": "brand",
+              "title": "Dashboard Corporativo",
+              "description": "Cenário: múltiplos módulos de diferentes times",
+              "items": [
+                "Módulos carregados sob demanda",
+                "Cada time mantém seu módulo",
+                "Shared design system entre módulos",
+                "Versionamento independente"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Armadilhas Comuns",
+      "icon": "alert-triangle",
+      "children": [
+        {
+          "type": "alert",
+          "color": "red",
+          "icon": "alert-triangle",
+          "message": "Complexidade excessiva: Micro-frontends para times pequenos é overkill. Use apenas quando há múltiplos times independentes."
+        },
+        {
+          "type": "alert",
+          "color": "orange",
+          "icon": "alert-triangle",
+          "message": "Performance degradada: Múltiplos bundles, carregamento lento. Use code splitting e lazy loading."
+        },
+        {
+          "type": "alert",
+          "color": "yellow",
+          "icon": "alert-triangle",
+          "message": "Inconsistência de UX: Diferentes tecnologias podem criar UX inconsistente. Use design system compartilhado."
+        },
+        {
+          "type": "alert",
+          "color": "green",
+          "icon": "check",
+          "message": "Como evitar: Comece simples (monolito antes de micro-frontends). Use design system para consistência visual. Otimize performance com code splitting e lazy loading."
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Referências e Recursos",
+      "icon": "code",
+      "children": [
+        {
+          "type": "title",
+          "content": "Ferramentas",
+          "order": 4
+        },
+        {
+          "type": "list",
+          "spacing": "xs",
+          "items": [
+            "Module Federation: Webpack 5",
+            "Single-SPA: Framework micro-frontends",
+            "Nx: Monorepo com micro-frontends",
+            "Bit: Component-driven development"
+          ]
+        },
+        {
+          "type": "title",
+          "content": "Artigos e Referências",
+          "order": 4
+        },
+        {
+          "type": "list",
+          "spacing": "xs",
+          "items": [
+            "Martin Fowler - Micro Frontends: https://martinfowler.com/articles/micro-frontends.html",
+            "Module Federation - Documentação oficial: https://module-federation.io/",
+            "micro-frontends.org - Guia completo: https://micro-frontends.org/",
+            "Luca Mezzalira - Building Micro-Frontends (O'Reilly): https://www.oreilly.com/library/view/building-micro-frontends/9781492082989/"
+          ]
+        }
+      ]
+    }
+  ]
+}

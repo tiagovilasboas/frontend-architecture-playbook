@@ -1,0 +1,234 @@
+{
+  "meta": {
+    "title": "Monorepo",
+    "description": "Um repositório, múltiplos projetos. Compartilhamento de código, tooling centralizado, refatoração segura."
+  },
+  "layout": { "showRelated": true },
+  "body": [
+    {
+      "type": "hero",
+      "title": "Monorepo",
+      "subtitle": "Um repositório, múltiplos projetos. Compartilhamento de código, tooling centralizado, refatoração segura. Escalabilidade sem complexidade.",
+      "icon": "stack"
+    },
+    {
+      "type": "section",
+      "title": "O que é?",
+      "icon": "code",
+      "children": [
+        {
+          "type": "text",
+          "content": "Um repositório que contém múltiplos projetos/pacotes",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "text",
+          "content": "Monorepo é sobre uma coisa só: ter tudo num lugar só."
+        },
+        {
+          "type": "text",
+          "content": "Pensa assim: ao invés de ter 10 repositórios separados, você tem tudo num só. Apps, libs, docs, tudo junto. Mas bem organizado e estruturado."
+        },
+        {
+          "type": "text",
+          "content": "A regra é simples: compartilhamento fácil, tooling centralizado. Você refatora uma vez, todo mundo ganha. Você muda uma lib, todos os projetos atualizam."
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Os 4 Conceitos Principais",
+      "icon": "code",
+      "children": [
+        {
+          "type": "title",
+          "content": "Compartilhamento de Código",
+          "order": 3
+        },
+        {
+          "type": "text",
+          "content": "Libs compartilhadas entre projetos. Muda uma vez, todo mundo ganha.",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "codeExample",
+          "title": "Componentes Compartilhados",
+          "description": "Componentes compartilhados em monorepo",
+          "code": "// packages/ui/src/components/Button.tsx\nexport function Button({ children, variant = 'primary', ...props }) {\n  return <button className={`btn btn-${variant}`} {...props}>{children}</button>;\n}\n\n// apps/web-app/src/pages/Login.tsx\nimport { Button, Input } from '@repo/ui';\nexport function Login() {\n  return (\n    <form>\n      <Input label=\"Email\" type=\"email\" />\n      <Input label=\"Senha\" type=\"password\" />\n      <Button>Entrar</Button>\n    </form>\n  );\n}\n\n// Muda um componente, muda em todo lugar. Consistência visual garantida."
+        },
+        {
+          "type": "title",
+          "content": "Tooling Centralizado",
+          "order": 3
+        },
+        {
+          "type": "text",
+          "content": "ESLint, Prettier, TypeScript, testes. Configura uma vez, funciona em todo lugar.",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "codeExample",
+          "title": "Configurações Compartilhadas",
+          "description": "Configurações compartilhadas em monorepo",
+          "code": "// packages/config/eslint-config/index.js\nmodule.exports = { extends: ['@repo/config/eslint-config/base'] };\n\n// apps/web-app/.eslintrc.js\nmodule.exports = { extends: ['@repo/config/eslint-config'] };\n\n// apps/mobile-app/.eslintrc.js\nmodule.exports = { extends: ['@repo/config/eslint-config'] };\n\n// Tooling centralizado. Configurações consistentes."
+        },
+        {
+          "type": "title",
+          "content": "Refatoração Segura",
+          "order": 3
+        },
+        {
+          "type": "text",
+          "content": "Muda uma lib, vê o impacto em todos os projetos. Sem quebrar nada.",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "codeExample",
+          "title": "Design System - Componentes Compartilhados",
+          "description": "Design system em monorepo",
+          "code": "// ✅ BOM - Monorepo\n// packages/ui/\n// ├── src/components/Button.tsx\n// ├── src/components/Input.tsx\n// └── src/components/Card.tsx\n\n// apps/web-app/  → package.json (depende de @repo/ui)\n// apps/mobile-app/  → package.json (depende de @repo/ui)\n\n// Muda um componente, muda em todo lugar. Consistência visual garantida."
+        },
+        {
+          "type": "title",
+          "content": "Versionamento Unificado",
+          "order": 3
+        },
+        {
+          "type": "text",
+          "content": "Um commit pode afetar múltiplos projetos. Histórico completo, rastreabilidade total.",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "codeExample",
+          "title": "Tipos Compartilhados",
+          "description": "Tipos compartilhados em monorepo",
+          "code": "// packages/shared/src/types/User.ts\nexport interface User { id: string; name: string; email: string; role: 'admin' | 'user'; }\n\n// apps/frontend e apps/backend importam de @repo/shared\n// Tipos compartilhados. Validações consistentes."
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Casos Reais",
+      "icon": "bulb",
+      "children": [
+        {
+          "type": "iconCards",
+          "cols": { "base": 1, "sm": 1 },
+          "cards": [
+            {
+              "icon": "code",
+              "iconColor": "green",
+              "title": "Empresa grande (1000+ devs)",
+              "description": "Monorepo centralizado com tooling próprio",
+              "items": [
+                "Um repositório para todo código",
+                "Compartilhamento de bibliotecas",
+                "Refatoração segura em larga escala",
+                "Tooling centralizado"
+              ]
+            },
+            {
+              "icon": "building",
+              "iconColor": "blue",
+              "title": "Plataforma multi-produto",
+              "description": "Monorepo para apps que compartilham código",
+              "items": [
+                "Web app, mobile app, admin panel",
+                "Compartilhamento de componentes",
+                "Deploy unificado",
+                "Versionamento coordenado"
+              ]
+            },
+            {
+              "icon": "bulb",
+              "iconColor": "blue",
+              "title": "Streaming multi-device",
+              "description": "Monorepo para múltiplas plataformas",
+              "items": [
+                "Múltiplas plataformas (TV, mobile, web)",
+                "Compartilhamento de lógica de negócio",
+                "Deploy independente",
+                "Testes centralizados"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Armadilhas Comuns",
+      "icon": "alert-triangle",
+      "children": [
+        {
+          "type": "alert",
+          "message": "Build times longos: Monorepos grandes podem ter builds muito lentos. Use build incremental e cache.",
+          "color": "red",
+          "icon": "alert-triangle"
+        },
+        {
+          "type": "alert",
+          "message": "Complexidade de permissões: Múltiplos times podem conflitar. Use CODEOWNERS e branch protection.",
+          "color": "yellow",
+          "icon": "alert-triangle"
+        },
+        {
+          "type": "alert",
+          "message": "Dependências circulares: Projetos podem criar dependências circulares. Use ferramentas como nx ou lerna.",
+          "color": "yellow",
+          "icon": "alert-triangle"
+        },
+        {
+          "type": "alert",
+          "message": "Como evitar: Comece pequeno (monorepo simples antes de complexo). Use ferramentas (Nx, Lerna, Turborepo). Organize bem (estrutura clara e documentada).",
+          "color": "green",
+          "icon": "check"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Referências e Recursos",
+      "icon": "code",
+      "children": [
+        { "type": "title", "content": "Ferramentas", "order": 4 },
+        {
+          "type": "list",
+          "items": [
+            "Nx: Build system para monorepos",
+            "Lerna: Gerenciamento de pacotes",
+            "Turborepo: Build system rápido",
+            "Yarn Workspaces: Workspaces nativos"
+          ]
+        },
+        { "type": "title", "content": "Casos de Sucesso", "order": 4 },
+        {
+          "type": "stack",
+          "gap": "xs",
+          "children": [
+            {
+              "type": "anchor",
+              "label": "Nx: Build system para monorepos",
+              "href": "https://nx.dev/"
+            },
+            {
+              "type": "anchor",
+              "label": "Turborepo: Build system incremental",
+              "href": "https://turbo.build/repo"
+            },
+            {
+              "type": "anchor",
+              "label": "Nrwl: Misconceptions about Monorepos",
+              "href": "https://blog.nrwl.io/misconceptions-about-monorepos-monorepo-monolith-df1250d4b03c"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

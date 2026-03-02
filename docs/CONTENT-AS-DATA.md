@@ -1,49 +1,50 @@
 # Conteúdo como dados (content-driven pages)
 
-As páginas do playbook podem ser **componentes React** (legado) ou **conteúdo em JSON** renderizado por um único componente (`ContentRenderer`). O mesmo JSON serve a aplicação e pode ser consumido pelo MCP.
+As páginas do playbook hoje são duas coisas: **JSON** (a maioria) ou **componente React** (legado). O JSON é desenhado por um componente só, o `ContentRenderer`. O mesmo JSON alimenta a app e o MCP — uma fonte, dois consumidores.
 
-## Análise: páginas e tipos de componentes
+## Quem manda na tela
 
-**Nem tudo é JSON.** Há páginas 100% conteúdo (JSON), páginas que são código (TSX) e blocos dentro do JSON que renderizam componentes React (wizard, comparador, código expansível).
+**Nem tudo é JSON.** Tem página que é 100% JSON, tem página que ainda é TSX, e tem bloco dentro do JSON que chama componente React (wizard, comparador, código expansível).
 
-### Como a rota decide o que renderizar
+### Como a rota escolhe o que mostrar
 
-- **Rota:** `/:collection/:slug` (ex.: `/guides/staff`, `/patterns/clean-architecture`). Um único componente, `DocPage` (`src/pages/DocPage.tsx`), responde.
-- **Decisão:**
-  1. Se `getDocContent(collection, slug)` devolver um `ContentPage` (JSON em `src/data/content/{collection}/{slug}.json`) → usa **ContentRenderer** com esse JSON.
-  2. Senão → usa o **componente React** registrado em `content.tsx` para essa coleção/slug (lazy do `src/content/...`).
+- **Rota:** `/:collection/:slug` (ex.: `/guides/staff`, `/patterns/clean-architecture`). Quem responde é sempre o `DocPage` (`src/pages/DocPage.tsx`).
+- **Lógica:**
+  1. Se existir JSON em `src/data/content/{collection}/{slug}.json` → `getDocContent` devolve esse conteúdo e o **ContentRenderer** desenha.
+  2. Se não existir → usa o **componente React** registrado em `content.tsx` pra essa coleção/slug (lazy do `src/content/...`).
 
-Ou seja: **JSON tem prioridade**. Só cai no TSX se não existir JSON para essa rota.
+Resumo: **JSON ganha**. Só cai no TSX quando não tem JSON pra aquela rota.
 
 ### Três tipos de página
 
-| Tipo                 | Descrição                                                                                                                                                   | Exemplo                                                                                                                            |
-| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| **Conteúdo (JSON)**  | Página definida por um único JSON; `ContentRenderer` desenha hero, sections, listas, alerts, código, etc.                                                   | Guias (dependency-rule, staff, cases, …), best-practices dry e kiss                                                                |
-| **Componente (TSX)** | Página é um componente React em `src/content/` (patterns, architectures, techniques ou best-practices). Pode ter muito código, MDX-like, ou layout próprio. | Architectures (clean-architecture, hexagonal, …), patterns, techniques (performance), best-practices (yagni, clean-code, srp, soc) |
-| **Híbrido**          | Componente TSX que lê dados em JSON; não usa ContentRenderer.                                                                                               | **Glossário:** `GlossaryPage` lê `src/data/glossary/terms.json` (filtro, categorias, links)                                        |
+| Tipo                 | O que é                                                                 | Exemplo                                                                             |
+| -------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| **Conteúdo (JSON)**  | Um JSON; o ContentRenderer monta hero, sections, listas, alerts, código | Guias, best-practices, architectures, patterns, techniques (quase tudo)             |
+| **Componente (TSX)** | Página = componente React em `src/content/` (layout ou lógica própria)  | Hoje só o **glossário** ainda é TSX de página                                       |
+| **Híbrido**          | TSX que lê JSON e desenha à mão                                         | **Glossário:** `GlossaryPage` + `src/data/glossary/terms.json` (filtro, categorias) |
 
-### Blocos no JSON que são componentes (código)
+### Blocos que viram componente
 
-Dentro de uma página “content-driven”, o `body` é só dados; quem desenha é o `ContentRenderer`. Mas vários blocos delegam em **componentes React** com lógica ou interatividade:
+O `body` do JSON é dado puro; o ContentRenderer transforma em UI. Mas alguns blocos **chamam** componente React (lógica ou interação):
 
-| Bloco no JSON            | Componente real                | Dados externos                          |
-| ------------------------ | ------------------------------ | --------------------------------------- |
-| `decisionWizard`         | `DecisionWizard` (lazy)        | Nenhum; estado interno                  |
-| `architectureComparison` | `ArchitectureComparisonWidget` | `src/data/architecture-comparison.json` |
-| `casesGrid`              | `CaseCard` por caso            | `src/data/cases.json`                   |
-| `timeline`               | Mantine `Timeline`             | Items no próprio bloco                  |
-| `codeExample`            | `CodeExample` (expansível)     | Código no próprio bloco                 |
+| Bloco no JSON            | Quem desenha                      | Dados                                   |
+| ------------------------ | --------------------------------- | --------------------------------------- |
+| `decisionWizard`         | `DecisionWizard` (lazy)           | Estado interno                          |
+| `architectureComparison` | `ArchitectureComparisonWidget`    | `src/data/architecture-comparison.json` |
+| `casesGrid`              | `CaseCard` por caso               | `src/data/cases.json`                   |
+| `timeline`               | Mantine `Timeline`                | Items no bloco                          |
+| `codeExample`            | `CodeExample` (expansível)        | Código no bloco                         |
+| `glossary`               | `GlossaryBlock` (filtro + termos) | `src/data/glossary/terms.json`          |
 
-Ou seja: **o conteúdo é JSON, mas layout e interação (wizard, comparador, cards, timeline, código) são componentes.** Ao migrar páginas para JSON, páginas com muito “código” ou UI específica podem continuar TSX ou ganhar blocos como `codeExample` / `code` no JSON.
+Ou seja: **texto e estrutura vêm do JSON; wizard, comparador e código expansível são componentes.** Na migração, página com muita UI específica pode ficar em TSX ou usar `codeExample` / `code` no JSON.
 
 ### Onde está cada tipo (resumo)
 
-- **JSON (ContentRenderer):** `src/data/content/guides/*.json` (16), `src/data/content/best-practices/*.json` (6), `src/data/content/architectures/*.json` (8: layered, bff, headless, pwa, jamstack, monorepo, spa, ssr-ssg). Registro em `content.tsx` com `ContentDrivenPage`.
-- **TSX (componente de página):** `src/content/guides/glossary.tsx`; `src/content/patterns/*.tsx` (architectures + patterns + techniques restantes). Registro em `content.tsx` com `toMeta(LazyComponent, slug, collection, true)`. Layered, BFF, Headless, PWA, JAMstack, Monorepo, SPA e SSR-SSG migrados para JSON.
+- **JSON (ContentRenderer):** `src/data/content/guides/*.json` (17), `src/data/content/best-practices/*.json` (6), `src/data/content/architectures/*.json` (15: layered, bff, headless, pwa, jamstack, monorepo, spa, ssr-ssg, islands-architecture, hexagonal, event-sourcing, cqrs, micro-frontends, microservices-frontend, clean-architecture), `src/data/content/patterns/*.json` (5: repository-pattern, security, event-driven, component-driven, atomic-design), `src/data/content/techniques/*.json` (3: performance, state-machines, feature-flags). Registro em `content.tsx` com `ContentDrivenPage`.
+- **TSX (componente de página):** Nenhum. Todos os guias (incl. glossário), architectures, patterns, techniques e best-practices estão em JSON.
 - **Órfãos:** Nenhum. dry.tsx e kiss.tsx foram removidos (conteúdo em JSON).
 
-Esta análise deve ser tida em conta na marcha de migração: nem tudo precisa virar JSON; páginas muito orientadas a código ou com UI muito específica podem permanecer TSX ou usar blocos como `code` / `codeExample` no JSON.
+Na hora de migrar: nem tudo precisa virar JSON. Página cheia de código ou UI muito específica pode continuar TSX ou ganhar blocos `code` / `codeExample` no JSON.
 
 ---
 
@@ -53,27 +54,27 @@ Ordem = jornada do menu (`src/lib/navigation.ts`). **Fonte única de verdade** p
 
 ### Guias (guides), por seção da jornada
 
-| Seção                    | Slug                    | Fonte             | Observação                                                      |
-| ------------------------ | ----------------------- | ----------------- | --------------------------------------------------------------- |
-| **Por onde começar**     | study-guide             | JSON              | Roteiro por senioridade                                         |
-| **Fundamentos**          | dependency-rule         | JSON              | Regra da cebola (content-driven)                                |
-|                          | how-to-choose           | JSON              | Intro + Decision Wizard (bloco decisionWizard)                  |
-|                          | staff-fundamentals      | JSON              | Staff · Fundamentos                                             |
-| **Construindo UI**       | staff-ui                | JSON              | Staff · UI                                                      |
-| **Entrega**              | staff-entrega           | JSON              | Staff · Entrega                                                 |
-| **Estrutura**            | staff-estrutura         | JSON              | Staff · Estrutura                                               |
-| **Escala**               | staff-escala            | JSON              | Staff · Escala                                                  |
-| **Decisão & Referência** | staff                   | JSON              | Hub Para Staff                                                  |
-|                          | architecture-comparison | JSON              | Comparador interativo (dados em `architecture-comparison.json`) |
-|                          | implementation-roadmap  | JSON              | 4 fases + timeline + tabela (content-driven)                    |
-|                          | migration-strategies    | JSON              | Estratégias de Migração                                         |
-|                          | adr                     | JSON              | ADR - Decision Records                                          |
-|                          | cases                   | JSON              | 19 casos (casesGrid + data/cases.json)                          |
-|                          | security-business       | JSON              | Segurança & Negócio                                             |
-|                          | glossary                | Componente + JSON | GlossaryPage + `terms.json`                                     |
-|                          | mcp                     | JSON              | MCP (Cursor)                                                    |
+| Seção                    | Slug                    | Fonte | Observação                                                      |
+| ------------------------ | ----------------------- | ----- | --------------------------------------------------------------- |
+| **Por onde começar**     | study-guide             | JSON  | Roteiro por senioridade                                         |
+| **Fundamentos**          | dependency-rule         | JSON  | Regra da cebola (content-driven)                                |
+|                          | how-to-choose           | JSON  | Intro + Decision Wizard (bloco decisionWizard)                  |
+|                          | staff-fundamentals      | JSON  | Staff · Fundamentos                                             |
+| **Construindo UI**       | staff-ui                | JSON  | Staff · UI                                                      |
+| **Entrega**              | staff-entrega           | JSON  | Staff · Entrega                                                 |
+| **Estrutura**            | staff-estrutura         | JSON  | Staff · Estrutura                                               |
+| **Escala**               | staff-escala            | JSON  | Staff · Escala                                                  |
+| **Decisão & Referência** | staff                   | JSON  | Hub Para Staff                                                  |
+|                          | architecture-comparison | JSON  | Comparador interativo (dados em `architecture-comparison.json`) |
+|                          | implementation-roadmap  | JSON  | 4 fases + timeline + tabela (content-driven)                    |
+|                          | migration-strategies    | JSON  | Estratégias de Migração                                         |
+|                          | adr                     | JSON  | ADR - Decision Records                                          |
+|                          | cases                   | JSON  | 19 casos (casesGrid + data/cases.json)                          |
+|                          | security-business       | JSON  | Segurança & Negócio                                             |
+|                          | glossary                | JSON  | Hero + bloco `glossary` (lê `src/data/glossary/terms.json`)     |
+|                          | mcp                     | JSON  | MCP (Cursor)                                                    |
 
-**Resumo:** Todos os 16 guias em JSON (content-driven). 1 glossário (componente + `glossary/terms.json`). Architectures, patterns, techniques e best-practices seguem em TSX.
+**Resumo:** 17 guias em JSON (incl. glossário). Architectures, patterns, techniques e best-practices — tudo em JSON. Nenhuma página de conteúdo em TSX.
 
 ---
 
@@ -96,26 +97,27 @@ Ordem sugerida: mais architectures ou patterns para JSON (layered já migrado; b
 ### Outras coleções (architectures, patterns, techniques, best-practices)
 
 - **best-practices:** todas em JSON: `dry`, `kiss`, `yagni`, `clean-code`, `srp`, `soc`. Migração concluída.
-- **architectures:** 8 em JSON: `layered`, `bff`, `headless`, `pwa`, `jamstack`, `monorepo`, `spa`, `ssr-ssg`. Demais TSX.
-- **patterns, techniques:** todas TSX.
+- **architectures:** 15 em JSON: `layered`, `bff`, `headless`, `pwa`, `jamstack`, `monorepo`, `spa`, `ssr-ssg`, `islands-architecture`, `hexagonal`, `event-sourcing`, `cqrs`, `micro-frontends`, `microservices-frontend`, `clean-architecture`. Migração de architectures concluída.
+- **patterns:** todas em JSON: `repository-pattern`, `security`, `event-driven`, `component-driven`, `atomic-design`. Migração concluída.
+- **techniques:** todas em JSON: `performance`, `state-machines`, `feature-flags`. Migração concluída.
 
 ### Glossário
 
 - **Dados:** `src/data/glossary/terms.json` (52 termos, 7 categorias).
-- **Página:** `/guides/glossary` — componente `GlossaryPage` (filtro por categoria, lista, link para guia, referências). Não usa ContentRenderer; lê o JSON diretamente.
+- **Página:** `/guides/glossary` — JSON com hero + bloco `glossary`. O ContentRenderer chama o componente `GlossaryBlock`, que lê `terms.json` e renderiza filtro por categoria + lista de termos.
 
 ### MCP
 
-- O servidor MCP usa `mcp-server/data/content/guides/` e `mcp-server/data/content/best-practices/` (cópia dos JSON). Rodar `npm run prepare-data` no mcp-server para sincronizar. O recurso `playbook://guide/{slug}` e a tool `playbook_get_guide` servem os guias em markdown.
+- O servidor MCP usa `mcp-server/data/content/` (guides, best-practices, architectures, patterns, techniques). Rodar `npm run prepare-data` no mcp-server para sincronizar. O recurso `playbook://guide/{slug}` e a tool `playbook_get_guide` servem os guias em markdown.
 - O glossário (terms.json) hoje não é exposto pelo MCP; pode ser adicionado depois (recurso ou tool por termo/categoria).
 
 ---
 
-## Por que?
+## Por que fazer assim?
 
-- **Uma fonte da verdade:** texto e estrutura em JSON; menos duplicação entre páginas.
-- **Páginas autônomas:** a página é só dados + um componente genérico que sabe renderizar todos os blocos.
-- **Reuso no MCP:** o servidor MCP pode ler os mesmos arquivos JSON e expor título, descrição e corpo (para busca ou exibição no chat).
+- **Uma fonte só:** texto e estrutura no JSON; sem duplicar entre app e MCP.
+- **Página = dados + um renderizador:** um componente genérico desenha todos os blocos; não precisa um TSX por página.
+- **MCP consome o mesmo JSON:** o servidor MCP lê os mesmos arquivos e expõe título, descrição e corpo (busca, chat, etc.).
 
 ## Onde está o quê
 
@@ -153,6 +155,7 @@ Blocos suportados:
 | `decisionWizard`         | Wizard de 6 perguntas (componente interativo)                                |
 | `casesGrid`              | Grid dos 19 casos (lê `src/data/cases.json`); opcional `title`               |
 | `timeline`               | Timeline Mantine (items: title, description?, items[]); opcional resultAlert |
+| `glossary`               | Glossário com filtro por categoria (lê `src/data/glossary/terms.json`)       |
 
 Ícones são chaves (`ContentIconKey`): `check`, `code`, `lock`, `file-text`, `chart-bar`, `rocket`, `shield`, `bulb`, `alert-triangle`, `info-circle`, `arrow-right`, `device-mobile`, `stack`, `scale`, `target`, `puzzle`, `palette`, `building`, `trending-up`, `route`. O renderer mapeia para Tabler Icons.
 
@@ -162,20 +165,20 @@ Todos os 16 guias estão em JSON (ver tabela **Status atual** no topo). Os antig
 
 ## Como migrar uma página para JSON
 
-1. Criar `src/data/content/{collection}/{slug}.json` (ex.: `guides/staff-fundamentals.json`).
-2. Copiar a estrutura da página atual para o schema: hero, sections, listas, cards, etc.
-3. Registrar em `content.tsx` com `ContentDrivenPage` e o slug. Remover o import do componente TSX antigo; o DocPage prioriza JSON quando existe.
+1. Criar o JSON em `src/data/content/{collection}/{slug}.json`.
+2. Montar a página no schema: hero, sections, listas, cards, código — o que a página tiver.
+3. Em `content.tsx`: registrar com `ContentDrivenPage` e o slug; **remover** o import (e o lazy) do TSX antigo. DocPage sempre prefere JSON quando existe.
 
 ## MCP
 
-- O MCP usa `mcp-server/data/content/` (guides, best-practices, architectures). Rodar **`npm run prepare-data`** no `mcp-server` para sincronizar após alterações em `src/data/content/**/*.json`.
+- O MCP usa `mcp-server/data/content/` (guides, best-practices, architectures, patterns, techniques). Rodar **`npm run prepare-data`** no `mcp-server` para sincronizar após alterações em `src/data/content/**/*.json`.
 - O recurso `playbook://guide/{slug}` e a tool `playbook_get_guide` devolvem o conteúdo completo do guia em markdown.
 
 ## Adicionando novos blocos
 
-1. Incluir o tipo em `ContentBlock` em `content-schema.ts`.
-2. Tratar o caso em `ContentRenderer.tsx` em `renderBlock()`.
-3. Se precisar de novo ícone, adicionar em `ContentIconKey` e em `ICON_MAP`.
+1. Declarar o tipo em `ContentBlock` em `content-schema.ts`.
+2. Implementar o caso em `ContentRenderer.tsx` dentro de `renderBlock()`.
+3. Ícone novo: adicionar em `ContentIconKey` e no `ICON_MAP`.
 
 ## Exemplo mínimo de página JSON
 

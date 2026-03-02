@@ -1,0 +1,220 @@
+{
+  "meta": {
+    "title": "Component-Driven Development",
+    "description": "Construa interfaces como Lego com componentes reutilizáveis e composição poderosa."
+  },
+  "layout": {
+    "showRelated": true
+  },
+  "body": [
+    {
+      "type": "hero",
+      "title": "Component-Driven Development",
+      "subtitle": "Construa interfaces como Lego. Componentes reutilizáveis, composição poderosa, design systems que realmente funcionam. Menos código, mais resultado.",
+      "icon": "puzzle"
+    },
+    {
+      "type": "section",
+      "title": "O que é?",
+      "icon": "puzzle",
+      "children": [
+        {
+          "type": "text",
+          "content": "Component-Driven é sobre uma coisa só: construir interfaces como Lego.",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "text",
+          "content": "Pensa assim: você tem peças pequenas (botões, inputs), combina elas em peças médias (formulários, cards), e depois monta telas inteiras. Cada peça funciona sozinha e pode ser reutilizada."
+        },
+        {
+          "type": "text",
+          "content": "A regra é simples: componentes são independentes e reutilizáveis. Você pode testar cada um isoladamente, trocar um sem afetar os outros.",
+          "dimmed": true
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Os 3 Conceitos Principais",
+      "icon": "code",
+      "children": [
+        {
+          "type": "title",
+          "content": "1. Button Atômico",
+          "order": 4
+        },
+        {
+          "type": "text",
+          "content": "Componente atômico reutilizável com variantes.",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "codeExample",
+          "title": "Button Atômico",
+          "description": "Componente atômico reutilizável com variantes.",
+          "code": "import React from 'react';\nimport { ButtonHTMLAttributes } from 'react';\n\ninterface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {\n  variant?: 'primary' | 'secondary';\n}\n\nexport function Button({ variant = 'primary', ...props }: ButtonProps) {\n  return (\n    <button\n      style={{\n        background: variant === 'primary' ? '#228be6' : '#e9ecef',\n        color: variant === 'primary' ? '#fff' : '#222',\n        border: 'none',\n        borderRadius: 4,\n        padding: '8px 16px',\n        fontWeight: 600,\n        cursor: 'pointer',\n      }}\n      {...props}\n    />\n  );\n}"
+        },
+        {
+          "type": "title",
+          "content": "2. Reutilização",
+          "order": 4
+        },
+        {
+          "type": "text",
+          "content": "Mesmo componente usado em diferentes contextos.",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "codeExample",
+          "title": "Reutilização",
+          "description": "Mesmo componente usado em diferentes contextos.",
+          "code": "// Mesmo Button usado em vários lugares\nfunction ProductCard({ product }) {\n  return (\n    <Card>\n      <h3>{product.name}</h3>\n      <Button onClick={() => addToCart(product)}>\n        Adicionar ao Carrinho\n      </Button>\n    </Card>\n  );\n}\n\nfunction CheckoutForm() {\n  return (\n    <form>\n      <Button type=\"submit\" variant=\"primary\">\n        Finalizar Compra\n      </Button>\n      <Button type=\"button\" variant=\"secondary\">\n        Cancelar\n      </Button>\n    </form>\n  );\n}"
+        },
+        {
+          "type": "title",
+          "content": "3. Isolamento",
+          "order": 4
+        },
+        {
+          "type": "text",
+          "content": "Cada componente funciona independentemente.",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "codeExample",
+          "title": "Isolamento",
+          "description": "Cada componente funciona independentemente.",
+          "code": "// Cada componente testado isoladamente\nfunction Button({ children, onClick, variant = 'primary' }) {\n  return (\n    <button \n      className={`btn btn-${variant}`}\n      onClick={onClick}\n    >\n      {children}\n    </button>\n  );\n}\n\n// Teste isolado\nit('should render button with correct text', () => {\n  render(<Button>Click me</Button>);\n  expect(screen.getByText('Click me')).toBeInTheDocument();\n});\n\nit('should call onClick when clicked', () => {\n  const handleClick = jest.fn();\n  render(<Button onClick={handleClick}>Click me</Button>);\n  \n  fireEvent.click(screen.getByText('Click me'));\n  expect(handleClick).toHaveBeenCalled();\n});"
+        },
+        {
+          "type": "callout",
+          "title": "Como funciona",
+          "content": "Componentes atômicos (Button, Input) se juntam em componentes maiores (Form, Card). Cada componente é testado isoladamente e pode ser reutilizado em qualquer lugar. A mudança em um componente se reflete em todos os lugares onde ele é usado."
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Casos Reais",
+      "icon": "bulb",
+      "children": [
+        {
+          "type": "iconCards",
+          "cols": {
+            "base": 1,
+            "sm": 3
+          },
+          "cards": [
+            {
+              "icon": "code",
+              "iconColor": "green",
+              "title": "Design Systems",
+              "description": "Componentes padronizados para toda a empresa",
+              "items": [
+                "Material-UI (Google)",
+                "Ant Design (Alibaba)",
+                "Chakra UI (Independente)",
+                "Mantine (Independente)"
+              ]
+            },
+            {
+              "icon": "puzzle",
+              "iconColor": "blue",
+              "title": "E-commerce",
+              "description": "Componentes reutilizáveis para produtos",
+              "items": [
+                "ProductCard reutilizável",
+                "Button com variações",
+                "Form components padronizados",
+                "Modal e Drawer consistentes"
+              ]
+            },
+            {
+              "icon": "bulb",
+              "iconColor": "purple",
+              "title": "Dashboard",
+              "description": "Componentes para análise de dados",
+              "items": [
+                "Chart components reutilizáveis",
+                "Table com sorting/filtering",
+                "Metric cards padronizados",
+                "Filter components consistentes"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Armadilhas Comuns",
+      "icon": "alert-triangle",
+      "children": [
+        {
+          "type": "alert",
+          "color": "red",
+          "icon": "alert-triangle",
+          "message": "Over-abstraction: Criar componentes muito genéricos que não resolvem problemas específicos. Use YAGNI como guia."
+        },
+        {
+          "type": "alert",
+          "color": "orange",
+          "icon": "alert-triangle",
+          "message": "Props explosion: Componentes com muitas props se tornam difíceis de usar. Use composition over configuration."
+        },
+        {
+          "type": "alert",
+          "color": "yellow",
+          "icon": "alert-triangle",
+          "message": "Inconsistência: Componentes sem padrões claros criam inconsistência visual. Documente e padronize."
+        },
+        {
+          "type": "alert",
+          "color": "green",
+          "icon": "check",
+          "message": "Como evitar: Comece simples (componentes específicos antes de genéricos). Use composition (children props em vez de muitas props). Documente padrões (Storybook e documentação clara)."
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Referências e Recursos",
+      "icon": "code",
+      "children": [
+        {
+          "type": "title",
+          "content": "Ferramentas",
+          "order": 4
+        },
+        {
+          "type": "list",
+          "spacing": "xs",
+          "items": [
+            "Storybook: Documentação de componentes",
+            "Chromatic: Visual testing",
+            "Figma: Design system integration"
+          ]
+        },
+        {
+          "type": "title",
+          "content": "Casos de Sucesso",
+          "order": 4
+        },
+        {
+          "type": "list",
+          "spacing": "xs",
+          "items": [
+            "Storybook - Design Systems for Developers: https://storybook.js.org/tutorials/design-systems-for-developers/",
+            "Chromatic - Component Driven Development: https://www.chromatic.com/blog/component-driven-development/",
+            "Brad Frost - Atomic Web Design: https://bradfrost.com/blog/post/atomic-web-design/"
+          ]
+        }
+      ]
+    }
+  ]
+}

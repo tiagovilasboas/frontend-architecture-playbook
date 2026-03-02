@@ -1,50 +1,5 @@
-import React, { lazy } from 'react';
-import { LazyComponentWrapper } from '../components/LazyWrapper';
+import React from 'react';
 import ContentDrivenPage from '../components/ContentDrivenPage';
-
-// Lazy loading para guides - carregamento sob demanda
-const GlossaryPage = lazy(() => import('../content/guides/glossary.tsx'));
-
-// Lazy loading para patterns - carregamento sob demanda
-const AtomicDesign = lazy(
-  () => import('../content/patterns/atomic-design.tsx')
-);
-const CleanArchitecture = lazy(
-  () => import('../content/patterns/clean-architecture.tsx')
-);
-const ComponentDriven = lazy(
-  () => import('../content/patterns/component-driven.tsx')
-);
-const IslandsArchitecture = lazy(
-  () => import('../content/patterns/islands-architecture.tsx')
-);
-const MicroFrontends = lazy(
-  () => import('../content/patterns/micro-frontends.tsx')
-);
-const StateMachines = lazy(
-  () => import('../content/patterns/state-machines.tsx')
-);
-const EventDriven = lazy(() => import('../content/patterns/event-driven.tsx'));
-const FeatureFlags = lazy(
-  () => import('../content/patterns/feature-flags.tsx')
-);
-const RepositoryPattern = lazy(
-  () => import('../content/patterns/repository-pattern.tsx')
-);
-const SecurityPatterns = lazy(() => import('../content/patterns/security.tsx'));
-const HexagonalArchitecture = lazy(
-  () => import('../content/patterns/hexagonal.tsx')
-);
-const EventSourcingArchitecture = lazy(
-  () => import('../content/patterns/event-sourcing.tsx')
-);
-const CQRSArchitecture = lazy(() => import('../content/patterns/cqrs.tsx'));
-const MicroservicesFrontendArchitecture = lazy(
-  () => import('../content/patterns/microservices-frontend.tsx')
-);
-
-// Lazy loading para techniques - carregamento sob demanda
-const Performance = lazy(() => import('../content/techniques/performance.tsx'));
 
 export type CollectionType =
   | 'guides'
@@ -59,7 +14,6 @@ export interface DocMeta {
   description?: string;
   collection: CollectionType;
   component: React.ComponentType;
-  lazy?: boolean;
 }
 
 // Metadados estáticos para evitar problemas com lazy loading
@@ -267,15 +221,13 @@ const STATIC_METADATA = {
 function toMeta(
   module: unknown,
   slug: string,
-  collection: CollectionType,
-  lazy = false
+  collection: CollectionType
 ): DocMeta {
   const moduleWithMetadata = module as {
     metadata?: { title?: string; description?: string };
     default?: { metadata?: { title?: string; description?: string } };
   };
 
-  // Usar metadados estáticos para evitar problemas com lazy loading
   const staticMeta =
     STATIC_METADATA[slug as keyof typeof STATIC_METADATA] || {};
   const dynamicMeta =
@@ -289,33 +241,30 @@ function toMeta(
     collection,
     title: staticMeta.title || dynamicMeta.title || slug,
     description: staticMeta.description || dynamicMeta.description || '',
-    component: lazy
-      ? () => <LazyComponentWrapper component={Component} />
-      : Component,
-    lazy,
+    component: Component,
   };
 }
 
 // Organização por categorias com comentários explicativos
 // Fluxo sequencial: Fundamento → Escolha → Análise → Validação
 export const guides: DocMeta[] = [
-  toMeta(ContentDrivenPage, 'dependency-rule', 'guides', false), // 1. Fundamento (content JSON)
-  toMeta(ContentDrivenPage, 'how-to-choose', 'guides', false), // 2. Escolha (content JSON + decisionWizard)
-  toMeta(ContentDrivenPage, 'architecture-comparison', 'guides', false), // 3. Análise (content JSON + ArchitectureComparisonWidget)
-  toMeta(ContentDrivenPage, 'cases', 'guides', false), // 4. Validação (content JSON + casesGrid)
-  toMeta(ContentDrivenPage, 'implementation-roadmap', 'guides', false), // 5. Implementação (content JSON + timeline)
-  toMeta(ContentDrivenPage, 'migration-strategies', 'guides', false), // 6. Migração (content JSON)
-  toMeta(ContentDrivenPage, 'adr', 'guides', false), // 7. Documentação de decisões (content JSON)
-  toMeta(ContentDrivenPage, 'mcp', 'guides', false), // 8. MCP (Cursor, content JSON)
-  toMeta(ContentDrivenPage, 'security-business', 'guides', false), // 9. Segurança & Negócio (content JSON)
-  toMeta(ContentDrivenPage, 'study-guide', 'guides', false), // 10. Por onde começar (content JSON)
-  toMeta(ContentDrivenPage, 'staff', 'guides', false), // 11. Para Staff (hub, content JSON)
-  toMeta(ContentDrivenPage, 'staff-fundamentals', 'guides', false), // 12. Staff · Fundamentos (content JSON)
-  toMeta(ContentDrivenPage, 'staff-ui', 'guides', false), // 13. Staff · UI (content JSON)
-  toMeta(ContentDrivenPage, 'staff-entrega', 'guides', false), // 14. Staff · Entrega (content JSON)
-  toMeta(ContentDrivenPage, 'staff-estrutura', 'guides', false), // 15. Staff · Estrutura (content JSON)
-  toMeta(ContentDrivenPage, 'staff-escala', 'guides', false), // 16. Staff · Escala (content JSON)
-  toMeta(GlossaryPage, 'glossary', 'guides', true), // 17. Glossário (conceitos)
+  toMeta(ContentDrivenPage, 'dependency-rule', 'guides'), // 1. Fundamento (content JSON)
+  toMeta(ContentDrivenPage, 'how-to-choose', 'guides'), // 2. Escolha (content JSON + decisionWizard)
+  toMeta(ContentDrivenPage, 'architecture-comparison', 'guides'), // 3. Análise (content JSON + ArchitectureComparisonWidget)
+  toMeta(ContentDrivenPage, 'cases', 'guides'), // 4. Validação (content JSON + casesGrid)
+  toMeta(ContentDrivenPage, 'implementation-roadmap', 'guides'), // 5. Implementação (content JSON + timeline)
+  toMeta(ContentDrivenPage, 'migration-strategies', 'guides'), // 6. Migração (content JSON)
+  toMeta(ContentDrivenPage, 'adr', 'guides'), // 7. Documentação de decisões (content JSON)
+  toMeta(ContentDrivenPage, 'mcp', 'guides'), // 8. MCP (Cursor, content JSON)
+  toMeta(ContentDrivenPage, 'security-business', 'guides'), // 9. Segurança & Negócio (content JSON)
+  toMeta(ContentDrivenPage, 'study-guide', 'guides'), // 10. Por onde começar (content JSON)
+  toMeta(ContentDrivenPage, 'staff', 'guides'), // 11. Para Staff (hub, content JSON)
+  toMeta(ContentDrivenPage, 'staff-fundamentals', 'guides'), // 12. Staff · Fundamentos (content JSON)
+  toMeta(ContentDrivenPage, 'staff-ui', 'guides'), // 13. Staff · UI (content JSON)
+  toMeta(ContentDrivenPage, 'staff-entrega', 'guides'), // 14. Staff · Entrega (content JSON)
+  toMeta(ContentDrivenPage, 'staff-estrutura', 'guides'), // 15. Staff · Estrutura (content JSON)
+  toMeta(ContentDrivenPage, 'staff-escala', 'guides'), // 16. Staff · Escala (content JSON)
+  toMeta(ContentDrivenPage, 'glossary', 'guides'), // 17. Glossário (conceitos)
 ];
 
 /** Slug order for GuideNavigation (sidebar "Todos os Guias"). Single source of truth. */
@@ -356,60 +305,55 @@ export function getGuideNavItems(): GuideNavItem[] {
 // Arquiteturas organizadas por complexidade e popularidade
 export const architectures: DocMeta[] = [
   // 🚀 FUNDAMENTAIS (mais usadas)
-  toMeta(ContentDrivenPage, 'spa', 'architectures', false),
-  toMeta(ContentDrivenPage, 'ssr-ssg', 'architectures', false),
-  toMeta(ContentDrivenPage, 'jamstack', 'architectures', false),
-  toMeta(ContentDrivenPage, 'pwa', 'architectures', false),
+  toMeta(ContentDrivenPage, 'spa', 'architectures'),
+  toMeta(ContentDrivenPage, 'ssr-ssg', 'architectures'),
+  toMeta(ContentDrivenPage, 'jamstack', 'architectures'),
+  toMeta(ContentDrivenPage, 'pwa', 'architectures'),
 
   // 🏗️ PADRÕES DE DESIGN (Clean Architecture)
-  toMeta(CleanArchitecture, 'clean-architecture', 'architectures', true),
-  toMeta(ContentDrivenPage, 'layered', 'architectures', false),
-  toMeta(HexagonalArchitecture, 'hexagonal', 'architectures', true),
+  toMeta(ContentDrivenPage, 'clean-architecture', 'architectures'),
+  toMeta(ContentDrivenPage, 'layered', 'architectures'),
+  toMeta(ContentDrivenPage, 'hexagonal', 'architectures'),
 
   // 🔌 INTEGRAÇÃO E API
-  toMeta(ContentDrivenPage, 'bff', 'architectures', false),
-  toMeta(ContentDrivenPage, 'headless', 'architectures', false),
+  toMeta(ContentDrivenPage, 'bff', 'architectures'),
+  toMeta(ContentDrivenPage, 'headless', 'architectures'),
 
   // 🧩 MODULARIZAÇÃO (Micro-frontends)
-  toMeta(MicroFrontends, 'micro-frontends', 'architectures', true),
-  toMeta(
-    MicroservicesFrontendArchitecture,
-    'microservices-frontend',
-    'architectures',
-    true
-  ),
-  toMeta(ContentDrivenPage, 'monorepo', 'architectures', false),
+  toMeta(ContentDrivenPage, 'micro-frontends', 'architectures'),
+  toMeta(ContentDrivenPage, 'microservices-frontend', 'architectures'),
+  toMeta(ContentDrivenPage, 'monorepo', 'architectures'),
 
   // ⚡ AVANÇADAS (Event-driven, Performance)
-  toMeta(EventSourcingArchitecture, 'event-sourcing', 'architectures', true),
-  toMeta(CQRSArchitecture, 'cqrs', 'architectures', true),
-  toMeta(IslandsArchitecture, 'islands-architecture', 'architectures', true),
+  toMeta(ContentDrivenPage, 'event-sourcing', 'architectures'),
+  toMeta(ContentDrivenPage, 'cqrs', 'architectures'),
+  toMeta(ContentDrivenPage, 'islands-architecture', 'architectures'),
 ];
 
 // Padrões de design - organização de componentes
 export const patterns: DocMeta[] = [
-  toMeta(ComponentDriven, 'component-driven', 'patterns', true),
-  toMeta(AtomicDesign, 'atomic-design', 'patterns', true),
-  toMeta(EventDriven, 'event-driven', 'patterns', true),
-  toMeta(RepositoryPattern, 'repository-pattern', 'patterns', true),
-  toMeta(SecurityPatterns, 'security', 'patterns', true),
+  toMeta(ContentDrivenPage, 'component-driven', 'patterns'),
+  toMeta(ContentDrivenPage, 'atomic-design', 'patterns'),
+  toMeta(ContentDrivenPage, 'event-driven', 'patterns'),
+  toMeta(ContentDrivenPage, 'repository-pattern', 'patterns'),
+  toMeta(ContentDrivenPage, 'security', 'patterns'),
 ];
 
 // Técnicas de desenvolvimento - ferramentas e estratégias
 export const techniques: DocMeta[] = [
-  toMeta(FeatureFlags, 'feature-flags', 'techniques', true),
-  toMeta(StateMachines, 'state-machines', 'techniques', true),
-  toMeta(Performance, 'performance', 'techniques', true),
+  toMeta(ContentDrivenPage, 'feature-flags', 'techniques'),
+  toMeta(ContentDrivenPage, 'state-machines', 'techniques'),
+  toMeta(ContentDrivenPage, 'performance', 'techniques'),
 ];
 
 // Boas práticas - princípios fundamentais de código limpo
 export const bestPractices: DocMeta[] = [
-  toMeta(ContentDrivenPage, 'dry', 'best-practices', false),
-  toMeta(ContentDrivenPage, 'kiss', 'best-practices', false),
-  toMeta(ContentDrivenPage, 'yagni', 'best-practices', false),
-  toMeta(ContentDrivenPage, 'clean-code', 'best-practices', false),
-  toMeta(ContentDrivenPage, 'srp', 'best-practices', false),
-  toMeta(ContentDrivenPage, 'soc', 'best-practices', false),
+  toMeta(ContentDrivenPage, 'dry', 'best-practices'),
+  toMeta(ContentDrivenPage, 'kiss', 'best-practices'),
+  toMeta(ContentDrivenPage, 'yagni', 'best-practices'),
+  toMeta(ContentDrivenPage, 'clean-code', 'best-practices'),
+  toMeta(ContentDrivenPage, 'srp', 'best-practices'),
+  toMeta(ContentDrivenPage, 'soc', 'best-practices'),
 ];
 
 // Mapa de coleções para facilitar lookup

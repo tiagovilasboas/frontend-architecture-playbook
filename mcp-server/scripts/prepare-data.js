@@ -4,6 +4,9 @@
  * so the MCP server can serve full content as markdown.
  * - guides → mcp-server/data/content/guides
  * - best-practices → mcp-server/data/content/best-practices
+ * - architectures → mcp-server/data/content/architectures
+ * - patterns → mcp-server/data/content/patterns
+ * - techniques → mcp-server/data/content/techniques
  *
  * Run from repo root: cd mcp-server && node scripts/prepare-data.js
  * Or: npm run prepare-data
@@ -43,7 +46,9 @@ function copyCollection(collection) {
 copyCollection('guides');
 copyCollection('best-practices');
 copyCollection('architectures');
+copyCollection('patterns');
+copyCollection('techniques');
 
 console.log(
-  'Done. Content is in mcp-server/data/content/ (guides, best-practices, architectures)'
+  'Done. Content is in mcp-server/data/content/ (guides, best-practices, architectures, patterns, techniques)'
 );

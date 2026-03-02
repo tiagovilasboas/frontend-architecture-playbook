@@ -1,0 +1,216 @@
+{
+  "meta": {
+    "title": "State Machines",
+    "description": "Máquinas de estado para controlar comportamento da aplicação. Estados previsíveis, transições claras."
+  },
+  "layout": {
+    "showRelated": true
+  },
+  "body": [
+    {
+      "type": "hero",
+      "title": "State Machines",
+      "subtitle": "Estados previsíveis, transições claras, bugs impossíveis. Lógica de negócio organizada, comportamento controlado.",
+      "icon": "code"
+    },
+    {
+      "type": "section",
+      "title": "O que é?",
+      "icon": "code",
+      "children": [
+        {
+          "type": "text",
+          "content": "State Machines é sobre uma coisa só: estados previsíveis.",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "text",
+          "content": "Pensa assim: ao invés de variáveis soltas e lógica espalhada, você tem estados bem definidos e transições claras. Cada estado tem comportamentos específicos, cada transição tem regras."
+        },
+        {
+          "type": "text",
+          "content": "A regra é simples: estado atual + evento = próximo estado. Sem surpresas, sem bugs impossíveis, comportamento controlado.",
+          "dimmed": true
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Os 3 Conceitos Principais",
+      "icon": "code",
+      "children": [
+        {
+          "type": "title",
+          "content": "1. Estados",
+          "order": 4
+        },
+        {
+          "type": "text",
+          "content": "Condições bem definidas da aplicação. Cada estado tem comportamentos específicos.",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "codeExample",
+          "title": "State Machine Simples",
+          "description": "State machine simples",
+          "code": "// State Machine Simples\nconst trafficLightMachine = {\n  initial: 'red',\n  states: {\n    red: {\n      on: { NEXT: 'green' }\n    },\n    green: {\n      on: { NEXT: 'yellow' }\n    },\n    yellow: {\n      on: { NEXT: 'red' }\n    }\n  }\n};\n\n// Uso\nconst [state, send] = useMachine(trafficLightMachine);\n\n// state.value = 'red'\n// send('NEXT') -> 'green'\n// send('NEXT') -> 'yellow'\n// send('NEXT') -> 'red'"
+        },
+        {
+          "type": "title",
+          "content": "2. Eventos",
+          "order": 4
+        },
+        {
+          "type": "text",
+          "content": "Ações que causam transições. Cada evento pode mudar o estado.",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "codeExample",
+          "title": "State Machine Complexa",
+          "description": "State machine complexa",
+          "code": "// State Machine Complexa\nconst orderMachine = {\n  initial: 'idle',\n  states: {\n    idle: {\n      on: { ADD_ITEM: 'cart' }\n    },\n    cart: {\n      on: {\n        CHECKOUT: 'checkout',\n        REMOVE_ALL: 'idle'\n      }\n    },\n    checkout: {\n      on: {\n        PAY: 'payment',\n        CANCEL: 'cart'\n      }\n    },\n    payment: {\n      on: {\n        SUCCESS: 'confirmed',\n        FAIL: 'checkout'\n      }\n    },\n    confirmed: {\n      type: 'final'\n    }\n  }\n};"
+        },
+        {
+          "type": "title",
+          "content": "3. Transições",
+          "order": 4
+        },
+        {
+          "type": "text",
+          "content": "Regras que definem como mudar de estado. Cada transição tem condições e ações.",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "codeExample",
+          "title": "Actions e Guards",
+          "description": "Actions e guards em state machines",
+          "code": "// Actions e Guards\nconst loginMachine = {\n  initial: 'idle',\n  states: {\n    idle: {\n      on: { SUBMIT: 'loading' }\n    },\n    loading: {\n      invoke: {\n        src: 'loginService',\n        onDone: 'success',\n        onError: 'error'\n      }\n    },\n    success: {\n      type: 'final'\n    },\n    error: {\n      on: { RETRY: 'loading' }\n    }\n  }\n};\n\n// Guards\nconst guardedMachine = {\n  initial: 'idle',\n  states: {\n    idle: {\n      on: {\n        SUBMIT: {\n          target: 'loading',\n          cond: 'isValidForm'\n        }\n      }\n    }\n  }\n};"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Casos Reais",
+      "icon": "bulb",
+      "children": [
+        {
+          "type": "iconCards",
+          "cols": {
+            "base": 1,
+            "sm": 3
+          },
+          "cards": [
+            {
+              "icon": "code",
+              "iconColor": "green",
+              "title": "E-commerce Checkout",
+              "description": "Estados do processo de compra",
+              "items": [
+                "Cart → Payment → Confirmation",
+                "Estados bem definidos",
+                "Transições controladas",
+                "Sem estados inválidos"
+              ]
+            },
+            {
+              "icon": "code",
+              "iconColor": "blue",
+              "title": "Formulários",
+              "description": "Estados de validação",
+              "items": [
+                "Empty → Validating → Valid/Invalid",
+                "Comportamento previsível",
+                "Feedback claro",
+                "Estados impossíveis"
+              ]
+            },
+            {
+              "icon": "bulb",
+              "iconColor": "purple",
+              "title": "Game Logic",
+              "description": "Estados do jogo",
+              "items": [
+                "Menu → Playing → Paused → Game Over",
+                "Transições claras",
+                "Comportamento controlado",
+                "Bugs impossíveis"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Armadilhas Comuns",
+      "icon": "alert-triangle",
+      "children": [
+        {
+          "type": "alert",
+          "color": "red",
+          "icon": "alert-triangle",
+          "message": "Over-engineering: State machines para problemas simples. Use apenas quando há estados complexos."
+        },
+        {
+          "type": "alert",
+          "color": "orange",
+          "icon": "alert-triangle",
+          "message": "Estados inválidos: Estados que não deveriam existir. Defina todos os estados possíveis e transições."
+        },
+        {
+          "type": "alert",
+          "color": "yellow",
+          "icon": "alert-triangle",
+          "message": "Complexidade desnecessária: Muitos estados podem complicar. Mantenha simples e claro."
+        },
+        {
+          "type": "alert",
+          "color": "green",
+          "icon": "check",
+          "message": "Como evitar: Use quando necessário (estados complexos apenas). Defina todos os estados (não deixe estados inválidos). Mantenha simples (menos estados, mais clareza)."
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Referências e Recursos",
+      "icon": "code",
+      "children": [
+        {
+          "type": "title",
+          "content": "Ferramentas",
+          "order": 4
+        },
+        {
+          "type": "list",
+          "spacing": "xs",
+          "items": [
+            "XState: State machine library for JavaScript",
+            "Robot: Functional, immutable finite state machines",
+            "Redux Toolkit: State management with reducers",
+            "Zustand: Simple state management"
+          ]
+        },
+        {
+          "type": "title",
+          "content": "Casos de Sucesso",
+          "order": 4
+        },
+        {
+          "type": "list",
+          "spacing": "xs",
+          "items": [
+            "XState: https://xstate.js.org/",
+            "Stately: https://stately.ai/blog/what-are-state-machines",
+            "David Khourshid - State Machines in React: https://www.youtube.com/watch?v=VU1NKX6Qkxc"
+          ]
+        }
+      ]
+    }
+  ]
+}

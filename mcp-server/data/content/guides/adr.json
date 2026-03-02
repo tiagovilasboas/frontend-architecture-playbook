@@ -11,7 +11,7 @@
     {
       "type": "hero",
       "title": "ADR - Architecture Decision Records",
-      "subtitle": "Documente decisões arquiteturais para que o time futuro entenda o porquê, não só o quê."
+      "subtitle": "Daqui a 6 meses ninguém lembra por que escolheu X. ADR guarda o porquê — contexto, alternativas e consequências. Pro time futuro (que pode ser você)."
     },
     {
       "type": "section",
@@ -20,7 +20,7 @@
       "children": [
         {
           "type": "text",
-          "content": "Um Architecture Decision Record é um documento curto que captura uma decisão arquitetural importante junto com seu contexto, alternativas consideradas, e consequências. O objetivo é criar um registro histórico que explica por que a decisão foi tomada, não apenas o que foi decidido."
+          "content": "ADR é um doc curto: uma decisão importante + contexto + alternativas que a gente descartou + consequências. Objetivo: daqui a um tempo qualquer um entende por que a decisão foi tomada — não só o quê, mas o porquê."
         },
         {
           "type": "alert",

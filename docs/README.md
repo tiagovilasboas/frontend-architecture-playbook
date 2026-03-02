@@ -1,35 +1,33 @@
-# Documentação do Projeto
+# Docs do Playbook
 
-Documentação do Frontend Architecture Playbook.
+Onde tá cada coisa e pra que serve. Sem enrolação.
 
-## Status rápido
+## O que tem aqui
 
-| O quê                                                                                                     | Onde                                       |
-| --------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
-| **Conteúdo e páginas** (quem é JSON, quem é TSX) + **análise de páginas e componentes** + próximos passos | [CONTENT-AS-DATA.md](CONTENT-AS-DATA.md)   |
-| **Estrutura lógica** (jornada, seções, links)                                                             | [ESTRUTURA-LOGICA.md](ESTRUTURA-LOGICA.md) |
-| **Glossário** (termos e categorias)                                                                       | `src/data/glossary/terms.json`             |
-| **Navegação** (menu, prev/next, breadcrumb)                                                               | `src/lib/navigation.ts`                    |
+| O quê                                                           | Onde                                       |
+| --------------------------------------------------------------- | ------------------------------------------ |
+| **Conteúdo em JSON vs TSX** — quem é o quê, como migrar, schema | [CONTENT-AS-DATA.md](CONTENT-AS-DATA.md)   |
+| **Estrutura do playbook** — jornada, seções, links              | [ESTRUTURA-LOGICA.md](ESTRUTURA-LOGICA.md) |
+| **Glossário** — termos e categorias                             | `src/data/glossary/terms.json`             |
+| **Menu e navegação** — prev/next, breadcrumb                    | `src/lib/navigation.ts`                    |
 
 ---
 
-## Referências para atividades
+## Preciso fazer X — qual doc abro?
 
-Use estes docs ao fazer **conteúdo**, **glossário**, **UI** ou **estrutura**:
+| Quero…                                         | Abre isso                                                                                  |
+| ---------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| Entender o playbook (rotas, conteúdo, jornada) | [PLAYBOOK-FULL-ANALYSIS.md](PLAYBOOK-FULL-ANALYSIS.md)                                     |
+| Validar seção/link/fluxo                       | [ESTRUTURA-LOGICA.md](ESTRUTURA-LOGICA.md)                                                 |
+| Pensar em UX e valor pro dev                   | [PLAYBOOK-UX-VALOR-DEV.md](PLAYBOOK-UX-VALOR-DEV.md)                                       |
+| Mapear termo técnico (guia vs glossário)       | [PROPOSTA-GLOSSARIO-CONCEITOS.md](PROPOSTA-GLOSSARIO-CONCEITOS.md)                         |
+| Preencher glossário em levas                   | [GLOSSARIO-BABY-STEPS-PLAN.md](GLOSSARIO-BABY-STEPS-PLAN.md)                               |
+| Alinhar emoji/ícone (evitar duplicata)         | [ANALISE-EMOJI-SETA-ICONES.md](ANALISE-EMOJI-SETA-ICONES.md)                               |
+| **Validar JSON + blocos**                      | `npm test -- content-validation` (teste em `src/lib/__tests__/content-validation.test.ts`) |
+| Migrar página pra JSON                         | [CONTENT-AS-DATA.md](CONTENT-AS-DATA.md) — schema, blocos, ordem                           |
+| Layout e decisões de UI                        | [LAYOUT-E-ANALISE.md](LAYOUT-E-ANALISE.md)                                                 |
 
-| Atividade                                       | Doc                                                                | Uso                                                                                                                                                                               |
-| ----------------------------------------------- | ------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Entender o playbook (rotas, conteúdo, jornada)  | [PLAYBOOK-FULL-ANALYSIS.md](PLAYBOOK-FULL-ANALYSIS.md)             | Estrutura, navegação, content-driven vs legacy, gaps.                                                                                                                             |
-| Validar estrutura lógica (seções, links, fluxo) | [ESTRUTURA-LOGICA.md](ESTRUTURA-LOGICA.md)                         | Jornada, agrupamento, coerência.                                                                                                                                                  |
-| Decidir valor ao dev (UX, escaneabilidade)      | [PLAYBOOK-UX-VALOR-DEV.md](PLAYBOOK-UX-VALOR-DEV.md)               | Progressive disclosure, glossário.                                                                                                                                                |
-| Mapear termos técnicos                          | [PROPOSTA-GLOSSARIO-CONCEITOS.md](PROPOSTA-GLOSSARIO-CONCEITOS.md) | Onde cada termo encaixa (guia vs glossário).                                                                                                                                      |
-| Preencher glossário em levas                    | [GLOSSARIO-BABY-STEPS-PLAN.md](GLOSSARIO-BABY-STEPS-PLAN.md)       | Ordem das levas, formato do verbete.                                                                                                                                              |
-| Evitar emoji/seta duplicada, alinhar ícones     | [ANALISE-EMOJI-SETA-ICONES.md](ANALISE-EMOJI-SETA-ICONES.md)       | Duplicatas, alinhamento.                                                                                                                                                          |
-| **Validar conteúdo (JSON + emojis)**            | `npm test -- content-validation`                                   | Teste em `src/lib/__tests__/content-validation.test.ts`: estrutura ContentPage, blocos com type conhecido, glossário, e bloqueio de emoji em título quando o bloco já tem `icon`. |
-| Migrar conteúdo para JSON                       | [CONTENT-AS-DATA.md](CONTENT-AS-DATA.md)                           | Schema, blocos, links, ordem de migração.                                                                                                                                         |
-| Layout e análise                                | [LAYOUT-E-ANALISE.md](LAYOUT-E-ANALISE.md)                         | Como o layout foi pensado.                                                                                                                                                        |
-
-Dados fora dos docs: guias em `src/data/content/guides/*.json`; glossário em `src/data/glossary/terms.json`.
+Dados: guias em `src/data/content/guides/*.json`; glossário em `src/data/glossary/terms.json`.
 
 ---
 
@@ -37,28 +35,28 @@ Dados fora dos docs: guias em `src/data/content/guides/*.json`; glossário em `s
 
 ```
 docs/
-├── README.md                           # Este arquivo (índice e status)
-├── CONTENT-AS-DATA.md                  # Status conteúdo + schema + migração
-├── ESTRUTURA-LOGICA.md                 # Avaliação da estrutura (jornada, seções)
-├── PLAYBOOK-FULL-ANALYSIS.md           # Análise completa do playbook
-├── PLAYBOOK-UX-VALOR-DEV.md            # UX e valor ao dev
-├── PLAYBOOK_ANALISE_STAFF_PRINCIPAL.md # Análise nível Staff/Principal
-├── ANALISE-EMOJI-SETA-ICONES.md        # Emoji/seta e ícones
-├── ANALISE-IMPACTO-STAFF.md            # Impacto conteúdo Staff
-├── ANALISE-NIVEL-STAFF.md              # Análise nível Staff
-├── PROPOSTA-GLOSSARIO-CONCEITOS.md     # Mapeamento termo → guia/glossário
-├── GLOSSARIO-BABY-STEPS-PLAN.md        # Plano em levas do glossário
-├── LAYOUT-E-ANALISE.md                 # Layout e análise
-├── ROADMAP.md                          # Roadmap do projeto
-├── ux-mobile-menu.md                   # UX do menu mobile
-└── adr/                                # Architecture Decision Records
+├── README.md                    ← você está aqui (índice)
+├── CONTENT-AS-DATA.md           ← conteúdo como dados + migração
+├── ESTRUTURA-LOGICA.md          ← jornada e seções
+├── PLAYBOOK-FULL-ANALYSIS.md    ← análise geral
+├── PLAYBOOK-UX-VALOR-DEV.md     ← UX e valor pro dev
+├── PLAYBOOK_ANALISE_STAFF_PRINCIPAL.md
+├── ANALISE-EMOJI-SETA-ICONES.md
+├── ANALISE-IMPACTO-STAFF.md
+├── ANALISE-NIVEL-STAFF.md
+├── PROPOSTA-GLOSSARIO-CONCEITOS.md
+├── GLOSSARIO-BABY-STEPS-PLAN.md
+├── LAYOUT-E-ANALISE.md
+├── ROADMAP.md                   ← roadmap do projeto
+├── ux-mobile-menu.md
+└── adr/                         ← decisões arquiteturais (ADRs)
     ├── README.md
     └── 001-visualizations-and-comparisons.md
 ```
 
 ---
 
-## Planejamento e ADR
+## Roadmap e decisões
 
-- **ROADMAP.md**: Roadmap e planejamento futuro.
-- **adr/**: Architecture Decision Records – decisões arquiteturais e escolhas de tecnologia.
+- **ROADMAP.md** — o que tá planejado, por quando, prioridade.
+- **adr/** — Architecture Decision Records: decisão + contexto + consequência. Quando alguém perguntar “por que a gente fez assim?”, a resposta tá aqui.

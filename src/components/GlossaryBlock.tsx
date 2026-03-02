@@ -1,23 +1,16 @@
 import React, { useMemo, useState } from 'react';
 import {
-  Title,
   Text,
   Stack,
   Paper,
   Group,
   Anchor,
-  ThemeIcon,
   SegmentedControl,
-  Box,
   List,
 } from '@mantine/core';
-import {
-  IconBook2,
-  IconArrowRight,
-  IconExternalLink,
-} from '@tabler/icons-react';
+import { IconArrowRight, IconExternalLink } from '@tabler/icons-react';
 import { Link } from 'react-router-dom';
-import glossaryData from '../../data/glossary/terms.json';
+import glossaryData from '../data/glossary/terms.json';
 
 interface GlossaryReference {
   label: string;
@@ -49,15 +42,14 @@ const data = glossaryData as {
 
 const ALL_ID = 'all';
 
-export default function GlossaryPage() {
+export default function GlossaryBlock() {
   const [category, setCategory] = useState<string>(ALL_ID);
 
   const categories = useMemo(() => {
-    const list = [
+    return [
       { id: ALL_ID, label: 'Todos', order: 0 },
       ...(data.categories ?? []).sort((a, b) => a.order - b.order),
     ];
-    return list;
   }, []);
 
   const terms = useMemo(() => {
@@ -67,24 +59,7 @@ export default function GlossaryPage() {
   }, [category]);
 
   return (
-    <Stack gap="xl">
-      <Box>
-        <Group gap="sm" mb="md">
-          <ThemeIcon size="xl" radius="md" variant="light" color="brand">
-            <IconBook2 size={28} />
-          </ThemeIcon>
-          <div>
-            <Title order={1} size="h1">
-              Glossário
-            </Title>
-            <Text size="lg" c="dimmed" mt="xs">
-              Conceitos de front-end com definição curta e link para o guia que
-              aprofunda.
-            </Text>
-          </div>
-        </Group>
-      </Box>
-
+    <>
       {categories.length > 1 && (
         <SegmentedControl
           value={category}
@@ -94,10 +69,11 @@ export default function GlossaryPage() {
           size="sm"
         />
       )}
-
       <Stack gap="md">
         {terms.length === 0 ? (
-          <Text c="dimmed">Nenhum termo nesta categoria.</Text>
+          <Text c="dimmed" size="sm">
+            Nenhum termo nesta categoria.
+          </Text>
         ) : (
           terms.map(term => (
             <Paper
@@ -109,9 +85,9 @@ export default function GlossaryPage() {
             >
               <Stack gap="xs">
                 <Group gap="xs" wrap="nowrap" align="flex-start">
-                  <Title order={3} size="h4" style={{ lineHeight: 1.2 }}>
+                  <Text fw={600} size="md" style={{ lineHeight: 1.2 }}>
                     {term.term}
-                  </Title>
+                  </Text>
                   {term.termPt && term.termPt !== term.term && (
                     <Text size="sm" c="dimmed" fs="italic">
                       {term.termPt}
@@ -168,6 +144,6 @@ export default function GlossaryPage() {
           ))
         )}
       </Stack>
-    </Stack>
+    </>
   );
 }

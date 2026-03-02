@@ -1,0 +1,274 @@
+{
+  "meta": {
+    "title": "Single Page Application",
+    "description": "Uma página, múltiplas rotas. JavaScript renderiza tudo, navegação instantânea, experiência de app nativo."
+  },
+  "layout": { "showRelated": true },
+  "body": [
+    {
+      "type": "hero",
+      "title": "Single Page Application",
+      "subtitle": "Uma página, múltiplas rotas. JavaScript renderiza tudo, navegação instantânea, experiência de app nativo.",
+      "icon": "route"
+    },
+    {
+      "type": "section",
+      "title": "O que é?",
+      "icon": "code",
+      "children": [
+        {
+          "type": "text",
+          "content": "Aplicação que roda em uma única página HTML",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "text",
+          "content": "Single Page Application é sobre uma coisa só: JavaScript renderiza tudo."
+        },
+        {
+          "type": "text",
+          "content": "Pensa assim: ao invés de servidor renderizar cada página, você tem uma página HTML que carrega JavaScript. O JavaScript renderiza diferentes componentes baseado na URL."
+        },
+        {
+          "type": "text",
+          "content": "A regra é simples: uma página, múltiplas rotas, JavaScript controla tudo. Navegação instantânea, experiência de app nativo, sem reload."
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Os 3 Conceitos Principais",
+      "icon": "rocket",
+      "children": [
+        {
+          "type": "title",
+          "content": "Uma Página HTML",
+          "order": 3
+        },
+        {
+          "type": "text",
+          "content": "Página inicial que carrega JavaScript. O resto é renderizado pelo JavaScript.",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "codeExample",
+          "title": "Client-side Routing",
+          "description": "Client-side routing em Single Page Application",
+          "code": "// Client-side Routing\nimport { BrowserRouter, Routes, Route } from 'react-router-dom';\n\nfunction App() {\n  return (\n    <BrowserRouter>\n      <Routes>\n        <Route path=\"/\" element={<Home />} />\n        <Route path=\"/products\" element={<Products />} />\n        <Route path=\"/products/:id\" element={<ProductDetail />} />\n        <Route path=\"/cart\" element={<Cart />} />\n        <Route path=\"*\" element={<NotFound />} />\n      </Routes>\n    </BrowserRouter>\n  );\n}\n\n// Navegação sem reload. URLs limpas. Transições suaves."
+        },
+        {
+          "type": "title",
+          "content": "Roteamento Client-Side",
+          "order": 3
+        },
+        {
+          "type": "text",
+          "content": "JavaScript gerencia rotas. URL muda, componente renderiza, sem reload.",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "codeExample",
+          "title": "State Management",
+          "description": "State management em Single Page Application",
+          "code": "// State Management\nconst initialState = { user: null, cart: [], products: [] };\nconst reducer = (state = initialState, action) => {\n  switch (action.type) {\n    case 'SET_USER': return { ...state, user: action.payload };\n    case 'ADD_TO_CART': return { ...state, cart: [...state.cart, action.payload] };\n    default: return state;\n  }\n};\nconst store = createStore(reducer);\n\n// Estado centralizado. Mudanças previsíveis. Debugging fácil."
+        },
+        {
+          "type": "title",
+          "content": "Estado Global",
+          "order": 3
+        },
+        {
+          "type": "text",
+          "content": "Estado compartilhado entre componentes. Redux, Context, Zustand.",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "codeExample",
+          "title": "API Calls",
+          "description": "Chamadas de API em Single Page Application",
+          "code": "// API Calls\nasync function fetchProducts() {\n  const response = await fetch('/api/products');\n  return response.json();\n}\n\nasync function createOrder(orderData) {\n  const response = await fetch('/api/orders', {\n    method: 'POST',\n    headers: { 'Content-Type': 'application/json' },\n    body: JSON.stringify(orderData)\n  });\n  return response.json();\n}\n\n// Comunicação com backend. Dados dinâmicos. Interações em tempo real."
+        },
+        {
+          "type": "alert",
+          "message": "Como funciona: Uma única página HTML carrega o JavaScript inicial. O roteamento client-side gerencia as rotas sem reload, renderizando componentes dinamicamente. O estado global mantém dados entre navegações. Resultado: experiência de app nativo.",
+          "color": "blue",
+          "icon": "bulb"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Por que vale a pena?",
+      "icon": "check",
+      "children": [
+        {
+          "type": "iconCards",
+          "cols": { "base": 1, "sm": 3 },
+          "cards": [
+            {
+              "icon": "rocket",
+              "iconColor": "green",
+              "title": "Navegação Instantânea",
+              "description": "Sem reload de página, transições suaves, experiência de app nativo."
+            },
+            {
+              "icon": "code",
+              "iconColor": "blue",
+              "title": "Estado Persistente",
+              "description": "Estado mantido entre navegações, dados compartilhados, UX fluida."
+            },
+            {
+              "icon": "bulb",
+              "iconColor": "blue",
+              "title": "Interatividade Rica",
+              "description": "Animações, transições, feedback visual. Experiência moderna e responsiva."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Quando usar?",
+      "icon": "alert-triangle",
+      "children": [
+        {
+          "type": "alert",
+          "message": "Use quando: Aplicações com muita interatividade. Dashboards e painéis administrativos. Apps com estado complexo. Experiência de app nativo é importante. Navegação frequente entre páginas.",
+          "color": "green",
+          "icon": "check"
+        },
+        {
+          "type": "list",
+          "icon": "check",
+          "items": [
+            "Aplicações com muita interatividade",
+            "Dashboards e painéis administrativos",
+            "Apps com estado complexo",
+            "Experiência de app nativo é importante",
+            "Navegação frequente entre páginas"
+          ]
+        },
+        {
+          "type": "alert",
+          "message": "Evite quando: SEO é crítico (conteúdo não indexa). Performance inicial é prioridade. Sites de conteúdo estático. Usuários com JavaScript desabilitado.",
+          "color": "red",
+          "icon": "alert-triangle"
+        },
+        {
+          "type": "list",
+          "icon": "alert-triangle",
+          "items": [
+            "SEO é crítico (conteúdo não indexa)",
+            "Performance inicial é prioridade",
+            "Sites de conteúdo estático",
+            "Usuários com JavaScript desabilitado"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Armadilhas Comuns",
+      "icon": "alert-triangle",
+      "children": [
+        {
+          "type": "alert",
+          "message": "SEO - Conteúdo não indexa: JavaScript renderiza conteúdo, crawlers não veem nada. Solução: SSR (Next.js), SSG (Gatsby), ou SPA para conteúdo privado.",
+          "color": "red",
+          "icon": "alert-triangle"
+        },
+        {
+          "type": "alert",
+          "message": "Performance Inicial: Bundle grande, carregamento lento. Solução: Code splitting, lazy loading, otimização de bundle.",
+          "color": "red",
+          "icon": "alert-triangle"
+        },
+        {
+          "type": "alert",
+          "message": "Complexidade de Estado: Estado global complexo, difícil de gerenciar. Solução: Redux Toolkit, Zustand, Context API bem estruturado.",
+          "color": "red",
+          "icon": "alert-triangle"
+        },
+        {
+          "type": "alert",
+          "message": "JavaScript Desabilitado: Usuários sem JavaScript não conseguem usar. Solução: Progressive enhancement, fallbacks para funcionalidades críticas.",
+          "color": "red",
+          "icon": "alert-triangle"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Referências e Ferramentas",
+      "icon": "bulb",
+      "children": [
+        { "type": "title", "content": "Ferramentas", "order": 4 },
+        {
+          "type": "list",
+          "items": [
+            "React Router: Roteamento client-side",
+            "Redux Toolkit / Zustand: Gerenciamento de estado",
+            "Vite: Build tool rápida",
+            "TanStack Query: Cache e sincronização de server state"
+          ]
+        },
+        { "type": "title", "content": "Artigos e Case Studies", "order": 4 },
+        {
+          "type": "stack",
+          "gap": "xs",
+          "children": [
+            {
+              "type": "anchor",
+              "label": "Airbnb: Rearchitecting Airbnb's Frontend",
+              "href": "https://medium.com/airbnb-engineering/rearchitecting-airbnbs-frontend-5e213be0591d"
+            },
+            {
+              "type": "anchor",
+              "label": "Slack: Rebuilding Slack on the desktop",
+              "href": "https://slack.engineering/rebuilding-slack-on-the-desktop-308d6fe94ae4"
+            },
+            {
+              "type": "anchor",
+              "label": "Instagram: Making Instagram.com faster",
+              "href": "https://instagram-engineering.com/making-instagram-com-faster-part-1-62cc0c327538"
+            },
+            {
+              "type": "anchor",
+              "label": "Notion: Sped up Notion with WASM SQLite",
+              "href": "https://www.notion.so/blog/how-we-sped-up-notion-in-the-browser-with-wasm-sqlite"
+            },
+            {
+              "type": "anchor",
+              "label": "Twitter: How we built Twitter Lite",
+              "href": "https://blog.twitter.com/engineering/en_us/topics/open-source/2017/how-we-built-twitter-lite.html"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Resumo",
+      "icon": "check",
+      "children": [
+        {
+          "type": "text",
+          "content": "Single Page Application é sobre: JavaScript renderiza tudo, uma página HTML, navegação instantânea, experiência de app nativo."
+        },
+        {
+          "type": "text",
+          "content": "Use quando: Aplicações interativas, dashboards, apps com estado complexo, experiência fluida é importante. Evite quando: SEO é crítico, performance inicial é prioridade, sites de conteúdo estático."
+        },
+        {
+          "type": "text",
+          "content": "Principais benefícios: Navegação instantânea, estado persistente, interatividade rica. Principais desafios: SEO, performance inicial, complexidade de estado, dependência de JavaScript."
+        }
+      ]
+    }
+  ]
+}

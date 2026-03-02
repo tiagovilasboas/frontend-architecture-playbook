@@ -1,0 +1,266 @@
+{
+  "meta": {
+    "title": "Layered Architecture",
+    "description": "Arquitetura em 3 camadas clássica: Presentation, Business, Data. Simples, produtiva, funciona."
+  },
+  "layout": { "showRelated": true },
+  "body": [
+    {
+      "type": "hero",
+      "title": "Layered Architecture",
+      "subtitle": "Clean Architecture sem a complexidade - direto ao ponto",
+      "icon": "stack"
+    },
+    {
+      "type": "section",
+      "title": "O que é?",
+      "icon": "stack",
+      "children": [
+        {
+          "type": "text",
+          "content": "Camadas empilhadas: Presentation → Business → Data. Cada uma só fala com a de baixo. Simples, direto, funciona. Clean Architecture para mortais."
+        },
+        {
+          "type": "code",
+          "code": "// 📱 Presentation Layer (React Component)\nfunction ProductList() {\n  const { products, isLoading } = useProducts()\n  if (isLoading) return <Spinner />\n  return products.map(p => <ProductCard key={p.id} product={p} />)\n}\n\n// 💼 Business Layer (Custom Hook / Service)\nfunction useProducts() {\n  const { data, isLoading } = useQuery(['products'], productApi.getAll)\n  const products = data?.filter(p => p.isActive) ?? []  // Business rule\n  return { products, isLoading }\n}\n\n// 🗄️ Data Layer (API Client)\nconst productApi = {\n  getAll: () => fetch('/api/products').then(r => r.json()),\n  getById: (id: string) => fetch(`/api/products/${id}`).then(r => r.json()),\n}",
+          "block": true
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Quando usar?",
+      "icon": "target",
+      "children": [
+        {
+          "type": "iconCards",
+          "cols": { "base": 1, "sm": 3 },
+          "cards": [
+            {
+              "icon": "rocket",
+              "iconColor": "teal",
+              "title": "Projetos médios",
+              "description": "Complexidade média. Não é CRUD, mas não é rocket science. Sweet spot."
+            },
+            {
+              "icon": "users",
+              "iconColor": "teal",
+              "title": "Time júnior/misto",
+              "description": "Entende fácil. Presentation, business, data. Conceitos claros."
+            },
+            {
+              "icon": "chart-bar",
+              "iconColor": "teal",
+              "title": "Deadline apertado",
+              "description": "Menos ceremony que Clean. Mais estrutura que bagunça. Produtividade alta."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "As 3 Camadas Clássicas",
+      "icon": "stack",
+      "children": [
+        {
+          "type": "title",
+          "content": "Presentation",
+          "order": 3
+        },
+        {
+          "type": "text",
+          "content": "Components, Pages, UI. Renderiza UI, captura eventos do usuário.",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "code",
+          "code": "// React component (Presentation)\nfunction OrderList() {\n  const { orders, isLoading } = useOrders()\n  if (isLoading) return <Skeleton />\n  return orders.map(order => (\n    <OrderCard key={order.id} total={order.total} status={order.status} date={order.createdAt} />\n  ))\n}",
+          "block": true
+        },
+        {
+          "type": "list",
+          "icon": "check",
+          "items": [
+            "React components e pages",
+            "Event handlers e forms",
+            "Layout e formatação",
+            "Routing e navegação"
+          ]
+        },
+        {
+          "type": "title",
+          "content": "Business",
+          "order": 3
+        },
+        {
+          "type": "text",
+          "content": "Services, Use Cases, Domain Logic. Regras de negócio, validações, orquestração.",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "code",
+          "code": "// Custom hook (Business Layer)\nfunction useCreateOrder() {\n  const mutation = useMutation(orderApi.create)\n  const createOrder = (items: CartItem[]) => {\n    if (items.length === 0) throw new Error('Carrinho vazio')\n    const total = items.reduce((sum, i) => sum + i.price * i.qty, 0)\n    if (total < 10) throw new Error('Pedido mínimo: R$10')\n    return mutation.mutateAsync({ items, total })\n  }\n  return { createOrder, isLoading: mutation.isPending }\n}",
+          "block": true
+        },
+        {
+          "type": "list",
+          "icon": "check",
+          "items": [
+            "Regras de negócio em hooks",
+            "Validações e transformações",
+            "Orquestração de estado",
+            "Lógica de domínio"
+          ]
+        },
+        {
+          "type": "title",
+          "content": "Data",
+          "order": 3
+        },
+        {
+          "type": "text",
+          "content": "API Clients, Adapters, Storage. Comunicação com APIs, cache, localStorage.",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "code",
+          "code": "// API client (Data Layer)\nconst orderApi = {\n  create: (data: CreateOrderDTO) =>\n    fetch('/api/orders', {\n      method: 'POST',\n      headers: { 'Content-Type': 'application/json' },\n      body: JSON.stringify(data),\n    }).then(r => r.json()),\n  getByUser: (userId: string) => fetch(`/api/orders?user=${userId}`).then(r => r.json()),\n}",
+          "block": true
+        },
+        {
+          "type": "list",
+          "icon": "check",
+          "items": [
+            "Fetch / Axios API clients",
+            "localStorage / sessionStorage",
+            "Cache com React Query / SWR",
+            "Adapters para APIs externas"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Casos Reais",
+      "icon": "bulb",
+      "children": [
+        {
+          "type": "iconCards",
+          "cols": { "base": 1, "sm": 1 },
+          "cards": [
+            {
+              "icon": "stack",
+              "iconColor": "green",
+              "title": "E-commerce Platform",
+              "description": "Separação clara de responsabilidades",
+              "items": [
+                "Presentation: REST APIs, admin panel",
+                "Business: Order processing, inventory",
+                "Data: Product catalog, user management",
+                "Escalabilidade e manutenibilidade"
+              ]
+            },
+            {
+              "icon": "rocket",
+              "iconColor": "blue",
+              "title": "Content Management",
+              "description": "WordPress-like system",
+              "items": [
+                "Presentation: Admin UI, public site",
+                "Business: Content workflow, permissions",
+                "Data: Articles, media, users",
+                "Flexibilidade para diferentes tipos de conteúdo"
+              ]
+            },
+            {
+              "icon": "bulb",
+              "iconColor": "blue",
+              "title": "SaaS Dashboard",
+              "description": "Analytics e métricas",
+              "items": [
+                "Presentation: Charts, tables, filters",
+                "Business: Data aggregation, calculations",
+                "Data: Metrics, events, user data",
+                "Performance otimizada"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Armadilhas Comuns",
+      "icon": "alert-triangle",
+      "children": [
+        {
+          "type": "alert",
+          "message": "Anemic domain model: Business logic vaza para services. Mantenha lógica no domínio.",
+          "color": "red",
+          "icon": "alert-triangle"
+        },
+        {
+          "type": "alert",
+          "message": "Fat controllers: Componentes fazem muito. Delegue lógica para hooks e services.",
+          "color": "yellow",
+          "icon": "alert-triangle"
+        },
+        {
+          "type": "alert",
+          "message": "Circular dependencies: Camadas dependem umas das outras. Mantenha dependência unidirecional.",
+          "color": "yellow",
+          "icon": "alert-triangle"
+        },
+        {
+          "type": "alert",
+          "message": "Como evitar: Mantenha lógica no domínio (Rich domain model). Componentes magros (só UI e eventos). Dependência unidirecional: Presentation → Business → Data.",
+          "color": "green",
+          "icon": "check"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Referências e Recursos",
+      "icon": "code",
+      "children": [
+        { "type": "title", "content": "Ferramentas", "order": 4 },
+        {
+          "type": "list",
+          "items": [
+            "Frameworks: React, Next.js, Vue",
+            "Testing: Vitest, Jest, Testing Library",
+            "Architecture: Clean Architecture, DDD",
+            "Patterns: Repository, Service Layer"
+          ]
+        },
+        { "type": "title", "content": "Casos de Sucesso", "order": 4 },
+        {
+          "type": "stack",
+          "gap": "xs",
+          "children": [
+            {
+              "type": "anchor",
+              "label": "Martin Fowler: Presentation Domain Data Layering",
+              "href": "https://martinfowler.com/bliki/PresentationDomainDataLayering.html"
+            },
+            {
+              "type": "anchor",
+              "label": "Bulletproof React: Feature-based layered structure",
+              "href": "https://github.com/alan2207/bulletproof-react"
+            },
+            {
+              "type": "anchor",
+              "label": "Eric Elliott: Software Architecture Patterns",
+              "href": "https://medium.com/javascript-scene/the-forgotten-history-of-oop-88d71b9b2d9f"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

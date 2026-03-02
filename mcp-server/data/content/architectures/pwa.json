@@ -1,0 +1,251 @@
+{
+  "meta": {
+    "title": "Progressive Web Apps (PWA)",
+    "description": "Como criar web apps que funcionam offline, instalam como nativos e competem com App Store usando Service Workers e APIs modernas."
+  },
+  "layout": { "showRelated": true },
+  "body": [
+    {
+      "type": "hero",
+      "title": "Progressive Web Apps (PWA)",
+      "subtitle": "Web que se comporta como app nativo",
+      "icon": "device-mobile"
+    },
+    {
+      "type": "section",
+      "title": "O que é?",
+      "icon": "stack",
+      "children": [
+        {
+          "type": "text",
+          "content": "Imagine abrir uma página web que funciona offline, pode ser instalada na tela inicial e manda notificações push. Isso é PWA."
+        },
+        {
+          "type": "text",
+          "content": "É a web tentando competir com apps nativos usando Service Workers, Web App Manifest e APIs modernas do browser. O resultado? App experience sem App Store."
+        },
+        {
+          "type": "code",
+          "code": "// ❌ App tradicional\n<div id=\"app\">Carregando...</div>\n<!-- Se offline = tela branca da morte -->\n\n// ✅ PWA com Service Worker\nself.addEventListener('fetch', (event) => {\n  if (event.request.url.includes('/api/')) {\n    event.respondWith(\n      fetch(event.request).catch(() => caches.match(event.request))\n    )\n  }\n})\n\n// Resultado: funciona offline, instala como app, push notifications",
+          "block": true
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Os 3 Pilares do PWA",
+      "icon": "code",
+      "children": [
+        {
+          "type": "title",
+          "content": "Service Workers",
+          "order": 3
+        },
+        {
+          "type": "text",
+          "content": "O cérebro offline. JavaScript que roda em background, intercepta requests.",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "code",
+          "code": "// sw.js - Service Worker básico\nconst CACHE_NAME = 'app-v1'\nconst urlsToCache = ['/', '/static/css/main.css', '/static/js/main.js', '/api/essentials']\n\nself.addEventListener('install', (event) => {\n  event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(urlsToCache)))\n})\n\nself.addEventListener('fetch', (event) => {\n  event.respondWith(fetch(event.request).catch(() => caches.match(event.request)))\n})",
+          "block": true
+        },
+        {
+          "type": "title",
+          "content": "Web App Manifest",
+          "order": 3
+        },
+        {
+          "type": "text",
+          "content": "Metadados do app. JSON que define como o app aparece quando instalado.",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "code",
+          "code": "// manifest.json\n{\n  \"name\": \"Meu App PWA\",\n  \"short_name\": \"App\",\n  \"start_url\": \"/\",\n  \"display\": \"standalone\",\n  \"background_color\": \"#ffffff\",\n  \"theme_color\": \"#000000\",\n  \"icons\": [{ \"src\": \"/icon-192.png\", \"sizes\": \"192x192\", \"type\": \"image/png\" }]\n}",
+          "block": true
+        },
+        {
+          "type": "title",
+          "content": "HTTPS",
+          "order": 3
+        },
+        {
+          "type": "text",
+          "content": "Segurança obrigatória. Service Workers só funcionam em HTTPS (ou localhost).",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "code",
+          "code": "// Registra o Service Worker\nif ('serviceWorker' in navigator) {\n  window.addEventListener('load', () => {\n    navigator.serviceWorker.register('/sw.js')\n      .then(reg => console.log('SW registrado:', reg))\n      .catch(err => console.log('SW falhou:', err))\n  })\n}",
+          "block": true
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Quando usar?",
+      "icon": "bulb",
+      "children": [
+        {
+          "type": "iconCards",
+          "cols": { "base": 1, "sm": 2 },
+          "cards": [
+            {
+              "icon": "device-mobile",
+              "iconColor": "orange",
+              "title": "Mobile-first experience",
+              "description": "User precisa acessar rápido e frequente. Apps de mensagem, redes sociais, ferramentas de produtividade."
+            },
+            {
+              "icon": "chart-bar",
+              "iconColor": "orange",
+              "title": "Conectividade ruim",
+              "description": "Mercados emergentes, transporte público, áreas rurais. Offline é obrigatório."
+            },
+            {
+              "icon": "rocket",
+              "iconColor": "orange",
+              "title": "Engagement crítico",
+              "description": "Push notifications, ícone na home screen, load time brutal. User retention matters."
+            },
+            {
+              "icon": "trending-up",
+              "iconColor": "orange",
+              "title": "Budget vs App Store",
+              "description": "Não quer (ou pode) desenvolver app nativo. Uma codebase que roda everywhere."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Casos Reais",
+      "icon": "bulb",
+      "children": [
+        {
+          "type": "iconCards",
+          "cols": { "base": 1, "sm": 1 },
+          "cards": [
+            {
+              "icon": "code",
+              "iconColor": "green",
+              "title": "Rede social lite",
+              "description": "PWA para substituir app nativo em mercados emergentes",
+              "items": [
+                "Melhoria significativa em conversões",
+                "Funciona offline",
+                "Push notifications",
+                "Instala na home screen"
+              ]
+            },
+            {
+              "icon": "rocket",
+              "iconColor": "blue",
+              "title": "Starbucks",
+              "description": "PWA para pedidos e pagamentos",
+              "items": [
+                "Funciona offline",
+                "Push para status do pedido",
+                "Pagamento via PWA",
+                "Carregamento mais rápido que app nativo"
+              ]
+            },
+            {
+              "icon": "bulb",
+              "iconColor": "blue",
+              "title": "App de serviço on-demand",
+              "description": "PWA leve para redes 2G/3G",
+              "items": [
+                "Funciona em conexões lentas",
+                "Menor que app nativo",
+                "Instalação rápida",
+                "Offline para mapas"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Armadilhas Comuns",
+      "icon": "alert-triangle",
+      "children": [
+        {
+          "type": "alert",
+          "message": "Complexidade de cache: Gerenciar cache é complicado. Cache velho = bugs. Cache novo = storage cheio. Precisa de estratégia clara.",
+          "color": "red",
+          "icon": "alert-triangle"
+        },
+        {
+          "type": "alert",
+          "message": "Browser support: Service Workers não funcionam em todos os browsers. iOS Safari tem limitações. Precisa de fallback.",
+          "color": "yellow",
+          "icon": "alert-triangle"
+        },
+        {
+          "type": "alert",
+          "message": "Debugging difícil: Service Workers são difíceis de debugar. Cache não limpa fácil. Updates podem não funcionar.",
+          "color": "yellow",
+          "icon": "alert-triangle"
+        },
+        {
+          "type": "alert",
+          "message": "Como evitar: Comece simples (cache básico antes de complexo). Teste browsers (iOS, Android, desktop). Debug tools (Chrome DevTools, Lighthouse).",
+          "color": "green",
+          "icon": "check"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Referências e Recursos",
+      "icon": "code",
+      "children": [
+        { "type": "title", "content": "Ferramentas", "order": 4 },
+        {
+          "type": "list",
+          "items": [
+            "Workbox: Service Worker library",
+            "Lighthouse: PWA audit",
+            "PWA Builder: Generate manifest",
+            "Chrome DevTools: Service Worker debugging"
+          ]
+        },
+        { "type": "title", "content": "Casos de Sucesso", "order": 4 },
+        {
+          "type": "stack",
+          "gap": "xs",
+          "children": [
+            {
+              "type": "anchor",
+              "label": "web.dev: Progressive Web Apps (Google)",
+              "href": "https://web.dev/explore/progressive-web-apps"
+            },
+            {
+              "type": "anchor",
+              "label": "MDN: PWA Guide",
+              "href": "https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps"
+            },
+            {
+              "type": "anchor",
+              "label": "Workbox: Service Worker Toolkit",
+              "href": "https://developer.chrome.com/docs/workbox"
+            },
+            {
+              "type": "anchor",
+              "label": "PWA Stats: Casos reais com métricas",
+              "href": "https://www.pwastats.com/"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

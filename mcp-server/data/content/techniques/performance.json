@@ -1,0 +1,251 @@
+{
+  "meta": {
+    "title": "Performance: Quando Velocidade Vira Dinheiro",
+    "description": "Code splitting, lazy loading, chunks inteligentes e métricas que fazem diferença real. Técnicas práticas para otimizar performance e melhorar experiência do usuário."
+  },
+  "layout": {
+    "showRelated": true
+  },
+  "body": [
+    {
+      "type": "hero",
+      "title": "Performance: Quando Velocidade Vira Dinheiro",
+      "subtitle": "Code splitting, lazy loading, chunks e métricas que fazem diferença real. Usuário não espera, ele abandona.",
+      "icon": "rocket"
+    },
+    {
+      "type": "section",
+      "title": "O que é Performance Frontend?",
+      "icon": "code",
+      "children": [
+        {
+          "type": "text",
+          "content": "Performance frontend é a velocidade com que sua aplicação carrega, renderiza e responde às interações do usuário. Não é frescura, é sobrevivência."
+        },
+        {
+          "type": "text",
+          "content": "Usuário não espera, ele abandona. Quanto mais lento o carregamento, maior a taxa de abandono. Cada segundo conta."
+        },
+        {
+          "type": "text",
+          "content": "Bundle size é morte lenta. Bundles pesados em conexões lentas significam espera longa. Usuário já foi embora."
+        },
+        {
+          "type": "text",
+          "content": "Performance = conversão. Estudos mostram que latência impacta diretamente em vendas e engajamento. Performance vira dinheiro direto."
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Por que Performance = Dinheiro?",
+      "icon": "trending-up",
+      "children": [
+        {
+          "type": "iconCards",
+          "cols": {
+            "base": 1,
+            "sm": 2
+          },
+          "cards": [
+            {
+              "icon": "check",
+              "iconColor": "green",
+              "title": "Usuário não espera, ele abandona",
+              "description": "Quanto mais lento o carregamento, maior a taxa de abandono. Cada segundo a mais no carregamento aumenta a taxa de rejeição"
+            },
+            {
+              "icon": "check",
+              "iconColor": "green",
+              "title": "Bundle size = Morte lenta",
+              "description": "Bundles pesados em conexões lentas (3G/4G) resultam em esperas inaceitáveis para o usuário"
+            },
+            {
+              "icon": "check",
+              "iconColor": "green",
+              "title": "Performance = Conversão",
+              "description": "Latência impacta diretamente vendas e engajamento. Menos delay = mais conversão"
+            },
+            {
+              "icon": "check",
+              "iconColor": "green",
+              "title": "SEO = Visibilidade",
+              "description": "Google penaliza sites lentos. Performance boa = ranking melhor"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Como usar no seu time",
+      "icon": "check",
+      "children": [
+        {
+          "type": "text",
+          "content": "Priorize por impacto no negócio: LCP e FID em páginas de conversão primeiro. Use métricas reais (Core Web Vitals, dashboard) em OKRs e em ADRs quando a decisão afetar entrega. Staff: exija \"antes/depois\" em PRs que mexem em bundle ou render — números, não opinião.",
+          "size": "sm"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Técnicas Práticas para Performance = Dinheiro",
+      "icon": "code",
+      "children": [
+        {
+          "type": "title",
+          "content": "1. Code Splitting Inteligente",
+          "order": 4
+        },
+        {
+          "type": "codeExample",
+          "title": "Exemplo: Code Splitting por Rota",
+          "description": "Dividir código em chunks que fazem sentido",
+          "code": "// ✅ Code splitting por rota\nconst HomePage = lazy(() => import('./pages/Home'));\nconst ProductPage = lazy(() => import('./pages/Product'));\nconst CheckoutPage = lazy(() => import('./pages/Checkout'));\n\n// ✅ Code splitting por feature\nconst Analytics = lazy(() => import('./features/Analytics'));\nconst Chat = lazy(() => import('./features/Chat'));\n\n// ✅ Preload inteligente\nconst preloadCheckout = () => {\n  const link = document.createElement('link');\n  link.rel = 'preload';\n  link.as = 'script';\n  link.href = '/static/js/checkout.js';\n  document.head.appendChild(link);\n};"
+        },
+        {
+          "type": "title",
+          "content": "2. Lazy Loading de Imagens",
+          "order": 4
+        },
+        {
+          "type": "codeExample",
+          "title": "Exemplo: Lazy Loading Otimizado",
+          "description": "Carregar imagens apenas quando necessário",
+          "code": "// ✅ Lazy loading com Intersection Observer\nconst ImageLazy = ({ src, alt }) => {\n  const [isLoaded, setIsLoaded] = useState(false);\n  const [isInView, setIsInView] = useState(false);\n  const imgRef = useRef();\n\n  useEffect(() => {\n    const observer = new IntersectionObserver(\n      ([entry]) => {\n        if (entry.isIntersecting) {\n          setIsInView(true);\n          observer.disconnect();\n        }\n      },\n      { threshold: 0.1 }\n    );\n\n    if (imgRef.current) {\n      observer.observe(imgRef.current);\n    }\n\n    return () => observer.disconnect();\n  }, []);\n\n  return (\n    <img\n      ref={imgRef}\n      src={isInView ? src : 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'}\n      alt={alt}\n      className={isLoaded ? 'loaded' : 'loading'}\n      onLoad={() => setIsLoaded(true)}\n    />\n  );\n};"
+        },
+        {
+          "type": "title",
+          "content": "3. Bundle Optimization",
+          "order": 4
+        },
+        {
+          "type": "codeExample",
+          "title": "Exemplo: Webpack Bundle Analyzer",
+          "description": "Analisar e otimizar bundle size",
+          "code": "// ✅ Bundle analyzer\nconst { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');\n\nmodule.exports = {\n  plugins: [\n    new BundleAnalyzerPlugin({\n      analyzerMode: 'static',\n      openAnalyzer: false,\n      generateStatsFile: true,\n    }),\n  ],\n  optimization: {\n    splitChunks: {\n      chunks: 'all',\n      cacheGroups: {\n        vendor: {\n          test: /[\\/]node_modules[\\/]/,\n          name: 'vendors',\n          chunks: 'all',\n        },\n        common: {\n          name: 'common',\n          minChunks: 2,\n          chunks: 'all',\n          enforce: true,\n        },\n      },\n    },\n  },\n};"
+        },
+        {
+          "type": "title",
+          "content": "4. Performance Budget",
+          "order": 4
+        },
+        {
+          "type": "codeExample",
+          "title": "Exemplo: Performance Budget",
+          "description": "Definir limites de performance",
+          "code": "// ✅ Performance budget\nconst performanceBudget = {\n  'bundle-size': {\n    'initial': '200kb',\n    'max': '500kb',\n  },\n  'first-contentful-paint': {\n    'max': '1.8s',\n  },\n  'largest-contentful-paint': {\n    'max': '2.5s',\n  },\n  'cumulative-layout-shift': {\n    'max': '0.1',\n  },\n  'interaction-to-next-paint': {\n    'max': '200ms',\n  },\n};\n\n// ✅ Lighthouse CI\nmodule.exports = {\n  ci: {\n    collect: {\n      url: ['http://localhost:3000'],\n      numberOfRuns: 3,\n    },\n    assert: {\n      assertions: {\n        'categories:performance': ['error', { minScore: 0.9 }],\n        'categories:accessibility': ['error', { minScore: 0.9 }],\n        'categories:best-practices': ['error', { minScore: 0.9 }],\n        'categories:seo': ['error', { minScore: 0.9 }],\n      },\n    },\n  },\n};"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Métricas que Importam para Performance = Dinheiro",
+      "icon": "trending-up",
+      "children": [
+        {
+          "type": "iconCards",
+          "cols": {
+            "base": 1,
+            "sm": 2
+          },
+          "cards": [
+            {
+              "icon": "rocket",
+              "title": "Core Web Vitals",
+              "items": [
+                "LCP (Largest Contentful Paint) < 2.5s",
+                "INP (Interaction to Next Paint) < 200ms",
+                "CLS (Cumulative Layout Shift) < 0.1"
+              ]
+            },
+            {
+              "icon": "chart-bar",
+              "title": "Métricas de Negócio",
+              "items": [
+                "Bounce Rate < 40%",
+                "Time on Page > 2 minutos",
+                "Conversion Rate impactado por performance"
+              ]
+            },
+            {
+              "icon": "rocket",
+              "title": "Performance Budget",
+              "items": [
+                "Bundle Size < 200KB inicial",
+                "First Paint < 1.5s",
+                "Time to Interactive < 3s"
+              ]
+            },
+            {
+              "icon": "chart-bar",
+              "title": "Métricas de Usuário",
+              "items": [
+                "Page Load Time < 3s",
+                "Mobile Performance Score > 90",
+                "Real User Monitoring (RUM)"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Armadilhas: Quando Performance Vira Problema",
+      "icon": "alert-triangle",
+      "children": [
+        {
+          "type": "alert",
+          "color": "red",
+          "icon": "alert-triangle",
+          "message": "Over-splitting: Dividir demais = mais requests = mais lento. Encontre o equilíbrio entre chunks e requests."
+        },
+        {
+          "type": "alert",
+          "color": "red",
+          "icon": "alert-triangle",
+          "message": "Ignorar Mobile: Conexão lenta, CPU limitado. Teste em 3G, otimize para mobile primeiro."
+        },
+        {
+          "type": "alert",
+          "color": "red",
+          "icon": "alert-triangle",
+          "message": "Não Medir: Otimizar sem medir = chutar no escuro. Use métricas reais, não só opiniões."
+        },
+        {
+          "type": "alert",
+          "color": "red",
+          "icon": "alert-triangle",
+          "message": "Premature Optimization: Otimizar antes de medir. Primeiro meça, depois otimize o que realmente importa."
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Resumo: Performance = Dinheiro",
+      "icon": "check",
+      "children": [
+        {
+          "type": "text",
+          "content": "Performance não é frescura, é sobrevivência. Usuário não espera, ele abandona. Bundle size é morte lenta. Performance é sobrevivência."
+        },
+        {
+          "type": "text",
+          "content": "Code splitting + lazy loading + chunks inteligentes = performance real. Não é sobre \"qual framework usar\", é sobre carregar só o que precisa."
+        },
+        {
+          "type": "text",
+          "content": "Meça o que importa. Core Web Vitals, métricas de negócio, performance budget. Se não está medindo, está chutando no escuro."
+        },
+        {
+          "type": "alert",
+          "color": "blue",
+          "icon": "bulb",
+          "message": "Lembre-se: Stack bonita não paga boleto. Performance, UX e resultado de negócio sim. Usuário não espera, ele abandona."
+        }
+      ]
+    }
+  ]
+}

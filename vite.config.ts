@@ -18,48 +18,26 @@ export default defineConfig({
           ],
           'vendor-icons': ['@tabler/icons-react'],
 
-          // Architecture chunks - Core (SPA/SSR-SSG em JSON; restante TSX)
-          'architectures-core': [
-            './src/content/patterns/clean-architecture.tsx',
-          ],
+          // Architecture chunks - Core (todas architectures em JSON)
+          'architectures-core': [],
 
-          // Micro Frontends (separado por ser complexo)
-          'micro-frontends': ['./src/content/patterns/micro-frontends.tsx'],
+          // Architecture chunks - Modern (islands-architecture em JSON)
+          'architectures-modern': [],
 
-          // Architecture chunks - Modern (tendências)
-          'architectures-modern': [
-            './src/content/patterns/islands-architecture.tsx',
-          ],
+          // Architecture chunks - Advanced (hexagonal, event-sourcing, cqrs, microservices-frontend em JSON)
+          'architectures-advanced': [],
 
-          // Architecture chunks - Advanced (complexos)
-          'architectures-advanced': [
-            './src/content/patterns/hexagonal.tsx',
-            './src/content/patterns/event-sourcing.tsx',
-            './src/content/patterns/cqrs.tsx',
-            './src/content/patterns/microservices-frontend.tsx',
-          ],
+          // Pattern chunks - Design (component-driven e atomic-design em JSON)
+          'patterns-design': [],
 
-          // Pattern chunks - Design (componentes)
-          'patterns-design': [
-            './src/content/patterns/component-driven.tsx',
-            './src/content/patterns/atomic-design.tsx',
-          ],
+          // Pattern chunks - State (state-machines, feature-flags e event-driven em JSON)
+          'patterns-state': [],
 
-          // Pattern chunks - State (gerenciamento)
-          'patterns-state': [
-            './src/content/patterns/state-machines.tsx',
-            './src/content/patterns/event-driven.tsx',
-            './src/content/patterns/feature-flags.tsx',
-          ],
+          // Pattern chunks - Best Practices (repository-pattern e security em JSON)
+          'patterns-best-practices': [],
 
-          // Pattern chunks - Best Practices (princípios; dry/kiss/yagni/clean-code/srp/soc migrados para JSON)
-          'patterns-best-practices': [
-            './src/content/patterns/repository-pattern.tsx',
-            './src/content/patterns/security.tsx',
-          ],
-
-          // Guide chunks (guias migrados para JSON; só glossary é TSX)
-          'content-guides': ['./src/content/guides/glossary.tsx'],
+          // Guide chunks (todos os guias em JSON)
+          'content-guides': [],
 
           // UI Components
           'components-core': [
