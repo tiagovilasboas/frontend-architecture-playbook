@@ -212,15 +212,15 @@ export default function Home() {
                         Dependências só apontam pra dentro. A base de tudo.
                       </Text>
                     </Stack>
-                    <Button
-                      size="sm"
-                      variant="light"
-                      color="brand"
-                      rightSection={<IconArrowRight size={14} />}
-                      fullWidth
+                    <Group
+                      gap={4}
+                      c="brand.6"
+                      fw={500}
+                      style={{ pointerEvents: 'none' }}
                     >
-                      Ler o guia
-                    </Button>
+                      <Text size="sm">Ler o guia</Text>
+                      <IconArrowRight size={14} />
+                    </Group>
                   </Stack>
                 </Card>
                 <Card
@@ -268,15 +268,15 @@ export default function Home() {
                         time.
                       </Text>
                     </Stack>
-                    <Button
-                      size="sm"
-                      variant="light"
-                      color="brand"
-                      rightSection={<IconArrowRight size={14} />}
-                      fullWidth
+                    <Group
+                      gap={4}
+                      c="brand.6"
+                      fw={500}
+                      style={{ pointerEvents: 'none' }}
                     >
-                      Começar o wizard
-                    </Button>
+                      <Text size="sm">Começar o wizard</Text>
+                      <IconArrowRight size={14} />
+                    </Group>
                   </Stack>
                 </Card>
                 <Card
@@ -324,15 +324,15 @@ export default function Home() {
                         importa na prática.
                       </Text>
                     </Stack>
-                    <Button
-                      size="sm"
-                      variant="light"
-                      color="brand"
-                      rightSection={<IconArrowRight size={14} />}
-                      fullWidth
+                    <Group
+                      gap={4}
+                      c="brand.6"
+                      fw={500}
+                      style={{ pointerEvents: 'none' }}
                     >
-                      Ver comparação
-                    </Button>
+                      <Text size="sm">Ver comparação</Text>
+                      <IconArrowRight size={14} />
+                    </Group>
                   </Stack>
                 </Card>
               </SimpleGrid>
@@ -640,15 +640,15 @@ export default function Home() {
                         leva pro seu contexto.
                       </Text>
                     </Stack>
-                    <Button
-                      size="sm"
-                      variant="light"
-                      color="accent"
-                      rightSection={<IconArrowRight size={14} />}
-                      fullWidth
+                    <Group
+                      gap={4}
+                      c="accent.6"
+                      fw={500}
+                      style={{ pointerEvents: 'none' }}
                     >
-                      Ver todos os casos
-                    </Button>
+                      <Text size="sm">Ver todos os casos</Text>
+                      <IconArrowRight size={14} />
+                    </Group>
                   </Stack>
                 </Card>
 
@@ -697,15 +697,15 @@ export default function Home() {
                         importa na hora de decidir.
                       </Text>
                     </Stack>
-                    <Button
-                      size="sm"
-                      variant="light"
-                      color="brand"
-                      rightSection={<IconArrowRight size={14} />}
-                      fullWidth
+                    <Group
+                      gap={4}
+                      c="brand.6"
+                      fw={500}
+                      style={{ pointerEvents: 'none' }}
                     >
-                      Ver comparação
-                    </Button>
+                      <Text size="sm">Ver comparação</Text>
+                      <IconArrowRight size={14} />
+                    </Group>
                   </Stack>
                 </Card>
               </SimpleGrid>
