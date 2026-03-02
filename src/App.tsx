@@ -27,6 +27,26 @@ function App() {
       >
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route
+            path="guides"
+            element={<Navigate to="/guides/study-guide" replace />}
+          />
+          <Route
+            path="architectures"
+            element={<Navigate to="/architectures/spa" replace />}
+          />
+          <Route
+            path="patterns"
+            element={<Navigate to="/patterns/component-driven" replace />}
+          />
+          <Route
+            path="techniques"
+            element={<Navigate to="/techniques/performance" replace />}
+          />
+          <Route
+            path="best-practices"
+            element={<Navigate to="/best-practices/dry" replace />}
+          />
           <Route path=":collection/:slug" element={<DocPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>

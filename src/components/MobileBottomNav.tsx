@@ -1,15 +1,9 @@
 import React from 'react';
 import { Paper, Group, UnstyledButton, Text, Badge } from '@mantine/core';
-import { Spotlight } from '@mantine/spotlight';
+import { openSpotlight } from '@mantine/spotlight';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useBreakpoints } from '../hooks/useBreakpoints.ts';
-import {
-  IconHome,
-  IconBook,
-  IconStack,
-  IconPuzzle,
-  IconSearch,
-} from '@tabler/icons-react';
+import { IconHome, IconSearch } from '@tabler/icons-react';
 
 interface NavItem {
   icon: React.ReactNode;
@@ -18,6 +12,10 @@ interface NavItem {
   badge?: number;
 }
 
+/**
+ * Stripe-style mobile nav: Início + Busca only.
+ * Full navigation lives in the burger menu drawer.
+ */
 export default function MobileBottomNav() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -27,9 +25,6 @@ export default function MobileBottomNav() {
 
   const navItems: NavItem[] = [
     { icon: <IconHome size={22} />, label: 'Início', path: '/' },
-    { icon: <IconBook size={22} />, label: 'Guias', path: '/guides' },
-    { icon: <IconStack size={22} />, label: 'Arq.', path: '/architectures' },
-    { icon: <IconPuzzle size={22} />, label: 'Padrões', path: '/patterns' },
     { icon: <IconSearch size={22} />, label: 'Busca', path: '#search' },
   ];
 
@@ -42,8 +37,7 @@ export default function MobileBottomNav() {
 
   const handleClick = (path: string) => {
     if (path === '#search') {
-      // Abre o Spotlight
-      Spotlight.open();
+      openSpotlight();
       return;
     }
     navigate(path);
@@ -75,6 +69,11 @@ export default function MobileBottomNav() {
               key={item.path}
               onClick={() => handleClick(item.path)}
               className="mobile-bottom-nav-btn"
+              aria-label={
+                item.path === '#search'
+                  ? 'Abrir busca (Cmd+K)'
+                  : `Ir para ${item.label}`
+              }
               style={{
                 display: 'flex',
                 flexDirection: 'column',

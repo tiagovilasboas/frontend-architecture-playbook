@@ -4,6 +4,7 @@ import { Drawer, Box } from '@mantine/core';
 import { Spotlight } from '@mantine/spotlight';
 import HeaderBar from './HeaderBar.tsx';
 import MobileNavMenu from './MobileNavMenu.tsx';
+import MobileBottomNav from './MobileBottomNav.tsx';
 import AppBreadcrumbs from './AppBreadcrumbs.tsx';
 import PrevNextArrows from './PrevNextArrows.tsx';
 import { ReadingProgress } from './ReadingProgress.tsx';
@@ -76,6 +77,7 @@ export default function DocsShell({ children }: DocsShellProps) {
           flexDirection: 'column',
           position: 'relative',
           zIndex: 1,
+          paddingBottom: isMobile ? 72 : 0,
         }}
       >
         {/* Header */}
@@ -103,6 +105,9 @@ export default function DocsShell({ children }: DocsShellProps) {
 
         {/* Back to top - reduz fadiga de scroll (UX) */}
         <BackToTop />
+
+        {/* Mobile bottom nav - quick access to sections (UX) */}
+        <MobileBottomNav />
       </Box>
     </>
   );
