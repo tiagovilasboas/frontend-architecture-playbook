@@ -32,11 +32,15 @@ interface CodeExampleProps {
   defaultExpanded?: boolean;
 }
 
+/**
+ * Stripe-style: code expanded by default, copy button visible.
+ * Collapsible for long snippets.
+ */
 export default function CodeExample({
   title,
   description,
   code,
-  defaultExpanded = false,
+  defaultExpanded = true,
 }: CodeExampleProps) {
   const [expanded, setExpanded] = useState(defaultExpanded);
   const [copied, setCopied] = useState(false);

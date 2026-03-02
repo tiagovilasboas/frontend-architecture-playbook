@@ -17,6 +17,7 @@ import {
   Timeline,
   LoadingOverlay,
 } from '@mantine/core';
+import { CodeHighlight } from '@mantine/code-highlight';
 import {
   IconCheck,
   IconCode,
@@ -98,6 +99,37 @@ function getIcon(iconKey?: ContentIconKey, size = 20) {
   if (!iconKey || !ICON_MAP[iconKey]) return null;
   const Icon = ICON_MAP[iconKey];
   return <Icon size={size} />;
+}
+
+/** Detect language for syntax highlighting (Stripe-style code blocks) */
+function detectCodeLanguage(content: string): string {
+  if (content.includes('<?php')) return 'php';
+  if (content.includes('<!DOCTYPE') || content.includes('<html')) return 'html';
+  if (content.includes('┌') || content.includes('└') || content.includes('│'))
+    return 'text';
+  if (
+    content.includes('interface ') ||
+    content.includes('type ') ||
+    content.includes('export class')
+  )
+    return 'typescript';
+  if (content.includes('import ') && content.includes('from '))
+    return 'typescript';
+  if (
+    content.includes('const ') ||
+    content.includes('let ') ||
+    content.includes('async ')
+  )
+    return 'javascript';
+  if (content.includes('useEffect') || content.includes('useState'))
+    return 'typescript';
+  if (
+    content.includes('{') &&
+    content.includes('}') &&
+    content.trim().startsWith('{')
+  )
+    return 'json';
+  return 'typescript';
 }
 
 function renderBlock(block: ContentBlock, index: number): React.ReactNode {
@@ -252,12 +284,30 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
       );
     }
 
-    case 'code':
+    case 'code': {
+      const isBlock = block.block !== false;
+      const codeStr = block.code ?? '';
+      const lang = detectCodeLanguage(codeStr);
+      if (isBlock) {
+        return (
+          <CodeHighlight
+            key={key}
+            code={codeStr}
+            language={lang}
+            withCopyButton
+            copyLabel="Copiar"
+            copiedLabel="Copiado!"
+            withBorder
+            mb="md"
+          />
+        );
+      }
       return (
-        <Code key={key} block={block.block !== false} mb="md">
-          {block.code}
+        <Code key={key} mb="md">
+          {codeStr}
         </Code>
       );
+    }
 
     case 'codeExample':
       return (

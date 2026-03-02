@@ -6,6 +6,7 @@ import { MantineProvider } from '@mantine/core';
 import { theme } from './theme.ts';
 import { BrowserRouter } from 'react-router-dom';
 import '@mantine/core/styles.css';
+import '@mantine/code-highlight/styles.css';
 import { semantic, semanticCssVars } from './theme/colors';
 
 // Inject theme CSS vars from single source (no hardcoded colors in CSS)
