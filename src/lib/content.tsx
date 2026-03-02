@@ -16,7 +16,7 @@ export interface DocMeta {
   component: React.ComponentType;
 }
 
-// Metadados estáticos para evitar problemas com lazy loading
+// Metadados estáticos para páginas de conteúdo (title/description por slug)
 const STATIC_METADATA = {
   // Guides
   'how-to-choose': {

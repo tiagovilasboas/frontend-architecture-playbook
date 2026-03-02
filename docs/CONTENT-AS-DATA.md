@@ -80,17 +80,17 @@ Ordem = jornada do menu (`src/lib/navigation.ts`). **Fonte única de verdade** p
 
 ## Próximos passos
 
-| Prioridade   | O quê                                       | Onde / como                                                                                                                                             |
-| ------------ | ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Conteúdo** | Best-practices em JSON                      | Concluído: dry, kiss, yagni, clean-code, srp, soc.                                                                                                      |
-| **Conteúdo** | Migrar architectures ou patterns para JSON  | Criar `src/data/content/architectures/` ou `patterns/`; começar por páginas mais estáticas (ex.: SPA, layered).                                         |
-| **MCP**      | Incluir best-practices no MCP               | Concluído: `prepare-data.js` copia `guides` e `best-practices`. Expor best-practices em recurso/tool (ex.: playbook://best-practice/{slug}) é opcional. |
-| **MCP**      | Expor glossário (terms.json) no MCP         | Recurso ou tool para buscar termos por categoria/slug; útil para o assistente citar definições.                                                         |
-| **Limpeza**  | TSX órfãos best-practices                   | Concluído: dry, kiss, yagni, clean-code, srp, soc TSX removidos.                                                                                        |
-| **UX**       | GuideCTA na página how-to-choose            | Reativar CTA “próximo passo” no final da página (layout ou bloco no JSON).                                                                              |
-| **Docs**     | Manter CONTENT-AS-DATA e README atualizados | Ao migrar nova coleção, atualizar a tabela de status e, se fizer sentido, o “Próximos passos”.                                                          |
+| Prioridade   | O quê                                                 | Onde / como                                                                                     |
+| ------------ | ----------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| **Conteúdo** | Best-practices em JSON                                | Concluído: dry, kiss, yagni, clean-code, srp, soc.                                              |
+| **Conteúdo** | Migrar architectures, patterns, techniques, glossário | Concluído: tudo em JSON; glossário = hero + bloco `glossary`.                                   |
+| **MCP**      | Sincronizar conteúdo no MCP                           | Concluído: `prepare-data.js` copia guides, best-practices, architectures, patterns, techniques. |
+| **MCP**      | Expor glossário (terms.json) no MCP                   | Recurso ou tool para buscar termos por categoria/slug; útil para o assistente citar definições. |
+| **Limpeza**  | TSX órfãos best-practices                             | Concluído: dry, kiss, yagni, clean-code, srp, soc TSX removidos.                                |
+| **UX**       | GuideCTA na página how-to-choose                      | Reativar CTA “próximo passo” no final da página (layout ou bloco no JSON).                      |
+| **Docs**     | Manter CONTENT-AS-DATA e README atualizados           | Ao migrar nova coleção, atualizar a tabela de status e, se fizer sentido, o “Próximos passos”.  |
 
-Ordem sugerida: mais architectures ou patterns para JSON (layered já migrado; best-practices concluídos).
+Próximas prioridades opcionais: GuideCTA em how-to-choose; expor glossário (terms.json) no MCP como recurso/tool.
 
 ---
 
@@ -161,7 +161,7 @@ Blocos suportados:
 
 ## Migração de guias (concluída)
 
-Todos os 16 guias estão em JSON (ver tabela **Status atual** no topo). Os antigos TSX em `src/content/guides/` foram removidos; permanece só `glossary.tsx`. Blocos especiais: `casesGrid`, `timeline`, `architectureComparison`, `decisionWizard`.
+Todos os 17 guias estão em JSON (ver tabela **Status atual** no topo). Os antigos TSX em `src/content/guides/` foram removidos; o glossário é hero + bloco `glossary`. Blocos especiais: `casesGrid`, `timeline`, `architectureComparison`, `decisionWizard`, `glossary`.
 
 ## Como migrar uma página para JSON
 
