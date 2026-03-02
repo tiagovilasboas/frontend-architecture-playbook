@@ -164,6 +164,28 @@
     },
     {
       "type": "section",
+      "title": "Referências",
+      "icon": "book",
+      "children": [
+        {
+          "type": "anchor",
+          "label": "Martin Fowler - Event Sourcing",
+          "href": "https://martinfowler.com/eaaDev/EventSourcing.html"
+        },
+        {
+          "type": "anchor",
+          "label": "Greg Young - CQRS and Event Sourcing (video)",
+          "href": "https://www.youtube.com/watch?v=8JKjvY4etTY"
+        },
+        {
+          "type": "anchor",
+          "label": "Redux Toolkit",
+          "href": "https://redux-toolkit.js.org/"
+        }
+      ]
+    },
+    {
+      "type": "section",
       "title": "Referências e Recursos",
       "icon": "code",
       "children": [

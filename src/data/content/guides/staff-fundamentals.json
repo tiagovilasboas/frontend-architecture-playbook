@@ -44,6 +44,37 @@
     },
     {
       "type": "section",
+      "title": "Governança e responsabilidade Staff",
+      "icon": "users",
+      "children": [
+        {
+          "type": "text",
+          "content": "Quem define padrões, quem aprova ADR e com que cadência o playbook é revisado deve estar claro no time. Não precisa ser burocrático: pode ser \"Staff propõe, tech lead aprova\" ou \"qualquer um propõe ADR, revisão no PR\".",
+          "size": "sm"
+        },
+        {
+          "type": "list",
+          "icon": "check",
+          "spacing": "xs",
+          "items": [
+            {
+              "title": "Quem define padrões:",
+              "description": "quem escreve/atualiza o playbook e os guardrails (ex.: Staff, tech lead, capítulo front-end)."
+            },
+            {
+              "title": "Quem aprova ADR:",
+              "description": "quem mergeia ADR (geralmente no mesmo fluxo do code review do PR)."
+            },
+            {
+              "title": "Cadência de revisão:",
+              "description": "playbook e ADRs não podem ficar congelados; definir revisão periódica (ex.: trimestral) ou \"quando uma decisão for substituída\"."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
       "title": "Conteúdo do playbook nesta seção",
       "children": [
         {

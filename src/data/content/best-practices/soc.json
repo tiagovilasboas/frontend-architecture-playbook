@@ -151,6 +151,23 @@
     },
     {
       "type": "section",
+      "title": "Referências",
+      "icon": "book",
+      "children": [
+        {
+          "type": "anchor",
+          "label": "Uncle Bob – The Clean Architecture (camadas e preocupações)",
+          "href": "https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html"
+        },
+        {
+          "type": "anchor",
+          "label": "Wikipedia – Separation of concerns",
+          "href": "https://en.wikipedia.org/wiki/Separation_of_concerns"
+        }
+      ]
+    },
+    {
+      "type": "section",
       "title": "Resumo",
       "children": [
         {

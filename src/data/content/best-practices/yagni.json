@@ -157,6 +157,23 @@
     },
     {
       "type": "section",
+      "title": "Referências",
+      "icon": "book",
+      "children": [
+        {
+          "type": "anchor",
+          "label": "Martin Fowler – YAGNI",
+          "href": "https://martinfowler.com/bliki/Yagni.html"
+        },
+        {
+          "type": "anchor",
+          "label": "Ron Jeffries – You're NOT Gonna Need It",
+          "href": "https://ronjeffries.com/xprog/articles/practices/pracnotneed/"
+        }
+      ]
+    },
+    {
+      "type": "section",
       "title": "Resumo",
       "children": [
         {

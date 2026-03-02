@@ -162,6 +162,19 @@
     },
     {
       "type": "section",
+      "title": "Quando NÃO usar",
+      "icon": "alert-triangle",
+      "children": [
+        {
+          "type": "alert",
+          "message": "Um único app pequeno ou time único não precisa de monorepo — um repositório simples basta. Evite quando: poucos pacotes sem compartilhamento real, time sem experiência com tooling (Nx/Turborepo), ou quando a prioridade é entregar MVP rápido.",
+          "color": "yellow",
+          "icon": "alert-triangle"
+        }
+      ]
+    },
+    {
+      "type": "section",
       "title": "Armadilhas Comuns",
       "icon": "alert-triangle",
       "children": [

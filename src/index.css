@@ -279,6 +279,32 @@ a:focus,
   opacity: 0.8;
 }
 
+/* Ícone + título: mesma linha, alinhados ao topo e à esquerda */
+[data-doc-content] .mantine-Group-root:has(.mantine-ThemeIcon-root) {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+}
+[data-doc-content] .mantine-Group-root .mantine-ThemeIcon-root {
+  flex-shrink: 0 !important;
+}
+/* Título ao lado do ícone: sem margem em cima, line-height apertado para alinhar primeira linha com o ícone */
+[data-doc-content] .mantine-Group-root:has(.mantine-ThemeIcon-root) .mantine-Title-root {
+  flex-shrink: 1;
+  min-width: 0;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-top: 0 !important;
+  line-height: 1.25 !important;
+}
+/* Text ao lado do ícone (ex.: cards) – mesmo alinhamento */
+[data-doc-content] .mantine-Group-root:has(.mantine-ThemeIcon-root) .mantine-Text-root {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
 /* Conteúdo do playbook no mobile: tipografia e espaçamento mais compactos */
 @media (max-width: 767px) {
   [data-doc-content] {

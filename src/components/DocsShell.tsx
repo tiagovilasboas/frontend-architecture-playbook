@@ -86,8 +86,7 @@ export default function DocsShell({ children }: DocsShellProps) {
           style={{
             flex: 1,
             width: '100%',
-            padding: isMobile ? '1rem' : '2rem',
-            paddingBottom: isMobile ? '1rem' : '2rem',
+            padding: isMobile ? '0.75rem 0' : '2rem',
             display: 'flex',
             flexDirection: 'column',
             minHeight: 0,

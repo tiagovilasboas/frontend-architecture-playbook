@@ -389,17 +389,25 @@ export default function Home() {
                 ].map(({ icon, title, desc }) => (
                   <Card key={title} withBorder p="md" radius="md" h="100%">
                     <Stack gap="sm">
-                      <ThemeIcon
-                        size={48}
-                        radius="md"
-                        variant="light"
-                        color="brand"
+                      <Group
+                        gap="sm"
+                        align="flex-start"
+                        wrap="nowrap"
+                        justify="flex-start"
                       >
-                        {icon}
-                      </ThemeIcon>
-                      <Text fw={600} size="sm">
-                        {title}
-                      </Text>
+                        <ThemeIcon
+                          size={48}
+                          radius="md"
+                          variant="light"
+                          color="brand"
+                          style={{ flexShrink: 0 }}
+                        >
+                          {icon}
+                        </ThemeIcon>
+                        <Text fw={600} size="sm" style={{ minWidth: 0 }}>
+                          {title}
+                        </Text>
+                      </Group>
                       <Text size="xs" c="gray.4" lh={1.4}>
                         {desc}
                       </Text>

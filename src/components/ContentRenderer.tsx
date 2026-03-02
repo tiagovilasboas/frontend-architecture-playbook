@@ -109,16 +109,24 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
       return (
         <div key={key}>
           {iconEl ? (
-            <Group gap="sm" mb={{ base: 'sm', sm: 'md' }} align="flex-start">
+            <Group
+              gap="sm"
+              mb={{ base: 'sm', sm: 'md' }}
+              align="flex-start"
+              wrap="nowrap"
+              justify="flex-start"
+              style={{ flexDirection: 'row', display: 'flex' }}
+            >
               <ThemeIcon
                 size={{ base: 'lg', sm: 'xl' }}
                 radius="md"
                 variant="light"
                 color="brand"
+                style={{ flexShrink: 0 }}
               >
                 {iconEl}
               </ThemeIcon>
-              <div>
+              <div style={{ minWidth: 0 }}>
                 <Title order={1} size="h1">
                   {block.title}
                 </Title>
@@ -154,13 +162,29 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
               gap="sm"
               mb={block.children?.length ? 'md' : undefined}
               align="flex-start"
+              wrap="nowrap"
+              justify="flex-start"
+              style={{ flexDirection: 'row', display: 'flex' }}
             >
               {iconEl && (
-                <ThemeIcon size="lg" radius="md" variant="light" color="brand">
+                <ThemeIcon
+                  size="lg"
+                  radius="md"
+                  variant="light"
+                  color="brand"
+                  style={{ flexShrink: 0 }}
+                >
                   {iconEl}
                 </ThemeIcon>
               )}
-              {block.title && <Title order={3}>{block.title}</Title>}
+              {block.title && (
+                <Title
+                  order={3}
+                  style={{ minWidth: 0, margin: 0, lineHeight: 1.25 }}
+                >
+                  {block.title}
+                </Title>
+              )}
             </Group>
           )}
           {block.children?.length ? (
@@ -277,13 +301,19 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
                 to={card.to}
                 style={{ textDecoration: 'none' }}
               >
-                <Group gap="sm" align="flex-start">
+                <Group
+                  gap="sm"
+                  align="flex-start"
+                  wrap="nowrap"
+                  justify="flex-start"
+                >
                   {iconEl && (
                     <ThemeIcon
                       size={36}
                       radius="md"
                       variant="light"
                       color="brand"
+                      style={{ flexShrink: 0 }}
                     >
                       {iconEl}
                     </ThemeIcon>
@@ -317,6 +347,8 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
                   gap="sm"
                   mb={c.items?.length ? 'sm' : undefined}
                   align="flex-start"
+                  wrap="nowrap"
+                  justify="flex-start"
                 >
                   {iconEl && (
                     <ThemeIcon
@@ -324,6 +356,7 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
                       radius="md"
                       variant="light"
                       color={(c.iconColor as 'brand') ?? 'brand'}
+                      style={{ flexShrink: 0 }}
                     >
                       {iconEl}
                     </ThemeIcon>

@@ -83,7 +83,7 @@
       "children": [
         {
           "type": "text",
-          "content": "Priorize por impacto no negócio: LCP e FID em páginas de conversão primeiro. Use métricas reais (Core Web Vitals, dashboard) em OKRs e em ADRs quando a decisão afetar entrega. Staff: exija \"antes/depois\" em PRs que mexem em bundle ou render — números, não opinião.",
+          "content": "Priorize por impacto no negócio: LCP e INP em páginas de conversão primeiro. Use métricas reais (Core Web Vitals, dashboard) em OKRs e em ADRs quando a decisão afetar entrega. Staff: exija \"antes/depois\" em PRs que mexem em bundle ou render — números, não opinião.",
           "size": "sm"
         }
       ]
@@ -187,6 +187,53 @@
                 "Real User Monitoring (RUM)"
               ]
             }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Core Web Vitals e Observabilidade",
+      "icon": "chart-bar",
+      "children": [
+        {
+          "type": "text",
+          "content": "Desde março de 2024 o trio oficial é LCP, INP e CLS. INP (Interaction to Next Paint) substituiu FID: mede a responsividade em todas as interações da visita, não só a primeira. Bom valor: menos de 200 ms no 75º percentil.",
+          "size": "sm"
+        },
+        {
+          "type": "text",
+          "content": "Em produção, use RUM (Real User Monitoring): métricas de usuários reais. Synthetic (Lighthouse em CI) complementa, mas não substitui. Google usa dados de campo (CrUX) para ranking."
+        },
+        {
+          "type": "list",
+          "items": [
+            "PageSpeed Insights: Core Web Vitals agregados (últimos 28 dias) + sugestões",
+            "Search Console: performance por página, histórico",
+            "Chrome User Experience Report (CrUX): dados por dispositivo e tipo de conexão",
+            "Biblioteca web-vitals (Google): enviar LCP/INP/CLS para seu analytics ou RUM"
+          ],
+          "spacing": "xs"
+        },
+        {
+          "type": "alert",
+          "color": "blue",
+          "icon": "bulb",
+          "message": "Evite analisar só média: mascara problemas. Use percentis (ex.: 75º) e segmentação por dispositivo/conexão. Staff: exija dashboard de CWV em produção antes de \"está rápido\"."
+        },
+        {
+          "type": "title",
+          "content": "Referências oficiais",
+          "order": 4
+        },
+        {
+          "type": "list",
+          "spacing": "xs",
+          "items": [
+            "web.dev - INP (Interaction to Next Paint): https://web.dev/articles/inp",
+            "web.dev - Otimizar INP: https://web.dev/optimize-inp/",
+            "web.dev - Medir Web Vitals em produção: https://web.dev/articles/vitals-measurement-getting-started",
+            "PageSpeed Insights (CrUX + sugestões): https://pagespeed.web.dev/"
           ]
         }
       ]

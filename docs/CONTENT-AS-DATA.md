@@ -202,3 +202,18 @@ Todos os 17 guias estão em JSON (ver tabela **Status atual** no topo). Os antig
   ]
 }
 ```
+
+---
+
+## Eixos de conteúdo (opcional, futuro)
+
+Para evoluir o playbook para nível Staff/Principal, a análise sugere **separar quatro eixos** em cada conteúdo relevante:
+
+| Eixo        | O que cobre                                     |
+| ----------- | ----------------------------------------------- |
+| **Técnico** | O que é, como funciona.                         |
+| **Decisão** | Quando escolher, quando evitar, trade-offs.     |
+| **Org**     | Quem define padrões, quem revisa, como evoluir. |
+| **Negócio** | Custo de não fazer, benefício mensurável.       |
+
+**Uso futuro:** no `meta` do JSON (ou em metadados separados), pode-se adicionar algo como `eixos: ["decisao", "negocio"]` para permitir filtrar o playbook por eixo (ex.: “só decisão” ou “só impacto negócio”). Hoje não está implementado; é só referência para quando quiserem tags ou filtros por tipo de conteúdo.

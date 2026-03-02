@@ -185,7 +185,7 @@
       "children": [
         {
           "type": "text",
-          "content": "Staff tem que trabalhar com performance e métricas de forma constante. Não basta \"a página tá rápida\": você precisa saber Core Web Vitals (LCP, FID, CLS), ter números que o negócio entende (tempo de carregamento, taxa de conversão, bounce) e conectar decisão técnica a resultado. Casos como o eBay (100ms de atraso = -0,5% Add to Cart) existem pra você levar pra reunião."
+          "content": "Staff tem que trabalhar com performance e métricas de forma constante. Não basta \"a página tá rápida\": você precisa saber Core Web Vitals (LCP, INP, CLS), ter números que o negócio entende (tempo de carregamento, taxa de conversão, bounce) e conectar decisão técnica a resultado. Casos como o eBay (100ms de atraso = -0,5% Add to Cart) existem pra você levar pra reunião."
         },
         {
           "type": "text",

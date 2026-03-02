@@ -313,7 +313,7 @@
     ],
     "results": [
       "Cada 100ms de melhoria = +0.5% em Add to Cart (verificado)",
-      "Core Web Vitals aprovados (LCP, CLS, FID)",
+      "Core Web Vitals aprovados (LCP, CLS, INP)",
       "View Item page modernizada após 10 anos de legacy"
     ],
     "link": "https://web.dev/shopping-for-speed-on-ebay/",

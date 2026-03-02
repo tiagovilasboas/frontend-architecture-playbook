@@ -27,6 +27,69 @@
       ]
     },
     {
+      "type": "section",
+      "title": "Por objetivo",
+      "icon": "target",
+      "children": [
+        {
+          "type": "text",
+          "content": "Não é por nível? Aqui você vai direto ao que quer: performance, decidir arquitetura ou falar de segurança com o negócio.",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "richCardGrid",
+          "cols": { "base": 1, "md": 3 },
+          "cards": [
+            {
+              "icon": "trending-up",
+              "iconColor": "green",
+              "title": "Quero melhorar performance",
+              "bodyText": "Métricas, Core Web Vitals, impacto em conversão e guardrails de entrega.",
+              "links": [
+                {
+                  "to": "/techniques/performance",
+                  "label": "Guia de Performance"
+                },
+                { "to": "/guides/staff-entrega", "label": "Staff · Entrega" },
+                { "to": "/guides/cases", "label": "Casos com métricas" }
+              ]
+            },
+            {
+              "icon": "git-branch",
+              "iconColor": "blue",
+              "title": "Quero decidir arquitetura",
+              "bodyText": "Wizard de decisão, comparação lado a lado e casos reais para justificar.",
+              "links": [
+                {
+                  "to": "/guides/how-to-choose",
+                  "label": "Como Escolher (Wizard)"
+                },
+                {
+                  "to": "/guides/architecture-comparison",
+                  "label": "Comparação"
+                },
+                { "to": "/guides/cases", "label": "19 Casos Reais" }
+              ]
+            },
+            {
+              "icon": "shield",
+              "iconColor": "orange",
+              "title": "Quero falar de segurança com o negócio",
+              "bodyText": "Priorização, impacto financeiro e como comunicar com stakeholders.",
+              "links": [
+                {
+                  "to": "/guides/security-business",
+                  "label": "Segurança & Negócio"
+                },
+                { "to": "/patterns/security", "label": "Security Patterns" }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
       "type": "richCardGrid",
       "cols": { "base": 1, "md": 2 },
       "cards": [

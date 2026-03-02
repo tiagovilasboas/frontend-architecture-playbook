@@ -150,6 +150,23 @@
     },
     {
       "type": "section",
+      "title": "Referências",
+      "icon": "book",
+      "children": [
+        {
+          "type": "anchor",
+          "label": "Martin Fowler – Don't Repeat Yourself",
+          "href": "https://martinfowler.com/bliki/DonRepeatYourself.html"
+        },
+        {
+          "type": "anchor",
+          "label": "The Pragmatic Programmer (Hunt & Thomas) – DRY",
+          "href": "https://pragprog.com/titles/tpp20/the-pragmatic-programmer-20th-anniversary-edition/"
+        }
+      ]
+    },
+    {
+      "type": "section",
       "title": "Resumo",
       "children": [
         {

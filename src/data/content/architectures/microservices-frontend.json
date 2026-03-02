@@ -203,6 +203,33 @@
     },
     {
       "type": "section",
+      "title": "Referências",
+      "icon": "book",
+      "children": [
+        {
+          "type": "anchor",
+          "label": "Martin Fowler – Micro Frontends",
+          "href": "https://martinfowler.com/articles/micro-frontends.html"
+        },
+        {
+          "type": "anchor",
+          "label": "Module Federation – Documentação",
+          "href": "https://module-federation.io/"
+        },
+        {
+          "type": "anchor",
+          "label": "micro-frontends.org – Guia",
+          "href": "https://micro-frontends.org/"
+        },
+        {
+          "type": "anchor",
+          "label": "Luca Mezzalira – Building Micro-Frontends (O'Reilly)",
+          "href": "https://www.oreilly.com/library/view/building-micro-frontends/9781492082989/"
+        }
+      ]
+    },
+    {
+      "type": "section",
       "title": "Referências e Recursos",
       "icon": "code",
       "children": [

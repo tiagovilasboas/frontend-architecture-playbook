@@ -150,6 +150,23 @@
     },
     {
       "type": "section",
+      "title": "Referências",
+      "icon": "book",
+      "children": [
+        {
+          "type": "anchor",
+          "label": "Wikipedia – KISS (Keep it simple, stupid)",
+          "href": "https://en.wikipedia.org/wiki/KISS_principle"
+        },
+        {
+          "type": "anchor",
+          "label": "The Pragmatic Programmer – Simplicidade",
+          "href": "https://pragprog.com/titles/tpp20/the-pragmatic-programmer-20th-anniversary-edition/"
+        }
+      ]
+    },
+    {
+      "type": "section",
       "title": "Resumo",
       "children": [
         {

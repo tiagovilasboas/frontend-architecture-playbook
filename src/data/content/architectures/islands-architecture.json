@@ -182,6 +182,28 @@
     },
     {
       "type": "section",
+      "title": "Referências",
+      "icon": "book",
+      "children": [
+        {
+          "type": "anchor",
+          "label": "Jason Miller - Islands Architecture",
+          "href": "https://jasonformat.com/islands-architecture/"
+        },
+        {
+          "type": "anchor",
+          "label": "Astro - Islands",
+          "href": "https://docs.astro.build/en/concepts/islands/"
+        },
+        {
+          "type": "anchor",
+          "label": "patterns.dev - Islands Architecture",
+          "href": "https://www.patterns.dev/posts/islands-architecture"
+        }
+      ]
+    },
+    {
+      "type": "section",
       "title": "Referências e Recursos",
       "icon": "code",
       "children": [

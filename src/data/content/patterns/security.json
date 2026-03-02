@@ -313,9 +313,39 @@
     },
     {
       "type": "section",
+      "title": "CSP e Supply Chain",
+      "icon": "lock",
+      "children": [
+        {
+          "type": "text",
+          "content": "Content Security Policy (CSP): header HTTP que restringe de onde scripts e recursos podem carregar; reduz XSS e clickjacking. Boa prática: CSP restrito com nonce ou hash (strict-dynamic), não só allowlist. Supply chain: dependências podem trazer vulnerabilidades; use npm audit, lockfile consistente e revisão de deps críticas."
+        },
+        {
+          "type": "list",
+          "spacing": "xs",
+          "items": [
+            "MDN - Content Security Policy: https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP",
+            "web.dev - CSP: https://web.dev/articles/csp",
+            "web.dev - Strict CSP (nonce/hash): https://web.dev/articles/strict-csp"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
       "title": "Referências",
       "icon": "code",
       "children": [
+        {
+          "type": "title",
+          "content": "Documentação oficial",
+          "order": 4
+        },
+        {
+          "type": "list",
+          "spacing": "xs",
+          "items": ["OWASP Top 10: https://owasp.org/www-project-top-ten/"]
+        },
         {
           "type": "title",
           "content": "Artigos e Case Studies",
