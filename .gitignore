@@ -25,3 +25,8 @@ dist-ssr
 
 # Lighthouse CI
 .lighthouseci/
+
+# Playwright
+test-results/
+playwright-report/
+playwright/.cache/
