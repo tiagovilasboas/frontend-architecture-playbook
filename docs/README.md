@@ -53,7 +53,8 @@ docs/
 ├── ux-mobile-menu.md
 └── adr/                         ← decisões arquiteturais (ADRs)
     ├── README.md
-    └── 001-visualizations-and-comparisons.md
+    ├── 001-visualizations-and-comparisons.md
+    └── 002-state-management.md
 ```
 
 ---

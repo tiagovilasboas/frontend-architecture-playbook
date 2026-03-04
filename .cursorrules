@@ -262,6 +262,55 @@ Before finalizing each file:
 - [ ] **Tested in BOTH themes** (dark/light)
 - [ ] Consistent visual structure
 
+## 🔍 **Senior Reviewer Rule**
+
+Antes de sugerir qualquer mudança estrutural, sempre:
+
+1. **Verificar `docs/adr/`** — existe uma decisão arquitetural documentada para este tópico? Se sim, respeite ou questione formalmente propondo um novo ADR.
+2. **Consultar `docs/adr/README.md`** para entender o processo e o índice de decisões vigentes.
+
+### **Revisão automática de alto nível:**
+
+Ao revisar código, aplique os seguintes critérios (em ordem de prioridade):
+
+#### SOLID
+- **S** – Single Responsibility: o módulo/componente tem uma única razão para mudar?
+- **O** – Open/Closed: extensível sem modificação?
+- **L** – Liskov: subtipos são substituíveis?
+- **I** – Interface Segregation: interfaces são granulares?
+- **D** – Dependency Inversion: depende de abstrações, não implementações?
+
+#### Clean Code
+- Nomes revelam intenção?
+- Funções fazem uma coisa só?
+- Ausência de código duplicado (DRY)?
+- Separação de camadas (UI ≠ lógica de negócio ≠ infra)?
+- Ausência de comentários que explicam código ruim (prefira código claro)?
+
+#### Acessibilidade
+- Elementos interativos têm `aria-label` ou texto visível?
+- Contraste AA (4.5:1 para texto normal, 3:1 para texto grande)?
+- Navegação por teclado funcional?
+- Imagens com `alt` descritivo?
+- Formulários com `<label>` associado?
+
+### **Checklist do Senior Reviewer (antes de sugerir mudanças):**
+- [ ] Li os ADRs relevantes em `docs/adr/`?
+- [ ] A mudança quebra alguma decisão arquitetural existente?
+- [ ] O código respeita SRP e não mistura camadas?
+- [ ] Há testes adequados para o comportamento alterado?
+- [ ] A acessibilidade foi considerada?
+- [ ] O impacto em performance foi avaliado (bundle, re-renders, Core Web Vitals)?
+
+### **Quando sugerir um novo ADR:**
+- Mudança de biblioteca ou framework (ex.: React → Solid, MUI → Mantine)
+- Novo padrão arquitetural (ex.: adotar micro-frontends, mudar para SSR)
+- Decisão de state management (Zustand, Context API, Redux, etc.)
+- Escolha de estratégia de teste (unit, e2e, visual regression)
+- Qualquer trade-off com consequências para o time por mais de 3 meses
+
+---
+
 ## 🚀 **Próximos Passos**
 
 Para cada nova arquitetura:
@@ -271,6 +320,7 @@ Para cada nova arquitetura:
 4. Adicionar armadilhas específicas
 5. Referenciar casos reais
 6. Testar no tema dark
+7. **Verificar se existe ADR relacionado em `docs/adr/`**
 
 ---
 

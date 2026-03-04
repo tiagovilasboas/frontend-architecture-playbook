@@ -476,6 +476,274 @@ server.tool(
   }
 );
 
+server.tool(
+  'playbook_map_snippet',
+  {
+    snippet: z.string(),
+    context: z.string().optional(),
+  },
+  async ({ snippet, context }) => {
+    const guides = getAllGuides(playbook);
+
+    // Build a keyword map from common architectural patterns to guide slugs/hrefs
+    const PATTERN_KEYWORDS: {
+      keywords: string[];
+      weight: number;
+      hrefFragment: string;
+    }[] = [
+      {
+        keywords: [
+          'useContext',
+          'createContext',
+          'Provider',
+          'Context.Provider',
+          'contextValue',
+        ],
+        weight: 3,
+        hrefFragment: 'state-management',
+      },
+      {
+        keywords: [
+          'useState',
+          'useReducer',
+          'useEffect',
+          'useMemo',
+          'useCallback',
+          'useRef',
+        ],
+        weight: 2,
+        hrefFragment: 'state-management',
+      },
+      {
+        keywords: ['zustand', 'create(', 'useStore', 'devtools'],
+        weight: 3,
+        hrefFragment: 'state-management',
+      },
+      {
+        keywords: [
+          'clean architecture',
+          'dependency rule',
+          'use case',
+          'entity',
+          'repository',
+          'interface',
+          'port',
+          'adapter',
+        ],
+        weight: 3,
+        hrefFragment: 'clean-architecture',
+      },
+      {
+        keywords: [
+          'module federation',
+          'micro frontend',
+          'microfrontend',
+          'single-spa',
+          'webpack.config',
+          'exposes:',
+          'remotes:',
+        ],
+        weight: 3,
+        hrefFragment: 'micro-frontend',
+      },
+      {
+        keywords: [
+          'monorepo',
+          'workspace',
+          'nx',
+          'turborepo',
+          'pnpm-workspace',
+          'lerna',
+        ],
+        weight: 3,
+        hrefFragment: 'monorepo',
+      },
+      {
+        keywords: [
+          'getServerSideProps',
+          'getStaticProps',
+          'renderToPipeableStream',
+          'hydrateRoot',
+          'SSR',
+          'SSG',
+          'next/server',
+        ],
+        weight: 3,
+        hrefFragment: 'ssr-ssg',
+      },
+      {
+        keywords: [
+          'islands',
+          'partial hydration',
+          'astro',
+          'client:load',
+          'client:idle',
+        ],
+        weight: 3,
+        hrefFragment: 'islands-architecture',
+      },
+      {
+        keywords: [
+          'LCP',
+          'TTI',
+          'CLS',
+          'INP',
+          'FID',
+          'web vitals',
+          'performanceObserver',
+          'lighthouse',
+        ],
+        weight: 3,
+        hrefFragment: 'performance',
+      },
+      {
+        keywords: [
+          'Storybook',
+          'design system',
+          'atomic design',
+          'compound component',
+          'variant',
+          'ThemeIcon',
+          'Mantine',
+        ],
+        weight: 2,
+        hrefFragment: 'component-driven',
+      },
+      {
+        keywords: [
+          'aria-',
+          'role=',
+          'alt=',
+          'tabIndex',
+          'axe',
+          'wcag',
+          'accessible',
+        ],
+        weight: 3,
+        hrefFragment: 'accessibility',
+      },
+      {
+        keywords: [
+          'jest',
+          'describe(',
+          'it(',
+          'test(',
+          'expect(',
+          'render(',
+          'screen.',
+          'userEvent',
+          'playwright',
+          'cypress',
+        ],
+        weight: 3,
+        hrefFragment: 'testing',
+      },
+      {
+        keywords: [
+          'ADR',
+          'architecture decision',
+          'staff',
+          'principal',
+          'guardrail',
+          'SOLID',
+          'SRP',
+          'OCP',
+          'DRY',
+        ],
+        weight: 3,
+        hrefFragment: 'staff',
+      },
+      {
+        keywords: [
+          'migration',
+          'strangler fig',
+          'branch by abstraction',
+          'parallel run',
+          'legacy',
+        ],
+        weight: 3,
+        hrefFragment: 'migration-strategies',
+      },
+    ];
+
+    const combined = `${snippet} ${context ?? ''}`.toLowerCase();
+
+    // Score each guide
+    const scores: Map<string, number> = new Map();
+    for (const pattern of PATTERN_KEYWORDS) {
+      for (const kw of pattern.keywords) {
+        const kwLower = kw.toLowerCase();
+        const re = new RegExp(
+          kwLower.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'),
+          'g'
+        );
+        const occurrences = (combined.match(re) ?? []).length;
+        if (occurrences > 0) {
+          for (const guide of guides) {
+            if (guide.href.toLowerCase().includes(pattern.hrefFragment)) {
+              const key = guide.href;
+              scores.set(
+                key,
+                (scores.get(key) || 0) + occurrences * pattern.weight
+              );
+            }
+          }
+        }
+      }
+    }
+
+    // If no keyword matched, fall back to full-text title/description search
+    if (scores.size === 0) {
+      const words = combined.split(/\W+/).filter(w => w.length > 3);
+      for (const word of words) {
+        for (const guide of guides) {
+          const target = (
+            (guide.title || guide.label) +
+            ' ' +
+            (guide.description || '')
+          ).toLowerCase();
+          if (target.includes(word)) {
+            scores.set(guide.href, (scores.get(guide.href) || 0) + 1);
+          }
+        }
+      }
+    }
+
+    const sorted = [...scores.entries()]
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 3)
+      .map(([href]) => guides.find(g => g.href === href)!)
+      .filter(Boolean);
+
+    if (sorted.length === 0) {
+      return {
+        content: [
+          {
+            type: 'text',
+            text: 'No specific guide matched the snippet. Use playbook_list_guides to browse all available guides.',
+          },
+        ],
+      };
+    }
+
+    const result = {
+      snippet_preview:
+        snippet.slice(0, 200) + (snippet.length > 200 ? '...' : ''),
+      matched_guides: sorted.map(g => ({
+        title: g.title || g.label,
+        description: g.description,
+        url: `${baseUrl}${g.href}`,
+        slug: g.slug || g.href.replace(/^\//, '').replace(/\//g, '-'),
+      })),
+      tip: 'Use playbook_get_guide with the slug to read the full guide content.',
+    };
+
+    return {
+      content: [{ type: 'text', text: JSON.stringify(result, null, 2) }],
+    };
+  }
+);
+
 async function main() {
   const transport = new StdioServerTransport();
   await server.connect(transport);
