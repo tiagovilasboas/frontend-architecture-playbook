@@ -1,10 +1,10 @@
-# 🚀 Cursor Rules para Front-End
+# 🚀 Frontend Architecture Playbook
 
-> **Guia prático de Cursor Rules para desenvolvimento front-end - porque produtividade não é só sobre código, é sobre contexto.**
+> **Guia prático de arquiteturas front-end com tom de dev para dev — direto, conversacional, sem enrolação.**
 
 ## 🎯 O que é isso?
 
-Cursor Rules são configurações que transformam o Cursor em um assistente especializado para seu projeto. Em vez de ter um "AI genérico", você tem um parceiro que entende suas convenções, padrões e necessidades específicas.
+Um playbook interativo de arquiteturas front-end cobrindo Clean Architecture, Component-Driven, Micro-frontends, Monorepo, SSR/SSG, Islands Architecture, performance e muito mais. Inclui um MCP Server para integração com o Cursor AI.
 
 ## 🎨 Por que Front-End?
 
@@ -12,7 +12,7 @@ Front-end tem particularidades únicas:
 
 - **Componentização** - Estruturas específicas
 - **Estados complexos** - Gerenciamento de UI
-- **Performance** - Otimizações específicas
+- **Performance** - Otimizações específicas (Core Web Vitals, TTI, LCP)
 - **Design Systems** - Padrões visuais
 - **Frameworks** - React, Vue, Angular, Svelte
 - **Build tools** - Vite, Webpack, Rollup
@@ -21,25 +21,32 @@ Front-end tem particularidades únicas:
 ## 📁 Estrutura do Projeto
 
 ```
-cursor-rules-frontend/
-├── rules/
-│   ├── react/
-│   ├── vue/
-│   ├── angular/
-│   ├── svelte/
-│   ├── performance/
-│   ├── testing/
-│   └── design-systems/
-├── examples/
-│   ├── components/
-│   ├── hooks/
-│   └── patterns/
-├── templates/
-│   ├── .cursorrules
-│   └── .cursorrules.template
-└── docs/
-    ├── getting-started.md
-    └── best-practices.md
+frontend-architecture-playbook/
+├── .cursorrules              ← Cursor AI rules (com Senior Reviewer integrado)
+├── .github/
+│   └── workflows/
+│       ├── ci.yml            ← CI: lint, test, lighthouse
+│       └── reviewdog.yml     ← Code review automático
+├── docs/
+│   ├── README.md             ← Índice da documentação
+│   ├── ROADMAP.md
+│   └── adr/                  ← Architecture Decision Records (Michael Nygard)
+│       ├── README.md
+│       ├── 001-visualizations-and-comparisons.md
+│       └── 002-state-management.md
+├── mcp-server/               ← MCP Server para integração com Cursor
+│   ├── src/index.ts
+│   └── data/
+├── src/
+│   ├── components/           ← Componentes Mantine + Tabler Icons
+│   ├── data/
+│   │   ├── content/          ← Guias em JSON (content-as-data)
+│   │   └── glossary/
+│   │       └── terms.json    ← Termos técnicos (SSR, LCP, TTI, Islands, etc.)
+│   ├── pages/                ← Rotas da aplicação
+│   └── lib/                  ← Utilitários, navegação, conteúdo
+├── e2e/                      ← Testes end-to-end (Playwright)
+└── examples/                 ← Exemplos de código
 ```
 
 ## 🚀 Como usar
@@ -47,104 +54,60 @@ cursor-rules-frontend/
 1. **Clone o repo:**
 
 ```bash
-git clone https://github.com/seu-usuario/cursor-rules-frontend.git
+git clone https://github.com/tiagovilasboas/frontend-architecture-playbook.git
 ```
 
-2. **Escolha suas regras:**
+2. **Instale e rode:**
 
 ```bash
-cp templates/.cursorrules.template .cursorrules
+npm install
+npm run dev
 ```
 
-3. **Personalize para seu projeto:**
+3. **Configure o Cursor com o MCP Server:**
 
-- Ajuste as regras para seu framework
-- Adicione suas convenções
-- Configure seu design system
+```bash
+cd mcp-server && npm install && npm run build
+```
 
-## 🎯 Cenários Cobertos
+Ver [mcp-server/README.md](./mcp-server/README.md) para configuração completa.
 
-### 🟢 **React**
+## 🎯 Conteúdo Coberto
 
-- Componentes funcionais vs classes
-- Hooks personalizados
-- Context API
-- Performance com React.memo
-- TypeScript + React
+### 🏗️ **Arquiteturas**
 
-### 🔵 **Vue**
-
-- Composition API
-- Options API
-- Pinia para estado
-- Nuxt.js patterns
-
-### 🟡 **Angular**
-
-- Services
-- RxJS patterns
-- NgRx
-- Angular Material
-
-### 🟠 **Svelte**
-
-- Stores
-- Actions
-- Transitions
-- SvelteKit
+- Clean Architecture
+- Component-Driven Development
+- Micro-frontends
+- Monorepo
+- SSR / SSG / Islands Architecture
 
 ### ⚡ **Performance**
 
-- Code splitting
-- Lazy loading
-- Bundle optimization
-- Core Web Vitals
+- Core Web Vitals (LCP, INP, CLS)
+- Time to Interactive (TTI)
+- Code splitting, lazy loading
+- Partial Hydration
 
-### 🧪 **Testing**
+### 🧭 **Staff / Principal**
 
-- Jest + React Testing Library
-- Vitest
-- Cypress
-- Playwright
+- Fundamentos, UI, Entrega, Estrutura, Escala
+- Guardrails, ADRs, revisão de arquitetura
 
-### 🎨 **Design Systems**
+### 📚 **Glossário Técnico**
 
-- Storybook
-- Component documentation
-- Theme management
-- Accessibility
+Mais de 50 termos densos: Islands Architecture, Hydration, Partial Hydration, LCP, TTI, Streaming SSR, CORS, CSP, Fiber, e muito mais.
 
-## 💡 Exemplos Práticos
+## 🤖 MCP Server
 
-### React Component Rule
+Integra o playbook com o Cursor AI via Model Context Protocol:
 
-```json
-{
-  "name": "React Component",
-  "description": "Cria componentes React seguindo padrões específicos",
-  "rules": [
-    "Use functional components",
-    "Implemente PropTypes ou TypeScript",
-    "Siga naming convention PascalCase",
-    "Separe lógica de apresentação"
-  ]
-}
-```
-
-### Performance Rule
-
-```json
-{
-  "name": "Performance First",
-  "description": "Otimizações automáticas para performance",
-  "rules": [
-    "Use React.memo para componentes pesados",
-    "Implemente lazy loading",
-    "Otimize re-renders",
-    "Considere bundle size"
-  ]
-}
-```
+- `playbook_search` — busca guias por palavra-chave
+- `playbook_get_guide` — retorna um guia completo
+- `playbook_list_guides` — lista todos os guias
+- `playbook_get_cases` — casos reais (Netflix, Spotify, etc.)
+- `playbook_map_snippet` — mapeia um trecho de código ao guia mais relevante
+- `playbook_get_reasoning_guide` — raciocínio sequencial para decisões
 
 ## 🤝 Contribuindo
 
@@ -154,19 +117,19 @@ cp templates/.cursorrules.template .cursorrules
 4. Push: `git push origin feature/nova-regra`
 5. Abra um Pull Request
 
+> **Decisões arquiteturais** devem ser documentadas em `docs/adr/` seguindo o formato Michael Nygard.
+
 ## 📚 Recursos
 
 - [Cursor Documentation](https://cursor.sh/docs)
-- [Cursor Rules Guide](https://cursor.sh/docs/rules)
-- [Front-End Performance](https://web.dev/performance/)
+- [Mantine UI](https://mantine.dev)
+- [web.dev Performance](https://web.dev/performance/)
 - [React Best Practices](https://react.dev/learn)
 
 ## 📄 Licença
 
-MIT License - veja [LICENSE](LICENSE) para detalhes.
+MIT License
 
 ---
 
 **Feito com ❤️ para a comunidade front-end**
-
-_Quer contribuir? Abra uma issue ou PR!_

@@ -27,6 +27,7 @@ MCP server that exposes the [Front-End Architecture Playbook](https://github.com
 | `playbook_get_reasoning_guide` | Returns the **sequential thinking guide**: when and how to reason step-by-step for architecture, architecture gaps, or best-practice violations. No args. |
 | `playbook_list_guides`         | List all guides by section. No args.                                                                                                                      |
 | `playbook_get_cases`           | Get cases, optionally filter by company. Args: `company` (optional string).                                                                               |
+| `playbook_map_snippet`         | Map a local code snippet to the most relevant architectural guide. Args: `snippet` (string), `context` (optional string describing the intent/problem).   |
 
 ## Install and run
 

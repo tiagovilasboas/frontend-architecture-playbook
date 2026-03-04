@@ -230,6 +230,25 @@
       ]
     },
     {
+      "id": "tti",
+      "term": "Time to Interactive (TTI)",
+      "termPt": "Tempo até a interatividade",
+      "definition": "Métrica de performance que mede o tempo desde o início da navegação até o momento em que a página está totalmente interativa: o layout foi estabilizado, fontes e imagens visíveis foram carregadas e a main thread ficou livre por pelo menos 5 segundos (sem long tasks acima de 50 ms). Ao contrário do LCP (que mede visibilidade), o TTI mede quando o usuário pode interagir com confiança. Reduzir TTI envolve eliminar long tasks, fazer code splitting agressivo e adiar JavaScript não crítico.",
+      "category": "performance",
+      "guideHref": "/techniques/performance",
+      "guideLabel": "Performance",
+      "references": [
+        {
+          "label": "web.dev - Time to Interactive",
+          "url": "https://web.dev/articles/tti"
+        },
+        {
+          "label": "Chrome - Optimize TTI",
+          "url": "https://developer.chrome.com/docs/lighthouse/performance/interactive"
+        }
+      ]
+    },
+    {
       "id": "render-blocking-resources",
       "term": "Render-blocking resources",
       "termPt": "Recursos bloqueantes de renderização",
