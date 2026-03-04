@@ -859,3 +859,119 @@ a:focus,
     display: none;
   }
 }
+
+/* ─── Hero title gradient ────────────────────────────────────────────────── */
+.hero-title-gradient {
+  background: linear-gradient(
+    135deg,
+    #1a1a1a 0%,
+    #16a34a 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+[data-mantine-color-scheme='dark'] .hero-title-gradient {
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    #4ade80 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Hero backdrop — subtle dark radial behind hero text ───────────────── */
+.hero-backdrop {
+  position: absolute;
+  inset: 0;
+  border-radius: 0;
+  background: radial-gradient(
+    ellipse 80% 65% at 50% 50%,
+    rgba(255, 255, 255, 0.35) 0%,
+    transparent 75%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+[data-mantine-color-scheme='dark'] .hero-backdrop {
+  background: radial-gradient(
+    ellipse 80% 65% at 50% 50%,
+    rgba(0, 0, 0, 0.45) 0%,
+    transparent 75%
+  );
+}
+
+/* ─── Card action text — adaptive green across light/dark ───────────────── */
+.card-action-text {
+  color: var(--mantine-color-accent-7);
+}
+
+[data-mantine-color-scheme='dark'] .card-action-text {
+  color: var(--mantine-color-accent-4);
+}
+
+/* ─── Hover glow: comece-aqui & destaque cards ───────────────────────────── */
+[data-mantine-color-scheme='dark'] .comece-aqui-card:hover {
+  box-shadow:
+    0 6px 20px rgba(0, 0, 0, 0.25),
+    0 0 0 1px rgba(74, 222, 128, 0.25) !important;
+  border-color: rgba(74, 222, 128, 0.3) !important;
+}
+
+[data-mantine-color-scheme='dark'] .destaque-card:hover {
+  box-shadow:
+    0 6px 20px rgba(0, 0, 0, 0.25),
+    0 0 0 1px rgba(74, 222, 128, 0.25) !important;
+  border-color: rgba(74, 222, 128, 0.3) !important;
+}
+
+[data-mantine-color-scheme='light'] .comece-aqui-card:hover {
+  box-shadow:
+    0 6px 20px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(22, 163, 74, 0.3) !important;
+  border-color: rgba(22, 163, 74, 0.35) !important;
+}
+
+[data-mantine-color-scheme='light'] .destaque-card:hover {
+  box-shadow:
+    0 6px 20px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(22, 163, 74, 0.3) !important;
+  border-color: rgba(22, 163, 74, 0.35) !important;
+}
+
+/* ─── Header search button ───────────────────────────────────────────────── */
+.header-search-btn {
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--app-border-dark);
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+[data-mantine-color-scheme='light'] .header-search-btn {
+  border-color: var(--app-border-light);
+}
+
+.header-search-btn:hover {
+  background: var(--app-nav-hover-bg-dark);
+  border-color: var(--mantine-color-accent-5);
+}
+
+[data-mantine-color-scheme='light'] .header-search-btn:hover {
+  background: var(--app-nav-hover-bg-light);
+  border-color: var(--mantine-color-accent-6);
+}
+
+/* ─── Mobile bottom nav — accent active state ────────────────────────────── */
+.mobile-bottom-nav-btn[aria-label*='Início'][style*='accent'],
+.mobile-bottom-nav-btn[style*='accent'] {
+  color: var(--mantine-color-accent-5);
+}
+

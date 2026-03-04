@@ -72,6 +72,9 @@ export default function Home() {
                 justifyContent: 'center',
               }}
             >
+              {/* Subtle radial backdrop for text readability over neural network */}
+              <Box className="hero-backdrop" />
+
               <Stack
                 align="center"
                 ta="center"
@@ -112,10 +115,10 @@ export default function Home() {
 
                   <Text
                     size={isMobile ? 'sm' : 'md'}
-                    c="gray.4"
+                    c="dimmed"
                     style={{
                       maxWidth: isMobile ? '100%' : 520,
-                      lineHeight: 1.5,
+                      lineHeight: 1.6,
                     }}
                   >
                     Guias na ordem que faz sentido estudar, casos reais com link
@@ -131,7 +134,7 @@ export default function Home() {
                     to="/guides/how-to-choose"
                     size="lg"
                     variant="filled"
-                    color="brand"
+                    color="accent"
                     leftSection={<IconRocket size={20} />}
                     rightSection={<IconArrowRight size={18} />}
                   >
@@ -184,7 +187,7 @@ export default function Home() {
                   <Stack gap="md" h="100%">
                     <Group gap="sm" wrap="nowrap">
                       <Badge
-                        color="brand"
+                        color="accent"
                         variant="filled"
                         size="xl"
                         radius="xl"
@@ -195,7 +198,7 @@ export default function Home() {
                         size={44}
                         radius="md"
                         variant="light"
-                        color="brand"
+                        color="accent"
                       >
                         <IconShield size={24} />
                       </ThemeIcon>
@@ -206,7 +209,7 @@ export default function Home() {
                       </Text>
                       <Text
                         size={isMobile ? 'sm' : 'xs'}
-                        c="gray.4"
+                        c="dimmed"
                         style={{ lineHeight: 1.5 }}
                       >
                         Dependências só apontam pra dentro. A base de tudo.
@@ -214,7 +217,7 @@ export default function Home() {
                     </Stack>
                     <Group
                       gap={4}
-                      c="brand.6"
+                      className="card-action-text"
                       fw={500}
                       style={{ pointerEvents: 'none' }}
                     >
@@ -239,7 +242,7 @@ export default function Home() {
                   <Stack gap="md" h="100%">
                     <Group gap="sm" wrap="nowrap">
                       <Badge
-                        color="brand"
+                        color="accent"
                         variant="filled"
                         size="xl"
                         radius="xl"
@@ -250,7 +253,7 @@ export default function Home() {
                         size={44}
                         radius="md"
                         variant="light"
-                        color="brand"
+                        color="accent"
                       >
                         <IconTarget size={24} />
                       </ThemeIcon>
@@ -261,7 +264,7 @@ export default function Home() {
                       </Text>
                       <Text
                         size={isMobile ? 'sm' : 'xs'}
-                        c="gray.4"
+                        c="dimmed"
                         style={{ lineHeight: 1.5 }}
                       >
                         Responde umas perguntas e leva uma recomendação pro
@@ -270,7 +273,7 @@ export default function Home() {
                     </Stack>
                     <Group
                       gap={4}
-                      c="brand.6"
+                      className="card-action-text"
                       fw={500}
                       style={{ pointerEvents: 'none' }}
                     >
@@ -295,7 +298,7 @@ export default function Home() {
                   <Stack gap="md" h="100%">
                     <Group gap="sm" wrap="nowrap">
                       <Badge
-                        color="brand"
+                        color="accent"
                         variant="filled"
                         size="xl"
                         radius="xl"
@@ -306,7 +309,7 @@ export default function Home() {
                         size={44}
                         radius="md"
                         variant="light"
-                        color="brand"
+                        color="accent"
                       >
                         <IconScale size={24} />
                       </ThemeIcon>
@@ -317,7 +320,7 @@ export default function Home() {
                       </Text>
                       <Text
                         size={isMobile ? 'sm' : 'xs'}
-                        c="gray.4"
+                        c="dimmed"
                         style={{ lineHeight: 1.5 }}
                       >
                         Tudo lado a lado: quando usar, prós, contras e o que
@@ -326,7 +329,7 @@ export default function Home() {
                     </Stack>
                     <Group
                       gap={4}
-                      c="brand.6"
+                      className="card-action-text"
                       fw={500}
                       style={{ pointerEvents: 'none' }}
                     >
@@ -399,7 +402,7 @@ export default function Home() {
                           size={48}
                           radius="md"
                           variant="light"
-                          color="brand"
+                          color="accent"
                           style={{ flexShrink: 0 }}
                         >
                           {icon}
@@ -408,7 +411,7 @@ export default function Home() {
                           {title}
                         </Text>
                       </Group>
-                      <Text size="xs" c="gray.4" lh={1.4}>
+                      <Text size="xs" c="dimmed" lh={1.5}>
                         {desc}
                       </Text>
                     </Stack>
@@ -440,7 +443,7 @@ export default function Home() {
                   ⟩ Casos com link dos artigos respectivos
                 </Title>
                 <Stack gap={4} align="center" ta="center">
-                  <Text size={isMobile ? 'sm' : 'md'} c="gray.4" maw={560}>
+                  <Text size={isMobile ? 'sm' : 'md'} c="dimmed" maw={560}>
                     Netflix, eBay, Shopify, Zalando e outros publicaram como
                     fazem. Cada caso aqui tem o link do artigo respectivo. Não é
                     resumo solto, é onde você abre e lê.
@@ -461,12 +464,12 @@ export default function Home() {
                         <Text span style={{ fontSize: '1.25rem' }} aria-hidden>
                           {c.icon}
                         </Text>
-                        <Text size="sm" fw={500} c="gray.4">
+                        <Text size="sm" fw={500} c="dimmed">
                           {c.company}
                         </Text>
                       </Group>
                     ))}
-                  <Text size="sm" c="gray.4">
+                  <Text size="sm" c="dimmed">
                     +9
                   </Text>
                 </Flex>
@@ -518,7 +521,7 @@ export default function Home() {
                       size={isMobile ? 60 : 50}
                       radius="xl"
                       variant="light"
-                      color="brand"
+                      color="accent"
                     >
                       <IconShield size={isMobile ? 32 : 28} />
                     </ThemeIcon>
@@ -527,7 +530,7 @@ export default function Home() {
                     </Title>
                     <Text
                       size={isMobile ? 'sm' : 'xs'}
-                      c="gray.4"
+                      c="dimmed"
                       style={{ lineHeight: 1.6 }}
                     >
                       Escolher com critério desde o começo poupa tempo. Quando
@@ -547,7 +550,7 @@ export default function Home() {
                       size={isMobile ? 60 : 50}
                       radius="xl"
                       variant="light"
-                      color="brand"
+                      color="accent"
                     >
                       <IconTarget size={isMobile ? 32 : 28} />
                     </ThemeIcon>
@@ -556,7 +559,7 @@ export default function Home() {
                     </Title>
                     <Text
                       size={isMobile ? 'sm' : 'xs'}
-                      c="gray.4"
+                      c="dimmed"
                       style={{ lineHeight: 1.6 }}
                     >
                       Trade-offs e fontes por decisão. O wizard te dá uma
@@ -642,7 +645,7 @@ export default function Home() {
                     </Stack>
                     <Group
                       gap={4}
-                      c="accent.6"
+                      className="card-action-text"
                       fw={500}
                       style={{ pointerEvents: 'none' }}
                     >
@@ -671,13 +674,13 @@ export default function Home() {
                         size={48}
                         radius="md"
                         variant="light"
-                        color="brand"
+                        color="accent"
                       >
                         <IconScale size={26} />
                       </ThemeIcon>
                       <Badge
                         variant="light"
-                        color="brand"
+                        color="accent"
                         size="sm"
                         radius="sm"
                       >
@@ -690,7 +693,7 @@ export default function Home() {
                       </Text>
                       <Text
                         size={isMobile ? 'sm' : 'xs'}
-                        c="gray.4"
+                        c="dimmed"
                         style={{ lineHeight: 1.5 }}
                       >
                         Tudo lado a lado: quando usar, prós, contras e o que
@@ -699,7 +702,7 @@ export default function Home() {
                     </Stack>
                     <Group
                       gap={4}
-                      c="brand.6"
+                      className="card-action-text"
                       fw={500}
                       style={{ pointerEvents: 'none' }}
                     >
@@ -726,7 +729,7 @@ export default function Home() {
                 </Title>
                 <Text
                   size={isMobile ? 'sm' : 'md'}
-                  c="gray.4"
+                  c="dimmed"
                   style={{ lineHeight: 1.6 }}
                 >
                   Responde umas perguntas no wizard e leva uma recomendação pro
@@ -737,6 +740,7 @@ export default function Home() {
                   to="/guides/how-to-choose"
                   size={isMobile ? 'lg' : 'md'}
                   variant="filled"
+                  color="accent"
                   fullWidth={isMobile}
                   leftSection={<IconRocket size={isMobile ? 20 : 18} />}
                   rightSection={<IconArrowRight size={isMobile ? 18 : 16} />}

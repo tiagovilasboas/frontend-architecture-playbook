@@ -7,7 +7,14 @@ interface HeroTitleProps extends Omit<TitleProps, 'order'> {
 
 export function HeroTitle({ children, ...props }: HeroTitleProps) {
   return (
-    <Title order={1} fw={800} size="3.5rem" mb="md" {...props}>
+    <Title
+      order={1}
+      fw={800}
+      size="3.5rem"
+      mb="md"
+      className="hero-title-gradient"
+      {...props}
+    >
       {children}
     </Title>
   );
