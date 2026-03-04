@@ -38,7 +38,7 @@ export function ReadingProgress() {
     <Progress
       value={progress}
       size={3}
-      color="brand"
+      color="accent"
       style={{
         position: 'fixed',
         top: 0,

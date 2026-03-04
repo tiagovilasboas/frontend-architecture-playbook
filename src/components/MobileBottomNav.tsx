@@ -87,7 +87,7 @@ export default function MobileBottomNav() {
                 position: 'relative',
                 transition: 'all 0.2s ease',
                 color: active
-                  ? 'var(--mantine-color-brand-6)'
+                  ? 'var(--mantine-color-accent-5)'
                   : 'var(--mantine-color-dimmed)',
               }}
             >
@@ -135,7 +135,7 @@ export default function MobileBottomNav() {
                     transform: 'translateX(-50%)',
                     width: 32,
                     height: 3,
-                    backgroundColor: 'var(--mantine-color-brand-6)',
+                    backgroundColor: 'var(--mantine-color-accent-5)',
                     borderRadius: '0 0 4px 4px',
                   }}
                 />

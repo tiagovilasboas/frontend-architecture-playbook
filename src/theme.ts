@@ -70,16 +70,8 @@ export const theme = createTheme({
       },
     },
     Title: {
-      styles: {
-        root: {
-          '[data-order="1"]': {
-            background:
-              'linear-gradient(135deg, var(--mantine-color-brand-8) 0%, var(--mantine-color-brand-5) 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
-          },
-        },
+      classNames: {
+        root: 'mantine-title-root',
       },
     },
     Spotlight: {

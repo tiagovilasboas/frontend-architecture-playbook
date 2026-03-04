@@ -7,6 +7,9 @@ import {
   ActionIcon,
   Paper,
   Anchor,
+  Tooltip,
+  Kbd,
+  Text,
 } from '@mantine/core';
 import { Link } from 'react-router-dom';
 import {
@@ -14,8 +17,10 @@ import {
   IconSun,
   IconMoon,
   IconBrandGithub,
+  IconSearch,
 } from '@tabler/icons-react';
 import { useMantineColorScheme } from '@mantine/core';
+import { openSpotlight } from '@mantine/spotlight';
 import { useBreakpoints } from '../hooks/useBreakpoints.ts';
 
 interface Props {
@@ -69,7 +74,7 @@ export default function HeaderBar({ opened, onBurger }: Props) {
             <Group gap="xs" wrap="nowrap" style={{ minWidth: 0 }}>
               <IconCode
                 size={isMobile ? 28 : 24}
-                color="var(--mantine-color-brand-6)"
+                color="var(--mantine-color-accent-5)"
               />
               <Title
                 size="h4"
@@ -87,9 +92,41 @@ export default function HeaderBar({ opened, onBurger }: Props) {
         </Group>
 
         <Group gap="md" wrap="nowrap" style={{ flexShrink: 0 }}>
+          {/* Search affordance – shows ⌘K hint on desktop */}
+          <Tooltip label="Buscar no playbook" position="bottom" withArrow>
+            {isDesktop ? (
+              <UnstyledButton
+                onClick={() => openSpotlight()}
+                className="header-search-btn"
+                aria-label="Buscar no playbook (⌘K)"
+              >
+                <Group gap={6} wrap="nowrap">
+                  <IconSearch
+                    size={15}
+                    style={{ color: 'var(--mantine-color-dimmed)' }}
+                  />
+                  <Text size="sm" c="dimmed" style={{ whiteSpace: 'nowrap' }}>
+                    Buscar...
+                  </Text>
+                  <Kbd size="xs">⌘K</Kbd>
+                </Group>
+              </UnstyledButton>
+            ) : (
+              <ActionIcon
+                onClick={() => openSpotlight()}
+                variant="subtle"
+                color="brand"
+                size="lg"
+                aria-label="Buscar no playbook"
+              >
+                <IconSearch size={18} />
+              </ActionIcon>
+            )}
+          </Tooltip>
+
           <ActionIcon
             onClick={() => toggleColorScheme()}
-            variant="light"
+            variant="subtle"
             color="brand"
             size={isMobile ? 'xl' : 'lg'}
             aria-label="Toggle color scheme"
@@ -109,7 +146,7 @@ export default function HeaderBar({ opened, onBurger }: Props) {
               style={{ textDecoration: 'none' }}
             >
               <ActionIcon
-                variant="light"
+                variant="subtle"
                 color="brand"
                 size="lg"
                 aria-label="GitHub"

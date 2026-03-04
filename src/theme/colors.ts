@@ -20,8 +20,22 @@ export const brand: MantineColorsTuple = [
   '#0a0a0a', // 9 - black
 ];
 
-/** Mesma escala para harmonização total (links, ícones, destaque = tons de cinza) */
-export const accent: MantineColorsTuple = [...brand];
+/**
+ * Accent: verde inspirado na rede neural do background (#00ff41 → tom refinado).
+ * Escala Tailwind green — legível em dark e light mode.
+ */
+export const accent: MantineColorsTuple = [
+  '#f0fdf4', // 0 — bg muito claro (light mode tint)
+  '#dcfce7', // 1
+  '#bbf7d0', // 2
+  '#86efac', // 3 — borda sutil
+  '#4ade80', // 4 — texto/ícone no dark mode
+  '#22c55e', // 5 — verde médio (primary)
+  '#16a34a', // 6 — botão/ação
+  '#15803d', // 7
+  '#166534', // 8
+  '#14532d', // 9
+];
 
 // ─── Semantic tokens (body, containers, nav, canvas) – escuro estilo ChatGPT ───
 export const semantic = {
