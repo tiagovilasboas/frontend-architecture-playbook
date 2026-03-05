@@ -1,8 +1,143 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Staff-level-shine theme (Tailwind uses these for bg-background, text-foreground, etc.) */
 :root {
-  /* Mantine já fornece resets e variáveis de tema */
+  --background: 220 14% 6%;
+  --foreground: 210 20% 92%;
+  --card: 220 12% 9%;
+  --card-foreground: 210 20% 92%;
+  --popover: 220 12% 9%;
+  --popover-foreground: 210 20% 92%;
+  --primary: 42 100% 60%;
+  --primary-foreground: 220 14% 6%;
+  --secondary: 220 10% 14%;
+  --secondary-foreground: 210 15% 75%;
+  --muted: 220 10% 12%;
+  --muted-foreground: 215 12% 50%;
+  --accent: 42 80% 50%;
+  --accent-foreground: 220 14% 6%;
+  --destructive: 0 72% 51%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 220 10% 16%;
+  --input: 220 10% 16%;
+  --ring: 42 100% 60%;
+  --radius: 0.5rem;
+  --highlight: 42 100% 60%;
+  --highlight-muted: 42 60% 30%;
+  --surface-elevated: 220 12% 11%;
+  --code-bg: 220 14% 8%;
+  --glow: 42 100% 60%;
 }
 
-/* Theme from single source (src/theme/colors.ts) */
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--primary)), hsl(42, 80%, 75%));
+  }
+  .glow-sm {
+    box-shadow: 0 0 20px -5px hsl(var(--glow) / 0.15);
+  }
+  .glow-md {
+    box-shadow: 0 0 40px -10px hsl(var(--glow) / 0.2);
+  }
+  .border-glow {
+    border-color: hsl(var(--highlight-muted));
+  }
+  .surface-elevated {
+    background-color: hsl(var(--surface-elevated));
+  }
+  .code-block {
+    background-color: hsl(var(--code-bg));
+    border: 1px solid hsl(var(--border));
+    border-radius: var(--radius);
+  }
+}
+
+/* Playbook page layout (staff-level-shine) */
+.playbook-page {
+  min-height: 100vh;
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: 'Inter', system-ui, sans-serif;
+}
+.playbook-page h1,
+.playbook-page h2,
+.playbook-page h3,
+.playbook-page h4 {
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+.playbook-toc {
+  border-bottom: 1px solid hsl(var(--border));
+  padding: 3rem 0;
+}
+.playbook-toc-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: hsl(var(--muted-foreground));
+  margin-bottom: 1.5rem;
+}
+.playbook-toc-item {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid hsl(var(--border));
+  transition: color 0.2s ease;
+}
+@media (min-width: 640px) {
+  .playbook-toc-item {
+    border-bottom: none;
+  }
+}
+.playbook-toc-item:hover {
+  color: hsl(var(--primary));
+}
+.playbook-toc-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: hsl(var(--highlight-muted));
+}
+.playbook-section {
+  border-bottom: 1px solid hsl(var(--border));
+  padding: 2rem 0;
+}
+@media (min-width: 768px) {
+  .playbook-section {
+    padding: 3rem 0;
+  }
+  .playbook-section-content {
+    margin-left: 144px;
+  }
+}
+.playbook-section-number {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.875rem;
+  color: hsl(var(--highlight-muted));
+}
+@media (max-width: 767px) {
+  .playbook-section-header {
+    display: block !important;
+  }
+}
+.playbook-footer-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+@media (min-width: 640px) {
+  .playbook-footer-inner {
+    flex-direction: row;
+  }
+}
+
+/* Mantine theme from single source (src/theme/colors.ts) */
 [data-mantine-color-scheme='dark'] {
   --mantine-color-body: var(--app-body-dark) !important;
   /* Texto mais claro no dark: melhor contraste para leitura (parágrafos e dimmed) */
@@ -74,7 +209,7 @@ pre.mantine-Code-root {
 /* Links – paleta neutral (dark: claro, light: escuro) */
 a,
 .mantine-Anchor-root {
-  color: var(--mantine-color-brand-6);
+  color: var(--mantine-color-primary-6);
   text-decoration: none;
   font-weight: 500;
   transition: color 0.2s ease;
@@ -82,29 +217,29 @@ a,
 
 [data-mantine-color-scheme='dark'] a,
 [data-mantine-color-scheme='dark'] .mantine-Anchor-root {
-  color: var(--mantine-color-brand-1) !important;
+  color: var(--mantine-color-primary-2) !important;
 }
 
 [data-mantine-color-scheme='dark'] a:hover,
 [data-mantine-color-scheme='dark'] .mantine-Anchor-root:hover {
-  color: var(--mantine-color-brand-0) !important;
+  color: var(--mantine-color-primary-1) !important;
 }
 
 a:hover,
 .mantine-Anchor-root:hover {
-  color: var(--mantine-color-brand-7);
+  color: var(--mantine-color-primary-7);
 }
 
 a:focus,
 .mantine-Anchor-root:focus {
-  outline: 2px solid var(--mantine-color-brand-5);
+  outline: 2px solid var(--mantine-color-primary-5);
   outline-offset: 2px;
   border-radius: 4px;
 }
 
 [data-mantine-color-scheme='dark'] a:focus,
 [data-mantine-color-scheme='dark'] .mantine-Anchor-root:focus {
-  outline-color: var(--mantine-color-brand-4);
+  outline-color: var(--mantine-color-primary-4);
 }
 
 /* Links dentro de cards - estilo mais sutil (light) */
@@ -125,13 +260,13 @@ a:focus,
 [data-mantine-color-scheme='dark'] .mantine-Card-root a,
 [data-mantine-color-scheme='dark'] .mantine-Card-root .mantine-Anchor-root,
 [data-mantine-color-scheme='dark'] .wizard-recommendation-card a {
-  color: var(--mantine-color-brand-1) !important;
+  color: var(--mantine-color-primary-2) !important;
 }
 
 [data-mantine-color-scheme='dark'] .mantine-Card-root a:hover,
 [data-mantine-color-scheme='dark'] .mantine-Card-root .mantine-Anchor-root:hover,
 [data-mantine-color-scheme='dark'] .wizard-recommendation-card a:hover {
-  color: var(--mantine-color-brand-0) !important;
+  color: var(--mantine-color-primary-1) !important;
 }
 
 /* Ícone ao lado do título no card: título sem margem em cima para alinhar ao ícone */
@@ -142,12 +277,12 @@ a:focus,
 /* Listas dentro de card (ex.: guia de estudo) mesmo tom de link */
 [data-mantine-color-scheme='dark'] .mantine-Card-root .mantine-List-item a,
 [data-mantine-color-scheme='dark'] .mantine-Card-root .mantine-List-item .mantine-Anchor-root {
-  color: var(--mantine-color-brand-1) !important;
+  color: var(--mantine-color-primary-2) !important;
 }
 
 [data-mantine-color-scheme='dark'] .mantine-Card-root .mantine-List-item a:hover,
 [data-mantine-color-scheme='dark'] .mantine-Card-root .mantine-List-item .mantine-Anchor-root:hover {
-  color: var(--mantine-color-brand-0) !important;
+  color: var(--mantine-color-primary-1) !important;
 }
 
 /* Sidebar específico */
@@ -232,15 +367,15 @@ a:focus,
 }
 
 [data-mantine-color-scheme='dark'] .app-breadcrumbs-link {
-  color: var(--mantine-color-brand-1);
+  color: var(--mantine-color-primary-2);
 }
 
 .app-breadcrumbs-link:hover {
-  color: var(--mantine-color-brand-6);
+  color: var(--mantine-color-primary-6);
 }
 
 [data-mantine-color-scheme='dark'] .app-breadcrumbs-link:hover {
-  color: var(--mantine-color-brand-0);
+  color: var(--mantine-color-primary-1);
 }
 
 .app-breadcrumbs-separator {
@@ -251,16 +386,16 @@ a:focus,
 }
 
 [data-mantine-color-scheme='dark'] .app-breadcrumbs-separator {
-  color: var(--mantine-color-brand-3);
+  color: var(--mantine-color-primary-3);
   opacity: 0.9;
 }
 
 .app-breadcrumbs-current {
-  color: var(--mantine-color-brand-6);
+  color: var(--mantine-color-primary-6);
 }
 
 [data-mantine-color-scheme='dark'] .app-breadcrumbs-current {
-  color: var(--mantine-color-brand-2);
+  color: var(--mantine-color-primary-2);
 }
 
 /* Indicador discreto: página migrada (content-as-data) – bolinha ao lado do tempo de leitura */
@@ -425,13 +560,13 @@ a:focus,
 }
 
 [data-mantine-color-scheme='light'] .header-nav-btn {
-  color: var(--mantine-color-brand-7) !important;
+  color: var(--mantine-color-primary-7) !important;
 }
 
 [data-mantine-color-scheme='light'] .header-nav-btn:hover,
 [data-mantine-color-scheme='light'] .header-nav-btn[data-active='true'] {
   background: var(--app-nav-hover-bg-light) !important;
-  color: var(--mantine-color-brand-9) !important;
+  color: var(--mantine-color-primary-9) !important;
   font-weight: 600;
 }
 
@@ -440,31 +575,31 @@ a:focus,
 }
 
 [data-mantine-color-scheme='dark'] .header-nav-btn {
-  color: var(--mantine-color-brand-2) !important;
+  color: var(--mantine-color-primary-2) !important;
 }
 
 [data-mantine-color-scheme='dark'] .header-nav-btn:hover,
 [data-mantine-color-scheme='dark'] .header-nav-btn[data-active='true'] {
   background: var(--app-nav-hover-bg-dark) !important;
-  color: var(--mantine-color-brand-2) !important;
+  color: var(--mantine-color-primary-2) !important;
   font-weight: 600;
 }
 
 [data-mantine-color-scheme='dark'] .header-nav-btn[data-active='true'] {
   background: var(--app-nav-active-bg-dark) !important;
-  color: var(--mantine-color-brand-1) !important;
+  color: var(--mantine-color-primary-1) !important;
 }
 
 /* Dropdown do menu desktop – fundo, borda e links longos sem quebrar layout */
 .header-nav-dropdown {
   background-color: var(--mantine-color-body) !important;
-  border-color: var(--mantine-color-brand-7) !important;
+  border-color: var(--mantine-color-primary-7) !important;
   min-width: 220px !important;
   max-width: 320px;
 }
 
 [data-mantine-color-scheme='light'] .header-nav-dropdown {
-  border-color: var(--mantine-color-brand-3) !important;
+  border-color: var(--mantine-color-primary-3) !important;
 }
 
 .header-nav-dropdown .mantine-Menu-item {
@@ -479,16 +614,16 @@ a:focus,
 
 .header-nav-dropdown .mantine-Menu-item:hover {
   background: var(--app-nav-hover-bg-light) !important;
-  color: var(--mantine-color-brand-8) !important;
+  color: var(--mantine-color-primary-8) !important;
 }
 
 [data-mantine-color-scheme='dark'] .header-nav-dropdown .mantine-Menu-item {
-  color: var(--mantine-color-brand-1) !important;
+  color: var(--mantine-color-primary-2) !important;
 }
 
 [data-mantine-color-scheme='dark'] .header-nav-dropdown .mantine-Menu-item:hover {
   background: var(--app-nav-hover-bg-dark) !important;
-  color: var(--mantine-color-brand-0) !important;
+  color: var(--mantine-color-primary-1) !important;
 }
 
 /* Dropdown Arquiteturas: 2 colunas para ficar mais compacto na horizontal */
@@ -515,13 +650,13 @@ a:focus,
 
 /* Tema Light – links legíveis */
 [data-mantine-color-scheme='light'] .navmenu-link {
-  color: var(--mantine-color-brand-7) !important;
+  color: var(--mantine-color-primary-7) !important;
 }
 
 [data-mantine-color-scheme='light'] .navmenu-link:hover,
 [data-mantine-color-scheme='light'] .navmenu-link[data-active='true'] {
   background: var(--app-nav-hover-bg-light) !important;
-  color: var(--mantine-color-brand-9) !important;
+  color: var(--mantine-color-primary-9) !important;
   transform: translateX(1px) !important;
 }
 
@@ -537,21 +672,21 @@ a:focus,
   left: -2px !important;
   right: -2px !important;
   bottom: 0 !important;
-  background: var(--mantine-color-brand-6) !important;
+  background: var(--mantine-color-primary-6) !important;
   border-radius: 6px !important;
   z-index: -1 !important;
   opacity: 0.15 !important;
 }
 
-/* Tema Dark – contraste forte: texto claro, hover/ativo bem visíveis */
+/* Tema Dark – staff-level-shine: âmbar como destaque */
 [data-mantine-color-scheme='dark'] .navmenu-link {
-  color: var(--mantine-color-brand-2) !important;
+  color: var(--mantine-color-primary-2) !important;
 }
 
 [data-mantine-color-scheme='dark'] .navmenu-link:hover,
 [data-mantine-color-scheme='dark'] .navmenu-link[data-active='true'] {
   background: var(--app-nav-hover-bg-dark) !important;
-  color: var(--mantine-color-brand-2) !important;
+  color: var(--mantine-color-primary-2) !important;
   transform: translateX(1px) !important;
 }
 
@@ -563,7 +698,7 @@ a:focus,
   left: -2px !important;
   right: -2px !important;
   bottom: 0 !important;
-  background: var(--mantine-color-brand-2) !important;
+  background: var(--mantine-color-primary-2) !important;
   border-radius: 6px !important;
   z-index: -1 !important;
   opacity: 0.2 !important;
@@ -571,7 +706,7 @@ a:focus,
 
 [data-mantine-color-scheme='dark'] .navmenu-link[data-active='true'] {
   background: var(--app-nav-active-bg-dark) !important;
-  color: var(--mantine-color-brand-1) !important;
+  color: var(--mantine-color-primary-1) !important;
 }
 
 [data-mantine-color-scheme='dark'] .navmenu-link[data-active='true']::before {
@@ -580,21 +715,21 @@ a:focus,
 
 /* Cabeçalhos das seções do menu (Guias, Boas Práticas, etc.) – contraste no dark */
 [data-mantine-color-scheme='dark'] .nav-menu-container .mantine-Accordion-control {
-  color: var(--mantine-color-brand-2) !important;
+  color: var(--mantine-color-primary-2) !important;
 }
 
 [data-mantine-color-scheme='dark'] .nav-menu-container .mantine-Accordion-control:hover {
   background: var(--app-accordion-hover-bg-dark) !important;
-  color: var(--mantine-color-brand-0) !important;
+  color: var(--mantine-color-primary-1) !important;
 }
 
 [data-mantine-color-scheme='light'] .nav-menu-container .mantine-Accordion-control:hover {
   background: var(--app-accordion-hover-bg-light) !important;
-  color: var(--mantine-color-brand-9) !important;
+  color: var(--mantine-color-primary-9) !important;
 }
 
 [data-mantine-color-scheme='dark'] .nav-menu-container .mantine-Accordion-item {
-  border-color: var(--mantine-color-brand-7) !important;
+  border-color: var(--mantine-color-primary-7) !important;
 }
 
 /* Project card hover effect */
