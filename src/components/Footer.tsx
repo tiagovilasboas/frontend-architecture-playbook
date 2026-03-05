@@ -24,7 +24,7 @@ export default function Footer() {
             target="_blank"
             size="lg"
             variant="light"
-            color="gray"
+            color="primary"
             aria-label="GitHub - Tiago Vilas Boas"
           >
             <IconBrandGithub size={20} />
@@ -35,7 +35,7 @@ export default function Footer() {
             target="_blank"
             size="lg"
             variant="light"
-            color="gray"
+            color="primary"
             aria-label="LinkedIn - Tiago Vilas Boas"
           >
             <IconBrandLinkedin size={20} />
@@ -48,7 +48,7 @@ export default function Footer() {
             size={14}
             style={{
               verticalAlign: 'middle',
-              color: 'var(--mantine-color-brand-6)',
+              color: 'var(--mantine-color-primary-5)',
             }}
           />{' '}
           por Tiago Vilas Boas

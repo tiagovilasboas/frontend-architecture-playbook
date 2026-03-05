@@ -5,7 +5,7 @@ import { ArchitectureLoader } from './components/ArchitectureLoader.tsx';
 import { MobileLoader } from './components/MobileLoader.tsx';
 import { useMobileDetector } from './hooks/useMobileDetector.ts';
 import { updatePageMeta } from './utils/seo.ts';
-// Lazy load pages for better performance
+
 const Home = lazy(() => import('./pages/Home.tsx'));
 const DocPage = lazy(() => import('./pages/DocPage.tsx'));
 
@@ -13,7 +13,6 @@ function App() {
   const { isMobile } = useMobileDetector();
   const location = useLocation();
 
-  // Update meta tags when route changes
   useEffect(() => {
     updatePageMeta(location.pathname);
   }, [location.pathname]);
@@ -27,26 +26,11 @@ function App() {
       >
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route
-            path="guides"
-            element={<Navigate to="/guides/study-guide" replace />}
-          />
-          <Route
-            path="architectures"
-            element={<Navigate to="/architectures/spa" replace />}
-          />
-          <Route
-            path="patterns"
-            element={<Navigate to="/patterns/component-driven" replace />}
-          />
-          <Route
-            path="techniques"
-            element={<Navigate to="/techniques/performance" replace />}
-          />
-          <Route
-            path="best-practices"
-            element={<Navigate to="/best-practices/dry" replace />}
-          />
+          <Route path="guides" element={<Navigate to="/guides/study-guide" replace />} />
+          <Route path="architectures" element={<Navigate to="/architectures/spa" replace />} />
+          <Route path="patterns" element={<Navigate to="/patterns/component-driven" replace />} />
+          <Route path="techniques" element={<Navigate to="/techniques/performance" replace />} />
+          <Route path="best-practices" element={<Navigate to="/best-practices/dry" replace />} />
           <Route path=":collection/:slug" element={<DocPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
