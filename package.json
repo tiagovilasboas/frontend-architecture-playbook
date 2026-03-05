@@ -14,7 +14,11 @@
     "prepare": "husky",
     "test": "jest",
     "test:e2e": "playwright test",
-    "test:e2e:ui": "playwright test --ui"
+    "test:e2e:ui": "playwright test --ui",
+    "theme:copy": "node scripts/copy-staff-level-shine.cjs"
+  },
+  "jest": {
+    "testPathIgnorePatterns": ["/node_modules/", "/themes/"]
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,json,md,mdx}": [
@@ -23,6 +27,9 @@
     ]
   },
   "dependencies": {
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^2.6.0",
     "@mantine/code-highlight": "^8.1.3",
     "@mantine/core": "^8.1.3",
     "@mantine/hooks": "^8.1.3",
@@ -43,6 +50,10 @@
     "three": "^0.178.0"
   },
   "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.17",
+    "tailwindcss-animate": "^1.0.7",
     "@eslint/js": "^9.30.1",
     "@mdx-js/mdx": "^3.1.0",
     "@playwright/test": "^1.58.2",

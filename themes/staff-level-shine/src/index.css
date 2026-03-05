@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 14% 6%;
+    --foreground: 210 20% 92%;
+
+    --card: 220 12% 9%;
+    --card-foreground: 210 20% 92%;
+
+    --popover: 220 12% 9%;
+    --popover-foreground: 210 20% 92%;
+
+    --primary: 42 100% 60%;
+    --primary-foreground: 220 14% 6%;
+
+    --secondary: 220 10% 14%;
+    --secondary-foreground: 210 15% 75%;
+
+    --muted: 220 10% 12%;
+    --muted-foreground: 215 12% 50%;
+
+    --accent: 42 80% 50%;
+    --accent-foreground: 220 14% 6%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 10% 16%;
+    --input: 220 10% 16%;
+    --ring: 42 100% 60%;
+
+    --radius: 0.5rem;
+
+    --highlight: 42 100% 60%;
+    --highlight-muted: 42 60% 30%;
+    --surface-elevated: 220 12% 11%;
+    --code-bg: 220 14% 8%;
+    --glow: 42 100% 60%;
+
+    --sidebar-background: 220 14% 6%;
+    --sidebar-foreground: 210 20% 92%;
+    --sidebar-primary: 42 100% 60%;
+    --sidebar-primary-foreground: 220 14% 6%;
+    --sidebar-accent: 220 10% 14%;
+    --sidebar-accent-foreground: 210 20% 92%;
+    --sidebar-border: 220 10% 16%;
+    --sidebar-ring: 42 100% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+  }
+
+  code, pre {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--primary)), hsl(42, 80%, 75%));
+  }
+
+  .glow-sm {
+    box-shadow: 0 0 20px -5px hsl(var(--glow) / 0.15);
+  }
+
+  .glow-md {
+    box-shadow: 0 0 40px -10px hsl(var(--glow) / 0.2);
+  }
+
+  .border-glow {
+    border-color: hsl(var(--highlight-muted));
+  }
+
+  .surface-elevated {
+    background-color: hsl(var(--surface-elevated));
+  }
+
+  .code-block {
+    background-color: hsl(var(--code-bg));
+    border: 1px solid hsl(var(--border));
+    border-radius: var(--radius);
+  }
+}
