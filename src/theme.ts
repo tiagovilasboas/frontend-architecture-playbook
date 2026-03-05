@@ -1,13 +1,14 @@
 import { createTheme } from '@mantine/core';
-import { brand, accent, semantic } from './theme/colors';
+import { primary, brand, accent, semantic } from './theme/colors';
 
 export const theme = createTheme({
-  primaryColor: 'brand',
+  primaryColor: 'primary',
   colors: {
+    primary,
     brand,
     accent,
   },
-  fontFamily: 'Inter, sans-serif',
+  fontFamily: 'Inter, system-ui, sans-serif',
   fontSizes: {
     xs: '0.8125rem', // ~13px
     sm: '0.9375rem', // ~15px
@@ -25,7 +26,7 @@ export const theme = createTheme({
   components: {
     Anchor: {
       defaultProps: {
-        c: 'brand.6',
+        c: 'primary.6',
         underline: 'hover',
       },
       styles: {
@@ -33,7 +34,7 @@ export const theme = createTheme({
           fontWeight: 500,
           transition: 'color 0.2s ease',
           '&:hover': {
-            color: 'var(--mantine-color-brand-7)',
+            color: 'var(--mantine-color-primary-7)',
           },
         },
       },
@@ -74,7 +75,7 @@ export const theme = createTheme({
         root: {
           '[data-order="1"]': {
             background:
-              'linear-gradient(135deg, var(--mantine-color-brand-8) 0%, var(--mantine-color-brand-5) 100%)',
+              'linear-gradient(135deg, var(--mantine-color-primary-3) 0%, var(--mantine-color-primary-5) 100%)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             backgroundClip: 'text',
@@ -111,10 +112,10 @@ export const theme = createTheme({
             fontSize: '1.1rem',
             padding: '1rem 1.5rem',
             borderRadius: '12px',
-            border: '2px solid var(--mantine-color-brand-3)',
+            border: '2px solid var(--mantine-color-primary-3)',
             transition: 'all 0.2s ease',
             '&:focus': {
-              borderColor: 'var(--mantine-color-brand-6)',
+              borderColor: 'var(--mantine-color-primary-6)',
               boxShadow: `0 0 0 4px ${semantic.focusRing}`,
             },
           },
@@ -127,12 +128,12 @@ export const theme = createTheme({
           borderRadius: '8px',
           transition: 'all 0.2s ease',
           '&:hover': {
-            backgroundColor: 'var(--mantine-color-brand-1)',
+            backgroundColor: 'var(--mantine-color-primary-1)',
             transform: 'translateX(4px)',
           },
           '&[data-selected]': {
-            backgroundColor: 'var(--mantine-color-brand-2)',
-            color: 'var(--mantine-color-brand-8)',
+            backgroundColor: 'var(--mantine-color-primary-2)',
+            color: 'var(--mantine-color-primary-8)',
           },
         },
         actionBody: {

@@ -1,10 +1,23 @@
 /**
  * Single source of truth for app colors.
- * Dark: cinza escuro estilo ChatGPT (sem preto puro).
- * Light: branco e cinzas claros.
+ * staff-level-shine theme: dark blue-gray background, amber primary.
  */
 
 import type { MantineColorsTuple } from '@mantine/core';
+
+// ─── Primary (staff-level-shine): amber/gold ──────────────────────────
+export const primary: MantineColorsTuple = [
+  '#fffbeb',
+  '#fef3c7',
+  '#fde68a',
+  '#fcd34d',
+  '#fbbf24',
+  '#f59e0b',
+  '#d97706',
+  '#b45309',
+  '#92400e',
+  '#78350f',
+];
 
 // ─── Neutral (grayscale): 0 = branco, 9 = preto ───────────────────────
 export const brand: MantineColorsTuple = [
@@ -23,18 +36,18 @@ export const brand: MantineColorsTuple = [
 /** Mesma escala para harmonização total (links, ícones, destaque = tons de cinza) */
 export const accent: MantineColorsTuple = [...brand];
 
-// ─── Semantic tokens (body, containers, nav, canvas) – escuro estilo ChatGPT ───
+// ─── Semantic tokens (staff-level-shine: 220 14% 6% background, amber accent) ───
 export const semantic = {
-  // Dark: tons escuros (ChatGPT usa ~#212121 área principal, sidebar mais escuro)
-  bodyDark: '#212121',
+  // Dark: staff-level-shine palette (hsl(220 14% 6%) ≈ #0e1014)
+  bodyDark: '#0e1014',
   bodyLight: '#ffffff',
-  containerDark: '#2d2d2d',
+  containerDark: '#141619',
   containerLight: '#f7f7f8',
-  borderDark: '#404040',
+  borderDark: '#1e2128',
   borderLight: '#e5e5e5',
 
-  // Header e footer (sidebar ChatGPT é mais escuro)
-  headerFooterDark: '#171717',
+  // Header e footer: mesmo tom do body (tema unificado)
+  headerFooterDark: '#0e1014',
   headerFooterLight: '#f0f0f0',
 
   // Nav dark: overlay branco sutil
@@ -47,17 +60,17 @@ export const semantic = {
   navActiveBgLight: 'rgba(0, 0, 0, 0.08)',
   accordionHoverBgLight: 'rgba(0, 0, 0, 0.03)',
 
-  // Neural network canvas (mesmo tom do body no dark)
-  canvasBgDark: '#212121',
+  // Neural network canvas: tons âmbar no dark (staff-level-shine)
+  canvasBgDark: '#0e1014',
   canvasBgLight: 'rgb(247, 247, 248)',
-  canvasTrailDark: 'rgba(33, 33, 33, 0.75)',
+  canvasTrailDark: 'rgba(14, 16, 20, 0.75)',
   canvasTrailLight: 'rgba(247, 247, 248, 0.4)',
-  canvasLineDark: 'rgba(0, 255, 65, 0.14)',
-  canvasLineLight: 'rgba(0, 160, 40, 0.10)',
-  canvasNodeDark: 'rgba(0, 255, 65, 0.20)',
-  canvasNodeLight: 'rgba(0, 160, 40, 0.13)',
-  canvasGlowDark: 'rgba(0, 255, 65, 0.06)',
-  canvasGlowLight: 'rgba(0, 160, 40, 0.05)',
+  canvasLineDark: 'rgba(251, 191, 36, 0.14)',
+  canvasLineLight: 'rgba(245, 158, 11, 0.10)',
+  canvasNodeDark: 'rgba(251, 191, 36, 0.20)',
+  canvasNodeLight: 'rgba(245, 158, 11, 0.13)',
+  canvasGlowDark: 'rgba(251, 191, 36, 0.06)',
+  canvasGlowLight: 'rgba(245, 158, 11, 0.05)',
 
   // Diagrams (success/error mantidos para clareza)
   diagramSuccessBorderDark: 'rgba(34, 197, 94, 0.8)',
