@@ -21,6 +21,7 @@ Onde tá cada coisa e pra que serve. Sem enrolação.
 | Validar seção/link/fluxo                       | [ESTRUTURA-LOGICA.md](ESTRUTURA-LOGICA.md)                                                 |
 | Pensar em UX e valor pro dev                   | [PLAYBOOK-UX-VALOR-DEV.md](PLAYBOOK-UX-VALOR-DEV.md)                                       |
 | **Análise completa vs referências + plano**    | [ANALISE-UI-UX-PLAYBOOK-COMPARATIVO.md](ANALISE-UI-UX-PLAYBOOK-COMPARATIVO.md)             |
+| **Plano UI/UX por viewport (mobile/laptop)**   | [PLANO-UI-UX-MOBILE-LAPTOP.md](PLANO-UI-UX-MOBILE-LAPTOP.md)                               |
 | Mapear termo técnico (guia vs glossário)       | [PROPOSTA-GLOSSARIO-CONCEITOS.md](PROPOSTA-GLOSSARIO-CONCEITOS.md)                         |
 | Preencher glossário em levas                   | [GLOSSARIO-BABY-STEPS-PLAN.md](GLOSSARIO-BABY-STEPS-PLAN.md)                               |
 | Alinhar emoji/ícone (evitar duplicata)         | [ANALISE-EMOJI-SETA-ICONES.md](ANALISE-EMOJI-SETA-ICONES.md)                               |
@@ -42,6 +43,7 @@ docs/
 ├── PLAYBOOK-FULL-ANALYSIS.md    ← análise geral
 ├── PLAYBOOK-UX-VALOR-DEV.md     ← UX e valor pro dev
 ├── ANALISE-UI-UX-PLAYBOOK-COMPARATIVO.md ← análise vs referências + plano de ação
+├── PLANO-UI-UX-MOBILE-LAPTOP.md          ← plano por viewport (mobile, tablet, laptop)
 ├── PLAYBOOK_ANALISE_STAFF_PRINCIPAL.md
 ├── ANALISE-EMOJI-SETA-ICONES.md
 ├── ANALISE-IMPACTO-STAFF.md
