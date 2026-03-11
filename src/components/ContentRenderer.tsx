@@ -95,8 +95,9 @@ const ICON_MAP: Record<
   tool: IconTool,
 };
 
+/** Skip "code" icon to reduce repetition - code blocks/sections are self-evident */
 function getIcon(iconKey?: ContentIconKey, size = 20) {
-  if (!iconKey || !ICON_MAP[iconKey]) return null;
+  if (!iconKey || iconKey === 'code' || !ICON_MAP[iconKey]) return null;
   const Icon = ICON_MAP[iconKey];
   return <Icon size={size} />;
 }
