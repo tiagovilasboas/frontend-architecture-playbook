@@ -148,7 +148,6 @@ export default function CodeExample({
           <Badge
             size="xs"
             variant="light"
-            color="blue"
             style={{ textTransform: 'uppercase' }}
           >
             {detectedLanguage}

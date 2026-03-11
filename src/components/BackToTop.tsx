@@ -35,7 +35,6 @@ export function BackToTop() {
               size={isMobile ? 'lg' : 'xl'}
               radius="xl"
               variant="filled"
-              color="brand"
               onClick={scrollToTop}
               aria-label="Voltar ao topo"
             >

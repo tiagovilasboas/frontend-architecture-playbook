@@ -198,7 +198,6 @@ export default function ArchitectureComparisonWidget() {
           </Button>
           <Button
             variant={comparisonType === 'bestFor' ? 'filled' : 'light'}
-            color="blue"
             size="sm"
             leftSection={<IconTarget size={16} />}
             onClick={() => setComparisonType('bestFor')}
@@ -302,7 +301,7 @@ export default function ArchitectureComparisonWidget() {
                     ))}
                   </List>
 
-                  <Alert color="gray" variant="light" radius="md" mt="md">
+                  <Alert variant="light" radius="md" mt="md">
                     <Text size="xs" c="dimmed">
                       <strong>Resumo:</strong> {comparisonData.length} pontos de{' '}
                       {getSummaryLabel()} identificados.
@@ -316,7 +315,7 @@ export default function ArchitectureComparisonWidget() {
       )}
 
       {selectedArchitectures.length === 0 && (
-        <Alert color="blue" icon={<IconInfoCircle size={16} />} radius="md">
+        <Alert icon={<IconInfoCircle size={16} />} radius="md">
           <Text size="sm">
             Selecione pelo menos uma arquitetura para ver a comparação
             detalhada.

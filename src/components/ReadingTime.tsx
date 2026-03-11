@@ -33,7 +33,6 @@ export function ReadingTime() {
   return (
     <Badge
       variant="light"
-      color="blue"
       leftSection={<IconClock size={12} />}
       size="sm"
     >

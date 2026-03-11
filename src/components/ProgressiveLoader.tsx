@@ -94,7 +94,6 @@ export function ProgressiveLoader({
           <ThemeIcon
             size="xl"
             variant="light"
-            color="blue"
             style={{
               animation: 'bounce 1.5s ease-in-out infinite',
             }}
@@ -110,7 +109,6 @@ export function ProgressiveLoader({
             value={progress}
             size="sm"
             style={{ width: '200px' }}
-            color="blue"
           />
 
           <Text size="xs" c="dimmed" ta="center">
@@ -154,7 +152,6 @@ export function ProgressiveLoader({
           <ThemeIcon
             size="xl"
             variant="light"
-            color="blue"
             style={{
               animation: 'pulse 2s ease-in-out infinite',
             }}
@@ -238,7 +235,6 @@ export function ProgressiveLoader({
         <Progress
           value={progress}
           size="md"
-          color="blue"
           style={{ marginBottom: '0.5rem' }}
         />
         <Text size="xs" c="dimmed" ta="center">

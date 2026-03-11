@@ -106,8 +106,8 @@ function getIcon(iconKey?: ContentIconKey, size = 20) {
 function detectCodeLanguage(content: string): string {
   if (content.includes('<?php')) return 'php';
   if (content.includes('<!DOCTYPE') || content.includes('<html')) return 'html';
-  if (content.includes('┌') || content.includes('└') || content.includes('│'))
-    return 'text';
+  // ASCII/box-drawing diagrams: preserve spacing, no syntax highlight
+  if (/[┌└│┐┘├┤┬┴┼─═║╔╗╚╝╠╣╦╩╬▼▲►◄]/.test(content)) return 'text';
   if (
     content.includes('interface ') ||
     content.includes('type ') ||
@@ -154,7 +154,6 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
                 size={{ base: 'lg', sm: 'xl' }}
                 radius="md"
                 variant="light"
-                color="brand"
                 style={{ flexShrink: 0 }}
               >
                 {iconEl}
@@ -204,7 +203,6 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
                   size="lg"
                   radius="md"
                   variant="light"
-                  color="brand"
                   style={{ flexShrink: 0 }}
                 >
                   {iconEl}
@@ -250,7 +248,7 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
     case 'list': {
       const items = Array.isArray(block.items) ? block.items : [];
       const iconEl = block.icon ? (
-        <ThemeIcon size={18} radius="xl" color="brand">
+        <ThemeIcon size={18} radius="xl" >
           {getIcon(block.icon, 10)}
         </ThemeIcon>
       ) : undefined;
@@ -327,7 +325,7 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
       return (
         <Alert
           key={key}
-          color={block.color ?? 'blue'}
+          color={block.color}
           icon={AlertIcon ? <AlertIcon size={16} /> : undefined}
           radius="md"
         >
@@ -363,7 +361,6 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
                       size={36}
                       radius="md"
                       variant="light"
-                      color="brand"
                       style={{ flexShrink: 0 }}
                     >
                       {iconEl}
@@ -406,7 +403,7 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
                       size="lg"
                       radius="md"
                       variant="light"
-                      color={(c.iconColor as 'brand') ?? 'brand'}
+                      color={c.iconColor}
                       style={{ flexShrink: 0 }}
                     >
                       {iconEl}
@@ -440,7 +437,7 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
     case 'linkList': {
       const links = Array.isArray(block.links) ? block.links : [];
       const iconEl = block.icon ? (
-        <ThemeIcon size={20} radius="xl" color="brand">
+        <ThemeIcon size={20} radius="xl" >
           {getIcon(block.icon, 12)}
         </ThemeIcon>
       ) : undefined;
@@ -536,7 +533,7 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
                         size={44}
                         radius="md"
                         variant="light"
-                        color={(c.iconColor as 'green') ?? 'brand'}
+                        color={c.iconColor}
                       >
                         {iconEl}
                       </ThemeIcon>
@@ -557,7 +554,7 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
                     <List
                       spacing="xs"
                       icon={
-                        <ThemeIcon size={20} radius="xl" color="brand">
+                        <ThemeIcon size={20} radius="xl" >
                           {getIcon('arrow-right', 12)}
                         </ThemeIcon>
                       }
@@ -704,7 +701,7 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
           </Timeline>
           {resultAlert?.message ? (
             <Alert
-              color={resultAlert.color ?? 'blue'}
+              color={resultAlert.color}
               icon={resultAlert.icon ? getIcon(resultAlert.icon, 16) : null}
               radius="md"
             >

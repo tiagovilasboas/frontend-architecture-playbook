@@ -166,7 +166,7 @@ const PerformanceMetrics: React.FC<PerformanceMetricsProps> = ({
       <Paper withBorder p="xl" radius="md">
         <Stack gap="lg">
           <Group>
-            <ThemeIcon size={50} radius="md" variant="light" color="blue">
+            <ThemeIcon size={50} radius="md" variant="light" >
               <IconTrendingUp size={25} />
             </ThemeIcon>
             <div>
@@ -183,7 +183,7 @@ const PerformanceMetrics: React.FC<PerformanceMetricsProps> = ({
               <Card key={index} withBorder p="md" radius="md">
                 <Stack gap="sm">
                   <Group justify="space-between">
-                    <Badge variant="light" color="blue">
+                    <Badge variant="light" >
                       {case_.company}
                     </Badge>
                     <Badge variant="light" color="green">
@@ -294,7 +294,7 @@ const PerformanceMetrics: React.FC<PerformanceMetricsProps> = ({
       <Paper withBorder p="xl" radius="md">
         <Stack gap="lg">
           <Group>
-            <ThemeIcon size={50} radius="md" variant="light" color="blue">
+            <ThemeIcon size={50} radius="md" variant="light" >
               <IconBulb size={25} />
             </ThemeIcon>
             <div>
