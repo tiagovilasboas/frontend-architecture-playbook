@@ -1,152 +1,123 @@
-import { createTheme } from '@mantine/core';
-import { brand, accent, semantic } from './theme/colors';
+import {
+  Alert,
+  Anchor,
+  Badge,
+  Button,
+  Card,
+  Container,
+  createTheme,
+  Paper,
+  rem,
+  Select,
+  ThemeIcon,
+  ActionIcon,
+} from '@mantine/core';
+import type { MantineThemeOverride } from '@mantine/core';
+import { brand, accent } from './theme/colors';
 
-export const theme = createTheme({
-  primaryColor: 'brand',
+const CONTAINER_SIZES: Record<string, string> = {
+  xxs: rem('200px'),
+  xs: rem('300px'),
+  sm: rem('400px'),
+  md: rem('500px'),
+  lg: rem('600px'),
+  xl: rem('1400px'),
+  xxl: rem('1600px'),
+};
+
+export const theme: MantineThemeOverride = createTheme({
+  fontSizes: {
+    xs: rem('12px'),
+    sm: rem('14px'),
+    md: rem('16px'),
+    lg: rem('18px'),
+    xl: rem('20px'),
+    '2xl': rem('24px'),
+    '3xl': rem('30px'),
+    '4xl': rem('36px'),
+    '5xl': rem('48px'),
+  },
+  spacing: {
+    '3xs': rem('4px'),
+    '2xs': rem('8px'),
+    xs: rem('10px'),
+    sm: rem('12px'),
+    md: rem('16px'),
+    lg: rem('20px'),
+    xl: rem('24px'),
+    '2xl': rem('28px'),
+    '3xl': rem('32px'),
+  },
+  primaryColor: 'green',
   colors: {
     brand,
     accent,
   },
-  fontFamily: 'Inter, sans-serif',
-  fontSizes: {
-    xs: '0.8125rem', // ~13px
-    sm: '0.9375rem', // ~15px
-    md: '1rem', // 16px
-    lg: '1.125rem', // ~18px
-    xl: '1.25rem', // 20px
-  },
-  headings: {
-    fontFamily: 'Inter, sans-serif',
-    sizes: {
-      h1: { fontSize: '2rem', fontWeight: '700' },
-    },
-  },
-  // Custom components with consistent styling
   components: {
-    Anchor: {
-      defaultProps: {
-        c: 'brand.6',
-        underline: 'hover',
-      },
-      styles: {
+    Container: Container.extend({
+      vars: (_, { size, fluid }) => ({
         root: {
-          fontWeight: 500,
-          transition: 'color 0.2s ease',
-          '&:hover': {
-            color: 'var(--mantine-color-brand-7)',
-          },
+          '--container-size': fluid
+            ? '100%'
+            : size !== undefined && size in CONTAINER_SIZES
+              ? CONTAINER_SIZES[size]
+              : rem(size),
         },
-      },
-    },
-    Paper: {
+      }),
+    }),
+    Paper: Paper.extend({
       defaultProps: {
-        withBorder: true,
-        p: 'xl',
-        radius: 'lg',
-      },
-    },
-    Card: {
-      defaultProps: {
-        withBorder: true,
         p: 'md',
+        shadow: 'xl',
         radius: 'md',
+        withBorder: true,
       },
-    },
-    ThemeIcon: {
+    }),
+    Card: Card.extend({
       defaultProps: {
-        variant: 'light',
-        size: 'md',
-        radius: 'md',
+        p: 'xl',
+        shadow: 'xl',
+        radius: 'var(--mantine-radius-default)',
+        withBorder: true,
       },
-    },
-    Badge: {
+    }),
+    Select: Select.extend({
       defaultProps: {
-        variant: 'light',
+        checkIconPosition: 'right',
       },
-    },
-    Alert: {
+    }),
+    Button: Button.extend({
       defaultProps: {
-        radius: 'md',
+        color: 'green',
       },
-    },
-    Title: {
-      styles: {
-        root: {
-          '[data-order="1"]': {
-            background:
-              'linear-gradient(135deg, var(--mantine-color-brand-8) 0%, var(--mantine-color-brand-5) 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
-          },
-        },
-      },
-    },
-    Spotlight: {
+    }),
+    ActionIcon: ActionIcon.extend({
       defaultProps: {
-        searchProps: {
-          placeholder: 'Buscar no playbook...',
-          size: 'lg',
-        },
-        nothingFoundMessage: 'Nada encontrado. Tente outra busca.',
-        highlightQuery: true,
-        limit: 10,
+        color: 'green',
       },
-      styles: {
-        root: {
-          '& .mantine-Spotlight-overlay': {
-            backgroundColor: semantic.spotlightOverlay,
-            backdropFilter: 'blur(4px)',
-          },
-        },
-        inner: {
-          padding: '2rem',
-        },
-        content: {
-          maxWidth: 600,
-          margin: '0 auto',
-        },
-        search: {
-          '& input': {
-            fontSize: '1.1rem',
-            padding: '1rem 1.5rem',
-            borderRadius: '12px',
-            border: '2px solid var(--mantine-color-brand-3)',
-            transition: 'all 0.2s ease',
-            '&:focus': {
-              borderColor: 'var(--mantine-color-brand-6)',
-              boxShadow: `0 0 0 4px ${semantic.focusRing}`,
-            },
-          },
-        },
-        actions: {
-          marginTop: '1rem',
-        },
-        action: {
-          padding: '0.75rem 1rem',
-          borderRadius: '8px',
-          transition: 'all 0.2s ease',
-          '&:hover': {
-            backgroundColor: 'var(--mantine-color-brand-1)',
-            transform: 'translateX(4px)',
-          },
-          '&[data-selected]': {
-            backgroundColor: 'var(--mantine-color-brand-2)',
-            color: 'var(--mantine-color-brand-8)',
-          },
-        },
-        actionBody: {
-          '& .mantine-Spotlight-actionLabel': {
-            fontWeight: 500,
-            fontSize: '0.95rem',
-          },
-          '& .mantine-Spotlight-actionDescription': {
-            fontSize: '0.85rem',
-            opacity: 0.7,
-            marginTop: '2px',
-          },
-        },
+    }),
+    ThemeIcon: ThemeIcon.extend({
+      defaultProps: {
+        color: 'green',
       },
-    },
+    }),
+    Badge: Badge.extend({
+      defaultProps: {
+        color: 'green',
+      },
+    }),
+    Alert: Alert.extend({
+      defaultProps: {
+        color: 'green',
+      },
+    }),
+    Anchor: Anchor.extend({
+      defaultProps: {
+        color: 'green',
+      },
+    }),
+  },
+  other: {
+    style: 'mantine',
   },
 });
