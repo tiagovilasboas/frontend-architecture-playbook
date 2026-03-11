@@ -7,7 +7,7 @@ import {
   IconCheck,
   IconSparkles,
 } from '@tabler/icons-react';
-import { useMobileDetector } from '../hooks/useMobileDetector.ts';
+import { useBreakpoints } from '../hooks/useBreakpoints.ts';
 
 interface ProgressiveLoaderProps {
   type?: 'architecture' | 'pattern' | 'guide' | 'technique';
@@ -45,7 +45,7 @@ export function ProgressiveLoader({
   type = 'architecture',
   message,
 }: ProgressiveLoaderProps) {
-  const { isMobile } = useMobileDetector();
+  const { isMobile } = useBreakpoints();
   const [currentStage, setCurrentStage] = useState(0);
   const [progress, setProgress] = useState(0);
 

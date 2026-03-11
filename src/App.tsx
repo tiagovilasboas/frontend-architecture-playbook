@@ -3,14 +3,14 @@ import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import DocsShell from './components/DocsShell.tsx';
 import { ArchitectureLoader } from './components/ArchitectureLoader.tsx';
 import { MobileLoader } from './components/MobileLoader.tsx';
-import { useMobileDetector } from './hooks/useMobileDetector.ts';
+import { useBreakpoints } from './hooks/useBreakpoints.ts';
 import { updatePageMeta } from './utils/seo.ts';
 // Lazy load pages for better performance
 const Home = lazy(() => import('./pages/Home.tsx'));
 const DocPage = lazy(() => import('./pages/DocPage.tsx'));
 
 function App() {
-  const { isMobile } = useMobileDetector();
+  const { isMobile } = useBreakpoints();
   const location = useLocation();
 
   // Update meta tags when route changes
