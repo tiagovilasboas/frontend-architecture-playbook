@@ -14,7 +14,8 @@ export const getPageMeta = (pathname: string): PageMeta => {
   switch (pathname) {
     case '/':
       return {
-        title: 'Front-End Architecture Playbook: Guia Completo + Decision Wizard v3.0',
+        title:
+          'Front-End Architecture Playbook: Guia Completo + Decision Wizard v3.0',
         description:
           'Front-End Architecture Playbook: Guia completo com Decision Wizard v3.0 + 9 arquiteturas comparadas. Clean Architecture, Micro-frontends, SSR/SSG, BFF, PWA. 19 casos reais com fontes verificáveis.',
         keywords:
@@ -67,8 +68,7 @@ export const getPageMeta = (pathname: string): PageMeta => {
 
     case '/guides/cases':
       return {
-        title:
-          'Casos Reais de Arquitetura Front-End - 9 Cases com Fontes',
+        title: 'Casos Reais de Arquitetura Front-End - 9 Cases com Fontes',
         description:
           '19 casos reais de empresas que aplicaram boas práticas com resultado. Cada caso com link para artigo ou tech blog original.',
         keywords:
