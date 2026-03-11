@@ -17,9 +17,9 @@ function NavArrow({ direction, item }: NavArrowProps) {
   const { isMobile } = useBreakpoints();
   if (!item) return null;
 
-  const width = isMobile ? 22 : 44;
-  const height = isMobile ? 52 : 44;
-  const iconSize = isMobile ? 20 : 24;
+  /* 44×44 min for touch targets (WCAG 2.2); desktop keeps 44 */
+  const size = 44;
+  const iconSize = isMobile ? 22 : 24;
 
   return (
     <Tooltip
@@ -34,8 +34,8 @@ function NavArrow({ direction, item }: NavArrowProps) {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          width,
-          height,
+          width: size,
+          height: size,
           borderRadius: 'var(--mantine-radius-md)',
           color: 'var(--mantine-color-text)',
           backgroundColor: 'var(--mantine-color-default-hover)',
@@ -106,11 +106,11 @@ export default function PrevNextArrows({ children }: PrevNextArrowsProps) {
         </Box>
       )}
 
-      {/* Conteúdo com padding lateral para não ficar por baixo das setas */}
+      {/* Conteúdo com padding lateral para não ficar por baixo das setas (44px + 8px gap) */}
       <Box
         style={{
-          paddingLeft: prev || next ? (isMobile ? 20 : 64) : 0,
-          paddingRight: prev || next ? (isMobile ? 20 : 64) : 0,
+          paddingLeft: prev || next ? (isMobile ? 56 : 64) : 0,
+          paddingRight: prev || next ? (isMobile ? 56 : 64) : 0,
         }}
       >
         {children}

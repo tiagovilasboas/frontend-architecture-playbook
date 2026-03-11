@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { getDoc } from '../lib/content.tsx';
 import { getDocContent } from '../lib/content-data';
-import { TypographyStylesProvider, Group } from '@mantine/core';
+import { TypographyStylesProvider, Group, Box } from '@mantine/core';
 import { CodeHighlight } from '@mantine/code-highlight';
 import { ReadingTime } from '../components/ReadingTime.tsx';
 import { RelatedContent } from '../components/RelatedContent.tsx';
@@ -44,7 +44,12 @@ export default function DocPage() {
     );
 
     return (
-      <>
+      <Box
+        maw={720}
+        mx="auto"
+        style={{ width: '100%' }}
+        className="doc-page-wrapper"
+      >
         <Group mb={{ base: 'xs', sm: 'md' }} justify="flex-end" gap="xs">
           <ReadingTime />
           <span
@@ -59,7 +64,7 @@ export default function DocPage() {
           </TypographyStylesProvider>
         </div>
         {contentPage.layout?.showRelated !== false && <RelatedContent />}
-      </>
+      </Box>
     );
   }
 
@@ -72,7 +77,12 @@ export default function DocPage() {
   const showGuideNav = collection === 'guides' && slug;
 
   return (
-    <>
+    <Box
+      maw={720}
+      mx="auto"
+      style={{ width: '100%' }}
+      className="doc-page-wrapper"
+    >
       <Group mb="md" justify="flex-end">
         <ReadingTime />
       </Group>
@@ -83,6 +93,6 @@ export default function DocPage() {
         </TypographyStylesProvider>
       </div>
       <RelatedContent />
-    </>
+    </Box>
   );
 }
