@@ -45,7 +45,7 @@ export default function DocPage() {
 
     return (
       <Box
-        maw={720}
+        maw="90%"
         mx="auto"
         style={{ width: '100%' }}
         className="doc-page-wrapper"
@@ -78,7 +78,7 @@ export default function DocPage() {
 
   return (
     <Box
-      maw={720}
+      maw="90%"
       mx="auto"
       style={{ width: '100%' }}
       className="doc-page-wrapper"

@@ -53,7 +53,7 @@ export default function Home() {
   const { isMobile, isSmallMobile } = useBreakpoints();
 
   return (
-    <Box px={isMobile ? 'md' : 'md'} mt={0} w="100%" maw="100%">
+    <Box px={isMobile ? 'md' : 'md'} mt={0} w="100%" maw="90%" mx="auto">
       <motion.div
         variants={containerVariants}
         initial="hidden"
@@ -80,7 +80,6 @@ export default function Home() {
                   zIndex: 1,
                   padding: isMobile ? '3rem 0' : '4rem 0',
                   width: '100%',
-                  maxWidth: '90%',
                 }}
                 gap={isMobile ? 'xl' : '2xl'}
               >
@@ -102,10 +101,7 @@ export default function Home() {
                   <Text
                     size={isMobile ? 'lg' : 'xl'}
                     fw={600}
-                    style={{
-                      maxWidth: isMobile ? '100%' : '90%',
-                      lineHeight: 1.4,
-                    }}
+                    style={{ lineHeight: 1.4 }}
                   >
                     Do fundamento à decisão, com fonte em tudo.
                   </Text>
@@ -113,10 +109,7 @@ export default function Home() {
                   <Text
                     size={isMobile ? 'sm' : 'md'}
                     c="dimmed"
-                    style={{
-                      maxWidth: isMobile ? '100%' : '90%',
-                      lineHeight: 1.5,
-                    }}
+                    style={{ lineHeight: 1.5 }}
                   >
                     Guias na ordem que faz sentido estudar, casos reais com link
                     dos artigos respectivos, wizard pra te dar uma recomendação
@@ -181,18 +174,10 @@ export default function Home() {
                 >
                   <Stack gap="md" h="100%">
                     <Group gap="sm" wrap="nowrap">
-                      <Badge
-                        variant="filled"
-                        size="xl"
-                        radius="xl"
-                      >
+                      <Badge variant="filled" size="xl" radius="xl">
                         1
                       </Badge>
-                      <ThemeIcon
-                        size={44}
-                        radius="md"
-                        variant="light"
-                      >
+                      <ThemeIcon size={44} radius="md" variant="light">
                         <IconShield size={24} />
                       </ThemeIcon>
                     </Group>
@@ -208,11 +193,7 @@ export default function Home() {
                         Dependências só apontam pra dentro. A base de tudo.
                       </Text>
                     </Stack>
-                    <Group
-                      gap={4}
-                      fw={500}
-                      style={{ pointerEvents: 'none' }}
-                    >
+                    <Group gap={4} fw={500} style={{ pointerEvents: 'none' }}>
                       <Text size="sm">Ler o guia</Text>
                       <IconArrowRight size={14} />
                     </Group>
@@ -233,18 +214,10 @@ export default function Home() {
                 >
                   <Stack gap="md" h="100%">
                     <Group gap="sm" wrap="nowrap">
-                      <Badge
-                        variant="filled"
-                        size="xl"
-                        radius="xl"
-                      >
+                      <Badge variant="filled" size="xl" radius="xl">
                         2
                       </Badge>
-                      <ThemeIcon
-                        size={44}
-                        radius="md"
-                        variant="light"
-                      >
+                      <ThemeIcon size={44} radius="md" variant="light">
                         <IconTarget size={24} />
                       </ThemeIcon>
                     </Group>
@@ -261,11 +234,7 @@ export default function Home() {
                         time.
                       </Text>
                     </Stack>
-                    <Group
-                      gap={4}
-                      fw={500}
-                      style={{ pointerEvents: 'none' }}
-                    >
+                    <Group gap={4} fw={500} style={{ pointerEvents: 'none' }}>
                       <Text size="sm">Começar o wizard</Text>
                       <IconArrowRight size={14} />
                     </Group>
@@ -286,18 +255,10 @@ export default function Home() {
                 >
                   <Stack gap="md" h="100%">
                     <Group gap="sm" wrap="nowrap">
-                      <Badge
-                        variant="filled"
-                        size="xl"
-                        radius="xl"
-                      >
+                      <Badge variant="filled" size="xl" radius="xl">
                         3
                       </Badge>
-                      <ThemeIcon
-                        size={44}
-                        radius="md"
-                        variant="light"
-                      >
+                      <ThemeIcon size={44} radius="md" variant="light">
                         <IconScale size={24} />
                       </ThemeIcon>
                     </Group>
@@ -314,11 +275,7 @@ export default function Home() {
                         importa na prática.
                       </Text>
                     </Stack>
-                    <Group
-                      gap={4}
-                      fw={500}
-                      style={{ pointerEvents: 'none' }}
-                    >
+                    <Group gap={4} fw={500} style={{ pointerEvents: 'none' }}>
                       <Text size="sm">Ver comparação</Text>
                       <IconArrowRight size={14} />
                     </Group>
@@ -408,11 +365,7 @@ export default function Home() {
 
           {/* ⟩ Casos com fonte */}
           <motion.section variants={itemVariants}>
-            <Paper
-              withBorder
-              p={isMobile ? 'lg' : 'xl'}
-              radius="lg"
-            >
+            <Paper withBorder p={isMobile ? 'lg' : 'xl'} radius="lg">
               <Stack gap={isMobile ? 'md' : 'lg'} align="center">
                 <Title
                   order={2}
@@ -588,18 +541,10 @@ export default function Home() {
                 >
                   <Stack gap="md" h="100%">
                     <Group gap="sm" wrap="nowrap">
-                      <ThemeIcon
-                        size={48}
-                        radius="md"
-                        variant="light"
-                      >
+                      <ThemeIcon size={48} radius="md" variant="light">
                         <IconTrendingUp size={26} />
                       </ThemeIcon>
-                      <Badge
-                        variant="filled"
-                        size="sm"
-                        radius="sm"
-                      >
+                      <Badge variant="filled" size="sm" radius="sm">
                         Destaque
                       </Badge>
                     </Group>
@@ -616,11 +561,7 @@ export default function Home() {
                         leva pro seu contexto.
                       </Text>
                     </Stack>
-                    <Group
-                      gap={4}
-                      fw={500}
-                      style={{ pointerEvents: 'none' }}
-                    >
+                    <Group gap={4} fw={500} style={{ pointerEvents: 'none' }}>
                       <Text size="sm">Ver todos os casos</Text>
                       <IconArrowRight size={14} />
                     </Group>
@@ -642,18 +583,10 @@ export default function Home() {
                 >
                   <Stack gap="md" h="100%">
                     <Group gap="sm" wrap="nowrap">
-                      <ThemeIcon
-                        size={48}
-                        radius="md"
-                        variant="light"
-                      >
+                      <ThemeIcon size={48} radius="md" variant="light">
                         <IconScale size={26} />
                       </ThemeIcon>
-                      <Badge
-                        variant="light"
-                        size="sm"
-                        radius="sm"
-                      >
+                      <Badge variant="light" size="sm" radius="sm">
                         Comparação
                       </Badge>
                     </Group>
@@ -670,11 +603,7 @@ export default function Home() {
                         importa na hora de decidir.
                       </Text>
                     </Stack>
-                    <Group
-                      gap={4}
-                      fw={500}
-                      style={{ pointerEvents: 'none' }}
-                    >
+                    <Group gap={4} fw={500} style={{ pointerEvents: 'none' }}>
                       <Text size="sm">Ver comparação</Text>
                       <IconArrowRight size={14} />
                     </Group>

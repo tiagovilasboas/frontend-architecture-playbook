@@ -109,8 +109,8 @@ export default function PrevNextArrows({ children }: PrevNextArrowsProps) {
       {/* Conteúdo com padding lateral para não ficar por baixo das setas (44px + 8px gap) */}
       <Box
         style={{
-          paddingLeft: prev || next ? (isMobile ? 56 : 64) : 0,
-          paddingRight: prev || next ? (isMobile ? 56 : 64) : 0,
+          paddingLeft: prev || next ? (isMobile ? 56 : 32) : 0,
+          paddingRight: prev || next ? (isMobile ? 56 : 32) : 0,
         }}
       >
         {children}
