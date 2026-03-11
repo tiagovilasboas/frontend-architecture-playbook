@@ -2,6 +2,30 @@
   /* Mantine já fornece resets e variáveis de tema */
 }
 
+/* Skip link: hidden until focused (a11y - keyboard/screen reader) */
+.skip-link {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+  padding: 0.75rem 1.25rem;
+  background: var(--mantine-color-brand-6);
+  color: var(--mantine-color-white);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  border-radius: 0 0 var(--mantine-radius-md) 0;
+  transform: translateY(-100%);
+  transition: transform 0.2s ease;
+  text-decoration: none;
+  outline: none;
+}
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
+  outline: 2px solid var(--mantine-color-brand-3);
+  outline-offset: 2px;
+}
+
 /* Theme from single source (src/theme/colors.ts) */
 [data-mantine-color-scheme='dark'] {
   --mantine-color-body: var(--app-body-dark) !important;
@@ -129,7 +153,9 @@ a:focus,
 }
 
 [data-mantine-color-scheme='dark'] .mantine-Card-root a:hover,
-[data-mantine-color-scheme='dark'] .mantine-Card-root .mantine-Anchor-root:hover,
+[data-mantine-color-scheme='dark']
+  .mantine-Card-root
+  .mantine-Anchor-root:hover,
 [data-mantine-color-scheme='dark'] .wizard-recommendation-card a:hover {
   color: var(--mantine-color-brand-0) !important;
 }
@@ -141,12 +167,21 @@ a:focus,
 
 /* Listas dentro de card (ex.: guia de estudo) mesmo tom de link */
 [data-mantine-color-scheme='dark'] .mantine-Card-root .mantine-List-item a,
-[data-mantine-color-scheme='dark'] .mantine-Card-root .mantine-List-item .mantine-Anchor-root {
+[data-mantine-color-scheme='dark']
+  .mantine-Card-root
+  .mantine-List-item
+  .mantine-Anchor-root {
   color: var(--mantine-color-brand-1) !important;
 }
 
-[data-mantine-color-scheme='dark'] .mantine-Card-root .mantine-List-item a:hover,
-[data-mantine-color-scheme='dark'] .mantine-Card-root .mantine-List-item .mantine-Anchor-root:hover {
+[data-mantine-color-scheme='dark']
+  .mantine-Card-root
+  .mantine-List-item
+  a:hover,
+[data-mantine-color-scheme='dark']
+  .mantine-Card-root
+  .mantine-List-item
+  .mantine-Anchor-root:hover {
   color: var(--mantine-color-brand-0) !important;
 }
 
@@ -291,7 +326,9 @@ a:focus,
   flex-shrink: 0 !important;
 }
 /* Título ao lado do ícone: sem margem em cima, line-height apertado para alinhar primeira linha com o ícone */
-[data-doc-content] .mantine-Group-root:has(.mantine-ThemeIcon-root) .mantine-Title-root {
+[data-doc-content]
+  .mantine-Group-root:has(.mantine-ThemeIcon-root)
+  .mantine-Title-root {
   flex-shrink: 1;
   min-width: 0;
   margin-top: 0 !important;
@@ -309,7 +346,9 @@ a:focus,
   margin-left: var(--mantine-spacing-xs) !important;
 }
 /* Text ao lado do ícone (ex.: cards) – mesmo alinhamento */
-[data-doc-content] .mantine-Group-root:has(.mantine-ThemeIcon-root) .mantine-Text-root {
+[data-doc-content]
+  .mantine-Group-root:has(.mantine-ThemeIcon-root)
+  .mantine-Text-root {
   margin-top: 0 !important;
   padding-top: 0 !important;
 }
@@ -486,7 +525,9 @@ a:focus,
   color: var(--mantine-color-brand-1) !important;
 }
 
-[data-mantine-color-scheme='dark'] .header-nav-dropdown .mantine-Menu-item:hover {
+[data-mantine-color-scheme='dark']
+  .header-nav-dropdown
+  .mantine-Menu-item:hover {
   background: var(--app-nav-hover-bg-dark) !important;
   color: var(--mantine-color-brand-0) !important;
 }
@@ -579,16 +620,22 @@ a:focus,
 }
 
 /* Cabeçalhos das seções do menu (Guias, Boas Práticas, etc.) – contraste no dark */
-[data-mantine-color-scheme='dark'] .nav-menu-container .mantine-Accordion-control {
+[data-mantine-color-scheme='dark']
+  .nav-menu-container
+  .mantine-Accordion-control {
   color: var(--mantine-color-brand-2) !important;
 }
 
-[data-mantine-color-scheme='dark'] .nav-menu-container .mantine-Accordion-control:hover {
+[data-mantine-color-scheme='dark']
+  .nav-menu-container
+  .mantine-Accordion-control:hover {
   background: var(--app-accordion-hover-bg-dark) !important;
   color: var(--mantine-color-brand-0) !important;
 }
 
-[data-mantine-color-scheme='light'] .nav-menu-container .mantine-Accordion-control:hover {
+[data-mantine-color-scheme='light']
+  .nav-menu-container
+  .mantine-Accordion-control:hover {
   background: var(--app-accordion-hover-bg-light) !important;
   color: var(--mantine-color-brand-9) !important;
 }
@@ -699,7 +746,9 @@ a:focus,
 .mobile-nav-accordion .mantine-Accordion-control:hover {
   background: var(--app-nav-hover-bg-dark) !important;
 }
-[data-mantine-color-scheme='light'] .mobile-nav-accordion .mantine-Accordion-control:hover {
+[data-mantine-color-scheme='light']
+  .mobile-nav-accordion
+  .mantine-Accordion-control:hover {
   background: var(--app-nav-hover-bg-light) !important;
 }
 .mobile-nav-accordion .mantine-Accordion-control .mantine-Accordion-chevron {

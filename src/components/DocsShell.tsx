@@ -34,6 +34,11 @@ export default function DocsShell({ children }: DocsShellProps) {
 
   return (
     <>
+      {/* Skip link: visible on focus for a11y (keyboard/screen reader) */}
+      <a href="#main-content" className="skip-link">
+        Pular para o conteúdo
+      </a>
+
       {/* Neural Network – comportamento único por página (seed = pathname) */}
       <NeuralNetworkCanvas
         nodeCount={isMobile ? 60 : 100}
@@ -85,6 +90,8 @@ export default function DocsShell({ children }: DocsShellProps) {
 
         {/* Main Content – setas prev/next nas laterais, breadcrumb e conteúdo no centro */}
         <Box
+          id="main-content"
+          tabIndex={-1}
           style={{
             flex: 1,
             width: '100%',
