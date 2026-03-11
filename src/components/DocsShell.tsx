@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Drawer, Box } from '@mantine/core';
+import { Drawer, Box, useMantineColorScheme } from '@mantine/core';
 import { Spotlight } from '@mantine/spotlight';
 import HeaderBar from './HeaderBar.tsx';
 import MobileNavMenu from './MobileNavMenu.tsx';
@@ -21,6 +21,7 @@ interface DocsShellProps {
 export default function DocsShell({ children }: DocsShellProps) {
   const [opened, setOpened] = useState(false);
   const { isMobile } = useBreakpoints();
+  const { colorScheme } = useMantineColorScheme();
   const actions = useNavigationActions();
 
   const handleBurgerClick = () => setOpened(prev => !prev);
@@ -39,12 +40,14 @@ export default function DocsShell({ children }: DocsShellProps) {
         Pular para o conteúdo
       </a>
 
-      {/* Neural Network – comportamento único por página (seed = pathname) */}
-      <NeuralNetworkCanvas
-        nodeCount={isMobile ? 60 : 100}
-        fullScreen={true}
-        seed={location.pathname}
-      />
+      {/* Neural Network – only in dark mode (hidden in light) */}
+      {colorScheme === 'dark' && (
+        <NeuralNetworkCanvas
+          nodeCount={isMobile ? 60 : 100}
+          fullScreen={true}
+          seed={location.pathname}
+        />
+      )}
 
       <ReadingProgress />
       <Spotlight

@@ -51,7 +51,7 @@ export default function HeaderBar({ opened, onBurger }: Props) {
             opened={opened}
             onClick={onBurger}
             size="sm"
-            color="var(--mantine-color-brand-2)"
+            color={colorScheme === 'dark' ? 'gray.3' : 'dark.8'}
             aria-label={opened ? 'Fechar menu' : 'Abrir menu'}
           />
           <UnstyledButton
@@ -90,7 +90,6 @@ export default function HeaderBar({ opened, onBurger }: Props) {
           <ActionIcon
             onClick={() => toggleColorScheme()}
             variant="light"
-            color="brand"
             size={isMobile ? 'xl' : 'lg'}
             aria-label="Toggle color scheme"
           >
@@ -110,7 +109,6 @@ export default function HeaderBar({ opened, onBurger }: Props) {
             >
               <ActionIcon
                 variant="light"
-                color="brand"
                 size="lg"
                 aria-label="GitHub"
               >
