@@ -137,53 +137,43 @@ export default function MobileNavMenu({ onNavigate }: Props) {
           })}
         </Accordion>
 
-        <div className="mobile-nav-footer">
-          <Stack gap={4} className="mobile-nav-footer-links">
-            <Anchor
-              href="https://github.com/tiagovilasboas"
-              target="_blank"
-              rel="noopener noreferrer"
-              size="sm"
-              c="gray"
-              className="mobile-nav-footer-link"
-              aria-label="GitHub - Tiago Vilas Boas"
-            >
-              <Group gap="sm">
-                <IconBrandGithub size={22} />
-                <Text size="sm" fw={500}>
-                  GitHub
-                </Text>
+        <Box
+          pt="md"
+          pb="sm"
+          px="md"
+          style={{ borderTop: '1px solid var(--mantine-color-default-border)' }}
+        >
+          <Stack gap="sm">
+            <Group justify="space-between" wrap="nowrap">
+              <Text size="xs" c="dimmed">
+                Feito com <IconHeart size={12} style={{ verticalAlign: 'middle' }} /> por Tiago
+              </Text>
+              <Group gap="xs">
+                <Anchor
+                  href="https://github.com/tiagovilasboas"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  size="xs"
+                  aria-label="GitHub - Tiago Vilas Boas"
+                >
+                  <IconBrandGithub size={18} />
+                </Anchor>
+                <Anchor
+                  href="https://www.linkedin.com/in/tiagovilasboas"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  size="xs"
+                  aria-label="LinkedIn - Tiago Vilas Boas"
+                >
+                  <IconBrandLinkedin size={18} />
+                </Anchor>
               </Group>
-            </Anchor>
-            <Anchor
-              href="https://www.linkedin.com/in/tiagovilasboas"
-              target="_blank"
-              rel="noopener noreferrer"
-              size="sm"
-              c="gray"
-              className="mobile-nav-footer-link"
-              aria-label="LinkedIn - Tiago Vilas Boas"
-            >
-              <Group gap="sm">
-                <IconBrandLinkedin size={22} />
-                <Text size="sm" fw={500}>
-                  LinkedIn
-                </Text>
-              </Group>
-            </Anchor>
+            </Group>
+            <Text size="xs" c="dimmed">
+              Front-End Architecture Playbook • 2025
+            </Text>
           </Stack>
-          <Text size="sm" c="dimmed" ta="left" mt={4}>
-            Feito com{' '}
-            <IconHeart
-              size={14}
-              style={{
-                verticalAlign: 'middle',
-                color: 'var(--mantine-color-brand-6)',
-              }}
-            />{' '}
-            por Tiago Vilas Boas
-          </Text>
-        </div>
+        </Box>
       </ScrollArea>
     </Stack>
   );
