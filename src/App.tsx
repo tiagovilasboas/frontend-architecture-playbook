@@ -1,30 +1,49 @@
 import { useEffect, lazy, Suspense } from 'react';
 import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
+import { Box } from '@mantine/core';
 import DocsShell from './components/DocsShell.tsx';
-import { ArchitectureLoader } from './components/ArchitectureLoader.tsx';
-import { MobileLoader } from './components/MobileLoader.tsx';
-import { useBreakpoints } from './hooks/useBreakpoints.ts';
 import { updatePageMeta } from './utils/seo.ts';
-// Lazy load pages for better performance
+
 const Home = lazy(() => import('./pages/Home.tsx'));
 const DocPage = lazy(() => import('./pages/DocPage.tsx'));
 
+/** Minimal Suspense fallback – no heavy loader component */
+function PageFallback() {
+  return (
+    <Box
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        minHeight: 280,
+        width: '100%',
+      }}
+    >
+      <Box
+        className="page-fallback-spinner"
+        style={{
+          width: 32,
+          height: 32,
+          borderRadius: '50%',
+          border: '3px solid var(--mantine-color-default-border)',
+          borderTopColor: 'var(--mantine-color-green-6)',
+          animation: 'page-fallback-spin 0.8s linear infinite',
+        }}
+      />
+    </Box>
+  );
+}
+
 function App() {
-  const { isMobile } = useBreakpoints();
   const location = useLocation();
 
-  // Update meta tags when route changes
   useEffect(() => {
     updatePageMeta(location.pathname);
   }, [location.pathname]);
 
   return (
     <DocsShell>
-      <Suspense
-        fallback={
-          isMobile ? <MobileLoader size="lg" /> : <ArchitectureLoader />
-        }
-      >
+      <Suspense fallback={<PageFallback />}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route

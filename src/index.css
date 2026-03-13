@@ -102,17 +102,17 @@
   position: absolute;
   inset: 0;
   z-index: 0;
-  /* Grid: vertical + horizontal lines */
+  /* Grid: vertical + horizontal lines (more visible) */
   background-image:
-    linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+    linear-gradient(to right, rgba(0, 0, 0, 0.12) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.12) 1px, transparent 1px);
   background-size: 100px 100px;
   pointer-events: none;
 }
 [data-mantine-color-scheme="dark"] .hero-section::before {
   background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    linear-gradient(to right, rgba(255, 255, 255, 0.09) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.09) 1px, transparent 1px);
 }
 /* Subtle dashed circles (SVG as background) */
 .hero-section::after {
@@ -149,6 +149,13 @@
 .comece-aqui-card:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* Suspense fallback: simple spinner */
+@keyframes page-fallback-spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* Preserve ASCII/code spacing: monospace + pre so diagrams align */

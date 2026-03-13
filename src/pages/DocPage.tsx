@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { getDoc } from '../lib/content.tsx';
 import { getDocContent } from '../lib/content-data';
 import { CodeHighlight } from '@mantine/code-highlight';
+import '@mantine/code-highlight/styles.css';
 import ContentRenderer from '../components/ContentRenderer';
 import DocPageLayout from '../components/DocPageLayout';
 

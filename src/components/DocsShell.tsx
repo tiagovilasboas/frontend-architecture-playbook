@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, lazy, Suspense } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Drawer, Box, useMantineColorScheme } from '@mantine/core';
 import { Spotlight } from '@mantine/spotlight';
@@ -9,9 +9,10 @@ import PrevNextArrows from './PrevNextArrows.tsx';
 import { ReadingProgress } from './ReadingProgress.tsx';
 import { BackToTop } from './BackToTop.tsx';
 import Footer from './Footer.tsx';
-import NeuralNetworkCanvas from './NeuralNetworkCanvas.tsx';
 import { useNavigationActions } from '../hooks/useNavigationActions.ts';
 import { useBreakpoints } from '../hooks/useBreakpoints.ts';
+
+const NeuralNetworkCanvas = lazy(() => import('./NeuralNetworkCanvas.tsx'));
 
 interface DocsShellProps {
   children: React.ReactNode;
@@ -39,13 +40,15 @@ export default function DocsShell({ children }: DocsShellProps) {
         Pular para o conteúdo
       </a>
 
-      {/* Neural Network – only in dark mode (hidden in light) */}
+      {/* Neural Network – lazy loaded only in dark mode */}
       {colorScheme === 'dark' && (
-        <NeuralNetworkCanvas
-          nodeCount={isMobile ? 60 : 100}
-          fullScreen={true}
-          seed={location.pathname}
-        />
+        <Suspense fallback={null}>
+          <NeuralNetworkCanvas
+            nodeCount={isMobile ? 60 : 100}
+            fullScreen={true}
+            seed={location.pathname}
+          />
+        </Suspense>
       )}
 
       <ReadingProgress />

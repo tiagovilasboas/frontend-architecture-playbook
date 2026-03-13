@@ -7,7 +7,6 @@ import { theme } from './theme.ts';
 import { mantineCssVariableResolver } from './cssVariableResolver.ts';
 import { BrowserRouter } from 'react-router-dom';
 import '@mantine/core/styles.css';
-import '@mantine/code-highlight/styles.css';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

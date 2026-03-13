@@ -162,7 +162,9 @@ export default function Home() {
                   }}
                 >
                   <IconTerminal2 size={16} style={{ flexShrink: 0 }} />
-                  <Code block={false}>Comece por aqui → /guides/dependency-rule</Code>
+                  <Code block={false}>
+                    Comece por aqui → /guides/dependency-rule
+                  </Code>
                 </Group>
               </Stack>
             </Box>
@@ -316,8 +318,8 @@ export default function Home() {
                       lh={1.5}
                       style={{ flex: 1 }}
                     >
-                      Tudo lado a lado: quando usar, prós, contras e o que importa
-                      na prática.
+                      Tudo lado a lado: quando usar, prós, contras e o que
+                      importa na prática.
                     </Text>
                     <Group
                       gap={6}
@@ -425,49 +427,79 @@ export default function Home() {
             </Stack>
           </motion.section>
 
-          {/* ⟩ Casos com fonte */}
+          {/* ⟩ Casos reais com fonte */}
           <motion.section variants={itemVariants}>
-            <Paper withBorder p={isMobile ? 'lg' : 'xl'} radius="lg">
-              <Stack gap={isMobile ? 'md' : 'lg'} align="center">
-                <Title
-                  order={2}
-                  size={isMobile ? 'h3' : 'h2'}
-                  mb={0}
-                  style={{ fontWeight: 700 }}
-                >
-                  ⟩ Casos com link dos artigos respectivos
-                </Title>
-                <Stack gap={4} align="center" ta="center">
-                  <Text size={isMobile ? 'sm' : 'md'} c="dimmed" maw="90%">
-                    Netflix, eBay, Shopify, Zalando e outros publicaram como
-                    fazem. Cada caso aqui tem o link do artigo respectivo. Não é
-                    resumo solto, é onde você abre e lê.
+            <Paper
+              withBorder
+              p={isMobile ? 'lg' : 'xl'}
+              radius="lg"
+              className="cases-section"
+            >
+              <Stack gap={isMobile ? 'lg' : 'xl'} align="center">
+                <Stack gap="xs" align="center" ta="center">
+                  <Title
+                    order={2}
+                    size={isMobile ? 'h3' : 'h2'}
+                    mb={0}
+                    style={{ fontWeight: 700 }}
+                  >
+                    ⟩ 19 casos reais com link do artigo
+                  </Title>
+                  <Text
+                    size={isMobile ? 'sm' : 'md'}
+                    c="dimmed"
+                    maw={560}
+                    lh={1.6}
+                  >
+                    Netflix, Spotify, Airbnb, eBay e mais: como cada um resolveu
+                    desafio de arquitetura. Cada caso tem o link do artigo
+                    original — você abre, lê e leva pro seu contexto.
                   </Text>
                 </Stack>
 
-                <Flex
-                  gap="sm"
-                  wrap="wrap"
-                  justify="center"
-                  align="center"
-                  style={{ minHeight: 44 }}
+                <Box
+                  style={{
+                    width: '100%',
+                    maxWidth: 560,
+                    padding: isMobile ? 16 : 24,
+                    borderRadius: 12,
+                    background: 'var(--mantine-color-default-hover)',
+                    border: '1px solid var(--mantine-color-default-border)',
+                  }}
                 >
-                  {(casesData as { company: string; icon: string }[])
-                    .slice(0, 10)
-                    .map(c => (
-                      <Group key={c.company} gap={6} wrap="nowrap">
-                        <Text span style={{ fontSize: '1.25rem' }} aria-hidden>
-                          {c.icon}
-                        </Text>
-                        <Text size="sm" fw={500} c="dimmed">
-                          {c.company}
-                        </Text>
-                      </Group>
-                    ))}
-                  <Text size="sm" c="dimmed">
-                    +9
-                  </Text>
-                </Flex>
+                  <Flex gap="xs" wrap="wrap" justify="center" align="center">
+                    {(casesData as { company: string; icon: string }[])
+                      .slice(0, 10)
+                      .map(c => (
+                        <Group
+                          key={c.company}
+                          gap={6}
+                          wrap="nowrap"
+                          style={{
+                            padding: '6px 12px',
+                            borderRadius: 8,
+                            background: 'var(--mantine-color-body)',
+                            border:
+                              '1px solid var(--mantine-color-default-border)',
+                          }}
+                        >
+                          <Text
+                            span
+                            style={{ fontSize: '1.125rem' }}
+                            aria-hidden
+                          >
+                            {c.icon}
+                          </Text>
+                          <Text size="sm" fw={600}>
+                            {c.company}
+                          </Text>
+                        </Group>
+                      ))}
+                    <Text size="sm" fw={600} c="dimmed">
+                      +9
+                    </Text>
+                  </Flex>
+                </Box>
 
                 <Button
                   component={Link}
@@ -475,6 +507,7 @@ export default function Home() {
                   size={isMobile ? 'md' : 'lg'}
                   variant="filled"
                   color="green"
+                  radius="md"
                   rightSection={<IconExternalLink size={18} />}
                 >
                   Ver todos os 19 casos
