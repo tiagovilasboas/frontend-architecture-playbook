@@ -6,6 +6,7 @@ import {
   ScrollArea,
   Anchor,
   Box,
+  NavLink,
 } from '@mantine/core';
 import {
   IconBook,
@@ -57,93 +58,106 @@ export default function MobileNavMenu({ onNavigate }: Props) {
         style={{ flex: 1, minHeight: 0 }}
         className="mobile-nav-scroll"
       >
-        <Accordion
-          defaultValue={[]}
-          multiple
-          variant="default"
-          radius={0}
-          className="mobile-nav-accordion"
-        >
-          {NAV_JOURNEY.map((section, idx) => {
-            const isDirectLink = section.items.length === 1;
-            const href = isDirectLink ? section.items[0].href : undefined;
+        <Box px="md" py="xs">
+          <Accordion
+            defaultValue={[]}
+            multiple
+            variant="default"
+            radius="md"
+            className="mobile-nav-accordion"
+            styles={{
+              control: {
+                borderRadius: 6,
+                paddingTop: 6,
+                paddingBottom: 6,
+                minHeight: 'unset',
+              },
+              content: {
+                paddingLeft: 0,
+                paddingRight: 0,
+                paddingTop: 2,
+                paddingBottom: 4,
+              },
+              item: { marginBottom: 2 },
+            }}
+          >
+            {NAV_JOURNEY.map((section, idx) => {
+              const isDirectLink = section.items.length === 1;
+              const href = isDirectLink ? section.items[0].href : undefined;
 
-            if (isDirectLink && href) {
+              if (isDirectLink && href) {
+                return (
+                  <NavLink
+                    key={section.key}
+                    component={Link}
+                    to={href}
+                    onClick={onNavigate}
+                    leftSection={ICON_MAP[section.iconKey]}
+                    label={
+                      <Stack gap={0}>
+                        <Text fw={500} size="sm">
+                          {idx + 1}. {section.label}
+                        </Text>
+                        {section.subtitle && (
+                          <Text size="xs" c="dimmed">
+                            {section.subtitle}
+                          </Text>
+                        )}
+                      </Stack>
+                    }
+                    variant="light"
+                    style={{ borderRadius: 6, marginBottom: 2 }}
+                    styles={{
+                      root: { paddingTop: 6, paddingBottom: 6, minHeight: 'unset' },
+                    }}
+                  />
+                );
+              }
+
               return (
-                <Box
-                  key={section.key}
-                  component={Link}
-                  to={href}
-                  onClick={onNavigate}
-                  className="mobile-accordion-control"
-                  style={{
-                    display: 'block',
-                    textDecoration: 'none',
-                    color: 'inherit',
-                    padding:
-                      'var(--mantine-spacing-sm) var(--mantine-spacing-md)',
-                  }}
-                >
-                  <Group gap="sm">
-                    {ICON_MAP[section.iconKey]}
-                    <Stack gap={0}>
-                      <Text fw={500} size="sm">
-                        {idx + 1}. {section.label}
-                      </Text>
-                      {section.subtitle && (
-                        <Text size="xs" c="dimmed">
-                          {section.subtitle}
+                <Accordion.Item key={section.key} value={section.key}>
+                  <Accordion.Control className="mobile-accordion-control">
+                    <Group gap="sm">
+                      {ICON_MAP[section.iconKey]}
+                      <Stack gap={0}>
+                        <Text fw={500} size="sm">
+                          {idx + 1}. {section.label}
                         </Text>
-                      )}
+                        {section.subtitle && (
+                          <Text size="xs" c="dimmed">
+                            {section.subtitle}
+                          </Text>
+                        )}
+                      </Stack>
+                    </Group>
+                  </Accordion.Control>
+                  <Accordion.Panel className="mobile-nav-panel">
+                    <Stack gap={2} pl="md">
+                      {section.items.map((item) => (
+                        <NavItem
+                          key={item.href}
+                          href={item.href}
+                          label={item.label}
+                          icon={ITEM_ICON_MAP[section.iconKey]}
+                          active={current === item.href}
+                          onNavigate={onNavigate}
+                        />
+                      ))}
                     </Stack>
-                  </Group>
-                </Box>
+                  </Accordion.Panel>
+                </Accordion.Item>
               );
-            }
-
-            return (
-              <Accordion.Item key={section.key} value={section.key}>
-                <Accordion.Control className="mobile-accordion-control">
-                  <Group gap="sm">
-                    {ICON_MAP[section.iconKey]}
-                    <Stack gap={0}>
-                      <Text fw={500} size="sm">
-                        {idx + 1}. {section.label}
-                      </Text>
-                      {section.subtitle && (
-                        <Text size="xs" c="dimmed">
-                          {section.subtitle}
-                        </Text>
-                      )}
-                    </Stack>
-                  </Group>
-                </Accordion.Control>
-                <Accordion.Panel className="mobile-nav-panel">
-                  <Stack gap={0}>
-                    {section.items.map(item => (
-                      <NavItem
-                        key={item.href}
-                        href={item.href}
-                        label={item.label}
-                        icon={ITEM_ICON_MAP[section.iconKey]}
-                        active={current === item.href}
-                        onNavigate={onNavigate}
-                      />
-                    ))}
-                  </Stack>
-                </Accordion.Panel>
-              </Accordion.Item>
-            );
-          })}
-        </Accordion>
+            })}
+          </Accordion>
+        </Box>
 
         <Box
-          pt="md"
-          pb="sm"
+          pt="sm"
+          pb="xs"
           px="md"
           style={{ borderTop: '1px solid var(--mantine-color-default-border)' }}
         >
-          <Stack gap="sm">
+          <Stack gap="xs">
             <Group justify="space-between" wrap="nowrap">
               <Text size="xs" c="dimmed">
                 Feito com <IconHeart size={12} style={{ verticalAlign: 'middle' }} /> por Tiago

@@ -45,7 +45,14 @@ export default function NavItem({
       onClick={handleClick}
       leftSection={icon}
       rightSection={active ? <IconChevronRight size={14} /> : null}
-      variant={active ? 'filled' : 'subtle'}
+      variant="light"
+      style={{
+        borderRadius: 6,
+        fontWeight: active ? 600 : 400,
+      }}
+      styles={{
+        root: { paddingTop: 6, paddingBottom: 6, minHeight: 'unset' },
+      }}
       className="navmenu-link"
     />
   );

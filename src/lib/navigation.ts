@@ -74,7 +74,7 @@ export const NAV_JOURNEY: NavSectionEntry[] = [
   },
   {
     key: 'delivery',
-    label: 'Arquitetura de Entrega',
+    label: 'Arquitetura',
     shortLabel: 'Entrega',
     subtitle: 'Como servir o app',
     iconKey: 'rocket',
