@@ -24,6 +24,17 @@
   outline-offset: 2px;
 }
 
+/* Page TOC anchor scroll: leave space so the heading is visible below the header */
+[data-doc-content] h2,
+[data-doc-content] h3 {
+  scroll-margin-top: 9rem;
+}
+
+/* Tighter paragraph spacing in doc content */
+[data-doc-content] p {
+  margin-bottom: 0.65em;
+}
+
 /* Preserve ASCII/code spacing: monospace + pre so diagrams align */
 .mantine-CodeHighlight-root pre,
 .mantine-CodeHighlight-root code,

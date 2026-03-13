@@ -5,7 +5,6 @@ import { Spotlight } from '@mantine/spotlight';
 import HeaderBar from './HeaderBar.tsx';
 import MobileNavMenu from './MobileNavMenu.tsx';
 import MobileBottomNav from './MobileBottomNav.tsx';
-import AppBreadcrumbs from './AppBreadcrumbs.tsx';
 import PrevNextArrows from './PrevNextArrows.tsx';
 import { ReadingProgress } from './ReadingProgress.tsx';
 import { BackToTop } from './BackToTop.tsx';
@@ -57,7 +56,7 @@ export default function DocsShell({ children }: DocsShellProps) {
           placeholder: 'Buscar no playbook...',
           size: 'lg',
         }}
-        nothingFoundMessage="Nada encontrado. Tente outra busca."
+        nothingFound="Nada encontrado. Tente outra busca."
         highlightQuery
         limit={10}
       />
@@ -95,19 +94,16 @@ export default function DocsShell({ children }: DocsShellProps) {
         <Box
           id="main-content"
           tabIndex={-1}
+          mb="2xl"
           style={{
             flex: 1,
             width: '100%',
-            padding: isMobile ? '0.75rem 0' : '2rem',
             display: 'flex',
             flexDirection: 'column',
             minHeight: 0,
           }}
         >
-          <PrevNextArrows>
-            <AppBreadcrumbs />
-            {children}
-          </PrevNextArrows>
+          <PrevNextArrows>{children}</PrevNextArrows>
         </Box>
 
         {/* Footer */}

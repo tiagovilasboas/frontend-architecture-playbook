@@ -15,6 +15,7 @@ export default function Footer() {
       px="md"
       py="sm"
       w="100%"
+      style={{ position: 'relative', zIndex: 10 }}
     >
       <Group justify="space-between" wrap="nowrap" gap="md">
         <Group gap="xs" wrap="wrap" style={{ flex: 1, minWidth: 0 }}>
