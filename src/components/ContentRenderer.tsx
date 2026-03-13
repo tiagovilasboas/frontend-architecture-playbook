@@ -58,8 +58,11 @@ import type {
   ContentIconKey,
   ContentPage,
 } from '../lib/content-schema';
+import { slugifyForId } from '../lib/page-toc';
 import CodeExample from './CodeExample';
 import GlossaryBlock from './GlossaryBlock';
+import FolderStructureDiagram from './diagrams/FolderStructureDiagram';
+import DependencyRuleDiagram from './diagrams/DependencyRuleDiagram';
 
 const ICON_MAP: Record<
   ContentIconKey,
@@ -187,8 +190,16 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
 
     case 'section': {
       const iconEl = block.icon ? getIcon(block.icon) : null;
+      const sectionId = block.title?.trim()
+        ? slugifyForId(block.title)
+        : undefined;
       return (
-        <Paper key={key} withBorder p={{ base: 'md', sm: 'xl' }} radius="md">
+        <Paper
+          key={key}
+          withBorder
+          p={{ base: 'md', sm: 'xl' }}
+          radius="md"
+        >
           {(block.title || iconEl) && (
             <Group
               gap="sm"
@@ -211,6 +222,7 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
               {block.title && (
                 <Title
                   order={3}
+                  id={sectionId}
                   style={{ minWidth: 0, margin: 0, lineHeight: 1.25 }}
                 >
                   {block.title}
@@ -319,6 +331,47 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
           />
         </div>
       );
+
+    case 'canvasDiagram': {
+      if (block.diagram === 'dependency-rule-folders') {
+        return (
+          <Stack key={key} gap="sm" mb="md">
+            {block.title && (
+              <Title order={4} size="h5">
+                {block.title}
+              </Title>
+            )}
+            {block.description && (
+              <Text size="sm" c="dimmed">
+                {block.description}
+              </Text>
+            )}
+            <FolderStructureDiagram height={280} />
+          </Stack>
+        );
+      }
+      if (block.diagram === 'dependency-rule-flow') {
+        return (
+          <Stack key={key} gap="sm" mb="md">
+            {block.title && (
+              <Title order={4} size="h5">
+                {block.title}
+              </Title>
+            )}
+            {block.description && (
+              <Text size="sm" c="dimmed">
+                {block.description}
+              </Text>
+            )}
+            <DependencyRuleDiagram
+              variant={block.variant ?? 'correct'}
+              height={280}
+            />
+          </Stack>
+        );
+      }
+      return null;
+    }
 
     case 'alert': {
       const AlertIcon = block.icon ? ICON_MAP[block.icon] : null;
@@ -500,13 +553,7 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
 
     case 'callout': {
       return (
-        <Paper
-          key={key}
-          withBorder
-          p="sm"
-          radius="md"
-          bg={block.dimmed ? 'dimmed' : undefined}
-        >
+        <Paper key={key} withBorder p="sm" radius="md">
           <Text size="xs" fw={600} mb={4}>
             {block.title}
           </Text>
@@ -569,7 +616,7 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
                     </List>
                   ) : null}
                   {c.nextLevel ? (
-                    <Paper withBorder p="sm" radius="md" bg="dimmed">
+                    <Paper withBorder p="sm" radius="md">
                       <Text size="xs" fw={600} mb={4}>
                         {c.nextLevel.title}
                       </Text>

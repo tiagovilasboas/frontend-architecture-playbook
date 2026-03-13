@@ -144,6 +144,13 @@ export type ContentBlock =
   | { type: 'architectureComparison'; title?: string }
   | { type: 'decisionWizard' }
   | {
+      type: 'canvasDiagram';
+      diagram: 'dependency-rule-folders' | 'dependency-rule-flow';
+      variant?: 'correct' | 'incorrect';
+      title?: string;
+      description?: string;
+    }
+  | {
       type: 'timeline';
       /** Which step is active (1-based); optional. */
       active?: number;
