@@ -88,6 +88,7 @@ export function ProgressiveLoader({
           alignItems: 'center',
           minHeight: '300px',
           padding: '1.5rem',
+          width: '100%',
         }}
       >
         <Stack align="center" gap="lg">
@@ -144,6 +145,7 @@ export function ProgressiveLoader({
         alignItems: 'center',
         minHeight: '400px',
         padding: '2rem',
+        width: '100%',
       }}
     >
       {/* Header */}

@@ -65,7 +65,7 @@ export function ArchitectureLoader({
         alignItems: 'center',
         minHeight: '400px',
         padding: '2rem',
-        background: 'var(--mantine-color-body)',
+        width: '100%',
       }}
     >
       {/* Logo animado */}
@@ -169,7 +169,7 @@ export function ArchitectureLoader({
             style={{
               width: '100%',
               height: '4px',
-              background: 'var(--mantine-color-gray-2)',
+              background: 'var(--mantine-color-default-border)',
               borderRadius: '2px',
               overflow: 'hidden',
             }}
@@ -232,6 +232,7 @@ export function SimpleLoader() {
         justifyContent: 'center',
         alignItems: 'center',
         height: '200px',
+        width: '100%',
       }}
     >
       <Stack align="center" gap="md">
