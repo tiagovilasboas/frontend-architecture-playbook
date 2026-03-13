@@ -161,123 +161,146 @@ export default function Home() {
               >
                 <Card
                   withBorder
-                  p={isMobile ? 'lg' : 'md'}
+                  p={isMobile ? 'lg' : 'lg'}
                   radius="lg"
                   component={Link}
                   to="/guides/dependency-rule"
-                  style={{
-                    textDecoration: 'none',
-                    cursor: 'pointer',
-                    transition: 'transform 0.2s ease, box-shadow 0.2s ease',
-                  }}
                   className="comece-aqui-card"
+                  styles={{
+                    root: {
+                      textDecoration: 'none',
+                      cursor: 'pointer',
+                      transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+                    },
+                  }}
                 >
                   <Stack gap="md" h="100%">
-                    <Group gap="sm" wrap="nowrap">
-                      <Badge variant="filled" size="xl" radius="xl">
-                        1
-                      </Badge>
-                      <ThemeIcon size={44} radius="md" variant="light">
-                        <IconShield size={24} />
+                    <Group gap="sm" wrap="nowrap" align="flex-start">
+                      <ThemeIcon
+                        size={48}
+                        radius="md"
+                        variant="light"
+                        color="green"
+                      >
+                        <IconShield size={26} />
                       </ThemeIcon>
-                    </Group>
-                    <Stack gap={4} style={{ flex: 1 }}>
-                      <Text fw={700} size={isMobile ? 'md' : 'sm'}>
+                      <Text fw={700} size={isMobile ? 'md' : 'sm'} lh={1.2}>
                         Dependency Rule
                       </Text>
-                      <Text
-                        size={isMobile ? 'sm' : 'xs'}
-                        c="dimmed"
-                        style={{ lineHeight: 1.5 }}
-                      >
-                        Dependências só apontam pra dentro. A base de tudo.
-                      </Text>
-                    </Stack>
-                    <Group gap={4} fw={500} style={{ pointerEvents: 'none' }}>
+                    </Group>
+                    <Text
+                      size={isMobile ? 'md' : 'sm'}
+                      c="dimmed"
+                      lh={1.5}
+                      style={{ flex: 1 }}
+                    >
+                      Dependências só apontam pra dentro. A base de tudo.
+                    </Text>
+                    <Group
+                      gap={6}
+                      fw={600}
+                      style={{ pointerEvents: 'none' }}
+                      c="green.6"
+                    >
                       <Text size="sm">Ler o guia</Text>
-                      <IconArrowRight size={14} />
+                      <IconArrowRight size={16} />
                     </Group>
                   </Stack>
                 </Card>
                 <Card
                   withBorder
-                  p={isMobile ? 'lg' : 'md'}
+                  p={isMobile ? 'lg' : 'lg'}
                   radius="lg"
                   component={Link}
                   to="/guides/how-to-choose"
-                  style={{
-                    textDecoration: 'none',
-                    cursor: 'pointer',
-                    transition: 'transform 0.2s ease, box-shadow 0.2s ease',
-                  }}
                   className="comece-aqui-card"
+                  styles={{
+                    root: {
+                      textDecoration: 'none',
+                      cursor: 'pointer',
+                      transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+                    },
+                  }}
                 >
                   <Stack gap="md" h="100%">
-                    <Group gap="sm" wrap="nowrap">
-                      <Badge variant="filled" size="xl" radius="xl">
-                        2
-                      </Badge>
-                      <ThemeIcon size={44} radius="md" variant="light">
-                        <IconTarget size={24} />
+                    <Group gap="sm" wrap="nowrap" align="flex-start">
+                      <ThemeIcon
+                        size={48}
+                        radius="md"
+                        variant="light"
+                        color="green"
+                      >
+                        <IconTarget size={26} />
                       </ThemeIcon>
-                    </Group>
-                    <Stack gap={4} style={{ flex: 1 }}>
-                      <Text fw={700} size={isMobile ? 'md' : 'sm'}>
+                      <Text fw={700} size={isMobile ? 'md' : 'sm'} lh={1.2}>
                         Decision Wizard
                       </Text>
-                      <Text
-                        size={isMobile ? 'sm' : 'xs'}
-                        c="dimmed"
-                        style={{ lineHeight: 1.5 }}
-                      >
-                        Responde umas perguntas e leva uma recomendação pro
-                        time.
-                      </Text>
-                    </Stack>
-                    <Group gap={4} fw={500} style={{ pointerEvents: 'none' }}>
+                    </Group>
+                    <Text
+                      size={isMobile ? 'md' : 'sm'}
+                      c="dimmed"
+                      lh={1.5}
+                      style={{ flex: 1 }}
+                    >
+                      Responde umas perguntas e leva uma recomendação pro time.
+                    </Text>
+                    <Group
+                      gap={6}
+                      fw={600}
+                      style={{ pointerEvents: 'none' }}
+                      c="green.6"
+                    >
                       <Text size="sm">Começar o wizard</Text>
-                      <IconArrowRight size={14} />
+                      <IconArrowRight size={16} />
                     </Group>
                   </Stack>
                 </Card>
                 <Card
                   withBorder
-                  p={isMobile ? 'lg' : 'md'}
+                  p={isMobile ? 'lg' : 'lg'}
                   radius="lg"
                   component={Link}
                   to="/guides/architecture-comparison"
-                  style={{
-                    textDecoration: 'none',
-                    cursor: 'pointer',
-                    transition: 'transform 0.2s ease, box-shadow 0.2s ease',
-                  }}
                   className="comece-aqui-card"
+                  styles={{
+                    root: {
+                      textDecoration: 'none',
+                      cursor: 'pointer',
+                      transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+                    },
+                  }}
                 >
                   <Stack gap="md" h="100%">
-                    <Group gap="sm" wrap="nowrap">
-                      <Badge variant="filled" size="xl" radius="xl">
-                        3
-                      </Badge>
-                      <ThemeIcon size={44} radius="md" variant="light">
-                        <IconScale size={24} />
+                    <Group gap="sm" wrap="nowrap" align="flex-start">
+                      <ThemeIcon
+                        size={48}
+                        radius="md"
+                        variant="light"
+                        color="green"
+                      >
+                        <IconScale size={26} />
                       </ThemeIcon>
-                    </Group>
-                    <Stack gap={4} style={{ flex: 1 }}>
-                      <Text fw={700} size={isMobile ? 'md' : 'sm'}>
+                      <Text fw={700} size={isMobile ? 'md' : 'sm'} lh={1.2}>
                         Comparação Visual
                       </Text>
-                      <Text
-                        size={isMobile ? 'sm' : 'xs'}
-                        c="dimmed"
-                        style={{ lineHeight: 1.5 }}
-                      >
-                        Tudo lado a lado: quando usar, prós, contras e o que
-                        importa na prática.
-                      </Text>
-                    </Stack>
-                    <Group gap={4} fw={500} style={{ pointerEvents: 'none' }}>
+                    </Group>
+                    <Text
+                      size={isMobile ? 'md' : 'sm'}
+                      c="dimmed"
+                      lh={1.5}
+                      style={{ flex: 1 }}
+                    >
+                      Tudo lado a lado: quando usar, prós, contras e o que importa
+                      na prática.
+                    </Text>
+                    <Group
+                      gap={6}
+                      fw={600}
+                      style={{ pointerEvents: 'none' }}
+                      c="green.6"
+                    >
                       <Text size="sm">Ver comparação</Text>
-                      <IconArrowRight size={14} />
+                      <IconArrowRight size={16} />
                     </Group>
                   </Stack>
                 </Card>
@@ -333,8 +356,15 @@ export default function Home() {
                     desc: 'Código que você copia, adapta e leva pro seu projeto.',
                   },
                 ].map(({ icon, title, desc }) => (
-                  <Card key={title} withBorder p="md" radius="md" h="100%">
-                    <Stack gap="sm">
+                  <Card
+                    key={title}
+                    withBorder
+                    p="lg"
+                    radius="lg"
+                    h="100%"
+                    style={{ transition: 'box-shadow 0.2s ease' }}
+                  >
+                    <Stack gap="md">
                       <Group
                         gap="sm"
                         align="flex-start"
@@ -345,15 +375,21 @@ export default function Home() {
                           size={48}
                           radius="md"
                           variant="light"
+                          color="green"
                           style={{ flexShrink: 0 }}
                         >
                           {icon}
                         </ThemeIcon>
-                        <Text fw={600} size="sm" style={{ minWidth: 0 }}>
+                        <Text
+                          fw={700}
+                          size="sm"
+                          style={{ minWidth: 0 }}
+                          lh={1.2}
+                        >
                           {title}
                         </Text>
                       </Group>
-                      <Text size="xs" c="dimmed" lh={1.4}>
+                      <Text size="md" c="dimmed" lh={1.5}>
                         {desc}
                       </Text>
                     </Stack>
@@ -460,7 +496,7 @@ export default function Home() {
                       Menos retrabalho
                     </Title>
                     <Text
-                      size={isMobile ? 'sm' : 'xs'}
+                      size={isMobile ? 'md' : 'sm'}
                       c="dimmed"
                       style={{ lineHeight: 1.6 }}
                     >
@@ -488,7 +524,7 @@ export default function Home() {
                       Argumento na reunião
                     </Title>
                     <Text
-                      size={isMobile ? 'sm' : 'xs'}
+                      size={isMobile ? 'md' : 'sm'}
                       c="dimmed"
                       style={{ lineHeight: 1.6 }}
                     >
@@ -553,7 +589,7 @@ export default function Home() {
                         19 Casos Reais de Mercado
                       </Text>
                       <Text
-                        size={isMobile ? 'sm' : 'xs'}
+                        size={isMobile ? 'md' : 'sm'}
                         c="dimmed"
                         style={{ lineHeight: 1.5 }}
                       >
@@ -595,7 +631,7 @@ export default function Home() {
                         Comparação Visual de Arquiteturas
                       </Text>
                       <Text
-                        size={isMobile ? 'sm' : 'xs'}
+                        size={isMobile ? 'md' : 'sm'}
                         c="dimmed"
                         style={{ lineHeight: 1.5 }}
                       >

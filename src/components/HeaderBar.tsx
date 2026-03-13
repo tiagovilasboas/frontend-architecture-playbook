@@ -37,6 +37,7 @@ export default function HeaderBar({ opened, onBurger }: Props) {
     <Paper
       p={0}
       radius={0}
+      withBorder={false}
       className="header-bar"
       style={{
         position: 'sticky',
@@ -92,7 +93,7 @@ export default function HeaderBar({ opened, onBurger }: Props) {
           </UnstyledButton>
 
           {isDesktop && (
-            <Group gap={0} wrap="nowrap" style={{ flexShrink: 0 }} ml="md">
+            <Group gap="xs" wrap="nowrap" style={{ flexShrink: 0 }} ml="md">
               {NAV_JOURNEY.map((section) => {
                 const label = section.shortLabel ?? section.label;
                 const active = isSectionActive(location.pathname, section.items);
@@ -105,11 +106,10 @@ export default function HeaderBar({ opened, onBurger }: Props) {
                       key={section.key}
                       component={Link}
                       to={firstHref}
+                      className="header-nav-item"
                       style={{
                         textDecoration: 'none',
-                        padding: '6px 10px',
-                        borderRadius: 6,
-                        fontWeight: active ? 600 : 400,
+                        fontWeight: active ? 600 : 500,
                         color: active
                           ? 'var(--mantine-color-green-6)'
                           : 'var(--mantine-color-text)',
@@ -127,15 +127,17 @@ export default function HeaderBar({ opened, onBurger }: Props) {
                     openDelay={100}
                     closeDelay={150}
                     position="bottom-start"
+                    offset={4}
                     withArrow
-                    shadow="md"
+                    shadow="sm"
+                    radius="md"
+                    classNames={{ dropdown: 'header-nav-dropdown' }}
                   >
                     <Menu.Target>
                       <UnstyledButton
+                        className="header-nav-item"
                         style={{
-                          padding: '6px 6px 6px 10px',
-                          borderRadius: 6,
-                          fontWeight: active ? 600 : 400,
+                          fontWeight: active ? 600 : 500,
                           color: active
                             ? 'var(--mantine-color-green-6)'
                             : 'var(--mantine-color-text)',
@@ -154,7 +156,7 @@ export default function HeaderBar({ opened, onBurger }: Props) {
                           component={Link}
                           to={item.href}
                           style={{
-                            fontWeight: location.pathname === item.href ? 600 : 400,
+                            fontWeight: location.pathname === item.href ? 600 : 500,
                             color:
                               location.pathname === item.href
                                 ? 'var(--mantine-color-green-6)'
