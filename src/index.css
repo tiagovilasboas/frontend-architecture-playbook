@@ -92,6 +92,59 @@
   background-color: var(--mantine-color-default-hover);
 }
 
+/* Home: hero background – grid + subtle circles (Next.js-style, CSS-only) */
+.hero-section {
+  position: relative;
+  overflow: hidden;
+}
+.hero-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  /* Grid: vertical + horizontal lines */
+  background-image:
+    linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+  background-size: 100px 100px;
+  pointer-events: none;
+}
+[data-mantine-color-scheme="dark"] .hero-section::before {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+}
+/* Subtle dashed circles (SVG as background) */
+.hero-section::after {
+  content: '';
+  position: absolute;
+  inset: -20%;
+  z-index: 0;
+  background-image:
+    radial-gradient(circle at 20% 30%, transparent 45%, rgba(0, 0, 0, 0.04) 45%, rgba(0, 0, 0, 0.04) 46%, transparent 46%),
+    radial-gradient(circle at 80% 70%, transparent 50%, rgba(0, 0, 0, 0.03) 50%, rgba(0, 0, 0, 0.03) 51%, transparent 51%);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+[data-mantine-color-scheme="dark"] .hero-section::after {
+  background-image:
+    radial-gradient(circle at 20% 30%, transparent 45%, rgba(255, 255, 255, 0.03) 45%, rgba(255, 255, 255, 0.03) 46%, transparent 46%),
+    radial-gradient(circle at 80% 70%, transparent 50%, rgba(255, 255, 255, 0.02) 50%, rgba(255, 255, 255, 0.02) 51%, transparent 51%);
+}
+
+/* Home: hero command line (Next.js-style) */
+.hero-command {
+  padding: 8px 14px;
+  border-radius: 8px;
+  background-color: var(--mantine-color-default-hover);
+  border: 1px solid var(--mantine-color-default-border);
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+.hero-command:hover {
+  background-color: var(--mantine-color-default-border);
+}
+
 /* Home: clickable cards hover lift (theme-aware shadow) */
 .comece-aqui-card:hover {
   transform: translateY(-2px);

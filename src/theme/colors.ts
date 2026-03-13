@@ -6,6 +6,20 @@
 
 import type { MantineColorsTuple } from '@mantine/core';
 
+// ─── Primary green (0 = lightest, 9 = darkest). 6 = filled buttons, slightly darker ───
+export const primaryGreen: MantineColorsTuple = [
+  '#effde7',
+  '#e1f8d4',
+  '#c3efab',
+  '#a2e67e',
+  '#87de58',
+  '#6bd731', // 5
+  '#59be23', // 6 – main (buttons, etc.) – one step darker
+  '#4da91b', // 7
+  '#3d920d', // 8
+  '#2d6b09', // 9
+];
+
 // ─── Neutral (grayscale): 0 = branco, 9 = preto ───────────────────────
 export const brand: MantineColorsTuple = [
   '#ffffff', // 0 - white

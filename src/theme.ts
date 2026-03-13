@@ -13,7 +13,7 @@ import {
   ActionIcon,
 } from '@mantine/core';
 import type { MantineThemeOverride } from '@mantine/core';
-import { brand, accent } from './theme/colors';
+import { brand, accent, primaryGreen } from './theme/colors';
 
 const CONTAINER_SIZES: Record<string, string> = {
   xxs: rem('200px'),
@@ -52,6 +52,7 @@ export const theme: MantineThemeOverride = createTheme({
   colors: {
     brand,
     accent,
+    green: primaryGreen,
   },
   components: {
     Container: Container.extend({

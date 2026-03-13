@@ -11,6 +11,7 @@ import {
   Card,
   ThemeIcon,
   Flex,
+  Code,
 } from '@mantine/core';
 import { Link } from 'react-router-dom';
 import { HeroTitle } from '../components/ui';
@@ -24,6 +25,7 @@ import {
   IconBolt,
   IconScale,
   IconExternalLink,
+  IconTerminal2,
 } from '@tabler/icons-react';
 import { useBreakpoints } from '../hooks/useBreakpoints.ts';
 import casesData from '../data/cases.json';
@@ -60,13 +62,14 @@ export default function Home() {
         animate="visible"
       >
         <Stack gap={isMobile ? 'xl' : 'xl'} w="100%">
-          {/* Hero Section */}
+          {/* Hero Section – Next.js-style: title, tagline, description, two CTAs, command line */}
           <motion.section variants={itemVariants}>
             <Box
+              className="hero-section"
               style={{
                 position: 'relative',
                 width: '100%',
-                minHeight: isMobile ? 420 : 520,
+                minHeight: isMobile ? 380 : 480,
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -78,54 +81,58 @@ export default function Home() {
                 style={{
                   position: 'relative',
                   zIndex: 1,
-                  padding: isMobile ? '3rem 0' : '4rem 0',
+                  padding: isMobile ? '2.5rem 0' : '3.5rem 0',
                   width: '100%',
+                  maxWidth: 720,
                 }}
-                gap={isMobile ? 'xl' : '2xl'}
+                gap={isMobile ? 'lg' : 'xl'}
               >
-                <Stack gap="md" align="center">
-                  <HeroTitle
-                    size={
-                      isSmallMobile ? '2rem' : isMobile ? '2.5rem' : '3.5rem'
-                    }
-                    mb={0}
-                    style={{
-                      lineHeight: 1.15,
-                      fontWeight: 800,
-                      maxWidth: '100%',
-                    }}
-                  >
-                    Front-End Architecture Playbook
-                  </HeroTitle>
+                <HeroTitle
+                  size={
+                    isSmallMobile ? '1.75rem' : isMobile ? '2.25rem' : '3rem'
+                  }
+                  mb={0}
+                  style={{
+                    lineHeight: 1.15,
+                    fontWeight: 800,
+                    maxWidth: '100%',
+                    letterSpacing: '-0.02em',
+                  }}
+                >
+                  Front-End Architecture Playbook
+                </HeroTitle>
 
-                  <Text
-                    size={isMobile ? 'lg' : 'xl'}
-                    fw={600}
-                    style={{ lineHeight: 1.4 }}
-                  >
-                    Do fundamento à decisão, com fonte em tudo.
-                  </Text>
+                <Text
+                  size={isMobile ? 'md' : 'lg'}
+                  fw={600}
+                  style={{ lineHeight: 1.4 }}
+                  maw={560}
+                >
+                  Do fundamento à decisão, com fonte em tudo.
+                </Text>
 
-                  <Text
-                    size={isMobile ? 'sm' : 'md'}
-                    c="dimmed"
-                    style={{ lineHeight: 1.5 }}
-                  >
-                    Guias na ordem que faz sentido estudar, casos reais com link
-                    dos artigos respectivos, wizard pra te dar uma recomendação
-                    e ADR em 2 páginas. Nada de métrica que não dá pra checar.
+                <Text
+                  size={isMobile ? 'sm' : 'md'}
+                  c="dimmed"
+                  style={{ lineHeight: 1.6 }}
+                  maw={540}
+                >
+                  Guias na ordem que faz sentido estudar, casos reais com link
+                  dos artigos, wizard de recomendação e ADR em 2 páginas.{' '}
+                  <Text span fw={600} inherit>
                     Só o que você consegue ler e usar.
                   </Text>
-                </Stack>
+                </Text>
 
-                <Group gap="md" justify="center" wrap="wrap">
+                <Group gap="sm" justify="center" wrap="wrap">
                   <Button
                     component={Link}
                     to="/guides/how-to-choose"
                     size="lg"
+                    radius="md"
                     variant="filled"
-                    leftSection={<IconRocket size={20} />}
-                    rightSection={<IconArrowRight size={18} />}
+                    color="green"
+                    leftSection={<IconRocket size={18} />}
                   >
                     Encontre sua Arquitetura
                   </Button>
@@ -133,10 +140,29 @@ export default function Home() {
                     component={Link}
                     to="/guides/dependency-rule"
                     size="lg"
-                    variant="subtle"
+                    radius="md"
+                    variant="default"
+                    color="green"
                   >
                     Dependency Rule
                   </Button>
+                </Group>
+
+                <Group
+                  gap="xs"
+                  justify="center"
+                  wrap="nowrap"
+                  className="hero-command"
+                  component={Link}
+                  to="/guides/dependency-rule"
+                  style={{
+                    textDecoration: 'none',
+                    color: 'inherit',
+                    cursor: 'pointer',
+                  }}
+                >
+                  <IconTerminal2 size={16} style={{ flexShrink: 0 }} />
+                  <Code block={false}>Comece por aqui → /guides/dependency-rule</Code>
                 </Group>
               </Stack>
             </Box>
@@ -448,6 +474,7 @@ export default function Home() {
                   to="/guides/cases"
                   size={isMobile ? 'md' : 'lg'}
                   variant="filled"
+                  color="green"
                   rightSection={<IconExternalLink size={18} />}
                 >
                   Ver todos os 19 casos
@@ -674,6 +701,7 @@ export default function Home() {
                   to="/guides/how-to-choose"
                   size={isMobile ? 'lg' : 'md'}
                   variant="filled"
+                  color="green"
                   fullWidth={isMobile}
                   leftSection={<IconRocket size={isMobile ? 20 : 18} />}
                   rightSection={<IconArrowRight size={isMobile ? 18 : 16} />}
