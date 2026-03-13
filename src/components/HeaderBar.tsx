@@ -7,8 +7,11 @@ import {
   ActionIcon,
   Paper,
   Anchor,
+  Menu,
+  Text,
 } from '@mantine/core';
-import { Link } from 'react-router-dom';
+import { IconChevronDown } from '@tabler/icons-react';
+import { Link, useLocation } from 'react-router-dom';
 import {
   IconCode,
   IconSun,
@@ -17,6 +20,7 @@ import {
 } from '@tabler/icons-react';
 import { useMantineColorScheme } from '@mantine/core';
 import { useBreakpoints } from '../hooks/useBreakpoints.ts';
+import { NAV_JOURNEY, isSectionActive } from '../lib/navigation.ts';
 
 interface Props {
   opened: boolean;
@@ -26,7 +30,7 @@ interface Props {
 export default function HeaderBar({ opened, onBurger }: Props) {
   const { isMobile, isDesktop } = useBreakpoints();
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
-
+  const location = useLocation();
   const title = 'Front Arch. Playbook';
 
   return (
@@ -47,13 +51,15 @@ export default function HeaderBar({ opened, onBurger }: Props) {
         wrap="nowrap"
       >
         <Group gap="lg" wrap="nowrap" style={{ minWidth: 0, flex: 1 }}>
-          <Burger
-            opened={opened}
-            onClick={onBurger}
-            size="sm"
-            color={colorScheme === 'dark' ? 'gray.3' : 'dark.8'}
-            aria-label={opened ? 'Fechar menu' : 'Abrir menu'}
-          />
+          {!isDesktop && (
+            <Burger
+              opened={opened}
+              onClick={onBurger}
+              size="sm"
+              color={colorScheme === 'dark' ? 'gray.3' : 'dark.8'}
+              aria-label={opened ? 'Fechar menu' : 'Abrir menu'}
+            />
+          )}
           <UnstyledButton
             component={Link}
             to="/"
@@ -84,6 +90,86 @@ export default function HeaderBar({ opened, onBurger }: Props) {
               </Title>
             </Group>
           </UnstyledButton>
+
+          {isDesktop && (
+            <Group gap={0} wrap="nowrap" style={{ flexShrink: 0 }} ml="md">
+              {NAV_JOURNEY.map((section) => {
+                const label = section.shortLabel ?? section.label;
+                const active = isSectionActive(location.pathname, section.items);
+                const isDirectLink = section.items.length === 1;
+                const firstHref = section.items[0]?.href;
+
+                if (isDirectLink && firstHref) {
+                  return (
+                    <UnstyledButton
+                      key={section.key}
+                      component={Link}
+                      to={firstHref}
+                      style={{
+                        textDecoration: 'none',
+                        padding: '6px 10px',
+                        borderRadius: 6,
+                        fontWeight: active ? 600 : 400,
+                        color: active
+                          ? 'var(--mantine-color-green-6)'
+                          : 'var(--mantine-color-text)',
+                      }}
+                    >
+                      <Text size="sm">{label}</Text>
+                    </UnstyledButton>
+                  );
+                }
+
+                return (
+                  <Menu
+                    key={section.key}
+                    trigger="hover"
+                    openDelay={100}
+                    closeDelay={150}
+                    position="bottom-start"
+                    withArrow
+                    shadow="md"
+                  >
+                    <Menu.Target>
+                      <UnstyledButton
+                        style={{
+                          padding: '6px 6px 6px 10px',
+                          borderRadius: 6,
+                          fontWeight: active ? 600 : 400,
+                          color: active
+                            ? 'var(--mantine-color-green-6)'
+                            : 'var(--mantine-color-text)',
+                        }}
+                      >
+                        <Group gap={4} wrap="nowrap">
+                          <Text size="sm">{label}</Text>
+                          <IconChevronDown size={14} />
+                        </Group>
+                      </UnstyledButton>
+                    </Menu.Target>
+                    <Menu.Dropdown>
+                      {section.items.map((item) => (
+                        <Menu.Item
+                          key={item.href}
+                          component={Link}
+                          to={item.href}
+                          style={{
+                            fontWeight: location.pathname === item.href ? 600 : 400,
+                            color:
+                              location.pathname === item.href
+                                ? 'var(--mantine-color-green-6)'
+                                : undefined,
+                          }}
+                        >
+                          {item.label}
+                        </Menu.Item>
+                      ))}
+                    </Menu.Dropdown>
+                  </Menu>
+                );
+              })}
+            </Group>
+          )}
         </Group>
 
         <Group gap="md" wrap="nowrap" style={{ flexShrink: 0 }}>
