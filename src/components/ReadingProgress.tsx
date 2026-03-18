@@ -51,7 +51,7 @@ export function ReadingProgress() {
       styles={{
         bar: {
           opacity: 1,
-          backgroundColor: 'var(--mantine-color-green-6)',
+          backgroundColor: 'var(--mantine-color-primary-6)',
         },
         root: { opacity: 1 },
       }}

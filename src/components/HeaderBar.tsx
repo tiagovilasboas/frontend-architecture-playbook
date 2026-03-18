@@ -52,13 +52,15 @@ export default function HeaderBar({ opened, onBurger }: Props) {
         wrap="nowrap"
       >
         <Group gap="lg" wrap="nowrap" style={{ minWidth: 0, flex: 1 }}>
-          <Burger
-            opened={opened}
-            onClick={onBurger}
-            size="sm"
-            color="var(--mantine-color-primary-2)"
-            aria-label={opened ? 'Fechar menu' : 'Abrir menu'}
-          />
+          {!isDesktop && (
+            <Burger
+              opened={opened}
+              onClick={onBurger}
+              size="sm"
+              color="var(--mantine-color-primary-2)"
+              aria-label={opened ? 'Fechar menu' : 'Abrir menu'}
+            />
+          )}
           <UnstyledButton
             component={Link}
             to="/"
@@ -112,7 +114,7 @@ export default function HeaderBar({ opened, onBurger }: Props) {
                         textDecoration: 'none',
                         fontWeight: active ? 600 : 500,
                         color: active
-                          ? 'var(--mantine-color-green-6)'
+                          ? 'var(--mantine-color-primary-6)'
                           : 'var(--mantine-color-text)',
                       }}
                     >
@@ -140,7 +142,7 @@ export default function HeaderBar({ opened, onBurger }: Props) {
                         style={{
                           fontWeight: active ? 600 : 500,
                           color: active
-                            ? 'var(--mantine-color-green-6)'
+                            ? 'var(--mantine-color-primary-6)'
                             : 'var(--mantine-color-text)',
                         }}
                       >
@@ -161,7 +163,7 @@ export default function HeaderBar({ opened, onBurger }: Props) {
                               location.pathname === item.href ? 600 : 500,
                             color:
                               location.pathname === item.href
-                                ? 'var(--mantine-color-green-6)'
+                                ? 'var(--mantine-color-primary-6)'
                                 : undefined,
                           }}
                         >
