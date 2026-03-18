@@ -21,14 +21,10 @@ export function ArchitectureLoader({
   const [currentStep, setCurrentStep] = useState(0);
 
   const steps = [
-    { icon: IconCode, text: 'Inicializando', color: 'blue' },
-    { icon: IconStack, text: 'Carregando padrões', color: 'green' },
-    {
-      icon: IconLayersSubtract,
-      text: 'Montando arquiteturas',
-      color: 'orange',
-    },
-    { icon: IconCheck, text: 'Pronto!', color: 'teal' },
+    { icon: IconCode, text: 'Inicializando' },
+    { icon: IconStack, text: 'Carregando padrões' },
+    { icon: IconLayersSubtract, text: 'Montando arquiteturas' },
+    { icon: IconCheck, text: 'Pronto!' },
   ];
 
   useEffect(() => {
@@ -69,7 +65,7 @@ export function ArchitectureLoader({
         alignItems: 'center',
         minHeight: '400px',
         padding: '2rem',
-        background: 'var(--mantine-color-body)',
+        width: '100%',
       }}
     >
       {/* Logo animado */}
@@ -83,7 +79,6 @@ export function ArchitectureLoader({
           <ThemeIcon
             size="xl"
             variant="light"
-            color="blue"
             style={{
               animation: 'pulse 2s ease-in-out infinite',
             }}
@@ -93,7 +88,6 @@ export function ArchitectureLoader({
           <ThemeIcon
             size="xl"
             variant="light"
-            color="green"
             style={{
               animation: 'pulse 2s ease-in-out infinite 0.5s',
             }}
@@ -103,7 +97,6 @@ export function ArchitectureLoader({
           <ThemeIcon
             size="xl"
             variant="light"
-            color="orange"
             style={{
               animation: 'pulse 2s ease-in-out infinite 1s',
             }}
@@ -121,7 +114,7 @@ export function ArchitectureLoader({
         mb="md"
         style={{
           background:
-            'linear-gradient(135deg, var(--mantine-color-blue-6), var(--mantine-color-green-6))',
+            'linear-gradient(135deg, var(--mantine-color-green-5), var(--mantine-color-green-8))',
           backgroundClip: 'text',
           WebkitBackgroundClip: 'text',
           WebkitTextFillColor: 'transparent',
@@ -149,7 +142,7 @@ export function ArchitectureLoader({
             <ThemeIcon
               size="sm"
               variant="light"
-              color={index <= currentStep ? step.color : 'gray'}
+              color={index <= currentStep ? undefined : 'gray'}
               style={{
                 transition: 'all 0.3s ease',
               }}
@@ -176,7 +169,7 @@ export function ArchitectureLoader({
             style={{
               width: '100%',
               height: '4px',
-              background: 'var(--mantine-color-gray-2)',
+              background: 'var(--mantine-color-default-border)',
               borderRadius: '2px',
               overflow: 'hidden',
             }}
@@ -185,8 +178,7 @@ export function ArchitectureLoader({
               style={{
                 width: `${progress}%`,
                 height: '100%',
-                background:
-                  'linear-gradient(90deg, var(--mantine-color-blue-6), var(--mantine-color-green-6))',
+                background: 'var(--mantine-color-green-6)',
                 borderRadius: '2px',
                 transition: 'width 0.3s ease',
               }}
@@ -240,13 +232,13 @@ export function SimpleLoader() {
         justifyContent: 'center',
         alignItems: 'center',
         height: '200px',
+        width: '100%',
       }}
     >
       <Stack align="center" gap="md">
         <ThemeIcon
           size="lg"
           variant="light"
-          color="blue"
           style={{
             animation: 'spin 1s linear infinite',
           }}

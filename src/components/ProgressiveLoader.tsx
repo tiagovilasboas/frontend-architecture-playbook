@@ -7,7 +7,7 @@ import {
   IconCheck,
   IconSparkles,
 } from '@tabler/icons-react';
-import { useMobileDetector } from '../hooks/useMobileDetector.ts';
+import { useBreakpoints } from '../hooks/useBreakpoints.ts';
 
 interface ProgressiveLoaderProps {
   type?: 'architecture' | 'pattern' | 'guide' | 'technique';
@@ -45,7 +45,7 @@ export function ProgressiveLoader({
   type = 'architecture',
   message,
 }: ProgressiveLoaderProps) {
-  const { isMobile } = useMobileDetector();
+  const { isMobile } = useBreakpoints();
   const [currentStage, setCurrentStage] = useState(0);
   const [progress, setProgress] = useState(0);
 
@@ -88,13 +88,13 @@ export function ProgressiveLoader({
           alignItems: 'center',
           minHeight: '300px',
           padding: '1.5rem',
+          width: '100%',
         }}
       >
         <Stack align="center" gap="lg">
           <ThemeIcon
             size="xl"
             variant="light"
-            color="blue"
             style={{
               animation: 'bounce 1.5s ease-in-out infinite',
             }}
@@ -106,12 +106,7 @@ export function ProgressiveLoader({
             {message || `Carregando ${type}...`}
           </Text>
 
-          <Progress
-            value={progress}
-            size="sm"
-            style={{ width: '200px' }}
-            color="blue"
-          />
+          <Progress value={progress} size="sm" style={{ width: '200px' }} />
 
           <Text size="xs" c="dimmed" ta="center">
             {stages[currentStage]?.text}
@@ -146,6 +141,7 @@ export function ProgressiveLoader({
         alignItems: 'center',
         minHeight: '400px',
         padding: '2rem',
+        width: '100%',
       }}
     >
       {/* Header */}
@@ -154,7 +150,6 @@ export function ProgressiveLoader({
           <ThemeIcon
             size="xl"
             variant="light"
-            color="blue"
             style={{
               animation: 'pulse 2s ease-in-out infinite',
             }}
@@ -238,7 +233,6 @@ export function ProgressiveLoader({
         <Progress
           value={progress}
           size="md"
-          color="blue"
           style={{ marginBottom: '0.5rem' }}
         />
         <Text size="xs" c="dimmed" ta="center">

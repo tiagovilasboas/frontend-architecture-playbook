@@ -31,12 +31,7 @@ export function ReadingTime() {
   if (!readingTime || readingTime < 1) return null;
 
   return (
-    <Badge
-      variant="light"
-      color="blue"
-      leftSection={<IconClock size={12} />}
-      size="sm"
-    >
+    <Badge variant="light" leftSection={<IconClock size={12} />} size="sm">
       {readingTime} min de leitura
     </Badge>
   );

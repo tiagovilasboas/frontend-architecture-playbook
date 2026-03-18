@@ -19,6 +19,20 @@ export const primary: MantineColorsTuple = [
   '#78350f',
 ];
 
+// ─── Primary green (for components that use color="green") ───
+export const primaryGreen: MantineColorsTuple = [
+  '#effde7',
+  '#e1f8d4',
+  '#c3efab',
+  '#a2e67e',
+  '#87de58',
+  '#6bd731',
+  '#59be23',
+  '#4da91b',
+  '#3d920d',
+  '#2d6b09',
+];
+
 // ─── Neutral (grayscale): 0 = branco, 9 = preto ───────────────────────
 export const brand: MantineColorsTuple = [
   '#ffffff', // 0 - white

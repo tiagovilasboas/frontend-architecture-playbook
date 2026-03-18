@@ -3,22 +3,28 @@ import { Box } from '@mantine/core';
 import { useMantineColorScheme } from '@mantine/core';
 import { semantic } from '../../theme/colors';
 
-/** Fluxograma do exemplo "Buscar dados de um usuário" */
-const STEPS = [
-  { label: 'UserProfile', sub: 'UI Layer · Chama Service' },
-  { label: 'getUserById', sub: 'Service · Chama Repository' },
-  { label: 'findUserById', sub: 'Repository · Acessa DB' },
-  { label: 'User / createUser', sub: 'Domain · Lógica pura' },
+const FOLDERS = [
+  { label: 'domain/', hint: 'most inner', children: ['entities/', 'rules/'] },
+  {
+    label: 'repositories/',
+    hint: 'imports domain',
+    children: ['user.repository.ts'],
+  },
+  {
+    label: 'services/',
+    hint: 'domain + repos',
+    children: ['user.service.ts'],
+  },
+  { label: 'ui/', hint: 'outer', children: ['components/', 'pages/'] },
 ] as const;
 
-interface UserDataFlowDiagramProps {
-  /** altura do canvas */
+interface FolderStructureDiagramProps {
   height?: number;
 }
 
-export default function UserDataFlowDiagram({
-  height = 340,
-}: UserDataFlowDiagramProps) {
+export default function FolderStructureDiagram({
+  height = 280,
+}: FolderStructureDiagramProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const { colorScheme } = useMantineColorScheme();
@@ -44,12 +50,11 @@ export default function UserDataFlowDiagram({
       ctx.setTransform(1, 0, 0, 1, 0, 0);
       ctx.scale(dpr, dpr);
 
-      const padding = 40;
-      const gap = 44;
-      const minBoxW = 240;
+      const padding = 24;
+      const gap = 16;
       const totalGaps = 3 * gap;
-      const boxW = Math.max(minBoxW, (w - padding * 2 - totalGaps) / 4);
-      const boxH = Math.min(160, h - padding * 2);
+      const boxW = Math.max(120, (w - padding * 2 - totalGaps) / 4);
+      const boxH = Math.min(140, h - padding * 2);
       const startX =
         padding + (w - padding * 2 - boxW * 4 - totalGaps) / 2 + boxW / 2;
       const centerY = h / 2;
@@ -67,7 +72,10 @@ export default function UserDataFlowDiagram({
         ? semantic.diagramSubDark
         : semantic.diagramSubLight;
 
-      ctx.clearRect(0, 0, w, h);
+      ctx.strokeStyle = borderColor;
+      ctx.lineWidth = 2;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
 
       for (let i = 0; i < 4; i++) {
         const x = startX + i * (boxW + gap);
@@ -78,35 +86,19 @@ export default function UserDataFlowDiagram({
         roundRect(ctx, boxLeft, boxTop, boxW, boxH, 8);
         ctx.fill();
         ctx.strokeStyle = borderColor;
-        ctx.lineWidth = 2;
         ctx.stroke();
 
+        const folder = FOLDERS[i];
         ctx.fillStyle = textColor;
-        ctx.font = '600 18px Inter, sans-serif';
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        ctx.fillText(STEPS[i].label, x, centerY - 14);
+        ctx.font = '600 14px ui-monospace, monospace';
+        ctx.fillText(folder.label, x, centerY - 28);
         ctx.fillStyle = subColor;
-        ctx.font = '14px Inter, sans-serif';
-        ctx.fillText(STEPS[i].sub, x, centerY + 18);
-      }
-
-      const arrowColor = isDark
-        ? semantic.diagramArrowDark
-        : semantic.diagramArrowLight;
-      for (let i = 0; i < 3; i++) {
-        const fromX = startX + i * (boxW + gap) + boxW / 2;
-        const toX = startX + (i + 1) * (boxW + gap) - boxW / 2;
-        drawArrow(
-          ctx,
-          fromX,
-          centerY,
-          toX,
-          centerY,
-          arrowColor,
-          22,
-          Math.PI / 6
-        );
+        ctx.font = '11px Inter, sans-serif';
+        ctx.fillText(folder.hint, x, centerY - 10);
+        ctx.font = '11px ui-monospace, monospace';
+        folder.children.forEach((child, j) => {
+          ctx.fillText(child, x, centerY + 8 + j * 16);
+        });
       }
     };
 
@@ -142,7 +134,7 @@ function roundRect(
   width: number,
   height: number,
   radius: number
-) {
+): void {
   const r = Math.min(radius, width / 2, height / 2);
   ctx.beginPath();
   ctx.moveTo(x + r, y);
@@ -155,40 +147,4 @@ function roundRect(
   ctx.lineTo(x, y + r);
   ctx.quadraticCurveTo(x, y, x + r, y);
   ctx.closePath();
-}
-
-function drawArrow(
-  ctx: CanvasRenderingContext2D,
-  fromX: number,
-  fromY: number,
-  toX: number,
-  toY: number,
-  color: string,
-  headLen: number,
-  headAngle: number
-) {
-  const dx = toX - fromX;
-  const dy = toY - fromY;
-  const angle = Math.atan2(dy, dx);
-  ctx.strokeStyle = color;
-  ctx.fillStyle = color;
-  ctx.lineWidth = 2;
-  ctx.lineCap = 'round';
-  ctx.beginPath();
-  ctx.moveTo(fromX, fromY);
-  ctx.lineTo(toX, toY);
-  ctx.stroke();
-  ctx.beginPath();
-  ctx.moveTo(toX, toY);
-  ctx.lineTo(
-    toX - headLen * Math.cos(angle - headAngle),
-    toY - headLen * Math.sin(angle - headAngle)
-  );
-  ctx.lineTo(
-    toX - headLen * Math.cos(angle + headAngle),
-    toY - headLen * Math.sin(angle + headAngle)
-  );
-  ctx.closePath();
-  ctx.fill();
-  ctx.stroke();
 }

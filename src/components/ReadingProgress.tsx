@@ -38,7 +38,6 @@ export function ReadingProgress() {
     <Progress
       value={progress}
       size={3}
-      color="brand"
       style={{
         position: 'fixed',
         top: 0,
@@ -47,6 +46,14 @@ export function ReadingProgress() {
         zIndex: 2000,
         borderRadius: 0,
         transition: 'width 0.1s ease-out',
+        opacity: 1,
+      }}
+      styles={{
+        bar: {
+          opacity: 1,
+          backgroundColor: 'var(--mantine-color-green-6)',
+        },
+        root: { opacity: 1 },
       }}
     />
   );

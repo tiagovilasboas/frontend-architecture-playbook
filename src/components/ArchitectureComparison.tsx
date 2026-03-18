@@ -202,7 +202,7 @@ const ArchitectureComparison: React.FC<ArchitectureComparisonProps> = ({
       <Paper withBorder p="xl" radius="md">
         <Stack gap="lg">
           <Group>
-            <ThemeIcon size={50} radius="md" variant="light" color="blue">
+            <ThemeIcon size={50} radius="md" variant="light">
               <IconBulb size={25} />
             </ThemeIcon>
             <div>
@@ -219,7 +219,7 @@ const ArchitectureComparison: React.FC<ArchitectureComparisonProps> = ({
               <Card key={architecture} withBorder p="md" radius="md">
                 <Stack gap="md">
                   <Group>
-                    <Badge variant="light" color="blue" size="lg">
+                    <Badge variant="light" size="lg">
                       {architecture.toUpperCase()}
                     </Badge>
                   </Group>
@@ -336,7 +336,7 @@ const ArchitectureComparison: React.FC<ArchitectureComparisonProps> = ({
           <SimpleGrid cols={{ base: 1, md: 2 }} spacing="lg">
             <Card withBorder p="md">
               <Group mb="md">
-                <ThemeIcon size={40} radius="md" variant="light" color="blue">
+                <ThemeIcon size={40} radius="md" variant="light">
                   <IconTrendingUp size={20} />
                 </ThemeIcon>
                 <div>

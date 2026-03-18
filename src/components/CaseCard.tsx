@@ -73,20 +73,14 @@ export function CaseCard({ case_, index }: CaseCardProps) {
               >
                 {case_.company}
               </Text>
-              <Badge variant="light" color={case_.color}>
-                Case #{index + 1}
-              </Badge>
+              <Badge variant="light">Case #{index + 1}</Badge>
               {scale && (
-                <Badge
-                  variant="light"
-                  color="blue"
-                  leftSection={<IconUsers size={12} />}
-                >
+                <Badge variant="light" leftSection={<IconUsers size={12} />}>
                   {scale}
                 </Badge>
               )}
             </Group>
-            <Text fw={600} size="lg" c={`${case_.color}.6`}>
+            <Text fw={600} size="lg">
               {case_.title.replace(/- \d+[MBK]+\+? usuários?/, '')}
             </Text>
           </div>
@@ -114,13 +108,13 @@ export function CaseCard({ case_, index }: CaseCardProps) {
             <Paper withBorder p="md" radius="sm">
               <Stack gap="sm">
                 <div>
-                  <Text fw={600} size="sm" c="orange" mb={4}>
+                  <Text fw={600} size="sm" c="dimmed" mb={4}>
                     🔥 Desafio:
                   </Text>
                   <Text size="sm">{case_.challenge}</Text>
                 </div>
                 <div>
-                  <Text fw={600} size="sm" c="blue" mb={4}>
+                  <Text fw={600} size="sm" c="dimmed" mb={4}>
                     💡 Solução:
                   </Text>
                   <Text size="sm">{case_.solution}</Text>
@@ -135,7 +129,7 @@ export function CaseCard({ case_, index }: CaseCardProps) {
               </Text>
               <Group gap="xs">
                 {case_.practices.map(practice => (
-                  <Badge key={practice} variant="light" size="sm" color="gray">
+                  <Badge key={practice} variant="light" size="sm">
                     {practice}
                   </Badge>
                 ))}
@@ -143,25 +137,13 @@ export function CaseCard({ case_, index }: CaseCardProps) {
             </div>
 
             {/* Results */}
-            <Alert
-              color={case_.color}
-              icon={<IconTrendingUp size={16} />}
-              radius="md"
-            >
+            <Alert icon={<IconTrendingUp size={16} />} radius="md">
               <Text fw={600} size="sm" mb="xs">
                 Impacto Real:
               </Text>
               <List spacing={4} size="sm">
                 {case_.results.map((result, idx) => (
-                  <List.Item
-                    key={idx}
-                    icon={
-                      <IconCheckbox
-                        size={14}
-                        color="var(--mantine-color-green-6)"
-                      />
-                    }
-                  >
+                  <List.Item key={idx} icon={<IconCheckbox size={14} />}>
                     <Text fw={500}>{result}</Text>
                   </List.Item>
                 ))}
@@ -191,7 +173,6 @@ export function CaseCard({ case_, index }: CaseCardProps) {
             {/* Disclaimer */}
             {case_.disclaimer && (
               <Alert
-                color="yellow"
                 variant="light"
                 icon={<IconTrendingUp size={16} />}
                 radius="sm"

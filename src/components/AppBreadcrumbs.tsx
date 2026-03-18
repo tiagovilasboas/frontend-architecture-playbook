@@ -15,7 +15,10 @@ export default function AppBreadcrumbs() {
     <nav
       className="app-breadcrumbs"
       aria-label="Navegação"
-      style={{ marginBottom: 'var(--mantine-spacing-md)' }}
+      style={{
+        marginTop: 'var(--mantine-spacing-md)',
+        marginBottom: 'var(--mantine-spacing-md)',
+      }}
     >
       <Breadcrumbs
         separator={

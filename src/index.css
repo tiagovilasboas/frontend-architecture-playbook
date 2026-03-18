@@ -211,8 +211,31 @@ a,
 .mantine-Anchor-root {
   color: var(--mantine-color-primary-6);
   text-decoration: none;
-  font-weight: 500;
-  transition: color 0.2s ease;
+  outline: none;
+}
+
+/* Skip link: hidden until focused (a11y - keyboard/screen reader) */
+.skip-link {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+  padding: 0.75rem 1.25rem;
+  background: var(--mantine-color-primary-6);
+  color: var(--mantine-color-white);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  border-radius: 0 0 var(--mantine-radius-md) 0;
+  transform: translateY(-100%);
+  transition: transform 0.2s ease;
+  text-decoration: none;
+  outline: none;
+}
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
+  outline: 2px solid var(--mantine-color-primary-5);
+  outline-offset: 2px;
 }
 
 [data-mantine-color-scheme='dark'] a,
@@ -234,7 +257,6 @@ a:focus,
 .mantine-Anchor-root:focus {
   outline: 2px solid var(--mantine-color-primary-5);
   outline-offset: 2px;
-  border-radius: 4px;
 }
 
 [data-mantine-color-scheme='dark'] a:focus,
@@ -242,14 +264,20 @@ a:focus,
   outline-color: var(--mantine-color-primary-4);
 }
 
-/* Links dentro de cards - estilo mais sutil (light) */
-.mantine-Card-root a,
-.wizard-recommendation-card a {
-  color: inherit;
-  text-decoration: none;
-  font-weight: inherit;
+/* Page TOC anchor scroll: leave space so the heading is visible below the header */
+[data-doc-content] h2,
+[data-doc-content] h3 {
+  scroll-margin-top: 9rem;
 }
 
+/* Tighter top spacing for headings in doc content */
+[data-doc-content] h1,
+[data-doc-content] h2,
+[data-doc-content] h3,
+[data-doc-content] h4 {
+  margin-top: 0.75em;
+  padding-top: 0;
+}
 .mantine-Card-root a:hover,
 .wizard-recommendation-card a:hover {
   color: inherit;
@@ -314,28 +342,26 @@ a:focus,
 }
 
 /* Header e Footer – bordas na paleta neutral */
+
 .header-bar {
-  border: none !important;
+  border-bottom: 1px solid var(--mantine-color-default-border);
 }
-
-/* Logo "Front Arch. Playbook" – sem outline azul ao clicar/focar */
-.header-logo-link:focus,
-.header-logo-link:focus-visible {
-  outline: none !important;
+.header-logo-link:hover {
+  opacity: 0.85;
+  transition: opacity 0.15s ease;
 }
-
-.footer-bar {
-  border: none !important;
+.header-nav-item {
+  padding: 8px 14px !important;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  transition: background-color 0.15s ease, color 0.15s ease;
 }
-
-[data-mantine-color-scheme='dark'] .header-bar,
-[data-mantine-color-scheme='dark'] .footer-bar {
-  background-color: var(--app-header-footer-dark) !important;
+.header-nav-item:hover {
+  background-color: var(--mantine-color-default-hover);
 }
-
-[data-mantine-color-scheme='light'] .header-bar,
-[data-mantine-color-scheme='light'] .footer-bar {
-  background-color: var(--app-header-footer-light) !important;
+.header-nav-item:focus-visible {
+  outline: 2px solid var(--mantine-color-primary-5);
+  outline-offset: 2px;
 }
 
 /* Breadcrumb – topo do conteúdo, alinhado à esquerda, dark/light */
@@ -602,14 +628,16 @@ a:focus,
   border-color: var(--mantine-color-primary-3) !important;
 }
 
-.header-nav-dropdown .mantine-Menu-item {
-  color: var(--mantine-color-text);
-  white-space: normal;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  line-height: 1.35;
-  padding-top: 8px;
-  padding-bottom: 8px;
+/* Home: hero command line (Next.js-style) */
+.hero-command {
+  padding: 8px 14px;
+  border-radius: 8px;
+  background-color: var(--mantine-color-default-hover);
+  border: 1px solid var(--mantine-color-default-border);
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+.hero-command:hover {
+  background-color: var(--mantine-color-default-border);
 }
 
 .header-nav-dropdown .mantine-Menu-item:hover {
@@ -745,252 +773,25 @@ a:focus,
 /* Comece Aqui – cards com hover sutil */
 .comece-aqui-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
-[data-mantine-color-scheme='dark'] .comece-aqui-card:hover {
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-}
-
-/* Conteúdo em Destaque – cards com hover sutil */
-.destaque-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-}
-
-[data-mantine-color-scheme='dark'] .destaque-card:hover {
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-}
-
-@media (min-width: 768px) {
-  .navmenu-link {
-    min-height: 36px !important;
-    padding-top: 4px !important;
-    padding-bottom: 4px !important;
-    align-items: flex-start !important;
-    line-height: 1.3 !important;
+/* Suspense fallback: simple spinner */
+@keyframes page-fallback-spin {
+  to {
+    transform: rotate(360deg);
   }
 }
 
-/* Drawer menu – mesmo espaçamento em mobile e laptop (igual ao screenshot mobile) */
-.mantine-Drawer-root {
-  overflow: visible !important;
-}
-.mantine-Drawer-content {
-  overflow: visible !important;
-}
-.mantine-Drawer-body {
-  overflow: visible !important;
-  height: 100% !important;
-}
-.mantine-Drawer-body .mantine-ScrollArea-root {
-  height: calc(100vh - 120px) !important;
-  overflow: auto !important;
-}
-.mantine-Drawer-body .mantine-ScrollArea-viewport {
-  overflow: auto !important;
-}
-
-.mobile-nav-drawer .mantine-Drawer-header {
-  padding: 4px 8px !important;
-  min-height: 40px !important;
-  background: var(--app-header-footer-dark) !important;
-  border: none !important;
-  color: var(--mantine-color-gray-0) !important;
-  display: flex !important;
-  justify-content: flex-end !important;
-  align-items: center !important;
-}
-[data-mantine-color-scheme='light'] .mobile-nav-drawer .mantine-Drawer-header {
-  background: var(--app-header-footer-light) !important;
-  color: var(--mantine-color-dark-7) !important;
-}
-.mobile-nav-drawer .mantine-Drawer-header .mantine-Drawer-title {
-  display: none !important;
-}
-.mobile-nav-drawer .mantine-Drawer-close {
-  color: var(--mantine-color-gray-1) !important;
-  margin: 0 !important;
-}
-.mobile-nav-drawer .mantine-Drawer-content {
-  padding: 0 !important;
-}
-.mobile-nav-drawer .mantine-Drawer-body {
-  padding: 0 !important;
-  margin-top: 0px !important;
-  overflow: visible !important;
-  background: var(--mantine-color-body) !important;
-}
-.mobile-nav-scroll {
-  padding: 0 !important;
-}
-.mobile-nav-accordion {
-  gap: 0 !important;
-}
-.mobile-nav-accordion .mantine-Accordion-control {
-  padding: var(--mantine-spacing-sm) var(--mantine-spacing-md) !important;
-  min-height: 48px !important;
-}
-.mobile-nav-accordion .mantine-Accordion-control:hover {
-  background: var(--app-nav-hover-bg-dark) !important;
-}
-[data-mantine-color-scheme='light'] .mobile-nav-accordion .mantine-Accordion-control:hover {
-  background: var(--app-nav-hover-bg-light) !important;
-}
-.mobile-nav-accordion .mantine-Accordion-control .mantine-Accordion-chevron {
-  width: 18px;
-  color: var(--mantine-color-dimmed);
-}
-.mobile-nav-accordion .mantine-Accordion-label {
-  font-size: 14px !important;
-  font-weight: 500 !important;
-}
-.mobile-nav-accordion .mantine-Accordion-content {
-  padding: 0 !important;
-}
-.mobile-nav-accordion .mantine-Accordion-item {
-  margin: 0 !important;
-  padding: 0 !important;
-  border: none !important;
-}
-.mobile-nav-accordion .mantine-Accordion-item + .mantine-Accordion-item {
-  margin-top: 0 !important;
-}
-.mobile-nav-panel {
-  padding: 0 8px 2px !important;
-}
-.mobile-nav-subgroup + .mobile-nav-subgroup {
-  margin-top: 2px;
-}
-.mobile-nav-subgroup .mantine-Group-root {
-  margin-bottom: 1px !important;
-  padding-left: 0;
-}
-.mobile-nav-subgroup .mantine-Text-root {
-  font-size: 11px !important;
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
-}
-.mobile-nav-menu .navmenu-link {
-  padding: 4px 8px !important;
-  min-height: 36px !important;
-  font-size: 13px !important;
-  font-weight: 400 !important;
-  width: 100% !important;
-  border-radius: 6px !important;
-  margin: 0 !important;
-  white-space: normal;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  align-items: flex-start;
-}
-.mobile-nav-menu .navmenu-link .mantine-NavLink-section {
-  min-width: 20px;
-  flex-shrink: 0;
-}
-.mobile-nav-menu .navmenu-link .mantine-NavLink-body {
-  min-width: 0;
-  overflow-wrap: break-word;
-}
-.mobile-nav-menu .navmenu-link .mantine-NavLink-section svg {
-  width: 16px;
-  height: 16px;
-}
-.mobile-nav-footer {
-  margin-top: var(--mantine-spacing-xs);
-  padding: var(--mantine-spacing-sm) var(--mantine-spacing-md);
-  border-top: 1px solid var(--app-border-dark);
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-[data-mantine-color-scheme='light'] .mobile-nav-footer {
-  border-top-color: var(--app-border-light);
-}
-.mobile-nav-footer-link {
-  display: block;
-  min-height: 40px;
-  padding: 4px 0;
-  text-decoration: none;
-  border-radius: var(--mantine-radius-sm);
-}
-.mobile-nav-footer-link:hover {
-  text-decoration: underline;
-}
-.mobile-nav-footer-links {
-  width: 100%;
-}
-
-/* Mobile responsiveness - prevent horizontal scroll */
-@media (max-width: 768px) {
-  * {
-    max-width: 100% !important;
-    box-sizing: border-box !important;
-  }
-
-  html,
-  body {
-    overflow-x: hidden !important;
-    max-width: 100vw !important;
-  }
-
-  /* NavMenu container - scroll apenas no mobile */
-  .nav-menu-container {
-    height: calc(100vh - 120px) !important;
-    overflow-y: auto !important;
-  }
-}
-
-/* Desktop - sem scroll no NavMenu */
-@media (min-width: 769px) {
-  .nav-menu-container {
-    height: auto !important;
-    overflow-y: visible !important;
-  }
-
-  .mantine-Container-root {
-    padding-left: var(--mantine-spacing-sm) !important;
-    padding-right: var(--mantine-spacing-sm) !important;
-    max-width: 100% !important;
-    width: 100% !important;
-  }
-
-  .mantine-SimpleGrid-root,
-  .mantine-Grid-root {
-    width: 100% !important;
-    max-width: 100% !important;
-  }
-
-  /* Evita que itens do grid estourem e sejam recortados no canto (ex.: cards Pode/Nunca Depender) */
-  .mantine-SimpleGrid-root > *,
-  .mantine-Grid-root > * {
-    min-width: 0 !important;
-  }
-
-  .mantine-Card-root,
-  .mantine-Paper-root {
-    max-width: 100% !important;
-    width: 100% !important;
-    /* overflow: visible para não recortar cantos (ThemeIcon, bordas); scroll horizontal evitado pelo grid + min-width: 0 */
-  }
-
-  /* Code blocks specific mobile handling */
-  pre {
-    max-width: 100% !important;
-    overflow-x: auto !important;
-    white-space: pre-wrap !important;
-    word-break: break-all !important;
-  }
-}
-
-@media (max-width: 768px) {
-  /* Breadcrumbs mobile */
-  .mantine-Breadcrumbs-root {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .mantine-Breadcrumbs-root::-webkit-scrollbar {
-    display: none;
-  }
+/* Preserve ASCII/code spacing: monospace + pre so diagrams align */
+.mantine-CodeHighlight-root pre,
+.mantine-CodeHighlight-root code,
+.mantine-CodeHighlight-root pre code,
+.mantine-Code-root pre,
+pre.mantine-Code-root {
+  white-space: pre;
+  font-family: var(--mantine-font-family-monospace), ui-monospace, "SF Mono", Menlo, monospace;
+  line-height: 1.35;
+  tab-size: 4;
+  overflow-x: auto;
 }

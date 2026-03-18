@@ -2,12 +2,10 @@ import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { getDoc } from '../lib/content.tsx';
 import { getDocContent } from '../lib/content-data';
-import { TypographyStylesProvider, Group } from '@mantine/core';
 import { CodeHighlight } from '@mantine/code-highlight';
-import { ReadingTime } from '../components/ReadingTime.tsx';
-import { RelatedContent } from '../components/RelatedContent.tsx';
+import '@mantine/code-highlight/styles.css';
 import ContentRenderer from '../components/ContentRenderer';
-import GuideNavigation from '../components/GuideNavigation';
+import DocPageLayout from '../components/DocPageLayout';
 
 type CollectionType =
   | 'guides'
@@ -33,56 +31,32 @@ export default function DocPage() {
 
   if (!collection || !slug) return <p>Invalid route</p>;
 
-  // Content-driven page: render from JSON
   if (contentPage) {
-    const after = (
-      <>
-        {contentPage.layout?.showGuideNav && (
-          <GuideNavigation currentGuide={contentPage.layout.showGuideNav} />
-        )}
-      </>
-    );
-
     return (
-      <>
-        <Group mb={{ base: 'xs', sm: 'md' }} justify="flex-end" gap="xs">
-          <ReadingTime />
-          <span
-            data-content-driven-marker
-            title="Página migrada (conteúdo em JSON)"
-            aria-hidden
-          />
-        </Group>
-        <div data-doc-content data-content-driven>
-          <TypographyStylesProvider>
-            <ContentRenderer page={contentPage} after={after} />
-          </TypographyStylesProvider>
-        </div>
-        {contentPage.layout?.showRelated !== false && <RelatedContent />}
-      </>
+      <DocPageLayout
+        showRelated={contentPage.layout?.showRelated !== false}
+        contentWrapperProps={{
+          'data-content-driven': true,
+          title: 'Página migrada (conteúdo em JSON)',
+        }}
+      >
+        <ContentRenderer page={contentPage} />
+      </DocPageLayout>
     );
   }
 
-  // Legacy: React component
   if (!doc) return <p>Not found</p>;
-  const Component = doc.component;
-  const components = {
-    pre: (props: React.ComponentProps<'pre'>) => <CodeHighlight {...props} />,
+  type LegacyDocProps = {
+    components?: { pre: React.ComponentType<React.ComponentProps<'pre'>> };
   };
-  const showGuideNav = collection === 'guides' && slug;
+  const Component = doc.component as React.ComponentType<LegacyDocProps>;
+  const components: LegacyDocProps['components'] = {
+    pre: props => <CodeHighlight {...props} />,
+  };
 
   return (
-    <>
-      <Group mb="md" justify="flex-end">
-        <ReadingTime />
-      </Group>
-      <div data-doc-content>
-        <TypographyStylesProvider>
-          <Component components={components} />
-          {showGuideNav && <GuideNavigation currentGuide={slug} />}
-        </TypographyStylesProvider>
-      </div>
-      <RelatedContent />
-    </>
+    <DocPageLayout showRelated>
+      <Component components={components} />
+    </DocPageLayout>
   );
 }

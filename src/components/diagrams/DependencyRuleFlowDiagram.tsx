@@ -59,8 +59,12 @@ export default function DependencyRuleFlowDiagram({
       const fillColor = isDark
         ? semantic.diagramFillDark
         : semantic.diagramFillLight;
-      const textColor = isDark ? semantic.diagramTextDark : semantic.diagramTextLight;
-      const subColor = isDark ? semantic.diagramSubDark : semantic.diagramSubLight;
+      const textColor = isDark
+        ? semantic.diagramTextDark
+        : semantic.diagramTextLight;
+      const subColor = isDark
+        ? semantic.diagramSubDark
+        : semantic.diagramSubLight;
 
       ctx.strokeStyle = borderColor;
       ctx.lineWidth = 2;

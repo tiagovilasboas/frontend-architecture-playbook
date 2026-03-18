@@ -85,9 +85,9 @@
               "order": 3
             },
             {
-              "type": "code",
-              "code": "    ┌─────────────────────────────────────────┐\n    │  UI (páginas, componentes)              │  ← mais externo\n    │  pode importar: Service, Repo, Domain    │\n    └───────────────────┬─────────────────────┘\n                        │ depende de\n                        ▼\n    ┌─────────────────────────────────────────┐\n    │  Service (regras de negócio)             │\n    │  pode importar: Repository, Domain       │\n    └───────────────────┬─────────────────────┘\n                        │ depende de\n                        ▼\n    ┌─────────────────────────────────────────┐\n    │  Repository (acesso a dados)             │\n    │  pode importar: Domain                   │\n    └───────────────────┬─────────────────────┘\n                        │ depende de\n                        ▼\n    ┌─────────────────────────────────────────┐\n    │  Domain (entidades, regras puras)        │  ← mais interno\n    │  NÃO importa nada de outras camadas     │\n    └─────────────────────────────────────────┘",
-              "block": true
+              "type": "canvasDiagram",
+              "diagram": "dependency-rule-flow",
+              "variant": "correct"
             },
             {
               "type": "title",
@@ -95,9 +95,15 @@
               "order": 3
             },
             {
-              "type": "code",
-              "code": "    ┌─────────────────────────────────────────┐\n    │  Domain                                 │\n    │  importa UI ou Service  ← ❌ QUEBRADO!   │\n    └───────────────────┬─────────────────────┘\n                        │ (não pode apontar para fora)\n                        ▼\n    ┌─────────────────────────────────────────┐\n    │  UI / Service                            │\n    └─────────────────────────────────────────┘\n\n    Se o Domain começar a importar UI ou Service,\n    você perde o controle: fica preso ao framework e\n    testar fica bem mais difícil.",
-              "block": true
+              "type": "canvasDiagram",
+              "diagram": "dependency-rule-flow",
+              "variant": "incorrect"
+            },
+            {
+              "type": "alert",
+              "message": "Se o Domain começar a importar UI ou Service, você perde o controle: fica preso ao framework e testar fica bem mais difícil.",
+              "color": "red",
+              "icon": "alert-triangle"
             },
             {
               "type": "alert",

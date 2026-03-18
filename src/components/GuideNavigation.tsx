@@ -53,9 +53,7 @@ export const GuideNavigation: React.FC<GuideNavigationProps> = ({
           <Text size="sm" c="dimmed">
             Guia {currentIndex + 1} de {guides.length}
           </Text>
-          <Badge variant="light" color="blue">
-            {currentGuideData?.title}
-          </Badge>
+          <Badge variant="light">{currentGuideData?.title}</Badge>
         </Group>
 
         {/* Navigation Buttons */}

@@ -226,7 +226,7 @@ class Cart {
             </Code>
           </div>
 
-          <Alert color="brand" icon={<IconBulb size={20} />} radius="md">
+          <Alert icon={<IconBulb size={20} />} radius="md">
             <Text size="md" fw={500}>
               <strong>Benefícios:</strong> Teste cada camada isoladamente,
               troque banco de dados sem afetar UI, refatore com segurança.

@@ -28,7 +28,6 @@ export function MobileLoader({
         <ThemeIcon
           size={size === 'sm' ? 'md' : size === 'md' ? 'lg' : 'xl'}
           variant="light"
-          color="blue"
           style={{
             animation: 'bounce 1.5s ease-in-out infinite',
           }}
@@ -73,7 +72,6 @@ export function TinyLoader() {
       <ThemeIcon
         size="sm"
         variant="light"
-        color="blue"
         style={{
           animation: 'pulse 1s ease-in-out infinite',
         }}

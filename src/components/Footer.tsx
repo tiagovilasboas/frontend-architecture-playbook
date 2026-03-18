@@ -1,5 +1,5 @@
 import React from 'react';
-import { Group, Text, ActionIcon, Stack, Paper } from '@mantine/core';
+import { Group, Text, ActionIcon, Paper } from '@mantine/core';
 import {
   IconBrandGithub,
   IconBrandLinkedin,
@@ -9,55 +9,50 @@ import {
 export default function Footer() {
   return (
     <Paper
-      p={0}
+      withBorder
       radius={0}
-      className="footer-bar"
-      style={{
-        marginTop: 'auto',
-      }}
+      mt="auto"
+      px="md"
+      py="sm"
+      w="100%"
+      style={{ position: 'relative', zIndex: 10 }}
     >
-      <Stack gap="md" py="xl" px="md" ta="center">
-        <Group justify="center" gap="lg">
+      <Group justify="space-between" wrap="nowrap" gap="md">
+        <Group gap="xs" wrap="wrap" style={{ flex: 1, minWidth: 0 }}>
+          <Text size="xs" c="dimmed">
+            Feito com{' '}
+            <IconHeart size={12} style={{ verticalAlign: 'middle' }} /> por
+            Tiago Vilas Boas
+          </Text>
+          <Text size="xs" c="dimmed" component="span">
+            • Front-End Architecture Playbook • 2025
+          </Text>
+        </Group>
+        <Group gap="xs">
           <ActionIcon
             component="a"
             href="https://github.com/tiagovilasboas"
             target="_blank"
-            size="lg"
+            size="sm"
             variant="light"
             color="primary"
             aria-label="GitHub - Tiago Vilas Boas"
           >
-            <IconBrandGithub size={20} />
+            <IconBrandGithub size={18} />
           </ActionIcon>
           <ActionIcon
             component="a"
             href="https://www.linkedin.com/in/tiagovilasboas"
             target="_blank"
-            size="lg"
+            size="sm"
             variant="light"
             color="primary"
             aria-label="LinkedIn - Tiago Vilas Boas"
           >
-            <IconBrandLinkedin size={20} />
+            <IconBrandLinkedin size={18} />
           </ActionIcon>
         </Group>
-
-        <Text size="sm" c="dimmed">
-          Feito com{' '}
-          <IconHeart
-            size={14}
-            style={{
-              verticalAlign: 'middle',
-              color: 'var(--mantine-color-primary-5)',
-            }}
-          />{' '}
-          por Tiago Vilas Boas
-        </Text>
-
-        <Text size="xs" c="dimmed">
-          Front-End Architecture Playbook • 2025
-        </Text>
-      </Stack>
+      </Group>
     </Paper>
   );
 }

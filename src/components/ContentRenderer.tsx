@@ -58,8 +58,11 @@ import type {
   ContentIconKey,
   ContentPage,
 } from '../lib/content-schema';
+import { slugifyForId } from '../lib/page-toc';
 import CodeExample from './CodeExample';
 import GlossaryBlock from './GlossaryBlock';
+import FolderStructureDiagram from './diagrams/FolderStructureDiagram';
+import DependencyRuleDiagram from './diagrams/DependencyRuleDiagram';
 
 const ICON_MAP: Record<
   ContentIconKey,
@@ -95,8 +98,9 @@ const ICON_MAP: Record<
   tool: IconTool,
 };
 
+/** Skip "code" icon to reduce repetition - code blocks/sections are self-evident */
 function getIcon(iconKey?: ContentIconKey, size = 20) {
-  if (!iconKey || !ICON_MAP[iconKey]) return null;
+  if (!iconKey || iconKey === 'code' || !ICON_MAP[iconKey]) return null;
   const Icon = ICON_MAP[iconKey];
   return <Icon size={size} />;
 }
@@ -105,8 +109,8 @@ function getIcon(iconKey?: ContentIconKey, size = 20) {
 function detectCodeLanguage(content: string): string {
   if (content.includes('<?php')) return 'php';
   if (content.includes('<!DOCTYPE') || content.includes('<html')) return 'html';
-  if (content.includes('┌') || content.includes('└') || content.includes('│'))
-    return 'text';
+  // ASCII/box-drawing diagrams: preserve spacing, no syntax highlight
+  if (/[┌└│┐┘├┤┬┴┼─═║╔╗╚╝╠╣╦╩╬▼▲►◄]/.test(content)) return 'text';
   if (
     content.includes('interface ') ||
     content.includes('type ') ||
@@ -153,7 +157,6 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
                 size={{ base: 'lg', sm: 'xl' }}
                 radius="md"
                 variant="light"
-                color="brand"
                 style={{ flexShrink: 0 }}
               >
                 {iconEl}
@@ -187,6 +190,9 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
 
     case 'section': {
       const iconEl = block.icon ? getIcon(block.icon) : null;
+      const sectionId = block.title?.trim()
+        ? slugifyForId(block.title)
+        : undefined;
       return (
         <Paper key={key} withBorder p={{ base: 'md', sm: 'xl' }} radius="md">
           {(block.title || iconEl) && (
@@ -203,7 +209,6 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
                   size="lg"
                   radius="md"
                   variant="light"
-                  color="brand"
                   style={{ flexShrink: 0 }}
                 >
                   {iconEl}
@@ -212,6 +217,7 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
               {block.title && (
                 <Title
                   order={3}
+                  id={sectionId}
                   style={{ minWidth: 0, margin: 0, lineHeight: 1.25 }}
                 >
                   {block.title}
@@ -249,7 +255,7 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
     case 'list': {
       const items = Array.isArray(block.items) ? block.items : [];
       const iconEl = block.icon ? (
-        <ThemeIcon size={18} radius="xl" color="brand">
+        <ThemeIcon size={18} radius="xl">
           {getIcon(block.icon, 10)}
         </ThemeIcon>
       ) : undefined;
@@ -321,12 +327,53 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
         </div>
       );
 
+    case 'canvasDiagram': {
+      if (block.diagram === 'dependency-rule-folders') {
+        return (
+          <Stack key={key} gap="sm" mb="md">
+            {block.title && (
+              <Title order={4} size="h5">
+                {block.title}
+              </Title>
+            )}
+            {block.description && (
+              <Text size="sm" c="dimmed">
+                {block.description}
+              </Text>
+            )}
+            <FolderStructureDiagram height={280} />
+          </Stack>
+        );
+      }
+      if (block.diagram === 'dependency-rule-flow') {
+        return (
+          <Stack key={key} gap="sm" mb="md">
+            {block.title && (
+              <Title order={4} size="h5">
+                {block.title}
+              </Title>
+            )}
+            {block.description && (
+              <Text size="sm" c="dimmed">
+                {block.description}
+              </Text>
+            )}
+            <DependencyRuleDiagram
+              variant={block.variant ?? 'correct'}
+              height={280}
+            />
+          </Stack>
+        );
+      }
+      return null;
+    }
+
     case 'alert': {
       const AlertIcon = block.icon ? ICON_MAP[block.icon] : null;
       return (
         <Alert
           key={key}
-          color={block.color ?? 'blue'}
+          color={block.color}
           icon={AlertIcon ? <AlertIcon size={16} /> : undefined}
           radius="md"
         >
@@ -362,7 +409,6 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
                       size={36}
                       radius="md"
                       variant="light"
-                      color="brand"
                       style={{ flexShrink: 0 }}
                     >
                       {iconEl}
@@ -405,7 +451,7 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
                       size="lg"
                       radius="md"
                       variant="light"
-                      color={(c.iconColor as 'brand') ?? 'brand'}
+                      color={c.iconColor}
                       style={{ flexShrink: 0 }}
                     >
                       {iconEl}
@@ -439,7 +485,7 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
     case 'linkList': {
       const links = Array.isArray(block.links) ? block.links : [];
       const iconEl = block.icon ? (
-        <ThemeIcon size={20} radius="xl" color="brand">
+        <ThemeIcon size={20} radius="xl">
           {getIcon(block.icon, 12)}
         </ThemeIcon>
       ) : undefined;
@@ -502,13 +548,7 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
 
     case 'callout': {
       return (
-        <Paper
-          key={key}
-          withBorder
-          p="sm"
-          radius="md"
-          bg={block.dimmed ? 'dimmed' : undefined}
-        >
+        <Paper key={key} withBorder p="sm" radius="md">
           <Text size="xs" fw={600} mb={4}>
             {block.title}
           </Text>
@@ -535,7 +575,7 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
                         size={44}
                         radius="md"
                         variant="light"
-                        color={(c.iconColor as 'green') ?? 'brand'}
+                        color={c.iconColor}
                       >
                         {iconEl}
                       </ThemeIcon>
@@ -556,7 +596,7 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
                     <List
                       spacing="xs"
                       icon={
-                        <ThemeIcon size={20} radius="xl" color="brand">
+                        <ThemeIcon size={20} radius="xl">
                           {getIcon('arrow-right', 12)}
                         </ThemeIcon>
                       }
@@ -571,7 +611,7 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
                     </List>
                   ) : null}
                   {c.nextLevel ? (
-                    <Paper withBorder p="sm" radius="md" bg="dimmed">
+                    <Paper withBorder p="sm" radius="md">
                       <Text size="xs" fw={600} mb={4}>
                         {c.nextLevel.title}
                       </Text>
@@ -703,7 +743,7 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
           </Timeline>
           {resultAlert?.message ? (
             <Alert
-              color={resultAlert.color ?? 'blue'}
+              color={resultAlert.color}
               icon={resultAlert.icon ? getIcon(resultAlert.icon, 16) : null}
               radius="md"
             >

@@ -1,5 +1,15 @@
-import { createTheme } from '@mantine/core';
-import { primary, brand, accent, semantic } from './theme/colors';
+import {
+  ActionIcon,
+  Alert,
+  Badge,
+  Button,
+  Card,
+  createTheme,
+  Paper,
+  Select,
+  ThemeIcon,
+} from '@mantine/core';
+import { primary, brand, accent, primaryGreen, semantic } from './theme/colors';
 
 export const theme = createTheme({
   primaryColor: 'primary',
@@ -7,14 +17,15 @@ export const theme = createTheme({
     primary,
     brand,
     accent,
+    green: primaryGreen,
   },
   fontFamily: 'Inter, system-ui, sans-serif',
   fontSizes: {
-    xs: '0.8125rem', // ~13px
-    sm: '0.9375rem', // ~15px
-    md: '1rem', // 16px
-    lg: '1.125rem', // ~18px
-    xl: '1.25rem', // 20px
+    xs: '0.8125rem',
+    sm: '0.9375rem',
+    md: '1rem',
+    lg: '1.125rem',
+    xl: '1.25rem',
   },
   headings: {
     fontFamily: 'Inter, sans-serif',
@@ -22,7 +33,6 @@ export const theme = createTheme({
       h1: { fontSize: '2rem', fontWeight: '700' },
     },
   },
-  // Custom components with consistent styling
   components: {
     Anchor: {
       defaultProps: {
@@ -39,37 +49,32 @@ export const theme = createTheme({
         },
       },
     },
-    Paper: {
+    Paper: Paper.extend({
       defaultProps: {
-        withBorder: true,
-        p: 'xl',
-        radius: 'lg',
-      },
-    },
-    Card: {
-      defaultProps: {
-        withBorder: true,
         p: 'md',
+        shadow: 'xl',
         radius: 'md',
+        withBorder: true,
       },
-    },
-    ThemeIcon: {
+    }),
+    Card: Card.extend({
       defaultProps: {
-        variant: 'light',
-        size: 'md',
-        radius: 'md',
+        p: 'xl',
+        shadow: 'xl',
+        radius: 'var(--mantine-radius-default)',
+        withBorder: true,
       },
-    },
-    Badge: {
+    }),
+    Select: Select.extend({
       defaultProps: {
-        variant: 'light',
+        checkIconPosition: 'right',
       },
-    },
-    Alert: {
+    }),
+    Button: Button.extend({
       defaultProps: {
-        radius: 'md',
+        color: 'green',
       },
-    },
+    }),
     Title: {
       styles: {
         root: {
@@ -85,13 +90,7 @@ export const theme = createTheme({
     },
     Spotlight: {
       defaultProps: {
-        searchProps: {
-          placeholder: 'Buscar no playbook...',
-          size: 'lg',
-        },
-        nothingFoundMessage: 'Nada encontrado. Tente outra busca.',
-        highlightQuery: true,
-        limit: 10,
+        color: 'primary',
       },
       styles: {
         root: {
@@ -149,5 +148,28 @@ export const theme = createTheme({
         },
       },
     },
+    ActionIcon: ActionIcon.extend({
+      defaultProps: {
+        color: 'primary',
+      },
+    }),
+    ThemeIcon: ThemeIcon.extend({
+      defaultProps: {
+        color: 'green',
+      },
+    }),
+    Badge: Badge.extend({
+      defaultProps: {
+        color: 'green',
+      },
+    }),
+    Alert: Alert.extend({
+      defaultProps: {
+        color: 'green',
+      },
+    }),
+  },
+  other: {
+    style: 'mantine',
   },
 });
