@@ -1,12 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import {
-  Box,
-  UnstyledButton,
-  Tooltip,
-  Group,
-  Anchor,
-} from '@mantine/core';
+import { usePrefetchContent } from '../hooks/usePrefetchContent';
+import { Box, UnstyledButton, Tooltip, Group, Anchor } from '@mantine/core';
 import { IconChevronLeft, IconChevronRight } from '@tabler/icons-react';
 import { getPrevNextByCollection } from '../lib/content.tsx';
 import { useBreakpoints } from '../hooks/useBreakpoints';
@@ -20,10 +15,11 @@ type Direction = 'prev' | 'next';
 interface NavArrowProps {
   direction: Direction;
   item: { href: string; label: string } | null;
+  onPrefetch?: (path: string) => void;
 }
 
 /** Uma seta só: direção (prev/next) define ícone, tooltip e aria-label. */
-function NavArrow({ direction, item }: NavArrowProps) {
+function NavArrow({ direction, item, onPrefetch }: NavArrowProps) {
   if (!item) return null;
 
   const size = POINTER_TARGET_COMFORTABLE_PX;
@@ -37,6 +33,8 @@ function NavArrow({ direction, item }: NavArrowProps) {
       <UnstyledButton
         component={Link}
         to={item.href}
+        onMouseEnter={() => onPrefetch?.(item.href)}
+        onFocus={() => onPrefetch?.(item.href)}
         onClick={() => window.scrollTo({ top: 0, behavior: 'auto' })}
         style={{
           display: 'flex',
@@ -79,6 +77,7 @@ interface PrevNextArrowsProps {
 export default function PrevNextArrows({ children }: PrevNextArrowsProps) {
   const location = useLocation();
   const { isMobile } = useBreakpoints();
+  const prefetch = usePrefetchContent();
   const { prev, next } = getPrevNextByCollection(location.pathname);
 
   if (prev == null && next == null) {
@@ -99,7 +98,7 @@ export default function PrevNextArrows({ children }: PrevNextArrowsProps) {
             zIndex: 100,
           }}
         >
-          <NavArrow direction="prev" item={prev} />
+          <NavArrow direction="prev" item={prev} onPrefetch={prefetch} />
         </Box>
       )}
       {showFixedArrows && next && (
@@ -112,16 +111,14 @@ export default function PrevNextArrows({ children }: PrevNextArrowsProps) {
             zIndex: 100,
           }}
         >
-          <NavArrow direction="next" item={next} />
+          <NavArrow direction="next" item={next} onPrefetch={prefetch} />
         </Box>
       )}
 
       <Box
         style={{
-          paddingLeft:
-            showFixedArrows && (prev || next) ? 32 : 0,
-          paddingRight:
-            showFixedArrows && (prev || next) ? 32 : 0,
+          paddingLeft: showFixedArrows && (prev || next) ? 32 : 0,
+          paddingRight: showFixedArrows && (prev || next) ? 32 : 0,
         }}
       >
         {children}
@@ -147,6 +144,8 @@ export default function PrevNextArrows({ children }: PrevNextArrowsProps) {
                 to={prev.href}
                 size="md"
                 fw={500}
+                onMouseEnter={() => prefetch(prev.href)}
+                onFocus={() => prefetch(prev.href)}
                 onClick={() => window.scrollTo({ top: 0, behavior: 'auto' })}
                 style={{ lineHeight: 1.35 }}
                 lineClamp={3}
@@ -164,6 +163,8 @@ export default function PrevNextArrows({ children }: PrevNextArrowsProps) {
                 to={next.href}
                 size="md"
                 fw={500}
+                onMouseEnter={() => prefetch(next.href)}
+                onFocus={() => prefetch(next.href)}
                 onClick={() => window.scrollTo({ top: 0, behavior: 'auto' })}
                 style={{ lineHeight: 1.35 }}
                 lineClamp={3}

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { usePrefetchContent } from '../hooks/usePrefetchContent';
 import { Group, Button, Text, Badge, Stack, Paper } from '@mantine/core';
 import {
   IconArrowLeft,
@@ -35,6 +36,7 @@ const GUIDE_ICONS: Record<string, React.ReactNode> = {
 export const GuideNavigation: React.FC<GuideNavigationProps> = ({
   currentGuide,
 }) => {
+  const prefetch = usePrefetchContent();
   const guides = getGuideNavItems().map(g => ({
     ...g,
     icon: GUIDE_ICONS[g.id] ?? <IconTarget size={16} />,
@@ -53,9 +55,7 @@ export const GuideNavigation: React.FC<GuideNavigationProps> = ({
           <Text size="sm" c="dimmed">
             Guia {currentIndex + 1} de {guides.length}
           </Text>
-          <Badge variant="light" >
-            {currentGuideData?.title}
-          </Badge>
+          <Badge variant="light">{currentGuideData?.title}</Badge>
         </Group>
 
         {/* Navigation Buttons */}
@@ -65,6 +65,8 @@ export const GuideNavigation: React.FC<GuideNavigationProps> = ({
               component={Link}
               to={prevGuide.path}
               variant="light"
+              onMouseEnter={() => prefetch(prevGuide.path)}
+              onFocus={() => prefetch(prevGuide.path)}
               leftSection={<IconArrowLeft size={16} />}
               size="sm"
             >
@@ -79,6 +81,8 @@ export const GuideNavigation: React.FC<GuideNavigationProps> = ({
               component={Link}
               to={nextGuide.path}
               variant="filled"
+              onMouseEnter={() => prefetch(nextGuide.path)}
+              onFocus={() => prefetch(nextGuide.path)}
               rightSection={
                 <IconArrowLeft
                   size={16}
@@ -106,6 +110,8 @@ export const GuideNavigation: React.FC<GuideNavigationProps> = ({
                 component={Link}
                 to={guide.path}
                 variant={guide.id === currentGuide ? 'filled' : 'light'}
+                onMouseEnter={() => prefetch(guide.path)}
+                onFocus={() => prefetch(guide.path)}
                 size="xs"
                 leftSection={guide.icon}
                 style={{

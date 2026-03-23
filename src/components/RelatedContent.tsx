@@ -1,12 +1,14 @@
 import { useParams } from 'react-router-dom';
 import { Paper, Stack, Title, Group, Card, Text } from '@mantine/core';
 import { Link } from 'react-router-dom';
+import { usePrefetchContent } from '../hooks/usePrefetchContent';
 import { IconArrowRight, IconBook } from '@tabler/icons-react';
 import { getDoc, guides, architectures, patterns } from '../lib/content.tsx';
 import { useBreakpoints } from '../hooks/useBreakpoints.ts';
 
 export function RelatedContent() {
   const { isMobile } = useBreakpoints();
+  const prefetch = usePrefetchContent();
   const { collection, slug } = useParams();
   if (!collection || !slug) return null;
 
@@ -76,8 +78,10 @@ export function RelatedContent() {
                 transition: 'transform 0.2s ease',
               }}
               onMouseEnter={e => {
+                prefetch(`/${doc.collection}/${doc.slug}`);
                 e.currentTarget.style.transform = 'translateY(-2px)';
               }}
+              onFocus={() => prefetch(`/${doc.collection}/${doc.slug}`)}
               onMouseLeave={e => {
                 e.currentTarget.style.transform = 'translateY(0)';
               }}

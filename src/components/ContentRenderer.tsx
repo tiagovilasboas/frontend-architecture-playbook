@@ -49,6 +49,7 @@ import {
   IconTool,
 } from '@tabler/icons-react';
 import { Link } from 'react-router-dom';
+import { usePrefetchContent } from '../hooks/usePrefetchContent';
 import { CaseCard } from './CaseCard';
 import casesData from '../data/cases.json';
 import ArchitectureComparisonWidget from './ArchitectureComparisonWidget';
@@ -770,6 +771,7 @@ export interface ContentRendererProps {
 }
 
 export default function ContentRenderer({ page, after }: ContentRendererProps) {
+  const prefetch = usePrefetchContent();
   const body = Array.isArray(page?.body) ? page.body : [];
   const suggestedNext = page?.suggestedNext;
 
@@ -787,6 +789,8 @@ export default function ContentRenderer({ page, after }: ContentRendererProps) {
               to={suggestedNext.to}
               size="sm"
               fw={600}
+              onMouseEnter={() => prefetch(suggestedNext.to)}
+              onFocus={() => prefetch(suggestedNext.to)}
               style={{ display: 'inline-flex', alignItems: 'center', gap: 4 }}
             >
               {suggestedNext.label}
