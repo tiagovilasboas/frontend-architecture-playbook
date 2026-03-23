@@ -152,6 +152,51 @@
     },
     {
       "type": "section",
+      "title": "Para quem decide",
+      "icon": "scale",
+      "children": [
+        {
+          "type": "text",
+          "content": "Staff ou Tech Lead precisa defender SSR/SSG ou manter SPA. Critérios e trade-offs.",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "iconCards",
+          "cols": { "base": 1, "sm": 2 },
+          "cards": [
+            {
+              "icon": "check",
+              "iconColor": "green",
+              "title": "SSR/SSG faz sentido quando",
+              "items": [
+                "SEO ou Core Web Vitals impactam negócio (e-commerce, content, landing)",
+                "Tráfego público (crawlers precisam ver conteúdo)",
+                "LCP > 2.5s está matando conversão"
+              ]
+            },
+            {
+              "icon": "alert-triangle",
+              "iconColor": "red",
+              "title": "SPA basta quando",
+              "items": [
+                "App interno, dashboard, ferramenta B2B",
+                "Conteúdo não precisa ser indexado",
+                "Time pequeno, prioridade é entregar"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "alert",
+          "message": "Trade-off: SSR custa servidor e complexidade (hydration, streaming). SSG custa build time e revalidação. Métrica: compare LCP/INP antes e depois. Se não medir, não vale a mudança.",
+          "color": "blue",
+          "icon": "bulb"
+        }
+      ]
+    },
+    {
+      "type": "section",
       "title": "Armadilhas Comuns",
       "icon": "alert-triangle",
       "children": [

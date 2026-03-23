@@ -147,6 +147,51 @@
     },
     {
       "type": "section",
+      "title": "Para quem decide",
+      "icon": "scale",
+      "children": [
+        {
+          "type": "text",
+          "content": "BFF ou API direta? A decisão depende de quantas fontes o frontend precisa agrupar.",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "iconCards",
+          "cols": { "base": 1, "sm": 2 },
+          "cards": [
+            {
+              "icon": "check",
+              "iconColor": "green",
+              "title": "BFF faz sentido quando",
+              "items": [
+                "Frontend consome 3+ APIs para montar uma tela",
+                "Mobile e web precisam de payloads diferentes",
+                "APIs externas com formatos distintos (Stripe, PayPal, etc.)"
+              ]
+            },
+            {
+              "icon": "alert-triangle",
+              "iconColor": "red",
+              "title": "API direta basta quando",
+              "items": [
+                "Uma API única, contrato já otimizado",
+                "Time pequeno, uma tela por vez",
+                "Sem necessidade de agregação ou transformação"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "alert",
+          "message": "Trade-off: BFF reduz requests no frontend e normaliza dados, mas adiciona camada (deploy, manutenção). Métrica: quantos round-trips o frontend faz pra montar a tela principal? Se for 5+, BFF pode valer.",
+          "color": "blue",
+          "icon": "bulb"
+        }
+      ]
+    },
+    {
+      "type": "section",
       "title": "Armadilhas Comuns",
       "icon": "alert-triangle",
       "children": [
