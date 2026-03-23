@@ -516,7 +516,7 @@ export default function Home() {
                   <Text
                     size={isMobile ? 'sm' : 'md'}
                     c="dimmed"
-                    maw={560}
+                    maw={{ base: 560, md: 720 }}
                     lh={1.6}
                   >
                     Netflix, Spotify, Airbnb, eBay e mais: como cada um resolveu
@@ -526,10 +526,10 @@ export default function Home() {
                 </Stack>
 
                 <Box
+                  w="100%"
+                  maw={{ base: 560, md: 720 }}
+                  p={isMobile ? 6 : 24}
                   style={{
-                    width: '100%',
-                    maxWidth: 560,
-                    padding: isMobile ? 6 : 24,
                     borderRadius: 12,
                     background: 'var(--mantine-color-default-hover)',
                     border: '1px solid var(--mantine-color-default-border)',
