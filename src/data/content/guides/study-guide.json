@@ -7,6 +7,10 @@
     "showGuideNav": "study-guide",
     "showRelated": true
   },
+  "suggestedNext": {
+    "label": "Dependency Rule",
+    "to": "/guides/dependency-rule"
+  },
   "body": [
     {
       "type": "hero",

@@ -168,6 +168,12 @@ export type ContentBlock =
     }
   | { type: 'glossary' };
 
+/** Suggested next guide (pilot: baby step) */
+export interface SuggestedNext {
+  label: string;
+  to: string;
+}
+
 /** Full page content: meta + body blocks */
 export interface ContentPage {
   meta: {
@@ -179,6 +185,8 @@ export interface ContentPage {
     showGuideNav?: string;
     showRelated?: boolean;
   };
+  /** Optional: explicit next guide for learning path */
+  suggestedNext?: SuggestedNext;
   body: ContentBlock[];
 }
 

@@ -7,6 +7,10 @@
     "showGuideNav": "dependency-rule",
     "showRelated": true
   },
+  "suggestedNext": {
+    "label": "Como Escolher Arquitetura",
+    "to": "/guides/how-to-choose"
+  },
   "body": [
     {
       "type": "hero",

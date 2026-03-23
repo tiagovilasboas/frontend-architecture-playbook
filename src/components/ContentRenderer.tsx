@@ -771,9 +771,30 @@ export interface ContentRendererProps {
 
 export default function ContentRenderer({ page, after }: ContentRendererProps) {
   const body = Array.isArray(page?.body) ? page.body : [];
+  const suggestedNext = page?.suggestedNext;
+
   return (
     <Stack gap={{ base: 'xs', sm: 'md' }}>
       {body.map((block, index) => renderBlock(block, index))}
+      {suggestedNext && (
+        <Paper withBorder p="md" radius="md">
+          <Group gap="xs" wrap="nowrap" align="center">
+            <Text size="sm" c="dimmed">
+              Próximo:
+            </Text>
+            <Anchor
+              component={Link}
+              to={suggestedNext.to}
+              size="sm"
+              fw={600}
+              style={{ display: 'inline-flex', alignItems: 'center', gap: 4 }}
+            >
+              {suggestedNext.label}
+              <IconArrowRight size={14} />
+            </Anchor>
+          </Group>
+        </Paper>
+      )}
       {after}
     </Stack>
   );

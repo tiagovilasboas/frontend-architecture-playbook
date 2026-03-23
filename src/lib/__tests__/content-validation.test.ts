@@ -34,6 +34,7 @@ const KNOWN_BLOCK_TYPES = new Set([
   'decisionWizard',
   'timeline',
   'glossary',
+  'canvasDiagram',
 ]);
 
 /** Emojis que costumam duplicar ícone (check, x, info, etc.) - ver ANALISE-EMOJI-SETA-ICONES.md */

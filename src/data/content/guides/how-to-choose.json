@@ -7,6 +7,10 @@
     "showGuideNav": "how-to-choose",
     "showRelated": true
   },
+  "suggestedNext": {
+    "label": "Comparação de Arquiteturas",
+    "to": "/guides/architecture-comparison"
+  },
   "body": [
     {
       "type": "hero",
