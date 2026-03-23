@@ -7,6 +7,10 @@
     "showGuideNav": "implementation-roadmap",
     "showRelated": true
   },
+  "suggestedNext": {
+    "label": "Estratégias de Migração",
+    "to": "/guides/migration-strategies"
+  },
   "body": [
     {
       "type": "hero",
@@ -87,7 +91,7 @@
             }
           ],
           "resultAlert": {
-            "message": "Métricas de performance mensuráveis: Lighthouse score, bundle size, LCP e FID documentados. Base sólida para próximas fases.",
+            "message": "Métricas de performance mensuráveis: Lighthouse score, bundle size, LCP e INP documentados. Base sólida para próximas fases.",
             "color": "green",
             "icon": "trending-up"
           }

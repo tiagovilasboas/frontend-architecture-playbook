@@ -24,6 +24,7 @@ import { readFileSync, existsSync } from 'fs';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DATA_DIR = join(__dirname, '..', 'data');
 const CONTENT_GUIDES_DIR = join(DATA_DIR, 'content', 'guides');
+const GLOSSARY_PATH = join(DATA_DIR, 'glossary', 'terms.json');
 
 interface PlaybookItem {
   href: string;
@@ -42,6 +43,22 @@ interface PlaybookSection {
 interface PlaybookData {
   baseUrl: string;
   navigation: PlaybookSection[];
+}
+
+interface GlossaryTerm {
+  id: string;
+  term: string;
+  termPt?: string;
+  definition: string;
+  category: string;
+  guideHref?: string;
+  guideLabel?: string;
+  references?: { label: string; url: string }[];
+}
+
+interface GlossaryData {
+  terms: GlossaryTerm[];
+  categories?: { id: string; label: string; order: number }[];
 }
 
 // Minimal types for content-driven guide JSON (same shape as app content-schema)
@@ -89,6 +106,17 @@ function loadPlaybook(): PlaybookData {
 function loadCases(): unknown[] {
   const raw = readFileSync(join(DATA_DIR, 'cases.json'), 'utf-8');
   return JSON.parse(raw) as unknown[];
+}
+
+function loadGlossary(): GlossaryTerm[] {
+  if (!existsSync(GLOSSARY_PATH)) return [];
+  try {
+    const raw = readFileSync(GLOSSARY_PATH, 'utf-8');
+    const data = JSON.parse(raw) as GlossaryData;
+    return data.terms ?? [];
+  } catch {
+    return [];
+  }
 }
 
 function loadGuideContent(slug: string): ContentPage | null {
@@ -256,6 +284,7 @@ const server = new McpServer({
 
 const playbook = loadPlaybook();
 const cases = loadCases();
+const glossaryTerms = loadGlossary();
 const baseUrl =
   playbook.baseUrl || 'https://frontend-architecture-playbook.vercel.app';
 
@@ -312,6 +341,28 @@ server.resource('playbook-cases', async () => ({
       uri: 'playbook://cases',
       mimeType: 'application/json',
       text: JSON.stringify(cases, null, 2),
+    },
+  ],
+}));
+
+server.resource('playbook-glossary', async () => ({
+  contents: [
+    {
+      uri: 'playbook://glossary',
+      mimeType: 'application/json',
+      text: JSON.stringify(
+        {
+          terms: glossaryTerms.map(t => ({
+            id: t.id,
+            term: t.term,
+            termPt: t.termPt,
+            definition: t.definition,
+            category: t.category,
+          })),
+        },
+        null,
+        2
+      ),
     },
   ],
 }));
@@ -393,12 +444,25 @@ server.tool('playbook_search', { query: z.string() }, async ({ query }) => {
   const sectionMatches = playbook.navigation.filter(s =>
     s.label.toLowerCase().includes(q)
   );
+  const termMatches = glossaryTerms.filter(
+    t =>
+      t.term.toLowerCase().includes(q) ||
+      (t.termPt ?? '').toLowerCase().includes(q) ||
+      t.definition.toLowerCase().includes(q)
+  );
   const result = {
     query,
     guides: matches.map(g => ({
       title: g.title || g.label,
       description: g.description,
       url: `${baseUrl}${g.href}`,
+    })),
+    glossary: termMatches.map(t => ({
+      term: t.term,
+      termPt: t.termPt,
+      definition:
+        t.definition.slice(0, 200) + (t.definition.length > 200 ? '...' : ''),
+      url: `${baseUrl}/guides/glossary#${t.id}`,
     })),
     sections: sectionMatches.map(s => ({
       section: s.label,
@@ -410,6 +474,37 @@ server.tool('playbook_search', { query: z.string() }, async ({ query }) => {
   };
   return { content: [{ type: 'text', text: JSON.stringify(result, null, 2) }] };
 });
+
+server.tool(
+  'playbook_get_glossary_term',
+  { termId: z.string() },
+  async ({ termId }) => {
+    const term = glossaryTerms.find(t => t.id === termId);
+    if (!term) {
+      return {
+        content: [
+          {
+            type: 'text',
+            text: `Term not found: ${termId}. Use playbook_search to find glossary terms.`,
+          },
+        ],
+      };
+    }
+    const text = [
+      `# ${term.term}${term.termPt ? ` (${term.termPt})` : ''}`,
+      '',
+      term.definition.replace(/\*\*(.+?)\*\*/g, '$1'),
+      '',
+      term.guideHref ? `Ver mais em: ${baseUrl}${term.guideHref}` : '',
+      term.references?.length
+        ? `\nReferências: ${term.references.map(r => r.label).join(', ')}`
+        : '',
+    ]
+      .filter(Boolean)
+      .join('\n');
+    return { content: [{ type: 'text', text }] };
+  }
+);
 
 server.tool('playbook_get_guide', { slug: z.string() }, async ({ slug }) => {
   const guide = getGuideBySlug(playbook, slug);

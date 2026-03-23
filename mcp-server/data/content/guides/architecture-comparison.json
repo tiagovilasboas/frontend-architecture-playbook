@@ -7,6 +7,10 @@
     "showGuideNav": "architecture-comparison",
     "showRelated": true
   },
+  "suggestedNext": {
+    "label": "19 Casos Reais",
+    "to": "/guides/cases"
+  },
   "body": [
     {
       "type": "hero",

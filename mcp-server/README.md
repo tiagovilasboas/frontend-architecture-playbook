@@ -15,14 +15,16 @@ MCP server that exposes the [Front-End Architecture Playbook](https://github.com
 | ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `playbook://index`           | Full navigation and all guides (title, description, URL).                                                                                                                     |
 | `playbook://cases`           | Real-world cases (Netflix, Spotify, eBay, Shopify, etc.) with challenge, solution, practices, results, and source link.                                                       |
-| `playbook://guide/{slug}`    | One guide by slug. **When content is available** (see “Guide content” below), returns **full guide body as Markdown**; otherwise metadata.                                    |
+| `playbook://glossary`        | All glossary terms (id, term, termPt, definition, category).                                                                                                                  |
+| `playbook://guide/{slug}`    | One guide by slug. **When content is available** (see "Guide content" below), returns **full guide body as Markdown**; otherwise metadata.                                    |
 | `playbook://reasoning-guide` | **Sequential thinking:** when to use it (architecture, gaps, best-practice violations) and the step-by-step reasoning flow. Use for architecture/gap/best-practice questions. |
 
 ### Tools
 
 | Tool                           | Description                                                                                                                                               |
 | ------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `playbook_search`              | Search by keyword in titles/descriptions. Args: `query` (string).                                                                                         |
+| `playbook_search`              | Search by keyword in titles, descriptions, and glossary terms. Args: `query` (string).                                                                    |
+| `playbook_get_glossary_term`   | Get one glossary term by id (e.g. `hydration`, `lcp`). Args: `termId` (string).                                                                           |
 | `playbook_get_guide`           | Get one guide by slug. **Returns full guide content (Markdown) when available.** Args: `slug` (string).                                                   |
 | `playbook_get_reasoning_guide` | Returns the **sequential thinking guide**: when and how to reason step-by-step for architecture, architecture gaps, or best-practice violations. No args. |
 | `playbook_list_guides`         | List all guides by section. No args.                                                                                                                      |

@@ -7,6 +7,10 @@
     "showGuideNav": "cases",
     "showRelated": true
   },
+  "suggestedNext": {
+    "label": "Roadmap de Implementação",
+    "to": "/guides/implementation-roadmap"
+  },
   "body": [
     { "type": "badges", "items": ["19 casos · fontes verificáveis"] },
     {

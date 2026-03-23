@@ -190,6 +190,28 @@
     },
     {
       "type": "section",
+      "title": "Referências",
+      "icon": "book",
+      "children": [
+        {
+          "type": "anchor",
+          "label": "Uncle Bob - The Clean Architecture",
+          "href": "https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html"
+        },
+        {
+          "type": "anchor",
+          "label": "Khalil Stemmler - Organizing App Logic",
+          "href": "https://khalilstemmler.com/articles/software-design-architecture/organizing-app-logic/"
+        },
+        {
+          "type": "anchor",
+          "label": "Bulletproof React - Project Structure",
+          "href": "https://github.com/alan2207/bulletproof-react"
+        }
+      ]
+    },
+    {
+      "type": "section",
       "title": "Referências e Recursos",
       "icon": "code",
       "children": [

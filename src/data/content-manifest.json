@@ -1,0 +1,280 @@
+{
+  "entries": [
+    {
+      "collection": "architectures",
+      "slug": "bff",
+      "title": "Backend-for-Frontend (BFF)",
+      "description": "Como criar uma API sob medida pro seu frontend, agregando dados de múltiplos services de forma otimizada."
+    },
+    {
+      "collection": "architectures",
+      "slug": "clean-architecture",
+      "title": "Clean Architecture no Front-End",
+      "description": "Separação clara de responsabilidades, testes fáceis e independência de frameworks. Seu código de negócio sobrevive a qualquer mudança de tecnologia."
+    },
+    {
+      "collection": "architectures",
+      "slug": "cqrs",
+      "title": "CQRS Frontend",
+      "description": "Command Query Responsibility Segregation - separa leitura de escrita para performance e clareza."
+    },
+    {
+      "collection": "architectures",
+      "slug": "event-sourcing",
+      "title": "Event Sourcing Frontend",
+      "description": "Arquitetura baseada em eventos para auditoria completa, time travel debugging e undo/redo natural."
+    },
+    {
+      "collection": "architectures",
+      "slug": "headless",
+      "title": "Headless Architecture",
+      "description": "Separação total entre backend (dados) e frontend (apresentação) para performance máxima e flexibilidade de stack."
+    },
+    {
+      "collection": "architectures",
+      "slug": "hexagonal",
+      "title": "Hexagonal Architecture (Ports & Adapters)",
+      "description": "Ports & Adapters - isola business logic no centro, conecta ao mundo externo via interfaces. Clean Architecture mais flexível."
+    },
+    {
+      "collection": "architectures",
+      "slug": "islands-architecture",
+      "title": "Islands Architecture",
+      "description": "HTML estático com ilhas de interatividade. Performance máxima, SEO perfeito."
+    },
+    {
+      "collection": "architectures",
+      "slug": "jamstack",
+      "title": "JAMstack",
+      "description": "JavaScript, APIs, Markup. Sites estáticos, performance máxima, segurança de sobra. Deploy simples, escalabilidade automática."
+    },
+    {
+      "collection": "architectures",
+      "slug": "layered",
+      "title": "Layered Architecture",
+      "description": "Arquitetura em 3 camadas clássica: Presentation, Business, Data. Simples, produtiva, funciona."
+    },
+    {
+      "collection": "architectures",
+      "slug": "micro-frontends",
+      "title": "Micro-Frontends",
+      "description": "Quebre aplicações grandes em pedaços pequenos. Times independentes, tecnologias diferentes, deploy separado."
+    },
+    {
+      "collection": "architectures",
+      "slug": "microservices-frontend",
+      "title": "Microservices Frontend",
+      "description": "Arquitetura distribuída onde cada domínio tem seu próprio frontend. Times autônomos, deploys independentes, tech diversity."
+    },
+    {
+      "collection": "architectures",
+      "slug": "monorepo",
+      "title": "Monorepo",
+      "description": "Um repositório, múltiplos projetos. Compartilhamento de código, tooling centralizado, refatoração segura."
+    },
+    {
+      "collection": "architectures",
+      "slug": "pwa",
+      "title": "Progressive Web Apps (PWA)",
+      "description": "Como criar web apps que funcionam offline, instalam como nativos e competem com App Store usando Service Workers e APIs modernas."
+    },
+    {
+      "collection": "architectures",
+      "slug": "spa",
+      "title": "Single Page Application",
+      "description": "Uma página, múltiplas rotas. JavaScript renderiza tudo, navegação instantânea, experiência de app nativo."
+    },
+    {
+      "collection": "architectures",
+      "slug": "ssr-ssg",
+      "title": "SSR & SSG",
+      "description": "Server-Side Rendering e Static Site Generation - como entregar conteúdo instantâneo e SEO que funciona de verdade."
+    },
+    {
+      "collection": "best-practices",
+      "slug": "clean-code",
+      "title": "Clean Code",
+      "description": "Código legível e manutenível - princípios fundamentais para escrever código que outros devs conseguem entender e manter."
+    },
+    {
+      "collection": "best-practices",
+      "slug": "dry",
+      "title": "DRY - Don't Repeat Yourself",
+      "description": "Elimine duplicação de código. Se você está escrevendo a mesma coisa duas vezes, você está fazendo algo errado."
+    },
+    {
+      "collection": "best-practices",
+      "slug": "kiss",
+      "title": "KISS - Keep It Simple, Stupid",
+      "description": "Simplicidade acima de tudo. Se você não consegue explicar seu código para um dev júnior, você está fazendo algo errado."
+    },
+    {
+      "collection": "best-practices",
+      "slug": "soc",
+      "title": "Separation of Concerns",
+      "description": "Separe responsabilidades claramente. Cada parte do sistema deve ter uma preocupação específica."
+    },
+    {
+      "collection": "best-practices",
+      "slug": "srp",
+      "title": "Single Responsibility Principle",
+      "description": "Uma classe, uma responsabilidade. Cada módulo deve ter apenas um motivo para mudar."
+    },
+    {
+      "collection": "best-practices",
+      "slug": "yagni",
+      "title": "YAGNI - You Aren't Gonna Need It",
+      "description": "Não implemente features futuras. Se você não precisa hoje, não implemente hoje. O futuro é incerto, o presente é real."
+    },
+    {
+      "collection": "guides",
+      "slug": "adr",
+      "title": "ADR - Architecture Decision Records",
+      "description": "Como documentar decisões arquiteturais com ADRs. Template, processo, e exemplos reais para times frontend."
+    },
+    {
+      "collection": "guides",
+      "slug": "architecture-comparison",
+      "title": "Comparação de Arquiteturas",
+      "description": "Compare arquiteturas baseado em métricas práticas. Encontre a certa para seu projeto."
+    },
+    {
+      "collection": "guides",
+      "slug": "cases",
+      "title": "Casos Reais de Impacto",
+      "description": "19 casos reais de empresas como Netflix, Shopify, eBay, Etsy, Zalando, Airbnb, Figma e outras. Cada caso com link para o artigo ou tech blog original."
+    },
+    {
+      "collection": "guides",
+      "slug": "dependency-rule",
+      "title": "Dependency Rule",
+      "description": "Código como uma cebola: camada de fora pode usar a de dentro; camada de dentro nunca usa a de fora. Simples assim."
+    },
+    {
+      "collection": "guides",
+      "slug": "glossary",
+      "title": "Glossário",
+      "description": "Conceitos de front-end com definição curta e link para o guia que aprofunda. SSR, hidratação, performance e mais."
+    },
+    {
+      "collection": "guides",
+      "slug": "how-to-choose",
+      "title": "Como Escolher uma Arquitetura",
+      "description": "Guia para escolher a arquitetura certa. Decision Wizard com 6 perguntas e sugestões baseadas no seu contexto."
+    },
+    {
+      "collection": "guides",
+      "slug": "implementation-roadmap",
+      "title": "Roadmap de Implementação",
+      "description": "Roadmap em 4 fases para evoluir a arquitetura frontend: performance, otimização, arquitetura e escala. Com checklists, ferramentas e critérios de avanço."
+    },
+    {
+      "collection": "guides",
+      "slug": "mcp",
+      "title": "MCP: use o playbook no Cursor",
+      "description": "Integração MCP (em construção). Configure o servidor para usar o conteúdo do playbook no Cursor: guias, casos e navegação via chat."
+    },
+    {
+      "collection": "guides",
+      "slug": "migration-strategies",
+      "title": "Estratégias de Migração",
+      "description": "Strangler Fig, Branch by Abstraction, Parallel Run: como migrar arquitetura frontend sem big rewrite. Com exemplos de código e checklist."
+    },
+    {
+      "collection": "guides",
+      "slug": "security-business",
+      "title": "Segurança & Negócio",
+      "description": "Segurança como decisão de negócio: impacto financeiro, priorização e como comunicar com stakeholders. Nível staff."
+    },
+    {
+      "collection": "guides",
+      "slug": "staff-entrega",
+      "title": "Staff · Arquitetura de Entrega",
+      "description": "Para Staff: performance, métricas, OKRs, Core Web Vitals e guardrails de entrega (SSR, SSG, JAMstack)."
+    },
+    {
+      "collection": "guides",
+      "slug": "staff-escala",
+      "title": "Staff · Escala & Times",
+      "description": "Para Staff: decisão de escala com evidência (casos, comparação), migração incremental e quando usar cada arquitetura."
+    },
+    {
+      "collection": "guides",
+      "slug": "staff-estrutura",
+      "title": "Staff · Estrutura de Código",
+      "description": "Para Staff: guardrails de camadas, quando documentar no ADR, revisão de estrutura e segurança."
+    },
+    {
+      "collection": "guides",
+      "slug": "staff-fundamentals",
+      "title": "Staff · Fundamentos",
+      "description": "Para Staff: usar fundamentos (Dependency Rule, Clean Code, SRP) como guardrails, critérios de revisão e quando exigir ADR."
+    },
+    {
+      "collection": "guides",
+      "slug": "staff-ui",
+      "title": "Staff · Construindo UI",
+      "description": "Para Staff: design system como guardrail, estado e state machines, Component-Driven e Atomic Design no time."
+    },
+    {
+      "collection": "guides",
+      "slug": "staff",
+      "title": "Para Staff",
+      "description": "Hub para nível Staff: decisão com evidência, performance e métricas, OKRs, regras de negócio, falar com o negócio e com back-end/front, boas práticas e guardrails. Staff por seção (Fundamentos, UI, Entrega, Estrutura, Escala)."
+    },
+    {
+      "collection": "guides",
+      "slug": "study-guide",
+      "title": "Por onde começar",
+      "description": "Roteiro que segmenta o conteúdo do playbook por nível: Júnior, Pleno, Sênior e Staff. Links para o que estudar em cada etapa."
+    },
+    {
+      "collection": "patterns",
+      "slug": "atomic-design",
+      "title": "Atomic Design",
+      "description": "Metodologia para criar design systems estruturados. Átomos, moléculas, organismos, templates, páginas."
+    },
+    {
+      "collection": "patterns",
+      "slug": "component-driven",
+      "title": "Component-Driven Development",
+      "description": "Construa interfaces como Lego com componentes reutilizáveis e composição poderosa."
+    },
+    {
+      "collection": "patterns",
+      "slug": "event-driven",
+      "title": "Event-Driven Architecture",
+      "description": "Arquitetura baseada em eventos e mensagens. useReducer, Zustand, XState, SSE."
+    },
+    {
+      "collection": "patterns",
+      "slug": "repository-pattern",
+      "title": "Repository Pattern",
+      "description": "Abstração da camada de dados. Seu código de negócio não precisa saber se os dados vêm de uma API, banco local ou arquivo JSON."
+    },
+    {
+      "collection": "patterns",
+      "slug": "security",
+      "title": "Security Patterns",
+      "description": "Técnicas e práticas para proteger aplicações front-end contra vulnerabilidades comuns."
+    },
+    {
+      "collection": "techniques",
+      "slug": "feature-flags",
+      "title": "Feature Flags",
+      "description": "Controle dinâmico de funcionalidades. Deploy seguro, testes em produção, rollback instantâneo."
+    },
+    {
+      "collection": "techniques",
+      "slug": "performance",
+      "title": "Performance: Quando Velocidade Vira Dinheiro",
+      "description": "Code splitting, lazy loading, chunks inteligentes e métricas que fazem diferença real. Técnicas práticas para otimizar performance e melhorar experiência do usuário."
+    },
+    {
+      "collection": "techniques",
+      "slug": "state-machines",
+      "title": "State Machines",
+      "description": "Máquinas de estado para controlar comportamento da aplicação. Estados previsíveis, transições claras."
+    }
+  ]
+}

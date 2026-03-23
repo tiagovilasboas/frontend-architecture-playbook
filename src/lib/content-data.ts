@@ -1,59 +1,140 @@
 /**
  * Loads content-driven pages from JSON.
- * Same data can be consumed by the app (ContentRenderer) and by MCP (copy or symlink to mcp-server/data/content).
+ * Uses lazy imports (eager: false) so each page is loaded on demand, not in the initial bundle.
+ * Manifest (meta only) is loaded eagerly for sync navigation/slugs.
  */
 import type { ContentPage } from './content-schema';
 
-// Vite: eager glob gives sync access; keys are paths relative to this file
-const modules = import.meta.glob<{ default: ContentPage }>(
+import manifestData from '../data/content-manifest.json';
+
+type ManifestEntry = {
+  collection: string;
+  slug: string;
+  title: string;
+  description: string;
+};
+const manifest = manifestData as { entries: ManifestEntry[] };
+
+// Vite: lazy glob – each JSON loaded only when requested
+const contentLoaders = import.meta.glob<{ default: ContentPage }>(
   '../data/content/**/*.json',
-  { eager: true }
+  { eager: false }
 );
 
-const contentMap = new Map<string, ContentPage>();
+const loaderKeys = Object.keys(contentLoaders);
 
-for (const path of Object.keys(modules)) {
-  const match = path.match(/\.\.\/data\/content\/([^/]+)\/(.+)\.json$/);
-  if (match) {
-    const [, collection, slug] = match;
-    const entry = (modules as Record<string, { default: ContentPage }>)[path];
-    if (entry?.default) {
-      contentMap.set(`${collection}/${slug}`, entry.default);
-    }
+function pathToKey(filePath: string): string | null {
+  const match = filePath.match(/\.\.\/data\/content\/([^/]+)\/(.+)\.json$/);
+  if (!match) return null;
+  const [, collection, slug] = match;
+  return `${collection}/${slug}`;
+}
+
+const pathByKey = new Map<string, string>();
+for (const p of loaderKeys) {
+  const k = pathToKey(p);
+  if (k) pathByKey.set(k, p);
+}
+
+const contentCache = new Map<string, ContentPage>();
+
+/** Promise cache to avoid duplicate in-flight requests (Suspense). */
+const promiseCache = new Map<string, Promise<ContentPage | null>>();
+
+function getOrCreatePromise(
+  collection: string,
+  slug: string
+): Promise<ContentPage | null> {
+  const key = `${collection}/${slug}`;
+  let p = promiseCache.get(key);
+  if (!p) {
+    p = loadDocContentImpl(collection, slug);
+    promiseCache.set(key, p);
   }
+  return p;
+}
+
+async function loadDocContentImpl(
+  collection: string,
+  slug: string
+): Promise<ContentPage | null> {
+  const key = `${collection}/${slug}`;
+  const cached = contentCache.get(key);
+  if (cached) return cached;
+
+  const loaderPath = pathByKey.get(key);
+  if (!loaderPath) return null;
+
+  const loader = (
+    contentLoaders as Record<string, () => Promise<{ default: ContentPage }>>
+  )[loaderPath];
+  if (!loader) return null;
+
+  try {
+    const mod = await loader();
+    const page = mod?.default;
+    if (page) {
+      contentCache.set(key, page);
+      return page;
+    }
+  } catch {
+    return null;
+  }
+  return null;
 }
 
 /**
- * Returns page content from JSON if it exists; otherwise null.
- * Used by DocPage to render ContentRenderer instead of a legacy React component.
+ * Loads page content from JSON (lazy). Returns null if no content exists.
+ * Uses cache – same slug won't re-fetch.
+ */
+export async function loadDocContent(
+  collection: string,
+  slug: string
+): Promise<ContentPage | null> {
+  return getOrCreatePromise(collection, slug);
+}
+
+/**
+ * Returns a promise for page content. Use with React.use() for Suspense.
+ * Same key returns the same promise (deduped).
+ */
+export function getDocContentPromise(
+  collection: string,
+  slug: string
+): Promise<ContentPage | null> {
+  return getOrCreatePromise(collection, slug);
+}
+
+/**
+ * Returns page content synchronously. Only when already cached (after loadDocContent).
+ * Prefer loadDocContent for initial load.
  */
 export function getDocContent(
   collection: string,
   slug: string
 ): ContentPage | null {
-  return contentMap.get(`${collection}/${slug}`) ?? null;
+  return contentCache.get(`${collection}/${slug}`) ?? null;
 }
 
-/** Metadata from JSON (single source of truth when content exists). */
+/** Metadata from manifest (sync). */
 export function getDocMeta(
   collection: string,
   slug: string
 ): { title: string; description: string } | null {
-  const page = contentMap.get(`${collection}/${slug}`);
-  if (!page?.meta?.title) return null;
-  return {
-    title: page.meta.title,
-    description: page.meta.description ?? '',
-  };
+  const entry = manifest.entries.find(
+    e => e.collection === collection && e.slug === slug
+  );
+  if (!entry) return null;
+  return { title: entry.title, description: entry.description ?? '' };
 }
 
-/** All (collection, slug) pairs that have content JSON (e.g. for MCP or sitemap). */
+/** All (collection, slug) pairs with content. */
 export function getContentDrivenSlugs(): {
   collection: string;
   slug: string;
 }[] {
-  return Array.from(contentMap.keys()).map(key => {
-    const [collection, slug] = key.split('/');
-    return { collection, slug };
-  });
+  return manifest.entries.map(e => ({
+    collection: e.collection,
+    slug: e.slug,
+  }));
 }

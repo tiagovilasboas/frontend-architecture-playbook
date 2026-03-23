@@ -151,6 +151,23 @@
     },
     {
       "type": "section",
+      "title": "Referências",
+      "icon": "book",
+      "children": [
+        {
+          "type": "anchor",
+          "label": "Robert C. Martin – Clean Code (livro)",
+          "href": "https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882"
+        },
+        {
+          "type": "anchor",
+          "label": "Clean Coders (Uncle Bob) – vídeos e artigos",
+          "href": "https://blog.cleancoder.com/"
+        }
+      ]
+    },
+    {
+      "type": "section",
       "title": "Resumo",
       "children": [
         {

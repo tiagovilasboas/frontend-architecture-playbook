@@ -149,6 +149,11 @@
           "color": "yellow",
           "icon": "alert-triangle"
         },
+        { "type": "title", "content": "Reversibilidade", "order": 4 },
+        {
+          "type": "text",
+          "content": "No ADR, deixe claro se a decisão é fácil de reverter (ex.: trocar lib de UI) ou cara (ex.: contrato público de API, escolha de runtime). Decisões irreversíveis exigem mais evidência e alinhamento — e devem estar explícitas nas Consequências."
+        },
         { "type": "title", "content": "Como usar no seu time", "order": 4 },
         {
           "type": "list",

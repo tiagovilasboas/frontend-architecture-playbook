@@ -24,7 +24,7 @@
           "items": [
             {
               "title": "Performance e métricas:",
-              "description": "Core Web Vitals (LCP, FID, CLS), tempo de carregamento. Casos com fonte (eBay 100ms = +0,5% Add to Cart)."
+              "description": "Core Web Vitals (LCP, INP, CLS), tempo de carregamento. Casos com fonte (eBay 100ms = +0,5% Add to Cart)."
             },
             {
               "title": "OKRs:",
@@ -77,6 +77,17 @@
           ]
         }
       ]
+    },
+    {
+      "type": "callout",
+      "title": "Referência técnica",
+      "content": "Core Web Vitals (LCP, INP, CLS), métricas em produção e boas práticas de medição: web.dev (Google). Use como base para OKRs e ADRs de entrega.",
+      "dimmed": true
+    },
+    {
+      "type": "anchor",
+      "label": "web.dev - Core Web Vitals e ferramentas",
+      "href": "https://web.dev/vitals-tools/"
     },
     {
       "type": "anchor",

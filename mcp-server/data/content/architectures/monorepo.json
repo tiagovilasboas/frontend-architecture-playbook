@@ -162,6 +162,64 @@
     },
     {
       "type": "section",
+      "title": "Quando NÃO usar",
+      "icon": "alert-triangle",
+      "children": [
+        {
+          "type": "alert",
+          "message": "Um único app pequeno ou time único não precisa de monorepo — um repositório simples basta. Evite quando: poucos pacotes sem compartilhamento real, time sem experiência com tooling (Nx/Turborepo), ou quando a prioridade é entregar MVP rápido.",
+          "color": "yellow",
+          "icon": "alert-triangle"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Para quem decide",
+      "icon": "scale",
+      "children": [
+        {
+          "type": "text",
+          "content": "Monorepo vs multi-repo: decisão organizacional com impacto técnico. Critérios práticos.",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "iconCards",
+          "cols": { "base": 1, "sm": 2 },
+          "cards": [
+            {
+              "icon": "check",
+              "iconColor": "green",
+              "title": "Monorepo faz sentido quando",
+              "items": [
+                "2+ apps ou libs compartilham código (componentes, tipos, utils)",
+                "Time único ou times que colaboram no mesmo produto",
+                "Refatoração cruzada é frequente"
+              ]
+            },
+            {
+              "icon": "alert-triangle",
+              "iconColor": "red",
+              "title": "Multi-repo faz sentido quando",
+              "items": [
+                "Times completamente independentes (empresas diferentes)",
+                "Ciclos de release desconectados",
+                "Compartilhamento raro (1 lib por trimestre)"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "alert",
+          "message": "Trade-off: monorepo facilita refatoração e consistência, mas exige tooling (Nx, Turborepo) e disciplina. Multi-repo isola times mas duplica trabalho. Métrica: quantas PRs cross-repo por mês? Se for muitas, monorepo reduz fricção.",
+          "color": "blue",
+          "icon": "bulb"
+        }
+      ]
+    },
+    {
+      "type": "section",
       "title": "Armadilhas Comuns",
       "icon": "alert-triangle",
       "children": [

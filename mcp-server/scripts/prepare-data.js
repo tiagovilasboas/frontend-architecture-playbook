@@ -49,6 +49,20 @@ copyCollection('architectures');
 copyCollection('patterns');
 copyCollection('techniques');
 
-console.log(
-  'Done. Content is in mcp-server/data/content/ (guides, best-practices, architectures, patterns, techniques)'
+// Copy glossary terms
+const glossarySrc = path.join(
+  repoRoot,
+  'src',
+  'data',
+  'glossary',
+  'terms.json'
 );
+const glossaryDir = path.join(mcpRoot, 'data', 'glossary');
+if (fs.existsSync(glossarySrc)) {
+  if (!fs.existsSync(glossaryDir))
+    fs.mkdirSync(glossaryDir, { recursive: true });
+  fs.copyFileSync(glossarySrc, path.join(glossaryDir, 'terms.json'));
+  console.log('glossary/', 'terms.json');
+}
+
+console.log('Done. Content is in mcp-server/data/ (content + glossary)');

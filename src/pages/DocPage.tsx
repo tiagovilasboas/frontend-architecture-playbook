@@ -1,7 +1,7 @@
+import { use, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { useEffect } from 'react';
 import { getDoc } from '../lib/content.tsx';
-import { getDocContent } from '../lib/content-data';
+import { getDocContentPromise } from '../lib/content-data';
 import { CodeHighlight } from '@mantine/code-highlight';
 import '@mantine/code-highlight/styles.css';
 import ContentRenderer from '../components/ContentRenderer';
@@ -16,8 +16,9 @@ type CollectionType =
 
 export default function DocPage() {
   const { collection, slug } = useParams();
-  const contentPage =
-    collection && slug ? getDocContent(collection, slug) : null;
+  const contentPromise =
+    collection && slug ? getDocContentPromise(collection, slug) : null;
+  const contentPage = contentPromise ? use(contentPromise) : null;
   const doc =
     collection && slug ? getDoc(collection as CollectionType, slug) : null;
 

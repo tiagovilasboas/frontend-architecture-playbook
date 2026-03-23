@@ -7,6 +7,10 @@
     "showGuideNav": "dependency-rule",
     "showRelated": true
   },
+  "suggestedNext": {
+    "label": "Como Escolher Arquitetura",
+    "to": "/guides/how-to-choose"
+  },
   "body": [
     {
       "type": "hero",
@@ -214,10 +218,10 @@
           "content": "No dia a dia, a regra aparece na estrutura de pastas e em quem importa quem. Abaixo: como organizar e como checar se está certo."
         },
         {
-          "type": "codeExample",
-          "title": "1. Estrutura de Pastas (ASCII)",
-          "description": "Como na cebola: tela (fora) importa regras de negócio (dentro), que importa quem acessa dados (mais dentro), que importa o núcleo (centro). Sempre para dentro.",
-          "code": "src/\n├── domain/           ← mais interno (não importa nada de fora)\n│   ├── entities/\n│   └── rules/\n├── repositories/    ← importa só domain\n│   └── user.repository.ts\n├── services/        ← importa domain + repositories\n│   └── user.service.ts\n└── ui/               ← mais externo (pode importar tudo)\n    ├── components/\n    └── pages/"
+          "type": "canvasDiagram",
+          "diagram": "dependency-rule-folders",
+          "title": "1. Estrutura de Pastas",
+          "description": "Como na cebola: tela (fora) importa regras de negócio (dentro), que importa quem acessa dados (mais dentro), que importa o núcleo (centro). Sempre para dentro."
         },
         {
           "type": "section",

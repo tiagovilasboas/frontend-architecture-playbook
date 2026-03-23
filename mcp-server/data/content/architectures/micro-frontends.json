@@ -127,6 +127,57 @@
     },
     {
       "type": "section",
+      "title": "Para quem decide",
+      "icon": "scale",
+      "children": [
+        {
+          "type": "text",
+          "content": "Staff, Tech Lead ou PO precisa defender ou rejeitar micro-frontends. Abaixo: critérios práticos e trade-offs.",
+          "size": "sm",
+          "dimmed": true
+        },
+        {
+          "type": "iconCards",
+          "cols": { "base": 1, "sm": 2 },
+          "cards": [
+            {
+              "icon": "check",
+              "iconColor": "green",
+              "title": "Use quando",
+              "items": [
+                "3+ times independentes (autonomia real, não só wishful thinking)",
+                "CI/CD maduro (deploy por app, rollback, preview envs)",
+                "Produtos/domínios claramente separados (catálogo vs checkout vs admin)"
+              ]
+            },
+            {
+              "icon": "alert-triangle",
+              "iconColor": "red",
+              "title": "Evite quando",
+              "items": [
+                "Menos de 3 times → monorepo resolve",
+                "Sem CI/CD → deploy independente vira caos",
+                "Domínios embrulhados → integração vira pesadelo"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "alert",
+          "message": "Trade-off central: overhead de infra (shell, Module Federation, CSS, roteamento) vs ganho de autonomia. Se times já bloqueiam uns aos outros, micro-frontends ajudam. Se o problema é falta de processos, resolve isso primeiro.",
+          "color": "blue",
+          "icon": "bulb"
+        },
+        {
+          "type": "text",
+          "content": "Métrica simples: quantas vezes por mês um time bloqueia outro em deploy ou PR? Se for zero, micro-frontends são overkill.",
+          "size": "sm",
+          "dimmed": true
+        }
+      ]
+    },
+    {
+      "type": "section",
       "title": "Armadilhas Comuns",
       "icon": "alert-triangle",
       "children": [
@@ -159,6 +210,28 @@
           "color": "green",
           "icon": "check",
           "message": "Quando NÃO usar: < 3 times independentes → Monorepo resolve. < 50 devs → O overhead não compensa. Sem CI/CD maduro → Deploy independente exige preview deploys, rollback por app e feature flags."
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Referências",
+      "icon": "book",
+      "children": [
+        {
+          "type": "anchor",
+          "label": "Martin Fowler - Micro Frontends",
+          "href": "https://martinfowler.com/articles/micro-frontends.html"
+        },
+        {
+          "type": "anchor",
+          "label": "Module Federation - Documentação",
+          "href": "https://module-federation.io/"
+        },
+        {
+          "type": "anchor",
+          "label": "Single-SPA - Framework",
+          "href": "https://single-spa.js.org/"
         }
       ]
     },

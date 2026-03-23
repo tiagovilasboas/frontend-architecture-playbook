@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "kill-port 5173 && vite",
     "prepare-data:mcp": "cd mcp-server && npm run prepare-data",
-    "prebuild": "npm run prepare-data:mcp",
+    "prebuild": "node scripts/generate-content-manifest.mjs && npm run prepare-data:mcp",
     "build": "tsc && vite build",
     "lint": "eslint .",
     "lint:fix": "eslint --fix",
@@ -14,7 +14,7 @@
     "format:check": "prettier --check .",
     "preview": "vite preview",
     "prepare": "node scripts/prepare-husky.mjs",
-    "postinstall": "npm run prepare-data:mcp",
+    "postinstall": "node scripts/generate-content-manifest.mjs && npm run prepare-data:mcp",
     "test": "jest",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui"
