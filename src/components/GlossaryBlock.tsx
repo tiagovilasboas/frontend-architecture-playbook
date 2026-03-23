@@ -78,6 +78,7 @@ export default function GlossaryBlock() {
           terms.map(term => (
             <Paper
               key={term.id}
+              id={term.id}
               withBorder
               p="md"
               radius="md"

@@ -161,6 +161,11 @@
           "message": "Complexidade de hidratação: Hidratar ilhas pode ser complexo. Use frameworks como Astro ou Fresh que facilitam isso."
         },
         {
+          "type": "anchor",
+          "label": "Ver Partial Hydration no Glossário",
+          "to": "/guides/glossary#partial-hydration"
+        },
+        {
           "type": "alert",
           "color": "orange",
           "icon": "alert-triangle",
