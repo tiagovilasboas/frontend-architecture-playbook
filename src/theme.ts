@@ -14,6 +14,7 @@ import {
 } from '@mantine/core';
 import type { MantineThemeOverride } from '@mantine/core';
 import { brand, accent, primaryGreen } from './theme/colors';
+import { BODY_TEXT_MIN_PX } from './theme/mobile-ux-tokens.ts';
 
 const CONTAINER_SIZES: Record<string, string> = {
   xxs: rem('200px'),
@@ -29,7 +30,7 @@ export const theme: MantineThemeOverride = createTheme({
   fontSizes: {
     xs: rem('12px'),
     sm: rem('14px'),
-    md: rem('16px'),
+    md: rem(`${BODY_TEXT_MIN_PX}px`),
     lg: rem('18px'),
     xl: rem('20px'),
     '2xl': rem('24px'),

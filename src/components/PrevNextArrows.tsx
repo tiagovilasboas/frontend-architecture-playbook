@@ -4,6 +4,10 @@ import { Box, UnstyledButton, Tooltip } from '@mantine/core';
 import { IconChevronLeft, IconChevronRight } from '@tabler/icons-react';
 import { getPrevNext } from '../lib/navigation';
 import { useBreakpoints } from '../hooks/useBreakpoints';
+import {
+  DOC_ARROW_CONTENT_INSET_PX,
+  POINTER_TARGET_COMFORTABLE_PX,
+} from '../theme/mobile-ux-tokens.ts';
 
 type Direction = 'prev' | 'next';
 
@@ -17,8 +21,7 @@ function NavArrow({ direction, item }: NavArrowProps) {
   const { isMobile } = useBreakpoints();
   if (!item) return null;
 
-  /* 44×44 min for touch targets (WCAG 2.2); desktop keeps 44 */
-  const size = 44;
+  const size = POINTER_TARGET_COMFORTABLE_PX;
   const iconSize = isMobile ? 22 : 24;
 
   return (
@@ -83,7 +86,7 @@ export default function PrevNextArrows({ children }: PrevNextArrowsProps) {
         <Box
           style={{
             position: 'fixed',
-            left: isMobile ? 8 : 16,
+            left: isMobile ? 0 : 16,
             top: '50%',
             transform: 'translateY(-50%)',
             zIndex: 100,
@@ -96,7 +99,7 @@ export default function PrevNextArrows({ children }: PrevNextArrowsProps) {
         <Box
           style={{
             position: 'fixed',
-            right: isMobile ? 8 : 16,
+            right: isMobile ? 0 : 16,
             top: '50%',
             transform: 'translateY(-50%)',
             zIndex: 100,
@@ -106,11 +109,13 @@ export default function PrevNextArrows({ children }: PrevNextArrowsProps) {
         </Box>
       )}
 
-      {/* Conteúdo com padding lateral para não ficar por baixo das setas (44px + 8px gap) */}
+      {/* Mobile: inset from mobile-ux-tokens; arrows overlay edge strip (z-index) */}
       <Box
         style={{
-          paddingLeft: prev || next ? (isMobile ? 56 : 32) : 0,
-          paddingRight: prev || next ? (isMobile ? 56 : 32) : 0,
+          paddingLeft:
+            prev || next ? (isMobile ? DOC_ARROW_CONTENT_INSET_PX : 32) : 0,
+          paddingRight:
+            prev || next ? (isMobile ? DOC_ARROW_CONTENT_INSET_PX : 32) : 0,
         }}
       >
         {children}

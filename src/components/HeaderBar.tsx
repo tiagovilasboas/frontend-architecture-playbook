@@ -47,9 +47,16 @@ export default function HeaderBar({ opened, onBurger }: Props) {
     >
       <Group
         h={56}
-        px={isMobile ? 'lg' : 'xl'}
         justify="space-between"
         wrap="nowrap"
+        style={{
+          paddingLeft: isMobile
+            ? 'env(safe-area-inset-left, 0px)'
+            : 'var(--mantine-spacing-xl)',
+          paddingRight: isMobile
+            ? 'env(safe-area-inset-right, 0px)'
+            : 'var(--mantine-spacing-xl)',
+        }}
       >
         <Group gap="lg" wrap="nowrap" style={{ minWidth: 0, flex: 1 }}>
           {!isDesktop && (
@@ -94,9 +101,12 @@ export default function HeaderBar({ opened, onBurger }: Props) {
 
           {isDesktop && (
             <Group gap="xs" wrap="nowrap" style={{ flexShrink: 0 }} ml="md">
-              {NAV_JOURNEY.map((section) => {
+              {NAV_JOURNEY.map(section => {
                 const label = section.shortLabel ?? section.label;
-                const active = isSectionActive(location.pathname, section.items);
+                const active = isSectionActive(
+                  location.pathname,
+                  section.items
+                );
                 const isDirectLink = section.items.length === 1;
                 const firstHref = section.items[0]?.href;
 
@@ -150,13 +160,14 @@ export default function HeaderBar({ opened, onBurger }: Props) {
                       </UnstyledButton>
                     </Menu.Target>
                     <Menu.Dropdown>
-                      {section.items.map((item) => (
+                      {section.items.map(item => (
                         <Menu.Item
                           key={item.href}
                           component={Link}
                           to={item.href}
                           style={{
-                            fontWeight: location.pathname === item.href ? 600 : 500,
+                            fontWeight:
+                              location.pathname === item.href ? 600 : 500,
                             color:
                               location.pathname === item.href
                                 ? 'var(--mantine-color-green-6)'
@@ -174,7 +185,11 @@ export default function HeaderBar({ opened, onBurger }: Props) {
           )}
         </Group>
 
-        <Group gap="md" wrap="nowrap" style={{ flexShrink: 0 }}>
+        <Group
+          gap={isMobile ? 'xs' : 'md'}
+          wrap="nowrap"
+          style={{ flexShrink: 0 }}
+        >
           <ActionIcon
             onClick={() => toggleColorScheme()}
             variant="light"
@@ -195,11 +210,7 @@ export default function HeaderBar({ opened, onBurger }: Props) {
               rel="noopener noreferrer"
               style={{ textDecoration: 'none' }}
             >
-              <ActionIcon
-                variant="light"
-                size="lg"
-                aria-label="GitHub"
-              >
+              <ActionIcon variant="light" size="lg" aria-label="GitHub">
                 <IconBrandGithub size={18} />
               </ActionIcon>
             </Anchor>

@@ -77,21 +77,6 @@ test.describe('Navigation', () => {
     await expect(page).toHaveURL('/');
   });
 
-  test('mobile viewport: bottom nav visible with Início and Busca (Stripe-style)', async ({
-    page,
-  }) => {
-    await page.setViewportSize({ width: 390, height: 844 });
-    await page.goto('/');
-    const bottomNav = page.locator('.mobile-bottom-nav');
-    await expect(bottomNav).toBeVisible({ timeout: 10000 });
-    await expect(
-      page.getByRole('button', { name: /Ir para Início|Início/i })
-    ).toBeVisible();
-    await expect(
-      page.getByRole('button', { name: /Abrir busca|Busca/i })
-    ).toBeVisible();
-  });
-
   test('from home "Bora começar" card navigates to dependency-rule', async ({
     page,
   }) => {

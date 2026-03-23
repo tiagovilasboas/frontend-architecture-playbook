@@ -194,12 +194,7 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
         ? slugifyForId(block.title)
         : undefined;
       return (
-        <Paper
-          key={key}
-          withBorder
-          p={{ base: 'md', sm: 'xl' }}
-          radius="md"
-        >
+        <Paper key={key} withBorder p={{ base: 'xs', sm: 'xl' }} radius="md">
           {(block.title || iconEl) && (
             <Group
               gap="sm"
@@ -231,7 +226,7 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
             </Group>
           )}
           {block.children?.length ? (
-            <Stack gap={{ base: 'sm', sm: 'md' }}>
+            <Stack gap={{ base: 'xs', sm: 'md' }}>
               {block.children.map((child, i) => renderBlock(child, i))}
             </Stack>
           ) : null}
@@ -260,13 +255,14 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
     case 'list': {
       const items = Array.isArray(block.items) ? block.items : [];
       const iconEl = block.icon ? (
-        <ThemeIcon size={18} radius="xl" >
+        <ThemeIcon size={18} radius="xl">
           {getIcon(block.icon, 10)}
         </ThemeIcon>
       ) : undefined;
       return (
         <List
           key={key}
+          size="md"
           spacing={block.spacing ?? 'sm'}
           icon={iconEl}
           listStyleType={block.ordered ? 'decimal' : undefined}
@@ -342,7 +338,7 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
               </Title>
             )}
             {block.description && (
-              <Text size="sm" c="dimmed">
+              <Text size="md" c="dimmed">
                 {block.description}
               </Text>
             )}
@@ -359,7 +355,7 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
               </Title>
             )}
             {block.description && (
-              <Text size="sm" c="dimmed">
+              <Text size="md" c="dimmed">
                 {block.description}
               </Text>
             )}
@@ -391,14 +387,14 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
       const cards = Array.isArray(block.cards) ? block.cards : [];
       const cols = block.cols ?? { base: 1, sm: 2 };
       return (
-        <SimpleGrid key={key} cols={cols} spacing="md">
+        <SimpleGrid key={key} cols={cols} spacing={{ base: 'xs', sm: 'md' }}>
           {cards.map((card, i) => {
             const iconEl = card.icon ? getIcon(card.icon, 20) : null;
             return (
               <Card
                 key={i}
                 withBorder
-                p="md"
+                p={{ base: 'xs', sm: 'md' }}
                 component={Link}
                 to={card.to}
                 style={{ textDecoration: 'none' }}
@@ -422,7 +418,7 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
                   <div>
                     <Text fw={600}>{card.title}</Text>
                     {card.description && (
-                      <Text size="xs" c="dimmed">
+                      <Text size="md" c="dimmed">
                         {card.description}
                       </Text>
                     )}
@@ -439,11 +435,11 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
       const iconCards = Array.isArray(block.cards) ? block.cards : [];
       const cols = block.cols ?? { base: 1, sm: 2 };
       return (
-        <SimpleGrid key={key} cols={cols} spacing="md">
+        <SimpleGrid key={key} cols={cols} spacing={{ base: 'xs', sm: 'md' }}>
           {iconCards.map((c, i) => {
             const iconEl = c.icon ? getIcon(c.icon, 20) : null;
             return (
-              <Card key={i} withBorder p="md">
+              <Card key={i} withBorder p={{ base: 'xs', sm: 'md' }}>
                 <Group
                   gap="sm"
                   mb={c.items?.length ? 'sm' : undefined}
@@ -467,14 +463,14 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
                       {c.title}
                     </Text>
                     {c.description && !c.items?.length && (
-                      <Text size="sm" c="dimmed">
+                      <Text size="md" c="dimmed">
                         {c.description}
                       </Text>
                     )}
                   </div>
                 </Group>
                 {c.items?.length ? (
-                  <List size="sm" spacing="xs">
+                  <List size="md" spacing="xs">
                     {c.items.map((item, j) => (
                       <List.Item key={j}>{item}</List.Item>
                     ))}
@@ -490,7 +486,7 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
     case 'linkList': {
       const links = Array.isArray(block.links) ? block.links : [];
       const iconEl = block.icon ? (
-        <ThemeIcon size={20} radius="xl" >
+        <ThemeIcon size={20} radius="xl">
           {getIcon(block.icon, 12)}
         </ThemeIcon>
       ) : undefined;
@@ -568,11 +564,11 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
       const richCards = Array.isArray(block.cards) ? block.cards : [];
       const cols = block.cols ?? { base: 1, md: 2 };
       return (
-        <SimpleGrid key={key} cols={cols} spacing="lg">
+        <SimpleGrid key={key} cols={cols} spacing={{ base: 'xs', sm: 'lg' }}>
           {richCards.map((c, i) => {
             const iconEl = c.icon ? getIcon(c.icon, 24) : null;
             return (
-              <Card key={i} withBorder p="xl" radius="lg">
+              <Card key={i} withBorder p={{ base: 'sm', sm: 'xl' }} radius="lg">
                 <Stack gap="sm">
                   <Group gap="sm" align="flex-start">
                     {iconEl && (
@@ -590,18 +586,18 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
                         {c.title}
                       </Text>
                       {c.subtitle && (
-                        <Text size="sm" c="dimmed">
+                        <Text size="md" c="dimmed">
                           {c.subtitle}
                         </Text>
                       )}
                     </div>
                   </Group>
-                  {c.bodyText && <Text size="sm">{c.bodyText}</Text>}
+                  {c.bodyText && <Text size="md">{c.bodyText}</Text>}
                   {c.links?.length ? (
                     <List
                       spacing="xs"
                       icon={
-                        <ThemeIcon size={20} radius="xl" >
+                        <ThemeIcon size={20} radius="xl">
                           {getIcon('arrow-right', 12)}
                         </ThemeIcon>
                       }
@@ -675,8 +671,8 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
 
     case 'decisionWizard':
       return (
-        <Paper key={key} withBorder p="md" radius="lg">
-          <Stack gap="lg">
+        <Paper key={key} withBorder p={{ base: 'xs', sm: 'md' }} radius="lg">
+          <Stack gap={{ base: 'md', sm: 'lg' }}>
             <div>
               <Title order={2} mb="sm">
                 Decision Wizard v3.0
@@ -734,11 +730,11 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
                 title={item.title}
               >
                 {item.description ? (
-                  <Text size="sm" c="dimmed" mb="md">
+                  <Text size="md" c="dimmed" mb="md">
                     {item.description}
                   </Text>
                 ) : null}
-                <List size="sm" spacing="xs">
+                <List size="md" spacing="xs">
                   {(item.items || []).map((bullet, j) => (
                     <List.Item key={j}>{bullet}</List.Item>
                   ))}
@@ -755,7 +751,7 @@ function renderBlock(block: ContentBlock, index: number): React.ReactNode {
               <Text size="sm" fw={600} mb={4}>
                 Resultado Esperado:
               </Text>
-              <Text size="sm">{resultAlert.message}</Text>
+              <Text size="md">{resultAlert.message}</Text>
             </Alert>
           ) : null}
         </Stack>
@@ -776,7 +772,7 @@ export interface ContentRendererProps {
 export default function ContentRenderer({ page, after }: ContentRendererProps) {
   const body = Array.isArray(page?.body) ? page.body : [];
   return (
-    <Stack gap={{ base: 'sm', sm: 'md' }}>
+    <Stack gap={{ base: 'xs', sm: 'md' }}>
       {body.map((block, index) => renderBlock(block, index))}
       {after}
     </Stack>

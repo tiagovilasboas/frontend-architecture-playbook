@@ -3,9 +3,11 @@ import { Breadcrumbs, Anchor, Text } from '@mantine/core';
 import { Link, useLocation } from 'react-router-dom';
 import { IconHome, IconChevronRight } from '@tabler/icons-react';
 import { getBreadcrumbItems } from '../lib/breadcrumbs';
+import { useBreakpoints } from '../hooks/useBreakpoints.ts';
 
 export default function AppBreadcrumbs() {
   const location = useLocation();
+  const { isMobile } = useBreakpoints();
 
   if (location.pathname === '/') return null;
 
@@ -16,8 +18,12 @@ export default function AppBreadcrumbs() {
       className="app-breadcrumbs"
       aria-label="Navegação"
       style={{
-        marginTop: 'var(--mantine-spacing-md)',
-        marginBottom: 'var(--mantine-spacing-md)',
+        marginTop: isMobile
+          ? 'var(--mantine-spacing-xs)'
+          : 'var(--mantine-spacing-md)',
+        marginBottom: isMobile
+          ? 'var(--mantine-spacing-xs)'
+          : 'var(--mantine-spacing-md)',
       }}
     >
       <Breadcrumbs

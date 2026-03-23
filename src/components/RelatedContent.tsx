@@ -3,8 +3,10 @@ import { Paper, Stack, Title, Group, Card, Text } from '@mantine/core';
 import { Link } from 'react-router-dom';
 import { IconArrowRight, IconBook } from '@tabler/icons-react';
 import { getDoc, guides, architectures, patterns } from '../lib/content.tsx';
+import { useBreakpoints } from '../hooks/useBreakpoints.ts';
 
 export function RelatedContent() {
+  const { isMobile } = useBreakpoints();
   const { collection, slug } = useParams();
   if (!collection || !slug) return null;
 
@@ -49,8 +51,8 @@ export function RelatedContent() {
   if (related.length === 0) return null;
 
   return (
-    <Paper withBorder p="lg" radius="md" mt="xl">
-      <Stack gap="md">
+    <Paper withBorder p={isMobile ? 'sm' : 'lg'} radius="md" mt="xl">
+      <Stack gap={isMobile ? 'sm' : 'md'}>
         <Group gap="xs">
           <IconBook size={20} />
           <Title order={3} size="h4">
@@ -58,14 +60,14 @@ export function RelatedContent() {
           </Title>
         </Group>
 
-        <Group gap="md" wrap="wrap">
+        <Group gap={isMobile ? 'xs' : 'md'} wrap="wrap">
           {related.map(doc => (
             <Card
               key={doc.slug}
               component={Link}
               to={`/${doc.collection}/${doc.slug}`}
               withBorder
-              p="md"
+              p={isMobile ? 'xs' : 'md'}
               radius="md"
               style={{
                 flex: 1,

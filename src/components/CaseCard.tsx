@@ -20,6 +20,7 @@ import {
   IconChevronUp,
   IconUsers,
 } from '@tabler/icons-react';
+import { useBreakpoints } from '../hooks/useBreakpoints.ts';
 
 export interface Case {
   company: string;
@@ -41,6 +42,7 @@ interface CaseCardProps {
 
 export function CaseCard({ case_, index }: CaseCardProps) {
   const [expanded, setExpanded] = useState(false);
+  const { isMobile } = useBreakpoints();
 
   // Extrair métricas de escala do título
   const scaleMatch = case_.title.match(/- (\d+[MBK]+\+?) usuários?/);
@@ -50,7 +52,7 @@ export function CaseCard({ case_, index }: CaseCardProps) {
     <Card
       withBorder
       shadow="sm"
-      padding="lg"
+      padding={isMobile ? 'sm' : 'lg'}
       radius="md"
       style={{ cursor: 'pointer' }}
       onClick={() => setExpanded(!expanded)}
@@ -73,14 +75,9 @@ export function CaseCard({ case_, index }: CaseCardProps) {
               >
                 {case_.company}
               </Text>
-              <Badge variant="light">
-                Case #{index + 1}
-              </Badge>
+              <Badge variant="light">Case #{index + 1}</Badge>
               {scale && (
-                <Badge
-                  variant="light"
-                  leftSection={<IconUsers size={12} />}
-                >
+                <Badge variant="light" leftSection={<IconUsers size={12} />}>
                   {scale}
                 </Badge>
               )}
@@ -134,7 +131,7 @@ export function CaseCard({ case_, index }: CaseCardProps) {
               </Text>
               <Group gap="xs">
                 {case_.practices.map(practice => (
-                  <Badge key={practice} variant="light" size="sm" >
+                  <Badge key={practice} variant="light" size="sm">
                     {practice}
                   </Badge>
                 ))}
@@ -142,19 +139,13 @@ export function CaseCard({ case_, index }: CaseCardProps) {
             </div>
 
             {/* Results */}
-            <Alert
-              icon={<IconTrendingUp size={16} />}
-              radius="md"
-            >
+            <Alert icon={<IconTrendingUp size={16} />} radius="md">
               <Text fw={600} size="sm" mb="xs">
                 Impacto Real:
               </Text>
               <List spacing={4} size="sm">
                 {case_.results.map((result, idx) => (
-                  <List.Item
-                    key={idx}
-                    icon={<IconCheckbox size={14} />}
-                  >
+                  <List.Item key={idx} icon={<IconCheckbox size={14} />}>
                     <Text fw={500}>{result}</Text>
                   </List.Item>
                 ))}

@@ -55,7 +55,22 @@ export default function Home() {
   const { isMobile, isSmallMobile } = useBreakpoints();
 
   return (
-    <Box px={isMobile ? 'md' : 'md'} mt={0} w="100%" maw="90%" mx="auto">
+    <Box
+      mt={0}
+      w="100%"
+      maw={isMobile ? '100%' : '90%'}
+      mx="auto"
+      px={isMobile ? undefined : 'md'}
+      style={
+        isMobile
+          ? {
+              // Lateral mínimo: só safe-area (notch); sem padding extra
+              paddingLeft: 'env(safe-area-inset-left, 0px)',
+              paddingRight: 'env(safe-area-inset-right, 0px)',
+            }
+          : undefined
+      }
+    >
       <motion.div
         variants={containerVariants}
         initial="hidden"
@@ -69,7 +84,8 @@ export default function Home() {
               style={{
                 position: 'relative',
                 width: '100%',
-                minHeight: isMobile ? 380 : 480,
+                // Mobile: altura pelo conteúdo + respiro (evita bloco vazio ou apertado)
+                minHeight: isMobile ? undefined : 480,
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -81,38 +97,56 @@ export default function Home() {
                 style={{
                   position: 'relative',
                   zIndex: 1,
-                  padding: isMobile ? '2.5rem 0' : '3.5rem 0',
                   width: '100%',
                   maxWidth: 720,
+                  // Mobile: gutter legível sem “grudar” no vidro; desktop mantém só vertical
+                  padding: isMobile
+                    ? undefined
+                    : '3.5rem max(1rem, env(safe-area-inset-left)) 3.5rem max(1rem, env(safe-area-inset-right))',
+                  paddingTop: isMobile
+                    ? 'max(1.75rem, env(safe-area-inset-top))'
+                    : undefined,
+                  paddingBottom: isMobile ? '2rem' : undefined,
+                  paddingLeft: isMobile
+                    ? 'env(safe-area-inset-left, 0px)'
+                    : undefined,
+                  paddingRight: isMobile
+                    ? 'env(safe-area-inset-right, 0px)'
+                    : undefined,
                 }}
-                gap={isMobile ? 'lg' : 'xl'}
+                gap={isMobile ? 'md' : 'xl'}
               >
                 <HeroTitle
                   size={
-                    isSmallMobile ? '1.75rem' : isMobile ? '2.25rem' : '3rem'
+                    isSmallMobile
+                      ? '1.5rem'
+                      : isMobile
+                        ? 'clamp(1.5rem, 5.5vw, 1.85rem)'
+                        : '3rem'
                   }
                   mb={0}
                   style={{
-                    lineHeight: 1.15,
+                    lineHeight: 1.2,
                     fontWeight: 800,
                     maxWidth: '100%',
                     letterSpacing: '-0.02em',
+                    overflowWrap: 'break-word',
                   }}
                 >
                   Front-End Architecture Playbook
                 </HeroTitle>
 
                 <Text
-                  size={isMobile ? 'md' : 'lg'}
+                  size={isMobile ? 'sm' : 'lg'}
                   fw={600}
-                  style={{ lineHeight: 1.4 }}
+                  style={{ lineHeight: 1.45 }}
                   maw={560}
                 >
                   Do fundamento à decisão, com fonte em tudo.
                 </Text>
 
                 <Text
-                  size={isMobile ? 'sm' : 'md'}
+                  size={isMobile ? 'xs' : 'md'}
                   c="dimmed"
                   style={{ lineHeight: 1.6 }}
                   maw={540}
@@ -124,48 +158,97 @@ export default function Home() {
                   </Text>
                 </Text>
 
-                <Group gap="sm" justify="center" wrap="wrap">
-                  <Button
-                    component={Link}
-                    to="/guides/how-to-choose"
-                    size="lg"
-                    radius="md"
-                    variant="filled"
-                    color="green"
-                    leftSection={<IconRocket size={18} />}
-                  >
-                    Encontre sua Arquitetura
-                  </Button>
-                  <Button
-                    component={Link}
-                    to="/guides/dependency-rule"
-                    size="lg"
-                    radius="md"
-                    variant="default"
-                    color="green"
-                  >
-                    Dependency Rule
-                  </Button>
-                </Group>
+                {isMobile ? (
+                  <Stack gap="sm" w="100%" mx="auto" align="stretch">
+                    <Button
+                      component={Link}
+                      to="/guides/how-to-choose"
+                      size="md"
+                      radius="md"
+                      variant="filled"
+                      color="green"
+                      fullWidth
+                      leftSection={<IconRocket size={18} />}
+                    >
+                      Encontre sua Arquitetura
+                    </Button>
+                    <Button
+                      component={Link}
+                      to="/guides/dependency-rule"
+                      size="md"
+                      radius="md"
+                      variant="default"
+                      color="green"
+                      fullWidth
+                    >
+                      Dependency Rule
+                    </Button>
+                  </Stack>
+                ) : (
+                  <Group gap="sm" justify="center" wrap="wrap">
+                    <Button
+                      component={Link}
+                      to="/guides/how-to-choose"
+                      size="lg"
+                      radius="md"
+                      variant="filled"
+                      color="green"
+                      leftSection={<IconRocket size={18} />}
+                    >
+                      Encontre sua Arquitetura
+                    </Button>
+                    <Button
+                      component={Link}
+                      to="/guides/dependency-rule"
+                      size="lg"
+                      radius="md"
+                      variant="default"
+                      color="green"
+                    >
+                      Dependency Rule
+                    </Button>
+                  </Group>
+                )}
 
-                <Group
-                  gap="xs"
-                  justify="center"
-                  wrap="nowrap"
-                  className="hero-command"
+                <Box
                   component={Link}
                   to="/guides/dependency-rule"
+                  className={
+                    isMobile
+                      ? 'hero-command hero-command--mobile'
+                      : 'hero-command'
+                  }
                   style={{
                     textDecoration: 'none',
                     color: 'inherit',
                     cursor: 'pointer',
+                    maxWidth: '100%',
+                    display: 'flex',
+                    flexDirection: isMobile ? 'column' : 'row',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: isMobile ? 6 : undefined,
+                    flexWrap: isMobile ? 'wrap' : 'nowrap',
                   }}
                 >
-                  <IconTerminal2 size={16} style={{ flexShrink: 0 }} />
-                  <Code block={false}>
-                    Comece por aqui → /guides/dependency-rule
+                  <IconTerminal2
+                    size={isMobile ? 18 : 16}
+                    style={{ flexShrink: 0 }}
+                  />
+                  <Code
+                    block={false}
+                    fz={isMobile ? 'xs' : 'sm'}
+                    style={{
+                      textAlign: isMobile ? 'center' : 'inherit',
+                      wordBreak: 'break-all',
+                      lineHeight: 1.4,
+                    }}
+                  >
+                    {isMobile
+                      ? '→ /guides/dependency-rule'
+                      : 'Comece por aqui → /guides/dependency-rule'}
                   </Code>
-                </Group>
+                </Box>
               </Stack>
             </Box>
           </motion.section>
@@ -189,7 +272,7 @@ export default function Home() {
               >
                 <Card
                   withBorder
-                  p={isMobile ? 'lg' : 'lg'}
+                  p={isMobile ? 'xs' : 'lg'}
                   radius="lg"
                   component={Link}
                   to="/guides/dependency-rule"
@@ -237,7 +320,7 @@ export default function Home() {
                 </Card>
                 <Card
                   withBorder
-                  p={isMobile ? 'lg' : 'lg'}
+                  p={isMobile ? 'xs' : 'lg'}
                   radius="lg"
                   component={Link}
                   to="/guides/how-to-choose"
@@ -285,7 +368,7 @@ export default function Home() {
                 </Card>
                 <Card
                   withBorder
-                  p={isMobile ? 'lg' : 'lg'}
+                  p={isMobile ? 'xs' : 'lg'}
                   radius="lg"
                   component={Link}
                   to="/guides/architecture-comparison"
@@ -431,7 +514,7 @@ export default function Home() {
           <motion.section variants={itemVariants}>
             <Paper
               withBorder
-              p={isMobile ? 'lg' : 'xl'}
+              p={isMobile ? 'xs' : 'xl'}
               radius="lg"
               className="cases-section"
             >
@@ -461,7 +544,7 @@ export default function Home() {
                   style={{
                     width: '100%',
                     maxWidth: 560,
-                    padding: isMobile ? 16 : 24,
+                    padding: isMobile ? 6 : 24,
                     borderRadius: 12,
                     background: 'var(--mantine-color-default-hover)',
                     border: '1px solid var(--mantine-color-default-border)',
@@ -540,7 +623,7 @@ export default function Home() {
               >
                 <Card
                   withBorder
-                  p={isMobile ? 'lg' : 'md'}
+                  p={isMobile ? 'xs' : 'md'}
                   radius="md"
                   h="100%"
                 >
@@ -568,7 +651,7 @@ export default function Home() {
 
                 <Card
                   withBorder
-                  p={isMobile ? 'lg' : 'md'}
+                  p={isMobile ? 'xs' : 'md'}
                   radius="md"
                   h="100%"
                 >
@@ -624,7 +707,7 @@ export default function Home() {
                 {/* Cases em primeiro – destaque principal */}
                 <Card
                   withBorder
-                  p={isMobile ? 'lg' : 'md'}
+                  p={isMobile ? 'xs' : 'md'}
                   radius="lg"
                   component={Link}
                   to="/guides/cases"
@@ -666,7 +749,7 @@ export default function Home() {
 
                 <Card
                   withBorder
-                  p={isMobile ? 'lg' : 'md'}
+                  p={isMobile ? 'xs' : 'md'}
                   radius="lg"
                   component={Link}
                   to="/guides/architecture-comparison"
@@ -713,7 +796,7 @@ export default function Home() {
           <motion.section variants={itemVariants}>
             <Paper
               withBorder
-              p={isMobile ? 'lg' : 'md'}
+              p={isMobile ? 'xs' : 'md'}
               radius="lg"
               ta="center"
             >

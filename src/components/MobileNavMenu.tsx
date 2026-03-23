@@ -58,7 +58,7 @@ export default function MobileNavMenu({ onNavigate }: Props) {
         style={{ flex: 1, minHeight: 0 }}
         className="mobile-nav-scroll"
       >
-        <Box px="md" py="xs">
+        <Box px="xs" py="xs">
           <Accordion
             defaultValue={[]}
             multiple
@@ -108,7 +108,11 @@ export default function MobileNavMenu({ onNavigate }: Props) {
                     variant="light"
                     style={{ borderRadius: 6, marginBottom: 2 }}
                     styles={{
-                      root: { paddingTop: 6, paddingBottom: 6, minHeight: 'unset' },
+                      root: {
+                        paddingTop: 6,
+                        paddingBottom: 6,
+                        minHeight: 'unset',
+                      },
                     }}
                   />
                 );
@@ -132,8 +136,8 @@ export default function MobileNavMenu({ onNavigate }: Props) {
                     </Group>
                   </Accordion.Control>
                   <Accordion.Panel className="mobile-nav-panel">
-                    <Stack gap={2} pl="md">
-                      {section.items.map((item) => (
+                    <Stack gap={2} pl="sm">
+                      {section.items.map(item => (
                         <NavItem
                           key={item.href}
                           href={item.href}
@@ -154,13 +158,15 @@ export default function MobileNavMenu({ onNavigate }: Props) {
         <Box
           pt="sm"
           pb="xs"
-          px="md"
+          px="xs"
           style={{ borderTop: '1px solid var(--mantine-color-default-border)' }}
         >
           <Stack gap="xs">
             <Group justify="space-between" wrap="nowrap">
               <Text size="xs" c="dimmed">
-                Feito com <IconHeart size={12} style={{ verticalAlign: 'middle' }} /> por Tiago
+                Feito com{' '}
+                <IconHeart size={12} style={{ verticalAlign: 'middle' }} /> por
+                Tiago
               </Text>
               <Group gap="xs">
                 <Anchor

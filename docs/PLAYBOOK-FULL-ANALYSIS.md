@@ -84,7 +84,7 @@
 - **Unclear next steps:** After reading e.g. dependency-rule, the only next step is journey arrows or manual menu. Study guide gives level-based paths; other guides don't suggest a clear "faça isso em seguida".
 - **Glossary / conceitos:** Proposed in `docs/PROPOSTA-GLOSSARIO-CONCEITOS.md`; not implemented (no glossary route, no conceitos block, no nav link).
 - **Search:** Spotlight only matches doc titles; no search over body text or concepts.
-- **Mobile:** "Busca" in MobileBottomNav points to `#search`; actual search is global Spotlight (mod+K).
+- **Mobile:** Search is global Spotlight (mod+K); burger drawer has full nav.
 
 ---
 

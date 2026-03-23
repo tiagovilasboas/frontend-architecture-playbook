@@ -1,5 +1,6 @@
 import React from 'react';
 import { Group, Text, ActionIcon, Paper } from '@mantine/core';
+import { useBreakpoints } from '../hooks/useBreakpoints.ts';
 import {
   IconBrandGithub,
   IconBrandLinkedin,
@@ -7,20 +8,33 @@ import {
 } from '@tabler/icons-react';
 
 export default function Footer() {
+  const { isMobile } = useBreakpoints();
+
   return (
     <Paper
       withBorder
       radius={0}
       mt="auto"
-      px="md"
       py="sm"
       w="100%"
-      style={{ position: 'relative', zIndex: 10 }}
+      px={isMobile ? undefined : 'md'}
+      style={{
+        position: 'relative',
+        zIndex: 10,
+        ...(isMobile
+          ? {
+              paddingLeft: 'env(safe-area-inset-left, 0px)',
+              paddingRight: 'env(safe-area-inset-right, 0px)',
+            }
+          : {}),
+      }}
     >
-      <Group justify="space-between" wrap="nowrap" gap="md">
+      <Group justify="space-between" wrap="nowrap" gap={isMobile ? 'xs' : 'md'}>
         <Group gap="xs" wrap="wrap" style={{ flex: 1, minWidth: 0 }}>
           <Text size="xs" c="dimmed">
-            Feito com <IconHeart size={12} style={{ verticalAlign: 'middle' }} /> por Tiago Vilas Boas
+            Feito com{' '}
+            <IconHeart size={12} style={{ verticalAlign: 'middle' }} /> por
+            Tiago Vilas Boas
           </Text>
           <Text size="xs" c="dimmed" component="span">
             • Front-End Architecture Playbook • 2025

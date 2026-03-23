@@ -15,9 +15,11 @@ export default function MobileBreadcrumbs() {
 
   return (
     <Group
-      px="md"
       py="xs"
+      px={0}
       style={{
+        paddingLeft: 'env(safe-area-inset-left, 0px)',
+        paddingRight: 'env(safe-area-inset-right, 0px)',
         borderBottom: '1px solid var(--mantine-color-dark-3)',
         backgroundColor: 'var(--mantine-color-body)',
       }}
@@ -26,7 +28,7 @@ export default function MobileBreadcrumbs() {
         separator={<IconChevronRight size={18} />}
         styles={{
           separator: {
-            margin: '0 6px',
+            margin: '0 4px',
             color: 'var(--mantine-color-dimmed)',
           },
         }}

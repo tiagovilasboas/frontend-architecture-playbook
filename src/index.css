@@ -24,6 +24,14 @@
   outline-offset: 2px;
 }
 
+/* Mobile: coluna principal do shell sem padding lateral extra */
+@media (max-width: 48em) {
+  .docs-shell-main {
+    padding-inline: 0;
+    margin-inline: 0;
+  }
+}
+
 /* Page TOC anchor scroll: leave space so the heading is visible below the header */
 [data-doc-content] h2,
 [data-doc-content] h3 {
@@ -109,6 +117,12 @@
   background-size: 100px 100px;
   pointer-events: none;
 }
+/* Mobile: grid um pouco mais fino para não “gritar” em telas estreitas */
+@media (max-width: 48em) {
+  .hero-section::before {
+    background-size: 64px 64px;
+  }
+}
 [data-mantine-color-scheme="dark"] .hero-section::before {
   background-image:
     linear-gradient(to right, rgba(255, 255, 255, 0.09) 1px, transparent 1px),
@@ -143,6 +157,20 @@
 }
 .hero-command:hover {
   background-color: var(--mantine-color-default-border);
+}
+/* Hero “terminal” no mobile: largura útil e código que não estoura a tela */
+.hero-command--mobile {
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+  box-sizing: border-box;
+}
+/* Sobrescreve white-space: pre global do Code para o path caber na tela */
+.hero-command--mobile pre.mantine-Code-root,
+.hero-command--mobile .mantine-Code-root {
+  white-space: pre-wrap;
+  word-break: break-all;
+  max-width: 100%;
 }
 
 /* Home: clickable cards hover lift (theme-aware shadow) */

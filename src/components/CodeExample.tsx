@@ -87,7 +87,7 @@ export default function CodeExample({
   return (
     <Paper
       withBorder
-      p={isMobile ? 'sm' : 'md'}
+      p={isMobile ? 'xs' : 'md'}
       radius="md"
       style={{
         cursor: 'pointer',

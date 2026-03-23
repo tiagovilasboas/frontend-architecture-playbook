@@ -4,7 +4,6 @@ import { Drawer, Box, useMantineColorScheme } from '@mantine/core';
 import { Spotlight } from '@mantine/spotlight';
 import HeaderBar from './HeaderBar.tsx';
 import MobileNavMenu from './MobileNavMenu.tsx';
-import MobileBottomNav from './MobileBottomNav.tsx';
 import PrevNextArrows from './PrevNextArrows.tsx';
 import { ReadingProgress } from './ReadingProgress.tsx';
 import { BackToTop } from './BackToTop.tsx';
@@ -87,7 +86,6 @@ export default function DocsShell({ children }: DocsShellProps) {
           flexDirection: 'column',
           position: 'relative',
           zIndex: 1,
-          paddingBottom: isMobile ? 72 : 0,
         }}
       >
         {/* Header */}
@@ -98,12 +96,15 @@ export default function DocsShell({ children }: DocsShellProps) {
           id="main-content"
           tabIndex={-1}
           mb="2xl"
+          className="docs-shell-main"
           style={{
             flex: 1,
             width: '100%',
+            maxWidth: '100%',
             display: 'flex',
             flexDirection: 'column',
             minHeight: 0,
+            boxSizing: 'border-box',
           }}
         >
           <PrevNextArrows>{children}</PrevNextArrows>
@@ -114,9 +115,6 @@ export default function DocsShell({ children }: DocsShellProps) {
 
         {/* Back to top - reduz fadiga de scroll (UX) */}
         <BackToTop />
-
-        {/* Mobile bottom nav - quick access to sections (UX) */}
-        <MobileBottomNav />
       </Box>
     </>
   );
