@@ -36,6 +36,43 @@
           "type": "text",
           "content": "A regra de dependência se mantém: UI → hooks (use cases) → domain (entities/ports). Nunca o contrário. Entidades não importam React. Hooks de use case não importam componentes.",
           "dimmed": true
+        },
+        {
+          "type": "title",
+          "content": "Trade-offs e custos (Principal sabe escolher)",
+          "order": 4
+        },
+        {
+          "type": "table",
+          "headers": ["Aspecto", "Custo", "Quando vale"],
+          "rows": [
+            [
+              "Curva de aprendizado",
+              "Time novo leva 2–4 semanas pra internalizar camadas e ports",
+              "Projeto > 6 meses, 3+ devs, regras de negócio complexas"
+            ],
+            [
+              "Overhead de arquivos",
+              "CRUD simples: 5 arquivos vs 1. Feature complexa: overhead se paga",
+              "MVP com 2 semanas? Vai de SPA direto. Checkout com validações? Clean Architecture"
+            ],
+            [
+              "Bundle size",
+              "Camadas adicionam pouco. O ganho: testes sem mount, troca de API sem refatorar UI",
+              "Indiferente na maioria dos projetos"
+            ],
+            [
+              "DX vs manutenção",
+              "Mais boilerplate hoje. Menos bugs e refactors amanhã",
+              "Escala > velocidade inicial"
+            ]
+          ]
+        },
+        {
+          "type": "alert",
+          "message": "Regra de ouro: se a lógica de negócio cabe em 3 linhas no componente, não precisa de use case. Se tem validação, cálculo, orquestração de serviços ou regras que mudam com o negócio, aí sim.",
+          "color": "blue",
+          "icon": "bulb"
         }
       ]
     },

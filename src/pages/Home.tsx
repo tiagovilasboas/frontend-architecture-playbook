@@ -61,15 +61,6 @@ export default function Home() {
       maw={isMobile ? '100%' : '90%'}
       mx="auto"
       px={isMobile ? undefined : 'md'}
-      style={
-        isMobile
-          ? {
-              // Lateral mínimo: só safe-area (notch); sem padding extra
-              paddingLeft: 'env(safe-area-inset-left, 0px)',
-              paddingRight: 'env(safe-area-inset-right, 0px)',
-            }
-          : undefined
-      }
     >
       <motion.div
         variants={containerVariants}
@@ -107,12 +98,6 @@ export default function Home() {
                     ? 'max(1.75rem, env(safe-area-inset-top))'
                     : undefined,
                   paddingBottom: isMobile ? '2rem' : undefined,
-                  paddingLeft: isMobile
-                    ? 'env(safe-area-inset-left, 0px)'
-                    : undefined,
-                  paddingRight: isMobile
-                    ? 'env(safe-area-inset-right, 0px)'
-                    : undefined,
                 }}
                 gap={isMobile ? 'md' : 'xl'}
               >

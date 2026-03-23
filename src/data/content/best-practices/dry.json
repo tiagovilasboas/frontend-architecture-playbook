@@ -25,15 +25,17 @@
         },
         {
           "type": "text",
-          "content": "DRY significa \"Don't Repeat Yourself\". É sobre não repetir lógica de negócio, não apenas código."
+          "content": "DRY significa \"Don't Repeat Yourself\". Se você está copiando e colando lógica de negócio, você está cavando sua própria cova."
         },
         {
           "type": "text",
-          "content": "Pensa assim: se você precisa mudar uma regra de negócio (desconto, validação, cálculo) e ela está duplicada em 5 lugares, você vai esquecer de mudar em algum lugar. E aí vem o bug."
+          "content": "Não é só sobre código repetido — é sobre regra de negócio duplicada. A mesma validação em 3 componentes? Uma mudança, três lugares pra atualizar. Um você esquece, e aí vem o bug em produção."
         },
         {
-          "type": "text",
-          "content": "A regra é clara: cada regra de negócio deve ter uma representação única, não ambígua e autoritativa."
+          "type": "alert",
+          "message": "Cada regra de negócio deve ter uma única representação. Uma fonte de verdade. O resto importa de lá.",
+          "color": "green",
+          "icon": "check"
         }
       ]
     },

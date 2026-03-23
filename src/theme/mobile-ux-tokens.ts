@@ -25,6 +25,9 @@ export const POINTER_TARGET_COMFORTABLE_PX = 44;
  */
 export const BODY_TEXT_MIN_PX = 16;
 
+/** Minimum lateral padding on mobile (content never touches screen edge). */
+export const MOBILE_PADDING_MIN_PX = 8;
+
 /**
  * Typical minimum horizontal gutter for readable content on narrow viewports.
  */

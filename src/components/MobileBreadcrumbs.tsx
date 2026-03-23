@@ -18,8 +18,8 @@ export default function MobileBreadcrumbs() {
       py="xs"
       px={0}
       style={{
-        paddingLeft: 'env(safe-area-inset-left, 0px)',
-        paddingRight: 'env(safe-area-inset-right, 0px)',
+        paddingLeft: 'max(8px, env(safe-area-inset-left, 0px))',
+        paddingRight: 'max(8px, env(safe-area-inset-right, 0px))',
         borderBottom: '1px solid var(--mantine-color-dark-3)',
         backgroundColor: 'var(--mantine-color-body)',
       }}

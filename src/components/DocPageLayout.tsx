@@ -4,8 +4,6 @@ import { ReadingTime } from './ReadingTime';
 import { RelatedContent } from './RelatedContent';
 import PageToc from './PageToc';
 import AppBreadcrumbs from './AppBreadcrumbs';
-import { useBreakpoints } from '../hooks/useBreakpoints.ts';
-
 interface DocPageLayoutProps {
   children: React.ReactNode;
   showRelated?: boolean;
@@ -25,7 +23,6 @@ export default function DocPageLayout({
   contentWrapperProps,
 }: DocPageLayoutProps) {
   const contentRef = useRef<HTMLDivElement>(null);
-  const { isMobile } = useBreakpoints();
 
   return (
     <Box
@@ -33,12 +30,6 @@ export default function DocPageLayout({
       className="doc-page-wrapper"
       style={{
         maxWidth: '100%',
-        ...(isMobile
-          ? {
-              marginInline: 0,
-              paddingInline: 0,
-            }
-          : {}),
       }}
     >
       {/* Fixed TOC on the right, narrow width – does not take grid space */}

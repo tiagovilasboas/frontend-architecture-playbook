@@ -22,6 +22,8 @@ interface GlossaryTerm {
   term: string;
   termPt: string;
   definition: string;
+  /** Optional TL;DR — shown first, bold. Principal-level readability. */
+  tldr?: string;
   category: string;
   guideHref: string;
   guideLabel: string;
@@ -95,6 +97,11 @@ export default function GlossaryBlock() {
                     </Text>
                   )}
                 </Group>
+                {term.tldr && (
+                  <Text size="sm" fw={600} style={{ lineHeight: 1.35 }}>
+                    {term.tldr}
+                  </Text>
+                )}
                 <Text size="sm" c="dimmed" style={{ whiteSpace: 'pre-wrap' }}>
                   {term.definition.replace(/\*\*(.+?)\*\*/g, '$1')}
                 </Text>

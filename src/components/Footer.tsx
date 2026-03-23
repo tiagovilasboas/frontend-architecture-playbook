@@ -23,8 +23,8 @@ export default function Footer() {
         zIndex: 10,
         ...(isMobile
           ? {
-              paddingLeft: 'env(safe-area-inset-left, 0px)',
-              paddingRight: 'env(safe-area-inset-right, 0px)',
+              paddingLeft: 'max(8px, env(safe-area-inset-left, 0px))',
+              paddingRight: 'max(8px, env(safe-area-inset-right, 0px))',
             }
           : {}),
       }}

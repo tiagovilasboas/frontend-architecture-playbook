@@ -24,11 +24,10 @@
   outline-offset: 2px;
 }
 
-/* Mobile: coluna principal do shell sem padding lateral extra */
+/* Mobile: mínimo 8px lateral para conteúdo não grudar na borda */
 @media (max-width: 48em) {
   .docs-shell-main {
-    padding-inline: 0;
-    margin-inline: 0;
+    padding-inline: max(8px, env(safe-area-inset-left, 0px)) max(8px, env(safe-area-inset-right, 0px));
   }
 }
 
