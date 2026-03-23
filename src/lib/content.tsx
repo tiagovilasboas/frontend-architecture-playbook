@@ -17,207 +17,13 @@ export interface DocMeta {
   component: React.ComponentType;
 }
 
-// Metadados estáticos para páginas de conteúdo (title/description por slug)
-const STATIC_METADATA = {
-  // Guides
-  'how-to-choose': {
-    title: 'Como Escolher uma Arquitetura',
-    description: 'Guia para escolher a arquitetura certa',
-  },
-  'dependency-rule': {
-    title: 'Dependency Rule',
-    description: 'Regra fundamental de dependências',
-  },
-  cases: {
-    title: 'Casos de Uso Reais',
-    description: 'Exemplos práticos de arquiteturas front-end',
-  },
-  'implementation-roadmap': {
-    title: 'Roadmap de Implementação',
-    description:
-      'Roadmap em 4 fases para evoluir a arquitetura frontend: performance, otimização, arquitetura e escala. Com checklists, ferramentas e critérios de avanço.',
-  },
-  'architecture-comparison': {
-    title: 'Comparação de Arquiteturas',
-    description: 'Compare arquiteturas baseado em métricas práticas',
-  },
-  adr: {
-    title: 'ADR - Architecture Decision Records',
-    description:
-      'Como documentar decisões arquiteturais com ADRs. Template, processo, e exemplos reais.',
-  },
-  'migration-strategies': {
-    title: 'Estratégias de Migração',
-    description:
-      'Strangler Fig, Branch by Abstraction, Parallel Run: como migrar sem big rewrite.',
-  },
-  mcp: {
-    title: 'MCP: use o playbook no Cursor',
-    description:
-      'Integração MCP (em construção). Configure o servidor para usar o conteúdo do playbook no Cursor: guias, casos e navegação via chat.',
-  },
-  'security-business': {
-    title: 'Segurança & Negócio',
-    description:
-      'Segurança como decisão de negócio: impacto financeiro, priorização e como comunicar com stakeholders. Nível staff.',
-  },
-  'study-guide': {
-    title: 'Por onde começar',
-    description:
-      'Roteiro que segmenta o conteúdo do playbook por nível: Júnior, Pleno, Sênior e Staff. Links para o que estudar em cada etapa.',
-  },
-  staff: {
-    title: 'Para Staff',
-    description:
-      'Hub para nível Staff: decisão com evidência, performance e métricas, OKRs, regras de negócio, falar com o negócio, boas práticas e guardrails. Staff por seção (Fundamentos, UI, Entrega, Estrutura, Escala).',
-  },
-  'staff-fundamentals': {
-    title: 'Staff · Fundamentos',
-    description:
-      'Para Staff: usar fundamentos (Dependency Rule, Clean Code, SRP) como guardrails, critérios de revisão e quando exigir ADR.',
-  },
-  'staff-ui': {
-    title: 'Staff · Construindo UI',
-    description:
-      'Para Staff: design system como guardrail, estado e state machines, Component-Driven e Atomic Design no time.',
-  },
-  'staff-entrega': {
-    title: 'Staff · Arquitetura de Entrega',
-    description:
-      'Para Staff: performance, métricas, OKRs, Core Web Vitals e guardrails de entrega (SSR, SSG, JAMstack).',
-  },
-  'staff-estrutura': {
-    title: 'Staff · Estrutura de Código',
-    description:
-      'Para Staff: guardrails de camadas, quando documentar no ADR, revisão de estrutura e segurança.',
-  },
-  'staff-escala': {
-    title: 'Staff · Escala & Times',
-    description:
-      'Para Staff: decisão de escala com evidência (casos, comparação), migração incremental e quando usar cada arquitetura.',
-  },
-  glossary: {
-    title: 'Glossário',
-    description:
-      'Conceitos de front-end com definição curta e link para o guia que aprofunda. SSR, hidratação, performance e mais.',
-  },
-
-  // Architectures
-  'ssr-ssg': {
-    title: 'SSR & SSG',
-    description: 'Server-Side Rendering e Static Site Generation',
-  },
-  bff: {
-    title: 'Backend for Frontend (BFF)',
-    description: 'API específica para front-end',
-  },
-  pwa: {
-    title: 'Progressive Web Apps',
-    description: 'Apps web com recursos nativos',
-  },
-  headless: {
-    title: 'Headless Architecture',
-    description: 'Separação de UI e lógica',
-  },
-  hexagonal: {
-    title: 'Hexagonal Architecture',
-    description: 'Ports and Adapters pattern',
-  },
-  layered: {
-    title: 'Layered Architecture',
-    description: 'Arquitetura em camadas',
-  },
-  'event-sourcing': {
-    title: 'Event Sourcing',
-    description: 'Armazenamento baseado em eventos',
-  },
-  cqrs: {
-    title: 'CQRS',
-    description: 'Command Query Responsibility Segregation',
-  },
-  'microservices-frontend': {
-    title: 'Microservices Frontend',
-    description: 'Frontend espelhando microservices backend',
-  },
-  'clean-architecture': {
-    title: 'Clean Architecture no Front-End',
-    description: 'Separação clara de responsabilidades',
-  },
-  'micro-frontends': {
-    title: 'Micro-Frontends (Conceitos)',
-    description: 'Introdução aos conceitos de micro-frontends',
-  },
-  monorepo: {
-    title: 'Monorepo',
-    description: 'Múltiplos projetos em um repositório',
-  },
-  spa: {
-    title: 'Single Page Application',
-    description: 'Aplicação de página única',
-  },
-  jamstack: { title: 'JAMstack', description: 'JavaScript, APIs, Markup' },
-  'islands-architecture': {
-    title: 'Islands Architecture',
-    description: 'Arquitetura de ilhas',
-  },
-
-  // Patterns
-  'component-driven': {
-    title: 'Component-Driven Development',
-    description: 'Desenvolvimento baseado em componentes',
-  },
-  'atomic-design': {
-    title: 'Atomic Design',
-    description: 'Design system estruturado',
-  },
-  'event-driven': {
-    title: 'Event-Driven Architecture',
-    description: 'Arquitetura baseada em eventos',
-  },
-  'repository-pattern': {
-    title: 'Repository Pattern',
-    description: 'Padrão de acesso a dados',
-  },
-  security: { title: 'Security Patterns', description: 'Padrões de segurança' },
-
-  // Techniques
-  'feature-flags': {
-    title: 'Feature Flags',
-    description: 'Controle dinâmico de funcionalidades',
-  },
-  'state-machines': {
-    title: 'State Machines',
-    description: 'Máquinas de estado',
-  },
-  performance: {
-    title: 'Performance',
-    description:
-      'Code splitting, lazy loading, chunks e métricas que fazem diferença real',
-  },
-
-  // Best Practices
-  dry: {
-    title: "DRY (Don't Repeat Yourself)",
-    description: 'Não repita código',
-  },
-  kiss: {
-    title: 'KISS (Keep It Simple, Stupid)',
-    description: 'Mantenha simples',
-  },
-  yagni: {
-    title: "YAGNI (You Aren't Gonna Need It)",
-    description: 'Não implemente o que não precisa',
-  },
-  'clean-code': { title: 'Clean Code', description: 'Código limpo e legível' },
-  srp: {
-    title: 'Single Responsibility Principle',
-    description: 'Princípio da responsabilidade única',
-  },
-  soc: {
-    title: 'Separation of Concerns',
-    description: 'Separação de responsabilidades',
-  },
-};
+/** Format slug as title when no meta from content (e.g. slug "dependency-rule" → "Dependency Rule"). */
+function slugToTitle(slug: string): string {
+  return slug
+    .split('-')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+}
 
 function toMeta(
   module: unknown,
@@ -230,8 +36,6 @@ function toMeta(
   };
 
   const contentMeta = getDocMeta(collection, slug);
-  const staticMeta =
-    STATIC_METADATA[slug as keyof typeof STATIC_METADATA] || {};
   const dynamicMeta =
     moduleWithMetadata.metadata ?? moduleWithMetadata.default?.metadata ?? {};
 
@@ -241,12 +45,8 @@ function toMeta(
   return {
     slug,
     collection,
-    title: contentMeta?.title || staticMeta.title || dynamicMeta.title || slug,
-    description:
-      contentMeta?.description ||
-      staticMeta.description ||
-      dynamicMeta.description ||
-      '',
+    title: contentMeta?.title || dynamicMeta.title || slugToTitle(slug),
+    description: contentMeta?.description || dynamicMeta.description || '',
     component: Component,
   };
 }

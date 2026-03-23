@@ -1,6 +1,7 @@
 import { useEffect, lazy, Suspense } from 'react';
 import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { Box } from '@mantine/core';
+import { Analytics } from '@vercel/analytics/react';
 import DocsShell from './components/DocsShell.tsx';
 import { updatePageMeta } from './utils/seo.ts';
 
@@ -43,6 +44,7 @@ function App() {
 
   return (
     <DocsShell>
+      <Analytics />
       <Suspense fallback={<PageFallback />}>
         <Routes>
           <Route path="/" element={<Home />} />
