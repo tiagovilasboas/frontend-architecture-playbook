@@ -158,29 +158,9 @@ export const NAV_JOURNEY: NavSectionEntry[] = [
   },
 ];
 
-/** Lista plana de todos os itens da jornada, na ordem do menu (para prev/next). */
+/** Lista plana de todos os itens da jornada, na ordem do menu (MCP, sitemap, etc.). */
 export function getAllJourneyItems(): NavItemEntry[] {
   return NAV_JOURNEY.flatMap(section => section.items);
-}
-
-/**
- * Retorna o item anterior e o próximo na jornada (para setas de navegação).
- * Na Home (/) mostra só "próximo" = primeiro item. Breadcrumb atualiza ao navegar.
- */
-export function getPrevNext(pathname: string): {
-  prev: NavItemEntry | null;
-  next: NavItemEntry | null;
-} {
-  const items = getAllJourneyItems();
-  if (pathname === '/' || pathname === '') {
-    return { prev: null, next: items[0] ?? null };
-  }
-  const index = items.findIndex(item => item.href === pathname);
-  if (index < 0) return { prev: null, next: null };
-  return {
-    prev: index > 0 ? items[index - 1]! : null,
-    next: index < items.length - 1 ? items[index + 1]! : null,
-  };
 }
 
 /** True if pathname is this section (exact or child of an item). */

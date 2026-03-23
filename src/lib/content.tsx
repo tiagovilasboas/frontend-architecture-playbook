@@ -372,3 +372,43 @@ export function getDoc(
   const list = collectionMap[collection];
   return list.find(doc => doc.slug === slug);
 }
+
+/**
+ * Prev/next arrows: same collection only, order = arrays in this file (guides,
+ * architectures, …). Predictable “docs site” behaviour; no cross-collection jumps.
+ * Home (/) has no arrows.
+ */
+export function getPrevNextByCollection(pathname: string): {
+  prev: { href: string; label: string } | null;
+  next: { href: string; label: string } | null;
+} {
+  const normalized = (pathname.replace(/\/$/, '') || '/') as string;
+  if (normalized === '/') {
+    return { prev: null, next: null };
+  }
+
+  const match = normalized.match(
+    /^\/(guides|architectures|patterns|techniques|best-practices)\/([^/]+)$/
+  );
+  if (!match) {
+    return { prev: null, next: null };
+  }
+
+  const collection = match[1] as CollectionType;
+  const slug = match[2];
+  const list = collectionMap[collection];
+  const index = list.findIndex(doc => doc.slug === slug);
+  if (index < 0) {
+    return { prev: null, next: null };
+  }
+
+  const toEntry = (doc: DocMeta) => ({
+    href: `/${doc.collection}/${doc.slug}`,
+    label: doc.title,
+  });
+
+  return {
+    prev: index > 0 ? toEntry(list[index - 1]!) : null,
+    next: index < list.length - 1 ? toEntry(list[index + 1]!) : null,
+  };
+}

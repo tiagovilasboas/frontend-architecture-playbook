@@ -10,8 +10,8 @@
 
 ### Navigation
 
-- **Journey (main nav):** `src/lib/navigation.ts` — `NAV_JOURNEY`: 7 sections in fixed order — Por onde começar → Fundamentos → Construindo UI → Arquitetura de Entrega → Estrutura de Código → Escala & Times → Decisão & Referência. Used by `MobileNavMenu` (drawer) and `PrevNextArrows` / `getBreadcrumbsForPath`.
-- **Prev/Next:** `getPrevNext(pathname)` returns previous/next item in the flat list of all journey items; arrows are in `DocsShell` (fixed left/right). Home (/) has only "next" = first journey item.
+- **Journey (main nav):** `src/lib/navigation.ts` — `NAV_JOURNEY`: 7 sections in fixed order — Por onde começar → Fundamentos → Construindo UI → Arquitetura de Entrega → Estrutura de Código → Escala & Times → Decisão & Referência. Used by `MobileNavMenu` (drawer) and `getBreadcrumbsForPath` (when path matches a journey link).
+- **Prev/Next:** `getPrevNextByCollection(pathname)` in `src/lib/content.tsx` — previous/next **within the same collection** only (`guides[]`, `architectures[]`, etc., in declaration order). Arrows in `DocsShell` via `PrevNextArrows`. Home (/) has **no** arrows.
 - **Guide sidebar:** `GuideNavigation` shows "Todos os Guias" for pages that set `layout.showGuideNav` (e.g. `study-guide`, `adr`). Order comes from `GUIDE_NAV_SLUGS` in `content.tsx` (subset of guides; staff-\* guides are not in this list).
 
 ### User journeys (how a dev moves)
@@ -24,7 +24,7 @@
 - **Structure:** Clean, layered, hexagonal, repository-pattern, security, staff-estrutura.
 - **Scale:** Monorepo, micro-frontends, microservices-frontend, BFF, headless, feature-flags, CQRS, event-sourcing, staff-escala.
 - **Decision:** Staff hub, architecture-comparison, implementation-roadmap, migration-strategies, adr, cases, security-business, mcp.
-- **Cross-linking:** Home hardcodes a few links; journey menu and GuideNavigation (when shown) provide the main paths. No contextual "next step" blocks inside legacy TSX pages beyond RelatedContent (next/prev in same collection).
+- **Cross-linking:** Home hardcodes a few links; journey menu and GuideNavigation (when shown) provide the main paths. Fixed **prev/next arrows** follow **same collection** order (`content.tsx` arrays). No contextual "next step" blocks inside legacy TSX pages beyond RelatedContent.
 
 ---
 
@@ -81,7 +81,7 @@
 - **Inconsistent patterns:** Large legacy TSX guides vs short, structured JSON guides. Same route shape but different authoring (TSX vs JSON) and no shared "conceitos" block.
 - **GuideNavigation vs journey:** "Todos os Guias" is a fixed subset; staff-_ guides are not in it. So on a staff-_ page the sidebar can show a different guide list than the journey section.
 - **Missing cross-links:** Legacy pages rarely link to "next step" or "conceitos usados". RelatedContent is generic (next/prev or same collection). No in-content "Ver Glossário" or "Ver ADR" links.
-- **Unclear next steps:** After reading e.g. dependency-rule, the only next step is journey arrows or manual menu. Study guide gives level-based paths; other guides don't suggest a clear "faça isso em seguida".
+- **Unclear next steps:** After reading e.g. dependency-rule, **next in collection** (fixed arrows) may not match a pedagogical "what to read next"; study guide gives level-based paths; other guides don't suggest a clear "faça isso em seguida".
 - **Glossary / conceitos:** Proposed in `docs/PROPOSTA-GLOSSARIO-CONCEITOS.md`; not implemented (no glossary route, no conceitos block, no nav link).
 - **Search:** Spotlight only matches doc titles; no search over body text or concepts.
 - **Mobile:** Search is global Spotlight (mod+K); burger drawer has full nav.
@@ -94,8 +94,8 @@
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------- |
 | Home                       | `/` — `src/pages/Home.tsx`                                                                                       |
 | Any doc                    | `/:collection/:slug` — `src/pages/DocPage.tsx`                                                                   |
-| Journey config             | `src/lib/navigation.ts` (NAV_JOURNEY, getPrevNext, getBreadcrumbsForPath)                                        |
-| Content registry           | `src/lib/content.tsx` (guides, architectures, patterns, techniques, best-practices, getDoc, GUIDE_NAV_SLUGS)     |
+| Journey config             | `src/lib/navigation.ts` (NAV_JOURNEY, getBreadcrumbsForPath)                                                    |
+| Content registry           | `src/lib/content.tsx` (…, getDoc, getPrevNextByCollection, GUIDE_NAV_SLUGS)                                     |
 | JSON content loader        | `src/lib/content-data.ts` (getDocContent, getContentDrivenSlugs)                                                 |
 | Content schema             | `src/lib/content-schema.ts`                                                                                      |
 | Content-driven UI          | `src/components/ContentDrivenPage.tsx`, `src/components/ContentRenderer.tsx`                                     |

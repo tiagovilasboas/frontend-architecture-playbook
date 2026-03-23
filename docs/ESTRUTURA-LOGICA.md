@@ -71,7 +71,7 @@ Em cada seção: temas principais + um guia “Staff · X”. Padrão consistent
 ### 2. Ordem em `guides[]` vs ordem no menu
 
 - O array `guides` em `content.tsx` tem uma ordem (dependency-rule, how-to-choose, … staff-escala, glossary).
-- A ordem **na navegação** é a de `NAV_JOURNEY`, que espalha os guias por seção. Prev/next e breadcrumb seguem a lista plana de `getAllJourneyItems()` (NAV_JOURNEY). Ou seja: a ordem que importa para o usuário é a da jornada; a ordem em `guides[]` importa para RelatedContent (próximo/anterior na lista de guides). Estar ciente disso evita confusão ao reordenar itens.
+- A ordem **no menu (drawer / header)** é a de `NAV_JOURNEY`, que espalha os guias por seção. **Prev/next** segue **só a mesma coleção**, na ordem dos arrays em `content.tsx` (`guides[]`, `architectures[]`, …) — ver `getPrevNextByCollection`. **Breadcrumb** continua a usar `getBreadcrumbsForPath` (jornada quando o path bate com `NAV_JOURNEY`). Estar ciente disso evita confusão ao reordenar itens.
 
 ### 3. Collections e pastas no código
 
