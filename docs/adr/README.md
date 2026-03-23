@@ -16,9 +16,11 @@ Sem enrolação. Objetivo: daqui a 6 meses qualquer um entende por que a decisã
 
 ## Índice
 
-| ID                                             | Status   | Título                                         | Data       | Owner         |
-| ---------------------------------------------- | -------- | ---------------------------------------------- | ---------- | ------------- |
-| [001](./001-visualizations-and-comparisons.md) | Proposto | Visualizações e Comparações no Decision Wizard | 2024-12-19 | Frontend Team |
+| ID                                             | Status       | Título                                         | Data       | Owner           |
+| ---------------------------------------------- | ------------ | ---------------------------------------------- | ---------- | --------------- |
+| [001](./001-visualizations-and-comparisons.md) | Proposto     | Visualizações e Comparações no Decision Wizard | 2024-12-19 | Frontend Team   |
+| [002](./002-content-as-data.md)                | Implementado | Content-as-Data (JSON como fonte única)        | 2025-03    | Equipe Playbook |
+| [003](./003-mcp-integration.md)                | Implementado | Integração MCP (Cursor / Context7)             | 2025-03    | Equipe Playbook |
 
 ## Status
 
