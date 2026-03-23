@@ -58,9 +58,9 @@ export default function Home() {
     <Box
       mt={0}
       w="100%"
-      maw={isMobile ? '100%' : 1200}
+      maw={isMobile ? '100%' : 1440}
       mx="auto"
-      px={isMobile ? 'sm' : 'xl'}
+      px={isMobile ? 'sm' : 'md'}
     >
       <motion.div
         variants={containerVariants}
@@ -101,6 +101,19 @@ export default function Home() {
                 }}
                 gap={isMobile ? 'md' : 'xl'}
               >
+                {/* Badge + stats - Vercel/Stripe style */}
+                <Group gap="xs" justify="center" wrap="wrap">
+                  <Badge variant="light" color="green" size="sm" radius="sm">
+                    Guia gratuito
+                  </Badge>
+                  <Text span c="dimmed" size="xs">
+                    ·
+                  </Text>
+                  <Text size="xs" c="dimmed" fw={500}>
+                    17 guias · 19 casos · 9 arquiteturas
+                  </Text>
+                </Group>
+
                 <HeroTitle
                   size={
                     isSmallMobile
@@ -136,10 +149,14 @@ export default function Home() {
                   style={{ lineHeight: 1.6 }}
                   maw={540}
                 >
-                  Guias na ordem que faz sentido estudar, casos reais com link
-                  dos artigos, wizard de recomendação e ADR em 2 páginas.{' '}
+                  Do básico à decisão, na ordem que faz sentido. Código,
+                  trade-offs e{' '}
+                  <Text span fw={600} c="green.6" inherit>
+                    19 casos reais
+                  </Text>{' '}
+                  com link do artigo. Wizard, ADR, migração incremental.{' '}
                   <Text span fw={600} inherit>
-                    Só o que você consegue ler e usar.
+                    Tudo citável.
                   </Text>
                 </Text>
 
@@ -194,6 +211,35 @@ export default function Home() {
                     </Button>
                   </Group>
                 )}
+
+                {/* Social proof - empresas com casos no playbook */}
+                <Flex
+                  gap={isMobile ? 6 : 10}
+                  wrap="wrap"
+                  justify="center"
+                  align="center"
+                  style={{ opacity: 0.85 }}
+                >
+                  {(casesData as { company: string }[]).slice(0, 8).map(c => (
+                    <Text
+                      key={c.company}
+                      size="xs"
+                      c="dimmed"
+                      fw={600}
+                      style={{
+                        padding: '4px 10px',
+                        borderRadius: 6,
+                        background: 'var(--mantine-color-default-hover)',
+                        border: '1px solid var(--mantine-color-default-border)',
+                      }}
+                    >
+                      {c.company}
+                    </Text>
+                  ))}
+                  <Text size="xs" c="dimmed" fw={500}>
+                    +11
+                  </Text>
+                </Flex>
 
                 <Box
                   component={Link}

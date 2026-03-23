@@ -99,10 +99,12 @@
   background-color: var(--mantine-color-default-hover);
 }
 
-/* Home: hero background – grid + subtle circles (Next.js-style, CSS-only) */
+/* Home: hero background – grid + subtle circles (Vercel/Next.js-style) */
 .hero-section {
   position: relative;
   overflow: hidden;
+  border-radius: 16px;
+  margin-bottom: 2px; /* optical alignment with content below */
 }
 .hero-section::before {
   content: '';
@@ -146,16 +148,22 @@
     radial-gradient(circle at 80% 70%, transparent 50%, rgba(255, 255, 255, 0.02) 50%, rgba(255, 255, 255, 0.02) 51%, transparent 51%);
 }
 
-/* Home: hero command line (Next.js-style) */
+/* Home: hero command line (Next.js-style, Stripe-inspired) */
 .hero-command {
-  padding: 8px 14px;
-  border-radius: 8px;
+  padding: 12px 20px;
+  border-radius: 10px;
   background-color: var(--mantine-color-default-hover);
   border: 1px solid var(--mantine-color-default-border);
-  transition: background-color 0.15s ease, border-color 0.15s ease;
+  transition: background-color 0.15s ease, border-color 0.15s ease,
+    box-shadow 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 .hero-command:hover {
   background-color: var(--mantine-color-default-border);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+[data-mantine-color-scheme="dark"] .hero-command:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 /* Hero “terminal” no mobile: largura útil e código que não estoura a tela */
 .hero-command--mobile {
