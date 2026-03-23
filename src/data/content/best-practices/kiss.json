@@ -25,15 +25,17 @@
         },
         {
           "type": "text",
-          "content": "KISS significa \"Keep It Simple, Stupid\". É sobre escrever código que qualquer dev consegue entender na primeira leitura."
+          "content": "KISS significa \"Keep It Simple, Stupid\". Se você não consegue explicar sua função em uma frase, o código está complicado demais."
         },
         {
           "type": "text",
-          "content": "Pensa assim: se você precisa de 3 páginas para explicar como uma função funciona, você está violando KISS. Se um dev júnior não entende seu código, você está violando KISS."
+          "content": "Código \"inteligente\" que ninguém entende é código burro. Preferível um if/else explícito a um reduce com 3 níveis de callback que só você decifra."
         },
         {
-          "type": "text",
-          "content": "A regra é clara: se há uma forma mais simples de fazer, use a forma mais simples."
+          "type": "alert",
+          "message": "Regra prática: um dev júnior do time consegue dar manutenção nisso em 6 meses? Se não, simplifique. Simplicidade não é perder features — é fazer o óbvio parecer óbvio.",
+          "color": "green",
+          "icon": "check"
         }
       ]
     },

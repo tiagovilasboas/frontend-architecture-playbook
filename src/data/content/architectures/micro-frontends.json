@@ -36,6 +36,43 @@
           "type": "text",
           "content": "A regra de ouro: se você tem menos de 3 times, monorepo é melhor. Micro-frontends resolvem problemas organizacionais (times autônomos), não problemas técnicos. O overhead de infraestrutura é real.",
           "dimmed": true
+        },
+        {
+          "type": "title",
+          "content": "Trade-offs (Principal sabe quando vale)",
+          "order": 4
+        },
+        {
+          "type": "table",
+          "headers": ["Aspecto", "Custo", "Quando vale"],
+          "rows": [
+            [
+              "Infraestrutura",
+              "Shell, runtime integration, CSS isolation, shared deps. Muito mais complexo que monorepo.",
+              "3+ times autônomos, deploys independentes obrigatórios"
+            ],
+            [
+              "Performance",
+              "Múltiplos bundles, possível duplicação de libs, overhead de runtime",
+              "Quando autonomia de times > custo de payload"
+            ],
+            [
+              "DX",
+              "Dev precisa rodar shell + micro-apps. Debugging cross-app é mais difícil.",
+              "Times já trabalham em repos separados e querem total independência"
+            ],
+            [
+              "CSS/estado",
+              "Risco de vazamento de estilos. Shared state vira problema de arquitetura.",
+              "Design system bem definido; convenção de eventos ou store compartilhado"
+            ]
+          ]
+        },
+        {
+          "type": "alert",
+          "message": "Não use micro-frontends para \"escalar código\". Use para escalar times. Se o problema é bundle grande, faça code splitting. Se o problema é 5 times travando um no deploy, aí sim.",
+          "color": "blue",
+          "icon": "bulb"
         }
       ]
     },

@@ -32,6 +32,32 @@
           "type": "text",
           "content": "A regra é simples: componentes são independentes e reutilizáveis. Você pode testar cada um isoladamente, trocar um sem afetar os outros.",
           "dimmed": true
+        },
+        {
+          "type": "title",
+          "content": "Trade-offs",
+          "order": 4
+        },
+        {
+          "type": "table",
+          "headers": ["Aspecto", "Custo", "Quando vale"],
+          "rows": [
+            [
+              "Overhead inicial",
+              "Design tokens, variants, documentação. Tempo pra alinhar o time.",
+              "2+ devs, 3+ telas compartilhando UI"
+            ],
+            [
+              "Props drilling",
+              "Componentes muito aninhados = props em cascata. Context ou composition ajudam.",
+              "Prefira composição; evite 5 níveis de props"
+            ],
+            [
+              "Abstração prematura",
+              "Button com 20 variantes antes de ter 3 casos de uso reais = YAGNI",
+              "Crie variantes quando tiver 2º uso concreto"
+            ]
+          ]
         }
       ]
     },

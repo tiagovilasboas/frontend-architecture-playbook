@@ -23,15 +23,17 @@
         },
         {
           "type": "text",
-          "content": "YAGNI significa \"You Aren't Gonna Need It\". É sobre não implementar funcionalidades que você acha que vai precisar no futuro."
+          "content": "YAGNI significa \"You Aren't Gonna Need It\". Aquele campo \"pra quando tivermos multi-tenant\"? A abstração \"genérica pra qualquer backend\"? Largue. Você não vai precisar — ou quando precisar, os requisitos já mudaram."
         },
         {
           "type": "text",
-          "content": "Pensa assim: se você implementa uma feature que não está sendo usada hoje, você está gastando tempo e criando complexidade desnecessária. E quando você realmente precisar, os requisitos já mudaram."
+          "content": "O pior código é o que você escreveu antecipando um futuro que nunca chegou. Mais difícil de manter, mais complexo de testar, e no dia que o requisito real aparecer, vai estar errado."
         },
         {
-          "type": "text",
-          "content": "A regra é clara: implemente apenas o que você precisa hoje. O futuro vai cuidar de si mesmo."
+          "type": "alert",
+          "message": "Implemente hoje o que o produto pede hoje. Quando o PO vier com o requisito de amanhã, aí você implementa — com o requisito real, não o imaginário.",
+          "color": "blue",
+          "icon": "bulb"
         }
       ]
     },

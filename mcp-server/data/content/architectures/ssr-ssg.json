@@ -28,6 +28,43 @@
           "type": "code",
           "code": "// ❌ SPA tradicional - browser recebe isso:\n<div id=\"root\"></div>\n<script src=\"app.js\"></script>\n// User vê tela branca até JS carregar e executar\n\n// ✅ SSR/SSG - browser recebe isso:\n<div id=\"root\">\n  <h1>Produtos em Promoção</h1>\n  <div class=\"product-grid\">\n    <article>\n      <h2>iPhone 15</h2>\n      <p>R$ 4.999</p>\n    </article>\n  </div>\n</div>\n// User vê conteúdo IMEDIATAMENTE",
           "block": true
+        },
+        {
+          "type": "title",
+          "content": "Trade-offs (Principal sabe escolher)",
+          "order": 4
+        },
+        {
+          "type": "table",
+          "headers": ["Aspecto", "Custo", "Quando vale"],
+          "rows": [
+            [
+              "SSR: server cost",
+              "Cada request = CPU no servidor. Escala com tráfego. Vercel/Netlify cobram por função.",
+              "SEO crítico + conteúdo dinâmico ou personalizado"
+            ],
+            [
+              "SSG: build time",
+              "Rebuild a cada mudança de conteúdo. 1000 páginas = build lento. Incremental ajuda.",
+              "Conteúdo estático, docs, blog, landing"
+            ],
+            [
+              "Hidratação",
+              "JS ainda precisa rodar no cliente. TTI pode ser alto se bundle for pesado.",
+              "Otimize bundle; use streaming/partial hydration"
+            ],
+            [
+              "Complexidade",
+              "Framework (Next, Remix, Astro), deploy, env vars. Muito mais que SPA puro.",
+              "Quando SEO e LCP importam mais que simplicidade"
+            ]
+          ]
+        },
+        {
+          "type": "alert",
+          "message": "SPA + CDN pode ser suficiente pra admin interno. SSR/SSG vale quando usuário final ou Google precisa do conteúdo rápido.",
+          "color": "blue",
+          "icon": "bulb"
         }
       ]
     },
