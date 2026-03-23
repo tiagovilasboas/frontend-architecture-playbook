@@ -58,16 +58,16 @@ export default function Home() {
     <Box
       mt={0}
       w="100%"
-      maw={isMobile ? '100%' : '90%'}
+      maw={isMobile ? '100%' : 1200}
       mx="auto"
-      px={isMobile ? undefined : 'md'}
+      px={isMobile ? 'sm' : 'xl'}
     >
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
-        <Stack gap={isMobile ? 'xl' : 'xl'} w="100%">
+        <Stack gap={isMobile ? 'xl' : '3xl'} w="100%">
           {/* Hero Section – Next.js-style: title, tagline, description, two CTAs, command line */}
           <motion.section variants={itemVariants}>
             <Box
@@ -76,7 +76,7 @@ export default function Home() {
                 position: 'relative',
                 width: '100%',
                 // Mobile: altura pelo conteúdo + respiro (evita bloco vazio ou apertado)
-                minHeight: isMobile ? undefined : 480,
+                minHeight: isMobile ? undefined : 520,
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -93,7 +93,7 @@ export default function Home() {
                   // Mobile: gutter legível sem “grudar” no vidro; desktop mantém só vertical
                   padding: isMobile
                     ? undefined
-                    : '3.5rem max(1rem, env(safe-area-inset-left)) 3.5rem max(1rem, env(safe-area-inset-right))',
+                    : '4rem max(1.5rem, env(safe-area-inset-left)) 4rem max(1.5rem, env(safe-area-inset-right))',
                   paddingTop: isMobile
                     ? 'max(1.75rem, env(safe-area-inset-top))'
                     : undefined,
@@ -251,7 +251,7 @@ export default function Home() {
               </Title>
               <SimpleGrid
                 cols={{ base: 1, sm: 3 }}
-                spacing={isMobile ? 'md' : 'lg'}
+                spacing={isMobile ? 'md' : 'xl'}
                 w="100%"
                 style={{ alignItems: 'stretch' }}
               >
@@ -417,7 +417,7 @@ export default function Home() {
               </Title>
               <SimpleGrid
                 cols={{ base: 1, sm: 2, md: 3 }}
-                spacing="md"
+                spacing={isMobile ? 'md' : 'lg'}
                 w="100%"
               >
                 {[
@@ -595,73 +595,80 @@ export default function Home() {
               >
                 ⟩ Por que isso te ajuda
               </Title>
-              <Text size={isMobile ? 'sm' : 'md'} c="dimmed" maw="90%">
+              <Text
+                size={isMobile ? 'sm' : 'md'}
+                c="dimmed"
+                maw={isMobile ? '90%' : 640}
+                lh={1.6}
+              >
                 Você consegue justificar escolha com caso e fonte, evitar
                 refatoração à toa e falar a mesma língua que o time e quem
                 segura a grana.
               </Text>
 
-              <SimpleGrid
-                cols={{ base: 1, sm: 2 }}
-                spacing={isMobile ? 'md' : 'lg'}
-                w="100%"
-              >
-                <Card
-                  withBorder
-                  p={isMobile ? 'xs' : 'md'}
-                  radius="md"
-                  h="100%"
+              <Box w="100%" maw={{ base: '100%', md: 800 }} mx="auto">
+                <SimpleGrid
+                  cols={{ base: 1, sm: 2 }}
+                  spacing={isMobile ? 'md' : 'xl'}
+                  w="100%"
                 >
-                  <Stack gap="md" align="center" ta="center">
-                    <ThemeIcon
-                      size={isMobile ? 60 : 50}
-                      radius="xl"
-                      variant="light"
-                    >
-                      <IconShield size={isMobile ? 32 : 28} />
-                    </ThemeIcon>
-                    <Title order={3} size={isMobile ? 'h4' : 'h5'}>
-                      Menos retrabalho
-                    </Title>
-                    <Text
-                      size={isMobile ? 'md' : 'sm'}
-                      c="dimmed"
-                      style={{ lineHeight: 1.6 }}
-                    >
-                      Escolher com critério desde o começo poupa tempo. Quando
-                      precisar mudar, tem guia de migração incremental.
-                    </Text>
-                  </Stack>
-                </Card>
+                  <Card
+                    withBorder
+                    p={isMobile ? 'xs' : 'lg'}
+                    radius="md"
+                    h="100%"
+                  >
+                    <Stack gap="md" align="center" ta="center">
+                      <ThemeIcon
+                        size={isMobile ? 60 : 52}
+                        radius="xl"
+                        variant="light"
+                      >
+                        <IconShield size={isMobile ? 32 : 28} />
+                      </ThemeIcon>
+                      <Title order={3} size={isMobile ? 'h4' : 'h5'}>
+                        Menos retrabalho
+                      </Title>
+                      <Text
+                        size={isMobile ? 'md' : 'sm'}
+                        c="dimmed"
+                        style={{ lineHeight: 1.6 }}
+                      >
+                        Escolher com critério desde o começo poupa tempo. Quando
+                        precisar mudar, tem guia de migração incremental.
+                      </Text>
+                    </Stack>
+                  </Card>
 
-                <Card
-                  withBorder
-                  p={isMobile ? 'xs' : 'md'}
-                  radius="md"
-                  h="100%"
-                >
-                  <Stack gap="md" align="center" ta="center">
-                    <ThemeIcon
-                      size={isMobile ? 60 : 50}
-                      radius="xl"
-                      variant="light"
-                    >
-                      <IconTarget size={isMobile ? 32 : 28} />
-                    </ThemeIcon>
-                    <Title order={3} size={isMobile ? 'h4' : 'h5'}>
-                      Argumento na reunião
-                    </Title>
-                    <Text
-                      size={isMobile ? 'md' : 'sm'}
-                      c="dimmed"
-                      style={{ lineHeight: 1.6 }}
-                    >
-                      Trade-offs e fontes por decisão. O wizard te dá uma
-                      recomendação; você leva pro ADR e pro time.
-                    </Text>
-                  </Stack>
-                </Card>
-              </SimpleGrid>
+                  <Card
+                    withBorder
+                    p={isMobile ? 'xs' : 'lg'}
+                    radius="md"
+                    h="100%"
+                  >
+                    <Stack gap="md" align="center" ta="center">
+                      <ThemeIcon
+                        size={isMobile ? 60 : 52}
+                        radius="xl"
+                        variant="light"
+                      >
+                        <IconTarget size={isMobile ? 32 : 28} />
+                      </ThemeIcon>
+                      <Title order={3} size={isMobile ? 'h4' : 'h5'}>
+                        Argumento na reunião
+                      </Title>
+                      <Text
+                        size={isMobile ? 'md' : 'sm'}
+                        c="dimmed"
+                        style={{ lineHeight: 1.6 }}
+                      >
+                        Trade-offs e fontes por decisão. O wizard te dá uma
+                        recomendação; você leva pro ADR e pro time.
+                      </Text>
+                    </Stack>
+                  </Card>
+                </SimpleGrid>
+              </Box>
             </Stack>
           </motion.section>
 
@@ -677,7 +684,12 @@ export default function Home() {
                 >
                   ⟩ Destaques
                 </Title>
-                <Text size={isMobile ? 'sm' : 'md'} c="dimmed" maw="90%">
+                <Text
+                  size={isMobile ? 'sm' : 'md'}
+                  c="dimmed"
+                  maw={isMobile ? '90%' : 560}
+                  lh={1.6}
+                >
                   Dois que mais ajudam na hora de decidir: comparação de
                   arquiteturas e os casos com link dos artigos respectivos.
                 </Text>
@@ -685,7 +697,7 @@ export default function Home() {
 
               <SimpleGrid
                 cols={{ base: 1, sm: 2 }}
-                spacing={isMobile ? 'md' : 'lg'}
+                spacing={isMobile ? 'md' : 'xl'}
                 w="100%"
                 style={{ alignItems: 'stretch' }}
               >
@@ -781,7 +793,7 @@ export default function Home() {
           <motion.section variants={itemVariants}>
             <Paper
               withBorder
-              p={isMobile ? 'xs' : 'md'}
+              p={isMobile ? 'xs' : 'xl'}
               radius="lg"
               ta="center"
             >

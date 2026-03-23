@@ -173,9 +173,14 @@
 }
 
 /* Home: clickable cards hover lift (theme-aware shadow) */
-.comece-aqui-card:hover {
+.comece-aqui-card:hover,
+.destaque-card:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+[data-mantine-color-scheme="dark"] .comece-aqui-card:hover,
+[data-mantine-color-scheme="dark"] .destaque-card:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
 /* Suspense fallback: simple spinner */
