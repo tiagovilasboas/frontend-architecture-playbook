@@ -6,6 +6,7 @@ import { CodeHighlight } from '@mantine/code-highlight';
 import '@mantine/code-highlight/styles.css';
 import ContentRenderer from '../components/ContentRenderer';
 import DocPageLayout from '../components/DocPageLayout';
+import GuideNavigation from '../components/GuideNavigation';
 
 type CollectionType =
   | 'guides'
@@ -33,15 +34,15 @@ export default function DocPage() {
   if (!collection || !slug) return <p>Invalid route</p>;
 
   if (contentPage) {
+    const after = contentPage.layout?.showGuideNav ? (
+      <GuideNavigation currentGuide={contentPage.layout.showGuideNav} />
+    ) : undefined;
     return (
       <DocPageLayout
         showRelated={contentPage.layout?.showRelated !== false}
-        contentWrapperProps={{
-          'data-content-driven': true,
-          title: 'Página migrada (conteúdo em JSON)',
-        }}
+        contentWrapperProps={{ 'data-content-driven': true }}
       >
-        <ContentRenderer page={contentPage} />
+        <ContentRenderer page={contentPage} after={after} />
       </DocPageLayout>
     );
   }
