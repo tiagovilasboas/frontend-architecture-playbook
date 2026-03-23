@@ -34,6 +34,19 @@ export function getDocContent(
   return contentMap.get(`${collection}/${slug}`) ?? null;
 }
 
+/** Metadata from JSON (single source of truth when content exists). */
+export function getDocMeta(
+  collection: string,
+  slug: string
+): { title: string; description: string } | null {
+  const page = contentMap.get(`${collection}/${slug}`);
+  if (!page?.meta?.title) return null;
+  return {
+    title: page.meta.title,
+    description: page.meta.description ?? '',
+  };
+}
+
 /** All (collection, slug) pairs that have content JSON (e.g. for MCP or sitemap). */
 export function getContentDrivenSlugs(): {
   collection: string;

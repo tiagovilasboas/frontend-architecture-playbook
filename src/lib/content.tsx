@@ -1,5 +1,6 @@
 import React from 'react';
 import ContentDrivenPage from '../components/ContentDrivenPage';
+import { getDocMeta } from './content-data';
 
 export type CollectionType =
   | 'guides'
@@ -228,6 +229,7 @@ function toMeta(
     default?: { metadata?: { title?: string; description?: string } };
   };
 
+  const contentMeta = getDocMeta(collection, slug);
   const staticMeta =
     STATIC_METADATA[slug as keyof typeof STATIC_METADATA] || {};
   const dynamicMeta =
@@ -239,8 +241,12 @@ function toMeta(
   return {
     slug,
     collection,
-    title: staticMeta.title || dynamicMeta.title || slug,
-    description: staticMeta.description || dynamicMeta.description || '',
+    title: contentMeta?.title || staticMeta.title || dynamicMeta.title || slug,
+    description:
+      contentMeta?.description ||
+      staticMeta.description ||
+      dynamicMeta.description ||
+      '',
     component: Component,
   };
 }

@@ -92,4 +92,29 @@ test.describe('Navigation', () => {
       await expect(page).toHaveURL(/\/guides\/dependency-rule/);
     }
   });
+
+  test('content-driven page: dependency-rule has suggestedNext block', async ({
+    page,
+  }) => {
+    await page.goto('/guides/dependency-rule');
+    await expect(page).toHaveURL(/\/guides\/dependency-rule/);
+    await expect(
+      page.getByRole('link', { name: /Como Escolher Arquitetura/i })
+    ).toBeVisible();
+  });
+
+  test('glossary deep link: #hydration scrolls to term', async ({ page }) => {
+    await page.goto('/guides/glossary#hydration');
+    await expect(page).toHaveURL(/\/guides\/glossary/);
+    const hydrationCard = page.locator('#hydration');
+    await expect(hydrationCard).toBeVisible();
+    await expect(
+      page.getByText(/Hydration|Hidratação/, { exact: false })
+    ).toBeVisible();
+  });
+
+  test('invalid slug shows Not found', async ({ page }) => {
+    await page.goto('/guides/invalid-slug-that-does-not-exist');
+    await expect(page.getByText(/Not found|não encontrado/i)).toBeVisible();
+  });
 });

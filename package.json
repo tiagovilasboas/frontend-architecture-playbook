@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "kill-port 5173 && vite",
+    "prepare-data:mcp": "cd mcp-server && npm run prepare-data",
+    "prebuild": "npm run prepare-data:mcp",
     "build": "tsc && vite build",
     "lint": "eslint .",
     "lint:fix": "eslint --fix",
