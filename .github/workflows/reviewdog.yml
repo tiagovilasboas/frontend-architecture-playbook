@@ -95,8 +95,15 @@ jobs:
         uses: preactjs/compressed-size-action@v2
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
+          # Repo has pnpm-lock.yaml; the action would use pnpm by default but runners don't ship pnpm.
+          install-script: npm ci
           pattern: 'dist/**/*.{js,css}'
           exclude: '{**/*.map,**/node_modules/**}'
+          build-script: build
+          show-total: true
+          collapse-unchanged: true
+          minimum-change-threshold: 1
+          sort-by: 'Filename:asc'
 
   # SEO and performance
   lighthouse:
