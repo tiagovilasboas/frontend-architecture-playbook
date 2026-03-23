@@ -7,6 +7,7 @@ import {
   Anchor,
   Box,
   NavLink,
+  ActionIcon,
 } from '@mantine/core';
 import {
   IconBook,
@@ -19,6 +20,7 @@ import {
   IconBrandLinkedin,
   IconHeart,
   IconTarget,
+  IconX,
 } from '@tabler/icons-react';
 import { useLocation, Link } from 'react-router-dom';
 import NavItem from './NavItem.tsx';
@@ -54,6 +56,44 @@ export default function MobileNavMenu({ onNavigate }: Props) {
 
   return (
     <Stack gap={0} style={{ height: '100%' }} className="mobile-nav-menu">
+      {/* Slim toolbar: evita o header alto do Drawer (X default do Mantine). */}
+      <Box
+        component="header"
+        className="mobile-nav-drawer-header"
+        style={{
+          flexShrink: 0,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: 8,
+          minHeight: 40,
+          paddingTop: 'max(6px, env(safe-area-inset-top))',
+          paddingBottom: 6,
+          paddingLeft: 'max(8px, env(safe-area-inset-left))',
+          paddingRight: 'max(8px, env(safe-area-inset-right))',
+          borderBottom: '1px solid var(--mantine-color-default-border)',
+        }}
+      >
+        <Text
+          id="mobile-nav-menu-title"
+          size="sm"
+          fw={600}
+          style={{ lineHeight: 1.2 }}
+        >
+          Navegação
+        </Text>
+        <ActionIcon
+          variant="subtle"
+          color="gray"
+          size="lg"
+          radius="md"
+          onClick={onNavigate}
+          aria-label="Fechar menu"
+        >
+          <IconX size={20} stroke={2} />
+        </ActionIcon>
+      </Box>
+
       <ScrollArea
         style={{ flex: 1, minHeight: 0 }}
         className="mobile-nav-scroll"

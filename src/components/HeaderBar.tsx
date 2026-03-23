@@ -21,6 +21,7 @@ import {
 import { useMantineColorScheme } from '@mantine/core';
 import { useBreakpoints } from '../hooks/useBreakpoints.ts';
 import { NAV_JOURNEY, isSectionActive } from '../lib/navigation.ts';
+import { CONTENT_GUTTER_MIN_PX } from '../theme/mobile-ux-tokens.ts';
 
 interface Props {
   opened: boolean;
@@ -46,16 +47,24 @@ export default function HeaderBar({ opened, onBurger }: Props) {
       }}
     >
       <Group
-        h={56}
+        h={isMobile ? undefined : 56}
         justify="space-between"
+        align="center"
         wrap="nowrap"
         style={{
+          // Mobile: gutter legível + notch (antes só safe-area = 0 na maioria dos browsers)
           paddingLeft: isMobile
-            ? 'env(safe-area-inset-left, 0px)'
+            ? `max(${CONTENT_GUTTER_MIN_PX}px, env(safe-area-inset-left, 0px))`
             : 'var(--mantine-spacing-xl)',
           paddingRight: isMobile
-            ? 'env(safe-area-inset-right, 0px)'
+            ? `max(${CONTENT_GUTTER_MIN_PX}px, env(safe-area-inset-right, 0px))`
             : 'var(--mantine-spacing-xl)',
+          paddingTop: isMobile
+            ? 'env(safe-area-inset-top, 0px)'
+            : undefined,
+          minHeight: isMobile
+            ? 'calc(56px + env(safe-area-inset-top, 0px))'
+            : undefined,
         }}
       >
         <Group gap="lg" wrap="nowrap" style={{ minWidth: 0, flex: 1 }}>

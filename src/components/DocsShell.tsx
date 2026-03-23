@@ -69,12 +69,14 @@ export default function DocsShell({ children }: DocsShellProps) {
         onClose={handleDrawerClose}
         padding={0}
         title={null}
+        withCloseButton={false}
         zIndex={3000}
         lockScroll={false}
         closeOnClickOutside={true}
         closeOnEscape={true}
         size={300}
         className="mobile-nav-drawer"
+        aria-labelledby="mobile-nav-menu-title"
       >
         <MobileNavMenu onNavigate={handleDrawerClose} />
       </Drawer>
